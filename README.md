@@ -28,10 +28,13 @@ npm run build
 npm run lint
 ```
 
-## Current milestone: Login + Import History
+## Current milestone: AppShell + Import workspace
 
-- `/` redirects to `/login`; `/import-history` is directly accessible, intentionally without auth guards.
+- `/` redirects to `/login`; Login remains outside the application shell.
+- `/imports` opens local file selection; `/imports/history` opens H01/H02 History inside the shared shell. `/import-history` redirects to `/imports/history`, retaining query parameters and fragment.
+- Internal routes are intentionally unprotected for FE development. A future AuthGuard must wrap AppShell; this development routing is not production security.
 - Login validates locally only. Registration/recovery and real session requests are not implemented.
+- Import supports picker/drop, filename/size and remove/clear. Both addition paths validate the prospective local batch selection (existing + incoming) atomically: .csv/.xlsx filename extensions only, maximum 20 files per batch, 20 MiB per file and 100 MiB total compressed bytes per batch (inclusive, using source `File.size`, not expanded XLSX size). An invalid addition leaves the previous selection intact; suffix checks do not validate contents. Selection and data date stay in memory while navigating the Import workspace; leaving it or refreshing clears them. There is no upload, batch creation or processing. Future I01/I02 integration must enforce canonical server batch truth across actual upload calls, including files already accepted by the backend; see [integration debt §E](./docs/002-technical-debt-and-integration-todo.md#e-import-upload-contract-validation).
 - Import History implements H01/H02 only, not inventory movements or planning history.
 
 Copy the public settings from `.env.example` into an ignored `.env.local` if needed:

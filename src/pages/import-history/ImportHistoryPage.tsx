@@ -8,6 +8,7 @@ import { formatDate, isBusinessDate } from '../../features/import-history/import
 import type { CalendarResponse, HistoryResponse } from '../../features/import-history/importHistory.types'
 import type { HistoryStatusFilter, ImportCategory } from '../../features/import-history/importHistory.types'
 import { HttpError } from '../../shared/http/httpClient'
+import { AppShellHeader } from '../../layouts/app-shell/AppShell'
 import './ImportHistoryPage.css'
 
 const categories: { value: ImportCategory; label: string }[] = [
@@ -60,7 +61,7 @@ export function ImportHistoryPage() {
     params.set('month', month)
     params.set('date', date)
     Object.entries(changes).forEach(([name, value]) => value === null ? params.delete(name) : params.set(name, value))
-    return `/import-history?${params}`
+    return `/imports/history?${params}`
   }
 
   function applyFilters(event: FormEvent<HTMLFormElement>) {
@@ -87,62 +88,51 @@ export function ImportHistoryPage() {
   }
 
   return (
-    <div className="history-page" lang="vi">
-      <aside className="history-sidebar" aria-label="Các phân hệ ShelfCash">
-        <p className="history-sidebar__label">KHÔNG GIAN LÀM VIỆC</p>
-        <div className="history-sidebar__items">
-          {['Hôm nay', 'Nhập dữ liệu', 'Dự đoán', 'Kho', 'Menu', 'Cửa hàng'].map((label) => label === 'Nhập dữ liệu'
-            ? <Link key={label} to="/import-history" aria-current="page"><span aria-hidden="true" />{label}</Link>
-            : <span key={label} className="history-sidebar__unavailable" aria-disabled="true" title="Chưa triển khai"><i aria-hidden="true" />{label}</span>)}
+    <div className="history-page">
+      <AppShellHeader>
+        <nav aria-label="Đường dẫn trang"><Link to="/imports">Nhập dữ liệu</Link><span aria-hidden="true">/</span><span aria-current="page">Lịch sử nhập</span></nav>
+      </AppShellHeader>
+      <main className="history-main">
+        <div className="history-heading"><h1>Lịch sử nhập</h1><p>{historySource.label}</p></div>
+        <form className="history-filters" onSubmit={applyFilters} key={`${category}-${status}-${q}`}>
+          <label>Loại file<select name="category" defaultValue={category ?? ''}>
+            <option value="">Tất cả loại file</option>{categories.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
+          </select></label>
+          <label>Trạng thái<select name="status" defaultValue={status ?? ''}>
+            <option value="">Tất cả trạng thái</option>{statuses.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
+          </select></label>
+          <label className="history-filters__search">Tên file<input name="q" type="search" placeholder="Tìm theo tên file" defaultValue={q ?? ''} /></label>
+          <button type="submit">Áp dụng</button>
+        </form>
+        {current.status === 'loading' && <p className="history-feedback" role="status">Đang tải lịch sử nhập…</p>}
+        {current.status === 'error' && <div className="history-error" role="alert">
+          <div><h2>Không tải được lịch sử nhập</h2><p>{current.error.message}</p>
+            {current.error instanceof HttpError && current.error.problem && <p className="history-error__code">Mã lỗi: {current.error.problem.code}</p>}
+          </div><button type="button" onClick={retryLoad}>Thử lại</button>
+        </div>}
+        {current.status === 'success' && current.calendar.data.matched_import_count === 0 && <p className="history-feedback" role="status">
+          {current.calendar.data.unfiltered_import_count === 0 ? 'Tháng này chưa có lần nhập dữ liệu nào.' : 'Không có lần nhập phù hợp với bộ lọc trong tháng này.'}
+        </p>}
+        {current.status === 'success' && [...current.calendar.meta.warnings, ...current.history.meta.warnings].map((warning, index) =>
+          <p className="history-feedback" key={`${warning.code}-${index}`}>{warning.message}</p>)}
+        <div className="history-content" aria-busy={current.status === 'loading'}>
+          <ImportCalendar month={month} selectedDate={date} data={current.status === 'success' ? current.calendar.data : undefined}
+            dateLink={(nextDate) => makeLink({ date: nextDate, month: nextDate.slice(0, 7), cursor: null })} />
+          <section className="history-detail" aria-labelledby="history-date-title">
+            <header className="history-detail__header">
+              <h2 id="history-date-title">Ngày {formatDate(date)}</h2>
+              <p>{current.status === 'success'
+                ? current.history.meta.pagination.total_count === null ? 'Chưa có tổng số lần nhập' : `${current.history.meta.pagination.total_count} lần nhập dữ liệu`
+                : 'Các lần nhập trong ngày đã chọn'}</p>
+            </header>
+            {current.status === 'loading' && <div className="history-placeholder" aria-hidden="true"><span /><span /><span /></div>}
+            {current.status === 'error' && <p className="history-unavailable">Dữ liệu chưa tải được. Vui lòng thử lại.</p>}
+            {current.status === 'success' && <ImportHistoryList response={current.history} timezone={current.calendar.data.timezone}
+              nextLink={current.history.meta.pagination.next_cursor ? makeLink({ cursor: current.history.meta.pagination.next_cursor }) : null}
+              firstLink={cursor ? makeLink({ cursor: null }) : null} />}
+          </section>
         </div>
-      </aside>
-      <div className="history-workspace">
-        <header className="history-topbar">
-          <nav aria-label="Đường dẫn trang"><span>Nhập dữ liệu</span><span aria-hidden="true">/</span><span aria-current="page">Lịch sử nhập</span></nav>
-          <Link className="history-brand" to="/login" aria-label="ShelfCash — trang đăng nhập">ShelfCash</Link>
-        </header>
-        <main className="history-main">
-          <div className="history-heading"><h1>Lịch sử nhập</h1><p>{historySource.label}</p></div>
-          <form className="history-filters" onSubmit={applyFilters} key={`${category}-${status}-${q}`}>
-            <label>Loại file<select name="category" defaultValue={category ?? ''}>
-              <option value="">Tất cả loại file</option>{categories.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
-            </select></label>
-            <label>Trạng thái<select name="status" defaultValue={status ?? ''}>
-              <option value="">Tất cả trạng thái</option>{statuses.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
-            </select></label>
-            <label className="history-filters__search">Tên file<input name="q" type="search" placeholder="Tìm theo tên file" defaultValue={q ?? ''} /></label>
-            <button type="submit">Áp dụng</button>
-          </form>
-          {current.status === 'loading' && <p className="history-feedback" role="status">Đang tải lịch sử nhập…</p>}
-          {current.status === 'error' && <div className="history-error" role="alert">
-            <div><h2>Không tải được lịch sử nhập</h2><p>{current.error.message}</p>
-              {current.error instanceof HttpError && current.error.problem && <p className="history-error__code">Mã lỗi: {current.error.problem.code}</p>}
-            </div><button type="button" onClick={retryLoad}>Thử lại</button>
-          </div>}
-          {current.status === 'success' && current.calendar.data.matched_import_count === 0 && <p className="history-feedback" role="status">
-            {current.calendar.data.unfiltered_import_count === 0 ? 'Tháng này chưa có lần nhập dữ liệu nào.' : 'Không có lần nhập phù hợp với bộ lọc trong tháng này.'}
-          </p>}
-          {current.status === 'success' && [...current.calendar.meta.warnings, ...current.history.meta.warnings].map((warning, index) =>
-            <p className="history-feedback" key={`${warning.code}-${index}`}>{warning.message}</p>)}
-          <div className="history-content" aria-busy={current.status === 'loading'}>
-            <ImportCalendar month={month} selectedDate={date} data={current.status === 'success' ? current.calendar.data : undefined}
-              dateLink={(nextDate) => makeLink({ date: nextDate, month: nextDate.slice(0, 7), cursor: null })} />
-            <section className="history-detail" aria-labelledby="history-date-title">
-              <header className="history-detail__header">
-                <h2 id="history-date-title">Ngày {formatDate(date)}</h2>
-                <p>{current.status === 'success'
-                  ? current.history.meta.pagination.total_count === null ? 'Chưa có tổng số lần nhập' : `${current.history.meta.pagination.total_count} lần nhập dữ liệu`
-                  : 'Các lần nhập trong ngày đã chọn'}</p>
-              </header>
-              {current.status === 'loading' && <div className="history-placeholder" aria-hidden="true"><span /><span /><span /></div>}
-              {current.status === 'error' && <p className="history-unavailable">Dữ liệu chưa tải được. Vui lòng thử lại.</p>}
-              {current.status === 'success' && <ImportHistoryList response={current.history} timezone={current.calendar.data.timezone}
-                nextLink={current.history.meta.pagination.next_cursor ? makeLink({ cursor: current.history.meta.pagination.next_cursor }) : null}
-                firstLink={cursor ? makeLink({ cursor: null }) : null} />}
-            </section>
-          </div>
-        </main>
-      </div>
+      </main>
     </div>
   )
 }

@@ -19,6 +19,7 @@ Mỗi bản báo cáo trong thư viện bắt buộc phải bao gồm các metad
 | STT | Tiêu đề Báo cáo | Bối cảnh Tổng quan (General Context) | Ngày tạo lập | Tài liệu chi tiết |
 | :---: | :--- | :--- | :---: | :---: |
 | `#001` | **Thiết lập Nền tảng Dự án & Định hướng Kiến trúc** | Tái khởi tạo ShelfCash từ đầu (React 19 + TypeScript + Vite), loại bỏ boilerplate thừa, thiết lập layout tối giản (Header với ShelfCash & Đăng nhập) và định hướng kiến trúc phân tầng 4 lớp (`app`, `pages`, `features`, `shared`). | 05/10/2026 | [001-architecture-foundation.md](./001-architecture-foundation.md) |
+| `#002` | **Technical Debt & Integration TODO** | Theo dõi công việc đã có evidence cần hoàn tất trước staging/production và tích hợp BE; không thay đổi hành vi ứng dụng. | 10/10/2026 | [002-technical-debt-and-integration-todo.md](./002-technical-debt-and-integration-todo.md) |
 
 ---
 

@@ -1,0 +1,35 @@
+.import-page__date { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; min-width: 0; }
+.import-page__date label { font-size: 14px; font-weight: 500; color: #565656; }
+.import-page__date input { width: 184px; max-width: 100%; min-height: 42px; border: 1px solid #d8d8d8; border-radius: 9px; padding: 8px 12px; background: #fff; color: #454545; font-size: 14px; color-scheme: light; }
+.import-page__main { max-width: 1320px; margin: 0 auto; padding: 40px 48px 48px; }
+.import-page__main h1 { margin-bottom: 28px; font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -.6px; }
+.import-page__grid { display: grid; grid-template-columns: minmax(0, 1fr) 184px; align-items: start; gap: 24px; }
+.import-page__utilities { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.import-page__utilities > * { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; padding: 10px 16px; border: 1px solid #575757; border-radius: 9px; background: #575757; color: #fff; font-size: 14px; line-height: 22px; font-weight: 500; text-decoration: none; }
+.import-page__utilities a:hover { background: #404040; border-color: #404040; }
+.import-page__utilities button:disabled { background: #f3f3f3; color: #888; border-color: #ddd; cursor: not-allowed; }
+.import-page__process { grid-column: 1; display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 16px; }
+.import-page__process p { flex: 1; color: #777; font-size: 12px; line-height: 20px; }
+.import-page__process button { min-width: 208px; min-height: 50px; padding: 12px 24px; border: 1px solid #e3e3e3; border-radius: 10px; background: #e9e9e9; color: #777; font-size: 15px; font-weight: 600; cursor: not-allowed; }
+@media (max-width: 1180px) {
+  .import-page__main { padding-inline: 28px; }
+  .import-page__grid { grid-template-columns: minmax(0, 1fr) 152px; gap: 20px; }
+}
+@media (max-width: 950px) {
+  .import-page__grid { grid-template-columns: minmax(0, 1fr); }
+  .import-page__utilities { grid-row: 2; flex-direction: row; }
+  .import-page__utilities > * { flex: 1; min-width: 0; padding-inline: 10px; }
+}
+@media (max-width: 680px) {
+  .import-page__main { padding: 28px 20px 40px; }
+  .import-page__main h1 { font-size: 26px; }
+  .import-page__date { gap: 8px; }
+  .import-page__date label { font-size: 12px; }
+  .import-page__date input { width: 130px; font-size: 12px; }
+  .import-page__process { align-items: stretch; flex-direction: column; }
+  .import-page__process button { width: 100%; min-width: 0; }
+}
+@media (max-width: 380px) {
+  .import-page__main { padding-inline: 12px; }
+  .import-page__utilities { flex-direction: column; }
+}
