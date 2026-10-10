@@ -68,7 +68,7 @@ Shelfcash_FE_v2/
 │   │   └── import-history/               # Page orchestration, URL state + CSS
 │   ├── features/
 │   │   ├── auth/                         # LoginForm.tsx + CSS; chưa gọi auth API
-│   │   ├── import-data/                  # importData.files.ts; ImportUpload.tsx + CSS
+│   │   ├── import-data/                  # importData.files.ts; ImportUpload/ImportHelp + CSS
 │   │   └── import-history/               # H01/H02 types, fixtures, data, validation,
 │   │                                     # format và components lịch/danh sách
 │   └── shared/http/                      # httpClient.ts + http.types.ts
@@ -112,12 +112,13 @@ graph TD
    - Internal routes **tạm thời không bảo vệ để phát triển FE**, không phải cơ chế bảo mật production. AuthGuard tương lai phải nằm **ngoài AppShell**: Router → AuthGuard → AppShell → page; không thêm guard giả lúc này.
 
 2. **`pages/` (Màn hình mức Route)**:
-   - *Hiện tại:* `LoginPage` ghép form có sẵn. `ImportPage` ghép upload UI, ngày dữ liệu local, shortcut History và các thao tác chưa khả dụng được disabled. `ImportWorkspace` giữ File[]/ngày trong React state qua Outlet context khi đi giữa hai trang; không persist, refresh/rời workspace sẽ mất selection, không cần global state library/provider.
+   - *Hiện tại:* `LoginPage` ghép form có sẵn. `ImportPage` ghép upload UI, ngày dữ liệu local, shortcut History và state mở/đóng HDSD; File mẫu và xử lý dữ liệu vẫn disabled. `ImportWorkspace` giữ File[]/ngày trong React state qua Outlet context khi đi giữa hai trang; không persist, refresh/rời workspace sẽ mất selection, không cần global state library/provider.
    - `ImportHistoryPage` quản lý query URL (tháng/ngày/bộ lọc/cursor), local state/effects, hủy request cũ, loading/success/empty/error/retry; ghép lịch và danh sách từ feature. Breadcrumb quay về Import dùng Router Link, không reload.
 
 3. **`features/` (Phân hệ Nghiệp vụ Độc lập)**:
    - *Hiện tại:* `auth` sở hữu form Login local, không Register/reset/auth giả. `import-data` sở hữu picker/drop, danh sách file, remove/clear và kiểm tra sơ bộ **toàn bộ danh sách chọn dự kiến** (file hiện có + file thêm mới). Import §6: chỉ kiểm tra phần mở rộng .csv/.xlsx; tối đa **20 files per batch, 20 MiB per file, 100 MiB total compressed bytes per batch** (inclusive, cộng `File.size` trước giải nén, không phải dung lượng XLSX đã giải nén). Từ chối toàn bộ lần thêm không hợp lệ, giữ nguyên selection cũ. Extension không chứng minh nội dung hợp lệ; sniffing/parser và canonical batch truth qua các upload calls thuộc I01/I02 tương lai, phải tính cả file backend đã chấp nhận, không chỉ file trong bộ nhớ FE. Chưa upload, tạo batch hay analyze/mapping/commit.
    - `import-history` sở hữu models, fixtures, kiểm tra response, format và data boundary H01/H02. UI dùng cùng boundary trong mock/API; lỗi API không fallback sang mock.
+   - `ImportHelp` trong `features/import-data/components` sở hữu nội dung HDSD tĩnh và native modal drawer, bám tương tác MagicPath chỉ đọc; không tạo route/hook/provider/library mới. Nội dung dựa Import Contract V1 §§5 (bố cục/ngày/số/đơn vị), 6 (nhóm dữ liệu/giới hạn), 9.1 (ngày ngữ cảnh và xác minh nội dung tương lai), 13 (phạm vi supplier). Không đặt bộ cột bắt buộc, quy tắc một dòng header hay quảng cáo import lịch sử nhập hàng/Excel supplier bất kỳ. Đây không phải parser, schema detector hoặc upload flow; nợ canonical server batch validation tại [TODO §E](./002-technical-debt-and-integration-todo.md#e-import-upload-contract-validation) giữ nguyên.
 
 4. **`shared/` (Tài nguyên Dùng chung)**:
    - *Hiện tại:* Chỉ có nền HTTP/JSON envelope, `credentials: 'include'`, hủy/timeout request, phân biệt lỗi transport/HTTP/contract/protocol và nhận headers từ caller. Không có JWT/localStorage token hoặc CSRF lifecycle. Chưa tạo shared UI/design system.
@@ -176,3 +177,5 @@ Milestone 03, 10/10/2026:
 - **History**: loading/success/empty/error/retry, cursor, bộ lọc cùng file, ngày theo Store timezone, unknown counts; kiểm tra responsive 320/390/768/1024/1440 px không overflow ngang và xem ảnh chụp desktop/mobile.
 - **Mock/API**: fixtures tải đúng; API mode dùng boundary H01/H02, không fallback khi lỗi. Success/401/sai schema/network failure được kiểm bằng browser interception chỉ trong QA, không fake server trong ứng dụng và không chứng minh backend đã triển khai. Cả 17 request H02 trong kiểm tra cursor/Back/Forward/refresh/retry đều không gửi `limit`; limit 3 chỉ gọi trực tiếp trong QA.
 - **Foundation**: kiểm tra config invalid/default/normalization, JSON/cookies/headers và phân loại lỗi HTTP; không thêm dependency kiểm thử vào repo.
+
+Bổ sung HDSD, 10/10/2026: build/lint/diff check đạt; kiểm tra Chrome local xác nhận mở/đóng bằng chuột và bàn phím, Escape, trả focus về HDSD, background inert, cuộn nội dung và không overflow ngang tại 320/390/768/1440 px. File/ngày và validation được giữ khi đọc hướng dẫn; Import ↔ History, legacy redirect và Login không đổi. Nội dung tĩnh không phát sinh API request; không phải bằng chứng backend hoạt động.

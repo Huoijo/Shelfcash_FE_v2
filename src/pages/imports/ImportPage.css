@@ -6,7 +6,8 @@
 .import-page__grid { display: grid; grid-template-columns: minmax(0, 1fr) 184px; align-items: start; gap: 24px; }
 .import-page__utilities { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .import-page__utilities > * { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; padding: 10px 16px; border: 1px solid #575757; border-radius: 9px; background: #575757; color: #fff; font-size: 14px; line-height: 22px; font-weight: 500; text-decoration: none; }
-.import-page__utilities a:hover { background: #404040; border-color: #404040; }
+.import-page__utilities a:hover, .import-page__utilities button:not(:disabled):hover { background: #404040; border-color: #404040; }
+.import-page__utilities button:not(:disabled) { cursor: pointer; }
 .import-page__utilities button:disabled { background: #f3f3f3; color: #888; border-color: #ddd; cursor: not-allowed; }
 .import-page__process { grid-column: 1; display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 16px; }
 .import-page__process p { flex: 1; color: #777; font-size: 12px; line-height: 20px; }
