@@ -28,7 +28,7 @@ npm run build
 npm run lint
 ```
 
-## Current milestone: Kho FE foundation
+## Current milestone: Menu FE foundation
 
 - `/` redirects to `/login`; Login remains outside the application shell.
 - `/imports` opens local file selection; `/imports/history` opens H01/H02 History inside the shared shell. `/import-history` redirects to `/imports/history`, retaining query parameters and fragment.
@@ -40,6 +40,9 @@ npm run lint
 - `/inventory` opens Kho in the existing AppShell. The Kho Sidebar link is URL-active; unfinished destinations stay disabled. The read-only table, status filters, name/SKU search and lot/movement drawer follow MagicPath Kho component `458590758262427648`, revision `458596566140329984`; MagicPath was not modified.
 - Inventory V1 §§2–3/6 defines V01 list, V02 ingredient/initial lots, V03 additional lots and V04 movements. Recorded physical stock, usable stock, completeness and unknown facts remain distinct. Quantities stay exact decimal strings; no float business arithmetic, inferred zero, unit conversion or stock mutation. Summary counts are Store-wide, not page totals. Details/continuations pin the list snapshot; expired snapshots invalidate the displayed set and require a full refresh.
 - Inventory fixtures are deterministic illustrative reads, not backend evidence. API mode uses runtime response validation and never falls back to fixtures. Location is explicitly unsupported; AI/forecast actions are disabled. Timestamp display is explicitly UTC until real Store timezone context is integrated; Store-local `as_of_date` and expiry/receipt dates are not converted. See [Inventory integration debt §J](./docs/002-technical-debt-and-integration-todo.md#j-inventory-integration-maturity).
+- `/menu` opens the read-only product/recipe workspace in AppShell; Menu is a URL-active Sidebar link. The table, name search, active/paused filters and product detail panel follow MagicPath component `458614109248847872`, revision `458616728595894272`, inspected read-only. Hôm nay, Dự đoán and Cửa hàng remain disabled.
+- Catalog/Menu/Recipe V1 §§4–8 defines P01 products and P02 product/current recipe. Search is product-name-only, server-side in API mode and over the complete fixture dataset before pagination in mock mode. Summary stays Store-wide. Cursor changes preserve filters; filter/search changes reset cursor. Catalog/date mismatch between pages or list/detail requires a fresh read set, not mixed-version data. P02 has no query parameters; the server selects the inclusive Store-date recipe, never the FE's highest version.
+- Product UUID, recipe UUID/integer version, recipe-line UUID and ingredient UUID remain distinct. Exact quantities describe the whole recipe yield in canonical units; no unit conversion, float business arithmetic, BOM calculation or inventory availability inference. Missing recipe, known empty recipe, forbidden ingredient count, null price and zero price remain distinct. Menu timestamps use the response's Store timezone; date-only facts stay date-only. AI and the Menu→Kho ingredient action are disabled; no unfiltered stock link or fake saved edits. N20–N22 scheduling is designed in V1 but absent from this MagicPath workflow and not implemented. See [Menu integration debt §K](./docs/002-technical-debt-and-integration-todo.md#k-menu--recipe-integration-maturity).
 
 Copy the public settings from `.env.example` into an ignored `.env.local` if needed:
 
@@ -49,7 +52,7 @@ VITE_API_BASE_URL=http://localhost:8000
 VITE_DEV_STORE_ID=
 ```
 
-`mock` (default) selects static October 2026 examples. Set `VITE_DATA_SOURCE=api` and provide an actual lowercase Store UUID in `VITE_DEV_STORE_ID` to attempt the canonical Store-scoped H01/H02 and V01–V04 endpoints. The base URL excludes `/api/v1`, which each feature supplies. Unspecified page limits are omitted (backend default50/max100); small pages are QA-only. The Store ID is a temporary public development scope, not a permission or a fake session. Leaving it empty in API mode produces an explicit configuration error on the page.
+`mock` (default) selects static October 2026 examples. Set `VITE_DATA_SOURCE=api` and provide an actual lowercase Store UUID in `VITE_DEV_STORE_ID` to attempt the canonical Store-scoped H01/H02, V01–V04 and P01/P02 endpoints. The base URL excludes `/api/v1`, which each feature supplies. Unspecified page limits are omitted (backend default50/max100); small pages are QA-only. The Store ID is a temporary public development scope, not a permission or a fake session. Leaving it empty in API mode produces an explicit configuration error on the page.
 
 Restart Vite after changing these values; production values are embedded at build time. All `VITE_*` values are public: never put API keys/passwords/shared secrets here. `.env` and `.env.*` are ignored except `.env.example`.
 

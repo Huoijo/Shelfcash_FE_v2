@@ -5,6 +5,7 @@ import { ImportHistoryPage } from '../pages/import-history/ImportHistoryPage'
 import { ImportPage } from '../pages/imports/ImportPage'
 import { ImportWorkspace } from '../pages/imports/ImportWorkspace'
 import { InventoryPage } from '../pages/inventory/InventoryPage'
+import { MenuPage } from '../pages/menu/MenuPage'
 
 function LegacyImportHistoryRedirect() {
   const { search, hash } = useLocation()
@@ -18,6 +19,7 @@ export function AppRouter() {
       <Route path="/login" element={<LoginPage />} />
       <Route element={<AppShell />}>
         <Route path="/inventory" element={<InventoryPage />} />
+        <Route path="/menu" element={<MenuPage />} />
         <Route path="/imports" element={<ImportWorkspace />}>
           <Route index element={<ImportPage />} />
           <Route path="history" element={<ImportHistoryPage />} />

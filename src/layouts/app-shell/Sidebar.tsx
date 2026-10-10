@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router'
 
 const sections = ['Hôm nay', 'Nhập dữ liệu', 'Dự đoán', 'Kho', 'Menu', 'Cửa hàng']
+const routes: Record<string, string> = { 'Nhập dữ liệu': '/imports', Kho: '/inventory', Menu: '/menu' }
 
 export function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) {
   return (
@@ -18,8 +19,8 @@ export function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle:
         </button>
       </div>
       <nav id="app-navigation" className="app-sidebar__navigation" aria-label="Các phân hệ ShelfCash">
-        {sections.map((label) => label === 'Nhập dữ liệu' || label === 'Kho' ? (
-          <NavLink key={label} to={label === 'Kho' ? '/inventory' : '/imports'} className="app-sidebar__item" aria-label={label} title={label}>
+        {sections.map((label) => routes[label] ? (
+          <NavLink key={label} to={routes[label]} className="app-sidebar__item" aria-label={label} title={label}>
             <span className="app-sidebar__icon" aria-hidden="true" />
             <span className="app-sidebar__label">{label}</span>
           </NavLink>
