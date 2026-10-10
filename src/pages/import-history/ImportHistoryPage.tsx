@@ -43,7 +43,7 @@ export function ImportHistoryPage() {
     const filters = { category, status, q }
     Promise.all([
       getImportCalendar({ month, ...filters }, controller.signal),
-      getImportHistory({ import_date: date, limit: 3, sort: '-imported_at', cursor, ...filters }, controller.signal),
+      getImportHistory({ import_date: date, sort: '-imported_at', cursor, ...filters }, controller.signal),
     ]).then(([calendar, history]) => {
       if (!controller.signal.aborted) setState({ status: 'success', key, calendar, history })
     }).catch((error: unknown) => {
