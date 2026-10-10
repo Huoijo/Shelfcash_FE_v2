@@ -16,6 +16,8 @@
 
 ## 1. General Context (Bối cảnh Tổng quan)
 
+> Cập nhật triển khai 10/10/2026: phần mục tiêu ban đầu bên dưới là bối cảnh lịch sử. Ứng dụng hiện có Login và Import History (H01/H02), router khai báo, cấu hình môi trường tập trung và HTTP dùng `fetch`; chưa tích hợp xác thực thật.
+
 Dự án **ShelfCash Frontend (v2)** là phiên bản làm mới hoàn toàn (rebuild from scratch) của hệ thống ShelfCash, bắt đầu từ một repository trống. 
 
 Mục tiêu cốt lõi của giai đoạn này là:
@@ -36,9 +38,10 @@ Mục tiêu cốt lõi của giai đoạn này là:
 - **Ngôn ngữ**: [TypeScript](https://www.typescriptlang.org/) (Strict typing, Bundler resolution)
 - **Công cụ Build & Dev Server**: [Vite 8](https://vite.dev/) (Cực nhanh, hỗ trợ HMR)
 - **Styling**: Native Vanilla CSS ([`src/index.css`](../src/index.css))
+- **Routing**: `react-router`, declarative `BrowserRouter` cho hai màn hình
 - **Linter**: Oxlint (Kiểm tra quy tắc React & TypeScript với hiệu năng cao)
 
-> **Ghi chú về Dependencies**: Repository duy trì tối giản tuyệt đối, chỉ gồm các phụ thuộc cơ bản của React và Vite. Không có bất kỳ thư viện quản lý state, HTTP client, hay UI library nào.
+> **Ghi chú về Dependencies**: Chỉ bổ sung runtime dependency `react-router` khi có màn hình thứ hai. HTTP dùng native `fetch`; không thêm thư viện global state, HTTP, async cache hay UI.
 
 ---
 
@@ -53,9 +56,20 @@ Shelfcash_FE_v2/
 │   └── favicon.svg                        # Favicon tối giản của ShelfCash
 ├── src/
 │   ├── main.tsx                           # Điểm khởi chạy React ứng dụng
-│   ├── App.tsx                            # Root component / màn hình hiện tại
-│   ├── Header.tsx                         # Header tối giản chứa Brand và nút Đăng nhập
-│   └── index.css                          # CSS reset và định kiểu cho Header & App
+│   ├── index.css                          # Reset và nền tảng CSS chung
+│   ├── app/
+│   │   ├── App.tsx                        # Composition root / BrowserRouter
+│   │   ├── AppRouter.tsx                  # / → /login; /login; /import-history
+│   │   └── config.ts                     # Kiểm tra public environment config
+│   ├── pages/
+│   │   ├── login/                        # LoginPage.tsx + CSS bố cục có sẵn
+│   │   └── import-history/               # Page orchestration, URL state + CSS
+│   ├── features/
+│   │   ├── auth/                         # LoginForm.tsx + CSS; chưa gọi auth API
+│   │   └── import-history/               # H01/H02 types, fixtures, data, validation,
+│   │                                     # format và components lịch/danh sách
+│   └── shared/http/                      # httpClient.ts + http.types.ts
+├── .env.example                          # Public config mẫu; không chứa secrets
 ├── index.html                             # Template HTML gốc (<title>ShelfCash</title>)
 ├── package.json                           # Khai báo dependency và script thực thi
 ├── package-lock.json
@@ -90,20 +104,25 @@ graph TD
 ### Chi tiết phân chia trách nhiệm:
 
 1. **`app/` (Application Shell & Infrastructure)**:
-   - *Hiện tại:* Do [`src/main.tsx`](../src/main.tsx) và [`src/App.tsx`](../src/App.tsx) trực tiếp đảm nhận.
-   - *Tương lai:* Quản lý cấu hình root route, các Global Providers (nếu có), Layout shell bao ngoài (AppLayout).
+   - *Hiện tại:* `main.tsx` chỉ bootstrap React. `app/App.tsx` ghép router; `AppRouter.tsx` khai báo URL; `config.ts` là nơi duy nhất đọc `import.meta.env`.
 
 2. **`pages/` (Màn hình mức Route)**:
-   - *Hiện tại:* Đại diện bởi giao diện duy nhất trong [`src/App.tsx`](../src/App.tsx).
-   - *Tương lai:* Chứa các component màn hình tương ứng với từng URL route (ví dụ `LoginPage`, `InventoryPage`, `DashboardPage`). Màn hình chỉ đóng vai trò kết nối (orchestrator), lấy param từ URL và ghép các component từ `features/`, không chứa logic nghiệp vụ phức tạp.
+   - *Hiện tại:* `LoginPage` ghép form có sẵn. `ImportHistoryPage` quản lý query URL (tháng/ngày/bộ lọc/cursor), local state/effects, hủy request cũ, loading/success/empty/error/retry; ghép lịch và danh sách từ feature.
 
 3. **`features/` (Phân hệ Nghiệp vụ Độc lập)**:
-   - *Hiện tại:* Chưa tạo để tránh tạo thư mục rỗng khi chưa có code.
-   - *Tương lai:* Mỗi nghiệp vụ sẽ là một module tự đóng gói (self-contained) bao gồm: components, hooks, api client, types, state nội bộ.
+   - *Hiện tại:* `auth` sở hữu form Login local, không Register/reset/auth giả. `import-history` sở hữu models, fixtures, kiểm tra response, format và data boundary H01/H02. UI dùng cùng boundary trong mock/API; lỗi API không fallback sang mock.
 
 4. **`shared/` (Tài nguyên Dùng chung)**:
-   - *Hiện tại:* Được xử lý qua CSS gốc và component [`src/Header.tsx`](../src/Header.tsx).
-   - *Tương lai:* Chứa các UI Primitives không phụ thuộc nghiệp vụ (Button, Input, Modal, Table), các hàm utility, format date/currency, cấu hình base HTTP client.
+   - *Hiện tại:* Chỉ có nền HTTP/JSON envelope, `credentials: 'include'`, hủy/timeout request, phân biệt lỗi transport/HTTP/contract/protocol và nhận headers từ caller. Không có JWT/localStorage token hoặc CSRF lifecycle. Chưa tạo shared UI/design system.
+
+### Hợp đồng và nguồn dữ liệu hiện tại
+
+- Root `api-contract-v1/` là thẩm quyền. `IMPORT_MAPPING_API_CONTRACT_VI.md` §§3/11 giữ H01/H02 và định nghĩa FE0 §5 được dẫn chiếu; tham chiếu chỉ dùng để lấy field schema được giữ lại. ID UUID, timestamp UTC, lifecycle/filter `in_progress` áp dụng override V1, không dùng enum/ID lịch sử.
+- H01: `GET /api/v1/stores/{store_id}/imports/calendar` (`month`, `category/status/q`). H02: `GET /api/v1/stores/{store_id}/imports` (`import_date`, `limit`, `sort=-imported_at`, `cursor`, cùng filters).
+- Lịch nhóm theo `imported_at` trong timezone Store, không theo `data_date`. Cursor opaque, trang tiếp lấy từ `meta.pagination.next_cursor`; UI dùng 3 bản ghi/trang để kiểm tra phân trang. Counts `null` không thành 0; collection `null` bị báo sai contract, không biến thành `[]`. Transport giữ date/timestamp là string; hai schema này không có decimal/money fields.
+- Fixtures là ví dụ tĩnh tháng 10/2026, gồm nhiều trạng thái, unknown count, phân trang, empty/error. Bộ lọc chỉ chọn trong tập ví dụ; không có fake server hoặc nghiệp vụ upload/commit.
+- Cấu hình và cách chuyển mode xem README. `VITE_DEV_STORE_ID` là UUID Store public để kiểm tra API trong khi chưa có Store selection, không phải cấp quyền. Backend vẫn phải xác thực session/Store access.
+- READY ở mức thiết kế không chứng minh API đã triển khai: business HTTP chưa được xác minh; chỉ `/health` có bằng chứng. API mode có thể hiển thị lỗi bình thường.
 
 ---
 
@@ -113,7 +132,7 @@ Khi phát triển thêm tính năng, code sẽ được đưa vào các thư m�
 
 | Phân hệ (Module) | Đường dẫn dự kiến | Phạm vi trách nhiệm |
 | :--- | :--- | :--- |
-| **Authentication** | `src/features/auth/` | Form đăng nhập/đăng xuất, token storage, user profile, auth guards |
+| **Authentication** | `src/features/auth/` | Hiện chỉ form Login; sau này session cookie HttpOnly và A01/A03/A04, không token storage |
 | **Dashboard** | `src/features/dashboard/` | Widget tổng quan, KPI metrics, biểu đồ tóm tắt hiệu suất |
 | **Inventory** | `src/features/inventory/` | Danh mục hàng tồn, SKU, số lượng theo kho, điều chỉnh tồn kho |
 | **Forecasting** | `src/features/forecasting/` | Biểu đồ dự báo nhu cầu, phân tích xu hướng bán hàng, dự đoán theo mùa |
@@ -126,8 +145,9 @@ Khi phát triển thêm tính năng, code sẽ được đưa vào các thư m�
 
 Để bảo đảm tính đơn giản và tránh nợ kỹ thuật từ sớm, các hạng mục sau **chưa được thêm vào**:
 - **Global State Management (Redux, Zustand, Jotai)**: Chưa có nhu cầu chia sẻ state liên màn hình.
-- **Tầng trừu tượng API / Mock Backend (Axios, React Query, Mirage, MSW)**: Chưa kết nối backend thực tế; không tạo service giả hay contract phỏng đoán.
-- **Hệ thống Routing phức tạp**: Hiện tại app chỉ có 1 view, chỉ bổ sung Router khi có màn hình thứ 2.
+- **Axios, React Query, Mock Backend**: Native fetch + local state đủ cho H01/H02; không thêm server giả hoặc async framework.
+- **Routing phức tạp / auth guards**: Hai route dùng declarative router; `/import-history` cố ý truy cập trực tiếp, không giả trạng thái đăng nhập.
+- **AuthProvider, session bootstrap, CSRF lifecycle, Store switcher, permission gating, upload/mapping/commit**: Chưa thuộc milestone này. A02 self-registration DEFERRED; không có public reset-initiation route.
 - **Design System / Token System / Tailwind**: Đang sử dụng CSS tinh gọn; hệ thống design token sẽ chỉ hình thành khi UI guideline hoàn thiện.
 - **Component UI Kit (Ant Design, MUI, Shadcn)**: Tránh làm phình bundle size và ràng buộc giao diện vào thư viện bên ngoài.
 
@@ -135,16 +155,16 @@ Khi phát triển thêm tính năng, code sẽ được đưa vào các thư m�
 
 ## 7. Next Architectural Milestone (Cột mốc Kiến trúc Tiếp theo)
 
-Khi bước sang giai đoạn phát triển màn hình tiếp theo:
-1. **Thiết lập Routing cơ bản**: Tích hợp routing gọn nhẹ (ví dụ `react-router`) khi xây dựng màn hình Đăng nhập (`/login`).
-2. **Chuyển giao cấu trúc thư mục**: Di chuyển `App.tsx` vào `src/app/App.tsx`, tạo màn hình đầu tiên trong `src/pages/LandingPage.tsx` hoặc `src/pages/LoginPage.tsx`.
-3. **Khởi tạo module nghiệp vụ đầu tiên**: Xây dựng `src/features/auth/` với form đăng nhập và xử lý xác thực.
+Router, hai màn hình và boundary dữ liệu đầu tiên đã có. Chỉ triển khai auth/session/Store khi A01/A03/A04/T01/T02 có implementation evidence và được giao milestone riêng; không mở thêm module rỗng lúc này.
 
 ---
 
 ## 8. Kết quả Xác minh Kỹ thuật (Validation)
 
-- **Build Check**: `npm run build` (`tsc -b && vite build`) hoàn thành thành công (**0 lỗi**).
-- **Linter Check**: `npm run lint` (`oxlint`) quét qua toàn bộ file (**0 cảnh báo, 0 lỗi**).
-- **Dev Server**: Khởi chạy thành công trên `http://localhost:5173/` với HMR.
-- **Layout & Responsive**: Header hiển thị chuẩn `ShelfCash` bên trái, `Đăng nhập` bên phải, căn giữa theo chiều dọc, responsive thu nhỏ padding trên thiết bị di động (`max-width: 480px`).
+Milestone 10/10/2026:
+
+- **Build/Lint**: `npm run build` và `npm run lint` thành công, không lỗi/cảnh báo.
+- **Chrome kiểm tra local**: direct URL, redirect gốc, refresh, Back/Forward, điều hướng Link không reload; Login validation/show password, không request auth.
+- **History**: loading/success/empty/error/retry, cursor, bộ lọc cùng file, ngày theo Store timezone, unknown counts; kiểm tra responsive 320/390/768/1024/1440 px không overflow ngang và xem ảnh chụp desktop/mobile.
+- **Mock/API**: fixtures tải đúng; API mode gọi H01/H02 thật và báo lỗi khi backend không kết nối được, không fallback. Response success/401/sai schema được kiểm bằng browser interception chỉ trong QA, không fake server trong ứng dụng và không chứng minh backend đã triển khai.
+- **Foundation**: kiểm tra config invalid/default/normalization, JSON/cookies/headers và phân loại lỗi HTTP; không thêm dependency kiểm thử vào repo.
