@@ -6,7 +6,7 @@ ID: `#002` · Created: 10/10/2026 · Baseline: Milestone 03
 
 Track evidence-backed work required before staging acceptance, production or deeper integration. This register does not authorize implementation or add a feature wishlist.
 
-Existing: Login-local validation, AppShell, local Import selection and H01/H02 boundary. Real auth, upload and backend HTTP integration remain unverified; completed foundations are not missing work.
+Existing: Login-local validation, AppShell, local Import selection/HDSD, H01/H02 and read-only Kho V01–V04 boundaries. Real auth, upload and backend HTTP integration remain unverified; completed foundations are not missing work.
 
 Authority: [handoff README](../api-contract-v1/README_VI.md) → [V1 aggregate §1](../api-contract-v1/SHELFCASH_API_CONTRACT_V1_VI.md#authority) → root [AUTH current V1](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-v1) / [IMP](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md). Historical references/MagicPath do not override V1. FE/BE must use the same handoff version; design review/interception is not live HTTP evidence.
 
@@ -16,7 +16,7 @@ Authority: [handoff README](../api-contract-v1/README_VI.md) → [V1 aggregate �
 
 Status: `BLOCKED_BY_BE` · Owner: FE + BE · Required before: authenticated staging acceptance and production.
 
-Why: `/imports` and `/imports/history` are intentionally unprotected for FE development; Login does not send credentials. Production must not ship this state.
+Why: `/imports`, `/imports/history` and `/inventory` are intentionally unprotected for FE development; Login does not send credentials. Production must not ship this state.
 
 What remains: Integrate A01 login, A03 bootstrap and A04 logout; T01/T02 are covered in B. Place AuthGuard/ProtectedRoute **outside AppShell** after session resolution. Use opaque Secure/HttpOnly cookie sessions, not JWT/localStorage tokens or fake sessions. Preserve existing `credentials: 'include'` / `no-store`. Authenticated mutations use session-bound CSRF from A01/A03; all browser mutations require Origin checks, but pre-session login needs no CSRF token. Handle logout's 204 outside the JSON-only helper.
 
@@ -28,7 +28,7 @@ Evidence: [LoginForm](../src/features/auth/LoginForm.tsx), [AppRouter](../src/ap
 
 Status: `BLOCKED_BY_BE` · Owner: FE + BE · Required before: real Store-scoped integration and Store switching.
 
-Why: History currently builds requests from public `VITE_DEV_STORE_ID`, not authenticated current-Store context.
+Why: History and Kho currently build requests from public `VITE_DEV_STORE_ID`, not authenticated current-Store context. Kho timestamps are explicitly UTC-labelled until a real Store timezone is available; date-only snapshot/expiry facts remain unchanged.
 
 What remains: Replace the development scope with A03/T01/T02 accessible-Store selection and timezone/currency/business date/membership context. Selection is local FE context, not a global session mutation. Scope requests/data and any future cache by Store ID; cancel/reset old requests, cursors and Import selections on switch. No cache/global-state library is implied.
 
@@ -70,7 +70,7 @@ Why: BrowserRouter needs host fallback to `index.html`. The README documents it,
 
 What remains: Configure SPA/history fallback at the chosen hosting layer (Nginx, Cloudflare Pages, Vercel, Netlify, static-host rewrites or equivalent). Keep business API routes and missing static assets separate from the fallback; do not return the SPA for API requests.
 
-Validation / Definition of Done: Direct open, refresh and new-tab open of `/imports/history` (also `/imports`) return the frontend entry document without server-side 404, then resolve through Router/auth. API paths still return API responses; missing assets do not return HTML masquerading as assets.
+Validation / Definition of Done: Direct open, refresh and new-tab open of `/imports/history`, `/imports` and `/inventory` return the frontend entry document without server-side 404, then resolve through Router/auth. API paths still return API responses; missing assets do not return HTML masquerading as assets.
 
 Evidence: [README hosting requirement](../README.md), [BrowserRouter](../src/app/App.tsx), [routes](../src/app/AppRouter.tsx), [Vite config](../vite.config.ts), [package scripts](../package.json). Hosting configuration remains absent/unverified, not proven misconfigured.
 
@@ -131,6 +131,20 @@ Evidence: [Sidebar](../src/layouts/app-shell/Sidebar.tsx), [AppShell](../src/lay
 
 ## I. Sidebar unfinished destinations — no debt item
 
-Verified: Nhập dữ liệu links to `/imports`, active for History too. Hôm nay, Dự đoán, Kho, Menu and Cửa hàng are disabled spans without dummy URLs. Kế hoạch nhập is absent, not an alias for Dự đoán. No navigation fix or placeholder-page debt; future screens are not added to this register.
+Verified: Nhập dữ liệu links to `/imports`, active for History too; Kho links to `/inventory`. Active state derives from Router URL. Hôm nay, Dự đoán, Menu and Cửa hàng remain disabled spans without dummy URLs. Kế hoạch nhập is absent, not an alias for Dự đoán. No navigation fix or placeholder-page debt; future screens are not added to this register.
 
 Evidence: [Sidebar](../src/layouts/app-shell/Sidebar.tsx), [AppRouter](../src/app/AppRouter.tsx). AppShell's `#app-content` is a real accessibility skip target, not dummy navigation.
+
+## J. Inventory integration maturity
+
+Status: `BLOCKED_BY_BE` · Owner: FE + BE · Required before: declaring Kho staging/production integrated; depends on A/B/C/D/H.
+
+Why: Kho FE foundation implements read-only V01–V04 models/boundary/runtime validation, deterministic fixtures, status/search, lot and movement evidence with snapshot-aware pagination. Root Inventory V1 is reviewed design only; internal reads and intercepted browser QA are not verified public HTTP. Location explicitly remains unsupported, not an unfinished warehouse selector.
+
+What remains: Verify real authenticated V01–V04 with both inventory.read and ingredient.read, live Store timezone/context, cost redaction/current grants, optimistic snapshot rollover and cursor scope. Replace temporary UTC-labelled timestamp presentation with real Store-timezone formatting (do not change business dates). Verify exact decimals, physical vs usable/completeness, null threshold/counts, date boundaries and inactive ingredients against staging. On expired snapshots reload the whole read set; never silently fall back to fixtures or merge revisions. V03 sort is left unspecified to use the canonical default; do not infer extra query filters from terse contract notation.
+
+Inventory mutation workflows (N6 receipts/opening stock, N8 Owner threshold setting, import count) require separately assigned integration/design work and verified backend atomic/audit/CAS semantics. No writer, fake stock adjustment, local batch/server state, FEFO execution, procurement or AI generation is implemented. AI capability scope remains NEEDS_REVIEW; disabled presentation is not capability evidence.
+
+Validation / Definition of Done: Real staging list/detail/lots/movements preserve same snapshot/date/data_version; 409 or rollover forces whole-set refresh, cross-filter cursor errors remain visible, no mixed versions/stale ingredient response. Real 401/403/404/network/malformed data remain honest, masked cost cannot leak, and quantities retain exact string representation. Deep links/refresh and Store switching pass under real auth and deployment fallback. Fixtures/interception alone cannot close this item.
+
+Evidence: [Kho page](../src/pages/inventory/InventoryPage.tsx), [data boundary](../src/features/inventory/inventory.data.ts), [validators](../src/features/inventory/inventory.validation.ts), [detail](../src/features/inventory/components/InventoryDetail.tsx); root [INV §§2–3/6](../api-contract-v1/INVENTORY_API_CONTRACT_VI.md#inventory-reads), [shared PLAN types](../api-contract-v1/PROCUREMENT_API_CONTRACT_VI.md#planning-types), [CAT decimals](../api-contract-v1/CATALOG_MENU_RECIPE_API_CONTRACT_VI.md), [V1 capability status](../api-contract-v1/SHELFCASH_API_CONTRACT_V1_VI.md#authority).

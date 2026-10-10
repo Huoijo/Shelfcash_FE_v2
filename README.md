@@ -28,7 +28,7 @@ npm run build
 npm run lint
 ```
 
-## Current milestone: AppShell + Import workspace
+## Current milestone: Kho FE foundation
 
 - `/` redirects to `/login`; Login remains outside the application shell.
 - `/imports` opens local file selection; `/imports/history` opens H01/H02 History inside the shared shell. `/import-history` redirects to `/imports/history`, retaining query parameters and fragment.
@@ -37,6 +37,9 @@ npm run lint
 - Import supports picker/drop, filename/size and remove/clear. Both addition paths validate the prospective local batch selection (existing + incoming) atomically: .csv/.xlsx filename extensions only, maximum 20 files per batch, 20 MiB per file and 100 MiB total compressed bytes per batch (inclusive, using source `File.size`, not expanded XLSX size). An invalid addition leaves the previous selection intact; suffix checks do not validate contents. Selection and data date stay in memory while navigating the Import workspace; leaving it or refreshing clears them. There is no upload, batch creation or processing. Future I01/I02 integration must enforce canonical server batch truth across actual upload calls, including files already accepted by the backend; see [integration debt §E](./docs/002-technical-debt-and-integration-todo.md#e-import-upload-contract-validation).
 - Import History implements H01/H02 only, not inventory movements or planning history.
 - HDSD opens a static, keyboard-accessible help drawer on `/imports`, following the read-only MagicPath interaction reference. Vietnamese preparation guidance comes from Import Contract V1 §§5, 6, 9.1 and 13; it distinguishes local selection from future server processing. It adds no route, upload or sample-file download. Exact column schemas, purchase-history imports and arbitrary supplier workbooks are not advertised.
+- `/inventory` opens Kho in the existing AppShell. The Kho Sidebar link is URL-active; unfinished destinations stay disabled. The read-only table, status filters, name/SKU search and lot/movement drawer follow MagicPath Kho component `458590758262427648`, revision `458596566140329984`; MagicPath was not modified.
+- Inventory V1 §§2–3/6 defines V01 list, V02 ingredient/initial lots, V03 additional lots and V04 movements. Recorded physical stock, usable stock, completeness and unknown facts remain distinct. Quantities stay exact decimal strings; no float business arithmetic, inferred zero, unit conversion or stock mutation. Summary counts are Store-wide, not page totals. Details/continuations pin the list snapshot; expired snapshots invalidate the displayed set and require a full refresh.
+- Inventory fixtures are deterministic illustrative reads, not backend evidence. API mode uses runtime response validation and never falls back to fixtures. Location is explicitly unsupported; AI/forecast actions are disabled. Timestamp display is explicitly UTC until real Store timezone context is integrated; Store-local `as_of_date` and expiry/receipt dates are not converted. See [Inventory integration debt §J](./docs/002-technical-debt-and-integration-todo.md#j-inventory-integration-maturity).
 
 Copy the public settings from `.env.example` into an ignored `.env.local` if needed:
 
@@ -46,7 +49,7 @@ VITE_API_BASE_URL=http://localhost:8000
 VITE_DEV_STORE_ID=
 ```
 
-`mock` (default) selects static October 2026 examples. Set `VITE_DATA_SOURCE=api` and provide an actual lowercase Store UUID in `VITE_DEV_STORE_ID` to attempt the canonical Store-scoped H01/H02 endpoints. The base URL excludes `/api/v1`, which the feature supplies. The Store ID is a temporary public development scope, not a permission or a fake session. Leaving it empty in API mode produces an explicit configuration error on the page.
+`mock` (default) selects static October 2026 examples. Set `VITE_DATA_SOURCE=api` and provide an actual lowercase Store UUID in `VITE_DEV_STORE_ID` to attempt the canonical Store-scoped H01/H02 and V01–V04 endpoints. The base URL excludes `/api/v1`, which each feature supplies. Unspecified page limits are omitted (backend default50/max100); small pages are QA-only. The Store ID is a temporary public development scope, not a permission or a fake session. Leaving it empty in API mode produces an explicit configuration error on the page.
 
 Restart Vite after changing these values; production values are embedded at build time. All `VITE_*` values are public: never put API keys/passwords/shared secrets here. `.env` and `.env.*` are ignored except `.env.example`.
 

@@ -18,8 +18,8 @@ export function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle:
         </button>
       </div>
       <nav id="app-navigation" className="app-sidebar__navigation" aria-label="Các phân hệ ShelfCash">
-        {sections.map((label) => label === 'Nhập dữ liệu' ? (
-          <NavLink key={label} to="/imports" className="app-sidebar__item" aria-label={label} title={label}>
+        {sections.map((label) => label === 'Nhập dữ liệu' || label === 'Kho' ? (
+          <NavLink key={label} to={label === 'Kho' ? '/inventory' : '/imports'} className="app-sidebar__item" aria-label={label} title={label}>
             <span className="app-sidebar__icon" aria-hidden="true" />
             <span className="app-sidebar__label">{label}</span>
           </NavLink>
