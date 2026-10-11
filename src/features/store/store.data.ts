@@ -7,7 +7,7 @@ export function createStoreDataSource(apiBaseUrl: string): StoreDataSource {
     async list(signal, cursor) {
       const query = new URLSearchParams()
       if (cursor !== undefined) {
-        if (!cursor) throw new Error('Cursor Store không được rỗng.')
+        if (!cursor || cursor.length > 4096) throw new Error('Cursor Store phải có từ 1 đến 4096 ký tự.')
         query.set('cursor', cursor)
       }
       const suffix = query.size ? `?${query}` : ''

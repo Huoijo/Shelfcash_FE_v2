@@ -1,0 +1,7 @@
+{
+  "phase": "commit",
+  "change_id": "00000000-0000-4000-8000-000000000001",
+  "preview_digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+  "confirm": true,
+  "acknowledged_warning_codes": []
+}

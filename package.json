@@ -8,9 +8,12 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "test:import": "node tests/run-import-batch.mjs",
+    "check:import-wire": "node scripts/check-import-wire.mjs --check",
     "test:auth": "node tests/run-auth-session.mjs",
     "test:planning": "node tests/run-planning.mjs",
     "check:planning-wire": "node scripts/check-planning-wire.mjs --check",
+    "test:store": "node tests/run-store-workspace.mjs",
+    "check:store-wire": "node scripts/check-store-wire.mjs --check",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -1,0 +1,16 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "amount": {
+      "maxLength": 37,
+      "minLength": 1,
+      "title": "Amount",
+      "type": "string"
+    }
+  },
+  "required": [
+    "amount"
+  ],
+  "title": "BudgetRequest",
+  "type": "object"
+}

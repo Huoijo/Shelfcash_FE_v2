@@ -3,18 +3,22 @@ import type { ReactNode } from 'react'
 import { Outlet } from 'react-router'
 import { Sidebar } from './Sidebar'
 import { SessionActions } from '../../features/auth/SessionActions'
+import { useCurrentStore } from '../../features/store/store.context'
 import './AppShell.css'
 
 // API routes mount only after AuthGuard and current Store resolution.
 export function AppShell() {
   const [collapsed, setCollapsed] = useState(false)
+  const { state, currentStoreId } = useCurrentStore()
+  const store = state.status === 'ready' || state.status === 'mock_preview' ? state.store : null
+  const scope = `${currentStoreId ?? 'unselected'}:${store?.membership.authorization_version ?? ''}:${store?.permission_catalog_version ?? ''}`
 
   return (
     <div className={`app-shell${collapsed ? ' app-shell--collapsed' : ''}`} lang="vi">
       <a className="app-shell__skip-link" href="#app-content">Đi tới nội dung</a>
       <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((value) => !value)} />
       <div className="app-shell__workspace" id="app-content" tabIndex={-1}>
-        <Outlet />
+        <Outlet key={scope} />
       </div>
     </div>
   )

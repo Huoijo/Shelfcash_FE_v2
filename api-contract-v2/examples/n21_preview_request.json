@@ -1,0 +1,15 @@
+{
+  "phase": "preview",
+  "new_recipes": [],
+  "operations": [
+    {
+      "kind": "SET_PERIOD",
+      "recipe_ref": {
+        "recipe_id": "00000000-0000-4000-8000-000000000001"
+      },
+      "effective_from": "2026-10-12",
+      "effective_to": null
+    }
+  ],
+  "reason": "Synthetic future-only schedule review"
+}

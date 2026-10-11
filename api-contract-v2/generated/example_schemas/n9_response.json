@@ -1,0 +1,292 @@
+{
+  "$defs": {
+    "Pagination": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "total_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Count"
+        }
+      },
+      "required": [
+        "limit",
+        "next_cursor",
+        "total_count"
+      ],
+      "title": "Pagination",
+      "type": "object"
+    },
+    "RunCreator": {
+      "additionalProperties": false,
+      "properties": {
+        "user_id": {
+          "format": "uuid",
+          "title": "User Id",
+          "type": "string"
+        },
+        "display_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Display Name"
+        }
+      },
+      "required": [
+        "user_id",
+        "display_name"
+      ],
+      "title": "RunCreator",
+      "type": "object"
+    },
+    "RunHistory": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/RunSummary"
+          },
+          "title": "Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "title": "RunHistory",
+      "type": "object"
+    },
+    "RunHistoryMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "snapshot_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Snapshot Id",
+          "type": "string"
+        },
+        "pagination": {
+          "$ref": "#/$defs/Pagination"
+        }
+      },
+      "required": [
+        "request_id",
+        "snapshot_id",
+        "pagination"
+      ],
+      "title": "RunHistoryMeta",
+      "type": "object"
+    },
+    "RunSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "run_id": {
+          "format": "uuid",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "store_id": {
+          "format": "uuid",
+          "title": "Store Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "queued",
+            "running",
+            "completed",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "accepted_at": {
+          "format": "date-time",
+          "title": "Accepted At",
+          "type": "string"
+        },
+        "started_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Started At"
+        },
+        "completed_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Completed At"
+        },
+        "forecast_start_date": {
+          "format": "date",
+          "title": "Forecast Start Date",
+          "type": "string"
+        },
+        "forecast_end_date": {
+          "format": "date",
+          "title": "Forecast End Date",
+          "type": "string"
+        },
+        "requirements_mode": {
+          "enum": [
+            "default",
+            "saved",
+            "custom"
+          ],
+          "title": "Requirements Mode",
+          "type": "string"
+        },
+        "created_by": {
+          "$ref": "#/$defs/RunCreator"
+        },
+        "winner_option_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Winner Option Id"
+        },
+        "outcome": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Outcome"
+        },
+        "error_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Error Code"
+        },
+        "result_schema_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Result Schema Version"
+        },
+        "result_digest": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Result Digest"
+        },
+        "record_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Record Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "store_id",
+        "status",
+        "accepted_at",
+        "started_at",
+        "completed_at",
+        "forecast_start_date",
+        "forecast_end_date",
+        "requirements_mode",
+        "created_by",
+        "winner_option_id",
+        "outcome",
+        "error_code",
+        "result_schema_version",
+        "result_digest",
+        "record_version"
+      ],
+      "title": "RunSummary",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/RunHistory"
+    },
+    "meta": {
+      "$ref": "#/$defs/RunHistoryMeta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "RunHistoryEnvelope",
+  "type": "object"
+}

@@ -9,22 +9,26 @@ import { build } from 'vite'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const output = await mkdtemp(join(tmpdir(), 'shelfcash-import-tests-'))
 try {
-  await build({
+  const available = ['import-batch', 'import-flow-boundary', 'import-flow-workflow', 'import-stage', 'import-mapping-ui', 'import-locator']
+  const suites = process.argv.length > 2 ? process.argv.slice(2) : available
+  if (suites.some((suite) => !available.includes(suite))) throw new Error('Unknown Import test suite')
+  for (const suite of suites) await build({
     root,
     configFile: false,
     logLevel: 'error',
+    ...(suite === 'import-mapping-ui' ? { ssr: { noExternal: ['react', 'react-dom'] } } : {}),
     define: {
       'import.meta.env': JSON.stringify({ VITE_DATA_SOURCE: 'mock' }),
     },
     build: {
-      ssr: resolve(root, 'tests/import-batch.test.mjs'),
+      ssr: resolve(root, `tests/${suite}.test.mjs`),
       outDir: output,
       emptyOutDir: false,
       minify: false,
-      rollupOptions: { output: { entryFileNames: 'import-batch.test.mjs' } },
+      rollupOptions: { output: { entryFileNames: `${suite}.test.mjs` } },
     },
   })
-  const result = spawnSync(process.execPath, ['--test', join(output, 'import-batch.test.mjs')], {
+  const result = spawnSync(process.execPath, ['--test', ...suites.map((suite) => join(output, `${suite}.test.mjs`))], {
     cwd: root,
     stdio: 'inherit',
   })

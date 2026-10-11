@@ -1,0 +1,140 @@
+{
+  "$defs": {
+    "CustomPath": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "enum": [
+            "LOW",
+            "BASE",
+            "HIGH"
+          ],
+          "title": "Path",
+          "type": "string"
+        },
+        "min_fill_rate_percent": {
+          "anyOf": [
+            {
+              "maxLength": 36,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Min Fill Rate Percent"
+        },
+        "product_overrides": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/ProductOverride"
+              },
+              "maxItems": 50,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Overrides"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "title": "CustomPath",
+      "type": "object"
+    },
+    "CustomRequirements": {
+      "additionalProperties": false,
+      "properties": {
+        "paths": {
+          "items": {
+            "$ref": "#/$defs/CustomPath"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Paths",
+          "type": "array"
+        },
+        "budget_limit": {
+          "anyOf": [
+            {
+              "maxLength": 37,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Budget Limit"
+        }
+      },
+      "required": [
+        "paths"
+      ],
+      "title": "CustomRequirements",
+      "type": "object"
+    },
+    "ProductOverride": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "format": "uuid",
+          "title": "Product Id",
+          "type": "string"
+        },
+        "min_fill_rate_percent": {
+          "maxLength": 36,
+          "minLength": 1,
+          "title": "Min Fill Rate Percent",
+          "type": "string"
+        }
+      },
+      "required": [
+        "product_id",
+        "min_fill_rate_percent"
+      ],
+      "title": "ProductOverride",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "requirements": {
+      "$ref": "#/$defs/CustomRequirements"
+    },
+    "default_requirements_version": {
+      "anyOf": [
+        {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Default Requirements Version"
+    }
+  },
+  "required": [
+    "name",
+    "requirements"
+  ],
+  "title": "SaveRequest",
+  "type": "object"
+}

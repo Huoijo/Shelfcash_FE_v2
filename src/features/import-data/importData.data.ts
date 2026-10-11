@@ -51,7 +51,9 @@ function validateUploadIntent(importId: string, intent: UploadIntent): void {
 function validateAnalyzeIntent(importId: string, intent: AnalyzeIntent): void {
   requireId(importId, 'Lô nhập')
   requireKey(intent.key)
-  if (!isImportVersion(intent.importRevision) || !isImportVersion(intent.fileSetVersion) ||
+  if (!isImportVersion(intent.importRevision) || [...intent.importRevision].some((character) =>
+    character === '"' || character.charCodeAt(0) < 32 || character.charCodeAt(0) === 127 || character.charCodeAt(0) > 255) ||
+    !isImportVersion(intent.fileSetVersion) ||
     !Array.isArray(intent.acceptedFileIds) || !intent.acceptedFileIds.length ||
     !intent.acceptedFileIds.every(isImportUuid) || new Set(intent.acceptedFileIds).size !== intent.acceptedFileIds.length ||
     !Array.isArray(intent.rejectedClientFileIds) || !intent.rejectedClientFileIds.every(isImportUuid) ||

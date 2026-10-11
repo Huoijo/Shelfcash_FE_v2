@@ -1,0 +1,229 @@
+{
+  "$defs": {
+    "ExistingRef": {
+      "additionalProperties": false,
+      "properties": {
+        "recipe_id": {
+          "format": "uuid",
+          "title": "Recipe Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "recipe_id"
+      ],
+      "title": "ExistingRef",
+      "type": "object"
+    },
+    "LineInput": {
+      "additionalProperties": false,
+      "properties": {
+        "ingredient_id": {
+          "format": "uuid",
+          "title": "Ingredient Id",
+          "type": "string"
+        },
+        "quantity": {
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Quantity",
+          "type": "string"
+        },
+        "unit": {
+          "maxLength": 32,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ingredient_id",
+        "quantity",
+        "unit"
+      ],
+      "title": "LineInput",
+      "type": "object"
+    },
+    "NewRecipe": {
+      "additionalProperties": false,
+      "properties": {
+        "client_reference": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Client Reference",
+          "type": "string"
+        },
+        "yield_quantity": {
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Yield Quantity",
+          "type": "string"
+        },
+        "yield_unit": {
+          "maxLength": 32,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Yield Unit",
+          "type": "string"
+        },
+        "process_loss_rate": {
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Process Loss Rate",
+          "type": "string"
+        },
+        "ingredients": {
+          "items": {
+            "$ref": "#/$defs/LineInput"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Ingredients",
+          "type": "array"
+        }
+      },
+      "required": [
+        "client_reference",
+        "yield_quantity",
+        "yield_unit",
+        "process_loss_rate",
+        "ingredients"
+      ],
+      "title": "NewRecipe",
+      "type": "object"
+    },
+    "NewRef": {
+      "additionalProperties": false,
+      "properties": {
+        "new_recipe_reference": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "New Recipe Reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "new_recipe_reference"
+      ],
+      "title": "NewRef",
+      "type": "object"
+    },
+    "SetPeriod": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "SET_PERIOD",
+          "title": "Kind",
+          "type": "string"
+        },
+        "recipe_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExistingRef"
+            },
+            {
+              "$ref": "#/$defs/NewRef"
+            }
+          ],
+          "title": "Recipe Ref"
+        },
+        "effective_from": {
+          "format": "date",
+          "title": "Effective From",
+          "type": "string"
+        },
+        "effective_to": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Effective To"
+        }
+      },
+      "required": [
+        "kind",
+        "recipe_ref",
+        "effective_from",
+        "effective_to"
+      ],
+      "title": "SetPeriod",
+      "type": "object"
+    },
+    "Withdraw": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "WITHDRAW_FUTURE",
+          "title": "Kind",
+          "type": "string"
+        },
+        "recipe_ref": {
+          "$ref": "#/$defs/ExistingRef"
+        }
+      },
+      "required": [
+        "kind",
+        "recipe_ref"
+      ],
+      "title": "Withdraw",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "phase": {
+      "const": "preview",
+      "title": "Phase",
+      "type": "string"
+    },
+    "new_recipes": {
+      "items": {
+        "$ref": "#/$defs/NewRecipe"
+      },
+      "maxItems": 20,
+      "title": "New Recipes",
+      "type": "array"
+    },
+    "operations": {
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "SET_PERIOD": "#/$defs/SetPeriod",
+            "WITHDRAW_FUTURE": "#/$defs/Withdraw"
+          },
+          "propertyName": "kind"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/SetPeriod"
+          },
+          {
+            "$ref": "#/$defs/Withdraw"
+          }
+        ]
+      },
+      "maxItems": 100,
+      "title": "Operations",
+      "type": "array"
+    },
+    "reason": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "phase",
+    "new_recipes",
+    "operations",
+    "reason"
+  ],
+  "title": "PreviewRequest",
+  "type": "object"
+}

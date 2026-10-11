@@ -5,7 +5,7 @@ if (dataSource !== 'mock' && dataSource !== 'api') {
 }
 
 const apiBaseUrl = new URL(
-  (import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000').trim(),
+  (import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:18001').trim(),
 )
 if (
   !['http:', 'https:'].includes(apiBaseUrl.protocol) ||

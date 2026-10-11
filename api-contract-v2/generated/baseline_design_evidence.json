@@ -1,0 +1,1097 @@
+[
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 11,
+    "text": "CURRENT FACT update 2026-10-10: S4.1 adds public HTTP A01/A03/A04/T01/T02/N7"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 21,
+    "text": "Ngày kiểm kê: 09/10/2026. Version: shelfcash-fe-handoff/1."
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 75,
+    "text": "Owner mời Staff/chọn quyền → Staff chấp nhận → import/mapping/preview/commit → ghi nhận lô ban đầu/hàng"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 85,
+    "text": "**Scope bổ sung trực tiếp ngày09/10/2026:** gần hạn7 ngày, sắp hết theo ngưỡngOwner;"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 93,
+    "text": "| Catalog/Menu/Recipe | GIỮ P01/P02 và canonical creation qua Import; THÊM N20–N22 timeline/preview/commit hiệu lực từ ngày Store kế tiếp, chưa sửa lịch sử. Không table CRUD. |"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 131,
+    "text": "| Menu đổi công thức đang open-ended | READY CAT12/N20–N22: preview đóng kỳ cũ/mở kỳ mới và commit atomic; chỉ thay ngày Store kế tiếp trở đi, chưa sửa lịch sử. Không autoclose từ import hay sửa DB thủ công. |"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 151,
+    "text": "| Đổi lịch công thức → xem diff → xác nhận | N20–N22 CAT12 | READY | chỉ create/get recipe nội bộ | Timeline/applicability storage, preview/readset/CAS, next-Store-day fence và audit; không đổi ngày quá khứ/hôm nay. |"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 153,
+    "text": "| Preview→atomic commit→completion/history | I04/I05/I06/H01/H02/J01 IMP | READY | domain writers riêng nội bộ | Transactioncomposing/importjobs/readset/idempotency. |"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 191,
+    "text": "| I06 | GET | `/imports/{import_id}/completion` | IMP11 | READY | chưa có | Retained commit impact + IMP14 point-in-time readiness. |"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 247,
+    "text": "| N20 | GET | `/stores/{store_id}/products/{product_id}/recipe-schedule` | CAT12 READY | create/get dated recipe nội bộ | Timeline/version, không giả HTTP đã có. |"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 248,
+    "text": "| N21 | POST | `/stores/{store_id}/products/{product_id}/recipe-schedule/changes` | CAT12 READY | chưa có | Preview hoặc commit explicit đổi kỳ/phiên bản, chỉ tương lai. |"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 283,
+    "text": "| Envelope | Success data/meta/error=null; failure data=null/meta/error structured code/message/details; success request_id/warnings theo clusters; 202 chỉ accepted job/Run, chưa completed. |"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 303,
+    "text": "Store và rechecks membership/permission từng read/retry/commit. Mapping activation"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 359,
+    "text": "   sales/recipe commit và source identity/provenance; timeline/preview/atomic recipe"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 368,
+    "text": "   End-to-end acceptance fresh-session committedstate, không chỉ HTTP2xx."
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 394,
+    "text": "không design/code/migrations/acceptedADR/statusWIP/commit/push/ZIP."
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 426,
+    "text": "Verification invitation + hiệu lực công thức — PASS, hiện hành 09/10/2026:"
+  },
+  {
+    "contract": "SHELFCASH_API_CONTRACT_V1_VI.md",
+    "line": 440,
+    "text": "code/migrations/accepted ADRs/commit/push/ZIP. Không còn câu hỏi chặn invitation và"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 3,
+    "text": "CURRENT FACT update 2026-10-10: S4.1 implements A01/A03/A04/T01/T02/N7 and"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 14,
+    "text": "Ngày ghi nhận: 09/10/2026. **ĐÃ CHỐT / ACCEPTED DECISION về sản phẩm** là các"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 23,
+    "text": "ADRs và unrelated WIP. Không commit/push, migrate/reset DB hoặc sửa FE."
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 29,
+    "text": "Nguồn authorization: task người dùng gửi ngày 09/10/2026, bản đầy đủ trong ZIP"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 87,
+    "text": "| 11. Nhập Excel | Upload; mapping; preview; approve mapping; commit theo từng loại dữ liệu | PROPOSED, chưa import/parser/mapping runtime; ADR-008/013 là direction. Mapping self-approval của authorized mapper khác Owner duyệt một lần tác vụ thiếu quyền. |"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 134,
+    "text": "mutation. Transaction/version/storage design, xử lý crash/uncertain commit và"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 152,
+    "text": "commit, không chỉ upload. Thiếu quyền thì chặn commit, không âm thầm bỏ phần"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 220,
+    "text": "Ngày cập nhật 09/10/2026. Phần này supersede các OPEN kỹ thuật về login/session,"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 262,
+    "text": "Mutations/job canonical commit kiểm lại dưới authorization transaction fence cùng"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 263,
+    "text": "write; revoke và commit serialize theo version/lock. Revoke trước fence thì chặn,"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 264,
+    "text": "commit trước revoke không undo lịch sử; reads/retries sau revoke vẫn kiểm quyền mới."
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 266,
+    "text": "commit. Không approve-once bypass cho v1 endpoints; details.approval_request_allowed=false."
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 338,
+    "text": "{\"data\":{\"store_id\":\"00000000-0000-0000-0000-000000000001\",\"name\":\"Quán A\",\"timezone\":\"Asia/Ho_Chi_Minh\",\"currency\":\"VND\",\"role\":\"STAFF\",\"membership_id\":\"00000000-0000-0000-0000-000000000002\",\"authorization_version\":\"auth-7\",\"active\":true,\"server_now\":\"2026-10-09T02:00:00Z\",\"as_of_date\":\"2026-10-09\",\"membership\":{\"membership_id\":\"00000000-0000-0000-0000-000000000002\",\"role\":\"STAFF\",\"authorization_version\":\"auth-7\",\"effective_permissions\":[\"menu.read\"]},\"permission_catalog_version\":\"permissions-v2\"},\"meta\":{\"request_id\":\"req-context\"},\"error\":null}"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 372,
+    "text": "| Import | import.create,import.upload,import.read,import.analyze,import.preview,import.commit,mapping.read,mapping.propose |"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 426,
+    "text": "không vượt Store; (7) current revoke chặn GET/retry và commit fence, không undo"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 427,
+    "text": "committed result; (8) Owner tick grants explicit, stale412, Staff quản quyền403,"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 440,
+    "text": "### 6. Invitation Staff theo Store — ĐÃ CHỐT, 09/10/2026"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 558,
+    "text": "{\"data\":{\"invitation_id\":\"00000000-0000-0000-0000-000000000015\",\"invitation_version_at_acceptance\":\"invite-1\",\"store_id\":\"00000000-0000-0000-0000-000000000001\",\"membership_id\":\"00000000-0000-0000-0000-000000000016\",\"role\":\"STAFF\",\"accepted_grants\":[\"ingredient.read\",\"inventory.read\",\"menu.read\"],\"authorization_version_at_acceptance\":\"auth-8\",\"accepted_at\":\"2026-10-09T03:00:00Z\",\"event_id\":\"00000000-0000-0000-0000-000000000017\",\"next_action\":\"refresh_store_context\"},\"meta\":{\"request_id\":\"req-invite-accept\"},\"error\":null}"
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 566,
+    "text": "increment authorization_version → permission audit+acceptance receipt → commit."
+  },
+  {
+    "contract": "AUTHORIZATION_CONTRACT_VI.md",
+    "line": 568,
+    "text": "Before commit authorization fence serialize với revoke/issuer deactivation/Store"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 3,
+    "text": "Ngày review: 09/10/2026. Document version: catalog-menu-recipe-contract/1."
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 5,
+    "text": "Đây là contract **DESIGN ONLY** của một cụm dữ liệu độc lập, không phải API đã"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 29,
+    "text": "- [Đổi hiệu lực công thức — timeline/preview/commit](#recipe-effectivity)"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 65,
+    "text": "| Recipe timeline/đổi hiệu lực | THÊM N20–N22, mục12 | Workflow rõ: xem lịch → preview before/after → xác nhận đóng/mở kỳ tương lai atomic; không sửa DB thủ công. |"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 68,
+    "text": "khác nhau. Không thêm ID giả từ FE. Tổng số endpoint mới trong cụm hiện hành: **3** (N20–N22); 0 là số lịch sử của lượt chỉ đọc."
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 237,
+    "text": "    \"request_id\": \"req-menu-demo\", \"observed_at\": \"2026-10-09T03:00:00Z\","
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 238,
+    "text": "    \"as_of_date\": \"2026-10-09\", \"timezone\": \"Asia/Ho_Chi_Minh\","
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 239,
+    "text": "    \"updated_at\": \"2026-10-08T02:00:00Z\", \"data_version\": \"catalog-demo-1\","
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 284,
+    "text": "      \"effective_from\": \"2026-10-01\", \"effective_to\": null,"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 296,
+    "text": "    \"request_id\": \"req-product-demo\", \"observed_at\": \"2026-10-09T03:00:00Z\","
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 297,
+    "text": "    \"as_of_date\": \"2026-10-09\", \"timezone\": \"Asia/Ho_Chi_Minh\","
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 298,
+    "text": "    \"updated_at\": \"2026-10-08T02:00:00Z\", \"data_version\": \"catalog-demo-1\", \"warnings\": []"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 442,
+    "text": "migrations/OpenAPI runtime, không branch/commit/push/ZIP. Chỉ documentation checks."
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 453,
+    "text": "  contract mới, không commit hoặc artifact ZIP."
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 468,
+    "text": "**ACCEPTED DECISION — sản phẩm, 09/10/2026:** người dùng trả lời trực tiếp"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 482,
+    "text": "**ĐÃ CHỐT / ACCEPTED DECISION sản phẩm 09/10/2026:** người dùng chọn “Từ ngày"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 486,
+    "text": "lookup ngày theo calendar đã commit. Content cũ/yield/loss/lines không overwrite."
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 501,
+    "text": "đổi cụ thể** → commit atomic → refresh P01/P02/timeline/C01/R01. P02 hôm nay vẫn"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 533,
+    "text": "| N20 GET /stores/{store_id}/products/{product_id}/recipe-schedule | Đọc timeline/current/future/unassigned contents và version để chỉnh lịch. |"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 534,
+    "text": "| N21 POST /stores/{store_id}/products/{product_id}/recipe-schedule/changes | phase preview hoặc commit; preview immutable, atomic explicit calendar+newversion changes. |"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 535,
+    "text": "| N22 GET /stores/{store_id}/products/{product_id}/recipe-schedule/changes/{change_id} | Mở lại preview, blockers/diff hoặc committed receipt/audit của change, không compute lại. |"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 539,
+    "text": "key UUID cho mỗi N21 phase; If-Match schedule_version cần cả preview/commit."
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 559,
+    "text": "N20 query status=past,in_effect,scheduled,unassigned defaultin_effect,scheduled;"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 587,
+    "text": "commit CAS/uniqueness giữ chỗ; concurrent allocation làm PREVIEW_STALE, không dùng"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 588,
+    "text": "client gửi version hoặc đổi UUID/values trong commit lặng lẽ. Sorted operations/"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 596,
+    "text": "warnings:Notification[],required_warning_acknowledgements:string[],can_commit:boolean}."
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 599,
+    "text": "syntax/type/foreignIDs theo generalerrors; no fake successcommit. Preview retained"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 600,
+    "text": "không default expires tự commit; validity bởi day/CAS/inputrights, không hiddenTTL."
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 605,
+    "text": "{\"phase\":\"preview\",\"new_recipes\":[{\"client_reference\":\"recipe-next\",\"yield_quantity\":\"1\",\"yield_unit\":\"cup\",\"process_loss_rate\":\"0\",\"ingredients\":[{\"ingredient_id\":\"00000000-0000-0000-0000-000000000003\",\"quantity\":\"180\",\"unit\":\"ml\"}]}],\"operations\":[{\"kind\":\"SET_PERIOD\",\"recipe_ref\":{\"recipe_id\":\"00000000-0000-4000-8000-000000000020\"},\"effective_from\":\"2026-10-01\",\"effective_to\":\"2026-10-09\"},{\"kind\":\"SET_PERIOD\",\"recipe_ref\":{\"new_recipe_reference\":\"recipe-next\"},\"effective_from\":\"2026-10-10\",\"effective_to\":null}],\"reason\":\"Thay công thức từ ca kinh doanh ngày mai\"}"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 608,
+    "text": "### 12.4. Validation và commit"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 619,
+    "text": "Commit body {phase:\"commit\",change_id,preview_digest,confirm:true,"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 626,
+    "text": "RecipeScheduleReceipt=Response200 {change_id,status:\"committed\",preview_digest,store_id,product_id,"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 627,
+    "text": "committed_at,schedule_version_before,schedule_version_after,"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 634,
+    "text": "Trong transaction commit: recheck actor/membership/actions+Storedate, catalogunits/"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 638,
+    "text": "before/after/reason/actor/preview/sourceaudit+idempotencyreceipt → commit. Anyfailure"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 644,
+    "text": "Content hoặc rawcanonicalvalidity khác giữa preview/commit409 PREVIEW_STALE;"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 648,
+    "text": "commit đọc receipt+committedcalendar qua freshSession trong verification sau này,"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 650,
+    "text": "\"committed\",preview:RecipeSchedulePreview,receipt:RecipeScheduleReceipt|null,"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 651,
+    "text": "audit:RecipeScheduleAudit|null}. Receipt/audit chỉ có khi committed; preview là"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 657,
+    "text": "N20/N22 require menu.read+recipe.read+ingredient.read. N21 require cả readset này"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 674,
+    "text": "capture theo thời điểm thực như PLAN7; có thể đọc lịch mới nếu commit trước capture,"
+  },
+  {
+    "contract": "CATALOG_MENU_RECIPE_API_CONTRACT_VI.md",
+    "line": 703,
+    "text": "7. N20 pages pin version; N22 retaineddiff/history; P02 currenttoday không đổi,"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 3,
+    "text": "Ngày review: 09/10/2026. Version: import-mapping-contract/1."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 4,
+    "text": "**DESIGN ONLY**, không phải public API/parser/mapping đã triển khai."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 18,
+    "text": "- [Preview và commit](#preview)"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 39,
+    "text": "| [AUTHORIZATION contract](AUTHORIZATION_CONTRACT_VI.md) | Owner/Staff/Store isolation; upload/preview không quyền ghi; commit toàn nhóm; one-time batch bypass chưa có allowlist. Có wording self-approval cũ cần supersede. |"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 43,
+    "text": "**CURRENT FACT từ filesystem:** `app/main.py` chỉ include health; không import/"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 70,
+    "text": "   được tách hai phase cùng route để có preview trước commit. Không sửa FE gốc."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 92,
+    "text": "   approve_activate hoặc reject; activation không commit file. Active version cũ"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 100,
+    "text": "   nếu có → I05 phase=commit. **Atomic toàn batch**: blocker bất kỳ thì không ghi"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 103,
+    "text": "7. FE refetch Menu/Kho/sales availability/readiness liên quan sau commit. Không tự"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 106,
+    "text": "Mapping reuse không bỏ preview/commit confirmation. Quyền approve mapping khác"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 118,
+    "text": "| I02 POST /imports/{import_id}/files | GIỮ, rõ immutable bytes/hash | client_file_id retry; per-item byte acceptance khác atomic canonical commit. |"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 125,
+    "text": "| I05 POST /imports/{import_id}/process | GIỮ, SỬA phase preview/commit | Một processing route cho validate/preview rồi commit explicit; không endpoint mỗi stage. |"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 150,
+    "text": "| file_set_version | Version danh sách file accepted trước seal; thêm file đổi version. |"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 157,
+    "text": "| commit_id/job_id | Durable commit attempt và async execution; job ID không business identity. |"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 160,
+    "text": "previewing→preview_ready/blocked→committing→completed/completed_with_warnings."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 163,
+    "text": "mới, nguồn immutable; batch terminal committed không process thêm dữ liệu."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 170,
+    "text": "running restart interrupted phải reconcile commit receipt trước failed/retry."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 177,
+    "text": "can_commit; không đổi progress green thành permission grant."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 243,
+    "text": "Approval không rebind batch khác hoặc commit input đang pending. Staff403 dù có"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 248,
+    "text": "được phép sử dụng thì commit đúng pin; **explicit retired** blocks new preview/"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 249,
+    "text": "uncommitted commit409 MAPPING_VERSION_RETIRED. Owner retirement là chủ ý thôi dùng;"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 256,
+    "text": "parser/domain-specific boundary/auth/audit/atomic commit đã wired, hiện chưa có."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 282,
+    "text": "date, UTC commit instant không thời điểm kiểm kê được bịa."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 296,
+    "text": "Nguồn approval: người dùng ngày 09/10/2026 cho phép tạo mới “theo các điều kiện"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 315,
+    "text": "bind tới UUID này, dependencies ghi rõ; commit insert catalog trước dependent"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 350,
+    "text": "giữa preview/commit → PREVIEW_STALE rollback toàn batch, refresh/reclassify; không"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 351,
+    "text": "allocate UUID mới rồi duplicate hoặc overwrite entity khác. Retry committed same"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 357,
+    "text": "## 7. Preview, thao tác dự kiến và commit"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 359,
+    "text": "Preview immutable, gắn source_digest/file_set_version/analysis_id/mapping_revision,"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 361,
+    "text": "versions/absence predicates. Không lookup latest lúc commit. Mỗi nguồn raw cell và"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 368,
+    "text": "ready/blocked/confirmation_required,can_commit,required_actions[],groups[],counts,"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 383,
+    "text": "ủy nhiệm; actor can_commit đòi current full permissions và confirms hợp lệ."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 385,
+    "text": "I05 preview mới sau mapping proposal change không modify preview cũ. Khi commit"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 386,
+    "text": "request chứa explicit sales resolutions mới, frozen commit plan = preview + resolutions"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 391,
+    "text": "movements/balance + commit receipt/provenance/status. Fresh-session verified receipt"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 392,
+    "text": "trước durable completion. Preview0 write và all UNCHANGED commit kết thúc"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 394,
+    "text": "Không gọi existing per-row UseCases.commit nhiều lần rồi gọi toàn batch atomic;"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 411,
+    "text": "### 8.2. Sales — ĐÃ CHỐT câu trả lời người dùng ngày 09/10/2026"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 449,
+    "text": "LOT-01 current12 L, observed target10 L → preview signed delta−2 L; commit movement"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 474,
+    "text": "imported_at:null,file_count:0,file_set_version}. Date context không source fact."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 481,
+    "text": "I03 body {file_set_version,accepted_file_ids[],acknowledged_rejected_client_file_ids[]};"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 484,
+    "text": "không partial canonical row commit. If-Match import_revision, response202 import_id/"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 497,
+    "text": "can_preview, **không can_commit**. ETag mapping_revision."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 527,
+    "text": "qua M04. Proposal change sau preview invalidate khả năng commit, không đổi preview cũ."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 543,
+    "text": "### 9.3. I05 preview/commit và I04 read preview"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 546,
+    "text": "active job conflict409; response202 job operation import_preview, bound versions."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 548,
+    "text": "Ví dụ receipt202 của preview (chưa canonical writes):"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 563,
+    "text": "Commit body `{phase:\"commit\",preview_id,preview_digest,confirm:true,reason,"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 573,
+    "text": "  \"phase\": \"commit\","
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 585,
+    "text": "recheck tại canonical transaction. 202 không durable business success."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 594,
+    "text": "planned ops dù chưa có quyền commit, nhưng chỉ khi có full read sensitive scope."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 624,
+    "text": "analyze/read/preview/commit; mapping.read/propose; Owner-only profile.decide;"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 629,
+    "text": "không authorization import. Membership revoked chặn reads/retry/commit, đang job"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 630,
+    "text": "chưa commit phải recheck dưới cùng authorization fence transaction; sau commit"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 641,
+    "text": "cho commit/Owner mapping decisions cho đến khi allowlist được duyệt riêng."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 648,
+    "text": "keys; một commit thắng, cái còn lại409 PREVIEW_STALE, không double insertion."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 651,
+    "text": "nhưng sau authorization recheck. Uncertain commit reconcile receipt+canonical"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 659,
+    "text": "| Active mapping version mới | Pin cũ còn authorized dùng thì giữ; không latest switch. Explicit retire chặn uncommitted pin. |"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 661,
+    "text": "| Rights/membership revoked | Deny read/retry; job chưa canonical commit chặn tại fence; không grant từ accepted job. |"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 692,
+    "text": "I06 required data import_id,status,outcome:committed|no_changes,mode:atomic,"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 693,
+    "text": "completed_at,commit_id,preview_id,effective_plan_digest,mapping_bindings[],summary,"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 695,
+    "text": "mapped_fields/errors/warnings/classification counts; only successful atomic commit"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 697,
+    "text": "noops from committed receipt, không current Store totals; no_changes all updatedfalse."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 698,
+    "text": "Product/Ingredient creation chỉ được tính impact khi thực sự committed:"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 703,
+    "text": "Completion timestamps actual commit outcome, imported_at first accepted upload."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 704,
+    "text": "Failure/blocked diagnostic qua I04/J01, I06 không fake metrics cho chưa committed."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 714,
+    "text": "I06 readiness là snapshot point-in-time at commit theo mục14, R01 là evaluator"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 728,
+    "text": "3. Owner activation không commit; preview/commit pin source+profile versions;"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 729,
+    "text": "   supersede không latest switch, explicit retire chặn uncommitted binding."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 731,
+    "text": "   state, không per-row commit. Missing rights/one bad row rollback toàn batch."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 740,
+    "text": "8. Preview before-after/read-set unchanged tại commit; unique race conflict rollback,"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 742,
+    "text": "9. Completion counts from actual commit, no-op not updated; history/date/filter"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 761,
+    "text": "riêng có commit-owning sessions không tự đáp ứng batch lifecycle. PostgreSQL sync/"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 764,
+    "text": "fresh-session committed state ngoài HTTP2xx. Không tests/solver/DB trong task này."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 777,
+    "text": "**Tạo Product/Ingredient mới — ACCEPTED DECISION sản phẩm, 09/10/2026:** người dùng"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 780,
+    "text": "có quyền tạo catalog, preview creation và commit atomic theo mục6.1. Không create"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 792,
+    "text": "Không sửa source/tests/migrations/ADRs/status/WIP/FE, branch/reset/clean/commit/push/"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 808,
+    "text": "Verification cập nhật policy tạo entity ngày09/10/2026: chỉ sửa chính contract này,"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 813,
+    "text": "tests/solver/DB, không sửa source/ADRs/FE/WIP của phiên khác, không commit/push/ZIP."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 837,
+    "text": "before/after → người có đủ quyền commit → I04/I06 đọc retained configuration/actions"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 845,
+    "text": "I04 configurations là retained bản vừa reviewed/committed của import, không"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 848,
+    "text": "Không auto commit từ mapping activation hoặc fee coverage declaration."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 852,
+    "text": "source_identity:{source_system_key,source_record_key},state:staged|committed,"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 858,
+    "text": "theo analysis, không hứa committed. include=configurations với include=preview"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 934,
+    "text": "{\"schema\":\"supplier_terms\",\"source_term_key\":\"milk-pack-20261009\",\"supplier_ref\":{\"source_supplier_key\":\"SUP-01\"},\"ingredient_ref\":{\"ingredient_id\":\"00000000-0000-0000-0000-000000000003\"},\"effective_from\":\"2026-10-09\",\"effective_to\":null,\"unit\":\"l\",\"pack_size_base_quantity\":\"6\",\"pack_cost\":\"180000\",\"currency\":\"VND\",\"minimum_order_packs\":1,\"lead_time_days\":1,\"shelf_life_days\":14,\"active\":true,\"maximum_order_base_quantity\":null}"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 938,
+    "text": "{\"source_fee_key\":\"fees-october\",\"scope\":\"STORE_PROCUREMENT\",\"effective_from\":\"2026-10-09\",\"effective_to\":null,\"mode\":\"PER_SUPPLIER_ORDER\",\"coverage\":\"COMPLETE\",\"currency\":\"VND\",\"components\":[{\"component_key\":\"handling-01\",\"label\":\"Phí xử lý mỗi đơn\",\"basis\":\"PER_SUPPLIER_ORDER\",\"source_term_key\":null,\"source_supplier_key\":\"SUP-01\",\"amount\":\"15000\",\"condition\":\"WHEN_ORDERED\"}],\"covered_source_term_keys\":[\"milk-pack-20261009\"],\"covered_source_supplier_keys\":[\"SUP-01\"],\"evidence_reference\":\"Bảng điều kiện SUP-01 ký ngày 09/10\",\"reason\":\"Đã review toàn bộ phí phải trả của nguồn này\"}"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 950,
+    "text": "executor có supplier.terms.correct xác nhận, không mapping approval thay commit."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 963,
+    "text": "I05 commit confirmations thêm supplier_changes:[{action_id,reason}], binds preview"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 984,
+    "text": "- PROCUREMENT_CONTEXT: {effective_from,effective_to,committed_inbound_state:"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 1002,
+    "text": "Owner-only mapping approval remains; Staff granted canonical actions can commit"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 1013,
+    "text": "salesgap không0; committedinboundunknown notnone."
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 1134,
+    "text": "persist receipt và commit; không gap “commit rồi mới tạo receipt”. Known evaluator"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 1145,
+    "text": "{\"data\":{\"store_id\":\"00000000-0000-0000-0000-000000000001\",\"as_of_date\":\"2026-10-09\",\"evaluated_at\":\"2026-10-09T02:00:00Z\",\"data_version\":\"sources-9\",\"evaluated_forecast_start_date\":\"2026-10-09\",\"cutoff_date\":\"2026-10-08\",\"actions\":[{\"action\":\"planning\",\"availability\":\"blocked\",\"can_execute\":false,\"data_status\":\"incomplete\",\"execution_status\":\"available\",\"blockers\":[{\"code\":\"PAYABLE_FEE_COVERAGE_UNKNOWN\",\"source\":\"fees\",\"scope\":\"STORE\",\"entity_id\":null,\"affected_dates\":[],\"details\":{}}],\"warnings\":[],\"result_assessment\":\"NOT_ASSESSED\"}],\"source_versions\":{\"catalog\":\"cat-1\",\"recipes\":\"recipes-1\",\"inventory\":\"stock-8\",\"sales\":\"sales-2\",\"suppliers\":\"terms-1\",\"fees\":null,\"declarations\":\"decl-1\",\"planning_config\":\"cfg-1\",\"model_config\":\"model-1\"},\"scope_estimate\":{\"menu_product_count\":1,\"estimated_computable_product_count\":1,\"excluded_products\":[]},\"history_watermark\":null},\"meta\":{\"request_id\":\"req-ready\"},\"error\":null}"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 1170,
+    "text": "Job={job_id:UUID,operation:import_analyze|import_preview|import_commit|planning_pdf_export,"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 1172,
+    "text": "committing|rendering|completed|failed,progress:number0..1|null,"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 1181,
+    "text": "- import_completion: {resource_type,resource_id:import_id,commit_id};"
+  },
+  {
+    "contract": "IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "line": 1194,
+    "text": "phase result/atomic commit receipt. Acceptance: unauthorized poll deny; failed200"
+  },
+  {
+    "contract": "INVENTORY_API_CONTRACT_VI.md",
+    "line": 3,
+    "text": "09/10/2026 · inventory-contract/1 · DESIGN ONLY. Điểm vào:"
+  },
+  {
+    "contract": "INVENTORY_API_CONTRACT_VI.md",
+    "line": 148,
+    "text": "{\"data\":{\"summary\":{\"ingredient_count\":1,\"positive_lot_count\":1,\"near_expiry_lot_count\":0,\"near_expiry_ingredient_count\":0,\"expired_lot_count\":0,\"low_stock_ingredient_count\":0,\"unknown_assessment_ingredient_count\":0},\"items\":[{\"ingredient_id\":\"00000000-0000-0000-0000-000000000003\",\"name\":\"Sữa\",\"sku\":null,\"ingredient_active\":true,\"unit\":\"l\",\"on_hand_quantity\":\"12\",\"usable_quantity\":\"12\",\"usable_known_quantity\":\"12\",\"usable_availability\":\"known\",\"expired_quantity\":\"0\",\"stock_completeness\":\"CONFIRMED\",\"lot_count\":1,\"positive_lot_count\":1,\"nearest_expiry\":\"2026-10-25\",\"status\":\"stable\",\"status_reasons\":[],\"low_stock_assessment\":{\"status\":\"ok\",\"threshold\":\"2\",\"version\":\"threshold-1\"},\"near_expiry_lot_count\":0}],\"missing_ingredient_ids\":[]},\"meta\":{\"request_id\":\"req-stock\",\"as_of_date\":\"2026-10-09\",\"updated_at\":\"2026-10-09T02:00:00Z\",\"snapshot_id\":\"stock-8\",\"data_version\":\"stock-8\",\"pagination\":{\"limit\":50,\"next_cursor\":null,\"total_count\":1}},\"error\":null}"
+  },
+  {
+    "contract": "INVENTORY_API_CONTRACT_VI.md",
+    "line": 190,
+    "text": "{\"origin\":\"OPENING_STOCK\",\"receipt_identity\":{\"source_system_key\":\"store-opening-20261009\",\"source_record_id\":\"sua-lot-01\"},\"ingredient_id\":\"00000000-0000-0000-0000-000000000003\",\"supplier_id\":null,\"lot_code\":\"LOT-01\",\"quantity\":\"12\",\"unit\":\"l\",\"received_date\":null,\"expiry_date\":\"2026-10-25\",\"unit_cost\":null,\"currency\":\"VND\",\"observed_at\":\"2026-10-09T02:00:00Z\",\"reason\":\"Ghi nhận số dư lô có thật khi bắt đầu dùng ShelfCash\",\"expected_inventory_version\":\"stock-7\"}"
+  },
+  {
+    "contract": "INVENTORY_API_CONTRACT_VI.md",
+    "line": 235,
+    "text": "   writes, committed receipt đọc freshsession khi implementation verification."
+  },
+  {
+    "contract": "INVENTORY_API_CONTRACT_VI.md",
+    "line": 237,
+    "text": "   Staffdeny/crossStore404; revoke trước commit fence không writes."
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 3,
+    "text": "Ngày hợp nhất: 09/10/2026. Document version: planning-contract/1; hợp nhất cấu hình planning/1 ngày 09/10/2026."
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 200,
+    "text": "    \"observed_at\": \"2026-10-09T03:00:00Z\", \"context_version\": \"ctx-demo-1\", \"latest_business_date\": \"2026-10-08\","
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 201,
+    "text": "    \"defaults\": {\"requirements_mode\": \"default\", \"horizon_days\": 7, \"cutoff_date\": \"2026-10-08\", \"forecast_start_date\": \"2026-10-09\"},"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 204,
+    "text": "    \"default_requirements_version\": \"defaults-demo-1\", \"default_requirements_updated_at\": \"2026-10-08T02:00:00Z\","
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 205,
+    "text": "    \"budget_ceiling\": {\"amount\": \"1000000\", \"currency\": \"VND\", \"version\": \"budget-demo-1\", \"updated_at\": \"2026-10-08T02:00:00Z\"},"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 216,
+    "text": "    \"readiness\": {\"status\": \"ready\", \"can_generate\": true, \"reason_codes\": [], \"evaluated_forecast_start_date\": \"2026-10-09\", \"scope_estimate\": {\"menu_product_count\": 1, \"estimated_computable_product_count\": 1, \"excluded_products\": []}, \"history_watermark\": \"2026-10-08\"}"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 259,
+    "text": "{\"requirements_mode\": \"default\", \"forecast_start_date\": \"2026-10-09\", \"default_requirements_version\": \"defaults-demo-1\"}"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 263,
+    "text": "{\"requirements_mode\": \"custom\", \"forecast_start_date\": \"2026-10-09\", \"requirements\": {\"budget_limit\": null, \"paths\": [{\"path\": \"HIGH\", \"min_fill_rate_percent\": \"90\", \"product_overrides\": []}]}}"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 267,
+    "text": "{\"requirements_mode\": \"saved\", \"forecast_start_date\": \"2026-10-09\", \"saved_requirement_id\": \"00000000-0000-4000-8000-000000000020\"}"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 276,
+    "text": "meta={warnings:Notification[],poll_after_ms:integer}; queued/running202 và poll 2000ms;"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 279,
+    "text": "warnings computation ở C03.202 không forecast complete/có winner/đặt hàng."
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 282,
+    "text": "{\"data\": {\"run_id\": \"00000000-0000-4000-8000-000000000100\", \"status\": \"queued\", \"accepted_at\": \"2026-10-09T03:01:00Z\"}, \"meta\": {\"warnings\": [], \"poll_after_ms\": 2000}, \"error\": null}"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 301,
+    "text": "Uncertain acceptance commit cần fresh-session verify đủ aggregate trước success; known"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 483,
+    "text": "    \"accepted_at\": \"2026-10-09T03:01:00Z\", \"started_at\": \"2026-10-09T03:01:01Z\", \"finished_at\": null, \"response_version\": \"run-demo-2\","
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 484,
+    "text": "    \"request\": {\"requirements_mode\": \"default\", \"forecast_start_date\": \"2026-10-09\", \"default_requirements_version\": \"defaults-demo-1\"},"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 510,
+    "text": "| Tạm không đọc/nhận bền vững |503 SERVICE_UNAVAILABLE, không false 202. |"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 529,
+    "text": "TECHNICAL CHOICE / DESIGN ONLY: PostgreSQL durable acceptance (Run/key/receipt/config),"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 548,
+    "text": "| Capture | S352 /1 read-only RR/detached PostgreSQL đã có evidence; S362 opt-in capture/pipeline2, mixed units, P1 và scope projection đã có code/unit checks | PostgreSQL /2 acceptance PASS: 6 /2 + 6 /1 capture regressions, 12 passed (2026-10-09); public integration remains backlog. |"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 560,
+    "text": "- `app/main.py:16`: chỉ include health router; C01/C02/C03 chưa tồn tại trong HTTP."
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 574,
+    "text": "## 12. Các policy bổ sung — ĐÃ CHỐT ngày 09/10/2026"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 639,
+    "text": "   partial facts. Programming error, uncertain commit, rollback và restart không báo"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 658,
+    "text": "Review và hợp nhất: 09/10/2026. Cấu hình planning/1."
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 659,
+    "text": "**DESIGN ONLY:** policy sản phẩm mục 14.9 đã chốt; chi tiết kỹ thuật là"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 673,
+    "text": "| 5 | Nhập dữ liệu đến hoàn tất và lịch sử | I01–I06, M01–M04, H01–H02: upload → mapping/review → commit → completion/history; quyền commit theo loại dữ liệu. |"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 901,
+    "text": "If-Match là CAS atomic, không check rồi write tách transactions. Retry sau commit"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 907,
+    "text": "Khác payload/precondition cùng key trả 409. Failed-before-commit không consume key;"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 908,
+    "text": "uncertain commit phải reconcile, không tạo bản thứ hai. Đề xuất giữ receipts/revisions/"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 940,
+    "text": "`app/main.py` chỉ include health router;"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 970,
+    "text": "6. Fresh session chứng minh committed config/version/audit/receipt, crash/uncertain"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 971,
+    "text": "   commit không false success. C03 cũ giữ values bất kể setup đã thay."
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 982,
+    "text": "CURRENT_STATE/ROADMAP/API_CONTRACT hoặc trạng thái S3.6.4; không ZIP/commit/push."
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 988,
+    "text": "trực tiếp của người dùng ngày 09/10/2026:"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 1026,
+    "text": "không ZIP/commit/push. Các chứng cứ ZIP/lượt cũ ở phần khác là lịch sử, không phải"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 1032,
+    "text": "**ĐÃ CHỐT scope qua câu trả lời trực tiếp 09/10/2026:** giữ PDF kế hoạch, danh sách"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 1074,
+    "text": "{\"data\":{\"items\":[{\"run_id\":\"00000000-0000-4000-8000-000000000100\",\"store_id\":\"00000000-0000-0000-0000-000000000001\",\"status\":\"queued\",\"accepted_at\":\"2026-10-09T03:01:00Z\",\"started_at\":null,\"completed_at\":null,\"forecast_start_date\":\"2026-10-09\",\"forecast_end_date\":\"2026-10-15\",\"requirements_mode\":\"default\",\"created_by\":{\"user_id\":\"00000000-0000-0000-0000-000000000004\",\"display_name\":\"Owner\"},\"winner_option_id\":null,\"outcome\":null,\"error_code\":null,\"result_schema_version\":null,\"result_digest\":null,\"record_version\":\"run-1\"}]},\"meta\":{\"request_id\":\"req-history\",\"snapshot_id\":\"run-list-1\",\"pagination\":{\"limit\":50,\"next_cursor\":null,\"total_count\":1}},\"error\":null}"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 1117,
+    "text": "samecurrentStore boundary. Response202 {export_id:UUID,run_id,option_id,"
+  },
+  {
+    "contract": "PROCUREMENT_API_CONTRACT_VI.md",
+    "line": 1281,
+    "text": "không committed inbound hoặc receipt thật. Adapter lấy retained"
+  }
+]

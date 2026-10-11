@@ -1,0 +1,701 @@
+{
+  "$defs": {
+    "Conversion": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "declared_conversion",
+          "title": "Kind",
+          "type": "string"
+        },
+        "from_unit": {
+          "maxLength": 32,
+          "minLength": 1,
+          "title": "From Unit",
+          "type": "string"
+        },
+        "to_unit": {
+          "maxLength": 32,
+          "minLength": 1,
+          "title": "To Unit",
+          "type": "string"
+        },
+        "factor": {
+          "$ref": "#/$defs/Factor"
+        },
+        "evidence_reference": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Evidence Reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "from_unit",
+        "to_unit",
+        "factor",
+        "evidence_reference"
+      ],
+      "title": "Conversion",
+      "type": "object"
+    },
+    "Factor": {
+      "additionalProperties": false,
+      "properties": {
+        "numerator": {
+          "maxLength": 200,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Numerator",
+          "type": "string"
+        },
+        "denominator": {
+          "maxLength": 200,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Denominator",
+          "type": "string"
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator"
+      ],
+      "title": "Factor",
+      "type": "object"
+    },
+    "FeePeriodAmendment": {
+      "additionalProperties": false,
+      "properties": {
+        "fee_id": {
+          "format": "uuid",
+          "title": "Fee Id",
+          "type": "string"
+        },
+        "expected_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Expected Version",
+          "type": "string"
+        },
+        "effective_to": {
+          "format": "date",
+          "title": "Effective To",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fee_id",
+        "expected_version",
+        "effective_to",
+        "reason"
+      ],
+      "title": "FeePeriodAmendment",
+      "type": "object"
+    },
+    "IdentityBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "identity_binding",
+          "title": "Kind",
+          "type": "string"
+        },
+        "canonical_id": {
+          "format": "uuid",
+          "title": "Canonical Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "canonical_id"
+      ],
+      "title": "IdentityBinding",
+      "type": "object"
+    },
+    "Ignored": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "ignored_optional_field",
+          "title": "Kind",
+          "type": "string"
+        },
+        "evidence_reference": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Evidence Reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "evidence_reference"
+      ],
+      "title": "Ignored",
+      "type": "object"
+    },
+    "IngredientMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "base_unit": {
+          "maxLength": 32,
+          "minLength": 1,
+          "title": "Base Unit",
+          "type": "string"
+        },
+        "sku": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Sku"
+        },
+        "expiry_tracking": {
+          "title": "Expiry Tracking",
+          "type": "boolean"
+        },
+        "active": {
+          "title": "Active",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "base_unit",
+        "sku",
+        "expiry_tracking",
+        "active"
+      ],
+      "title": "IngredientMetadata",
+      "type": "object"
+    },
+    "NewEntity": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "new_entity_proposal",
+          "title": "Kind",
+          "type": "string"
+        },
+        "entity": {
+          "enum": [
+            "product",
+            "ingredient",
+            "supplier"
+          ],
+          "title": "Entity",
+          "type": "string"
+        },
+        "source_business_key": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Source Business Key",
+          "type": "string"
+        },
+        "metadata": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProductMetadata"
+            },
+            {
+              "$ref": "#/$defs/IngredientMetadata"
+            },
+            {
+              "$ref": "#/$defs/SupplierMetadata"
+            }
+          ],
+          "title": "Metadata"
+        },
+        "evidence_reference": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Evidence Reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity",
+        "source_business_key",
+        "metadata",
+        "evidence_reference"
+      ],
+      "title": "NewEntity",
+      "type": "object"
+    },
+    "PlannedArrivalExpiryRule": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "const": "ARRIVAL_PLUS_DECLARED_SHELF_LIFE_DAYS",
+          "title": "Basis",
+          "type": "string"
+        },
+        "evidence_reference": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Evidence Reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "basis",
+        "evidence_reference"
+      ],
+      "title": "PlannedArrivalExpiryRule",
+      "type": "object"
+    },
+    "ProductMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "selling_unit": {
+          "maxLength": 32,
+          "minLength": 1,
+          "title": "Selling Unit",
+          "type": "string"
+        },
+        "sku": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Sku"
+        },
+        "price": {
+          "anyOf": [
+            {
+              "pattern": "^(0|[1-9][0-9]{0,17})(\\.[0-9]{1,18})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Price"
+        },
+        "active": {
+          "title": "Active",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "selling_unit",
+        "sku",
+        "price",
+        "active"
+      ],
+      "title": "ProductMetadata",
+      "type": "object"
+    },
+    "SharedValueResolution": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "shared_value",
+          "default": "shared_value",
+          "title": "Kind",
+          "type": "string"
+        },
+        "target_field": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Target Field",
+          "type": "string"
+        },
+        "scope": {
+          "enum": [
+            "PROFILE_CONSTANT",
+            "IMPORT_VALUE"
+          ],
+          "title": "Scope",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "maxLength": 1000,
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        },
+        "evidence_reference": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Evidence Reference",
+          "type": "string"
+        },
+        "replace_source_column_index": {
+          "anyOf": [
+            {
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Replace Source Column Index"
+        },
+        "acknowledgment": {
+          "default": false,
+          "title": "Acknowledgment",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "target_field",
+        "scope",
+        "value",
+        "evidence_reference"
+      ],
+      "title": "SharedValueResolution",
+      "type": "object"
+    },
+    "SheetTypeResolution": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "sheet_type",
+          "title": "Kind",
+          "type": "string"
+        },
+        "sheet_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "sales",
+                "recipes",
+                "inventory_count",
+                "products",
+                "ingredients",
+                "suppliers",
+                "supplier_terms",
+                "payable_fees",
+                "scope_declarations"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Sheet Type"
+        },
+        "ignored": {
+          "default": false,
+          "title": "Ignored",
+          "type": "boolean"
+        },
+        "acknowledgment": {
+          "default": false,
+          "title": "Acknowledgment",
+          "type": "boolean"
+        },
+        "reason": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "sheet_type",
+        "reason"
+      ],
+      "title": "SheetTypeResolution",
+      "type": "object"
+    },
+    "SourceContext": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "source_context",
+          "title": "Kind",
+          "type": "string"
+        },
+        "source_system_key": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Source System Key",
+          "type": "string"
+        },
+        "report_type": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Report Type",
+          "type": "string"
+        },
+        "evidence_reference": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Evidence Reference",
+          "type": "string"
+        },
+        "sales_semantics": {
+          "anyOf": [
+            {
+              "enum": [
+                "daily_total",
+                "disjoint_contribution"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sales Semantics"
+        },
+        "inventory_semantics": {
+          "anyOf": [
+            {
+              "const": "lot_stock_count",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inventory Semantics"
+        },
+        "decimal_locale": {
+          "anyOf": [
+            {
+              "enum": [
+                "dot",
+                "comma"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decimal Locale"
+        },
+        "date_format": {
+          "anyOf": [
+            {
+              "enum": [
+                "ISO",
+                "DMY_SLASH",
+                "MDY_SLASH"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date Format"
+        },
+        "pack_cost_basis": {
+          "anyOf": [
+            {
+              "enum": [
+                "PER_PACK",
+                "PER_SOURCE_UNIT"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pack Cost Basis"
+        },
+        "planned_arrival_expiry_rule": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PlannedArrivalExpiryRule"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "term_period_amendments": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/TermPeriodAmendment"
+          },
+          "title": "Term Period Amendments",
+          "type": "array"
+        },
+        "fee_period_amendments": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/FeePeriodAmendment"
+          },
+          "title": "Fee Period Amendments",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "source_system_key",
+        "report_type",
+        "evidence_reference"
+      ],
+      "title": "SourceContext",
+      "type": "object"
+    },
+    "SupplierMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "active": {
+          "title": "Active",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "active"
+      ],
+      "title": "SupplierMetadata",
+      "type": "object"
+    },
+    "TermPeriodAmendment": {
+      "additionalProperties": false,
+      "properties": {
+        "supplier_term_id": {
+          "format": "uuid",
+          "title": "Supplier Term Id",
+          "type": "string"
+        },
+        "expected_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Expected Version",
+          "type": "string"
+        },
+        "effective_to": {
+          "format": "date",
+          "title": "Effective To",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "supplier_term_id",
+        "expected_version",
+        "effective_to",
+        "reason"
+      ],
+      "title": "TermPeriodAmendment",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "resolution": {
+      "discriminator": {
+        "mapping": {
+          "declared_conversion": "#/$defs/Conversion",
+          "identity_binding": "#/$defs/IdentityBinding",
+          "ignored_optional_field": "#/$defs/Ignored",
+          "new_entity_proposal": "#/$defs/NewEntity",
+          "shared_value": "#/$defs/SharedValueResolution",
+          "sheet_type": "#/$defs/SheetTypeResolution",
+          "source_context": "#/$defs/SourceContext"
+        },
+        "propertyName": "kind"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/SourceContext"
+        },
+        {
+          "$ref": "#/$defs/IdentityBinding"
+        },
+        {
+          "$ref": "#/$defs/Conversion"
+        },
+        {
+          "$ref": "#/$defs/Ignored"
+        },
+        {
+          "$ref": "#/$defs/NewEntity"
+        },
+        {
+          "$ref": "#/$defs/SheetTypeResolution"
+        },
+        {
+          "$ref": "#/$defs/SharedValueResolution"
+        }
+      ],
+      "title": "Resolution"
+    }
+  },
+  "required": [
+    "resolution"
+  ],
+  "title": "ResolveRequest",
+  "type": "object"
+}

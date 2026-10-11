@@ -19,7 +19,7 @@ const text = (value: unknown): value is string => typeof value === 'string' && v
 const count = (value: unknown): value is number => Number.isSafeInteger(value) && Number(value) >= 0
 const digest = (value: unknown): value is string => typeof value === 'string' && /^sha256:[0-9a-f]{64}$/.test(value)
 const timestamp = (value: unknown): value is string => typeof value === 'string' &&
-  /^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(\.\d+)?Z$/.test(value) &&
+  /^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(\.\d+)?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)$/.test(value) &&
   isImportBusinessDate(value.slice(0, 10)) && !Number.isNaN(Date.parse(value))
 const optionalRecord = (value: unknown) => value === null || isRecord(value)
 
@@ -35,7 +35,9 @@ function invalid(surface: string): never {
 
 function warning(value: unknown): value is ImportWarning {
   return isRecord(value) && text(value.code) && text(value.message) &&
-    (value.severity === undefined || value.severity === 'WARNING') && isRecord(value.details)
+    (value.severity === 'WARNING' || value.severity === 'ERROR') &&
+    ['field', 'entity', 'impact'].every((key) => value[key] === undefined || value[key] === null || typeof value[key] === 'string') &&
+    (value.source_location === undefined || value.source_location === null || isRecord(value.source_location))
 }
 
 function envelope(value: unknown, surface: string): {
@@ -43,7 +45,8 @@ function envelope(value: unknown, surface: string): {
   meta: Record<string, unknown>
 } {
   if (!isRecord(value) || value.error !== null || !isRecord(value.data) || !isRecord(value.meta) ||
-    !text(value.meta.request_id) || !Array.isArray(value.meta.warnings) || !value.meta.warnings.every(warning) ||
+    !text(value.meta.request_id) || (value.meta.warnings !== undefined &&
+      (!Array.isArray(value.meta.warnings) || !value.meta.warnings.every(warning))) ||
     (value.meta.poll_after_ms !== undefined && value.meta.poll_after_ms !== null && !count(value.meta.poll_after_ms))) {
     return invalid(surface)
   }
@@ -94,7 +97,12 @@ export function validateImportDraft(value: unknown, storeId: string, dataDate: s
 }
 
 export function validateImportBatch(value: unknown, importId: string): ImportBatch {
-  const { data, meta } = envelope(value, 'I04')
+  const { data: raw, meta } = envelope(value, 'I04')
+  // These are published DTO defaults, not inferred execution/preview authority.
+  const data: Record<string, unknown> = { ...raw, completion_available: raw.completion_available === undefined ? false : raw.completion_available,
+    configurations: raw.configurations === undefined ? null : raw.configurations,
+    review_confirmation: raw.review_confirmation === undefined ? null : raw.review_confirmation,
+    confirmation_usable: raw.confirmation_usable === undefined ? false : raw.confirmation_usable }
   if (!draftFields(data) || data.import_id !== importId || !isRecord(data.quota) ||
     !isRecord(data.source_set) || !Array.isArray(data.files) || !data.files.every(fileView) ||
     !pagination(data.files_page) || !(data.active_job_id === null || isImportUuid(data.active_job_id)) ||
@@ -145,7 +153,7 @@ function uploadFields(
 
 export function validateImportUpload(value: unknown, importId: string, intent: UploadIntent): ImportUploadResult {
   const { data } = envelope(value, 'I02')
-  if (data.import_id !== importId || !Array.isArray(data.warnings)) return invalid('I02')
+  if (data.import_id !== importId) return invalid('I02')
   return uploadFields(data, importId, intent, false)
 }
 

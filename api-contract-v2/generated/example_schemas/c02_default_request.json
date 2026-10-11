@@ -1,0 +1,169 @@
+{
+  "$defs": {
+    "CustomPath": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "enum": [
+            "LOW",
+            "BASE",
+            "HIGH"
+          ],
+          "title": "Path",
+          "type": "string"
+        },
+        "min_fill_rate_percent": {
+          "anyOf": [
+            {
+              "maxLength": 36,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Min Fill Rate Percent"
+        },
+        "product_overrides": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/ProductOverride"
+              },
+              "maxItems": 50,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Product Overrides"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "title": "CustomPath",
+      "type": "object"
+    },
+    "CustomRequirements": {
+      "additionalProperties": false,
+      "properties": {
+        "paths": {
+          "items": {
+            "$ref": "#/$defs/CustomPath"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Paths",
+          "type": "array"
+        },
+        "budget_limit": {
+          "anyOf": [
+            {
+              "maxLength": 37,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Budget Limit"
+        }
+      },
+      "required": [
+        "paths"
+      ],
+      "title": "CustomRequirements",
+      "type": "object"
+    },
+    "ProductOverride": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "format": "uuid",
+          "title": "Product Id",
+          "type": "string"
+        },
+        "min_fill_rate_percent": {
+          "maxLength": 36,
+          "minLength": 1,
+          "title": "Min Fill Rate Percent",
+          "type": "string"
+        }
+      },
+      "required": [
+        "product_id",
+        "min_fill_rate_percent"
+      ],
+      "title": "ProductOverride",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "requirements_mode": {
+      "enum": [
+        "default",
+        "custom",
+        "saved"
+      ],
+      "title": "Requirements Mode",
+      "type": "string"
+    },
+    "forecast_start_date": {
+      "format": "date",
+      "title": "Forecast Start Date",
+      "type": "string"
+    },
+    "default_requirements_version": {
+      "anyOf": [
+        {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Default Requirements Version"
+    },
+    "requirements": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CustomRequirements"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "saved_requirement_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Saved Requirement Id"
+    }
+  },
+  "required": [
+    "requirements_mode",
+    "forecast_start_date"
+  ],
+  "title": "PlanningRequest",
+  "type": "object"
+}

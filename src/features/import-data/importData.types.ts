@@ -10,11 +10,11 @@ export type ImportBatchStatus =
 export type ImportWarning = {
   code: string
   message: string
-  severity?: 'WARNING'
-  field?: unknown
-  entity?: unknown
-  impact?: unknown
-  details: Record<string, unknown>
+  severity: 'WARNING' | 'ERROR'
+  field?: string | null
+  entity?: string | null
+  impact?: string | null
+  source_location?: Record<string, unknown> | null
 }
 
 export type ImportItemError = {

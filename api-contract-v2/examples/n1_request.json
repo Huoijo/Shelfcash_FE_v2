@@ -1,0 +1,13 @@
+{
+  "name": "Synthetic BASE requirement",
+  "requirements": {
+    "budget_limit": null,
+    "paths": [
+      {
+        "path": "BASE",
+        "min_fill_rate_percent": "95",
+        "product_overrides": []
+      }
+    ]
+  }
+}

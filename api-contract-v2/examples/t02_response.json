@@ -1,0 +1,27 @@
+{
+  "data": {
+    "store_id": "00000000-0000-4000-8000-000000000001",
+    "name": "Synthetic Store",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "currency": "VND",
+    "role": "STAFF",
+    "membership_id": "00000000-0000-4000-8000-000000000002",
+    "authorization_version": "synthetic-auth-1",
+    "active": true,
+    "server_now": "2026-10-11T02:00:00Z",
+    "as_of_date": "2026-10-11",
+    "membership": {
+      "membership_id": "00000000-0000-4000-8000-000000000002",
+      "role": "STAFF",
+      "authorization_version": "synthetic-auth-1",
+      "effective_permissions": [
+        "menu.read"
+      ]
+    },
+    "permission_catalog_version": "permissions-v2"
+  },
+  "meta": {
+    "request_id": "synthetic-context"
+  },
+  "error": null
+}

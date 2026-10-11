@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router'
 
 const sections = ['Hôm nay', 'Nhập dữ liệu', 'Dự đoán', 'Kho', 'Menu', 'Cửa hàng']
-const routes: Record<string, string> = { 'Nhập dữ liệu': '/imports', 'Dự đoán': '/forecast', Kho: '/inventory', Menu: '/menu' }
+const routes: Record<string, string> = { 'Nhập dữ liệu': '/imports', 'Dự đoán': '/forecast', Kho: '/inventory', Menu: '/menu', 'Cửa hàng': '/store' }
 
 export function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) {
   return (

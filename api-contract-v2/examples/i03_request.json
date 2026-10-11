@@ -1,0 +1,9 @@
+{
+  "file_set_version": "synthetic-file-set-2",
+  "accepted_file_ids": [
+    "00000000-0000-4000-8000-000000000001"
+  ],
+  "acknowledged_rejected_client_file_ids": [
+    "00000000-0000-4000-8000-000000000002"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "phase": {
+      "const": "commit",
+      "title": "Phase",
+      "type": "string"
+    },
+    "change_id": {
+      "format": "uuid",
+      "title": "Change Id",
+      "type": "string"
+    },
+    "preview_digest": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Preview Digest",
+      "type": "string"
+    },
+    "confirm": {
+      "const": true,
+      "title": "Confirm",
+      "type": "boolean"
+    },
+    "acknowledged_warning_codes": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Acknowledged Warning Codes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "phase",
+    "change_id",
+    "preview_digest",
+    "confirm",
+    "acknowledged_warning_codes"
+  ],
+  "title": "CommitRequest",
+  "type": "object"
+}

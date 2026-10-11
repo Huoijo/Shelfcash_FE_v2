@@ -1,0 +1,165 @@
+{
+  "$defs": {
+    "ReceiptIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "source_system_key": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source System Key",
+          "type": "string"
+        },
+        "source_record_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source Record Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_system_key",
+        "source_record_id"
+      ],
+      "title": "ReceiptIdentity",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "origin": {
+      "enum": [
+        "OPENING_STOCK",
+        "ACTUAL_RECEIPT"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "receipt_identity": {
+      "$ref": "#/$defs/ReceiptIdentity"
+    },
+    "ingredient_id": {
+      "format": "uuid",
+      "title": "Ingredient Id",
+      "type": "string"
+    },
+    "supplier_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Supplier Id"
+    },
+    "lot_code": {
+      "anyOf": [
+        {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "\\S",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Lot Code"
+    },
+    "quantity": {
+      "maxLength": 200,
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+      "title": "Quantity",
+      "type": "string"
+    },
+    "unit": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Unit",
+      "type": "string"
+    },
+    "received_date": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Received Date"
+    },
+    "expiry_date": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Expiry Date"
+    },
+    "unit_cost": {
+      "anyOf": [
+        {
+          "pattern": "^(0|[1-9][0-9]{0,17})(\\.[0-9]{1,18})?$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Unit Cost"
+    },
+    "currency": {
+      "pattern": "^[A-Z]{3}$",
+      "title": "Currency",
+      "type": "string"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "title": "Observed At",
+      "type": "string"
+    },
+    "reason": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Reason",
+      "type": "string"
+    },
+    "expected_inventory_version": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Expected Inventory Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "origin",
+    "receipt_identity",
+    "ingredient_id",
+    "supplier_id",
+    "lot_code",
+    "quantity",
+    "unit",
+    "received_date",
+    "expiry_date",
+    "unit_cost",
+    "currency",
+    "observed_at",
+    "reason",
+    "expected_inventory_version"
+  ],
+  "title": "StockReceiptRequest",
+  "type": "object"
+}

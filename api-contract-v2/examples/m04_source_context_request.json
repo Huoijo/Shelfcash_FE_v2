@@ -1,0 +1,11 @@
+{
+  "resolution": {
+    "kind": "source_context",
+    "source_system_key": "POS-A",
+    "report_type": "SALES_DAILY",
+    "evidence_reference": "synthetic-source-review",
+    "sales_semantics": "daily_total",
+    "decimal_locale": "dot",
+    "date_format": "ISO"
+  }
+}

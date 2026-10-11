@@ -20,7 +20,7 @@ function receiptError(file: ImportFileReceipt) {
   return file.error ? labels[file.error.code] ?? file.error.message : null
 }
 
-export function ImportBatchPanel({ state, workflow }: { state: ImportBatchState; workflow: ImportBatchWorkflow }) {
+export function ImportBatchPanel({ state, workflow, continuationLocked = false, onNewDraft }: { state: ImportBatchState; workflow: ImportBatchWorkflow; continuationLocked?: boolean; onNewDraft?: () => void }) {
   const batch = state.batch
   const displayed = new Map<string, ImportFileReceipt>()
   state.receipts.forEach((file) => displayed.set(file.client_file_id, file))
@@ -35,7 +35,7 @@ export function ImportBatchPanel({ state, workflow }: { state: ImportBatchState;
           <h2>Lô nhập hiện tại</h2>
           <p>{state.draft?.display_number ?? 'Lô sẽ được tạo khi bạn tải file.'}</p>
         </div>
-        {state.draft && <button type="button" disabled={state.busy} onClick={() => { void workflow.refresh() }}>Đọc lại lô</button>}
+        {state.draft && <button type="button" disabled={state.busy || continuationLocked} onClick={() => { void workflow.refresh() }}>Đọc lại lô</button>}
       </div>
       {state.draft && (
         <>
@@ -73,7 +73,7 @@ export function ImportBatchPanel({ state, workflow }: { state: ImportBatchState;
       {sealed && <p className="import-batch__sealed">Tập file đã khóa. Muốn đổi hoặc bổ sung file, hãy tạo lô mới. Phân tích thất bại cũng không mở lại tập file.</p>}
       {batch?.status === 'analyzing' && <p role="status">Đang phân tích tập file đã khóa…</p>}
       {batch?.status === 'failed' && <p role="status">Phân tích thất bại. Chỉ có thể thử lại khi máy chủ cho phép; tập file vẫn giữ nguyên.</p>}
-      {batch && ['review_required', 'ready_for_preview'].includes(batch.status) && <p>Đã kết thúc bước phân tích. Đối chiếu cột, xem trước và ghi dữ liệu sẽ được bổ sung ở bước tiếp theo.</p>}
+      {batch && ['review_required', 'ready_for_preview'].includes(batch.status) && <p>Đã kết thúc bước phân tích. Tiếp tục ở phần Ghép cột bên dưới; chưa ghi dữ liệu nghiệp vụ.</p>}
       {preparation && (
         <div className="import-batch__confirmation">
           <h3>Xác nhận tập file để phân tích</h3>
@@ -85,7 +85,7 @@ export function ImportBatchPanel({ state, workflow }: { state: ImportBatchState;
           <button type="button" disabled={state.busy || !preparation.acknowledged} onClick={() => { void workflow.analyze() }}>Khóa tập file và phân tích</button>
         </div>
       )}
-      {state.draft && <button className="import-batch__new" type="button" disabled={state.busy || !!state.retryOperation} onClick={workflow.startNewDraft}>Lô mới — giữ file chưa tải</button>}
+      {state.draft && <button className="import-batch__new" type="button" disabled={state.busy || !!state.retryOperation || continuationLocked} onClick={onNewDraft ?? workflow.startNewDraft}>Lô mới — giữ file chưa tải</button>}
     </section>
   )
 }

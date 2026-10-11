@@ -1,0 +1,176 @@
+import assert from 'node:assert/strict'
+import { test } from 'node:test'
+import { createElement } from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
+import { ImportMapping, ImportProfileReview } from '../src/features/import-data/components/ImportMapping'
+import { ImportResolutionEditor } from '../src/features/import-data/components/ImportResolutionEditor'
+import { ImportPreview } from '../src/features/import-data/components/ImportPreview'
+
+const id = (number) => `00000000-0000-4000-8000-${String(number).padStart(12, '0')}`
+const noop = () => {}
+const field = { key: 'sales.unit', label: 'Đơn vị từ máy chủ', type: 'string', requiredness: 'required', nullable: true,
+  support: 'supported', available: true, reason_code: null, unit_semantics: 'Declared source unit',
+  aliases: [], conditional_requirements: [], description: 'Mô tả exact descriptor', input_help: 'Không đoán đơn vị',
+  input_sources: ['excel', 'shared_value'], allowed_shared_scopes: ['PROFILE_CONSTANT', 'IMPORT_VALUE'], value_role: 'canonical_candidate', unsupportedFields: [] }
+const options = { schema: 'sales', schema_version: 'import_schema/1', schema_context_id: id(3), mapping_revision: 'map-v1',
+  duplicate_mapping_allowed: false, options: [field], unsupportedFields: [],
+  schemas: [{ schema_id: 'sales', label: 'Schema nhãn từ BE', description: 'Mô tả schema từ BE', supported: true, fields: [field] }] }
+const issue = (type = 'column') => ({ mapping_id: id(4), sheet_id: id(3), issue_type: type, code: 'SYNTHETIC_REVIEW',
+  status: 'resolved', source_header: 'Header <script>unsafe()</script>', target_field: 'sales.unit',
+  samples: ['0', 'false', 'null'], source_location: { file_id: id(2), sheet_id: id(3), source_column_index: 0 },
+  resolution_origin: 'USER_PROPOSAL', profile_ref: null, resolution: null, resolved_by: null,
+  suggested_target_field: null, confidence: null, ignored: false, unsupportedFields: [] })
+const spec = (marker) => ({ scope: { source_system_key: 'qa.synthetic', report_type: 'sales', schema_version: 'import_schema/1' },
+  schema: 'sales', structure: { sheet_roles: ['sales'], header_rules: [], schema_signature: marker },
+  field_bindings: [{ source_column_index: 0, source_header: marker, target_field: 'sales.unit', requiredness: 'required', ignored: false }],
+  identity_rules: [], entity_proposals: [], aliases: [], normalizations: [], conversions: [],
+  sales_semantics: 'daily_total', inventory_semantics: null, planned_arrival_expiry_rule: null,
+  term_period_amendments: [], fee_period_amendments: [], shared_field_bindings: [],
+  source_provenance: { declared_by: id(8), evidence_references: [`evidence:${marker}`], verification: 'USER_DECLARED', owner_reviewed: false } })
+const proposal = (activeVersion = null) => ({ profile_id: id(5), proposal_revision: 'proposal-v2', lifecycle_revision: 'lifecycle-v3',
+  active_version: activeVersion, spec: spec('FULL_PROPOSED_EVIDENCE'), missing_fields: [] })
+const summary = () => ({ import_id: id(1), analysis_id: id(9), mapping_revision: 'map-v1',
+  progress: { total_fields: 17, completed_fields: 12, unresolved: 5 },
+  files: [{ client_file_id: id(10), file_id: id(2), filename: 'File <img src=x onerror=unsafe()>.csv',
+    type: 'csv', size_bytes: 42, content_digest: null, upload_status: 'uploaded', error: null, parse_status: 'parsed' }],
+  sheets: [{ file_id: id(2), sheet_id: id(3), name: 'Joined Sheet', schema_signature: 'qa', row_count: 120, headers: ['header'],
+    profile_id: id(5), selected_type: 'sales', suggested_type: null, classification_origin: 'MANUAL', confidence: null,
+    ignored: false, ignore_reason: null, shared_field_bindings: [], import_values: [] }],
+  binding_refs: [], approved_profiles: [], profile_proposals: [], approved_contexts: [], blockers: [], warnings: [],
+  can_preview: false, allowed_actions: [], unsupportedFields: [] })
+const renderMapping = (overrides = {}) => renderToStaticMarkup(createElement(ImportMapping, {
+  summary: summary(), queue: { items: [issue()], counts: { total_fields: 17, completed_fields: 12, unresolved: 5 },
+    pagination: { limit: 50, next_cursor: null, total_count: 1 }, unsupportedFields: [] }, selectedSheetId: id(3),
+  filter: 'all', reviewOnly: true, options: { [id(3)]: options, [id(4)]: options }, busy: false, locked: false,
+  canPropose: true, onSelectSheet: noop, onFilter: noop, onLoadOptions: noop, onLoadSheetOptions: noop,
+  onConfirm: noop, onResolve: noop, onLoadMore: noop, ...overrides,
+}))
+
+test('mapping UI joins flat files/top-level sheets, escapes evidence and never fabricates filter counts', () => {
+  const html = renderMapping()
+  assert.match(html, /Joined Sheet/)
+  assert.match(html, /12\s*\/\s*17/)
+  assert.match(html, /120 dòng/)
+  assert.match(html, /&lt;script&gt;unsafe\(\)&lt;\/script&gt;/)
+  assert.doesNotMatch(html, /<script>|<img src=x/)
+  assert.doesNotMatch(html, /filter_counts|unresolved_required|schema_blocker_count/)
+  assert.match(html, /Đã xác nhận đề xuất/)
+  assert.match(html, /Lưu ghép cột/)
+})
+
+test('read-only mapping still renders catalogue and descriptor semantics without granting mutations', () => {
+  const html = renderMapping({ canPropose: false })
+  assert.match(html, /Bạn đang xem chỉ đọc/)
+  assert.match(html, /Schema nhãn từ BE/)
+  assert.match(html, /Mô tả exact descriptor/)
+  assert.match(html, /Bắt buộc/)
+  assert.match(html, /Cho phép null/)
+  assert.match(html, /disabled=""[^>]*>Lưu ghép cột/)
+})
+
+test('classification offers only returned schema catalogue and explicit whole-sheet IGNORE', () => {
+  const html = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('classification'), options, disabled: false, onResolve: noop }))
+  assert.match(html, /Schema nhãn từ BE/)
+  assert.match(html, /IGNORE — Không nhập dữ liệu của Sheet này/)
+  assert.match(html, /Lý do phân loại hoặc bỏ qua/)
+  assert.match(html, /Staff được IGNORE toàn Sheet của chính batch mình/)
+  assert.doesNotMatch(html, /value="recipes"|value="inventory_count"/)
+  assert.match(html, /disabled=""[^>]*>Lưu loại dữ liệu/)
+})
+
+test('source context exposes typed optional semantics and explicit period amendments', () => {
+  const html = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('source_context'), options, disabled: false, onResolve: noop }))
+  for (const text of ['Mã hệ thống nguồn', 'Mã loại báo cáo', 'daily_total', 'disjoint_contribution', 'lot_stock_count', 'DMY_SLASH', 'PER_PACK', 'Supplier term', 'Payable fee']) assert.ok(html.includes(text), text)
+  assert.match(html, /Không tự động đóng kỳ lịch sử/)
+  assert.match(html, /disabled=""[^>]*>Lưu ngữ cảnh nguồn/)
+})
+
+test('identity/conversion/ignored forms expose exact supported inputs, not arbitrary JSON mutation', () => {
+  const identity = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('identity'), disabled: false, onResolve: noop }))
+  assert.match(identity, /Canonical ID \(UUID lowercase\)/)
+  assert.match(identity, /Đề xuất tạo đối tượng mới/)
+  const conversion = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('conversion'), disabled: false, onResolve: noop }))
+  assert.match(conversion, /Tử số/)
+  assert.match(conversion, /Mẫu số/)
+  assert.match(conversion, /exact decimal string/)
+  const ignored = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue(), disabled: false, onResolve: noop }))
+  assert.match(ignored, /Đề xuất ignored optional binding/)
+  assert.match(ignored, /Đề xuất này vẫn cần Owner duyệt/)
+  assert.doesNotMatch(identity + conversion + ignored, /placeholder=".*JSON|JSON editor/i)
+})
+
+test('shared editor is available even on source-context issue and explicitly separates false/zero/null', () => {
+  const html = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('source_context'), options, disabled: false, onResolve: noop }))
+  for (const text of ['Phạm vi', 'Chọn phạm vi', 'Boolean', 'Integer int32', 'null — giá trị null rõ ràng', 'false, 0 và null', 'Chuyển nguồn từ cột đã ghép sang shared value']) assert.ok(html.includes(text), text)
+  assert.match(html, /disabled=""[^>]*>Lưu giá trị đã khai báo/)
+})
+
+test('Staff can inspect full proposed evidence but sees no Owner decision actions', () => {
+  const value = summary(); value.profile_proposals = [proposal()]
+  const html = renderToStaticMarkup(createElement(ImportProfileReview, { summary: value, busy: false, locked: false, canDecide: false, onDecision: noop }))
+  assert.match(html, /FULL_PROPOSED_EVIDENCE/)
+  assert.match(html, /evidence:FULL_PROPOSED_EVIDENCE/)
+  assert.match(html, /Bạn không phải Owner/)
+  assert.doesNotMatch(html, />Duyệt và kích hoạt profile<|>Từ chối đề xuất<|>Retire active version</)
+})
+
+test('Owner review uses exact profile/version baseline, never substitutes unrelated approved spec', () => {
+  const value = summary(); value.profile_proposals = [proposal('approved/1')]
+  value.approved_profiles = [{ binding: { sheet_id: id(3), profile_id: id(50), version: 'approved/1', content_digest: 'opaque' }, spec: spec('UNRELATED_BASELINE') }]
+  const missing = renderToStaticMarkup(createElement(ImportProfileReview, { summary: value, busy: false, locked: false, canDecide: true, onDecision: noop }))
+  assert.match(missing, /Chưa nhận được approved spec đúng profile và active version/)
+  assert.doesNotMatch(missing, /UNRELATED_BASELINE/)
+  assert.match(missing, /disabled=""[^>]*>Duyệt và kích hoạt profile/)
+  value.approved_profiles[0].binding.profile_id = id(5)
+  value.approved_profiles[0].spec = spec('MATCHED_FULL_BASELINE')
+  const matched = renderToStaticMarkup(createElement(ImportProfileReview, { summary: value, busy: false, locked: false, canDecide: true, onDecision: noop }))
+  assert.match(matched, /MATCHED_FULL_BASELINE/)
+  assert.match(matched, /FULL_PROPOSED_EVIDENCE/)
+  assert.doesNotMatch(matched, /Chưa nhận được approved spec đúng profile và active version/)
+  // An initial render has no deliberate review checkbox/reason; no autoapproval.
+  assert.match(matched, /disabled=""[^>]*>Duyệt và kích hoạt profile/)
+  assert.match(matched, /lifecycle-v3/)
+})
+
+const renderPreview = (page = { limit: 50, next_cursor: null, total_count: 1 }, stale = false) => {
+  const location = { file_id: id(2), sheet_id: id(3), row_number: 2 }
+  const row = { row_id: id(40), source_location: location, classification: 'CHANGED', proposed_action: 'AMEND_TERM_PERIOD',
+    canonical_domain: 'supplier_terms', entity_refs: { supplier_term_id: id(41) }, before: null, after: null,
+    changes: [], provenance: {}, blockers: [], warnings: [], confirmation_required: true, unsupportedFields: [],
+    source_locations: [location], line_provenance: [], nested_provenance: [{ path: 'term.component[0]', source_location: location,
+      provenance: { amount: { origin: 'SOURCE_EXPLICIT', applied_rule_ids: ['EXACT_NESTED_EVIDENCE'], value_source: 'SOURCE_COLUMN', source_column_index: 0 } } }],
+    nested_references: [{ entity: 'supplier_term', canonical_id: id(41), path: 'term.component[0]' }],
+    dependencies: [id(42)], expected_version: 'expected-term-v1', normalized_source_quantity: '123456789012345678.123456789012345678',
+    required_permissions: ['supplier.terms.correct'] }
+  const bundle = { import_id: id(1), store_id: id(6), import_revision: 'import-v1', status: 'preview_ready', allowed_actions: [],
+    completion_available: false, review_confirmation: null, confirmation_usable: false, unsupportedFields: [],
+    preview: { summary: { preview_id: id(43), digest: 'opaque-preview-digest', created_at: '2026-10-11T01:00:00Z',
+      source_set_version: 'source-v1', mapping_bindings: [], policy_version: 'import_mapping_policy/1', mode: 'atomic',
+      validation_status: 'confirmation_required', can_commit: false, required_actions: ['supplier.terms.correct'], groups: [],
+      counts: { CHANGED: 1 }, blockers: [], warnings: [], confirmed_resolutions_version: null }, rows: [row], rows_page: page, stale },
+    configurations: { suppliers: [], terms: [], fees: [], declarations: [], preview_id: id(43), preview_digest: 'opaque-preview-digest',
+      blocked_row_ids: [], rows_page: page, analysis_rows: [], basis: 'preview', stale } }
+  return renderToStaticMarkup(createElement(ImportPreview, { bundle, busy: false, locked: false,
+    blockers: ['Chưa xác nhận review trên máy chủ'], reason: '', acknowledged: false, reviewReason: '', reviewAcknowledged: false,
+    reviewBlockers: ['Cần đọc và xác nhận snapshot'], resolutions: [], supplierChanges: [], onReviewReason: noop,
+    onReviewAcknowledge: noop, onConfirmReview: noop, onResolutions: noop, onSupplierChanges: noop,
+    onReason: noop, onAcknowledge: noop, onLoadMore: noop, onCommit: noop }))
+}
+
+test('preview UI review checkbox remains disabled until complete same-pin nonstale row pages', () => {
+  const reviewCheckbox = (html) => html.match(/<input\b[^>]*type="checkbox"[^>]*>/)?.[0]
+  assert.match(reviewCheckbox(renderPreview({ limit: 50, next_cursor: 'signed-next', total_count: 2 })), /disabled=""/)
+  assert.match(reviewCheckbox(renderPreview({ limit: 50, next_cursor: null, total_count: 2 })), /disabled=""/)
+  assert.match(reviewCheckbox(renderPreview(undefined, true)), /disabled=""/)
+  assert.doesNotMatch(reviewCheckbox(renderPreview()), /disabled=/)
+})
+
+test('preview UI exposes nested source, configuration projections and exact supplier action ID', () => {
+  const html = renderPreview()
+  for (const text of ['EXACT_NESTED_EVIDENCE', 'term.component[0]', 'expected-term-v1', 'supplier.terms.correct',
+    '123456789012345678.123456789012345678', 'nguồn lồng nhau', 'không phải toàn bộ cấu hình Store', 'Action ID:']) assert.ok(html.includes(text), text)
+  assert.ok(html.includes(id(40)))
+  assert.match(html, /1\. Xác nhận đã review snapshot/)
+  assert.match(html, /2\. Xác nhận ghi toàn bộ lô/)
+  assert.match(html, /disabled=""[^>]*>Ghi nguyên tử toàn bộ lô/)
+})

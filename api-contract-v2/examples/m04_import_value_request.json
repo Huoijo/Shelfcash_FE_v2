@@ -1,0 +1,9 @@
+{
+  "resolution": {
+    "kind": "shared_value",
+    "target_field": "sales.business_report_key",
+    "scope": "IMPORT_VALUE",
+    "value": "SYNTHETIC-REPORT-20261010",
+    "evidence_reference": "synthetic-established-report"
+  }
+}

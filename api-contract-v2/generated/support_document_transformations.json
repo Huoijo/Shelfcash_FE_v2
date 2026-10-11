@@ -1,0 +1,36 @@
+{
+  "six_authoritative_contracts": "byte-identical",
+  "support_only_link_transformations": [
+    {
+      "file": "docs/features/PROCUREMENT_GOLDEN_CASES.md",
+      "target": "../../runtime/s341/procurement_experiments.py",
+      "reason": "checkout-only historical/nonconsumer reference; not shipped in supplement"
+    },
+    {
+      "file": "docs/features/PROCUREMENT_GOLDEN_CASES.md",
+      "target": "../../runtime/s341/results.json",
+      "reason": "checkout-only historical/nonconsumer reference; not shipped in supplement"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "../contract_handoff_supplement_20261011_v1/CONTRACT_HANDOFF_DELTA_VI.md",
+      "reason": "supporting documentation supplement link rebased to archive root"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "../contract_handoff_supplement_20261011_v1/VERIFICATION_VI.md",
+      "reason": "supporting documentation supplement link rebased to archive root"
+    },
+    {
+      "file": "docs/reports/S2_SYNTHETIC_COMPARISON.md",
+      "target": "S2_SYNTHETIC_COMPARISON.json",
+      "reason": "checkout-only historical/nonconsumer reference; not shipped in supplement"
+    },
+    {
+      "file": "docs/ROADMAP.md",
+      "target": "../contract_handoff_supplement_20261011_v1/FE_UPDATE_CHECKLIST_VI.md",
+      "reason": "supporting documentation supplement link rebased to archive root"
+    }
+  ],
+  "support_markdown_count": 127
+}

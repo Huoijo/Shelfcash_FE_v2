@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useLocation } from 'react-router'
+import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router'
 import { lazy, Suspense } from 'react'
 import { AppShell } from '../layouts/app-shell/AppShell'
 import { AuthGuard, LoginRoute } from '../features/auth/AuthGuard'
@@ -10,6 +10,7 @@ import { InventoryPage } from '../pages/inventory/InventoryPage'
 import { MenuPage } from '../pages/menu/MenuPage'
 
 const PlanningPage = lazy(() => import('../pages/forecast/PlanningPage').then((module) => ({ default: module.PlanningPage })))
+const StorePage = lazy(() => import('../pages/store/StorePage').then((module) => ({ default: module.StorePage })))
 function PlanningRedirect() {
   const { search, hash } = useLocation()
   return <Navigate to={{ pathname: '/forecast/planning', search, hash }} replace />
@@ -26,7 +27,9 @@ export function AppRouter() {
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<LoginRoute />} />
       <Route element={<AuthGuard />}>
-        <Route element={<StoreProvider><StoreGate><AppShell /></StoreGate></StoreProvider>}>
+        <Route element={<StoreProvider><AppShell /></StoreProvider>}>
+          <Route path="/store" element={<Suspense fallback={<p role="status">Đang tải Cửa hàng…</p>}><StorePage /></Suspense>} />
+          <Route element={<StoreGate><Outlet /></StoreGate>}>
           <Route path="/inventory" element={<InventoryPage />} />
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/forecast" element={<PlanningRedirect />} />
@@ -35,6 +38,7 @@ export function AppRouter() {
           <Route path="/imports" element={<ImportWorkspace />}>
             <Route index element={<ImportPage />} />
             <Route path="history" element={<ImportHistoryPage />} />
+          </Route>
           </Route>
         </Route>
       </Route>

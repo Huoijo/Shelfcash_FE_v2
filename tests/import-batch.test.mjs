@@ -5,6 +5,7 @@ import { ImportBatchWorkflow } from '../src/features/import-data/importData.work
 import { mockImportStoreId } from '../src/features/import-data/importData.fixtures'
 import { HttpError } from '../src/shared/http/httpClient'
 import { validateImportFiles } from '../src/features/import-data/importData.files'
+import { validateImportBatch, validateImportDraft, validateImportUpload } from '../src/features/import-data/importData.validation'
 
 const id = (number) => `00000000-0000-4000-8000-${String(number).padStart(12, '0')}`
 const STORE = id(1)
@@ -73,6 +74,63 @@ const jsonResponse = (body, status = 200) => new Response(JSON.stringify(body), 
   status, headers: { 'Content-Type': 'application/json' },
 })
 
+test('current input Notice needs no invented details and accepts aware timestamps', () => {
+  const notice = { code: 'DUPLICATE_CONTENT', severity: 'WARNING', message: 'Nguồn trùng bytes.',
+    field: null, entity: null, impact: null, source_location: null }
+  const current = { ...draft(), created_at: '2026-10-10T08:00:00+07:00' }
+  assert.equal(validateImportDraft({ data: current, meta: { ...meta, warnings: [notice] }, error: null }, STORE, current.data_date).created_at, current.created_at)
+  const intent = { key: KEY, items: [{ clientFileId: CLIENT, file: csv() }] }
+  const result = validateImportUpload(envelope({ ...uploadResult(), warnings: [notice] }), IMPORT, intent)
+  assert.deepEqual(result.warnings, [notice])
+  assert.equal(validateImportBatch({ data: read(), meta: { ...meta, warnings: [{ ...notice, severity: 'ERROR' }] }, error: null }, IMPORT).import_id, IMPORT)
+  assert.throws(() => validateImportDraft({ data: { ...current, created_at: '2026-10-10T08:00:00' }, meta, error: null }, STORE, current.data_date), HttpError)
+  assert.throws(() => validateImportUpload(envelope({ ...uploadResult(), warnings: [{ ...notice, severity: 'INFO' }] }), IMPORT, intent), HttpError)
+  const compactUpload = uploadResult(); delete compactUpload.warnings
+  assert.deepEqual(validateImportUpload(envelope(compactUpload), IMPORT, intent).warnings, [])
+  const compactBatch = read()
+  for (const key of ['completion_available', 'configurations', 'review_confirmation', 'confirmation_usable']) delete compactBatch[key]
+  const currentBatch = validateImportBatch(envelope(compactBatch), IMPORT)
+  assert.equal(currentBatch.confirmation_usable, false)
+  assert.equal(currentBatch.completion_available, false)
+  assert.equal(currentBatch.review_confirmation, null)
+  assert.throws(() => validateImportBatch(envelope({ ...compactBatch, confirmation_usable: null }), IMPORT), HttpError)
+})
+
+test('resume hydrates retained authorized state and all file pages without mutations', async () => {
+  const first = acceptedRead({ source_set: { version: 'upload evidence opaque', sealed: true, accepted_file_ids: [SOURCE], digest },
+    status: 'review_required', allowed_actions: ['mapping.read'], files_page: { limit: 1, next_cursor: 'next-page', total_count: 2 } })
+  const second = { ...first, files: [{ ...rejected(), parse_status: 'failed' }], files_page: { limit: 1, next_cursor: null, total_count: 2 } }
+  const reads = []
+  let writes = 0
+  const source = { async read(importId, cursor) { reads.push([importId, cursor]); return cursor ? second : first },
+    async createDraft() { writes++ }, async upload() { writes++ }, async analyze() { writes++ } }
+  const workflow = new ImportBatchWorkflow(source, STORE)
+  await workflow.resume(IMPORT)
+  const state = workflow.getSnapshot()
+  assert.deepEqual(reads, [[IMPORT, undefined], [IMPORT, 'next-page']])
+  assert.equal(writes, 0)
+  assert.equal(state.draft.import_id, IMPORT)
+  assert.equal(state.serverFiles.length, 2)
+  assert.equal(state.sealedLocked, true)
+  assert.equal(state.fresh, true)
+  assert.equal(state.dataDate, first.data_date)
+})
+
+test('resume rejects foreign Store and mixed revision pages without hydrating local truth', async () => {
+  const foreign = new ImportBatchWorkflow({ async read() { return acceptedRead({ store_id: id(99) }) } }, STORE)
+  await foreign.resume(IMPORT)
+  assert.equal(foreign.getSnapshot().batch, null)
+  assert.match(foreign.getSnapshot().error, /cửa hàng/)
+  let reads = 0
+  const changed = new ImportBatchWorkflow({ async read() { reads++; return acceptedRead({
+    import_revision: reads === 1 ? 'before' : 'after', files_page: { limit: 1, next_cursor: reads === 1 ? 'next' : null, total_count: 2 },
+  }) } }, STORE)
+  await changed.resume(IMPORT)
+  assert.equal(changed.getSnapshot().draft, null)
+  assert.equal(changed.getSnapshot().fresh, false)
+  assert.match(changed.getSnapshot().error, /thay đổi/)
+})
+
 test('I01 is explicit and sends only date with cookie, CSRF and retained UUID key', async (t) => {
   const calls = []
   stubFetch(t, async (url, options) => {
@@ -121,6 +179,10 @@ test('missing Store scope and invalid intent identifiers never send mutations', 
   await assert.rejects(source.upload(IMPORT, { key: KEY, items: Array.from({ length: 21 }, (_, index) => ({
     clientFileId: id(100 + index), file: csv(),
   })) }))
+  for (const importRevision of ['quoted"token', 'token\r\nInjected: bad', 'non-header-😀']) {
+    await assert.rejects(source.analyze(IMPORT, { key: KEY, importRevision, fileSetVersion: 'source',
+      acceptedFileIds: [SOURCE], rejectedClientFileIds: [] }))
+  }
   assert.equal(calls, 0)
 })
 
@@ -402,6 +464,11 @@ test('lost upload response retains exact intent while canonical reconciliation p
   assert.equal(uncertain.files[0], file)
   fixture.workflow.setFiles([csv('different.csv')])
   fixture.workflow.startNewDraft()
+  const retainedReads = fixture.calls.reads.length
+  await fixture.workflow.resume(id(999))
+  assert.equal(fixture.calls.reads.length, retainedReads)
+  assert.equal(fixture.workflow.getSnapshot().draft.import_id, IMPORT)
+  assert.equal(fixture.workflow.getSnapshot().retryOperation, 'upload')
   await fixture.workflow.upload()
   assert.equal(fixture.calls.uploads.length, 1)
   assert.equal(fixture.workflow.getSnapshot().files[0], file)

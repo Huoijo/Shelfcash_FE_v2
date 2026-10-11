@@ -1,0 +1,19 @@
+{
+  "origin": "ACTUAL_RECEIPT",
+  "receipt_identity": {
+    "source_system_key": "SYNTHETIC",
+    "source_record_id": "RECEIPT-1"
+  },
+  "ingredient_id": "00000000-0000-4000-8000-000000000001",
+  "supplier_id": null,
+  "lot_code": "SYNTHETIC-LOT-1",
+  "quantity": "12",
+  "unit": "g",
+  "received_date": null,
+  "expiry_date": "2026-10-20",
+  "unit_cost": null,
+  "currency": "VND",
+  "observed_at": "2026-10-10T02:00:00Z",
+  "reason": "Synthetic actual late receipt",
+  "expected_inventory_version": "synthetic-stock-1"
+}

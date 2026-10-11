@@ -1,0 +1,22 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "phase": {
+      "const": "preview",
+      "title": "Phase",
+      "type": "string"
+    },
+    "mapping_revision": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Mapping Revision",
+      "type": "string"
+    }
+  },
+  "required": [
+    "phase",
+    "mapping_revision"
+  ],
+  "title": "PreviewRequest",
+  "type": "object"
+}

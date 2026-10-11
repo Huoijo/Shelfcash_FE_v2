@@ -1,0 +1,36 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "file_set_version": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "File Set Version",
+      "type": "string"
+    },
+    "accepted_file_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "Accepted File Ids",
+      "type": "array"
+    },
+    "acknowledged_rejected_client_file_ids": {
+      "items": {
+        "format": "uuid",
+        "type": "string"
+      },
+      "title": "Acknowledged Rejected Client File Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "file_set_version",
+    "accepted_file_ids",
+    "acknowledged_rejected_client_file_ids"
+  ],
+  "title": "AnalyzeRequest",
+  "type": "object"
+}

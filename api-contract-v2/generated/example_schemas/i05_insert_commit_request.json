@@ -1,0 +1,143 @@
+{
+  "$defs": {
+    "SalesResolution": {
+      "additionalProperties": false,
+      "properties": {
+        "row_id": {
+          "format": "uuid",
+          "title": "Row Id",
+          "type": "string"
+        },
+        "action": {
+          "enum": [
+            "replace_daily_total",
+            "confirm_disjoint_merge"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "report_business_key": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Report Business Key",
+          "type": "string"
+        },
+        "evidence_reference": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Evidence Reference",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "disjoint_assertion": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Disjoint Assertion"
+        }
+      },
+      "required": [
+        "row_id",
+        "action",
+        "report_business_key",
+        "evidence_reference",
+        "reason",
+        "disjoint_assertion"
+      ],
+      "title": "SalesResolution",
+      "type": "object"
+    },
+    "SupplierConfirmation": {
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "format": "uuid",
+          "title": "Action Id",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action_id",
+        "reason"
+      ],
+      "title": "SupplierConfirmation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "phase": {
+      "const": "commit",
+      "title": "Phase",
+      "type": "string"
+    },
+    "preview_id": {
+      "format": "uuid",
+      "title": "Preview Id",
+      "type": "string"
+    },
+    "preview_digest": {
+      "title": "Preview Digest",
+      "type": "string"
+    },
+    "confirm": {
+      "const": true,
+      "title": "Confirm",
+      "type": "boolean"
+    },
+    "reason": {
+      "anyOf": [
+        {
+          "maxLength": 1000,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reason"
+    },
+    "resolutions": {
+      "items": {
+        "$ref": "#/$defs/SalesResolution"
+      },
+      "title": "Resolutions",
+      "type": "array"
+    },
+    "supplier_changes": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/SupplierConfirmation"
+      },
+      "title": "Supplier Changes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "phase",
+    "preview_id",
+    "preview_digest",
+    "confirm",
+    "resolutions"
+  ],
+  "title": "CommitRequest",
+  "type": "object"
+}

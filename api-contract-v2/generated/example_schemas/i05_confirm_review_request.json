@@ -1,0 +1,48 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "phase": {
+      "const": "confirm_review",
+      "title": "Phase",
+      "type": "string"
+    },
+    "preview_id": {
+      "format": "uuid",
+      "title": "Preview Id",
+      "type": "string"
+    },
+    "preview_digest": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Preview Digest",
+      "type": "string"
+    },
+    "mapping_revision": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Mapping Revision",
+      "type": "string"
+    },
+    "confirm": {
+      "const": true,
+      "title": "Confirm",
+      "type": "boolean"
+    },
+    "reason": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "phase",
+    "preview_id",
+    "preview_digest",
+    "mapping_revision",
+    "confirm",
+    "reason"
+  ],
+  "title": "ConfirmReviewRequest",
+  "type": "object"
+}

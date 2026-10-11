@@ -34,6 +34,7 @@ export function ImportHistoryList({ response, timezone, nextLink, firstLink }: {
               <div><dt>Đã tải lên</dt><dd><time dateTime={item.imported_at}>{formatTimestamp(item.imported_at, timezone)}</time></dd></div>
               <div><dt>Số file</dt><dd>{item.file_count === null ? 'Chưa biết' : `${item.file_count} file`}</dd></div>
             </dl>
+            <Link to={`/imports?import_id=${encodeURIComponent(item.import_id)}`}>{['completed', 'completed_with_warnings'].includes(item.status) ? 'Xem biên nhận Import' : 'Mở lô và tiếp tục xử lý'}</Link>
           </li>
         ))}
       </ul>

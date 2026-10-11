@@ -1,0 +1,97 @@
+{
+  "$defs": {
+    "ExportAccepted": {
+      "additionalProperties": false,
+      "properties": {
+        "export_id": {
+          "format": "uuid",
+          "title": "Export Id",
+          "type": "string"
+        },
+        "run_id": {
+          "format": "uuid",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "option_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Option Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "queued",
+          "default": "queued",
+          "title": "Status",
+          "type": "string"
+        },
+        "job_id": {
+          "format": "uuid",
+          "title": "Job Id",
+          "type": "string"
+        },
+        "result_digest": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Result Digest",
+          "type": "string"
+        },
+        "render_version": {
+          "const": "planning-pdf/1",
+          "default": "planning-pdf/1",
+          "title": "Render Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "export_id",
+        "run_id",
+        "option_id",
+        "job_id",
+        "result_digest"
+      ],
+      "title": "ExportAccepted",
+      "type": "object"
+    },
+    "ExportMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "poll_after_ms": {
+          "const": 2000,
+          "default": 2000,
+          "title": "Poll After Ms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "request_id"
+      ],
+      "title": "ExportMeta",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/ExportAccepted"
+    },
+    "meta": {
+      "$ref": "#/$defs/ExportMeta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "ExportEnvelope",
+  "type": "object"
+}

@@ -1,0 +1,311 @@
+{
+  "status": "PASS",
+  "count": 38,
+  "examples": [
+    {
+      "path": "examples/t02_response.json",
+      "dto": "app.application.contracts.auth.Envelope[StoreContext]",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/t02_response.json"
+    },
+    {
+      "path": "examples/i01_request.json",
+      "dto": "app.application.contracts.import_mapping.DraftRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/i01_request.json"
+    },
+    {
+      "path": "examples/i03_request.json",
+      "dto": "app.application.contracts.import_mapping.AnalyzeRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/i03_request.json"
+    },
+    {
+      "path": "examples/m04_source_context_request.json",
+      "dto": "app.application.contracts.import_mapping.ResolveRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/m04_source_context_request.json"
+    },
+    {
+      "path": "examples/m04_sheet_type_request.json",
+      "dto": "app.application.contracts.import_mapping.ResolveRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/m04_sheet_type_request.json"
+    },
+    {
+      "path": "examples/m04_ignore_request.json",
+      "dto": "app.application.contracts.import_mapping.ResolveRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/m04_ignore_request.json"
+    },
+    {
+      "path": "examples/m04_profile_constant_request.json",
+      "dto": "app.application.contracts.import_mapping.ResolveRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/m04_profile_constant_request.json"
+    },
+    {
+      "path": "examples/m04_import_value_request.json",
+      "dto": "app.application.contracts.import_mapping.ResolveRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/m04_import_value_request.json"
+    },
+    {
+      "path": "examples/i05_preview_request.json",
+      "dto": "app.application.contracts.import_mapping.PreviewRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/i05_preview_request.json"
+    },
+    {
+      "path": "examples/i05_confirm_review_request.json",
+      "dto": "app.application.contracts.import_mapping.ConfirmReviewRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/i05_confirm_review_request.json"
+    },
+    {
+      "path": "examples/i05_insert_commit_request.json",
+      "dto": "app.application.contracts.import_mapping.CommitRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/i05_insert_commit_request.json"
+    },
+    {
+      "path": "examples/n6_actual_receipt_request.json",
+      "dto": "app.application.contracts.stock_writes.StockReceiptRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/n6_actual_receipt_request.json"
+    },
+    {
+      "path": "examples/n8_request.json",
+      "dto": "app.application.contracts.stock_writes.ThresholdRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/n8_request.json"
+    },
+    {
+      "path": "examples/n21_preview_request.json",
+      "dto": "app.application.contracts.recipe_schedule.PreviewRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/n21_preview_request.json"
+    },
+    {
+      "path": "examples/n21_commit_request.json",
+      "dto": "app.application.contracts.recipe_schedule.CommitRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/n21_commit_request.json"
+    },
+    {
+      "path": "examples/n1_request.json",
+      "dto": "app.application.contracts.planning_configuration.SaveRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/n1_request.json"
+    },
+    {
+      "path": "examples/n4_request.json",
+      "dto": "app.application.contracts.planning_configuration.BudgetRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/n4_request.json"
+    },
+    {
+      "path": "examples/n10_request.json",
+      "dto": "app.application.contracts.planning_export.ExportRequest",
+      "origin": "new synthetic shape fixture, not a captured HTTP response or usable resource pin",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/n10_request.json"
+    },
+    {
+      "path": "docs/features/examples/s410/c04_response.json",
+      "dto": "app.application.contracts.planning_inspection.InspectionEnvelope[IngredientNavigator]",
+      "origin": "synthetic S410 HTTP test trace; revalidated current DTO, not rerun HTTP",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c04_response.json"
+    },
+    {
+      "path": "docs/features/examples/s410/c04_null_digest_response.json",
+      "dto": "app.application.contracts.planning_inspection.InspectionEnvelope[IngredientNavigator]",
+      "origin": "synthetic S410 HTTP test trace; revalidated current DTO, not rerun HTTP",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c04_null_digest_response.json"
+    },
+    {
+      "path": "docs/features/examples/s410/c05_response.json",
+      "dto": "app.application.contracts.planning_inspection.InspectionEnvelope[IngredientDetail]",
+      "origin": "synthetic S410 HTTP test trace; revalidated current DTO, not rerun HTTP",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c05_response.json"
+    },
+    {
+      "path": "docs/features/examples/s410/c05_null_digest_response.json",
+      "dto": "app.application.contracts.planning_inspection.InspectionEnvelope[IngredientDetail]",
+      "origin": "synthetic S410 HTTP test trace; revalidated current DTO, not rerun HTTP",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c05_null_digest_response.json"
+    },
+    {
+      "path": "docs/features/examples/s410/c08_response.json",
+      "dto": "app.application.contracts.planning_inspection.ExplanationEnvelope",
+      "origin": "synthetic S410 HTTP test trace; revalidated current DTO, not rerun HTTP",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c08_response.json"
+    },
+    {
+      "path": "docs/features/examples/s410/n9_response.json",
+      "dto": "app.application.contracts.history.RunHistoryEnvelope",
+      "origin": "synthetic S410 HTTP test trace; revalidated current DTO, not rerun HTTP",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/n9_response.json"
+    },
+    {
+      "path": "docs/features/examples/s410/n10_response.json",
+      "dto": "app.application.contracts.planning_export.ExportEnvelope",
+      "origin": "synthetic S410 HTTP test trace; revalidated current DTO, not rerun HTTP",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/n10_response.json"
+    },
+    {
+      "path": "docs/features/examples/s410/j01_pdf_response.json",
+      "dto": "app.application.contracts.import_mapping.ImportEnvelope[JobView]",
+      "origin": "synthetic S410 HTTP test trace; revalidated current DTO, not rerun HTTP",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/j01_pdf_response.json"
+    },
+    {
+      "path": "docs/features/examples/planning_public/c02_accepted_response.json",
+      "dto": "app.application.contracts.planning_public.PlanningEnvelope[Accepted]",
+      "origin": "synthetic planning test fixture/trace; separate cases, current DTO revalidated",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c02_accepted_response.json"
+    },
+    {
+      "path": "docs/features/examples/planning_public/c02_custom_request.json",
+      "dto": "app.application.contracts.planning_setup.PlanningRequest",
+      "origin": "synthetic planning test fixture/trace; separate cases, current DTO revalidated",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c02_custom_request.json"
+    },
+    {
+      "path": "docs/features/examples/planning_public/c02_default_request.json",
+      "dto": "app.application.contracts.planning_setup.PlanningRequest",
+      "origin": "synthetic planning test fixture/trace; separate cases, current DTO revalidated",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c02_default_request.json"
+    },
+    {
+      "path": "docs/features/examples/planning_public/c02_saved_request.json",
+      "dto": "app.application.contracts.planning_setup.PlanningRequest",
+      "origin": "synthetic planning test fixture/trace; separate cases, current DTO revalidated",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c02_saved_request.json"
+    },
+    {
+      "path": "docs/features/examples/planning_public/c03_completed_response.json",
+      "dto": "app.application.contracts.planning_public.PlanningEnvelope[RunView]",
+      "origin": "synthetic planning test fixture/trace; separate cases, current DTO revalidated",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c03_completed_response.json"
+    },
+    {
+      "path": "docs/features/examples/planning_public/c03_failed_response.json",
+      "dto": "app.application.contracts.planning_public.PlanningEnvelope[RunView]",
+      "origin": "synthetic planning test fixture/trace; separate cases, current DTO revalidated",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c03_failed_response.json"
+    },
+    {
+      "path": "docs/features/examples/planning_public/c03_queued_response.json",
+      "dto": "app.application.contracts.planning_public.PlanningEnvelope[RunView]",
+      "origin": "synthetic planning test fixture/trace; separate cases, current DTO revalidated",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c03_queued_response.json"
+    },
+    {
+      "path": "docs/features/examples/planning_public/c03_running_response.json",
+      "dto": "app.application.contracts.planning_public.PlanningEnvelope[RunView]",
+      "origin": "synthetic planning test fixture/trace; separate cases, current DTO revalidated",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/c03_running_response.json"
+    },
+    {
+      "path": "docs/features/examples/s411/h01_response.json",
+      "dto": "app.application.contracts.history.HistoryEnvelope[ImportCalendar, HistoryMeta]",
+      "origin": "current S411 History fixture with explicit warnings; old S410 History traces excluded",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/h01_response.json"
+    },
+    {
+      "path": "docs/features/examples/s411/h02_response.json",
+      "dto": "app.application.contracts.history.HistoryEnvelope[ImportHistory, ImportHistoryMeta]",
+      "origin": "current S411 History fixture with explicit warnings; old S410 History traces excluded",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/h02_response.json"
+    },
+    {
+      "path": "docs/features/examples/s48/readiness-empty-store.json",
+      "dto": "app.application.contracts.auth.Envelope[Readiness]",
+      "origin": "synthetic empty Store response, current DTO revalidated",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/readiness-empty-store.json"
+    },
+    {
+      "path": "docs/features/examples/s48/planning-context-empty-store.json",
+      "dto": "app.application.contracts.auth.Envelope[Context]",
+      "origin": "synthetic empty Store response, current DTO revalidated",
+      "dto_validation": "PASS",
+      "schema_ref_check": "PASS",
+      "schema": "generated/example_schemas/planning-context-empty-store.json"
+    }
+  ],
+  "limits": "Pydantic validators and schema/ref checks offline; no HTTP/business binding/CAS/auth/persistence or full JSON Schema metaschema conformance claim."
+}

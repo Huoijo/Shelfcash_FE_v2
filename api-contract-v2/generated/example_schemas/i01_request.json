@@ -1,0 +1,15 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "data_date": {
+      "format": "date",
+      "title": "Data Date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_date"
+  ],
+  "title": "DraftRequest",
+  "type": "object"
+}

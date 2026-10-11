@@ -1,6 +1,6 @@
 import { HttpError } from '../../shared/http/httpClient'
 import { validateImportFiles } from './importData.files'
-import { isImportBusinessDate } from './importData.validation'
+import { isImportBusinessDate, isImportUuid } from './importData.validation'
 import type {
   AnalyzeIntent, DraftIntent, ImportAnalyzeResult, ImportBatch, ImportDataSource,
   ImportDraft, ImportFileReceipt, ImportFileView, UploadIntent,
@@ -123,6 +123,59 @@ export class ImportBatchWorkflow {
       sealedLocked: this.state.sealedLocked || batch.source_set.sealed, preparation: null,
     })
     return batch
+  }
+
+  // A URL identifier is only a locator. Hydration always comes from authorized
+  // retained reads; it never recreates a batch or replaces an uncertain intent.
+  resume = async (importId: string) => {
+    if (this.state.busy || this.state.retryOperation) return
+    if (!isImportUuid(importId) || !this.storeId) {
+      this.update({ error: 'Cần định danh lô UUID và cửa hàng hiện tại hợp lệ để tiếp tục.' })
+      return
+    }
+    this.update({ busy: true, fresh: false, error: null, preparation: null })
+    try {
+      const batch = await this.source.read(importId)
+      if (batch.import_id !== importId || batch.store_id !== this.storeId) {
+        throw new HttpError('protocol', 'Lô được yêu cầu không thuộc cửa hàng hiện tại.')
+      }
+      const files = [...batch.files]
+      const cursors = new Set<string>()
+      let cursor = batch.files_page.next_cursor
+      while (cursor) {
+        if (cursors.has(cursor)) throw new Error('Máy chủ trả về cursor lặp. Hãy đọc lại lô.')
+        cursors.add(cursor)
+        const page = await this.source.read(importId, cursor)
+        if (!sameRead(batch, page) || page.files.some((file) => files.some((old) => old.client_file_id === file.client_file_id))) {
+          throw new Error('Lô đã thay đổi giữa các trang. Hãy tiếp tục lại từ trạng thái mới.')
+        }
+        files.push(...page.files)
+        cursor = page.files_page.next_cursor
+      }
+      if (batch.files_page.total_count !== null && files.length !== batch.files_page.total_count) {
+        throw new Error('Chưa đọc đủ biên nhận file của lô. Hãy thử tiếp tục lại.')
+      }
+      const acceptedIds = files.filter((file) => file.upload_status === 'uploaded').map((file) => file.file_id)
+      if (new Set(acceptedIds).size !== acceptedIds.length || acceptedIds.length !== batch.source_set.accepted_file_ids.length ||
+        batch.source_set.accepted_file_ids.some((fileId) => !acceptedIds.includes(fileId))) {
+        throw new Error('Biên nhận file chưa khớp tập nguồn hiện tại. Hãy đọc lại lô.')
+      }
+      const draft: ImportDraft = {
+        import_id: batch.import_id, display_number: batch.display_number, store_id: batch.store_id,
+        data_date: batch.data_date, status: batch.status, import_revision: batch.import_revision,
+        created_at: batch.created_at, imported_at: batch.imported_at, file_count: batch.file_count,
+        file_set_version: batch.file_set_version,
+      }
+      this.draftIntent = null
+      this.uploadIntent = null
+      this.analyzeIntent = null
+      this.update({
+        draft, batch, dataDate: batch.data_date, files: [], serverFiles: files, receipts: [],
+        nextCursor: null, fresh: true, sealedLocked: batch.source_set.sealed, analysis: null,
+        notice: 'Đã tiếp tục lô từ trạng thái máy chủ; chưa tạo hoặc ghi lại dữ liệu.',
+      })
+    } catch (error) { this.update({ error: describeImportError(error) }) }
+    finally { this.update({ busy: false }) }
   }
 
   refresh = async () => {

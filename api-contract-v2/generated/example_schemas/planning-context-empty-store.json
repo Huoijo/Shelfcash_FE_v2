@@ -1,0 +1,957 @@
+{
+  "$defs": {
+    "BudgetCeiling": {
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "maxLength": 37,
+          "minLength": 1,
+          "title": "Amount",
+          "type": "string"
+        },
+        "currency": {
+          "title": "Currency",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "amount",
+        "currency",
+        "version",
+        "updated_at"
+      ],
+      "title": "BudgetCeiling",
+      "type": "object"
+    },
+    "Capabilities": {
+      "additionalProperties": false,
+      "properties": {
+        "winner_selection": {
+          "title": "Winner Selection",
+          "type": "boolean"
+        },
+        "saved_requirements": {
+          "title": "Saved Requirements",
+          "type": "boolean"
+        },
+        "include_open_purchase_orders": {
+          "const": false,
+          "default": false,
+          "title": "Include Open Purchase Orders",
+          "type": "boolean"
+        },
+        "scenario_based_planning": {
+          "const": false,
+          "default": false,
+          "title": "Scenario Based Planning",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "winner_selection",
+        "saved_requirements"
+      ],
+      "title": "Capabilities",
+      "type": "object"
+    },
+    "Constraints": {
+      "additionalProperties": false,
+      "properties": {
+        "enum": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Enum"
+        },
+        "unique": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unique"
+        },
+        "max_items": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Items"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximum"
+        },
+        "max_integer_digits": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Integer Digits"
+        },
+        "max_fraction_digits": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Fraction Digits"
+        },
+        "unique_product_id": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unique Product Id"
+        }
+      },
+      "title": "Constraints",
+      "type": "object"
+    },
+    "Context": {
+      "additionalProperties": false,
+      "properties": {
+        "store_id": {
+          "format": "uuid",
+          "title": "Store Id",
+          "type": "string"
+        },
+        "currency": {
+          "title": "Currency",
+          "type": "string"
+        },
+        "timezone": {
+          "title": "Timezone",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "context_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Context Version",
+          "type": "string"
+        },
+        "latest_business_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Latest Business Date"
+        },
+        "defaults": {
+          "$ref": "#/$defs/Defaults"
+        },
+        "supported_horizon_days": {
+          "default": [
+            7
+          ],
+          "items": {
+            "const": 7,
+            "type": "integer"
+          },
+          "title": "Supported Horizon Days",
+          "type": "array"
+        },
+        "supported_strategies": {
+          "default": [
+            "lean",
+            "balanced",
+            "protected"
+          ],
+          "items": {
+            "enum": [
+              "lean",
+              "balanced",
+              "protected"
+            ],
+            "type": "string"
+          },
+          "title": "Supported Strategies",
+          "type": "array"
+        },
+        "supported_paths": {
+          "default": [
+            "LOW",
+            "BASE",
+            "HIGH"
+          ],
+          "items": {
+            "enum": [
+              "LOW",
+              "BASE",
+              "HIGH"
+            ],
+            "type": "string"
+          },
+          "title": "Supported Paths",
+          "type": "array"
+        },
+        "default_requirements": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StoredRequirements"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "default_requirements_version": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Default Requirements Version"
+        },
+        "default_requirements_updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Default Requirements Updated At"
+        },
+        "budget_ceiling": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BudgetCeiling"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "products": {
+          "items": {
+            "$ref": "#/$defs/ProductBrief"
+          },
+          "title": "Products",
+          "type": "array"
+        },
+        "custom_requirement_fields": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/FieldDescriptor"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Custom Requirement Fields"
+        },
+        "requirements_modes": {
+          "items": {
+            "$ref": "#/$defs/Mode"
+          },
+          "title": "Requirements Modes",
+          "type": "array"
+        },
+        "saved_requirements": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Saved"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Saved Requirements"
+        },
+        "capabilities": {
+          "$ref": "#/$defs/Capabilities"
+        },
+        "readiness": {
+          "$ref": "#/$defs/PlanningReadiness"
+        }
+      },
+      "required": [
+        "store_id",
+        "currency",
+        "timezone",
+        "observed_at",
+        "context_version",
+        "latest_business_date",
+        "defaults",
+        "default_requirements",
+        "default_requirements_version",
+        "default_requirements_updated_at",
+        "budget_ceiling",
+        "products",
+        "custom_requirement_fields",
+        "requirements_modes",
+        "saved_requirements",
+        "capabilities",
+        "readiness"
+      ],
+      "title": "Context",
+      "type": "object"
+    },
+    "Defaults": {
+      "additionalProperties": false,
+      "properties": {
+        "requirements_mode": {
+          "const": "default",
+          "default": "default",
+          "title": "Requirements Mode",
+          "type": "string"
+        },
+        "horizon_days": {
+          "const": 7,
+          "default": 7,
+          "title": "Horizon Days",
+          "type": "integer"
+        },
+        "cutoff_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Cutoff Date"
+        },
+        "forecast_start_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Forecast Start Date"
+        }
+      },
+      "required": [
+        "cutoff_date",
+        "forecast_start_date"
+      ],
+      "title": "Defaults",
+      "type": "object"
+    },
+    "Exclusion": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "format": "uuid",
+          "title": "Product Id",
+          "type": "string"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        },
+        "affected_dates": {
+          "items": {
+            "format": "date",
+            "type": "string"
+          },
+          "title": "Affected Dates",
+          "type": "array"
+        }
+      },
+      "required": [
+        "product_id",
+        "reason_codes",
+        "affected_dates"
+      ],
+      "title": "Exclusion",
+      "type": "object"
+    },
+    "FieldDescriptor": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "decimal_text",
+            "path",
+            "product_override_array"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "required": {
+          "title": "Required",
+          "type": "boolean"
+        },
+        "nullable": {
+          "title": "Nullable",
+          "type": "boolean"
+        },
+        "constraints": {
+          "$ref": "#/$defs/Constraints"
+        },
+        "inheritance": {
+          "title": "Inheritance",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field",
+        "type",
+        "required",
+        "nullable",
+        "constraints",
+        "inheritance"
+      ],
+      "title": "FieldDescriptor",
+      "type": "object"
+    },
+    "Meta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "pagination": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pagination"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "request_id"
+      ],
+      "title": "Meta",
+      "type": "object"
+    },
+    "Mode": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "default",
+            "custom",
+            "saved"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "availability": {
+          "enum": [
+            "available",
+            "unavailable",
+            "unknown"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "mode",
+        "availability",
+        "reason_codes"
+      ],
+      "title": "Mode",
+      "type": "object"
+    },
+    "NotificationDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "default_updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Default Updated At"
+        },
+        "saved_updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Saved Updated At"
+        }
+      },
+      "title": "NotificationDetails",
+      "type": "object"
+    },
+    "Pagination": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "total_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Count"
+        }
+      },
+      "required": [
+        "limit",
+        "next_cursor",
+        "total_count"
+      ],
+      "title": "Pagination",
+      "type": "object"
+    },
+    "PlanningConfigurationNotification": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "details": {
+          "$ref": "#/$defs/NotificationDetails"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "details"
+      ],
+      "title": "PlanningConfigurationNotification",
+      "type": "object"
+    },
+    "PlanningReadiness": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ready",
+            "not_ready",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "can_generate": {
+          "title": "Can Generate",
+          "type": "boolean"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        },
+        "evaluated_forecast_start_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Evaluated Forecast Start Date"
+        },
+        "scope_estimate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScopeEstimate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "history_watermark": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "History Watermark"
+        }
+      },
+      "required": [
+        "status",
+        "can_generate",
+        "reason_codes",
+        "evaluated_forecast_start_date",
+        "scope_estimate",
+        "history_watermark"
+      ],
+      "title": "PlanningReadiness",
+      "type": "object"
+    },
+    "ProductBrief": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "format": "uuid",
+          "title": "Product Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "selling_unit": {
+          "title": "Selling Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "product_id",
+        "name",
+        "selling_unit"
+      ],
+      "title": "ProductBrief",
+      "type": "object"
+    },
+    "ProductOverride": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "format": "uuid",
+          "title": "Product Id",
+          "type": "string"
+        },
+        "min_fill_rate_percent": {
+          "maxLength": 36,
+          "minLength": 1,
+          "title": "Min Fill Rate Percent",
+          "type": "string"
+        }
+      },
+      "required": [
+        "product_id",
+        "min_fill_rate_percent"
+      ],
+      "title": "ProductOverride",
+      "type": "object"
+    },
+    "Saved": {
+      "additionalProperties": false,
+      "properties": {
+        "saved_requirement_id": {
+          "format": "uuid",
+          "title": "Saved Requirement Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "requirements": {
+          "$ref": "#/$defs/StoredRequirements"
+        },
+        "validation": {
+          "$ref": "#/$defs/Validation"
+        },
+        "warnings": {
+          "items": {
+            "$ref": "#/$defs/PlanningConfigurationNotification"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "saved_requirement_id",
+        "name",
+        "updated_at",
+        "requirements",
+        "validation",
+        "warnings"
+      ],
+      "title": "Saved",
+      "type": "object"
+    },
+    "ScopeEstimate": {
+      "additionalProperties": false,
+      "properties": {
+        "menu_product_count": {
+          "title": "Menu Product Count",
+          "type": "integer"
+        },
+        "estimated_computable_product_count": {
+          "title": "Estimated Computable Product Count",
+          "type": "integer"
+        },
+        "excluded_products": {
+          "items": {
+            "$ref": "#/$defs/Exclusion"
+          },
+          "title": "Excluded Products",
+          "type": "array"
+        }
+      },
+      "required": [
+        "menu_product_count",
+        "estimated_computable_product_count",
+        "excluded_products"
+      ],
+      "title": "ScopeEstimate",
+      "type": "object"
+    },
+    "StoredPath": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "enum": [
+            "LOW",
+            "BASE",
+            "HIGH"
+          ],
+          "title": "Path",
+          "type": "string"
+        },
+        "min_fill_rate_percent": {
+          "maxLength": 36,
+          "minLength": 1,
+          "title": "Min Fill Rate Percent",
+          "type": "string"
+        },
+        "product_overrides": {
+          "items": {
+            "$ref": "#/$defs/ProductOverride"
+          },
+          "maxItems": 50,
+          "title": "Product Overrides",
+          "type": "array"
+        }
+      },
+      "required": [
+        "path",
+        "min_fill_rate_percent",
+        "product_overrides"
+      ],
+      "title": "StoredPath",
+      "type": "object"
+    },
+    "StoredRequirements": {
+      "additionalProperties": false,
+      "description": "Fully resolved thresholds/overrides; budget null alone remains late-bound.",
+      "properties": {
+        "paths": {
+          "items": {
+            "$ref": "#/$defs/StoredPath"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Paths",
+          "type": "array"
+        },
+        "budget_limit": {
+          "anyOf": [
+            {
+              "maxLength": 37,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Budget Limit"
+        }
+      },
+      "required": [
+        "paths",
+        "budget_limit"
+      ],
+      "title": "StoredRequirements",
+      "type": "object"
+    },
+    "Validation": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "valid",
+            "invalid",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status",
+        "reason_codes"
+      ],
+      "title": "Validation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/Context"
+    },
+    "meta": {
+      "$ref": "#/$defs/Meta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "Envelope[Context]",
+  "type": "object"
+}

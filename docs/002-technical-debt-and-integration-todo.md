@@ -4,6 +4,8 @@ ID: `#002` · Created: 10/10/2026 · Baseline: Milestone 03
 
 ## General context
 
+> Update Milestone10, 11/10/2026: multi-Store selection and `/store` UI are implemented, including Owner Staff grants/invitations and known budget ceiling; Cửa hàng is no longer disabled. Current V2 handoff reports public Auth/Store/Staff/config implementation, so older CONTRACT_ONLY/missing-Store-switcher statements below are historical, not current blockers. Live acceptance remains open during reported maintenance. New actionable gaps are unsupported profile/settings writers, ambiguous initial ceiling absence and recipient/browser acceptance; see [007](007-store-workspace-e2e-integration.md). No request to invent Store CRUD or re-open settled invitation/grants semantics.
+
 Track evidence-backed work required before staging acceptance, production or deeper integration. This register does not authorize implementation or add a feature wishlist.
 
 Existing: FE A01/A03/A04 session/bootstrap/CSRF and API AuthGuard, T01/T02 boundary with single-default Store resolution, AppShell, Import Batch I01/I02/I04/I03 with local selection/HDSD, H01/H02, read-only Kho V01–V04 and Menu/Recipe P01/P02 boundaries. Auth/Store FE plumbing and Import mechanics are implemented; actual compatible BE routes, live/staging/production acceptance and Store selection UI remain outstanding. Completed foundations are not reopened as missing work.
@@ -101,18 +103,20 @@ Evidence: [data boundary](../src/features/import-data/importData.data.ts), [runt
 
 ## F. Real Import workflow
 
-Status: `I01_I02_I04_I03_FE_IMPLEMENTED / NEXT_SCOPE_PENDING` · Owner: FE + BE · Required before: complete Import business workflow; depends on A/B/E and separately assigned mapping/preview/commit work.
+Status: `FE_CONTINUATION_PARTIAL / CONTRACT_GAPS / LIVE_BLOCKED` · Owner: FE + BE · Required before: complete Import business workflow; depends on A/B/E.
 
-Implemented scope: Current Import uses the existing MagicPath `ShelfCashDataImportScreen` processing CTA (component `458395069779681280`, revision `458401934337019904`, read-only reference). I03 prepares a coherent complete read set, requires explicit accepted/rejected scope acknowledgment and sends current quoted `If-Match`, `file_set_version`, full accepted IDs and all rejected client IDs. Pages from different revisions/versions are discarded. A 412 refreshes I04 and requires confirmation to be reconstructed. Response202 seals immediately; analysis failure never reopens upload. API polls I04 read-only, while mock ends at accepted analyzing. No mapping/preview/commit/completion is implied by analysis acceptance.
+Milestone08 adds Mapping/Review/Preview/Commit/Result presentation, M01–M04/I05/I04-preview/J01/I06 boundaries and a memory-only continuation controller beside the preserved upload workflow. Canonical progress/actions, pinned snapshots, frozen uncertain intents and durable I06 outcomes are implemented as FE controls. API mapping/commit remain fail-closed for underspecified rich DTOs; no live success is claimed. The fixed already-approved inventory mock is explicit DEV/QA only. [A–M implementation/evidence report](./003-import-flow-integration.md) records the exact first gaps and verification.
+
+Preserved staging scope: I03 prepares a coherent complete read set, requires explicit accepted/rejected acknowledgment and sends current quoted `If-Match`, `file_set_version`, full accepted IDs and all rejected client IDs. Mixed-version pages are discarded; 412 requires fresh I04 and reconstructed confirmation. Response202 seals immediately; failure never reopens upload. Continuation now polls J01 and reconciles I04; its explicit DEV fixture extends the default staging-test fixture. No business completion is implied by analysis acceptance. Current read-only MagicPath Mapping/Completion attribution is recorded in report #003.
 
 Memory/resume limitation: Batch identity, selection/date and exact retry intent survive Import ↔ History only. Refresh or leaving the workspace destroys them; no canonical active-draft resume route is defined in the current UX. Do not invent localStorage receipts, resumed batches or new retry identities after refresh. A later resume milestone must use an explicitly defined canonical mechanism and authoritative I04 reconciliation.
 
 What remains:
 
 - Live Auth/Store and authenticated acceptance for the implemented I01/I02/I04/I03 flow; FE AuthProvider/AuthGuard/Store context now exist. No remaining semantic blocker about batch accumulation/admission/revisions. Store switcher and canonical writers remain absent.
-- M01–M04: typed summary/issues/options and proposal edits; separate Owner-only profile decisions (N5), never treat M04 resolution as activation or commit permission.
-- I05/I06: server-bound immutable preview, explicit confirmation/reasons/resolutions and atomic commit with CAS/idempotent retry/reconciliation; show completion only from durable committed/no-changes receipts and refetch affected resources afterward.
-- R01/J01: deeper typed readiness (blocked ≠ unknown), retained job diagnostics/terminal errors and subsequent workflow. Current I04 analysis polling does not implement a J01 job screen. HTTP202 or a failed-job HTTP200 is not successful canonical import completion.
+- M01–M04: finalize exact issue/descriptor/binding/profile DTOs with BE, then enable the currently blocked API confirmation branch; implement separately required Owner-only N5 full spec/diff/evidence review. M04 is never activation.
+- I05/I06: finalize complete preview domain/count/binding DTOs, supplier action pagination/confirmations and exact commit acceptance receipt, then verify atomic writers/receipts. Sales replacement/disjoint-merge confirmation UI remains disabled. FE preview/retry/result controls do not prove backend atomicity.
+- R01 is deliberately not called: I06 retained readiness is rendered separately from any later current readiness. J01 typed polling/terminal failure and reconciliation exist in FE; real worker/job/receipt acceptance remains unverified. HTTP202 or failed-job HTTP200 never indicates successful Import.
 
 Validation / Definition of Done: Staging exercises success/no-change, rejected input, unresolved mapping, denied rights, stale previews/revisions and failed jobs/retries without duplicate or partial writes. IDs/results/readiness come from BE; no fake success, batches or mapping, client domain engine or automatic planning.
 

@@ -8,7 +8,7 @@ interface ImportHelpProps {
   onClose: () => void
 }
 
-// Static preparation guidance from Import Contract V1 §§5, 6, 9.1 and 13.
+// Static guidance from current Import contracts and BE response #004.
 // Native modal behavior keeps the workspace inert and restores focus on close.
 export function ImportHelp({ id, open, onClose }: ImportHelpProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
@@ -89,8 +89,10 @@ export function ImportHelp({ id, open, onClose }: ImportHelpProps) {
           <p>Kéo thả tệp vào vùng chọn hoặc nhấn để chọn từ thiết bị. Các tệp hiện chỉ được kiểm tra sơ bộ trên thiết bị: phần mở rộng, số lượng và dung lượng.</p>
           <p>Chọn ngày dữ liệu, rồi nhấn “Tạo lô và tải file”. Mỗi biên nhận cho biết tệp đã nhận hoặc bị từ chối; có thể tải thêm vào cùng lô khi máy chủ cho phép. Tệp đã nhận không thể bỏ hoặc thay thế.</p>
           <p>“Xử lý dữ liệu” yêu cầu xác nhận tập tệp trước khi khóa và phân tích. Sau khi khóa, muốn bổ sung hoặc đổi tệp phải dùng lô mới.</p>
-          <p>Trạng thái của phiên chỉ giữ trong bộ nhớ trình duyệt. Làm mới hoặc rời khu vực Nhập dữ liệu làm mất lựa chọn và định danh thử lại; không xóa biên nhận trên máy chủ. Sau kết quả chưa xác định, không tải lại như yêu cầu mới.</p>
-          <p className="import-help__note">Nhận tệp hoặc bắt đầu phân tích chưa ghi dữ liệu nghiệp vụ. Đối chiếu cột, xem trước và ghi dữ liệu chưa khả dụng. Chế độ minh họa chỉ phục vụ thử giao diện; kết nối máy chủ cần phiên đăng nhập thật.</p>
+          <p>Lựa chọn file và intent thử lại chỉ giữ trong bộ nhớ, mất khi làm mới/rời khu vực Nhập dữ liệu. URL giữ import ID để đọc lại trạng thái từ máy chủ; cũng có thể mở lô đã tải qua Lịch sử. Draft chưa tải file không được Lịch sử tìm thấy. Sau kết quả chưa xác định, không tải lại như yêu cầu mới.</p>
+          <p>Sau phân tích, chọn loại dữ liệu của từng Sheet, khai báo ngữ cảnh nguồn rồi xử lý cột, định danh, quy đổi hoặc shared value theo descriptor máy chủ. Chọn trong danh sách chưa lưu thay đổi. Profile mới/thay đổi cần Owner xem đầy đủ spec và bằng chứng rồi duyệt; resolved không có nghĩa approved.</p>
+          <p>Tạo Preview, đọc đủ các trang thay đổi và cảnh báo rồi “Lưu xác nhận review” với lý do. Bước này chỉ lưu xác nhận trên máy chủ, chưa ghi dữ liệu. Sau đó xác nhận từng thay đổi doanh số/điều khoản/phí nếu được yêu cầu, rồi ghi nguyên tử toàn lô. Mapping hoặc dữ liệu nguồn thay đổi có thể làm Preview/review hết hiệu lực.</p>
+          <p className="import-help__note">Nhận tệp, phân tích hoặc HTTP202 chưa phải Import thành công. Chỉ biên nhận hoàn tất từ máy chủ xác nhận dữ liệu đã ghi hoặc không có thay đổi. Các trường hợp còn lỗi chặn, stale preview hoặc cần Owner duyệt vẫn bị khóa. Chế độ minh họa không ghi dữ liệu; kết nối thật cần backend, phiên đăng nhập và Store hợp lệ.</p>
         </section>
       </div>
     </dialog>

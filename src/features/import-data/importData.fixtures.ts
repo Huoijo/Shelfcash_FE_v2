@@ -19,6 +19,14 @@ type MockRecord = {
 }
 type MockReceipt = { fingerprint: string; value: unknown; rejected: boolean }
 
+export type MockImportContinuationPatch = Pick<ImportBatch,
+  'status' | 'import_revision' | 'active_job_id' | 'allowed_actions' | 'preview' | 'completion_available' |
+  'review_confirmation' | 'confirmation_usable'>
+export type MockImportDataSource = ImportDataSource & {
+  advanceContinuation(importId: string, patch: Partial<MockImportContinuationPatch>): ImportBatch
+  findContinuationJob(jobId: string): ImportBatch | null
+}
+
 function mockEnvelope(data: unknown, pollAfter: number | null = null) {
   return {
     data, error: null,
@@ -50,7 +58,7 @@ function normalizeFilename(filename: string): string {
  * State is isolated to this adapter instance and disappears on browser refresh.
  * Admission examples exercise receipts/quota only; they do not parse or validate business data.
  */
-export function createMockImportDataSource(): ImportDataSource {
+export function createMockImportDataSource(options: { continuation?: boolean } = {}): MockImportDataSource {
   let nextIdentity = 1
   let nextRevision = 1
   const batches = new Map<string, MockRecord>()
@@ -79,6 +87,18 @@ export function createMockImportDataSource(): ImportDataSource {
   }
 
   return {
+    findContinuationJob(jobId) {
+      if (!options.continuation) return null
+      const batch = [...batches.values()].find((record) => record.batch.active_job_id === jobId)?.batch
+      return batch ? structuredClone(batch) : null
+    },
+    advanceContinuation(importId, patch) {
+      if (!options.continuation) return mockFailure(409, 'IMPORT_STATE_CONFLICT')
+      const batch = batchRecord(importId).batch
+      if (!batch.source_set.sealed) return mockFailure(409, 'IMPORT_STATE_CONFLICT')
+      Object.assign(batch, structuredClone(patch))
+      return structuredClone(batch)
+    },
     async createDraft(storeId, intent) {
       const scope = `draft:${storeId}:${intent.key}`
       const fingerprint = JSON.stringify({ data_date: intent.dataDate })
@@ -145,7 +165,7 @@ export function createMockImportDataSource(): ImportDataSource {
         const accepted = errorCode === null
         if (accepted && [...batches.values()].some(({ rawByClient, batch }) => batch.store_id === record.batch.store_id &&
           batch.files.some((file) => file.upload_status === 'uploaded' && rawByClient.get(file.client_file_id)?.digest === input.digest))) {
-          warnings.push({ code: 'DUPLICATE_CONTENT', message: 'Bytes trùng nguồn đã nhận; đây vẫn là file logic riêng.', details: { client_file_id: input.item.clientFileId } })
+          warnings.push({ code: 'DUPLICATE_CONTENT', severity: 'WARNING', message: 'Bytes trùng nguồn đã nhận; đây vẫn là file logic riêng.' })
         }
         const file: ImportFileView = {
           client_file_id: input.item.clientFileId, file_id: accepted ? identity() : null,
@@ -191,6 +211,13 @@ export function createMockImportDataSource(): ImportDataSource {
 
     async read(importId, cursor) {
       const batch = batchRecord(importId).batch
+      if (options.continuation && batch.status === 'analyzing') {
+        // Explicit continuation fixture, not a parser or background worker.
+        batch.status = 'review_required'
+        batch.active_job_id = null
+        batch.allowed_actions = ['mapping.read', 'mapping.propose', 'preview']
+        batch.import_revision = revision('revision')
+      }
       const prefix = `mock-files:${batch.file_set_version}:`
       let offset = 0
       if (cursor !== undefined) {

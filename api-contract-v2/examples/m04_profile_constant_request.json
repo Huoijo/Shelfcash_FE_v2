@@ -1,0 +1,9 @@
+{
+  "resolution": {
+    "kind": "shared_value",
+    "target_field": "sales.unit",
+    "scope": "PROFILE_CONSTANT",
+    "value": "cup",
+    "evidence_reference": "synthetic-established-unit"
+  }
+}

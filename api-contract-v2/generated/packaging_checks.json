@@ -1,0 +1,19 @@
+{
+  "safe_paths": "PASS",
+  "casefold_duplicates": "PASS",
+  "six_contract_byte_match": "PASS",
+  "json_documents": 86,
+  "schema_refs_resolved": 4913,
+  "links_checked": 757,
+  "bad_links": [],
+  "status": "PASS",
+  "preservation": "PASS",
+  "authorized_existing_document_updates": [
+    "docs/CURRENT_STATE.md",
+    "docs/ROADMAP.md"
+  ],
+  "protected_files_compared": 702,
+  "excluded_old_history_traces": true,
+  "source_or_db_change": false,
+  "zip_checks": "CRC/manifest/checksums checked on completed ZIP by --verify"
+}

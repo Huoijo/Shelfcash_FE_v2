@@ -1,0 +1,202 @@
+{
+  "$defs": {
+    "MembershipContext": {
+      "additionalProperties": false,
+      "properties": {
+        "membership_id": {
+          "format": "uuid",
+          "title": "Membership Id",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "OWNER",
+            "STAFF"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "authorization_version": {
+          "title": "Authorization Version",
+          "type": "string"
+        },
+        "effective_permissions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Effective Permissions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "membership_id",
+        "role",
+        "authorization_version",
+        "effective_permissions"
+      ],
+      "title": "MembershipContext",
+      "type": "object"
+    },
+    "Meta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "pagination": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pagination"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "request_id"
+      ],
+      "title": "Meta",
+      "type": "object"
+    },
+    "Pagination": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "total_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Count"
+        }
+      },
+      "required": [
+        "limit",
+        "next_cursor",
+        "total_count"
+      ],
+      "title": "Pagination",
+      "type": "object"
+    },
+    "StoreContext": {
+      "additionalProperties": false,
+      "properties": {
+        "store_id": {
+          "format": "uuid",
+          "title": "Store Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "timezone": {
+          "title": "Timezone",
+          "type": "string"
+        },
+        "currency": {
+          "title": "Currency",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "OWNER",
+            "STAFF"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "membership_id": {
+          "format": "uuid",
+          "title": "Membership Id",
+          "type": "string"
+        },
+        "authorization_version": {
+          "title": "Authorization Version",
+          "type": "string"
+        },
+        "active": {
+          "const": true,
+          "default": true,
+          "title": "Active",
+          "type": "boolean"
+        },
+        "server_now": {
+          "format": "date-time",
+          "title": "Server Now",
+          "type": "string"
+        },
+        "as_of_date": {
+          "format": "date",
+          "title": "As Of Date",
+          "type": "string"
+        },
+        "membership": {
+          "$ref": "#/$defs/MembershipContext"
+        },
+        "permission_catalog_version": {
+          "const": "permissions-v2",
+          "default": "permissions-v2",
+          "title": "Permission Catalog Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "store_id",
+        "name",
+        "timezone",
+        "currency",
+        "role",
+        "membership_id",
+        "authorization_version",
+        "server_now",
+        "as_of_date",
+        "membership"
+      ],
+      "title": "StoreContext",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/StoreContext"
+    },
+    "meta": {
+      "$ref": "#/$defs/Meta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "Envelope[StoreContext]",
+  "type": "object"
+}
