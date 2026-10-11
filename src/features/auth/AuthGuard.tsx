@@ -1,0 +1,40 @@
+import { Navigate, Outlet, useLocation } from 'react-router'
+import { LoginPage } from '../../pages/login/LoginPage'
+import { useAuth } from './auth.context'
+import './SessionFeedback.css'
+
+export function SessionFeedback({ title, message, onRetry }: { title: string; message?: string; onRetry?: () => void }) {
+  return <main className="session-feedback" lang="vi" aria-busy={!message && !onRetry}>
+    <h1>{title}</h1>
+    {message && <p role="alert">{message}</p>}
+    {onRetry && <button type="button" onClick={onRetry}>Thử lại</button>}
+  </main>
+}
+
+function BootstrapState() {
+  const { state, refresh } = useAuth()
+  return state.status === 'error'
+    ? <SessionFeedback title="Không kiểm tra được phiên đăng nhập" message={state.message} onRetry={() => { void refresh() }} />
+    : <SessionFeedback title="Đang kiểm tra phiên đăng nhập…" />
+}
+
+// Central UX guard; server authorization remains mandatory on every request.
+export function AuthGuard() {
+  const { state } = useAuth()
+  const location = useLocation()
+  if (state.status === 'bootstrapping' || state.status === 'error') return <BootstrapState />
+  if (state.status === 'unauthenticated') return <Navigate to="/login" replace state={{ from: location.pathname + location.search + location.hash }} />
+  return <Outlet />
+}
+
+export function LoginRoute() {
+  const { state } = useAuth()
+  const location = useLocation()
+  if (state.status === 'bootstrapping' || state.status === 'error') return <BootstrapState />
+  if (state.status === 'authenticated') {
+    const from: unknown = location.state?.from
+    const target = typeof from === 'string' && /^\/(?:inventory|menu|imports)(?:[/?#]|$)/.test(from) ? from : '/imports'
+    return <Navigate to={target} replace />
+  }
+  return <LoginPage />
+}

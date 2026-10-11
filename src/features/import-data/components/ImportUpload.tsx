@@ -10,9 +10,11 @@ import './ImportUpload.css'
 interface ImportUploadProps {
   files: File[]
   onFilesChange: (files: File[]) => void
+  disabled?: boolean
+  uncertainFiles?: boolean
 }
 
-export function ImportUpload({ files, onFilesChange }: ImportUploadProps) {
+export function ImportUpload({ files, onFilesChange, disabled = false, uncertainFiles = false }: ImportUploadProps) {
   const id = useId()
   const inputRef = useRef<HTMLInputElement>(null)
   const pickerRef = useRef<HTMLButtonElement>(null)
@@ -22,6 +24,7 @@ export function ImportUpload({ files, onFilesChange }: ImportUploadProps) {
   const [notice, setNotice] = useState('')
 
   function addFiles(incoming: File[]) {
+    if (disabled) return
     if (!incoming.length) return
     const next = [...files, ...incoming]
     const validationError = validateImportFiles(next)
@@ -66,6 +69,7 @@ export function ImportUpload({ files, onFilesChange }: ImportUploadProps) {
       <button
         ref={pickerRef}
         type="button"
+        disabled={disabled}
         className={`import-upload__dropzone${dragging ? ' import-upload__dropzone--active' : ''}`}
         aria-label="Kéo thả file ở đây hoặc chọn file từ thiết bị"
         aria-controls={`${id}-picker`}
@@ -88,6 +92,7 @@ export function ImportUpload({ files, onFilesChange }: ImportUploadProps) {
         type="file"
         accept={importFileAccept}
         multiple
+        disabled={disabled}
         hidden
         aria-label="Chọn file dữ liệu"
         aria-describedby={`${id}-limits ${id}-local`}
@@ -100,16 +105,17 @@ export function ImportUpload({ files, onFilesChange }: ImportUploadProps) {
       <p id={`${id}-limits`} className="import-upload__limits">
         Phần mở rộng .csv hoặc .xlsx · Tối đa {importFileLimits.count} file/lô · {formatImportFileSize(importFileLimits.perFileBytes)}/file · {formatImportFileSize(importFileLimits.totalBytes)} tổng dung lượng trước giải nén/lô
       </p>
-      <p id={`${id}-local`} className="import-upload__local">Kiểm tra toàn bộ danh sách chọn cục bộ. File chưa được tải lên hoặc xác minh nội dung.</p>
+      <p id={`${id}-local`} className="import-upload__local">{uncertainFiles ? 'Các file có thể đã được máy chủ nhận. Giữ nguyên yêu cầu và dùng nút thử lại để xác định kết quả.' : 'Kiểm tra sơ bộ danh sách chưa tải. Máy chủ quyết định nhận từng file và hạn mức của toàn lô.'}</p>
       {error && <p className="import-upload__error" role="alert">Không thêm file. {error}</p>}
       <p className="import-upload__notice" role="status">{notice}</p>
 
       <section className="import-upload__files" aria-labelledby={`${id}-files-title`}>
         <div className="import-upload__files-heading">
-          <h2 id={`${id}-files-title`}>File đã thêm <span>({files.length})</span></h2>
+          <h2 id={`${id}-files-title`}>{uncertainFiles ? 'File chờ xác định kết quả' : 'File chưa tải'} <span>({files.length})</span></h2>
           {files.length > 0 && (
             <button
               type="button"
+              disabled={disabled}
               className="import-upload__clear"
               onClick={() => {
                 onFilesChange([])
@@ -131,9 +137,9 @@ export function ImportUpload({ files, onFilesChange }: ImportUploadProps) {
                 <span className="import-upload__file-icon" aria-hidden="true">▤</span>
                 <div className="import-upload__file-info">
                   <p className="import-upload__filename">{file.name}</p>
-                  <p className="import-upload__file-size">{formatImportFileSize(file.size)}</p>
+                  <p className="import-upload__file-size">{formatImportFileSize(file.size)} · {uncertainFiles ? 'Chưa xác định kết quả' : 'Chỉ trên thiết bị'}</p>
                 </div>
-                <button type="button" className="import-upload__remove" aria-label={`Bỏ file ${file.name}`} onClick={() => removeFile(index)}>
+                <button type="button" disabled={disabled} className="import-upload__remove" aria-label={`Bỏ file ${file.name}`} onClick={() => removeFile(index)}>
                   Bỏ
                 </button>
               </li>

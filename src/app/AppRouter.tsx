@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router'
 import { AppShell } from '../layouts/app-shell/AppShell'
-import { LoginPage } from '../pages/login/LoginPage'
+import { AuthGuard, LoginRoute } from '../features/auth/AuthGuard'
+import { StoreGate, StoreProvider } from '../features/store/StoreProvider'
 import { ImportHistoryPage } from '../pages/import-history/ImportHistoryPage'
 import { ImportPage } from '../pages/imports/ImportPage'
 import { ImportWorkspace } from '../pages/imports/ImportWorkspace'
@@ -16,13 +17,15 @@ export function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/login" replace />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route element={<AppShell />}>
-        <Route path="/inventory" element={<InventoryPage />} />
-        <Route path="/menu" element={<MenuPage />} />
-        <Route path="/imports" element={<ImportWorkspace />}>
-          <Route index element={<ImportPage />} />
-          <Route path="history" element={<ImportHistoryPage />} />
+      <Route path="/login" element={<LoginRoute />} />
+      <Route element={<AuthGuard />}>
+        <Route element={<StoreProvider><StoreGate><AppShell /></StoreGate></StoreProvider>}>
+          <Route path="/inventory" element={<InventoryPage />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/imports" element={<ImportWorkspace />}>
+            <Route index element={<ImportPage />} />
+            <Route path="history" element={<ImportHistoryPage />} />
+          </Route>
         </Route>
       </Route>
       <Route path="/import-history" element={<LegacyImportHistoryRedirect />} />

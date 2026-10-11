@@ -6,35 +6,44 @@ ID: `#002` · Created: 10/10/2026 · Baseline: Milestone 03
 
 Track evidence-backed work required before staging acceptance, production or deeper integration. This register does not authorize implementation or add a feature wishlist.
 
-Existing: Login-local validation, AppShell, local Import selection/HDSD, H01/H02, read-only Kho V01–V04 and Menu/Recipe P01/P02 boundaries. Real auth, upload and backend HTTP integration remain unverified; completed foundations are not missing work.
+Existing: FE A01/A03/A04 session/bootstrap/CSRF and API AuthGuard, T01/T02 boundary with single-default Store resolution, AppShell, Import Batch I01/I02/I04/I03 with local selection/HDSD, H01/H02, read-only Kho V01–V04 and Menu/Recipe P01/P02 boundaries. Auth/Store FE plumbing and Import mechanics are implemented; actual compatible BE routes, live/staging/production acceptance and Store selection UI remain outstanding. Completed foundations are not reopened as missing work.
 
-Authority: [handoff README](../api-contract-v1/README_VI.md) → [V1 aggregate §1](../api-contract-v1/SHELFCASH_API_CONTRACT_V1_VI.md#authority) → root [AUTH current V1](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-v1) / [IMP](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md). Historical references/MagicPath do not override V1. FE/BE must use the same handoff version; design review/interception is not live HTTP evidence.
+Authority: [handoff README](../api-contract-v1/README_VI.md) → [V1 aggregate §1](../api-contract-v1/SHELFCASH_API_CONTRACT_V1_VI.md#authority) → root [AUTH current V1](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-v1) / [IMP](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md), followed by the accepted [Import Batch mechanics/evidence supplement](../api-contract-v1/IMPORT_BATCH_MECHANICS_RESPONSE_VI.md). Historical references/MagicPath do not override V1. The supplement's §9.1a backlink is missing from this canonical snapshot; accepted receipt-set clarification is additive, with no behavior conflict identified. FE/BE must use the same handoff version; design review/interception is not live HTTP evidence.
 
 `BLOCKED_BY_BE` means awaiting verified contract-compatible endpoints, not a new claim about an external server outage. Staging infrastructure requirements below are project operational requirements, not a V1 hosting topology.
 
 ## A. Authentication & route protection
 
-Status: `BLOCKED_BY_BE` · Owner: FE + BE · Required before: authenticated staging acceptance and production.
+Status: `FE_FOUNDATION_IMPLEMENTED / LIVE_ACCEPTANCE_BLOCKED_BY_BE` · Owner: FE + BE · Required before: authenticated staging acceptance and production.
 
-Why: `/imports`, `/imports/history`, `/inventory` and `/menu` are intentionally unprotected for FE development; Login does not send credentials. Production must not ship this state.
+Implemented FE: A01 sends the canonical email/password/remember-me body; successful A03 is authentication authority after login and refresh. AuthProvider owns in-memory user/session/CSRF and explicit loading/authenticated/unauthenticated/error states. API AuthGuard wraps StoreGate and AppShell for `/imports`, `/imports/history`, `/inventory` and `/menu`. Unresolved sessions never render protected content. Mock is a distinct labeled DEV-only preview without session/CSRF and cannot be enabled in a production build.
 
-What remains: Integrate A01 login, A03 bootstrap and A04 logout; T01/T02 are covered in B. Place AuthGuard/ProtectedRoute **outside AppShell** after session resolution. Use opaque Secure/HttpOnly cookie sessions, not JWT/localStorage tokens or fake sessions. Preserve existing `credentials: 'include'` / `no-store`. Authenticated mutations use session-bound CSRF from A01/A03; all browser mutations require Origin checks, but pre-session login needs no CSRF token. Handle logout's 204 outside the JSON-only helper.
+Shared HTTP includes cookies/no-store, session-owned mutation CSRF, canonical errors/request references and protected401 notification. Import consumes the prepared session token source. Missing CSRF fails before fetch; pre-session A01 and GET do not require mutation CSRF. A04 uses a bodyless HTTP204 boundary, then clears FE session/Store. Failed logout remains visible without claiming server revocation. Login `INVALID_CREDENTIALS` does not trigger global redirects. No token storage, bearer token, fake/public/env token, automatic token renewal or mutation replay.
+
+Readiness audit, 11/10/2026:
+
+- A01 `/api/v1/auth/login`, A03 `/api/v1/auth/me` and A04 `/api/v1/auth/logout`: `CONTRACT_ONLY`; current AUTH introduction explicitly says auth/business HTTP absent, and §5 lists credentials/session/public routes/OpenAPI/security acceptance as implementation backlog.
+- T01 `/api/v1/stores` and T02 `/api/v1/stores/{store_id}`: `CONTRACT_ONLY`; aggregate references only internal membership/Store persistence, not public route implementation or current authorization enforcement.
+- CSRF issuance, opaque HttpOnly session cookie, credentialed CORS and Origin checks: `CONTRACT_ONLY`; AUTH §1 defines them and §5 states acceptance has not run. No supported backend capability is classified `IMPLEMENTED` or `VERIFIED`.
+- This FE checkout has no backend source/OpenAPI/server configuration; no obvious ShelfCash backend sibling checkout was found on Desktop and no listener existed on configured local port8000 at audit time. Historical health-only evidence and Import supplement's assumed valid Auth do not establish current readiness. Actual live acceptance is `BLOCKED`; this is not a claim that an identified external backend is down.
+
+What remains: Supply compatible real A01/A03/A04/T01/T02 and security/session implementation, then verify login→A03→T02 plus one safe authenticated GET. Verify Secure/HttpOnly/SameSite=Lax/Path=/ with no Domain, real CSRF issuance/rotation, current grants/revocation, exact Origin enforcement and credentialed CORS/header allowlists. Local development needs HTTPS or explicit backend loopback cookie policy; FE does not weaken production cookie rules or fabricate Origin. A04 must return204 without a body. Do not declare live login/logout ready from controlled-response tests.
 
 Validation / Definition of Done: Real login, refresh/bootstrap, expiry and logout (including expired session) work; unauthenticated deep links are blocked without redirect loops; Origin/CSRF failures and rotation match V1; no secrets persist in FE storage/logs.
 
-Evidence: [LoginForm](../src/features/auth/LoginForm.tsx), [AppRouter](../src/app/AppRouter.tsx), [AppShell](../src/layouts/app-shell/AppShell.tsx), [HTTP helper](../src/shared/http/httpClient.ts); AUTH current V1 [§1 session](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-session), [§3 routes](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-routes), [§5 acceptance](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-acceptance).
+Evidence: [AuthProvider](../src/features/auth/AuthProvider.tsx), [AuthGuard](../src/features/auth/AuthGuard.tsx), [Auth boundary](../src/features/auth/auth.data.ts), [LoginForm](../src/features/auth/LoginForm.tsx), [AppRouter](../src/app/AppRouter.tsx), [HTTP helper](../src/shared/http/httpClient.ts); AUTH current V1 [introduction](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-v1), [§1 session](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-session), [§3 routes](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-routes), [§5 acceptance](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-acceptance), [handoff readiness limits](../api-contract-v1/README_VI.md). Guard QA demonstrates FE behavior only.
 
 ## B. Store context
 
-Status: `BLOCKED_BY_BE` · Owner: FE + BE · Required before: real Store-scoped integration and Store switching.
+Status: `FE_SINGLE_STORE_IMPLEMENTED / LIVE_VERIFICATION_BLOCKED / SELECTOR_OUT_OF_SCOPE` · Owner: FE + BE · Required before: real Store-scoped acceptance and separately scoped Store switching.
 
-Why: History, Kho and Menu currently build requests from public `VITE_DEV_STORE_ID`, not authenticated current-Store context. Menu formats timestamps using its response timezone; this is not T02 integration. Kho timestamps are still explicitly UTC-labelled until a real Store timezone is available; date-only snapshot/expiry/effectivity facts remain unchanged.
+Implemented FE: StoreProvider resolves only A03's single accessible default via T02 and exposes narrow current Store ID/timezone/membership context. Import, History, Kho and Menu consume it; environment Store scope has been removed. No Store shows support guidance; multiple Stores/defaultnull remain unresolved without guessing the first T01 page. T01 adapter/validation exists, but this milestone adds no Store switcher. Store selection is local FE scope, not a global session mutation. Kho timestamp formatting uses validated Store timezone when present, with a labeled UTC fixture fallback; History/Menu retain their response timezone semantics and date-only facts are unchanged.
 
-What remains: Replace the development scope with A03/T01/T02 accessible-Store selection and timezone/currency/business date/membership context. Selection is local FE context, not a global session mutation. Scope requests/data and any future cache by Store ID; cancel/reset old requests, cursors and Import selections on switch. No cache/global-state library is implied.
+What remains: Verify real A03/T01/T02, current membership/grants and Store timezone/currency/date against the same backend contract. Separately design and implement explicit multi-Store selection, including full list pagination, old request cancellation and resetting feature selections/cursors on switch. Do not freeze Store into a session or add environment fallback. No cache/global-state library is implied.
 
 Validation / Definition of Done: Zero/one/multiple accessible Store flows work; no-Store login shows support guidance. Switching during a pending request cannot display the previous Store's results or reuse its selections/cursors; separate tabs can select different Stores. Inaccessible scope and denied actions retain V1 404/403 behavior.
 
-Evidence: [config](../src/app/config.ts), [History data boundary](../src/features/import-history/importHistory.data.ts), [History page](../src/pages/import-history/ImportHistoryPage.tsx), [ImportWorkspace](../src/pages/imports/ImportWorkspace.tsx); AUTH current V1 [§3 T01/T02 and selection](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-routes).
+Evidence: [StoreProvider](../src/features/store/StoreProvider.tsx), [Store boundary](../src/features/store/store.data.ts), [Store validation](../src/features/store/store.validation.ts), [History data boundary](../src/features/import-history/importHistory.data.ts), [History page](../src/pages/import-history/ImportHistoryPage.tsx), [ImportWorkspace](../src/pages/imports/ImportWorkspace.tsx); AUTH current V1 [§3 T01/T02 and selection](../api-contract-v1/AUTHORIZATION_CONTRACT_VI.md#auth-routes).
 
 ## C. Staging environment
 
@@ -52,11 +61,11 @@ Evidence: [README development/configuration and integration limitations](../READ
 
 ### C2. Request correlation for integration failures
 
-Status: `TODO` · Owner: FE + BE · Required before: staging troubleshooting/acceptance.
+Status: `FE_REFERENCE_IMPLEMENTED / LIVE_CORRELATION_PENDING` · Owner: FE + BE · Required before: staging troubleshooting/acceptance.
 
-Why: Success History responses validate `meta.request_id`, but `HttpError` does not retain failure metadata/request IDs; live server-log correlation has not been demonstrated.
+Implemented FE: Shared HTTP preserves a validated safe request reference from failure `meta.request_id` for support/error handling. Existing feature response validation is retained. Actual correlation with backend logs has not been demonstrated.
 
-What remains: Preserve a safe backend request reference in the error/support path and correlate it with BE logs. Use V1 `meta.request_id`; additional trace-ID transport needs operational agreement, not an invented field or tracing-platform dependency.
+What remains: Correlate real success/error request references with BE logs. Use V1 `meta.request_id`; additional trace-ID transport needs operational agreement, not an invented field or tracing-platform dependency.
 
 Validation / Definition of Done: A real staging success and error can each be located in BE logs from their request reference without logging passwords, cookies, CSRF tokens or raw uploaded data.
 
@@ -76,34 +85,38 @@ Evidence: [README hosting requirement](../README.md), [BrowserRouter](../src/app
 
 ## E. Import upload contract validation
 
-Status: `TODO` · Owner: FE + BE · Required before: real I02 integration and production upload UI.
+Status: `FE_IMPLEMENTED / LIVE_VERIFICATION_PENDING` · Owner: FE + BE · Required before: staging/production acceptance; depends on A/B/C.
 
-Why: Root V1 **confirms all four values**: CSV/XLSX only; maximum **20 files per batch, 20 MiB per file, 100 MiB total compressed bytes per batch** (IMP §6, lines 271–275; I02 sniffing at §9.1, line 462). No value is awaiting numeric contract agreement.
+Resolved: Root V1 confirms CSV/XLSX, 20 accepted logical files/batch, 20 MiB/file and 100 MiB accepted source bytes/batch. Accepted mechanics now settle multiple I02 calls into one draft, ordered partial admission, rejected files consuming no accepted quota and opaque evidence/receipt-set revisions. These are no longer BE clarification blockers. Content dedup does not merge logical files or release quota; no remove/replace/DELETE/quota-release workflow exists.
 
-Current FE validation (completed): Picker and drop share prospective local batch selection checks: existing selected files + incoming files, with inclusive count/per-file/total limits. Total sums source `File.size` (compressed/stored bytes, not expanded XLSX). Any invalid addition is rejected atomically without changing the previous selection. Errors/UI explicitly describe filename extensions; suffixes do not prove valid contents. No real batch, upload, server acceptance or persistent batch state exists.
+Implemented FE: Picker/drop retain prospective local-selection checks and preserve the old selection on invalid additions. Explicit I01 uses only `data_date`, then I04 establishes canonical state before paired multipart I02. Every result is shown: 200 can be partial; all-rejected 422 `UPLOAD_REJECTED` commits receipts/revisions and is distinct from request-level 422. I04 is refreshed after receipts, and required whole-batch quota/source_set/actions remain independent of file pagination. Accepted files are immutable in the UI; local files remain removable before submission. No unspecified `files_limit` is sent. Runtime validators cover envelopes, I01/I02/I03/I04, receipts, quota, pagination, UUIDs and opaque versions.
 
-What remains (deferred I01/I02 integration): Enforce canonical server batch truth across actual upload calls, including files already accepted by the backend, not only files currently held in FE memory or the incoming request. Integrate server content/format sniffing, parser/resource-limit errors and real per-item receipts; align the preliminary extension policy with BE sniffing. Local atomic-add rejection is not I02 per-item acceptance. Do not simulate this with fake batch IDs/counts/server state or localStorage persistence.
+Retry/state: Exact UUID key/client IDs/order/filenames/File bytes remain in memory for uncertain retry; no automatic new-key duplicate upload. I04 reconciles canonical state after outcomes/conflicts. Local remaining quota is advisory; concurrent activity can change admission. A deterministic contract-shaped mock adapter exists only for labeled UI/QA, isolated to the mounted workspace with no HTTP, hidden persistence or worker. API never falls back to it.
 
-Validation / Definition of Done: Picker/drop preserve inclusive count/byte boundaries and accurate copy; staging verifies server sniffing, cumulative batch limits and resource-limit errors, including expanded XLSX/sheet/row/column limits. No browser canonicalization, fabricated constraints or filename-based identity.
+What remains: FE session-owned CSRF/current Store are wired; compatible real Auth/Store and local/staging I01/I02/I04/I03 remain to be verified against the same handoff version. The supplement reports targeted BE tests but FE controlled responses do not independently verify those routes. Exercise actual sniffing, cumulative count/bytes, partial/all-rejected, response loss/503, authorization, stale pages and near-limit transport/resource failures. Expanded-XLSX/sheet/row/column parser guards remain separate analysis limits, not FE upload quota. Production/load verification is still open.
 
-Evidence: [file checks](../src/features/import-data/importData.files.ts), [ImportUpload](../src/features/import-data/components/ImportUpload.tsx), [ImportWorkspace](../src/pages/imports/ImportWorkspace.tsx), [ImportPage](../src/pages/imports/ImportPage.tsx); IMP [§6 supported inputs/limits](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#schemas), [§9.1 upload](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#wire).
+Validation / Definition of Done: Real authenticated staging evidence proves accepted quota across repeated calls, independent paginated receipts, no duplicate quota on same-intent retry and immediate seal lock; request-level errors do not masquerade as committed receipts. FE boundary/browser QA proves handling only and cannot close live verification. Final local check results belong in the architecture validation record.
+
+Evidence: [data boundary](../src/features/import-data/importData.data.ts), [runtime validation](../src/features/import-data/importData.validation.ts), [workflow](../src/features/import-data/importData.workflow.ts), [file checks](../src/features/import-data/importData.files.ts), [batch UI](../src/features/import-data/components/ImportBatchPanel.tsx), [ImportWorkspace](../src/pages/imports/ImportWorkspace.tsx); IMP [§6](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#schemas), [§9.1](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#wire), accepted [mechanics supplement](../api-contract-v1/IMPORT_BATCH_MECHANICS_RESPONSE_VI.md).
 
 ## F. Real Import workflow
 
-Status: `BLOCKED_BY_BE` · Owner: FE + BE · Required before: enabling real upload/processing; depends on A/B/E.
+Status: `I01_I02_I04_I03_FE_IMPLEMENTED / NEXT_SCOPE_PENDING` · Owner: FE + BE · Required before: complete Import business workflow; depends on A/B/E and separately assigned mapping/preview/commit work.
 
-Why: Current Import only selects files/date locally; processing is disabled. No real batches, uploads, mappings or writes exist in this UI.
+Implemented scope: Current Import uses the existing MagicPath `ShelfCashDataImportScreen` processing CTA (component `458395069779681280`, revision `458401934337019904`, read-only reference). I03 prepares a coherent complete read set, requires explicit accepted/rejected scope acknowledgment and sends current quoted `If-Match`, `file_set_version`, full accepted IDs and all rejected client IDs. Pages from different revisions/versions are discarded. A 412 refreshes I04 and requires confirmation to be reconstructed. Response202 seals immediately; analysis failure never reopens upload. API polls I04 read-only, while mock ends at accepted analyzing. No mapping/preview/commit/completion is implied by analysis acceptance.
+
+Memory/resume limitation: Batch identity, selection/date and exact retry intent survive Import ↔ History only. Refresh or leaving the workspace destroys them; no canonical active-draft resume route is defined in the current UX. Do not invent localStorage receipts, resumed batches or new retry identities after refresh. A later resume milestone must use an explicitly defined canonical mechanism and authoritative I04 reconciliation.
 
 What remains:
 
-- I01–I04: create a draft with required business-context date; multipart upload with paired client-file identities and per-item receipts; acknowledge rejected files and seal the accepted set for analysis; inspect server state/revisions/allowed actions. Add only the multipart transport actually needed; the current HTTP helper is JSON-only.
+- Live Auth/Store and authenticated acceptance for the implemented I01/I02/I04/I03 flow; FE AuthProvider/AuthGuard/Store context now exist. No remaining semantic blocker about batch accumulation/admission/revisions. Store switcher and canonical writers remain absent.
 - M01–M04: typed summary/issues/options and proposal edits; separate Owner-only profile decisions (N5), never treat M04 resolution as activation or commit permission.
 - I05/I06: server-bound immutable preview, explicit confirmation/reasons/resolutions and atomic commit with CAS/idempotent retry/reconciliation; show completion only from durable committed/no-changes receipts and refetch affected resources afterward.
-- R01/J01: real typed readiness (blocked ≠ unknown) and server-paced job polling/terminal errors. HTTP 202 or a failed-job HTTP 200 is not successful import completion.
+- R01/J01: deeper typed readiness (blocked ≠ unknown), retained job diagnostics/terminal errors and subsequent workflow. Current I04 analysis polling does not implement a J01 job screen. HTTP202 or a failed-job HTTP200 is not successful canonical import completion.
 
 Validation / Definition of Done: Staging exercises success/no-change, rejected input, unresolved mapping, denied rights, stale previews/revisions and failed jobs/retries without duplicate or partial writes. IDs/results/readiness come from BE; no fake success, batches or mapping, client domain engine or automatic planning.
 
-Evidence: [ImportPage](../src/pages/imports/ImportPage.tsx), [ImportWorkspace](../src/pages/imports/ImportWorkspace.tsx), [JSON HTTP helper](../src/shared/http/httpClient.ts); IMP [§§2–3 flow/routes](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#flow), [§5 profile authority](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#mapping), [§9 wire contracts](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#wire), [§10 concurrency/rights](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#security), [§11 completion](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#errors), [§14 R01 / §14.5 J01](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#readiness-v1).
+Evidence: [ImportPage](../src/pages/imports/ImportPage.tsx), [ImportWorkspace](../src/pages/imports/ImportWorkspace.tsx), [workflow](../src/features/import-data/importData.workflow.ts), [JSON/multipart HTTP helper](../src/shared/http/httpClient.ts); IMP [§§2–3 flow/routes](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#flow), [§5 profile authority](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#mapping), [§9 wire contracts](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#wire), [§10 concurrency/rights](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#security), [§11 completion](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#errors), [§14 R01 / §14.5 J01](../api-contract-v1/IMPORT_MAPPING_API_CONTRACT_VI.md#readiness-v1).
 
 ## G. Import History integration maturity
 
@@ -121,7 +134,7 @@ Evidence: [History data](../src/features/import-history/importHistory.data.ts), 
 
 Status: `BLOCKED_BY_BE` · Owner: FE + BE · Required before: permission-sensitive product actions and Owner/Staff workflow release.
 
-Why: Current shell has no real membership/grant context. V1 defines Owner authority only within the current Store and Staff's explicit current grants; hiding UI is UX, never authorization enforcement.
+Why: T02 membership/effective-permission context is wired in the FE, but actual backend current-grant enforcement and revocation remain unverified. V1 defines Owner authority only within the current Store and Staff's explicit current grants; hiding UI is UX, never authorization enforcement.
 
 What remains: Drive navigation/interactions from T02 current effective permissions and server action/state responses; handle changed/revoked grants. Use Owner-only N12 catalogue/descriptors for the separately scoped Staff-grant/audit UI; integrate V1 invitation/acceptance workflows. BE enforces every read/retry/mutation/commit; no fake grants, implicit permission expansion, shared Owner key or one-time bypass.
 
@@ -141,7 +154,7 @@ Status: `BLOCKED_BY_BE` · Owner: FE + BE · Required before: declaring Kho stag
 
 Why: Kho FE foundation implements read-only V01–V04 models/boundary/runtime validation, deterministic fixtures, status/search, lot and movement evidence with snapshot-aware pagination. Root Inventory V1 is reviewed design only; internal reads and intercepted browser QA are not verified public HTTP. Location explicitly remains unsupported, not an unfinished warehouse selector.
 
-What remains: Verify real authenticated V01–V04 with both inventory.read and ingredient.read, live Store timezone/context, cost redaction/current grants, optimistic snapshot rollover and cursor scope. Replace temporary UTC-labelled timestamp presentation with real Store-timezone formatting (do not change business dates). Verify exact decimals, physical vs usable/completeness, null threshold/counts, date boundaries and inactive ingredients against staging. On expired snapshots reload the whole read set; never silently fall back to fixtures or merge revisions. V03 sort is left unspecified to use the canonical default; do not infer extra query filters from terse contract notation.
+What remains: Verify real authenticated V01–V04 with both inventory.read and ingredient.read, current Store context, cost redaction/current grants, optimistic snapshot rollover and cursor scope. FE timestamp formatting now accepts validated Store timezone; verify its real T02 value and keep date-only facts unchanged. Verify exact decimals, physical vs usable/completeness, null threshold/counts, date boundaries and inactive ingredients against staging. On expired snapshots reload the whole read set; never silently fall back to fixtures or merge revisions. V03 sort is left unspecified to use the canonical default; do not infer extra query filters from terse contract notation.
 
 Inventory mutation workflows (N6 receipts/opening stock, N8 Owner threshold setting, import count) require separately assigned integration/design work and verified backend atomic/audit/CAS semantics. No writer, fake stock adjustment, local batch/server state, FEFO execution, procurement or AI generation is implemented. AI capability scope remains NEEDS_REVIEW; disabled presentation is not capability evidence.
 
@@ -155,7 +168,7 @@ Status: `BLOCKED_BY_BE` · Owner: FE + BE · Required before: declaring Menu sta
 
 Why: Read-only Menu FE foundation implements P01/P02 models, boundary/runtime validation, deterministic fixtures, name/status query, cursor navigation and product/current-recipe panel. Root CAT is DESIGN ONLY; fixtures and intercepted QA do not verify public HTTP or current permissions. The Menu→Kho action is disabled: existing Inventory routing does not consume the canonical ingredient-ID set, and real inventory grants are not wired. It must not open an unfiltered Kho as if it showed this recipe's ingredients.
 
-What remains: Verify real authenticated P01 menu.read including retail price and count availability/redaction; P02 requires menu.read + recipe.read + ingredient.read, with whole-response denial if any are missing. Verify Store timezone/date, canonical decimals/units, current inclusive recipe selection, missing/empty recipes, inactive ingredient metadata, null/zero price, full-name search scope, filtered total_count and Store-wide summary. Verify keyset cursor scope/409 LIST_VERSION_CHANGED and list/detail version/date coherence, not an invented P02 snapshot query. Replace public development Store scope with real A03/T01/T02 context; do not remove existing Kho timezone debt.
+What remains: Verify real authenticated P01 menu.read including retail price and count availability/redaction; P02 requires menu.read + recipe.read + ingredient.read, with whole-response denial if any are missing. Verify Store timezone/date, canonical decimals/units, current inclusive recipe selection, missing/empty recipes, inactive ingredient metadata, null/zero price, full-name search scope, filtered total_count and Store-wide summary. Verify keyset cursor scope/409 LIST_VERSION_CHANGED and list/detail version/date coherence, not an invented P02 snapshot query. FE current Store plumbing is complete; actual A03/T02 and Kho timezone verification remain open.
 
 Separately scoped integration: Menu→Kho must use canonical repeated ingredient_id UUIDs with V01/missing_ingredient_ids handling and real inventory.read + ingredient.read; never infer stock zero or permissions from reading a recipe. No Inventory calls or availability calculations belong in P02. N20–N22 scheduling/timeline/preview/commit is already designed in CAT §12, but not implemented in this read-only MagicPath milestone: it needs an explicit UI workflow and verified future-only atomic/CAS/idempotency/audit backend, not local saved edits or generic CRUD. AI remains NEEDS_REVIEW, not an inferred capability.
 

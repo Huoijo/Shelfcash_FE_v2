@@ -14,15 +14,15 @@ export const historySource = {
   label: config.dataSource === 'mock' ? 'Dữ liệu minh họa · Tháng 10/2026' : 'Dữ liệu từ máy chủ',
 }
 
-function historyPath(suffix: string, params: CalendarRequest | HistoryRequest): string {
-  if (!config.devStoreId) {
-    throw new Error('Chưa có Store để đọc lịch sử. Cấu hình VITE_DEV_STORE_ID khi kiểm tra API; quyền truy cập vẫn do máy chủ xác minh.')
+function historyPath(storeId: string | null, suffix: string, params: CalendarRequest | HistoryRequest): string {
+  if (!storeId || !/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/.test(storeId)) {
+    throw new Error('Chưa có Store hợp lệ từ phiên làm việc để đọc lịch sử.')
   }
   const query = new URLSearchParams()
   Object.entries(params).forEach(([key, value]) => {
     if (value !== undefined && value !== '') query.set(key, String(value))
   })
-  return `/api/v1/stores/${config.devStoreId}/imports${suffix}?${query}`
+  return `/api/v1/stores/${storeId}/imports${suffix}?${query}`
 }
 
 function waitForFixture(signal: AbortSignal): Promise<void> {
@@ -45,9 +45,9 @@ function matches(row: ImportHistoryRow, filters: HistoryFilters): boolean {
   return statusMatches && fileMatches
 }
 
-export async function getImportCalendar(params: CalendarRequest, signal: AbortSignal): Promise<CalendarResponse> {
+export async function getImportCalendar(params: CalendarRequest, signal: AbortSignal, storeId: string | null): Promise<CalendarResponse> {
   if (config.dataSource === 'api') {
-    const response = await requestJson<unknown>(config.apiBaseUrl, historyPath('/calendar', params), { signal })
+    const response = await requestJson<unknown>(config.apiBaseUrl, historyPath(storeId, '/calendar', params), { signal })
     return validateCalendar(response, params.month)
   }
   await waitForFixture(signal)
@@ -68,9 +68,9 @@ export async function getImportCalendar(params: CalendarRequest, signal: AbortSi
   }
 }
 
-export async function getImportHistory(params: HistoryRequest, signal: AbortSignal): Promise<HistoryResponse> {
+export async function getImportHistory(params: HistoryRequest, signal: AbortSignal, storeId: string | null): Promise<HistoryResponse> {
   if (config.dataSource === 'api') {
-    const response = await requestJson<unknown>(config.apiBaseUrl, historyPath('', params), { signal })
+    const response = await requestJson<unknown>(config.apiBaseUrl, historyPath(storeId, '', params), { signal })
     return validateHistory(response)
   }
   await waitForFixture(signal)

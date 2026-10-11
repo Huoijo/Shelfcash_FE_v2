@@ -136,13 +136,53 @@
   line-height: 26px;
 }
 
-.auth-form__primary-button:hover {
+.auth-form__primary-button:not(:disabled):hover {
   background: #404040;
   border-color: #404040;
 }
 
-.auth-form__primary-button:active {
+.auth-form__primary-button:not(:disabled):active {
   background: #171717;
+}
+
+.auth-form__primary-button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.auth-form__input-shell input:disabled {
+  color: #777777;
+  background: #fafafa;
+  cursor: not-allowed;
+}
+
+.auth-form__password-toggle:disabled,
+.auth-form__remember input:disabled {
+  cursor: not-allowed;
+}
+
+.auth-form__request-error,
+.auth-form__preview {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  color: #444444;
+  background: #fafafa;
+  font-size: 13px;
+  line-height: 22px;
+  overflow-wrap: anywhere;
+}
+
+.auth-form__preview a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.auth-form__preview a:focus-visible {
+  outline: 2px solid #666666;
+  outline-offset: 3px;
 }
 
 .auth-form__support,

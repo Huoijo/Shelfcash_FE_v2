@@ -28,9 +28,17 @@ export function formatInventoryDate(value: string | null): string {
   return value === null ? 'Chưa xác định' : value.split('-').reverse().join('/')
 }
 
-export function formatInventoryTimestamp(value: string | null): string {
+export function formatInventoryTimestamp(value: string | null, timezone?: string | null): string {
   if (value === null) return 'Chưa xác định'
-  // V01 meta does not supply a Store timezone. Label UTC; never use browser time.
+  if (timezone) {
+    const parts = new Intl.DateTimeFormat('vi-VN', {
+      timeZone: timezone, day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
+    }).formatToParts(new Date(value))
+    const part = (name: Intl.DateTimeFormatPartTypes) => parts.find((item) => item.type === name)?.value
+    return `${part('day')}/${part('month')}/${part('year')} ${part('hour')}:${part('minute')}:${part('second')} (${timezone})`
+  }
+  // Explicit mock/no-context fallback, never the browser's implicit timezone.
   return `${value.slice(0, 10).split('-').reverse().join('/')} ${value.slice(11, 19)} UTC`
 }
 

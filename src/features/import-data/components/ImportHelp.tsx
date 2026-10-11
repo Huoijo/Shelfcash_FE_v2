@@ -49,7 +49,7 @@ export function ImportHelp({ id, open, onClose }: ImportHelpProps) {
         <section className="import-help__section" aria-labelledby={`${id}-types`}>
           <h3 id={`${id}-types`}>Loại tệp</h3>
           <div className="import-help__file-types"><span>.csv</span><span>.xlsx</span></div>
-          <p>Chỉ chấp nhận tệp có phần mở rộng .csv hoặc .xlsx. Hiện tại, ShelfCash chỉ kiểm tra phần mở rộng, chưa xác minh nội dung tệp.</p>
+          <p>Chỉ chọn tệp có phần mở rộng .csv hoặc .xlsx. Thiết bị kiểm tra sơ bộ; khi tải lên, máy chủ xác minh định dạng và quyết định nhận từng tệp.</p>
         </section>
 
         <section className="import-help__section" aria-labelledby={`${id}-limits`}>
@@ -59,7 +59,7 @@ export function ImportHelp({ id, open, onClose }: ImportHelpProps) {
             <li>Tối đa {formatImportFileSize(importFileLimits.perFileBytes)} mỗi tệp.</li>
             <li>Tổng dung lượng tối đa {formatImportFileSize(importFileLimits.totalBytes)} mỗi lô, tính trước khi giải nén.</li>
           </ul>
-          <p>Áp dụng cho toàn bộ danh sách đang chọn, kể cả các tệp đã chọn trước đó. Nếu lần thêm mới không hợp lệ, danh sách cũ được giữ nguyên.</p>
+          <p>Giới hạn của lô tính tất cả tệp máy chủ đã nhận qua các lần tải. Tệp bị từ chối không dùng hạn mức. Khi chọn cục bộ, lần thêm không hợp lệ giữ nguyên danh sách cũ.</p>
         </section>
 
         <section className="import-help__section" aria-labelledby={`${id}-categories`}>
@@ -87,8 +87,10 @@ export function ImportHelp({ id, open, onClose }: ImportHelpProps) {
         <section className="import-help__section" aria-labelledby={`${id}-after-selection`}>
           <h3 id={`${id}-after-selection`}>Sau khi chọn tệp</h3>
           <p>Kéo thả tệp vào vùng chọn hoặc nhấn để chọn từ thiết bị. Các tệp hiện chỉ được kiểm tra sơ bộ trên thiết bị: phần mở rộng, số lượng và dung lượng.</p>
-          <p>Danh sách chỉ được giữ trong bộ nhớ trình duyệt. Làm mới trang hoặc rời khu vực Nhập dữ liệu sẽ xóa lựa chọn.</p>
-          <p className="import-help__note">Chưa tải tệp lên, tạo lô trên máy chủ hay ghi dữ liệu vào hệ thống. Xác minh nội dung, đối chiếu cột, xem trước và ghi dữ liệu chưa khả dụng; các bước này sẽ được bổ sung khi tích hợp máy chủ.</p>
+          <p>Chọn ngày dữ liệu, rồi nhấn “Tạo lô và tải file”. Mỗi biên nhận cho biết tệp đã nhận hoặc bị từ chối; có thể tải thêm vào cùng lô khi máy chủ cho phép. Tệp đã nhận không thể bỏ hoặc thay thế.</p>
+          <p>“Xử lý dữ liệu” yêu cầu xác nhận tập tệp trước khi khóa và phân tích. Sau khi khóa, muốn bổ sung hoặc đổi tệp phải dùng lô mới.</p>
+          <p>Trạng thái của phiên chỉ giữ trong bộ nhớ trình duyệt. Làm mới hoặc rời khu vực Nhập dữ liệu làm mất lựa chọn và định danh thử lại; không xóa biên nhận trên máy chủ. Sau kết quả chưa xác định, không tải lại như yêu cầu mới.</p>
+          <p className="import-help__note">Nhận tệp hoặc bắt đầu phân tích chưa ghi dữ liệu nghiệp vụ. Đối chiếu cột, xem trước và ghi dữ liệu chưa khả dụng. Chế độ minh họa chỉ phục vụ thử giao diện; kết nối máy chủ cần phiên đăng nhập thật.</p>
         </section>
       </div>
     </dialog>

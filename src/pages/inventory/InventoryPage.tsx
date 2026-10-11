@@ -7,6 +7,7 @@ import { formatInventoryDate, formatInventoryTimestamp } from '../../features/in
 import type { InventoryResponse, InventoryStatus } from '../../features/inventory/inventory.types'
 import { AppShellHeader } from '../../layouts/app-shell/AppShell'
 import { HttpError } from '../../shared/http/httpClient'
+import { useCurrentStore } from '../../features/store/store.context'
 import './InventoryPage.css'
 
 const filters: { value: InventoryStatus | ''; label: string }[] = [
@@ -19,6 +20,7 @@ type LoadState =
   | { status: 'error'; key: string; error: Error }
 
 export function InventoryPage() {
+  const { currentStoreId, timezone } = useCurrentStore()
   const [search, setSearch] = useSearchParams()
   const [retry, setRetry] = useState(0)
   const originRef = useRef<HTMLElement | null>(null)
@@ -26,19 +28,19 @@ export function InventoryPage() {
   const status = filters.find((item) => item.value === search.get('status'))?.value || undefined
   const cursor = search.get('cursor') || undefined
   const ingredientId = search.get('ingredient') || null
-  const key = JSON.stringify([q, status, cursor, retry])
+  const key = JSON.stringify([currentStoreId, q, status, cursor, retry])
   const [state, setState] = useState<LoadState>({ status: 'loading', key })
 
   useEffect(() => {
     const controller = new AbortController()
-    getInventory({ q, status: status ? [status] : undefined, cursor, sort: 'name' }, controller.signal)
+    getInventory({ q, status: status ? [status] : undefined, cursor, sort: 'name' }, controller.signal, currentStoreId)
       .then((response) => {
         if (!controller.signal.aborted) setState({ status: 'success', key, response })
       }).catch((error: unknown) => {
         if (!controller.signal.aborted) setState({ status: 'error', key, error: error instanceof Error ? error : new Error('Không tải được tồn kho.') })
       })
     return () => controller.abort()
-  }, [key, q, status, cursor])
+  }, [key, q, status, cursor, currentStoreId])
 
   const current: LoadState = state.key === key ? state : { status: 'loading', key }
   const invalidateSnapshot = useCallback((error: Error) => {
@@ -76,7 +78,7 @@ export function InventoryPage() {
         <main className="inventory-content" aria-labelledby="inventory-title">
           <header className="inventory-heading">
             <h1 id="inventory-title">Kho</h1>
-            <span>{response ? `Cập nhật: ${formatInventoryTimestamp(response.meta.updated_at)}` : 'Tồn kho hiện tại'}</span>
+            <span>{response ? `Cập nhật: ${formatInventoryTimestamp(response.meta.updated_at, timezone)}` : 'Tồn kho hiện tại'}</span>
           </header>
           <p className="inventory-source">{inventorySource.label}{response && ` · Ngày tồn: ${formatInventoryDate(response.meta.as_of_date)}`}</p>
           {response && <section className="inventory-summary" aria-label="Tóm tắt tồn kho toàn cửa hàng">

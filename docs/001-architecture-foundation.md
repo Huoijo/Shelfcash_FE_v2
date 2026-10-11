@@ -16,7 +16,7 @@
 
 ## 1. General Context (Bối cảnh Tổng quan)
 
-> Cập nhật triển khai 10/10/2026: phần mục tiêu ban đầu bên dưới là bối cảnh lịch sử. Ứng dụng hiện có Login độc lập, workspace Import (chọn file local, HDSD, H01/H02), Kho chỉ đọc (V01–V04) và Menu/công thức chỉ đọc (P01/P02) trong AppShell. Router khai báo, cấu hình môi trường tập trung và HTTP dùng `fetch` được giữ nguyên; chưa tích hợp xác thực, upload hay business backend thật.
+> Cập nhật Milestone07, 11/10/2026: phần mục tiêu ban đầu bên dưới là bối cảnh lịch sử. FE đã có A01→A03 bootstrap, session-owned CSRF, A04/204, Store context và AuthGuard/StoreGate trước AppShell trong API mode. Import Batch I01/I02/I04/I03, HDSD, History H01/H02, Kho V01–V04 và Menu P01/P02 được giữ nguyên phạm vi. Mock preview chỉ dùng trong Vite development, không tạo session giả. Audit hiện có chỉ chứng minh Auth/Store phía BE ở mức CONTRACT_ONLY; live acceptance còn BLOCKED, chưa phải tích hợp backend end-to-end.
 
 Dự án **ShelfCash Frontend (v2)** là phiên bản làm mới hoàn toàn (rebuild from scratch) của hệ thống ShelfCash, bắt đầu từ một repository trống. 
 
@@ -58,8 +58,8 @@ Shelfcash_FE_v2/
 │   ├── main.tsx                           # Điểm khởi chạy React ứng dụng
 │   ├── index.css                          # Reset và nền tảng CSS chung
 │   ├── app/
-│   │   ├── App.tsx                        # Composition root / BrowserRouter
-│   │   ├── AppRouter.tsx                  # Login + /imports + /inventory + /menu; legacy redirect
+│   │   ├── App.tsx                        # Composition root / BrowserRouter + AuthProvider
+│   │   ├── AppRouter.tsx                  # Login public; AuthGuard/StoreGate trước AppShell
 │   │   └── config.ts                     # Kiểm tra public environment config
 │   ├── layouts/app-shell/                # AppShell.tsx + CSS, Sidebar.tsx; Outlet
 │   ├── pages/
@@ -69,15 +69,19 @@ Shelfcash_FE_v2/
 │   │   ├── inventory/                    # InventoryPage.tsx + CSS; composition/URL state
 │   │   └── menu/                         # MenuPage.tsx + CSS; composition/URL state
 │   ├── features/
-│   │   ├── auth/                         # LoginForm.tsx + CSS; chưa gọi auth API
-│   │   ├── import-data/                  # importData.files.ts; ImportUpload/ImportHelp + CSS
+│   │   ├── auth/                         # A01/A03/A04 types/data/validation;
+│   │   │                                 # auth.context, AuthProvider/AuthGuard/LoginForm/SessionActions + CSS
+│   │   ├── store/                        # T01/T02 types/data/validation; store.context, StoreProvider/StoreGate
+│   │   ├── import-data/                  # I01/I02/I04/I03 types/data/validation/fixtures/workflow;
+│   │   │                                 # local file checks; ImportUpload/ImportBatchPanel/ImportHelp
 │   │   ├── import-history/               # H01/H02 types, fixtures, data, validation,
 │   │   │                                 # format và components lịch/danh sách
 │   │   ├── inventory/                    # V01–V04 types/data/validation/format/fixtures;
 │   │   │                                 # components/InventoryTable.tsx, InventoryDetail.tsx
 │   │   └── menu/                         # P01/P02 types/data/validation/format/fixtures;
 │   │                                     # components/MenuTable.tsx, MenuDetail.tsx
-│   └── shared/http/                      # httpClient.ts + http.types.ts
+│   └── shared/http/                      # JSON/multipart/204, session CSRF, protected401, request ID
+├── tests/                                # Focused Import/Auth controlled-response QA + runners
 ├── .env.example                          # Public config mẫu; không chứa secrets
 ├── index.html                             # Template HTML gốc (<title>ShelfCash</title>)
 ├── package.json                           # Khai báo dependency và script thực thi
@@ -115,39 +119,60 @@ graph TD
 1. **`app/` (Application Shell & Infrastructure)**:
    - *Hiện tại:* `main.tsx` chỉ bootstrap React. `app/App.tsx` ghép router; `AppRouter.tsx` khai báo URL; `config.ts` là nơi duy nhất đọc `import.meta.env`.
    - `layouts/app-shell/` sở hữu sidebar, navigation active theo URL, header dùng chung, responsive layout và Outlet; không giữ auth, Store hay logic domain. `/login` ở ngoài shell. `/imports`, `/imports/history`, `/inventory` và `/menu` nằm trong shell; `/import-history` redirect giữ query/hash. Nhập dữ liệu, Kho và Menu có link thật; các mục chưa triển khai vẫn disabled.
-   - Internal routes **tạm thời không bảo vệ để phát triển FE**, không phải cơ chế bảo mật production. AuthGuard tương lai phải nằm **ngoài AppShell**: Router → AuthGuard → AppShell → page; không thêm guard giả lúc này.
+   - API routes dùng Router → AuthGuard → StoreProvider/StoreGate → AppShell → page. Chưa hoàn tất A03 không render protected page hoặc Login flash; `401 UNAUTHENTICATED` chuyển Login, lỗi mạng/protocol có trạng thái retry riêng. Login public chỉ redirect sau canonical bootstrap thành công. Guard FE phục vụ UX, BE vẫn phải enforce mỗi request. Mock có trạng thái `mock_preview` riêng, chỉ trong DEV, không được xem là authenticated hoặc dùng trong production.
 
 2. **`pages/` (Màn hình mức Route)**:
-   - *Hiện tại:* `LoginPage` ghép form có sẵn. `ImportPage` ghép upload UI, ngày dữ liệu local, shortcut History và state mở/đóng HDSD; File mẫu và xử lý dữ liệu vẫn disabled. `ImportWorkspace` giữ File[]/ngày trong React state qua Outlet context khi đi giữa hai trang; không persist, refresh/rời workspace sẽ mất selection, không cần global state library/provider.
+   - *Hiện tại:* `LoginPage` ghép form có sẵn. `ImportPage` ghép lựa chọn file, ngày dữ liệu, upload nhiều lần, biên nhận/hạn mức, CTA “Xử lý dữ liệu” để chuẩn bị/xác nhận I03, shortcut History và HDSD; File mẫu vẫn disabled. `ImportWorkspace` sở hữu một `ImportBatchWorkflow` qua Outlet context, giữ selection/ngày/batch và intent retry chính xác khi đi Import ↔ History. Refresh/rời workspace mất state; không có global ImportProvider, localStorage hoặc route resume giả. API mode đọc I04 định kỳ khi analyzing, không tạo worker hoặc poll giả trong mock.
    - `ImportHistoryPage` quản lý query URL (tháng/ngày/bộ lọc/cursor), local state/effects, hủy request cũ, loading/success/empty/error/retry; ghép lịch và danh sách từ feature. Breadcrumb quay về Import dùng Router Link, không reload.
    - `InventoryPage` quản lý URL q/status/cursor/ingredient, V01 loading/success/empty/error/retry và chọn nguyên liệu. Search/status dùng đúng query V1; đổi bộ lọc bỏ cursor/chi tiết cũ. Không có InventoryProvider/global store. Chi tiết được mount theo ingredient + snapshot, hủy read cũ; lỗi snapshot khiến cả bảng và drawer bị vô hiệu, tải lại bắt đầu từ trang đầu.
    - `MenuPage` quản lý URL q/status/cursor/product, P01 loading/success/empty/error/retry và chọn món. Search chỉ tên món, status active/paused; đổi bộ lọc xóa cursor/chi tiết, trang tiếp giữ query. Panel không modal, focus/Escape trả về món đã chọn; hủy reads cũ. Version/ngày/timezone khác giữa các trang hoặc P01/P02 làm vô hiệu tập đang hiển thị và yêu cầu tải lại; không thêm snapshot query mà P02 không hỗ trợ. Không MenuProvider/global store.
 
 3. **`features/` (Phân hệ Nghiệp vụ Độc lập)**:
-   - *Hiện tại:* `auth` sở hữu form Login local, không Register/reset/auth giả. `import-data` sở hữu picker/drop, danh sách file, remove/clear và kiểm tra sơ bộ **toàn bộ danh sách chọn dự kiến** (file hiện có + file thêm mới). Import §6: chỉ kiểm tra phần mở rộng .csv/.xlsx; tối đa **20 files per batch, 20 MiB per file, 100 MiB total compressed bytes per batch** (inclusive, cộng `File.size` trước giải nén, không phải dung lượng XLSX đã giải nén). Từ chối toàn bộ lần thêm không hợp lệ, giữ nguyên selection cũ. Extension không chứng minh nội dung hợp lệ; sniffing/parser và canonical batch truth qua các upload calls thuộc I01/I02 tương lai, phải tính cả file backend đã chấp nhận, không chỉ file trong bộ nhớ FE. Chưa upload, tạo batch hay analyze/mapping/commit.
+   - *Hiện tại:* `auth` sở hữu A01/A03/A04 boundary, validation runtime, AuthProvider/Guard và form Login có sẵn; `store` sở hữu T01/T02 boundary, StoreProvider và gate khi chưa resolve được cửa hàng. Auth giữ user/session/CSRF trong memory, Store giữ scope/timezone/membership hiện hành, không giữ feature data. Không Register/reset/auth giả.
+   - `import-data` sở hữu local checks, DTO/runtime validation, API/mock adapters và workflow I01/I02/I04/I03. Picker/drop giữ kiểm tra sơ bộ prospective selection (existing + incoming): .csv/.xlsx, 20 file mỗi lần gửi, 20 MiB/file và 100 MiB source bytes; invalid addition giữ selection cũ. Đây là UX sớm, không thay canonical admission. Backend nhận tối đa 20 logical files/100 MiB cả batch qua nhiều I02; rejected không tiêu quota, bytes trùng với client ID mới vẫn là logical file mới. Uploaded receipts không được remove/replace; local file chưa gửi vẫn bỏ được. Mapping/preview/commit chưa triển khai.
    - `import-history` sở hữu models, fixtures, kiểm tra response, format và data boundary H01/H02. UI dùng cùng boundary trong mock/API; lỗi API không fallback sang mock.
    - `inventory` sở hữu DTO/boundary V01–V04, validation runtime, fixtures chỉ đọc, format exact string và bảng/drawer lô/biến động. V02 chứa summary nguyên liệu + trang lô đầu; V03/V04 pin snapshot V01 và kiểm tra ngày/data_version trước khi ghép trang. Không tái dùng H01/H02 làm movement history, không dựng balance từ movements gần đây. `use_first` chỉ hiển thị cờ backend, không chạy FEFO hay ghi USAGE.
    - `menu` sở hữu DTO/boundary P01/P02, validation runtime, fixtures tĩnh, format decimal/money không qua Number và bảng/panel công thức. Product, Recipe/version, RecipeLine và Ingredient có UUID riêng; names không làm identity. Recipe không bị thay bằng inventory/BOM execution, quantity mỗi line cho toàn yield, unit=base_unit và yield_unit=selling_unit exact. Null recipe khác empty lines; null/forbidden count khác0. Không gọi Inventory từ Menu hoặc tạo trạng thái lưu giả.
-   - `ImportHelp` trong `features/import-data/components` sở hữu nội dung HDSD tĩnh và native modal drawer, bám tương tác MagicPath chỉ đọc; không tạo route/hook/provider/library mới. Nội dung dựa Import Contract V1 §§5 (bố cục/ngày/số/đơn vị), 6 (nhóm dữ liệu/giới hạn), 9.1 (ngày ngữ cảnh và xác minh nội dung tương lai), 13 (phạm vi supplier). Không đặt bộ cột bắt buộc, quy tắc một dòng header hay quảng cáo import lịch sử nhập hàng/Excel supplier bất kỳ. Đây không phải parser, schema detector hoặc upload flow; nợ canonical server batch validation tại [TODO §E](./002-technical-debt-and-integration-todo.md#e-import-upload-contract-validation) giữ nguyên.
+   - `ImportHelp` trong `features/import-data/components` sở hữu nội dung HDSD tĩnh và native modal drawer, bám tương tác MagicPath chỉ đọc. Nội dung dựa Import Contract V1 §§5/6/9.1/13, phân biệt lựa chọn local, nhận bytes và phân tích. Không đặt bộ cột bắt buộc, quy tắc một dòng header hay quảng cáo import lịch sử nhập hàng/Excel supplier bất kỳ. Live server admission/parser verification còn tại [TODO §E](./002-technical-debt-and-integration-todo.md#e-import-upload-contract-validation), không còn blocker về batch mechanics.
 
 4. **`shared/` (Tài nguyên Dùng chung)**:
-   - *Hiện tại:* Chỉ có nền HTTP/JSON envelope, `credentials: 'include'`, hủy/timeout request, phân biệt lỗi transport/HTTP/contract/protocol và nhận headers từ caller. Không có JWT/localStorage token hoặc CSRF lifecycle. Chưa tạo shared UI/design system.
+   - *Hiện tại:* HTTP JSON, multipart và A04/204 dùng chung `credentials: 'include'`, no-store, hủy/timeout, error parsing và request reference từ `meta.request_id`. Session owner cung cấp token cho authenticated mutations qua HTTP boundary; Import dùng cùng nguồn. Thiếu token chặn trước fetch; A01 pre-session và GET không đòi mutation CSRF. Multipart để browser tự đặt boundary. Protected `401 UNAUTHENTICATED` báo session owner; Login `INVALID_CREDENTIALS` không gây global redirect. Không tự refresh/replay mutation, JWT/token storage hoặc CSRF giả. Chưa tạo shared UI/design system.
 
 ### Hợp đồng và nguồn dữ liệu hiện tại
 
 - Root `api-contract-v1/` là thẩm quyền. `IMPORT_MAPPING_API_CONTRACT_VI.md` §§3/11 giữ H01/H02 và định nghĩa FE0 §5 được dẫn chiếu; tham chiếu chỉ dùng để lấy field schema được giữ lại. ID UUID, timestamp UTC, lifecycle/filter `in_progress` áp dụng override V1, không dùng enum/ID lịch sử.
 - H01: `GET /api/v1/stores/{store_id}/imports/calendar` (`month`, `category/status/q`). H02: `GET /api/v1/stores/{store_id}/imports` (`import_date`, `limit`, `sort=-imported_at`, `cursor`, cùng filters).
 - Lịch nhóm theo `imported_at` trong timezone Store, không theo `data_date`. Cursor opaque, trang tiếp lấy từ `meta.pagination.next_cursor`; page không gửi `limit`, để H02 dùng mặc định backend 50 (tối đa 100). Ví dụ fixture 3 bản ghi/trang chỉ phục vụ QA. Counts `null` không thành 0; collection `null` bị báo sai contract, không biến thành `[]`. Transport giữ date/timestamp là string; hai schema này không có decimal/money fields.
-- Fixtures là ví dụ tĩnh tháng 10/2026, gồm nhiều trạng thái, unknown count, phân trang, empty/error. Bộ lọc chỉ chọn trong tập ví dụ; không có fake server hoặc nghiệp vụ upload/commit.
-- Cấu hình và cách chuyển mode xem README. `VITE_DEV_STORE_ID` là UUID Store public để kiểm tra API trong khi chưa có Store selection, không phải cấp quyền. Backend vẫn phải xác thực session/Store access.
-- READY ở mức thiết kế không chứng minh API đã triển khai: business HTTP chưa được xác minh; chỉ `/health` có bằng chứng. API mode có thể hiển thị lỗi bình thường.
+- Fixtures History là ví dụ tĩnh tháng 10/2026, gồm nhiều trạng thái, unknown count, phân trang, empty/error. Bộ lọc chỉ chọn trong tập ví dụ. Import Batch có adapter UI/QA riêng trong memory, được gắn nhãn minh họa và không persistence/network/worker; không trộn current I04 batch với History.
+- Cấu hình chỉ giữ public data source/API base URL; mock preview bị giới hạn DEV và không được dùng trong production. Bốn feature lấy `currentStoreId` từ Store context. API không có environment Store fallback; backend vẫn phải xác thực session/current membership trên mọi request.
+- READY ở mức thiết kế không chứng minh runtime. Supplement ghi targeted BE Import verification ở test database; FE chưa xác minh live/staging hoặc production. API mode hiển thị lỗi thật, không fallback.
+
+### Auth/session và Store: foundation Milestone07
+
+- Authority là AUTH V1 hiện hành, đặc biệt §§1/3/5; các OPEN lịch sử không ghi đè phần hiện hành. A01 `POST /api/v1/auth/login` chỉ gửi email chuẩn hóa trim/lowercase, password nguyên bản và `remember_me`. A03 `GET /api/v1/auth/me` không body/query là authority sau login và mỗi browser refresh. AuthContext gồm user, session expiry/CSRF, default Store/count và authorization version; không tự thêm memberships/grants vào A03 khi contract chỉ định chúng ở T02.
+- AuthProvider giữ các trạng thái bootstrap/authenticated/unauthenticated/error và `mock_preview` riêng. Chưa có canonical A03 thì protected content không hiển thị. Cookie HttpOnly do browser/server quản lý; FE không đọc hoặc lưu session token. Chỉ CSRF thật từ A01/A03 ở memory; không localStorage/sessionStorage, secret `VITE_*`, fake cookie hoặc bearer token.
+- A04 `POST /api/v1/auth/logout` không body/query, dùng CSRF khi session tồn tại và chỉ clear FE session/Store sau HTTP204. Lỗi logout giữ outcome trung thực; không giả server đã revoke. Protected401 xử lý tập trung, còn login credential failure không gây redirect loop. Explicit A03 đọc lại session là nguồn token hiện hành; không phát minh auto-refresh token hoặc tự replay mutation.
+- StoreProvider chỉ resolve single accessible default từ A03 rồi đọc T02 `GET /api/v1/stores/{store_id}`. T01 `GET /api/v1/stores` có adapter/validation, pagination mặc định server; chưa có Store switcher UI. Count0 hiển thị chờ hỗ trợ, count>1/defaultnull không tự chọn first page. Store selection là local FE context, không mutation global session. Membership role OWNER/STAFF và effective permissions giữ đúng T02; không thêm role admin hoặc grant ngầm.
+- Import/History/Inventory/Menu chỉ tiêu thụ scope Store hẹp; Auth/Store không sở hữu batch, list, snapshot hoặc cursors nghiệp vụ. API không dùng environment Store fallback. Auth/Store gate ngăn business reads khi context thiếu; rời branch hoặc mất session bỏ state feature trong memory. Không mở rộng workflow switching trong milestone này.
+- Readiness audit: A01/A03/A04/T01/T02, CSRF issuance, cookie, CORS và Origin đều **CONTRACT_ONLY** theo bằng chứng hiện có; live authenticated acceptance **BLOCKED**. AUTH introduction nói auth/business HTTP chưa có, §5 liệt kê public routes/security acceptance trong backlog; aggregate READY chỉ là design. Checkout không có source/OpenAPI/config BE, Desktop không có sibling BE rõ ràng và port8000 không có listener lúc audit. Historical references chỉ `/health`, còn Import supplement giả thiết Auth hợp lệ; cả hai không chứng minh Auth hiện hành đã IMPLEMENTED/VERIFIED.
+- BE/hosting cần exact Origin allowlist, credentialed CORS và headers X-CSRF-Token/If-Match/Idempotency-Key; cookie Secure/HttpOnly/SameSite=Lax/Path=/ không Domain, HTTPS hoặc explicit loopback dev policy. Không sửa BE/hosting từ FE task. SPA fallback và live cookie/rotation/current-membership verification vẫn là nợ độc lập. Guard/DTO/controlled-response QA không thay thế backend acceptance.
+
+### Import Batch: nguồn authority và semantics
+
+- MagicPath chỉ đọc: `ShelfCashDataImportScreen`, component `458395069779681280`, revision `458401934337019904`. CTA “Xử lý dữ liệu” sẵn có cho phép triển khai I03 với bước review/ack cần thiết; giữ bố cục hiện tại, không mở mapping/preview/commit.
+- Root Import §§4/6/9.1/9.3/10 và AUTH V1 là authority; `IMPORT_BATCH_MECHANICS_RESPONSE_VI.md` là clarification/evidence supplement đã được chấp thuận. Supplement dẫn §9.1a không tồn tại trong canonical snapshot được giao; explicit accepted clarification bổ sung version semantics, không phát hiện behavior conflict. Multi-call accumulation, ordered partial admission và receipt-set revision đã được giải quyết, không còn nợ hỏi BE các semantics này.
+- Flow: local selection/ngày → explicit I01 → I04 → multipart I02 → render từng receipt → I04 → lặp I02/I04 trong cùng draft → đọc đủ pages/review/ack → I03. I01 chỉ gửi `data_date`; không tạo draft khi mở page. I02 paired `files[]`/`client_file_ids[]`, 1–20 submitted files/call. I04 chỉ gửi `files_cursor` khi đọc tiếp, không hardcode `files_limit`.
+- I02 200 có thể partial; 422 `UPLOAD_REJECTED` có committed `items`/`import_revision`/`file_set_version`, khác request-level 422. Receipts giữ client/file IDs, filename/type/actual size, status/error/digest; rejected không bị bỏ sau toast. Quota/file_count/full accepted IDs lấy I04 whole batch, không cộng local files, rejected bytes hoặc visible page. Revision là opaque string1..128, không counter và không suy accepted count từ version change.
+- Mỗi mutation intent giữ UUID idempotency key. Upload retry response loss dùng nguyên client UUIDs/order/names/File bytes; không tự submit bằng key/IDs mới. Same-key receipt có thể historical, luôn reconcile I04; response lost/503 không tự coi rollback. Request-level state/version conflict đọc lại canonical state, I03 412 cần dựng lại confirmation.
+- I03 thu toàn bộ accepted IDs từ `source_set`, toàn bộ rejected client IDs từ tất cả pages cùng revision/file_set_version/source digest và yêu cầu khách xác nhận. Gửi quoted `If-Match`, version, exact sets và key. Response202 khóa upload ngay trước read tiếp theo; failed analysis không unseal. `allowed_actions` là capability hiện hành, độc lập remaining quota. API chỉ poll read I04; mock dừng ở receipt analyzing, không chạy worker giả.
+- Adapter/types/validators/workflow nằm trong `features/import-data`; `ImportWorkspace` là owner hẹp nhất. API không fallback mock. FE đã nối session-owned CSRF và current Store; BE Auth/Store và live backend/staging/production verification vẫn là dependency, không claim integration end-to-end. Refresh không có canonical resume mechanism trong UX hiện tại, không persist receipts/intent vào localStorage.
 
 ### Kho: nguồn authority và semantics
 
 - MagicPath chỉ đọc: `ShelfCash · Kho · Tồn kho hiện tại`, component `458590758262427648`, revision `458596566140329984`. Giữ grayscale, toolbar/bảng, drawer phải, tabs Lô hàng/Biến động và responsive cuộn nội bộ. Không sao chép dữ liệu/location giả hoặc AI ví dụ từ prototype.
 - Root `INVENTORY_API_CONTRACT_VI.md` §§2–3/6, PLAN §2 và CAT §5 là authority. GET `/api/v1/stores/{store_id}/inventory`, `/{ingredient_id}`, `/{ingredient_id}/lots`, `/{ingredient_id}/movements`; không thêm query/filter chưa chốt. Page không đặt limit/lot_limit; V04 sort `-occurred_at`. Snapshot là token optimistic hiện hành, không historical copy; 409 `SNAPSHOT_NOT_AVAILABLE` phải refresh toàn bộ tập đọc.
 - `on_hand_quantity` là tồn vật lý ghi nhận (gồm expired); `usable_quantity=null` không thành0; phần biết giữ `usable_known_quantity`. Recorded0 + completenessUNKNOWN khác xác nhận tồn thực tế0. Lot ID khác mã lô nullable/nonunique. Không tự gom/hủy expiry evidence, đổi unit hoặc tính lại trạng thái theo forecast.
-- QuantityText/SignedQuantity giữ string exact, format không qua Number. Business date/as_of/expiry/received giữ date-only; timestamp UTC Z tạm hiển thị nhãn UTC vì chưa có timezone từ Store context. Đây là hạn chế tích hợp cần thay bằng timezone T02 thật, không giả browser timezone/Store timezone. Location bắt buộc null/unsupported; cost masking known/unknown/forbidden được validate, không suy giá trị.
+- QuantityText/SignedQuantity giữ string exact, format không qua Number. Business date/as_of/expiry/received giữ date-only; timestamp dùng timezone T02 khi đã validate current Store, còn fixture thiếu timezone hiển thị UTC rõ ràng. Không lấy browser timezone làm Store timezone. Live timezone verification vẫn cần BE; location bắt buộc null/unsupported và cost masking known/unknown/forbidden được validate, không suy giá trị.
 - V01 summary toàn Store không bị thay bằng counts của kết quả lọc/trang. Mock chỉ chọn/lọc/phân trang tập ví dụ tĩnh; API dùng HTTP chung, validate JSON/enums/dates/decimals/pagination/snapshot và hiển thị lỗi thật, không fallback. Inventory FE foundation **không phải** inventory HTTP verified trong production.
 
 ### Menu: nguồn authority và semantics
@@ -155,7 +180,7 @@ graph TD
 - MagicPath chỉ đọc: `ShelfCash · Menu · Món và công thức`, component `458614109248847872`, revision `458616728595894272`. Giữ grayscale, mật độ bảng, summary, tìm tên/lọc trạng thái và panel phải. AI bị disabled; “Xem tồn kho nguyên liệu” bị disabled vì chưa có adapter route Kho nhận tập ingredient IDs/quyền thật, không điều hướng đến Kho không lọc để giả đúng phạm vi.
 - Root CAT §§4–8, PLAN §2, AUTH current V1 và aggregate §1 là authority; references không thay V1. P01 GET `/api/v1/stores/{store_id}/products` nhận q/status/limit/cursor/sort; q không tìm SKU hoặc nguyên liệu. Page sort name, không gửi limit. Backend lọc tập canonical trước keyset pagination; mock lọc toàn fixture trước slice. Summary toàn Store, total_count riêng cho toàn kết quả lọc. Cursor gắn Store/filter/sort/version; 409 LIST_VERSION_CHANGED bắt đầu lại.
 - P02 GET `/api/v1/stores/{store_id}/products/{product_id}` không body/query. Server chọn recipe bao phủ as_of_date theo timezone Store, dates inclusive; không chọn max version hoặc recipe gần nhất. Lines trả đủ, không phân trang. DTO giữ recipe_id/version, from/to, yield/loss và ingredient/line IDs; UI metadata bám thiết kế hiện tại, không thêm version selector/timeline. Recipe null/missing khác header với lines=[]/known empty; price null khác0; count forbidden không được suy ra0.
-- QuantityText/PositiveQuantityText/LossRateText giữ exact string; MoneyText có bounds riêng và currency từ Store. Canonical units là string, không enum cố định/alias conversion. Menu timestamp dùng meta.timezone từ P01/P02, không browser-local; updated_at null không thay bằng observed_at. Nợ Store context/timezone của Kho và auth vẫn giữ nguyên.
+- QuantityText/PositiveQuantityText/LossRateText giữ exact string; MoneyText có bounds riêng và currency từ Store. Canonical units là string, không enum cố định/alias conversion. Menu timestamp tiếp tục dùng meta.timezone từ P01/P02, không browser-local; updated_at null không thay bằng observed_at. FE Store context đã có, nhưng live Auth/Store/timezone verification còn thiếu.
 - P01/P02 vẫn DESIGN ONLY phía public backend. N20–N22 **đã có contract** đổi hiệu lực từ ngày Store kế tiếp, không generic CRUD; chưa có tương tác timeline/editor/preview/commit trong MagicPath Menu này nên không thực hiện. Không fake edit/save, pricing/profit, tồn đủ bán, forecast hoặc procurement. Xem [TODO §K](./002-technical-debt-and-integration-todo.md#k-menu--recipe-integration-maturity).
 
 ---
@@ -166,7 +191,7 @@ Khi phát triển thêm tính năng, code sẽ được đưa vào các thư m�
 
 | Phân hệ (Module) | Đường dẫn dự kiến | Phạm vi trách nhiệm |
 | :--- | :--- | :--- |
-| **Authentication** | `src/features/auth/` | Hiện chỉ form Login; sau này session cookie HttpOnly và A01/A03/A04, không token storage |
+| **Authentication** | `src/features/auth/` | FE A01/A03/A04, bootstrap/guard/CSRF; BE session cookie và live acceptance còn phụ thuộc |
 | **Dashboard** | `src/features/dashboard/` | Widget tổng quan, KPI metrics, biểu đồ tóm tắt hiệu suất |
 | **Inventory** | `src/features/inventory/` | Đã có Kho chỉ đọc: snapshot, tồn ghi nhận/dùng được, bằng chứng lô và movements V01–V04; chưa có mutation/location model |
 | **Forecasting** | `src/features/forecasting/` | Biểu đồ dự báo nhu cầu, phân tích xu hướng bán hàng, dự đoán theo mùa |
@@ -178,10 +203,10 @@ Khi phát triển thêm tính năng, code sẽ được đưa vào các thư m�
 ## 6. What NOT to add yet (Những hạng mục chủ động hoãn lại)
 
 Để bảo đảm tính đơn giản và tránh nợ kỹ thuật từ sớm, các hạng mục sau **chưa được thêm vào**:
-- **Global State Management (Redux, Zustand, Jotai)**: Selection chỉ chia sẻ trong hai route Import, React state ở parent route đủ; chưa cần app-wide store.
-- **Axios, React Query, Mock Backend**: Native fetch + local state đủ cho H01/H02/V01–V04/P01/P02; không thêm server giả hoặc async framework.
-- **Routing phức tạp / auth guards**: Nested routes dùng declarative router; `/imports`, `/imports/history`, `/inventory` và `/menu` cố ý truy cập trực tiếp, không giả trạng thái đăng nhập.
-- **AuthProvider, session bootstrap, CSRF lifecycle, Store switcher, permission gating, upload/mapping/commit**: Chưa thuộc milestone này. A02 self-registration DEFERRED; không có public reset-initiation route.
+- **Global State Management (Redux, Zustand, Jotai)**: Import workflow chỉ chia sẻ trong workspace hai route, owner ở parent route đủ; chưa cần app-wide store.
+- **Axios, React Query, Mock Backend**: Native fetch + state hẹp đủ cho I01/I02/I04/I03/H01/H02/V01–V04/P01/P02; mock adapter minh họa có memory cô lập, không server/network/persistence hoặc async framework mới.
+- **Routing framework phức tạp**: Nested routes vẫn dùng declarative router. API AuthGuard/StoreGate đã có ngoài AppShell; không thêm framework routing hoặc authorization engine trong FE.
+- **Store switcher, Staff management, business permission UI, mapping/preview/commit**: Chưa thuộc milestone này. AuthProvider/session bootstrap/CSRF source và Store context đã có phía FE; BE current grants/security enforcement vẫn cần triển khai/xác minh. A02 self-registration DEFERRED; không có public reset-initiation route.
 - **Design System / Token System / Tailwind**: Đang sử dụng CSS tinh gọn; hệ thống design token sẽ chỉ hình thành khi UI guideline hoàn thiện.
 - **Component UI Kit (Ant Design, MUI, Shadcn)**: Tránh làm phình bundle size và ràng buộc giao diện vào thư viện bên ngoài.
 
@@ -189,11 +214,33 @@ Khi phát triển thêm tính năng, code sẽ được đưa vào các thư m�
 
 ## 7. Next Architectural Milestone (Cột mốc Kiến trúc Tiếp theo)
 
-Router, AppShell, Import workspace local và boundary H01/H02 đã có. Chỉ triển khai auth/session/Store hay upload workflow khi có implementation evidence và được giao milestone riêng; không mở thêm module rỗng lúc này. Khi tích hợp auth thật, phải thay routing development-accessible bằng AuthGuard ngoài shell trước khi phát hành production.
+FE session/CSRF A01/A03/A04, AuthGuard ngoài AppShell và Store context đã có; API branch chỉ mở sau canonical bootstrap/Store resolution. Bước tiếp theo là cung cấp backend Auth/Store đúng contract và xác minh thật login→A03→T02 cùng cookie/CSRF/Origin/CORS, sau đó smoke một authenticated GET. Live/staging/production acceptance, Store selection UI và mapping/preview/commit vẫn là các scope riêng. Không suy guard FE hoặc controlled responses thành backend đã sẵn sàng.
 
 ---
 
 ## 8. Kết quả Xác minh Kỹ thuật (Validation)
+
+Milestone07 readiness audit, 11/10/2026:
+
+- Audit chỉ đọc canonical README/aggregate/AUTH V1, source/config FE và evidence có sẵn; không gọi mutation, sửa backend, tạo session hoặc gửi credentials thật. Không tìm thấy source/backend checkout rõ ràng hay listener local port8000. Readiness của A01/A03/A04/T01/T02 và cookie/CSRF/CORS/Origin vẫn CONTRACT_ONLY; live acceptance BLOCKED, không claim IMPLEMENTED/VERIFIED phía BE.
+- Focused Auth/session/Store/shared HTTP QA dùng controlled responses, chạy bằng `npm run test:auth`; hồi quy Import tiếp tục dùng `npm run test:import`. Các test này không chứng minh cookie được server set, Origin thực sự enforce hoặc credentials/CORS hoạt động trên staging. Kết quả thực thi milestone mới được báo cùng build/lint/diff/browser QA khi bàn giao.
+
+Milestone07 final local validation, 11/10/2026:
+
+- `npm run build`, `VITE_DATA_SOURCE=api npm run build`, `npm run lint`, `git diff --check`: đạt; lint không còn warning. Build mặc định chỉ kiểm compiler/bundler; deployment cần cấu hình API, runtime từ chối mock ngoài DEV.
+- `npm run test:auth`: 26/26 đạt; `npm run test:import`: 31/31 đạt. Không có script test Inventory/Menu riêng. Auth suite kiểm tra cookie transport, public A01 vs protected401, stale/aborted401, CSRF hiện hành/thiếu token, logout204/failure, malformed/network/canonical errors/request ID, T01/T02/current membership, cả 8 business GET scopes không dùng environment override và Inventory timezone qua nửa đêm; ngày-only giữ nguyên.
+- 13 nhóm QA Chrome local đạt, không page error: A01→A03→T02; normalize email nhưng giữ nguyên password/remember_me; chặn double-submit; invalid credentials/network/malformed/403/429/503; A01 success nhưng A03 401 hoặc malformed không mở Store/business; bootstrap loading/error/retry; refresh và guards cho bốn routes; count0/multiple Store, membership thiếu và T02 lỗi fail-closed; business401 khác403; A04 failure giữ outcome trung thực rồi bodyless204 clear session/Store; Import I01 lấy token A03 hiện hành thay token A01, GET không gửi CSRF.
+- Missing-CSRF A03 bị runtime validation từ chối, không render AppShell hoặc gửi business request; retry với canonical A03 khôi phục bình thường. Mock preview không phát sinh API request. Hồi quy Import partial/seal, History, HDSD, Inventory/Menu và Sidebar đạt.
+- Responsive Login và authenticated Import/Inventory/Menu ở 320/390/768/1440 px không overflow toàn trang. Đã xem ảnh Login/Import 390/1440: giữ bố cục Login MagicPath có sẵn, thêm request states chứ không redesign; header/logout wrap đúng trên mobile. MagicPath không bị sửa.
+- Controlled-response harness và ảnh QA nằm ở `/private/tmp/shelfcash-auth-qa.usBnQI/`; chúng không phải fake backend hoặc dependency của ứng dụng. Browser QA đã đóng; không commit/push. Real Auth/Store cookie issuance/Origin/CORS, staging và production acceptance vẫn chưa verified.
+
+Import Batch, 11/10/2026:
+
+- `npm run test:import`: 31 tests đạt, chạy bằng Node test runner và Vite hiện có, không thêm dependency. Bao gồm I01 ngày/Store/CSRF, multipart chính xác, partial200 và committed422 khác request422, runtime validation, canonical quota độc lập page, cumulative count/bytes, response-loss retry giữ nguyên intent, coherent full-page I03 acknowledgment, stale412 và seal không mở lại khi analysis failed.
+- `npm run build`, `npm run lint`, `git diff --check`: đạt. HTTP JSON tiếp tục giữ credentials/no-store/error taxonomy; multipart để browser tạo Content-Type boundary. Không commit/push hoặc sửa canonical contracts.
+- 10 nhóm QA Chrome local đạt: picker/drop/remove và validation, mixed/all-rejected receipts, upload nhiều lần cùng draft, History giữ file/ngày/batch, 54 receipts qua pagination, đầy đủ 20 accepted IDs + 34 rejected acknowledgments trước I03, seal khóa upload, explicit new draft và refresh mất memory đúng giới hạn.
+- Responsive 320/390/768/1440 px không overflow toàn trang; đã xem ảnh desktop/mobile với tên file dài. Keyboard picker, visible focus, HDSD Enter/Escape/restore focus, accessible errors/labels và trạng thái accepted/rejected có text được kiểm tra. Hồi quy direct History, legacy redirect giữ query/hash, Kho/Menu read/search và Login ngoài shell đạt; không browser error.
+- API UI thiếu CSRF hoặc Store báo dependency trước khi gửi mutation, giữ file local, không tạo draft/receipts/quota giả và không fallback. Mock không phát sinh API request. Successful API wire/error handling được kiểm tra bằng controlled fetch tại boundary; lifecycle UI bằng adapter minh họa. Chưa có live/local/staging authenticated backend acceptance hoặc production verification; thiếu nguồn A01/A03 CSRF thật. Các bằng chứng lịch sử bên dưới không thay thế kết quả milestone này.
 
 Milestone 03, 10/10/2026:
 

@@ -2,6 +2,7 @@
 .import-upload h2, .import-upload p { margin: 0; }
 .import-upload button { cursor: pointer; font: inherit; }
 .import-upload button:focus-visible { outline: 2px solid #555; outline-offset: 3px; }
+.import-upload button:disabled { cursor: not-allowed; opacity: .65; }
 .import-upload__dropzone { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; width: 100%; min-height: 300px; padding: 32px 24px; border: 1.5px dashed #c2c2c2; border-radius: 14px; background: #fafafa; color: #4d4d4d; text-align: center; }
 .import-upload__dropzone:hover { border-color: #959595; background: #f7f7f7; }
 .import-upload__dropzone--active { border-color: #333; background: #ededed; }

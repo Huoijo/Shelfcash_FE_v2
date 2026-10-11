@@ -6,14 +6,14 @@ import { validateInventory, validateInventoryIngredient, validateInventoryLots, 
 
 export const inventorySource = { label: config.dataSource === 'mock' ? 'Dữ liệu minh họa · Kho 10/10/2026' : 'Dữ liệu từ máy chủ' }
 
-function inventoryPath(suffix: string, params: Record<string, unknown>): string {
-  if (!config.devStoreId) throw new Error('Chưa có Store để đọc Kho. Cấu hình VITE_DEV_STORE_ID khi kiểm tra API; quyền truy cập vẫn do máy chủ xác minh.')
+function inventoryPath(storeId: string | null, suffix: string, params: Record<string, unknown>): string {
+  if (!storeId || !/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/.test(storeId)) throw new Error('Chưa có Store hợp lệ từ phiên làm việc để đọc Kho.')
   const query = new URLSearchParams()
   Object.entries(params).forEach(([key, value]) => {
     if (Array.isArray(value)) value.forEach((item) => query.append(key, String(item)))
     else if (value !== undefined && value !== '') query.set(key, String(value))
   })
-  return `/api/v1/stores/${config.devStoreId}/inventory${suffix}${query.size ? `?${query}` : ''}`
+  return `/api/v1/stores/${storeId}/inventory${suffix}${query.size ? `?${query}` : ''}`
 }
 
 function waitForFixture(signal: AbortSignal): Promise<void> {
@@ -61,9 +61,9 @@ function fixturePage<T>(items: T[], params: { cursor?: string; limit?: number },
 
 const normalized = (value: string) => value.normalize('NFD').replace(/\p{M}/gu, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase()
 
-export async function getInventory(params: InventoryRequest, signal: AbortSignal): Promise<InventoryResponse> {
+export async function getInventory(params: InventoryRequest, signal: AbortSignal, storeId: string | null): Promise<InventoryResponse> {
   if (config.dataSource === 'api') {
-    return validateInventory(await requestJson<unknown>(config.apiBaseUrl, inventoryPath('', params), { signal }))
+    return validateInventory(await requestJson<unknown>(config.apiBaseUrl, inventoryPath(storeId, '', params), { signal }))
   }
   await waitForFixture(signal)
   const q = normalized(params.q ?? '')
@@ -86,10 +86,10 @@ export async function getInventory(params: InventoryRequest, signal: AbortSignal
   }
 }
 
-export async function getInventoryIngredient(ingredientId: string, snapshotId: string, signal: AbortSignal): Promise<InventoryDetailResponse> {
+export async function getInventoryIngredient(ingredientId: string, snapshotId: string, signal: AbortSignal, storeId: string | null): Promise<InventoryDetailResponse> {
   assertIngredientId(ingredientId)
   if (config.dataSource === 'api') {
-    const value = await requestJson<unknown>(config.apiBaseUrl, inventoryPath(`/${ingredientId}`, { snapshot_id: snapshotId }), { signal })
+    const value = await requestJson<unknown>(config.apiBaseUrl, inventoryPath(storeId, `/${ingredientId}`, { snapshot_id: snapshotId }), { signal })
     return validateInventoryIngredient(value, ingredientId, snapshotId)
   }
   await waitForFixture(signal)
@@ -103,10 +103,10 @@ export async function getInventoryIngredient(ingredientId: string, snapshotId: s
   }
 }
 
-export async function getInventoryLots(ingredientId: string, params: InventoryEvidenceRequest, signal: AbortSignal): Promise<InventoryLotsResponse> {
+export async function getInventoryLots(ingredientId: string, params: InventoryEvidenceRequest, signal: AbortSignal, storeId: string | null): Promise<InventoryLotsResponse> {
   assertIngredientId(ingredientId)
   if (config.dataSource === 'api') {
-    const value = await requestJson<unknown>(config.apiBaseUrl, inventoryPath(`/${ingredientId}/lots`, params), { signal })
+    const value = await requestJson<unknown>(config.apiBaseUrl, inventoryPath(storeId, `/${ingredientId}/lots`, params), { signal })
     return validateInventoryLots(value, ingredientId, params.snapshot_id)
   }
   await waitForFixture(signal)
@@ -116,10 +116,10 @@ export async function getInventoryLots(ingredientId: string, params: InventoryEv
   return { data: { ingredient_id: ingredientId, items: result.items }, meta: { ...inventoryFixtureMeta, pagination: result.pagination }, error: null }
 }
 
-export async function getInventoryMovements(ingredientId: string, params: InventoryEvidenceRequest, signal: AbortSignal): Promise<InventoryMovementsResponse> {
+export async function getInventoryMovements(ingredientId: string, params: InventoryEvidenceRequest, signal: AbortSignal, storeId: string | null): Promise<InventoryMovementsResponse> {
   assertIngredientId(ingredientId)
   if (config.dataSource === 'api') {
-    const value = await requestJson<unknown>(config.apiBaseUrl, inventoryPath(`/${ingredientId}/movements`, { ...params, sort: '-occurred_at' }), { signal })
+    const value = await requestJson<unknown>(config.apiBaseUrl, inventoryPath(storeId, `/${ingredientId}/movements`, { ...params, sort: '-occurred_at' }), { signal })
     return validateInventoryMovements(value, ingredientId, params.snapshot_id)
   }
   await waitForFixture(signal)

@@ -28,6 +28,13 @@ a.app-sidebar__item:hover { background: #eee; }
 .app-shell__header nav a:hover { color: #252525; text-decoration: underline; }
 .app-shell__header nav [aria-current] { color: #343434; }
 .app-shell__wordmark { margin-left: auto; font-size: 25px; line-height: 32px; font-weight: 700; letter-spacing: -.6px; white-space: nowrap; }
+.app-shell__session { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 12px; margin-left: auto; min-width: 0; max-width: 100%; }
+.session-actions { min-width: 0; }
+.session-actions button, .store-session-actions button { padding: 7px 12px; border: 1px solid #d3d3d3; border-radius: 8px; background: #fff; color: #444; font: inherit; font-size: 13px; cursor: pointer; }
+.session-actions button:disabled { cursor: wait; opacity: .6; }
+.session-actions__preview { color: #777; font-size: 11px; }
+.session-actions__error { max-width: 340px; font-size: 12px; overflow-wrap: anywhere; }
+.store-session-actions { max-width: 680px; padding: 0 20px 32px; margin: 0 auto; }
 @media (max-width: 1180px) {
   .app-shell__header { padding-inline: 28px; }
 }

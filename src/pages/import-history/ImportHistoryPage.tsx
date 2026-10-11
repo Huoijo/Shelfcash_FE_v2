@@ -9,6 +9,7 @@ import type { CalendarResponse, HistoryResponse } from '../../features/import-hi
 import type { HistoryStatusFilter, ImportCategory } from '../../features/import-history/importHistory.types'
 import { HttpError } from '../../shared/http/httpClient'
 import { AppShellHeader } from '../../layouts/app-shell/AppShell'
+import { useCurrentStore } from '../../features/store/store.context'
 import './ImportHistoryPage.css'
 
 const categories: { value: ImportCategory; label: string }[] = [
@@ -25,6 +26,7 @@ type LoadState =
   | { status: 'error'; key: string; error: Error }
 
 export function ImportHistoryPage() {
+  const { currentStoreId } = useCurrentStore()
   const [search, setSearch] = useSearchParams()
   const [retry, setRetry] = useState(0)
   const requestedMonth = search.get('month')
@@ -36,22 +38,22 @@ export function ImportHistoryPage() {
   const status = statuses.find((item) => item.value === search.get('status'))?.value
   const q = search.get('q')?.trim() || undefined
   const cursor = search.get('cursor') || undefined
-  const key = JSON.stringify([month, date, category, status, q, cursor, retry])
+  const key = JSON.stringify([currentStoreId, month, date, category, status, q, cursor, retry])
   const [state, setState] = useState<LoadState>({ status: 'loading', key })
 
   useEffect(() => {
     const controller = new AbortController()
     const filters = { category, status, q }
     Promise.all([
-      getImportCalendar({ month, ...filters }, controller.signal),
-      getImportHistory({ import_date: date, sort: '-imported_at', cursor, ...filters }, controller.signal),
+      getImportCalendar({ month, ...filters }, controller.signal, currentStoreId),
+      getImportHistory({ import_date: date, sort: '-imported_at', cursor, ...filters }, controller.signal, currentStoreId),
     ]).then(([calendar, history]) => {
       if (!controller.signal.aborted) setState({ status: 'success', key, calendar, history })
     }).catch((error: unknown) => {
       if (!controller.signal.aborted) setState({ status: 'error', key, error: error instanceof Error ? error : new Error('Không tải được lịch sử nhập.') })
     })
     return () => controller.abort()
-  }, [key, month, date, category, status, q, cursor])
+  }, [key, month, date, category, status, q, cursor, currentStoreId])
 
   // A previous query must never render beneath a new date/filter while its effect starts.
   const current: LoadState = state.key === key ? state : { status: 'loading', key }

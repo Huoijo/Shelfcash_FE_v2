@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { HttpError } from '../../../shared/http/httpClient'
+import { useCurrentStore } from '../../store/store.context'
 import { getMenuProduct } from '../menu.data'
 import { formatMenuDate, formatMenuDecimal, formatMenuMoney, productStatusLabels } from '../menu.format'
 import type { MenuDetailResponse, MenuMeta, MenuProduct, MenuRecipe, ProductRow } from '../menu.types'
@@ -59,6 +60,7 @@ function RecipeTable({ recipe, asOfDate }: { recipe: MenuRecipe | null; asOfDate
 }
 
 export function MenuDetail({ productId, listMeta, listedProduct, onClose, onInvalidList }: DetailProps) {
+  const { currentStoreId } = useCurrentStore()
   const prefix = useId()
   const closeRef = useRef<HTMLButtonElement>(null)
   const [state, setState] = useState<DetailState>({ status: 'loading' })
@@ -73,7 +75,7 @@ export function MenuDetail({ productId, listMeta, listedProduct, onClose, onInva
 
   useEffect(() => {
     const controller = new AbortController()
-    getMenuProduct(productId, controller.signal).then((response) => {
+    getMenuProduct(productId, controller.signal, currentStoreId).then((response) => {
       if (controller.signal.aborted) return
       if (!sameRead(response.meta, listMeta) || (listedProduct && !reconciles(response.data, listedProduct))) {
         onInvalidList(new HttpError('protocol', 'Danh sách món và chi tiết không cùng phiên bản/ngày đọc hoặc không khớp dữ liệu. Vui lòng tải lại toàn bộ Menu; không thể ghép các dữ liệu này.'))
@@ -87,7 +89,7 @@ export function MenuDetail({ productId, listMeta, listedProduct, onClose, onInva
       else setState({ status: 'error', error })
     })
     return () => controller.abort()
-  }, [productId, listMeta, listedProduct, onInvalidList, retry])
+  }, [productId, listMeta, listedProduct, onInvalidList, retry, currentStoreId])
 
   const info = state.status === 'success' ? state.response.data : null
   return <aside id="menu-detail" className="menu-detail" aria-labelledby={`${prefix}-title`}>

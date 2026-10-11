@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { HttpError } from '../../../shared/http/httpClient'
+import { useCurrentStore } from '../../store/store.context'
 import { getInventoryIngredient, getInventoryLots, getInventoryMovements } from '../inventory.data'
 import { expiryLabel, formatInventoryDate, formatInventoryTimestamp, formatQuantity, inventoryStatusLabels, movementLabels } from '../inventory.format'
 import type { InventoryDetailResponse, InventoryLot, InventoryMeta, InventoryMovementsResponse } from '../inventory.types'
@@ -29,6 +30,7 @@ function DetailError({ error, onRetry }: { error: Error; onRetry: () => void }) 
 }
 
 function LotCard({ lot, asOfDate }: { lot: InventoryLot; asOfDate: string }) {
+  const { timezone } = useCurrentStore()
   return <article className="inventory-lot-card">
     <header><h3>Lô {lot.batch_code ?? 'chưa có mã'}</h3><span className="inventory-status">{inventoryStatusLabels[lot.status]}</span></header>
     {lot.use_first && <p className="inventory-lot-priority">Ưu tiên sử dụng trước · theo máy chủ</p>}
@@ -39,13 +41,14 @@ function LotCard({ lot, asOfDate }: { lot: InventoryLot; asOfDate: string }) {
       <div><dt>Ngày nhận</dt><dd>{formatInventoryDate(lot.received_date)}</dd></div>
       <div><dt>Nhà cung cấp</dt><dd>{lot.supplier_id ?? 'Chưa biết'}</dd></div>
       <div><dt>Vị trí</dt><dd>Chưa được hỗ trợ</dd></div>
-      <div><dt>Cập nhật</dt><dd>{formatInventoryTimestamp(lot.updated_at)}</dd></div>
+      <div><dt>Cập nhật</dt><dd>{formatInventoryTimestamp(lot.updated_at, timezone)}</dd></div>
       <div><dt>Nguồn lô</dt><dd>{lot.origin === 'OPENING_STOCK' ? 'Tồn ban đầu' : lot.origin === 'ACTUAL_RECEIPT' ? 'Hàng thực nhận' : 'Chưa biết'}</dd></div>
     </dl></details>
   </article>
 }
 
 function InventoryMovements({ ingredientId, snapshot, onInvalidSnapshot, unit }: Omit<DetailProps, 'onClose'> & { unit: string }) {
+  const { currentStoreId, timezone } = useCurrentStore()
   const [state, setState] = useState<Load<InventoryMovementsResponse>>({ status: 'loading' })
   const [retry, setRetry] = useState(0)
   const [more, setMore] = useState<{ busy: boolean; error: Error | null }>({ busy: false, error: null })
@@ -53,7 +56,7 @@ function InventoryMovements({ ingredientId, snapshot, onInvalidSnapshot, unit }:
 
   useEffect(() => {
     const controller = new AbortController()
-    getInventoryMovements(ingredientId, { snapshot_id: snapshot.snapshot_id }, controller.signal).then((response) => {
+    getInventoryMovements(ingredientId, { snapshot_id: snapshot.snapshot_id }, controller.signal, currentStoreId).then((response) => {
       if (controller.signal.aborted) return
       if (!sameSnapshot(response.meta, snapshot)) { onInvalidSnapshot(snapshotError()); return }
       if (response.data.items.some((item) => item.unit !== unit)) throw new HttpError('protocol', 'Đơn vị biến động không khớp đơn vị nguyên liệu.')
@@ -65,7 +68,7 @@ function InventoryMovements({ ingredientId, snapshot, onInvalidSnapshot, unit }:
       else setState({ status: 'error', error })
     })
     return () => controller.abort()
-  }, [ingredientId, snapshot, onInvalidSnapshot, retry, unit])
+  }, [ingredientId, snapshot, onInvalidSnapshot, retry, unit, currentStoreId])
 
   useEffect(() => () => continuation.current?.abort(), [])
 
@@ -75,7 +78,7 @@ function InventoryMovements({ ingredientId, snapshot, onInvalidSnapshot, unit }:
     continuation.current = controller
     setMore({ busy: true, error: null })
     try {
-      const response = await getInventoryMovements(ingredientId, { snapshot_id: snapshot.snapshot_id, cursor: state.response.meta.pagination.next_cursor }, controller.signal)
+      const response = await getInventoryMovements(ingredientId, { snapshot_id: snapshot.snapshot_id, cursor: state.response.meta.pagination.next_cursor }, controller.signal, currentStoreId)
       if (controller.signal.aborted) return
       if (!sameSnapshot(response.meta, snapshot)) { onInvalidSnapshot(snapshotError()); return }
       if (response.data.items.some((item) => item.unit !== unit)) throw new HttpError('protocol', 'Đơn vị biến động không khớp đơn vị nguyên liệu.')
@@ -98,12 +101,12 @@ function InventoryMovements({ ingredientId, snapshot, onInvalidSnapshot, unit }:
     {state.status === 'success' && <>
       {state.response.data.items.length === 0 && <p className="inventory-detail-empty" role="status">Chưa có biến động được ghi nhận.</p>}
       <ul>{state.response.data.items.map((movement) => <li className="inventory-movement-row" key={movement.movement_id}>
-        <div><time dateTime={movement.occurred_at}>{formatInventoryTimestamp(movement.occurred_at)}</time>
+        <div><time dateTime={movement.occurred_at}>{formatInventoryTimestamp(movement.occurred_at, timezone)}</time>
           <strong>{movement.quantity_delta.startsWith('-') ? '−' : /^0(?:\.0+)?$/.test(movement.quantity_delta) ? '' : '+'}{formatQuantity(movement.quantity_delta.replace(/^-/, ''), movement.unit)}</strong>
           <span>{movementLabels[movement.kind]}</span></div>
         <details><summary>Thông tin biến động</summary><dl>
           <div><dt>Lô</dt><dd>{movement.batch_code ?? 'Chưa có mã'} · {movement.lot_id}</dd></div>
-          <div><dt>Ghi nhận lúc</dt><dd>{formatInventoryTimestamp(movement.recorded_at)}</dd></div>
+          <div><dt>Ghi nhận lúc</dt><dd>{formatInventoryTimestamp(movement.recorded_at, timezone)}</dd></div>
           <div><dt>Người thực hiện (ID)</dt><dd>{movement.actor_user_id ?? 'Chưa biết'}</dd></div>
           <div><dt>Lý do</dt><dd>{movement.reason ?? 'Chưa biết'}</dd></div>
           <div><dt>Nguồn</dt><dd>{movement.origin}</dd></div>
@@ -117,6 +120,7 @@ function InventoryMovements({ ingredientId, snapshot, onInvalidSnapshot, unit }:
 }
 
 export function InventoryDetail({ ingredientId, snapshot, onClose, onInvalidSnapshot }: DetailProps) {
+  const { currentStoreId } = useCurrentStore()
   const prefix = useId()
   const closeRef = useRef<HTMLButtonElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -142,7 +146,7 @@ export function InventoryDetail({ ingredientId, snapshot, onClose, onInvalidSnap
 
   useEffect(() => {
     const controller = new AbortController()
-    getInventoryIngredient(ingredientId, snapshot.snapshot_id, controller.signal).then((response) => {
+    getInventoryIngredient(ingredientId, snapshot.snapshot_id, controller.signal, currentStoreId).then((response) => {
       if (controller.signal.aborted) return
       if (!sameSnapshot(response.meta, snapshot)) { onInvalidSnapshot(snapshotError()); return }
       setLots({ items: response.data.lots, cursor: response.data.lots_page.next_cursor })
@@ -154,7 +158,7 @@ export function InventoryDetail({ ingredientId, snapshot, onClose, onInvalidSnap
       else setState({ status: 'error', error })
     })
     return () => controller.abort()
-  }, [ingredientId, snapshot, retry, onInvalidSnapshot])
+  }, [ingredientId, snapshot, retry, onInvalidSnapshot, currentStoreId])
 
   async function loadMoreLots() {
     if (!lots.cursor || more.busy) return
@@ -162,7 +166,7 @@ export function InventoryDetail({ ingredientId, snapshot, onClose, onInvalidSnap
     continuation.current = controller
     setMore({ busy: true, error: null })
     try {
-      const response = await getInventoryLots(ingredientId, { snapshot_id: snapshot.snapshot_id, cursor: lots.cursor }, controller.signal)
+      const response = await getInventoryLots(ingredientId, { snapshot_id: snapshot.snapshot_id, cursor: lots.cursor }, controller.signal, currentStoreId)
       if (controller.signal.aborted) return
       if (!sameSnapshot(response.meta, snapshot)) { onInvalidSnapshot(snapshotError()); return }
       if (state.status !== 'success' || response.data.items.some((lot) => lot.unit !== state.response.data.unit)) throw new HttpError('protocol', 'Đơn vị lô không khớp đơn vị nguyên liệu.')

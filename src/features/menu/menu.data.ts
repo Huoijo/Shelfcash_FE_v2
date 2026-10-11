@@ -6,15 +6,15 @@ import { validateMenu, validateMenuProduct } from './menu.validation'
 
 export const menuSource = { label: config.dataSource === 'mock' ? 'Dữ liệu minh họa · Menu 10/10/2026' : 'Dữ liệu từ máy chủ' }
 
-function menuPath(suffix: string, params?: MenuRequest): string {
-  if (!config.devStoreId) throw new Error('Chưa có Store để đọc Menu. Cấu hình VITE_DEV_STORE_ID khi kiểm tra API; quyền truy cập vẫn do máy chủ xác minh.')
+function menuPath(storeId: string | null, suffix: string, params?: MenuRequest): string {
+  if (!storeId || !/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/.test(storeId)) throw new Error('Chưa có Store hợp lệ từ phiên làm việc để đọc Menu.')
   const query = new URLSearchParams()
   if (params) {
     // P01 allowlist only; undefined limit stays absent so the backend owns its default.
     const allowed = { q: params.q, status: params.status, limit: params.limit, cursor: params.cursor, sort: params.sort }
     Object.entries(allowed).forEach(([key, value]) => { if (value !== undefined) query.set(key, String(value)) })
   }
-  return `/api/v1/stores/${config.devStoreId}/products${suffix}${query.size ? `?${query}` : ''}`
+  return `/api/v1/stores/${storeId}/products${suffix}${query.size ? `?${query}` : ''}`
 }
 
 function waitForFixture(signal: AbortSignal): Promise<void> {
@@ -44,9 +44,9 @@ function comparePrice(left: string, right: string): number {
   return a === b ? 0 : a < b ? -1 : 1
 }
 
-export async function getMenu(params: MenuRequest, signal: AbortSignal): Promise<MenuResponse> {
+export async function getMenu(params: MenuRequest, signal: AbortSignal, storeId: string | null): Promise<MenuResponse> {
   if (config.dataSource === 'api') {
-    return validateMenu(await requestJson<unknown>(config.apiBaseUrl, menuPath('', params), { signal }))
+    return validateMenu(await requestJson<unknown>(config.apiBaseUrl, menuPath(storeId, '', params), { signal }))
   }
   await waitForFixture(signal)
   const limit = params.limit ?? 50
@@ -71,7 +71,7 @@ export async function getMenu(params: MenuRequest, signal: AbortSignal): Promise
       } else order = a.name.localeCompare(b.name, 'vi') * (sort === '-name' ? -1 : 1)
       return order || a.product_id.localeCompare(b.product_id)
     })
-  const binding = JSON.stringify([config.devStoreId ?? 'fixture-store', menuFixtureMeta.data_version, menuFixtureMeta.as_of_date, q, params.status ?? '', sort])
+  const binding = JSON.stringify([storeId ?? 'fixture-store', menuFixtureMeta.data_version, menuFixtureMeta.as_of_date, q, params.status ?? '', sort])
   const token = (offset: number) => `fixture-menu:${encodeURIComponent(binding)}:${limit}:${offset}`
   const offset = params.cursor ? Array.from({ length: Math.ceil(items.length / limit) }, (_, index) => index * limit)
     .find((index) => token(index) === params.cursor) : 0
@@ -82,14 +82,14 @@ export async function getMenu(params: MenuRequest, signal: AbortSignal): Promise
   })
 }
 
-export async function getMenuProduct(productId: string, signal: AbortSignal): Promise<MenuDetailResponse> {
+export async function getMenuProduct(productId: string, signal: AbortSignal, storeId: string | null): Promise<MenuDetailResponse> {
   if (!/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/.test(productId)) {
     const message = 'Mã món không hợp lệ. Vui lòng chọn lại món từ Menu.'
     throw new HttpError('contract', message, 422, { code: 'INVALID_RESOURCE_ID', message, details: {} })
   }
   if (config.dataSource === 'api') {
     // P02 has no query/body: never send snapshot_id, arbitrary dates or recipe versions.
-    return validateMenuProduct(await requestJson<unknown>(config.apiBaseUrl, menuPath(`/${productId}`), { signal }), productId)
+    return validateMenuProduct(await requestJson<unknown>(config.apiBaseUrl, menuPath(storeId, `/${productId}`), { signal }), productId)
   }
   await waitForFixture(signal)
   const product = menuFixtureProducts.find((row) => row.product_id === productId)

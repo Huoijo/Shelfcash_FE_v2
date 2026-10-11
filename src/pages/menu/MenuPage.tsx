@@ -7,6 +7,7 @@ import { formatMenuDate, formatMenuTimestamp } from '../../features/menu/menu.fo
 import type { MenuMeta, MenuResponse, ProductStatus } from '../../features/menu/menu.types'
 import { AppShellHeader } from '../../layouts/app-shell/AppShell'
 import { HttpError } from '../../shared/http/httpClient'
+import { useCurrentStore } from '../../features/store/store.context'
 import './MenuPage.css'
 
 const filters: { value: ProductStatus | ''; label: string }[] = [
@@ -18,6 +19,7 @@ type LoadState =
   | { status: 'error'; key: string; error: Error }
 
 export function MenuPage() {
+  const { currentStoreId } = useCurrentStore()
   const [search, setSearch] = useSearchParams()
   const [retry, setRetry] = useState(0)
   const originRef = useRef<HTMLElement | null>(null)
@@ -27,13 +29,13 @@ export function MenuPage() {
   const status = filters.find((item) => item.value === search.get('status'))?.value || undefined
   const cursor = search.get('cursor') || undefined
   const productId = search.get('product') || null
-  const query = JSON.stringify([q, status])
-  const key = JSON.stringify([q, status, cursor, retry])
+  const query = JSON.stringify([currentStoreId, q, status])
+  const key = JSON.stringify([currentStoreId, q, status, cursor, retry])
   const [state, setState] = useState<LoadState>({ status: 'loading', key })
 
   useEffect(() => {
     const controller = new AbortController()
-    getMenu({ q, status, cursor, sort: 'name' }, controller.signal)
+    getMenu({ q, status, cursor, sort: 'name' }, controller.signal, currentStoreId)
       .then((response) => {
         if (controller.signal.aborted) return
         const previous = previousRead.current
@@ -51,7 +53,7 @@ export function MenuPage() {
           error: cause instanceof Error ? cause : new Error('Không tải được Menu.') })
       })
     return () => controller.abort()
-  }, [key, q, status, cursor, query])
+  }, [key, q, status, cursor, query, currentStoreId])
 
   const current: LoadState = state.key === key ? state : { status: 'loading', key }
   const invalidateList = useCallback((error: Error) => setState({ status: 'error', key, error }), [key])

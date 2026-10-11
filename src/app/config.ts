@@ -14,13 +14,14 @@ if (
   throw new Error('VITE_API_BASE_URL must be an HTTP(S) URL without credentials, query or fragment.')
 }
 
-const devStoreId = (import.meta.env.VITE_DEV_STORE_ID ?? '').trim()
-if (devStoreId && !/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/.test(devStoreId)) {
-  throw new Error('VITE_DEV_STORE_ID must be a canonical lowercase Store UUID.')
+// Fixtures are an explicit local preview, never a production authentication bypass.
+const mockPreview = dataSource === 'mock' && import.meta.env.DEV === true
+if (dataSource === 'mock' && !mockPreview) {
+  throw new Error('Mock preview is development-only. Build deployment with VITE_DATA_SOURCE=api.')
 }
 
 export const config = Object.freeze({
   dataSource,
   apiBaseUrl: apiBaseUrl.toString().replace(/\/+$/, ''),
-  devStoreId: devStoreId || null,
+  mockPreview,
 })

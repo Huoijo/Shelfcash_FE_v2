@@ -2,9 +2,10 @@ import { useState } from 'react'
 import type { ReactNode } from 'react'
 import { Outlet } from 'react-router'
 import { Sidebar } from './Sidebar'
+import { SessionActions } from '../../features/auth/SessionActions'
 import './AppShell.css'
 
-// Internal routes are currently unprotected. A future AuthGuard wraps this route.
+// API routes mount only after AuthGuard and current Store resolution.
 export function AppShell() {
   const [collapsed, setCollapsed] = useState(false)
 
@@ -24,7 +25,7 @@ export function AppShellHeader({ children }: { children: ReactNode }) {
   return (
     <header className="app-shell__header">
       {children}
-      <span className="app-shell__wordmark">ShelfCash</span>
+      <div className="app-shell__session"><SessionActions /><span className="app-shell__wordmark">ShelfCash</span></div>
     </header>
   )
 }
