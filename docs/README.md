@@ -20,10 +20,13 @@ Mỗi bản báo cáo trong thư viện bắt buộc phải bao gồm các metad
 | :---: | :--- | :--- | :---: | :---: |
 | `#001` | **Thiết lập Nền tảng Dự án & Định hướng Kiến trúc** | Tái khởi tạo ShelfCash từ đầu (React 19 + TypeScript + Vite), loại bỏ boilerplate thừa, thiết lập layout tối giản (Header với ShelfCash & Đăng nhập) và định hướng kiến trúc phân tầng 4 lớp (`app`, `pages`, `features`, `shared`). | 05/10/2026 | [001-architecture-foundation.md](./001-architecture-foundation.md) |
 | `#002` | **Technical Debt & Integration TODO** | Theo dõi công việc đã có evidence cần hoàn tất trước staging/production và tích hợp BE; không thay đổi hành vi ứng dụng. | 10/10/2026 | [002-technical-debt-and-integration-todo.md](./002-technical-debt-and-integration-todo.md) |
+| `#006` | **Decision / Planning E2E integration** | Canonical C01/R01/C02/C03/C04/C05/C08, MagicPath mapping, controlled checks và live blocker; không chứng nhận live completion. | 11/10/2026 | [006-decision-planning-e2e-integration.md](./006-decision-planning-e2e-integration.md) |
 
 ---
 
 ## Hướng dẫn Bổ sung Báo cáo Mới
+
+Báo cáo `#006` — [Decision / Planning E2E integration](./006-decision-planning-e2e-integration.md), 11/10/2026: status PARTIAL, API topology hiện hành, mapping hai màn hình MagicPath, lifecycle/retry, concerns, test evidence và exact M09 file manifest. First live blocker là connection refused trước A03; không gọi mock/SSR là live.
 
 Khi có thay đổi lớn về kiến trúc hoặc hoàn thành một cột mốc kỹ thuật (milestone):
 1. Tạo file mới theo định dạng: `docs/NNN-<ten-ngan-gon-bang-tieng-anh-hoac-viet>.md` (ví dụ: `docs/002-routing-and-auth-setup.md`).

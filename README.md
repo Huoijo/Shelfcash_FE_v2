@@ -32,7 +32,17 @@ npm run test:import
 
 # Verify Auth/session, Store and shared HTTP behavior with controlled responses
 npm run test:auth
+
+# Verify canonical Planning integration and current OpenAPI drift
+npm run test:planning
+npm run check:planning-wire
 ```
+
+## Milestone 09: Dự đoán / Kế hoạch nhập
+
+`/forecast` opens the authenticated `/forecast/planning` workspace in the existing shell. Setup consumes C01 and selected-date R01, then explicitly creates C02 and polls/resumes C03; retained results expose C04/C05 ingredients and C08 deterministic engine reasons. The backend owns forecast/BOM/procurement/selection internally—there are no public ForecastRun/DecisionRun/Brief routes in the current package. What-if, Hỏi AI, priority input, Open PO/scenarios and PO conversion stay unavailable, with no invented semantics or fixture fallback in API mode.
+
+Status is **PARTIAL / VERIFIED_CONTROLLED**, not live-complete: local BE `localhost:18001` refused health/A03 connections. [Milestone09 review, evidence, concerns and exact changed-file manifest](./docs/006-decision-planning-e2e-integration.md). MagicPath setup/results were read-only references; no redesign or remote edits. A `plan_id` query is an authorized server locator only. An uncertain create intent is memory-only and is lost on reload/leaving the page/Store or session change; explicit retry preserves its original body/key while mounted.
 
 ## Current milestone: Auth + Session + Store foundation
 
@@ -52,7 +62,7 @@ npm run test:auth
 - `/inventory` opens Kho in the existing AppShell. The Kho Sidebar link is URL-active; unfinished destinations stay disabled. The read-only table, status filters, name/SKU search and lot/movement drawer follow MagicPath Kho component `458590758262427648`, revision `458596566140329984`; MagicPath was not modified.
 - Inventory V1 §§2–3/6 defines V01 list, V02 ingredient/initial lots, V03 additional lots and V04 movements. Recorded physical stock, usable stock, completeness and unknown facts remain distinct. Quantities stay exact decimal strings; no float business arithmetic, inferred zero, unit conversion or stock mutation. Summary counts are Store-wide, not page totals. Details/continuations pin the list snapshot; expired snapshots invalidate the displayed set and require a full refresh.
 - Inventory fixtures are deterministic illustrative reads, not backend evidence. API mode uses runtime response validation and never falls back to fixtures. Location is explicitly unsupported; AI/forecast actions are disabled. Inventory timestamps use validated current-Store timezone when available, with an explicitly labeled UTC fixture fallback; Store-local `as_of_date` and expiry/receipt dates are not converted. See [Inventory integration debt §J](./docs/002-technical-debt-and-integration-todo.md#j-inventory-integration-maturity).
-- `/menu` opens the read-only product/recipe workspace in AppShell; Menu is a URL-active Sidebar link. The table, name search, active/paused filters and product detail panel follow MagicPath component `458614109248847872`, revision `458616728595894272`, inspected read-only. Hôm nay, Dự đoán and Cửa hàng remain disabled.
+- `/menu` opens the read-only product/recipe workspace in AppShell; Menu is a URL-active Sidebar link. The table, name search, active/paused filters and product detail panel follow MagicPath component `458614109248847872`, revision `458616728595894272`, inspected read-only. Dự đoán now opens Planning; Hôm nay and Cửa hàng remain disabled.
 - Catalog/Menu/Recipe V1 §§4–8 defines P01 products and P02 product/current recipe. Search is product-name-only, server-side in API mode and over the complete fixture dataset before pagination in mock mode. Summary stays Store-wide. Cursor changes preserve filters; filter/search changes reset cursor. Catalog/date mismatch between pages or list/detail requires a fresh read set, not mixed-version data. P02 has no query parameters; the server selects the inclusive Store-date recipe, never the FE's highest version.
 - Product UUID, recipe UUID/integer version, recipe-line UUID and ingredient UUID remain distinct. Exact quantities describe the whole recipe yield in canonical units; no unit conversion, float business arithmetic, BOM calculation or inventory availability inference. Missing recipe, known empty recipe, forbidden ingredient count, null price and zero price remain distinct. Menu timestamps use the response's Store timezone; date-only facts stay date-only. AI and the Menu→Kho ingredient action are disabled; no unfiltered stock link or fake saved edits. N20–N22 scheduling is designed in V1 but absent from this MagicPath workflow and not implemented. See [Menu integration debt §K](./docs/002-technical-debt-and-integration-todo.md#k-menu--recipe-integration-maturity).
 
@@ -85,3 +95,4 @@ Contract authority is root V1 Import §§4/6/9.1/9.3/10 and AUTH V1, followed by
 
 Tài liệu và báo cáo kiến trúc định kỳ được lưu trữ tại thư mục [`docs/`](./docs/README.md):
 - [Báo cáo #001: Thiết lập Nền tảng Dự án & Định hướng Kiến trúc](./docs/001-architecture-foundation.md)
+- [Báo cáo #006: Decision / Planning E2E integration](./docs/006-decision-planning-e2e-integration.md)

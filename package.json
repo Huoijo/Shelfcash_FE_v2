@@ -9,6 +9,8 @@
     "lint": "oxlint",
     "test:import": "node tests/run-import-batch.mjs",
     "test:auth": "node tests/run-auth-session.mjs",
+    "test:planning": "node tests/run-planning.mjs",
+    "check:planning-wire": "node scripts/check-planning-wire.mjs --check",
     "preview": "vite preview"
   },
   "dependencies": {

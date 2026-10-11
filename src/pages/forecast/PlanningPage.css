@@ -1,0 +1,10 @@
+.planning-page-feedback { margin: 0 48px; font-size: 14px; color: #575757; overflow-wrap: anywhere; }
+.planning-page-feedback:empty { display: none; }
+.planning-page-feedback p { margin: 12px 0; }
+.planning-page-feedback button { margin: 4px 12px 12px 0; padding: 9px 12px; border: 1px solid #d8d8d8; border-radius: 8px; background: #fff; color: #333; }
+.planning-page-feedback button:disabled { color: #929292; cursor: not-allowed; }
+.planning-page-notice { margin: 16px 48px 0; padding: 10px 12px; border: 1px solid #dedede; border-radius: 8px; font-size: 13px; color: #666; }
+.sc-planning-breadcrumb a { color: inherit; text-decoration: none; }
+@media (max-width: 1200px) { .planning-page-feedback { margin-inline: 32px; } }
+@media (max-width: 800px) { .planning-page-feedback, .planning-page-notice { margin-inline: 24px; } }
+@media (max-width: 600px) { .planning-page-feedback, .planning-page-notice { margin-inline: 16px; } }

@@ -1,6 +1,7 @@
 import { Navigate, Outlet, useLocation } from 'react-router'
 import { LoginPage } from '../../pages/login/LoginPage'
 import { useAuth } from './auth.context'
+import { authenticatedReturnPath } from './auth.navigation'
 import './SessionFeedback.css'
 
 export function SessionFeedback({ title, message, onRetry }: { title: string; message?: string; onRetry?: () => void }) {
@@ -33,7 +34,7 @@ export function LoginRoute() {
   if (state.status === 'bootstrapping' || state.status === 'error') return <BootstrapState />
   if (state.status === 'authenticated') {
     const from: unknown = location.state?.from
-    const target = typeof from === 'string' && /^\/(?:inventory|menu|imports)(?:[/?#]|$)/.test(from) ? from : '/imports'
+    const target = authenticatedReturnPath(from)
     return <Navigate to={target} replace />
   }
   return <LoginPage />
