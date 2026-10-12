@@ -34,6 +34,8 @@
 .sc-planning-priority-option:hover { background:#ededed; color:#383838; }
 .sc-planning-priority-selected,.sc-planning-priority-selected:hover { border-color:#575757; background:#575757; color:#ffffff; font-weight:600; }
 .sc-planning-priority-option:has(input:focus-visible) { outline:2px solid #616161; outline-offset:2px; }
+.sc-planning-priority-option > input { position:absolute; opacity:0; width:1px; height:1px; }
+.sc-planning-priority-option:has(input:disabled) { cursor:not-allowed; color:#8a8a8a; }
 .sc-planning-priority-option > input:focus-visible { outline:0; }
 .sc-planning-open-orders { display:flex; align-items:center; align-self:flex-start; gap:10px; color:#505050; font-size:14px; line-height:22px; cursor:pointer; }
 .sc-planning-open-orders input { flex:none; width:16px; height:16px; margin:0; accent-color:#575757; cursor:pointer; }
@@ -118,6 +120,10 @@
 .sc-proc-purchase-row { display:grid; grid-template-columns:24px minmax(0,1fr) minmax(120px,.75fr) minmax(125px,.65fr); align-items:center; gap:12px; width:100%; min-height:44px; padding:10px 20px; border:0; background:#ffffff; text-align:left; color:#737373; font-size:14px !important; line-height:22px; }
 .sc-proc-purchase-row:hover { background:#fafafa; }
 .sc-proc-purchase-rank { color:#a0a0a0; font-size:13px; }
+.planning-purchase-details { border-top:1px solid #eee; }
+.planning-purchase-details > summary { padding:10px 20px; color:#777; text-align:right; font-size:13px; text-decoration:underline; text-underline-offset:4px; cursor:pointer; list-style:none; }
+.planning-purchase-details > summary::-webkit-details-marker { display:none; }
+.planning-purchase-details > summary:hover { color:#333; }
 .sc-proc-purchase-row > strong { color:#4c4c4c; font-weight:500; }
 .sc-proc-purchase-quantity { color:#646464; }
 .sc-proc-purchase-cost { color:#6a6a6a; text-align:right; font-variant-numeric:tabular-nums; }

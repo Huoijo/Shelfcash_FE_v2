@@ -57,23 +57,23 @@ export function PlanningSetup({ context, busy, canCreate, canCreateReason, onCre
             </div>
           </label>
         </div>
-        <p id={`${prefix}-dates`} className="sc-planning-note">{start ? `Kế hoạch từ ${formatPlanningDate(start)} đến ${formatPlanningDate(shiftPlanningDate(start, 6))} · ${context.timezone}.` : 'Chọn ngày lịch hợp lệ.'} Chỉ hỗ trợ 7 ngày.</p>
-        <p id={`${prefix}-budget-note`} className="sc-planning-note">Ngân sách hiện hành: {formatPlanningMoney(context.default_requirements?.budget_limit ?? context.budget_ceiling?.amount, context.currency)}. Trần: {formatPlanningMoney(context.budget_ceiling?.amount, context.currency)}. Có thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.</p>
         <fieldset className="sc-planning-priority" aria-describedby={`${prefix}-priority-note`}>
           <legend>Ưu tiên</legend><div className="sc-planning-priority-options">
             {(['lean', 'balanced', 'protected'] as const).map((strategy) => <label key={strategy} className="sc-planning-priority-option">
               <input type="radio" name={`${prefix}-priority`} value={strategy} checked={false} disabled readOnly /><span>{planningStrategyLabels[strategy]}</span>
             </label>)}
-          </div><p id={`${prefix}-priority-note`} className="sc-planning-note">Chưa hỗ trợ chọn ưu tiên đầu vào. Máy chủ so sánh cả ba chiến lược và chọn phương án theo yêu cầu hiện hành; không dùng ưu tiên để thay đường nhu cầu LOW/BASE/HIGH.</p>
+          </div><p id={`${prefix}-priority-note`} className="sc-planning-note">Ưu tiên được xác định khi lập kế hoạch. Chưa hỗ trợ chọn thủ công.</p>
         </fieldset>
         <div><label className="sc-planning-open-orders"><input type="checkbox" checked={false} disabled readOnly aria-describedby={`${prefix}-po-note`} /><span>Tính cả đơn hàng đang chờ</span></label>
-          <p id={`${prefix}-po-note`} className="sc-planning-note">Chưa được backend hỗ trợ; đơn đang chờ không được tính trong lần chạy này.</p></div>
+          <p id={`${prefix}-po-note`} className="sc-planning-note">Chưa hỗ trợ tính đơn hàng đang chờ.</p></div>
         <details className="sc-planning-advanced"><summary>Cài đặt nâng cao <span aria-hidden="true">⌄</span></summary>
           <div className="sc-planning-advanced-controls">
             <label className="sc-planning-field"><span>Phương pháp tính</span><select disabled value="standard"><option value="standard">Tiêu chuẩn</option><option value="scenarios">Theo kịch bản — chưa hỗ trợ</option></select></label>
             <label className="sc-planning-field"><span>Mức độ mô phỏng</span><select disabled value="unavailable"><option value="unavailable">Chưa hỗ trợ</option></select></label>
-            <p className="sc-planning-note">Không gửi engine mode, scenario count hoặc random seed: API hiện hành không nhận các trường này.</p>
+            <p className="sc-planning-note">Các tùy chọn nâng cao chưa khả dụng.</p>
           </div>
+          <p id={`${prefix}-dates`} className="sc-planning-note">{start ? `Kế hoạch từ ${formatPlanningDate(start)} đến ${formatPlanningDate(shiftPlanningDate(start, 6))} · ${context.timezone}.` : 'Chọn ngày lịch hợp lệ.'} Chỉ hỗ trợ 7 ngày.</p>
+          <p id={`${prefix}-budget-note`} className="sc-planning-note">Ngân sách hiện hành: {formatPlanningMoney(context.default_requirements?.budget_limit ?? context.budget_ceiling?.amount, context.currency)}. Trần: {formatPlanningMoney(context.budget_ceiling?.amount, context.currency)}. Có thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.</p>
         </details>
         <div className="sc-planning-assessment" aria-live="polite">
           {readinessBusy && <p role="status">Đang kiểm tra khả năng lập kế hoạch cho ngày đã chọn…</p>}

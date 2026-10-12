@@ -620,7 +620,7 @@ export class ImportFlowWorkflow {
         (this.processReceipt?.effective_plan_digest && completion.effective_plan_digest !== this.processReceipt.effective_plan_digest)) {
         throw new HttpError('protocol', 'Biên nhận hoàn tất không khớp tiến trình và bản xem trước đã xác nhận.')
       }
-      this.update({ completion, notice: 'Đã đọc biên nhận ghi nguyên tử bền vững; kết quả không được tính từ giao diện.' })
+      this.update({ completion, tab: 'result', notice: 'Đã hoàn tất nhập dữ liệu.' })
     } else if (job.operation === 'import_analyze') {
       await this.readMappings(id, epoch, signal)
     } else throw new HttpError('protocol', 'Loại kết quả tiến trình không khớp thao tác.')

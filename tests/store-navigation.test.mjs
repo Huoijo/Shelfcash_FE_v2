@@ -12,6 +12,9 @@ import { Sidebar } from '../src/layouts/app-shell/Sidebar'
 import { AppShell } from '../src/layouts/app-shell/AppShell'
 import { StorePage } from '../src/pages/store/StorePage'
 import { StoreGate } from '../src/features/store/StoreProvider'
+import { TodayPage } from '../src/pages/today/TodayPage'
+import { HomePage } from '../src/pages/home/HomePage'
+import { ImportResult } from '../src/features/import-data/components/ImportResult'
 
 const h = React.createElement
 const store = mockStoreContext()
@@ -36,7 +39,8 @@ test('Sidebar exposes real URL-active Store link without fake href', () => {
   const html = render(h(Sidebar, { collapsed: false, onToggle() {} }))
   assert.match(html, /aria-current="page"[^>]*href="\/store"/)
   assert.doesNotMatch(html, /Cửa hàng — chưa triển khai/)
-  assert.match(html, /Hôm nay — chưa triển khai/)
+  assert.match(html, /href="\/today"/)
+  assert.doesNotMatch(html, /Hôm nay — chưa triển khai/)
 })
 test('Store route is protected but outside StoreGate so no/multi Store can resolve', () => {
   const source = readFileSync('src/app/AppRouter.tsx', 'utf8')
@@ -44,6 +48,40 @@ test('Store route is protected but outside StoreGate so no/multi Store can resol
   assert.ok(source.indexOf('path="/store"') < source.indexOf('<Route element={<StoreGate'))
   assert.match(source, /path="\/imports" element={<ImportWorkspace/)
   assert.match(source, /path="\/forecast\/planning"/)
+  assert.ok(source.indexOf('<Route element={<StoreGate') < source.indexOf('path="/today"'))
+})
+
+test('Today keeps inventory facts unavailable without the current Store permission', () => {
+  const restricted = { ...store, membership: { ...store.membership, effective_permissions: [] } }
+  const html = render(h(TodayPage), { status: 'ready', store: restricted })
+  assert.match(html, /Bạn chưa có quyền xem tồn kho/)
+  assert.match(html, /href="\/forecast\/planning"/)
+  assert.doesNotMatch(html, /Tổng quan tồn kho|8.338.000|Dự đoán sẵn sàng|Kế hoạch sẵn sàng/)
+})
+
+test('Homepage is a public destination and sends account entry to the real login route', () => {
+  const html = render(h(HomePage))
+  assert.match(html, /Ra quyết định tồn kho tốt hơn/)
+  assert.match(html, /href="\/login"/)
+  assert.doesNotMatch(html, /href="\/register"|designs.magicpath.ai|Product Preview/)
+  const source = readFileSync('src/app/AppRouter.tsx', 'utf8')
+  assert.ok(source.indexOf('path="/" element={<HomePage') < source.indexOf('<Route element={<AuthGuard'))
+})
+
+test('Completion links to planning setup without inventing planning readiness or aggregate counts', () => {
+  const completion = {
+    outcome: 'no_changes', status: 'completed', completed_at: '2026-10-12T00:00:00Z', commit_id: 'receipt-only',
+    summary: { files: 1, sheets: 1, rows: 1, mapped_fields: 3, errors: 0, warnings: 0 },
+    updated_resources: { inventory: { updated: false, affected_ingredient_count: null }, menu: { updated: false, affected_product_count: 0 },
+      sales: { updated: false, added_record_count: 0 }, catalog: { created_product_count: 0, created_ingredient_count: 0 } },
+    readiness: { as_of_date: '2026-10-11', evaluated_at: '2026-10-12T00:00:00Z', actions: [], omitted_actions: [] },
+  }
+  const html = render(h(ImportResult, { completion }))
+  assert.match(html, /Hoàn tất — không có thay đổi/)
+  assert.match(html, /href="\/forecast\/planning"/)
+  assert.match(html, /Điều kiện lập kế hoạch sẽ được kiểm tra/)
+  assert.match(html, /Chưa biết/)
+  assert.doesNotMatch(html, /Dự đoán — chưa khả dụng|Sẵn sàng dự đoán|Sẵn sàng lập kế hoạch/)
 })
 test('Shared shell keys all business outlets by Store and current authorization/catalog', () => {
   const source = readFileSync('src/layouts/app-shell/AppShell.tsx', 'utf8')

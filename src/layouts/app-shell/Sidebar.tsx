@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router'
+import { SessionActions } from '../../features/auth/SessionActions'
 
 const sections = ['Hôm nay', 'Nhập dữ liệu', 'Dự đoán', 'Kho', 'Menu', 'Cửa hàng']
-const routes: Record<string, string> = { 'Nhập dữ liệu': '/imports', 'Dự đoán': '/forecast', Kho: '/inventory', Menu: '/menu', 'Cửa hàng': '/store' }
+const routes: Record<string, string> = { 'Hôm nay': '/today', 'Nhập dữ liệu': '/imports', 'Dự đoán': '/forecast', Kho: '/inventory', Menu: '/menu', 'Cửa hàng': '/store' }
 
 export function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) {
   return (
@@ -32,6 +33,7 @@ export function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle:
           </span>
         ))}
       </nav>
+      <div className="app-sidebar__session"><SessionActions /></div>
     </aside>
   )
 }

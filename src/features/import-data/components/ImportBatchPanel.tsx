@@ -73,7 +73,7 @@ export function ImportBatchPanel({ state, workflow, continuationLocked = false, 
       {sealed && <p className="import-batch__sealed">Tập file đã khóa. Muốn đổi hoặc bổ sung file, hãy tạo lô mới. Phân tích thất bại cũng không mở lại tập file.</p>}
       {batch?.status === 'analyzing' && <p role="status">Đang phân tích tập file đã khóa…</p>}
       {batch?.status === 'failed' && <p role="status">Phân tích thất bại. Chỉ có thể thử lại khi máy chủ cho phép; tập file vẫn giữ nguyên.</p>}
-      {batch && ['review_required', 'ready_for_preview'].includes(batch.status) && <p>Đã kết thúc bước phân tích. Tiếp tục ở phần Ghép cột bên dưới; chưa ghi dữ liệu nghiệp vụ.</p>}
+      {batch && ['review_required', 'ready_for_preview'].includes(batch.status) && <p>Đã kết thúc bước phân tích. Tiếp tục ở bước Ghép cột; chưa ghi dữ liệu nghiệp vụ.</p>}
       {preparation && (
         <div className="import-batch__confirmation">
           <h3>Xác nhận tập file để phân tích</h3>

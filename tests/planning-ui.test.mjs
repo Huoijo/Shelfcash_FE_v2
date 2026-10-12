@@ -23,8 +23,8 @@ test('setup preserves labeled MagicPath concepts, only actual seven-day horizon 
   assert.match(html, /<option value="7" selected="">7 ngày/)
   assert.equal((html.match(/type="radio"[^>]*disabled=""/g) ?? []).length, 3)
   assert.doesNotMatch(html, /type="radio"[^>]*checked=""|type="checkbox"[^>]*checked=""/)
-  assert.match(html, /so sánh cả ba chiến lược/)
-  assert.match(html, /Không gửi engine mode/)
+  assert.match(html, /Chưa hỗ trợ chọn thủ công/)
+  assert.match(html, /Các tùy chọn nâng cao chưa khả dụng/)
   assert.doesNotMatch(html, /value="14"|value="30"/)
 })
 

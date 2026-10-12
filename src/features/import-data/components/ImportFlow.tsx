@@ -16,25 +16,21 @@ export function ImportFlow({ state, workflow, parentBusy, parentStale, canDecide
   const busy = state.busy || parentBusy
   const options = state.options && (state.optionsMappingId || state.selectedSheetId) ? { [state.optionsMappingId ?? state.selectedSheetId!]: state.options } : {}
   const tabs: { key: ImportFlowTab; label: string; available: boolean }[] = [
-    { key: 'mapping', label: '1. Ghép cột', available: !!state.summary },
-    { key: 'review', label: '2. Xem lại', available: !!state.summary?.can_preview },
-    { key: 'preview', label: '3. Preview / Ghi dữ liệu', available: !!state.preview || !!state.job && state.job.operation !== 'import_analyze' },
-    { key: 'result', label: '4. Kết quả', available: !!state.completion },
+    { key: 'mapping', label: '2. Ghép cột', available: !!state.summary },
+    { key: 'review', label: '3. Xem lại', available: !!state.summary?.can_preview },
+    { key: 'preview', label: '4. Xem trước / Ghi dữ liệu', available: !!state.preview || !!state.job && state.job.operation !== 'import_analyze' },
+    { key: 'result', label: '5. Hoàn tất', available: !!state.completion },
   ]
   return <section className="import-flow" aria-labelledby="import-flow-title" aria-busy={busy}>
-    <div className="import-flow__heading"><h2 ref={heading} id="import-flow-title" tabIndex={-1}>Ghép cột và xử lý dữ liệu</h2>
-      <button type="button" disabled={busy} onClick={() => { void workflow.refresh() }}>Đọc lại bước xử lý</button>
-    </div>
-    <p className="import-flow__muted">Trạng thái, quyền thao tác và tiến độ lấy từ máy chủ; không tính từ số dòng đang thấy.</p>
-    <ol className="import-flow__steps" aria-label="Các bước sau phân tích">{tabs.map((tab) => <li key={tab.key}><button type="button" aria-current={state.tab === tab.key ? 'step' : undefined} disabled={!tab.available || busy || locked} onClick={() => workflow.setTab(tab.key)}>{tab.label}</button></li>)}</ol>
+    <h2 ref={heading} id="import-flow-title" className="sr-only" tabIndex={-1}>{tabs.find((tab) => tab.key === state.tab)?.label}</h2>
     {state.error && <p className="import-flow__notice" role="alert">{state.error}</p>}
     <p role="status">{busy ? 'Đang đọc hoặc gửi yêu cầu… ' : ''}{state.notice}</p>
     {state.retryOperation && <div className="import-flow__notice"><p>Kết quả yêu cầu {state.retryOperation} chưa xác định. Không gửi yêu cầu mới; thử lại giữ nguyên key, nội dung và phiên bản đã gửi.</p><button type="button" disabled={busy} onClick={() => { void workflow.retry() }}>Đối chiếu và thử lại đúng yêu cầu</button></div>}
-    {state.job && <section className="import-flow__card" aria-label="Tiến trình máy chủ">
-      <p>{state.job.operation} · {state.job.stage} · {state.job.status}</p><p>Tiến độ: {state.job.progress === null ? 'Chưa biết' : `${Math.round(state.job.progress * 100)}%`}</p>
+    {state.job && !['completed', 'failed'].includes(state.job.status) && <section className="import-flow__card" aria-label="Tiến trình máy chủ">
+      <p role="status">Đang xử lý dữ liệu…</p><p>Tiến độ: {state.job.progress === null ? 'Chưa biết' : `${Math.round(state.job.progress * 100)}%`}</p>
       {state.job.error && <Evidence value={state.job.error} label="Chẩn đoán tiến trình thất bại" />}
-      <p className="import-flow__muted">Job hoàn tất chưa thay thế biên nhận Import; job thất bại với HTTP200 vẫn là thất bại.</p>
     </section>}
+    {state.job?.status === 'failed' && <div className="import-flow__notice" role="alert"><strong>Xử lý dữ liệu chưa thành công.</strong>{state.job.error && <Evidence value={state.job.error} label="Chi tiết lỗi xử lý" />}</div>}
     {state.tab === 'mapping' && (state.summary ? <>
       <ImportMapping summary={state.summary} queue={state.queue} selectedSheetId={state.selectedSheetId} filter={state.filter} reviewOnly={state.reviewOnly} options={options} busy={busy} locked={locked} canPropose={canProposeMapping && !state.batch?.active_job_id}
         onSelectSheet={(id) => { void workflow.selectSheet(id) }} onFilter={(filter, reviewOnly) => { void workflow.setFilter(filter as MappingStatus | 'all', reviewOnly) }}
@@ -45,8 +41,9 @@ export function ImportFlow({ state, workflow, parentBusy, parentStale, canDecide
     {state.summary && ['mapping', 'review'].includes(state.tab) && <>
       {!!state.summary.blockers.length && <Evidence value={state.summary.blockers} label="Lỗi chặn toàn lô" />}
       <Evidence value={{ binding_refs: state.summary.binding_refs, approved_contexts: state.summary.approved_contexts }} label="Bindings và ngữ cảnh đã duyệt từ máy chủ" />
-      <ImportProfileReview summary={state.summary} busy={busy} locked={locked} canDecide={canDecideProfile}
-        onDecision={(id, revision, decision) => { void workflow.decideProfile(id, revision, decision) }} />
+      {!!state.summary.profile_proposals.length && <details className="import-flow__profile-review" open><summary>Duyệt quy tắc ghép dữ liệu · {state.summary.profile_proposals.length} đề xuất</summary>
+        <ImportProfileReview summary={state.summary} busy={busy} locked={locked} canDecide={canDecideProfile}
+          onDecision={(id, revision, decision) => { void workflow.decideProfile(id, revision, decision) }} /></details>}
     </>}
     {state.tab === 'review' && state.summary && <section className="import-flow__card">
       <h3>Xem lại trước khi Preview</h3><p>{state.summary.progress.completed_fields} / {state.summary.progress.total_fields} mục được xử lý theo máy chủ; {state.summary.progress.unresolved} mục chưa xử lý.</p>
@@ -61,5 +58,9 @@ export function ImportFlow({ state, workflow, parentBusy, parentStale, canDecide
       onReason={workflow.setCommitReason} onAcknowledge={workflow.acknowledgeCommit} onLoadMore={() => { void workflow.loadMorePreview() }} onCommit={() => { void workflow.commit() }} /> : <p>Đang chờ snapshot Preview từ máy chủ. Yêu cầu được nhận chưa phải Import thành công.</p>)}
     {state.completion && state.tab !== 'result' && <p><button type="button" className="import-flow__primary" disabled={busy} onClick={() => workflow.setTab('result')}>Xem biên nhận hoàn tất</button></p>}
     {state.tab === 'result' && state.completion && <ImportResult completion={state.completion} />}
+    <details className="import-flow__navigation"><summary>Các bước nhập dữ liệu</summary>
+      <ol className="import-flow__steps" aria-label="Các bước sau phân tích">{tabs.map((tab) => <li key={tab.key}><button type="button" aria-current={state.tab === tab.key ? 'step' : undefined} disabled={!tab.available || busy || locked} onClick={() => workflow.setTab(tab.key)}>{tab.label}</button></li>)}</ol>
+      <button type="button" disabled={busy} onClick={() => { void workflow.refresh() }}>Đọc lại bước xử lý</button>
+    </details>
   </section>
 }

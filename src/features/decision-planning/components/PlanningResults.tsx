@@ -54,7 +54,6 @@ export function PlanningResults(props: PlanningResultsProps) {
       <button type="button" className="sc-proc-secondary-action" disabled title="Backend hiện hành chưa có contextual AI/explanation endpoint.">Hỏi AI</button>
       <button type="button" className="sc-proc-text-action" disabled={busy} onClick={onNewPlan}>Thiết lập mới</button>
     </div></header>
-    <p className="sc-planning-note planning-run-identity">Lần chạy {run.run_id} · {run.status} · Bắt đầu {formatPlanningDate(run.request.forecast_start_date)} · Ngân sách đã chụp {formatPlanningMoney(run.configuration.budget.limit, run.configuration.budget.currency)}</p>
     {run.status === 'failed' && <section className="sc-proc-warning" role="alert"><strong>Chạy kế hoạch thất bại.</strong><span>Dữ liệu một phần bên dưới chỉ để kiểm tra, không phải khuyến nghị đã hoàn tất.</span>{winner && <span>Phương án một phần được máy chủ xác minh và giữ lại; không đổi trạng thái thất bại của lần chạy.</span>}</section>}
     {run.status === 'completed' && !winner && <section className="sc-proc-warning" role="status"><strong>Đã hoàn tất — chưa có phương án đủ điều kiện.</strong><span>Kết quả: {run.outcome ?? 'Chưa đánh giá'}. Không tạo kế hoạch mua giả.</span></section>}
     {['queued', 'running'].includes(run.status) && <p role="status">Máy chủ đang tính kế hoạch. Chưa có khuyến nghị hoàn tất.</p>}
@@ -75,7 +74,15 @@ export function PlanningResults(props: PlanningResultsProps) {
           <article className="sc-proc-kpi"><h2>Cần nhập</h2><strong>Chưa biết</strong><span>{winner ? `${winner.purchases.length} dòng mua; chưa có tổng nguyên liệu toàn kế hoạch` : 'Chưa có tổng nguyên liệu toàn kế hoạch'}</span></article>
           <article className="sc-proc-kpi"><h2>Mức đáp ứng</h2><strong>Chưa đánh giá</strong><span>Không có tỷ lệ tổng; xem theo món và đường nhu cầu</span></article></div>
         <section className="sc-proc-priority-purchases"><header><h2>{partialFailure ? 'Dữ liệu mua hàng một phần' : 'Kế hoạch mua hàng'}</h2><span className="sc-proc-strategy-badge">{winner ? winner.source_strategies.map((strategy) => planningStrategyLabels[strategy]).join(' / ') : 'Chưa có chiến lược được chọn'}</span></header>
-          <PlanningPurchases option={winner} currency={run.configuration.budget.currency} nameFor={nameFor} onInspect={inspect} />
+          {!!winner?.purchases.length && <ol>{winner.purchases.slice(0, 3).map((purchase, index) => <li key={`${purchase.supplier_term_id}-${purchase.ingredient_id}-${index}`}>
+            <button className="sc-proc-purchase-row" type="button" disabled={busy || detailBusy} onClick={() => inspect(purchase.ingredient_id)}>
+              <span className="sc-proc-purchase-rank" aria-label="Dòng">{index + 1}</span><strong className="planning-identity" title={purchase.ingredient_id}>{nameFor(purchase.ingredient_id) === purchase.ingredient_id ? `Nguyên liệu · …${purchase.ingredient_id.slice(-6)}` : nameFor(purchase.ingredient_id)}</strong>
+              <span className="sc-proc-purchase-quantity">Mua {formatPlanningQuantity(purchase.quantity, purchase.unit)}</span><span className="sc-proc-purchase-cost">{formatPlanningMoney(purchase.purchase_outlay, run.configuration.budget.currency)}</span>
+            </button>
+          </li>)}</ol>}
+          <details className="planning-purchase-details" open={!winner || winner.purchases.length === 0}><summary>Xem toàn bộ kế hoạch</summary>
+            <PlanningPurchases option={winner} currency={run.configuration.budget.currency} nameFor={nameFor} onInspect={inspect} />
+          </details>
         </section>
         <PlanningNotifications title="Lỗi thực thi" items={run.errors} /><PlanningNotifications title="Cảnh báo của kết quả" items={result?.warnings ?? []} />
         <PlanningNotifications title="Cảnh báo dự báo" items={run.forecast?.warnings ?? []} />
@@ -87,7 +94,7 @@ export function PlanningResults(props: PlanningResultsProps) {
         <div className="sc-proc-overview-actions"><button type="button" className="sc-proc-primary-cta" disabled title="Chưa có UI/contract/implementation đồng bộ cho tạo PO từ kết quả này.">Tạo Draft PO</button>
           <button type="button" className="sc-proc-secondary-action" onClick={() => changeTab('strategies')}>Xem phương án khác</button>
           <button type="button" className="sc-proc-secondary-action" disabled={busy || detailBusy} onClick={onLoadReasons}>{detailBusy ? 'Đang đọc…' : 'Xem lý do từ engine'}</button></div>
-        <p className="sc-planning-note">What-if và Hỏi AI chưa có API trong handoff hiện hành. Các nút này không tạo kịch bản hoặc câu trả lời minh họa.</p>
+        <details className="sc-proc-disclosure"><summary>Thông tin lần lập kế hoạch</summary><p className="sc-planning-note planning-run-identity">Lần chạy {run.run_id} · {run.status} · Bắt đầu {formatPlanningDate(run.request.forecast_start_date)} · Ngân sách đã chụp {formatPlanningMoney(run.configuration.budget.limit, run.configuration.budget.currency)}</p><p className="sc-planning-note">Hỏi AI và kịch bản giả định chưa khả dụng.</p></details>
         {props.reasonsError && <p role="alert">{props.reasonsError}</p>}{reasons && <PlanningEngineReasons reasons={reasons} />}
       </div>}
       {tab === 'ingredients' && <div className="sc-proc-ingredient-workspace">

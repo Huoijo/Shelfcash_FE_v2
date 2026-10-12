@@ -80,7 +80,11 @@ export function LoginForm() {
 
   return (
     <div className="auth-form">
-      <h2 className="auth-form__heading">Đăng nhập</h2>
+      <div className="auth-form__tabs" role="tablist" aria-label="Tài khoản ShelfCash">
+        <button id="auth-login-tab" type="button" role="tab" aria-selected="true" aria-controls="auth-login-panel">Đăng nhập</button>
+        <button type="button" role="tab" aria-selected="false" disabled title="Liên hệ hỗ trợ ShelfCash để tạo tài khoản">Đăng ký</button>
+      </div>
+      <div id="auth-login-panel" role="tabpanel" aria-labelledby="auth-login-tab">
       <form onSubmit={(event) => { void handleSubmit(event) }} noValidate aria-busy={submitting}>
         <div className="auth-form__fields">
           <div className="auth-form__field">
@@ -113,9 +117,11 @@ export function LoginForm() {
               onChange={(event) => setRememberLogin(event.target.checked)} />
             <span>Ghi nhớ đăng nhập</span>
           </label>
+          <button className="auth-form__text-button" type="button" onClick={() => setNotice('Liên hệ hỗ trợ ShelfCash để được đặt lại mật khẩu.')}>Quên mật khẩu?</button>
         </div>
         <button className="auth-form__primary-button" type="submit" disabled={submitting || mockPreview}>{submitting ? 'Đang đăng nhập…' : 'Đăng nhập'}</button>
       </form>
+      </div>
       {requestError && <p className="auth-form__request-error" role="alert">{requestError}</p>}
       <p className="auth-form__notice" role="status">{notice}</p>
       {mockPreview && (

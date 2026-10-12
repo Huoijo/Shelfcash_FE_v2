@@ -8,6 +8,8 @@ import { ImportPage } from '../pages/imports/ImportPage'
 import { ImportWorkspace } from '../pages/imports/ImportWorkspace'
 import { InventoryPage } from '../pages/inventory/InventoryPage'
 import { MenuPage } from '../pages/menu/MenuPage'
+import { HomePage } from '../pages/home/HomePage'
+import { TodayPage } from '../pages/today/TodayPage'
 
 const PlanningPage = lazy(() => import('../pages/forecast/PlanningPage').then((module) => ({ default: module.PlanningPage })))
 const StorePage = lazy(() => import('../pages/store/StorePage').then((module) => ({ default: module.StorePage })))
@@ -24,12 +26,13 @@ function LegacyImportHistoryRedirect() {
 export function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginRoute />} />
       <Route element={<AuthGuard />}>
         <Route element={<StoreProvider><AppShell /></StoreProvider>}>
           <Route path="/store" element={<Suspense fallback={<p role="status">Đang tải Cửa hàng…</p>}><StorePage /></Suspense>} />
           <Route element={<StoreGate><Outlet /></StoreGate>}>
+          <Route path="/today" element={<TodayPage />} />
           <Route path="/inventory" element={<InventoryPage />} />
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/forecast" element={<PlanningRedirect />} />

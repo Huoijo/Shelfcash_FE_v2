@@ -8,11 +8,11 @@ test('Login return preserves canonical planning locator and fragment', () => {
 })
 
 test('Login return retains forecast aliases and existing protected destinations', () => {
-  for (const target of ['/forecast', '/forecast/planning/results?plan_id=run', '/inventory', '/menu?q=tea', '/imports/history#recent'])
+  for (const target of ['/today', '/forecast', '/forecast/planning/results?plan_id=run', '/inventory', '/menu?q=tea', '/imports/history#recent'])
     assert.equal(authenticatedReturnPath(target), target)
 })
 
 test('Login return rejects foreign origins, prefix lookalikes and non-string values', () => {
-  for (const target of ['//evil.example/forecast', 'https://evil.example/forecast', '/forecastevil', '/imports-evil', '/login', '', undefined, null, 7, {}])
+  for (const target of ['//evil.example/forecast', 'https://evil.example/forecast', '/forecastevil', '/today-evil', '/imports-evil', '/login', '', undefined, null, 7, {}])
     assert.equal(authenticatedReturnPath(target), '/imports')
 })

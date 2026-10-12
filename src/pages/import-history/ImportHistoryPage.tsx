@@ -103,8 +103,7 @@ export function ImportHistoryPage() {
           <label>Trạng thái<select name="status" defaultValue={status ?? ''}>
             <option value="">Tất cả trạng thái</option>{statuses.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
           </select></label>
-          <label className="history-filters__search">Tên file<input name="q" type="search" placeholder="Tìm theo tên file" defaultValue={q ?? ''} /></label>
-          <button type="submit">Áp dụng</button>
+          <label className="history-filters__search">Tên file<div className="history-search-control"><input name="q" type="search" placeholder="Tìm theo tên file" defaultValue={q ?? ''} /><button type="submit" aria-label="Áp dụng bộ lọc" title="Áp dụng bộ lọc"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5" stroke="currentColor" strokeWidth="1.3" /><path d="m12.5 12.5 4 4" stroke="currentColor" strokeWidth="1.3" /></svg></button></div></label>
         </form>
         {current.status === 'loading' && <p className="history-feedback" role="status">Đang tải lịch sử nhập…</p>}
         {current.status === 'error' && <div className="history-error" role="alert">

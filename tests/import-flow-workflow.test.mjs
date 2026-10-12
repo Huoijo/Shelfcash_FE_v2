@@ -67,6 +67,7 @@ test('continuation uses original per-instance batch; 202 and running jobs never 
   await work.controller.pollJob()
   assert.equal(work.upload.getSnapshot().batch.status, 'completed')
   assert.equal(work.controller.getSnapshot().completion.outcome, 'committed')
+  assert.equal(work.controller.getSnapshot().tab, 'result')
   assert.equal(work.controller.getSnapshot().completion.updated_resources.inventory.changed_record_count, 2)
   assert.equal(work.controller.getSnapshot().pollAfterMs, null)
   work.controller.setTab('result')

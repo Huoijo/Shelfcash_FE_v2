@@ -6,31 +6,34 @@ const knownCount = (value: number | null | undefined) => value == null ? 'Chưa 
 
 export function ImportResult({ completion }: { completion: ImportCompletion }) {
   const resources = completion.updated_resources
-  return <>
-    <h2>{completion.outcome === 'no_changes' ? 'Hoàn tất — không có thay đổi' : 'Đã hoàn tất Import'}</h2>
-    <p>Biên nhận nguyên tử từ máy chủ · {completion.status === 'completed_with_warnings' ? 'Có cảnh báo cần xem' : 'Đã hoàn tất'}</p>
-    <p className="import-flow__muted">Commit: {completion.commit_id} · {completion.completed_at}</p>
-    <dl className="import-flow__summary" aria-label="Tóm tắt biên nhận Import">
-      <div><dt>File</dt><dd>{completion.summary.files}</dd></div><div><dt>Sheet</dt><dd>{completion.summary.sheets}</dd></div>
-      <div><dt>Dòng</dt><dd>{completion.summary.rows}</dd></div><div><dt>Trường đã ghép</dt><dd>{completion.summary.mapped_fields}</dd></div>
-      <div><dt>Lỗi</dt><dd>{completion.summary.errors}</dd></div><div><dt>Cảnh báo</dt><dd>{completion.summary.warnings}</dd></div>
-    </dl>
+  const metrics = [[completion.summary.files, 'files'], [completion.summary.sheets, 'sheets'], [completion.summary.mapped_fields, 'trường đã ghép'], [completion.summary.errors, 'lỗi']] as const
+  return <div className="import-result">
+    <section className="import-result__summary" aria-labelledby="import-result-title">
+      <header><h2 id="import-result-title"><span className="import-result__check" aria-hidden="true">✓</span>{completion.outcome === 'no_changes' ? 'Hoàn tất — không có thay đổi' : 'Dữ liệu đã được cập nhật'}</h2>
+        <span>Ngày dữ liệu: {completion.readiness.as_of_date.split('-').reverse().join('/')}</span></header>
+      <dl>{metrics.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{knownCount(value)}</dd></div>)}</dl>
+      {completion.status === 'completed_with_warnings' && <p role="status">Hoàn tất với {completion.summary.warnings} cảnh báo. Xem chi tiết biên nhận bên dưới.</p>}
+    </section>
+    <h3 className="import-result__section-title">{completion.outcome === 'no_changes' ? 'Phạm vi dữ liệu' : 'Dữ liệu đã được cập nhật'}</h3>
     <div className="import-flow__impacts">
-      <section className="import-flow__card"><h3>Kho</h3><p>{resources.inventory.updated ? 'Đã cập nhật' : 'Không cập nhật'}</p><p>{knownCount(resources.inventory.affected_ingredient_count)} nguyên liệu bị ảnh hưởng</p><Link to="/inventory">Xem Kho hiện tại</Link></section>
-      <section className="import-flow__card"><h3>Menu</h3><p>{resources.menu.updated ? 'Đã cập nhật' : 'Không cập nhật'}</p><p>{knownCount(resources.menu.affected_product_count)} món bị ảnh hưởng</p><Link to="/menu">Xem Menu hiện tại</Link></section>
-      <section className="import-flow__card"><h3>Bán hàng / Catalog</h3><p>{resources.sales.updated ? 'Đã cập nhật bán hàng' : 'Không cập nhật bán hàng'}</p><p>{knownCount(resources.sales.added_record_count)} bản ghi bán hàng mới</p><p>{resources.catalog.created_product_count} món mới · {resources.catalog.created_ingredient_count} nguyên liệu mới</p></section>
+      <section className="import-result__impact"><h3>Kho</h3><p><strong>{knownCount(resources.inventory.affected_ingredient_count)}</strong> nguyên liệu bị ảnh hưởng</p><Link to="/inventory">Xem kho</Link><small>{resources.inventory.updated ? 'Đã cập nhật' : 'Không cập nhật'}</small></section>
+      <section className="import-result__impact"><h3>Menu</h3><p><strong>{knownCount(resources.menu.affected_product_count)}</strong> món bị ảnh hưởng</p><Link to="/menu">Xem menu</Link><small>{resources.menu.updated ? 'Đã cập nhật' : 'Không cập nhật'}</small></section>
+      <section className="import-result__impact"><h3>Bán hàng</h3><p><strong>{knownCount(resources.sales.added_record_count)}</strong> bản ghi mới</p><small>{resources.sales.updated ? 'Đã cập nhật bán hàng' : 'Không cập nhật bán hàng'}</small></section>
     </div>
-    <section className="import-flow__card" aria-labelledby="import-readiness-title">
-      <h3 id="import-readiness-title">Khả năng tiếp tục tại thời điểm hoàn tất</h3>
-      <p className="import-flow__muted">Đánh giá lưu cùng biên nhận lúc {completion.readiness.evaluated_at}; không phải kết quả tính lại hiện tại.</p>
+    <section className="import-result__next" aria-labelledby="import-readiness-title"><div><p>Bước tiếp theo</p><h2 id="import-readiness-title">Dự đoán</h2><p>Kiểm tra dữ liệu và thiết lập kế hoạch nhập hàng.</p></div>
+      <Link className="import-result__cta" to="/forecast/planning">Đi tới Dự đoán <span aria-hidden="true">→</span></Link>
+    </section>
+    <p className="import-flow__muted">Điều kiện lập kế hoạch sẽ được kiểm tra tại bước tiếp theo.</p>
+    <details className="import-result__details"><summary>Xem chi tiết biên nhận</summary>
+      <p>Đã hoàn tất Import · {completion.completed_at}</p><p>{completion.summary.rows} dòng · {completion.summary.warnings} cảnh báo</p>
+      <p>{resources.catalog.created_product_count} món mới · {resources.catalog.created_ingredient_count} nguyên liệu mới</p>
+      <p>Khả năng tiếp tục tại thời điểm hoàn tất · {completion.readiness.evaluated_at}</p>
       {completion.readiness.actions.map((action) => <div key={action.action}>
-        <p><strong>{action.action}</strong> · {action.availability === 'ready' ? 'Sẵn sàng theo máy chủ' : action.availability === 'blocked' ? 'Bị chặn' : 'Chưa biết'}</p>
-        <p className="import-flow__muted">Dữ liệu: {action.data_status} · Thực thi: {action.execution_status} · {action.result_assessment}</p>
+        <p><strong>{({ inventory: 'Kho', menu: 'Menu', import: 'Nhập dữ liệu' })[action.action]}</strong> · {action.availability === 'ready' ? 'Sẵn sàng theo máy chủ' : action.availability === 'blocked' ? 'Bị chặn' : 'Chưa biết'}</p>
         {!!action.blockers.length && <Evidence value={action.blockers} label="Lý do chặn" />}{!!action.warnings.length && <Evidence value={action.warnings} label="Cảnh báo" />}
       </div>)}
-      <button type="button" disabled title="Màn hình Dự đoán chưa được triển khai">Dự đoán — chưa khả dụng</button>
-    </section>
-    <Evidence value={{ summary: completion.summary, mapping_bindings: completion.mapping_bindings, effective_plan_digest: completion.effective_plan_digest, audit_reference: completion.audit_reference, omitted_actions: completion.readiness.omitted_actions }} label="Chi tiết biên nhận và audit" />
-    <p><Link to="/imports/history">Xem lịch sử nhập</Link></p>
-  </>
+      <Evidence value={{ commit_id: completion.commit_id, summary: completion.summary, readiness: completion.readiness, mapping_bindings: completion.mapping_bindings, effective_plan_digest: completion.effective_plan_digest, audit_reference: completion.audit_reference }} label="Thông tin đối soát" />
+    </details>
+    <p className="import-result__history"><Link to="/imports/history">Xem lịch sử nhập <span aria-hidden="true">→</span></Link></p>
+  </div>
 }

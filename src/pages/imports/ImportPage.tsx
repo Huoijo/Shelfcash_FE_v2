@@ -22,22 +22,33 @@ export function ImportPage() {
     !!(batch && !batch.allowed_actions.includes('upload'))
   const [helpOpen, setHelpOpen] = useState(false)
   const helpId = useId()
+  const showFlow = state.sealedLocked && !locatorMismatch
+  const stepTitles = { mapping: 'Ghép cột dữ liệu', review: 'Xem lại dữ liệu', preview: 'Xem trước và ghi dữ liệu', result: 'Hoàn tất' }
+  const title = showFlow ? stepTitles[flowState.tab] : 'Nhập dữ liệu'
+  const step = showFlow ? ({ mapping: 2, review: 3, preview: 4, result: 5 }[flowState.tab]) : 1
 
   return (
     <div className="import-page">
       <AppShellHeader>
-        <div className="import-page__date">
+        {showFlow ? <nav aria-label="Đường dẫn trang"><Link to="/imports">Nhập dữ liệu</Link><span aria-hidden="true">/</span><span aria-current="page">{title}</span></nav> : <div className="import-page__date">
           <label htmlFor="import-data-date">Ngày dữ liệu</label>
           <input id="import-data-date" type="date" value={dataDate} disabled={locatorMismatch || !!state.draft || state.busy || !!state.retryOperation} onChange={(event) => workflow.setDataDate(event.target.value)} />
-        </div>
+        </div>}
       </AppShellHeader>
       <main className="import-page__main" aria-labelledby="import-page-title">
-        <h1 id="import-page-title">Nhập dữ liệu</h1>
-        <p className="import-page__source">{config.dataSource === 'mock' ? 'Chế độ minh họa · Ví dụ kiểm kê cố định để thử giao diện; không phân tích nội dung file, không tải lên máy chủ hoặc ghi dữ liệu thật.' : 'Kết nối máy chủ · Cần phiên đăng nhập và quyền của cửa hàng.'}</p>
-        <p className="import-page__source" aria-live="polite">Bước hiện tại: {importStageLabels[importStage(state)]}</p>
+        <div className="import-page__heading"><div><h1 id="import-page-title">{title}</h1><span className="import-page__step">Bước {step}/5</span></div>
+          <button className="import-page__help" type="button" aria-haspopup="dialog" aria-controls={helpId} aria-expanded={helpOpen} onClick={() => setHelpOpen(true)}>HDSD</button></div>
+        {config.dataSource === 'mock' && <p className="import-page__source">Minh họa · Không phân tích file hoặc ghi dữ liệu thật.</p>}
+        <p className="sr-only" aria-live="polite">Bước hiện tại: {importStageLabels[importStage(state)]}</p>
         {locatorMismatch && <p className="import-page__error" role="status">Chưa đọc được đúng lô trong URL. Các thao tác thay đổi bị khóa; không dùng lô trước làm trạng thái của lô đang yêu cầu.{batch && <> <Link to={`/imports?import_id=${encodeURIComponent(batch.import_id)}`}>Quay lại lô đang giữ trong workspace</Link>.</>}</p>}
         {locatorMismatch && !batch && !state.draft && state.error && <button type="button" disabled={state.busy || !!state.retryOperation || flowState.busy || !!flowState.retryOperation} onClick={startNewDraft}>Bỏ định danh đang mở và bắt đầu lô mới</button>}
-        <div className="import-page__grid">
+        {showFlow && <>
+          {state.error && <p className="import-page__error" role="alert">{state.error}</p>}
+          {state.retryOperation && <button type="button" disabled={state.busy} onClick={() => { void workflow.retry() }}>Thử lại đúng yêu cầu trước</button>}
+          <ImportFlow state={flowState} workflow={flow} canDecideProfile={canDecideProfile} canProposeMapping={canProposeMapping} parentBusy={state.busy || !!state.retryOperation} parentStale={!state.fresh || locatorMismatch} />
+          <details className="import-page__batch-details"><summary>File đã nhập và thông tin lô</summary><ImportBatchPanel state={state} workflow={workflow} continuationLocked={continuationLocked} onNewDraft={startNewDraft} /></details>
+        </>}
+        {!showFlow && <div className="import-page__grid">
           <div className="import-page__upload-column">
             <ImportUpload files={files} onFilesChange={workflow.setFiles} disabled={uploadLocked} uncertainFiles={state.retryOperation === 'upload'} />
             <div className="import-page__upload-action">
@@ -61,8 +72,7 @@ export function ImportPage() {
             {state.retryOperation && <button type="button" disabled={state.busy} onClick={() => { void workflow.retry() }}>Thử lại đúng yêu cầu trước</button>}
             <p role="status">{state.busy ? 'Đang thực hiện yêu cầu… ' : ''}{state.notice}</p>
           </div>
-        </div>
-        {state.sealedLocked && !locatorMismatch && <ImportFlow state={flowState} workflow={flow} canDecideProfile={canDecideProfile} canProposeMapping={canProposeMapping} parentBusy={state.busy || !!state.retryOperation} parentStale={!state.fresh || locatorMismatch} />}
+        </div>}
       </main>
       <ImportHelp id={helpId} open={helpOpen} onClose={() => setHelpOpen(false)} />
     </div>

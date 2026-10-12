@@ -6,7 +6,10 @@
 .app-shell__workspace { min-width: 0; }
 .app-shell__skip-link { position: absolute; top: 8px; left: 8px; transform: translateY(-200%); z-index: 1; background: #fff; color: #252525; padding: 10px 16px; border: 1px solid #777; border-radius: 8px; }
 .app-shell__skip-link:focus { transform: none; }
-.app-sidebar { min-width: 0; background: #f7f7f7; border-right: 1px solid #dedede; }
+.app-sidebar { display: flex; flex-direction: column; position: sticky; top: 0; min-width: 0; height: 100dvh; background: #f7f7f7; border-right: 1px solid #dedede; }
+.app-sidebar__session { padding: 20px 24px; margin-top: auto; overflow-wrap: anywhere; }
+.app-shell--collapsed .app-sidebar__session { padding: 16px 6px; text-align: center; }
+.app-shell--collapsed .session-actions button { padding: 6px; font-size: 11px; }
 .app-sidebar__controls { display: flex; align-items: center; height: 88px; padding: 0 24px; }
 .app-sidebar__toggle { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 4px; border: 1px solid #dcdcdc; border-radius: 8px; background: #fff; color: #646464; cursor: pointer; }
 .app-sidebar__toggle:hover { color: #262626; border-color: #b7b7b7; }
@@ -40,7 +43,13 @@ a.app-sidebar__item:hover { background: #eee; }
 }
 @media (max-width: 950px) {
   .app-shell { grid-template-columns: minmax(0, 1fr); }
-  .app-sidebar { display: none; }
+  .app-sidebar { position: static; height: auto; border-right: 0; border-bottom: 1px solid #dedede; }
+  .app-sidebar__controls { display: none; }
+  .app-sidebar__navigation,.app-shell--collapsed .app-sidebar__navigation { display: flex; gap: 4px; padding: 8px 12px; overflow-x: auto; }
+  .app-sidebar__item,.app-shell--collapsed .app-sidebar__item { flex: none; gap: 8px; min-height: 40px; padding: 8px 12px; font-size: 13px; }
+  .app-shell--collapsed .app-sidebar__label { display: inline; }
+  .app-sidebar__icon { width: 13px; height: 13px; }
+  .app-sidebar__session,.app-shell--collapsed .app-sidebar__session { padding: 0 16px 8px; text-align: right; }
 }
 @media (max-width: 680px) {
   .app-shell__header { min-height: 76px; padding: 16px 20px; }

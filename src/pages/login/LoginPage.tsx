@@ -1,11 +1,13 @@
 import { LoginForm } from '../../features/auth/LoginForm'
+import { Link } from 'react-router'
 import './LoginPage.css'
 
 export function LoginPage() {
   return (
     <div className="login-page" lang="vi">
       <header className="login-page__header">
-        <span className="login-page__brand">ShelfCash</span>
+        <Link to="/" className="login-page__brand" aria-label="Trang chủ ShelfCash">ShelfCash</Link>
+        <Link to="/" className="login-page__back"><span aria-hidden="true">←</span> Trang chủ</Link>
       </header>
 
       <main className="login-page__main">
