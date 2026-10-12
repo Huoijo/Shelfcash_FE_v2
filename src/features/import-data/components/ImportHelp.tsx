@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
+import { usePanelMotion } from '../../../shared/motion/usePanelMotion'
 import { formatImportFileSize, importFileLimits } from '../importData.files'
 import './ImportHelp.css'
 
@@ -11,14 +12,15 @@ interface ImportHelpProps {
 // Static guidance from current Import contracts and BE response #004.
 // Native modal behavior keeps the workspace inert and restores focus on close.
 export function ImportHelp({ id, open, onClose }: ImportHelpProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null)
+  const { scope: dialogRef, close } = usePanelMotion<HTMLDialogElement>(open)
+  const requestClose = () => close(onClose)
 
   useEffect(() => {
     const dialog = dialogRef.current
     if (!dialog) return
     if (open && !dialog.open) dialog.showModal()
     if (!open && dialog.open) dialog.close()
-  }, [open])
+  }, [open, dialogRef])
 
   return (
     <dialog
@@ -29,7 +31,7 @@ export function ImportHelp({ id, open, onClose }: ImportHelpProps) {
       aria-modal="true"
       onCancel={(event) => {
         event.preventDefault()
-        onClose()
+        requestClose()
       }}
       onClose={onClose}
     >
@@ -38,7 +40,7 @@ export function ImportHelp({ id, open, onClose }: ImportHelpProps) {
           <h2 id={`${id}-title`}>Hướng dẫn nhập dữ liệu</h2>
           <p>Chuẩn bị tệp trước khi chọn</p>
         </div>
-        <button type="button" className="import-help__close" aria-label="Đóng hướng dẫn" autoFocus onClick={onClose}>
+        <button type="button" className="import-help__close" aria-label="Đóng hướng dẫn" autoFocus onClick={requestClose}>
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
             <path d="m4 4 10 10M14 4 4 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
@@ -87,8 +89,7 @@ export function ImportHelp({ id, open, onClose }: ImportHelpProps) {
         <section className="import-help__section" aria-labelledby={`${id}-after-selection`}>
           <h3 id={`${id}-after-selection`}>Sau khi chọn tệp</h3>
           <p>Kéo thả tệp vào vùng chọn hoặc nhấn để chọn từ thiết bị. Các tệp hiện chỉ được kiểm tra sơ bộ trên thiết bị: phần mở rộng, số lượng và dung lượng.</p>
-          <p>Chọn ngày dữ liệu, rồi nhấn “Tạo lô và tải file”. Mỗi biên nhận cho biết tệp đã nhận hoặc bị từ chối; có thể tải thêm vào cùng lô khi máy chủ cho phép. Tệp đã nhận không thể bỏ hoặc thay thế.</p>
-          <p>“Xử lý dữ liệu” yêu cầu xác nhận tập tệp trước khi khóa và phân tích. Sau khi khóa, muốn bổ sung hoặc đổi tệp phải dùng lô mới.</p>
+          <p>Chọn ngày dữ liệu, rồi nhấn “Xử lý dữ liệu”. Hệ thống tải file và phân tích các file được nhận, sau đó chuyển sang Ghép cột. File bị từ chối có thông báo riêng. Để thay hoặc bổ sung file sau khi phân tích, bắt đầu lần nhập mới.</p>
           <p>Lựa chọn file và intent thử lại chỉ giữ trong bộ nhớ, mất khi làm mới/rời khu vực Nhập dữ liệu. URL giữ import ID để đọc lại trạng thái từ máy chủ; cũng có thể mở lô đã tải qua Lịch sử. Draft chưa tải file không được Lịch sử tìm thấy. Sau kết quả chưa xác định, không tải lại như yêu cầu mới.</p>
           <p>Sau phân tích, chọn loại dữ liệu của từng Sheet, khai báo ngữ cảnh nguồn rồi xử lý cột, định danh, quy đổi hoặc shared value theo descriptor máy chủ. Chọn trong danh sách chưa lưu thay đổi. Profile mới/thay đổi cần Owner xem đầy đủ spec và bằng chứng rồi duyệt; resolved không có nghĩa approved.</p>
           <p>Tạo Preview, đọc đủ các trang thay đổi và cảnh báo rồi “Lưu xác nhận review” với lý do. Bước này chỉ lưu xác nhận trên máy chủ, chưa ghi dữ liệu. Sau đó xác nhận từng thay đổi doanh số/điều khoản/phí nếu được yêu cầu, rồi ghi nguyên tử toàn lô. Mapping hoặc dữ liệu nguồn thay đổi có thể làm Preview/review hết hiệu lực.</p>

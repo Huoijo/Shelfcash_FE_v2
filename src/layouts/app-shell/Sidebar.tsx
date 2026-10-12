@@ -1,10 +1,13 @@
 import { NavLink } from 'react-router'
+import { useId } from 'react'
 import { SessionActions } from '../../features/auth/SessionActions'
+import { ActiveIndicator } from '../../shared/motion/ActiveIndicator'
 
 const sections = ['Hôm nay', 'Nhập dữ liệu', 'Dự đoán', 'Kho', 'Menu', 'Cửa hàng']
 const routes: Record<string, string> = { 'Hôm nay': '/today', 'Nhập dữ liệu': '/imports', 'Dự đoán': '/forecast', Kho: '/inventory', Menu: '/menu', 'Cửa hàng': '/store' }
 
 export function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) {
+  const indicatorId = useId()
   return (
     <aside className="app-sidebar" aria-label="Điều hướng ứng dụng">
       <div className="app-sidebar__controls">
@@ -22,8 +25,11 @@ export function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle:
       <nav id="app-navigation" className="app-sidebar__navigation" aria-label="Các phân hệ ShelfCash">
         {sections.map((label) => routes[label] ? (
           <NavLink key={label} to={routes[label]} className="app-sidebar__item" aria-label={label} title={label}>
-            <span className="app-sidebar__icon" aria-hidden="true" />
-            <span className="app-sidebar__label">{label}</span>
+            {({ isActive }) => <>
+              {isActive && <ActiveIndicator id={`${indicatorId}-navigation`} />}
+              <span className="app-sidebar__icon" aria-hidden="true" />
+              <span className="app-sidebar__label">{label}</span>
+            </>}
           </NavLink>
         ) : (
           <span key={label} className="app-sidebar__item app-sidebar__item--unavailable"

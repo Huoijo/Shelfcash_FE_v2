@@ -1,0 +1,8 @@
+.motion-indicator, .motion-underline { position: absolute; pointer-events: none; z-index: -1; }
+.motion-indicator { inset: 0; border: 1px solid #d8d8d8; border-radius: inherit; background: #e6e6e6; }
+.motion-underline { left: 0; right: 0; bottom: -2px; height: 2px; border-radius: 2px; background: currentColor; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-shell button, .app-sidebar__item, .import-result__cta { transition: background-color 140ms ease-out, border-color 140ms ease-out, color 140ms ease-out; }
+  .app-shell button:not(:disabled):active, .import-result__cta:active { transform: translateY(1px); }
+}

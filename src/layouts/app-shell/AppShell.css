@@ -14,9 +14,9 @@
 .app-sidebar__toggle { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 4px; border: 1px solid #dcdcdc; border-radius: 8px; background: #fff; color: #646464; cursor: pointer; }
 .app-sidebar__toggle:hover { color: #262626; border-color: #b7b7b7; }
 .app-sidebar__navigation { display: grid; gap: 8px; padding: 24px 16px; }
-.app-sidebar__item { display: flex; align-items: center; gap: 14px; min-width: 0; min-height: 48px; padding: 12px 16px; border: 1px solid transparent; border-radius: 10px; color: #626262; font-size: 15px; line-height: 22px; text-decoration: none; }
+.app-sidebar__item { position: relative; isolation: isolate; display: flex; align-items: center; gap: 14px; min-width: 0; min-height: 48px; padding: 12px 16px; border: 1px solid transparent; border-radius: 10px; color: #626262; font-size: 15px; line-height: 22px; text-decoration: none; }
 a.app-sidebar__item:hover { background: #eee; }
-.app-sidebar__item[aria-current] { color: #262626; background: #e6e6e6; border-color: #d8d8d8; font-weight: 600; }
+.app-sidebar__item[aria-current] { color: #262626; font-weight: 600; }
 .app-sidebar__icon { flex: none; width: 17px; height: 17px; border: 1px solid #b0b0b0; border-radius: 4px; background: #e8e8e8; }
 .app-sidebar__item[aria-current] .app-sidebar__icon { background: #575757; border-color: #575757; }
 .app-sidebar__item--unavailable { color: #858585; }
@@ -38,6 +38,9 @@ a.app-sidebar__item:hover { background: #eee; }
 .session-actions__preview { color: #777; font-size: 11px; }
 .session-actions__error { max-width: 340px; font-size: 12px; overflow-wrap: anywhere; }
 .store-session-actions { max-width: 680px; padding: 0 20px 32px; margin: 0 auto; }
+@media (prefers-reduced-motion: no-preference) and (min-width: 951px) {
+  .app-shell { transition: grid-template-columns 200ms cubic-bezier(.22, 1, .36, 1); }
+}
 @media (max-width: 1180px) {
   .app-shell__header { padding-inline: 28px; }
 }

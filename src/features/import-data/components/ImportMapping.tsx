@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
+import { motion, useReducedMotion } from 'motion/react'
+import { ActiveIndicator } from '../../../shared/motion/ActiveIndicator'
+import { uiTransition } from '../../../shared/motion/motion'
 import type { MappingIssue, MappingOption, MappingOptions, MappingQueue, MappingResolution, MappingStatus, MappingSummary, ProfileDecisionRequest } from '../importFlow.types'
 import { ImportResolutionEditor } from './ImportResolutionEditor'
 
 const statusLabels: Record<MappingStatus, string> = {
   auto_mapped: 'Đã ghép tự động', resolved: 'Đã xác nhận đề xuất', needs_confirmation: 'Cần xác nhận',
-  ambiguous: 'Chưa rõ trường đích', unmatched: 'Chưa tìm được trường đích',
+  ambiguous: 'Mơ hồ', unmatched: 'Chưa ghép',
 }
 const issueLabels: Record<MappingIssue['issue_type'], string> = {
   column: 'Ghép cột', classification: 'Loại dữ liệu của Sheet', source_context: 'Ngữ cảnh nguồn',
@@ -35,6 +38,8 @@ type Props = {
 }
 
 export function ImportMapping(props: Props) {
+  const indicatorId = useId()
+  const reducedMotion = useReducedMotion()
   const { summary, queue, busy, locked } = props
   const selectedSheet = summary.sheets.find((sheet) => sheet.sheet_id === props.selectedSheetId)
   const sheetOptions = props.selectedSheetId ? props.options[props.selectedSheetId] : undefined
@@ -46,19 +51,22 @@ export function ImportMapping(props: Props) {
         <div><dt>cần bạn xử lý</dt><dd>{summary.progress.unresolved}</dd></div>
       </dl>
       <div className="import-mapping-progress__track"><span><strong>{summary.progress.completed_fields} / {summary.progress.total_fields}</strong> hoàn tất</span>
-        <progress aria-label="Tiến độ xử lý toàn lô" value={summary.progress.completed_fields} max={summary.progress.total_fields || 1} /></div>
+        <progress className="sr-only" aria-label="Tiến độ xử lý toàn lô" value={summary.progress.completed_fields} max={summary.progress.total_fields || 1} />
+        <div className="import-mapping-progress__bar" aria-hidden="true"><motion.span initial={false}
+          animate={{ scaleX: summary.progress.total_fields ? Math.min(1, summary.progress.completed_fields / summary.progress.total_fields) : 0 }}
+          transition={reducedMotion ? { duration: 0 } : uiTransition} /></div></div>
     </div>
     <div className="import-flow__layout">
       <nav className="import-flow__navigator" aria-label="File và Sheet của lô">
         <header><h3>File / Sheet</h3><p className="import-flow__muted">{summary.files.length} file · {summary.sheets.length} sheets</p></header>
-        {summary.files.map((file, index) => <section key={file.file_id ?? file.client_file_id ?? `file-${index}`}>
-          <p><strong>{file.filename}</strong></p>
+        {summary.files.map((file, index) => <details className="import-mapping-file" open key={file.file_id ?? file.client_file_id ?? `file-${index}`}>
+          <summary>{file.filename}</summary>
           <ul>{summary.sheets.filter((sheet) => sheet.file_id === file.file_id).map((sheet) => <li key={sheet.sheet_id}>
             <button type="button" disabled={busy || locked} aria-current={props.selectedSheetId === sheet.sheet_id ? 'true' : undefined} onClick={() => props.onSelectSheet(sheet.sheet_id)}>
               {sheet.name}<br /><span className="import-flow__muted">{sheet.row_count} dòng · {sheet.ignored ? 'Bỏ qua Sheet' : sheet.selected_type ?? 'Chưa chọn loại dữ liệu'}</span>
             </button>
           </li>)}</ul>
-        </section>)}
+        </details>)}
       </nav>
       <section className="import-flow__queue" aria-label="Các mục cần ghép">
         {selectedSheet && <header className="import-mapping-sheet-header">
@@ -76,21 +84,22 @@ export function ImportMapping(props: Props) {
         </header>}
         <div className="import-flow__filters">
           <div className="import-mapping-filter-tabs" role="group" aria-label="Lọc trạng thái ghép cột">
-            {[['all', 'Tất cả'], ['needs_confirmation', 'Cần xác nhận'], ['ambiguous', 'Mơ hồ'], ['unmatched', 'Chưa ghép'], ['auto_mapped', 'Tự động'], ['resolved', 'Đã xác nhận']].map(([value, label]) =>
-              <button key={value} type="button" aria-pressed={props.filter === value} disabled={busy || locked} onClick={() => props.onFilter(value, props.reviewOnly)}>{label}</button>)}
+            {[['all', 'Tất cả'], ['needs_confirmation', 'Cần xác nhận'], ['ambiguous', 'Mơ hồ'], ['unmatched', 'Chưa ghép']].map(([value, label]) =>
+              <button key={value} type="button" aria-pressed={props.filter === value} disabled={busy || locked} onClick={() => props.onFilter(value, props.reviewOnly)}>{props.filter === value && <ActiveIndicator id={`${indicatorId}-mapping-filter`} />}{label}</button>)}
           </div>
-          <label><input type="checkbox" checked={props.reviewOnly} disabled={busy || locked} onChange={(event) => props.onFilter(props.filter, event.target.checked)} />Ẩn mục đã ghép tự động</label>
+          <label><input type="checkbox" checked={props.reviewOnly} disabled={busy || locked} onChange={(event) => props.onFilter(props.filter, event.target.checked)} />Chỉ hiện trường cần xử lý</label>
         </div>
         <div className="import-mapping-card-list">
         {!props.canPropose && <p className="import-flow__notice">Bạn đang xem chỉ đọc: cần quyền mapping.propose và quyền đọc dữ liệu liên quan để sửa đề xuất.</p>}
         {!queue && <p role="status">Chọn một Sheet để đọc danh sách từ máy chủ.</p>}
-        {queue && !queue.items.length && <p className="import-flow__notice">Không có mục trong bộ lọc này. Điều này không có nghĩa toàn lô đã sẵn sàng Preview.</p>}
+        {queue && !queue.items.length && <p className="import-flow__notice">{summary.can_preview ? '✓ Các trường cần xử lý đã hoàn tất.' : 'Không có trường trong bộ lọc này.'}</p>}
         {queue?.items.map((issue) => <MappingCard key={`${summary.mapping_revision}:${issue.mapping_id}`} issue={issue} options={props.options[issue.mapping_id]} busy={busy || locked || !props.canPropose} readBusy={busy || locked} onLoadOptions={() => props.onLoadOptions(issue.mapping_id)} onConfirm={(target) => props.onConfirm(issue.mapping_id, target)} onResolve={(resolution) => props.onResolve(issue.mapping_id, resolution)} />)}
         {queue?.pagination.next_cursor && <button type="button" disabled={busy || locked} onClick={props.onLoadMore}>Xem thêm mục</button>}
-        {queue && <p className="import-flow__muted">Đang hiển thị {queue.items.length} mục trong bộ lọc.</p>}
+
         </div>
       </section>
     </div>
+    <div className="import-mapping-completed"><span>✓ {summary.progress.completed_fields} mục đã xử lý</span><button type="button" disabled={busy || locked} onClick={() => props.onFilter('all', !props.reviewOnly)}>{props.reviewOnly ? 'Xem các trường đã ghép' : 'Chỉ xem trường cần xử lý'}</button></div>
   </>
 }
 
@@ -118,35 +127,45 @@ function SchemaCatalogue({ options }: { options: MappingOptions }) {
 function MappingCard({ issue, options, busy, readBusy, onLoadOptions, onConfirm, onResolve }: {
   issue: MappingIssue; options?: MappingOptions; busy: boolean; readBusy: boolean; onLoadOptions: () => void; onConfirm: (target: string) => void; onResolve: (resolution: MappingResolution) => void
 }) {
-  const [target, setTarget] = useState('')
-  const selected = options?.options.find((option) => option.key === target)
+  const [target, setTarget] = useState<string | null>(null)
+  const reducedMotion = useReducedMotion()
+  const suggested = issue.suggested_target_field ?? issue.target_field ?? ''
+  const value = target ?? (options?.options.some((option) => option.key === suggested && option.available && option.support === 'supported') ? suggested : '')
+  const selected = options?.options.find((option) => option.key === value)
   const id = `mapping-${issue.mapping_id}`
-  return <article className="import-flow__issue" aria-labelledby={`${id}-title`}>
+  return <motion.article className="import-flow__issue" aria-labelledby={`${id}-title`}
+    layout={reducedMotion ? false : 'position'} initial={reducedMotion ? false : { opacity: 0.7 }}
+    animate={{ opacity: 1 }} transition={reducedMotion ? { duration: 0 } : uiTransition}>
     <div className="import-flow__issue-heading">
       <h3 id={`${id}-title`}>{issue.source_header ?? issueLabels[issue.issue_type]}</h3>
       <span className="import-flow__badge">{statusLabels[issue.status]}{issue.ignored ? ' · Bỏ qua' : ''}</span>
     </div>
-    <p className="import-flow__samples">Mẫu nguồn: {issue.samples.length ? issue.samples.map((sample) => sample === '' ? '"" (chuỗi rỗng)' : sample).join(' · ') : 'Không có mẫu'}</p>
-    {issue.target_field && <p>Trường đích hiện tại: <strong>{issue.target_field}</strong></p>}
-    {issue.suggested_target_field && <p className="import-flow__muted">Gợi ý: {issue.suggested_target_field} · {issue.suggestion_origin}{typeof issue.confidence === 'number' ? ` · confidence ${issue.confidence}` : ''}. Không tự xác nhận.</p>}
-    {!options && <button className="import-mapping-load-options" type="button" disabled={readBusy} onClick={onLoadOptions}>Chọn trường ShelfCash <span aria-hidden="true">⌄</span></button>}
-    {options && issue.issue_type === 'column' && <>
-      <div className="import-flow__selector">
-        <label htmlFor={`${id}-target`}>Ghép với trường ShelfCash
-          <select id={`${id}-target`} value={target} disabled={busy} onChange={(event) => setTarget(event.target.value)}>
-            <option value="">Chọn trường đích…</option>
-            {options.options.map((option) => <option key={option.key} value={option.key} disabled={!option.available || option.support !== 'supported'}>
-              {option.label || option.key} · {option.key}{!option.available || option.support !== 'supported' ? ` · ${option.reason_code ?? option.support}` : ''}
-            </option>)}
-          </select>
-        </label>
-        <button type="button" disabled={busy || !selected?.available || selected.support !== 'supported'} onClick={() => onConfirm(target)}>Lưu ghép cột</button>
-      </div>
-      {selected && <details><summary>Mô tả trường đã chọn</summary><FieldDescriptor option={selected} /></details>}
+    <p className="import-flow__samples">Mẫu dữ liệu: {issue.samples.length ? issue.samples.map((sample) => sample === '' ? '"" (chuỗi rỗng)' : sample).join(' · ') : 'Không có mẫu'}</p>
+    {issue.suggested_target_field && <p className="import-flow__muted">{issue.suggestion_origin === 'QWEN' ? 'AI đề xuất' : 'Gợi ý ghép cột'}{typeof issue.confidence === 'number' ? ` · ${Math.round(issue.confidence * 100)}%` : ''}</p>}
+    {issue.status === 'ambiguous' && <p className="import-flow__muted">Có nhiều trường phù hợp</p>}
+    {issue.issue_type === 'column' && <div className="import-flow__selector">
+      <label htmlFor={`${id}-target`}>Ghép với trường ShelfCash
+        <select id={`${id}-target`} value={value} disabled={busy || !options} onFocus={() => { if (!options && !readBusy) onLoadOptions() }} onChange={(event) => setTarget(event.target.value)}>
+          <option value="">{options ? 'Chọn trường ShelfCash' : 'Đang tải danh sách trường…'}</option>
+          {options?.options.map((option) => <option key={option.key} value={option.key} disabled={!option.available || option.support !== 'supported'}>
+            {option.key} — {option.label || option.key}{option.key === issue.suggested_target_field ? ' · Đề xuất' : ''}{!option.available || option.support !== 'supported' ? ` · ${option.reason_code ?? option.support}` : ''}
+          </option>)}
+        </select>
+      </label>
+    </div>}
+    <div className="import-mapping-card-actions">
+      <details><summary>Xem chi tiết</summary>
+        {selected && <FieldDescriptor option={selected} />}
+        {issue.issue_type === 'column' && <ImportResolutionEditor issue={issue} options={options} disabled={busy} onResolve={onResolve} />}
+        <Evidence value={{ issue_type: issueLabels[issue.issue_type], code: issue.code, resolution_origin: issue.resolution_origin, mapping_id: issue.mapping_id, sheet_id: issue.sheet_id, source_location: issue.source_location, profile_ref: issue.profile_ref, resolution: issue.resolution, resolved_by: issue.resolved_by }} label="Chi tiết ghép dữ liệu" />
+      </details>
+      {issue.issue_type === 'column' && <button className="import-flow__primary" type="button" disabled={busy || !selected?.available || selected.support !== 'supported'} onClick={() => onConfirm(value)}>Xác nhận</button>}
+    </div>
+    {issue.issue_type !== 'column' && <>
+      {!options && <button type="button" disabled={readBusy} onClick={onLoadOptions}>Tải lựa chọn xử lý</button>}
+      <ImportResolutionEditor issue={issue} options={options} disabled={busy} onResolve={onResolve} />
     </>}
-    {issue.issue_type === 'column' ? <details><summary>Cách xử lý khác</summary><ImportResolutionEditor issue={issue} options={options} disabled={busy} onResolve={onResolve} /></details> : <ImportResolutionEditor issue={issue} options={options} disabled={busy} onResolve={onResolve} />}
-    <Evidence value={{ issue_type: issueLabels[issue.issue_type], code: issue.code, resolution_origin: issue.resolution_origin, mapping_id: issue.mapping_id, sheet_id: issue.sheet_id, source_location: issue.source_location, profile_ref: issue.profile_ref, resolution: issue.resolution, resolved_by: issue.resolved_by }} label="Chi tiết ghép dữ liệu" />
-  </article>
+  </motion.article>
 }
 
 type ReviewProps = {

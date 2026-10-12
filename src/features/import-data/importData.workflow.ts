@@ -25,6 +25,7 @@ export type ImportBatchState = {
   nextCursor: string | null
   fresh: boolean
   busy: boolean
+  processing: boolean
   retryOperation: Operation | null
   sealedLocked: boolean
   preparation: Preparation | null
@@ -36,7 +37,7 @@ export type ImportBatchState = {
 function initialState(): ImportBatchState {
   return {
     files: [], dataDate: '', draft: null, batch: null, serverFiles: [], receipts: [],
-    nextCursor: null, fresh: false, busy: false, retryOperation: null,
+    nextCursor: null, fresh: false, busy: false, processing: false, retryOperation: null,
     sealedLocked: false, preparation: null, analysis: null, error: null, notice: '',
   }
 }
@@ -84,6 +85,7 @@ export class ImportBatchWorkflow {
   private draftIntent: DraftIntent | null = null
   private uploadIntent: UploadIntent | null = null
   private analyzeIntent: AnalyzeIntent | null = null
+  private readonly processToken = Symbol('process')
   private source: ImportDataSource
   private storeId: string | null
 
@@ -104,12 +106,12 @@ export class ImportBatchWorkflow {
   }
 
   setFiles = (files: File[]) => {
-    if (this.state.busy || this.state.retryOperation || this.state.sealedLocked || this.state.batch?.source_set.sealed) return
+    if (this.state.processing || this.state.busy || this.state.retryOperation || this.state.sealedLocked || this.state.batch?.source_set.sealed) return
     this.update({ files, preparation: null, error: null })
   }
 
   setDataDate = (dataDate: string) => {
-    if (!this.state.draft && !this.state.busy && !this.state.retryOperation) this.update({ dataDate, error: null })
+    if (!this.state.draft && !this.state.processing && !this.state.busy && !this.state.retryOperation) this.update({ dataDate, error: null })
   }
 
   private async readCurrent() {
@@ -128,7 +130,7 @@ export class ImportBatchWorkflow {
   // A URL identifier is only a locator. Hydration always comes from authorized
   // retained reads; it never recreates a batch or replaces an uncertain intent.
   resume = async (importId: string) => {
-    if (this.state.busy || this.state.retryOperation) return
+    if (this.state.processing || this.state.busy || this.state.retryOperation) return
     if (!isImportUuid(importId) || !this.storeId) {
       this.update({ error: 'Cần định danh lô UUID và cửa hàng hiện tại hợp lệ để tiếp tục.' })
       return
@@ -179,7 +181,7 @@ export class ImportBatchWorkflow {
   }
 
   refresh = async () => {
-    if (this.state.busy || !this.state.draft) return
+    if (this.state.processing || this.state.busy || !this.state.draft) return
     this.update({ busy: true, fresh: false, error: null, preparation: null })
     try { await this.readCurrent() } catch (error) { this.update({ error: describeImportError(error) }) }
     finally { this.update({ busy: false }) }
@@ -187,7 +189,7 @@ export class ImportBatchWorkflow {
 
   loadMore = async () => {
     const { batch, nextCursor, serverFiles } = this.state
-    if (this.state.busy || !batch || !nextCursor || !this.state.fresh) return
+    if (this.state.processing || this.state.busy || !batch || !nextCursor || !this.state.fresh) return
     this.update({ busy: true, error: null, preparation: null })
     try {
       const next = await this.source.read(batch.import_id, nextCursor)
@@ -201,8 +203,23 @@ export class ImportBatchWorkflow {
     } finally { this.update({ busy: false }) }
   }
 
-  upload = async () => {
-    if (this.state.busy || this.state.retryOperation) return
+  // One user action; each API mutation still retains its own exact retry intent.
+  process = async () => {
+    if (this.state.processing || this.state.busy || this.state.retryOperation || this.state.sealedLocked) return
+    this.update({ processing: true, error: null })
+    try {
+      if (this.state.files.length) await this.upload(this.processToken)
+      if (this.state.error || this.state.retryOperation || !this.state.draft) return
+      await this.prepareAnalysis(this.processToken)
+      if (this.state.error || !this.state.preparation) return
+      // The submitted action processes accepted files; rejected receipts remain visible.
+      this.acknowledgeRejected(true)
+      await this.analyze(this.processToken)
+    } finally { this.update({ processing: false }) }
+  }
+
+  upload = async (token?: symbol) => {
+    if ((this.state.processing && token !== this.processToken) || this.state.busy || this.state.retryOperation) return
     if (!this.storeId) { this.update({ error: 'Chưa có cửa hàng. Cần cấu hình Store hợp lệ trước khi tạo lô.' }); return }
     const localError = validateImportFiles(this.state.files)
     if (localError || !this.state.files.length) { this.update({ error: localError ?? 'Hãy chọn file trước khi tải lên.' }); return }
@@ -271,7 +288,7 @@ export class ImportBatchWorkflow {
 
   retry = async () => {
     const operation = this.state.retryOperation
-    if (!operation || this.state.busy) return
+    if (!operation || this.state.processing || this.state.busy) return
     this.update({ busy: true, error: null })
     try {
       if (operation === 'draft' && this.draftIntent && this.storeId) {
@@ -287,8 +304,8 @@ export class ImportBatchWorkflow {
     finally { this.update({ busy: false }) }
   }
 
-  prepareAnalysis = async () => {
-    if (this.state.busy || this.state.retryOperation || !this.state.draft || this.state.files.length) return
+  prepareAnalysis = async (token?: symbol) => {
+    if ((this.state.processing && token !== this.processToken) || this.state.busy || this.state.retryOperation || !this.state.draft || this.state.files.length) return
     this.update({ busy: true, fresh: false, error: null, preparation: null })
     try {
       const first = await this.readCurrent()
@@ -316,7 +333,7 @@ export class ImportBatchWorkflow {
         throw new Error('Chưa đọc đủ biên nhận của lô. Hãy đọc lại trước khi phân tích.')
       }
       this.update({
-        serverFiles: files, nextCursor: null, fresh: true,
+        serverFiles: files, receipts: [...new Map([...this.state.receipts, ...files].map((file) => [file.client_file_id, file])).values()], nextCursor: null, fresh: true,
         preparation: {
           importRevision: first.import_revision, fileSetVersion: first.file_set_version,
           acceptedFileIds: [...first.source_set.accepted_file_ids],
@@ -334,9 +351,9 @@ export class ImportBatchWorkflow {
     if (this.state.preparation && !this.state.busy) this.update({ preparation: { ...this.state.preparation, acknowledged } })
   }
 
-  analyze = async () => {
+  analyze = async (token?: symbol) => {
     const preparation = this.state.preparation
-    if (this.state.busy || this.state.retryOperation || !this.state.fresh || !preparation?.acknowledged || !this.state.draft) return
+    if ((this.state.processing && token !== this.processToken) || this.state.busy || this.state.retryOperation || !this.state.fresh || !preparation?.acknowledged || !this.state.draft) return
     this.analyzeIntent = {
       key: crypto.randomUUID(), importRevision: preparation.importRevision, fileSetVersion: preparation.fileSetVersion,
       acceptedFileIds: preparation.acceptedFileIds, rejectedClientFileIds: preparation.rejectedClientFileIds,
@@ -351,14 +368,14 @@ export class ImportBatchWorkflow {
     this.update({ fresh: false })
     const analysis = await this.source.analyze(this.state.draft.import_id, this.analyzeIntent)
     this.analyzeIntent = null
-    this.update({ analysis, sealedLocked: true, retryOperation: null, notice: 'Đã khóa tập file và bắt đầu phân tích. Chưa ghi dữ liệu nghiệp vụ.' })
+    this.update({ analysis, sealedLocked: true, retryOperation: null, notice: 'Đã nhận file và bắt đầu phân tích. Chưa ghi dữ liệu nghiệp vụ.' })
     try { await this.readCurrent() } catch (error) {
-      this.update({ error: `Đã khóa tập file, nhưng chưa đọc được trạng thái phân tích. ${describeImportError(error)}` })
+      this.update({ error: `Đã bắt đầu phân tích, nhưng chưa đọc được trạng thái mới. ${describeImportError(error)}` })
     }
   }
 
   startNewDraft = () => {
-    if (this.state.busy || this.state.retryOperation) return
+    if (this.state.processing || this.state.busy || this.state.retryOperation) return
     const { files, dataDate } = this.state
     this.draftIntent = null
     this.uploadIntent = null

@@ -13,8 +13,13 @@ try {
   if (suites.some((suite) => !available.includes(suite))) throw new Error('Unknown Store test suite')
   for (const suite of suites) await build({
     root, configFile: false, logLevel: 'error',
-    ...(suite.endsWith('-ui') || suite === 'store-navigation' ? { ssr: { noExternal: ['react', 'react-dom', 'react-router'] } } : {}),
-    define: { 'import.meta.env': JSON.stringify({ VITE_DATA_SOURCE: 'api', DEV: false }) },
+    ...(suite.endsWith('-ui') || suite === 'store-navigation' ? { ssr: { noExternal: ['react', 'react-dom', 'react-router', 'motion', 'framer-motion', 'motion-dom', 'motion-utils'] } } : {}),
+    define: {
+      'import.meta.env': JSON.stringify({ VITE_DATA_SOURCE: 'api', DEV: false }),
+      // Keep controlled API tests independent of the developer's .env.local.
+      'import.meta.env.VITE_DATA_SOURCE': JSON.stringify('api'),
+      'import.meta.env.DEV': 'false',
+    },
     build: { ssr: resolve(root, `tests/${suite}.test.mjs`), outDir: output, emptyOutDir: false,
       minify: false, rollupOptions: { output: { entryFileNames: `${suite}.test.mjs` } } },
   })

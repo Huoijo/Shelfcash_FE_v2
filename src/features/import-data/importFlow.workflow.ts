@@ -24,6 +24,7 @@ export type ImportFlowState = {
   summary: MappingSummary | null
   queue: MappingQueue | null
   options: MappingOptions | null
+  mappingOptions: Record<string, MappingOptions>
   optionsMappingId: string | null
   preview: PreviewBundle | null
   previewStale: boolean
@@ -50,7 +51,7 @@ export type ImportFlowState = {
 }
 
 const initial = (): ImportFlowState => ({
-  batch: null, tab: 'mapping', summary: null, queue: null, options: null,
+  batch: null, tab: 'mapping', summary: null, queue: null, mappingOptions: {}, options: null,
   optionsMappingId: null, preview: null, previewStale: false, completion: null,
   job: null, selectedSheetId: null, filter: 'all', reviewOnly: true, busy: false, error: null,
   notice: '', retryOperation: null, reviewAcknowledged: false, reviewReason: '',
@@ -295,11 +296,11 @@ export class ImportFlowWorkflow {
     if (after.import_id !== importId || after.mapping_revision !== summary.mapping_revision ||
       (sheetOptions && (sheetOptions.mapping_revision !== summary.mapping_revision || sheetOptions.schema_context_id !== selected)) ||
       (selected && queue.items.some((item) => item.sheet_id !== selected))) {
-      this.update({ summary: null, queue: null, options: null, previewStale: !!this.state.preview, commitAcknowledged: false })
+      this.update({ summary: null, queue: null, mappingOptions: {}, options: null, previewStale: !!this.state.preview, commitAcknowledged: false })
       throw new HttpError('protocol', 'Phiên bản ghép cột thay đổi giữa các lượt đọc. Hãy đọc lại toàn bộ.')
     }
     const stale = !!this.state.preview && summary.mapping_revision !== this.previewMappingRevision
-    this.update({ summary: after, queue, selectedSheetId: selected, options: sheetOptions, optionsMappingId: null,
+    this.update({ mappingOptions: {}, summary: after, queue, selectedSheetId: selected, options: sheetOptions, optionsMappingId: null,
       previewStale: this.state.previewStale || stale, ...(stale ? { commitAcknowledged: false, reviewAcknowledged: false } : {}) })
   }
 
@@ -326,12 +327,12 @@ export class ImportFlowWorkflow {
   selectSheet = async (sheetId: string) => {
     if (this.state.busy || this.pending || !isImportUuid(sheetId) ||
       !this.state.summary?.sheets.some((sheet) => sheet.sheet_id === sheetId)) return
-    this.update({ selectedSheetId: sheetId, queue: null, options: null, optionsMappingId: null })
+    this.update({ selectedSheetId: sheetId, queue: null, mappingOptions: {}, options: null, optionsMappingId: null })
     await this.refresh()
   }
   setFilter = async (filter: MappingStatus | 'all', reviewOnly = this.state.reviewOnly) => {
     if (this.state.busy || this.pending) return
-    this.update({ filter, reviewOnly, queue: null, options: null, optionsMappingId: null })
+    this.update({ filter, reviewOnly, queue: null, mappingOptions: {}, options: null, optionsMappingId: null })
     await this.refresh()
   }
   loadMoreMappings = () => this.run('Đọc trang ghép cột', async (id, epoch, signal) => {
@@ -355,10 +356,34 @@ export class ImportFlowWorkflow {
       }
       this.update({ queue: { ...next, items: [...old.items, ...next.items] } })
     } catch (error) {
-      if (this.current(epoch, id)) this.update({ queue: null, options: null, commitAcknowledged: false })
+      if (this.current(epoch, id)) this.update({ queue: null, mappingOptions: {}, options: null, commitAcknowledged: false })
       throw error
     }
   })
+
+  loadVisibleOptions = async () => {
+    const missing = this.state.queue?.items.filter((item) => item.issue_type === 'column' && !this.state.mappingOptions[item.mapping_id]) ?? []
+    if (!missing.length || this.state.busy || this.state.error || this.pending) return
+    await this.run('Đọc trường đích', async (id, epoch, signal) => {
+      const sheetId = this.state.selectedSheetId
+      const revision = this.state.summary?.mapping_revision
+      if (!sheetId || !revision) return
+      const loaded: Record<string, MappingOptions> = {}
+      // Bound parallel reads, keeping descriptors specific to each mapping row.
+      let next = 0
+      await Promise.all(Array.from({ length: Math.min(4, missing.length) }, async () => {
+        while (next < missing.length) {
+          const item = missing[next++]
+          const options = await this.source.options(id, sheetId, item.mapping_id, signal)
+          if (options.mapping_revision !== revision || options.schema_context_id !== sheetId) {
+            throw new HttpError('protocol', 'Danh sách trường đã thay đổi. Hãy đọc lại ghép cột.')
+          }
+          loaded[item.mapping_id] = options
+        }
+      }))
+      if (this.current(epoch, id)) this.update({ mappingOptions: { ...this.state.mappingOptions, ...loaded } })
+    })
+  }
 
   loadOptions = (mappingId: string) => this.run('Đọc trường đích', async (id, epoch, signal) => {
     if (!this.state.selectedSheetId || !this.state.queue?.items.some((item) => item.mapping_id === mappingId)) return
@@ -369,7 +394,7 @@ export class ImportFlowWorkflow {
       this.update({ options: null, optionsMappingId: null })
       throw new HttpError('protocol', 'Danh sách trường không cùng phiên bản hoặc sheet với hàng đang xử lý.')
     }
-    this.update({ options, optionsMappingId: mappingId })
+    this.update({ options, optionsMappingId: mappingId, mappingOptions: { ...this.state.mappingOptions, [mappingId]: options } })
   })
 
   loadSheetOptions = (sheetId: string) => this.run('Đọc danh mục schema', async (id, epoch, signal) => {
@@ -383,11 +408,11 @@ export class ImportFlowWorkflow {
   confirmMapping = (mappingId: string, targetField: string) => this.run('Xác nhận đề xuất', async (id, epoch, signal) => {
     if (this.pending) return
     const issue = this.state.queue?.items.find((item) => item.mapping_id === mappingId)
-    const options = this.state.options
+    const options = this.state.mappingOptions[mappingId] ?? (this.state.optionsMappingId === mappingId ? this.state.options : null)
     const option = options?.options.find((item) => item.key === targetField)
     if (!issue || issue.issue_type !== 'column' ||
       issue.unsupportedFields.length || !option?.available || option.support !== 'supported' || option.unsupportedFields.length ||
-      !options || options.unsupportedFields.length || this.state.optionsMappingId !== mappingId ||
+      !options || options.unsupportedFields.length || options.schema_context_id !== issue.sheet_id ||
       !this.state.summary || options.mapping_revision !== this.state.summary.mapping_revision ||
       !this.canPropose()) {
       throw new Error('Cần trường đích khả dụng theo descriptor hiện tại và quyền sửa mapping.')

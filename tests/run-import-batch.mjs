@@ -16,7 +16,7 @@ try {
     root,
     configFile: false,
     logLevel: 'error',
-    ...(suite === 'import-mapping-ui' ? { ssr: { noExternal: ['react', 'react-dom'] } } : {}),
+    ...(suite === 'import-mapping-ui' ? { ssr: { noExternal: ['react', 'react-dom', 'motion', 'framer-motion', 'motion-dom', 'motion-utils'] } } : {}),
     define: {
       'import.meta.env': JSON.stringify({ VITE_DATA_SOURCE: 'mock' }),
     },

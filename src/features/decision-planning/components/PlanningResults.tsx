@@ -1,4 +1,6 @@
 import { useId, useRef, useState } from 'react'
+import { ActiveIndicator } from '../../../shared/motion/ActiveIndicator'
+import { useContentReveal } from '../../../shared/motion/useContentReveal'
 import type { PlanningIngredient, PlanningIngredients, PlanningReasons, PlanningRun } from '../planning.types'
 import { formatPlanningDate, formatPlanningMoney, formatPlanningQuantity, planningStrategyLabels } from '../planning.format'
 import { PlanningEngineReasons, PlanningIngredientPanel, PlanningNotifications, PlanningOptionFacts, PlanningPurchases } from './PlanningEvidence'
@@ -35,6 +37,7 @@ export function PlanningResults(props: PlanningResultsProps) {
     onLoadIngredients, onMoreIngredients, onSelectIngredient, onLoadReasons, onNewPlan } = props
   const prefix = useId()
   const [tab, setTab] = useState<Tab>(props.initialTab ?? 'overview')
+  const panelRef = useContentReveal<HTMLElement>(tab)
   const refs = useRef<(HTMLButtonElement | null)[]>([])
   const result = run.result
   const completedRecommendation = run.status === 'completed' && run.outcome === 'recommendation_available'
@@ -65,10 +68,10 @@ export function PlanningResults(props: PlanningResultsProps) {
           const next = event.key === 'ArrowRight' ? (index + 1) % tabs.length : event.key === 'ArrowLeft' ? (index + tabs.length - 1) % tabs.length : event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : null
           if (next === null) return
           event.preventDefault(); changeTab(tabs[next].id); refs.current[next]?.focus()
-        }}>{item.label}</button>)}
+        }}>{tab === item.id && <ActiveIndicator id={`${prefix}-planning-tabs`} underline />}{item.label}</button>)}
       <button type="button" role="tab" aria-selected={false} aria-disabled="true" disabled title="Chưa có API What-if; không sửa hoặc thay thế kết quả gốc.">Kịch bản giả định</button>
     </div>
-    <section className="sc-proc-tab-panel" role="tabpanel" id={`${prefix}-panel-${tab}`} aria-labelledby={`${prefix}-tab-${tab}`} tabIndex={0}>
+    <section ref={panelRef} className="sc-proc-tab-panel" role="tabpanel" id={`${prefix}-panel-${tab}`} aria-labelledby={`${prefix}-tab-${tab}`} tabIndex={0}>
       {tab === 'overview' && <div className="sc-proc-overview">
         <div className="sc-proc-kpi-grid"><article className="sc-proc-kpi"><h2>Chi phí dự kiến</h2><strong>{formatPlanningMoney(winner?.costs.total, run.configuration.budget.currency)}</strong><span>{partialFailure && winner ? 'Phương án một phần đã lưu; lần chạy thất bại' : winner ? 'Tổng chi phí canonical của phương án được chọn' : 'Chưa có khuyến nghị hoàn tất'}</span></article>
           <article className="sc-proc-kpi"><h2>Cần nhập</h2><strong>Chưa biết</strong><span>{winner ? `${winner.purchases.length} dòng mua; chưa có tổng nguyên liệu toàn kế hoạch` : 'Chưa có tổng nguyên liệu toàn kế hoạch'}</span></article>

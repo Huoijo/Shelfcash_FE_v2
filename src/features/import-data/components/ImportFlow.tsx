@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useContentReveal } from '../../../shared/motion/useContentReveal'
 import type { ImportFlowState, ImportFlowTab, ImportFlowWorkflow } from '../importFlow.workflow'
 import type { MappingStatus } from '../importFlow.types'
 import { ImportMapping, ImportProfileReview, Evidence } from './ImportMapping'
@@ -8,20 +9,24 @@ import './ImportFlow.css'
 
 export function ImportFlow({ state, workflow, parentBusy, parentStale, canDecideProfile, canProposeMapping }: { state: ImportFlowState; workflow: ImportFlowWorkflow; parentBusy: boolean; parentStale: boolean; canDecideProfile: boolean; canProposeMapping: boolean }) {
   const heading = useRef<HTMLHeadingElement>(null)
+  const flowRef = useContentReveal<HTMLElement>(state.tab)
   const lastTab = useRef(state.tab)
   useEffect(() => {
     if (lastTab.current !== state.tab) { heading.current?.focus(); lastTab.current = state.tab }
   }, [state.tab])
   const locked = parentBusy || parentStale || !!state.retryOperation
   const busy = state.busy || parentBusy
-  const options = state.options && (state.optionsMappingId || state.selectedSheetId) ? { [state.optionsMappingId ?? state.selectedSheetId!]: state.options } : {}
+  useEffect(() => {
+    if (state.tab === 'mapping' && !busy && !locked && !state.error) void workflow.loadVisibleOptions()
+  }, [state.tab, state.queue, state.mappingOptions, state.error, busy, locked, workflow])
+  const options = { ...state.mappingOptions, ...(state.options && (state.optionsMappingId || state.selectedSheetId) ? { [state.optionsMappingId ?? state.selectedSheetId!]: state.options } : {}) }
   const tabs: { key: ImportFlowTab; label: string; available: boolean }[] = [
     { key: 'mapping', label: '2. Ghép cột', available: !!state.summary },
     { key: 'review', label: '3. Xem lại', available: !!state.summary?.can_preview },
     { key: 'preview', label: '4. Xem trước / Ghi dữ liệu', available: !!state.preview || !!state.job && state.job.operation !== 'import_analyze' },
     { key: 'result', label: '5. Hoàn tất', available: !!state.completion },
   ]
-  return <section className="import-flow" aria-labelledby="import-flow-title" aria-busy={busy}>
+  return <section ref={flowRef} className="import-flow" aria-labelledby="import-flow-title" aria-busy={busy}>
     <h2 ref={heading} id="import-flow-title" className="sr-only" tabIndex={-1}>{tabs.find((tab) => tab.key === state.tab)?.label}</h2>
     {state.error && <p className="import-flow__notice" role="alert">{state.error}</p>}
     <p role="status">{busy ? 'Đang đọc hoặc gửi yêu cầu… ' : ''}{state.notice}</p>
@@ -36,7 +41,7 @@ export function ImportFlow({ state, workflow, parentBusy, parentStale, canDecide
         onSelectSheet={(id) => { void workflow.selectSheet(id) }} onFilter={(filter, reviewOnly) => { void workflow.setFilter(filter as MappingStatus | 'all', reviewOnly) }}
         onLoadOptions={(id) => { void workflow.loadOptions(id) }} onLoadSheetOptions={(id) => { void workflow.loadSheetOptions(id) }}
         onConfirm={(id, target) => { void workflow.confirmMapping(id, target) }} onResolve={(id, resolution) => { void workflow.resolveMapping(id, resolution) }} onLoadMore={() => { void workflow.loadMoreMappings() }} />
-      <div className="import-flow__footer"><p>{state.summary.can_preview ? 'Máy chủ cho phép chuyển sang xem lại.' : 'Chưa thể Preview. Cần giải quyết lỗi chặn hoặc phê duyệt profile.'}</p><button type="button" className="import-flow__primary" disabled={busy || locked || !state.summary.can_preview} onClick={() => workflow.setTab('review')}>Tiếp tục — xem lại</button></div>
+      <div className="import-flow__footer"><p>{state.summary.progress.unresolved ? `${state.summary.progress.unresolved} mục cần xử lý trước khi tiếp tục.` : state.summary.can_preview ? 'Đã xử lý xong. Bạn có thể tiếp tục.' : 'Cần xử lý lỗi chặn hoặc chờ duyệt quy tắc ghép dữ liệu.'}</p><button type="button" className="import-flow__primary" disabled={busy || locked || !state.summary.can_preview} onClick={() => workflow.setTab('review')}>Tiếp tục</button></div>
     </> : <p>Chưa có tóm tắt ghép cột. Đợi phân tích hoàn tất hoặc đọc lại bước xử lý; không có dữ liệu minh họa thay thế khi API lỗi.</p>)}
     {state.summary && ['mapping', 'review'].includes(state.tab) && <>
       {!!state.summary.blockers.length && <Evidence value={state.summary.blockers} label="Lỗi chặn toàn lô" />}

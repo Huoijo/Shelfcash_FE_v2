@@ -631,3 +631,37 @@ test('configuration projections on different page pins invalidate review and are
   assert.equal(work.controller.getSnapshot().canConfirmReview, false)
   assert.match(work.controller.getSnapshot().error, /preview pin/)
 })
+
+test('visible column options are fetched per row, cached, and can confirm without an extra load action', async () => {
+  const reads = []
+  let writes = 0
+  const work = await workspace({ ownerRequired: true }, source => ({ ...source,
+    options: async (...args) => { reads.push(args[2]); return source.options(...args) },
+    confirm: async (...args) => { writes++; return source.confirm(...args) },
+  }))
+  const row = work.controller.getSnapshot().queue.items[0]
+  await work.controller.loadVisibleOptions()
+  const descriptor = work.controller.getSnapshot().mappingOptions[row.mapping_id]
+  assert.equal(descriptor.schema_context_id, row.sheet_id)
+  assert.equal(descriptor.mapping_revision, work.controller.getSnapshot().summary.mapping_revision)
+  const count = reads.length
+  await work.controller.loadVisibleOptions()
+  assert.equal(reads.length, count)
+  await work.controller.confirmMapping(row.mapping_id, 'on_hand')
+  assert.equal(writes, 1)
+  assert.deepEqual(work.controller.getSnapshot().mappingOptions, {})
+})
+
+test('visible column options with a stale revision never populate selectors or permit confirmation', async () => {
+  let writes = 0
+  const work = await workspace({ ownerRequired: true }, source => ({ ...source,
+    options: async (...args) => ({ ...await source.options(...args), ...(args[2] ? { mapping_revision: 'stale' } : {}) }),
+    confirm: async (...args) => { writes++; return source.confirm(...args) },
+  }))
+  const row = work.controller.getSnapshot().queue.items[0]
+  await work.controller.loadVisibleOptions()
+  assert.deepEqual(work.controller.getSnapshot().mappingOptions, {})
+  assert.match(work.controller.getSnapshot().error, /thay đổi/)
+  await work.controller.confirmMapping(row.mapping_id, 'on_hand')
+  assert.equal(writes, 0)
+})

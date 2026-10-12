@@ -1,4 +1,5 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { usePanelMotion } from '../../../shared/motion/usePanelMotion'
 import { HttpError } from '../../../shared/http/httpClient'
 import { useCurrentStore } from '../../store/store.context'
 import { getMenuProduct } from '../menu.data'
@@ -60,6 +61,8 @@ function RecipeTable({ recipe, asOfDate }: { recipe: MenuRecipe | null; asOfDate
 }
 
 export function MenuDetail({ productId, listMeta, listedProduct, onClose, onInvalidList }: DetailProps) {
+  const { scope, close } = usePanelMotion<HTMLElement>()
+  const requestClose = useCallback(() => close(onClose), [close, onClose])
   const { currentStoreId } = useCurrentStore()
   const prefix = useId()
   const closeRef = useRef<HTMLButtonElement>(null)
@@ -68,10 +71,10 @@ export function MenuDetail({ productId, listMeta, listedProduct, onClose, onInva
 
   useEffect(() => { closeRef.current?.focus({ preventScroll: true }) }, [])
   useEffect(() => {
-    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape') { event.preventDefault(); onClose() } }
+    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape') { event.preventDefault(); requestClose() } }
     window.addEventListener('keydown', escape)
     return () => window.removeEventListener('keydown', escape)
-  }, [onClose])
+  }, [requestClose])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -92,9 +95,9 @@ export function MenuDetail({ productId, listMeta, listedProduct, onClose, onInva
   }, [productId, listMeta, listedProduct, onInvalidList, retry, currentStoreId])
 
   const info = state.status === 'success' ? state.response.data : null
-  return <aside id="menu-detail" className="menu-detail" aria-labelledby={`${prefix}-title`}>
+  return <aside ref={scope} id="menu-detail" className="menu-detail" aria-labelledby={`${prefix}-title`}>
     <header className="menu-detail-header"><h2 id={`${prefix}-title`} title={info?.name ?? listedProduct?.name}>{info?.name ?? listedProduct?.name ?? 'Chi tiết món'}</h2>
-      <button ref={closeRef} type="button" className="menu-close" aria-label="Đóng chi tiết món" onClick={onClose}>
+      <button ref={closeRef} type="button" className="menu-close" aria-label="Đóng chi tiết món" onClick={requestClose}>
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
       </button>
     </header>

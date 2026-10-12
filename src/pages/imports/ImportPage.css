@@ -12,10 +12,6 @@
 .import-page__batch-details > summary { width: fit-content; padding-block: 10px; cursor: pointer; }
 .import-page__batch-details .import-batch { margin-top: 12px; }
 .import-page__upload-column { min-width: 0; display: flex; flex-direction: column; gap: 20px; }
-.import-page__upload-action { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-.import-page__upload-action button, .import-page__feedback button { min-height: 44px; padding: 10px 18px; border: 1px solid #555; border-radius: 9px; color: white; background: #555; font-size: 14px; cursor: pointer; }
-.import-page__upload-action button:disabled { opacity: .5; cursor: not-allowed; }
-.import-page__upload-action p { margin: 0; font-size: 12px; line-height: 20px; color: #777; }
 .import-page__feedback { grid-column: 1; min-width: 0; font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
 .import-page__feedback p { margin: 0 0 12px; }
 .import-page__error { padding: 14px; border: 1px solid #999; border-radius: 8px; background: #f5f5f5; }
@@ -52,3 +48,5 @@
   .import-page__main { padding-inline: 12px; }
   .import-page__utilities { flex-direction: column; }
 }
+
+.import-page__feedback button { min-height: 44px; padding: 10px 18px; border: 1px solid #555; border-radius: 9px; color: white; background: #555; font-size: 14px; cursor: pointer; }

@@ -54,7 +54,7 @@
 .menu-pagination { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 12px 0; color: #777; font-size: 12px; }
 .menu-pagination div { display: flex; flex-wrap: wrap; gap: 14px; }
 .menu-pagination button { min-height: 32px; padding: 4px 0; border: 0; background: transparent; color: #555; text-decoration: underline; text-underline-offset: 4px; }
-.menu-detail { position: fixed; top: 88px; right: 0; bottom: 0; z-index: 4; display: flex; flex-direction: column; flex: 0 0 432px; width: 432px; max-width: calc(100vw - 24px); height: calc(100dvh - 88px); border-left: 1px solid #dedede; background: #fff; box-shadow: -6px 0 16px #00000008; animation: menu-panel-enter 160ms ease-out; }
+.menu-detail { position: fixed; top: 88px; right: 0; bottom: 0; z-index: 4; display: flex; flex-direction: column; flex: 0 0 432px; width: 432px; max-width: calc(100vw - 24px); height: calc(100dvh - 88px); border-left: 1px solid #dedede; background: #fff; box-shadow: -6px 0 16px #00000008; }
 .menu-detail-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex: none; padding: 20px; border-bottom: 1px solid #e7e7e7; }
 .menu-detail-header h2 { display: -webkit-box; min-width: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; color: #3b3b3b; font-size: 23px; line-height: 30px; font-weight: 600; letter-spacing: -.3px; overflow-wrap: anywhere; }
 .menu-close { display: flex; align-items: center; justify-content: center; flex: none; width: 28px; height: 28px; padding: 4px; border: 1px solid #e0e0e0; border-radius: 6px; background: #fff; color: #777; }
@@ -83,7 +83,6 @@
 .menu-text-action:disabled { text-decoration: none; }
 .menu-ai-entry { min-height: 34px; padding: 5px 10px; border: 1px solid #d5d5d5; border-radius: 7px; background: #fff; color: #6a6a6a; font-size: 12px; line-height: 22px; }
 .menu-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-@keyframes menu-panel-enter { from { opacity: .7; } to { opacity: 1; } }
 @container menu-workspace (min-width: 1120px) {
   .menu-detail { position: sticky; top: 0; right: auto; bottom: auto; max-width: none; box-shadow: none; }
   .menu-workspace[data-panel-open=true] > .menu-content { padding-inline: 28px; }
@@ -101,4 +100,3 @@
   .menu-detail-header, .menu-detail-scroll { padding: 16px; }
   .menu-product-facts { padding: 16px; gap: 8px; }.menu-product-facts dd { font-size: 15px; }
 }
-@media (prefers-reduced-motion: reduce) { .menu-detail { animation: none; } }

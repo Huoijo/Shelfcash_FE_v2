@@ -1,6 +1,11 @@
 .import-help { position: fixed; inset: 0 0 0 auto; margin: 0; padding: 0; width: 464px; max-width: 100vw; height: 100vh; height: 100dvh; max-height: 100vh; max-height: 100dvh; border: 0; border-left: 1px solid #d8d8d8; border-radius: 14px 0 0 14px; background: #fff; color: #303030; font-family: inherit; font-size: 13px; line-height: 1.6; overflow: hidden; }
 .import-help[open] { display: flex; flex-direction: column; }
 .import-help::backdrop { background: rgb(0 0 0 / 18%); }
+@media (prefers-reduced-motion: no-preference) {
+  .import-help::backdrop { transition: background-color 160ms ease-out; }
+  .import-help[data-motion-closing]::backdrop { background: transparent; }
+  @starting-style { .import-help[open]::backdrop { background: transparent; } }
+}
 body:has(.import-help[open]) { overflow: hidden; }
 .import-help h2, .import-help h3, .import-help p { margin: 0; }
 .import-help :focus-visible { outline: 2px solid #616161; outline-offset: 3px; }

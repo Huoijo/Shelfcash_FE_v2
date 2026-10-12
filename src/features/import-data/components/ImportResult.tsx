@@ -1,15 +1,20 @@
 import { Link } from 'react-router'
+import { motion, useReducedMotion } from 'motion/react'
+import { uiTransition } from '../../../shared/motion/motion'
 import type { ImportCompletion } from '../importFlow.types'
 import { Evidence } from './ImportMapping'
 
 const knownCount = (value: number | null | undefined) => value == null ? 'Chưa biết' : value.toLocaleString('vi-VN')
 
 export function ImportResult({ completion }: { completion: ImportCompletion }) {
+  const reducedMotion = useReducedMotion()
   const resources = completion.updated_resources
   const metrics = [[completion.summary.files, 'files'], [completion.summary.sheets, 'sheets'], [completion.summary.mapped_fields, 'trường đã ghép'], [completion.summary.errors, 'lỗi']] as const
   return <div className="import-result">
     <section className="import-result__summary" aria-labelledby="import-result-title">
-      <header><h2 id="import-result-title"><span className="import-result__check" aria-hidden="true">✓</span>{completion.outcome === 'no_changes' ? 'Hoàn tất — không có thay đổi' : 'Dữ liệu đã được cập nhật'}</h2>
+      <header><h2 id="import-result-title"><motion.span className="import-result__check" aria-hidden="true"
+        initial={reducedMotion ? false : { opacity: 0, transform: 'scale(0.85)' }} animate={{ opacity: 1, transform: 'scale(1)' }}
+        transition={reducedMotion ? { duration: 0 } : uiTransition}>✓</motion.span>{completion.outcome === 'no_changes' ? 'Hoàn tất — không có thay đổi' : 'Dữ liệu đã được cập nhật'}</h2>
         <span>Ngày dữ liệu: {completion.readiness.as_of_date.split('-').reverse().join('/')}</span></header>
       <dl>{metrics.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{knownCount(value)}</dd></div>)}</dl>
       {completion.status === 'completed_with_warnings' && <p role="status">Hoàn tất với {completion.summary.warnings} cảnh báo. Xem chi tiết biên nhận bên dưới.</p>}

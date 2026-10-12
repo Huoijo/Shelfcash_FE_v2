@@ -17,6 +17,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "motion": "^14.1.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router": "^8.4.0"

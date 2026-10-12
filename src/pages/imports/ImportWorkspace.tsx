@@ -63,7 +63,7 @@ function ScopedImportWorkspace({ storeId }: { storeId: string | null }) {
   }, [storeState, canDecideProfile, flow])
   useEffect(() => {
     if (locatorVisit.claim(location.pathname, locator, state.draft?.import_id,
-      state.busy || !!state.retryOperation || flowState.busy || !!flowState.retryOperation) && locator) void workflow.resume(locator)
+      state.processing || state.busy || !!state.retryOperation || flowState.busy || !!flowState.retryOperation) && locator) void workflow.resume(locator)
   }, [location.pathname, locator, state, flowState.busy, flowState.retryOperation, workflow, locatorVisit])
   useEffect(() => {
     // Never overwrite a user-provided target with a previous batch, including
@@ -75,19 +75,19 @@ function ScopedImportWorkspace({ storeId }: { storeId: string | null }) {
   }, [location.pathname, state.draft, locator, searchParams, setSearchParams])
   useEffect(() => { flow.setBatch(state.batch) }, [flow, state.batch])
   useEffect(() => {
-    if (!state.fresh || state.busy || state.retryOperation || flowState.busy || flowState.retryOperation || flowState.error || !state.batch?.source_set.sealed) return
+    if (!state.fresh || state.processing || state.busy || state.retryOperation || flowState.busy || flowState.retryOperation || flowState.error || !state.batch?.source_set.sealed) return
     if (flowState.pollAfterMs !== null || state.batch.active_job_id) return
     if (!flowState.summary && !flowState.completion && ['review_required', 'ready_for_preview', 'blocked', 'preview_ready', 'completed', 'completed_with_warnings'].includes(state.batch.status)) void flow.refresh()
   }, [state, flowState, flow])
   useEffect(() => {
-    if (state.busy || flowState.busy || flowState.retryOperation || flowState.error || flowState.pollAfterMs === null) return
+    if (state.processing || state.busy || flowState.busy || flowState.retryOperation || flowState.error || flowState.pollAfterMs === null) return
     const timer = setTimeout(() => { void flow.pollJob() }, Math.max(250, flowState.pollAfterMs))
     return () => clearTimeout(timer)
-  }, [state.busy, flowState, flow])
+  }, [state.processing, state.busy, flowState, flow])
   useEffect(() => () => flow.dispose(), [flow])
 
   const startNewDraft = () => {
-    if (state.busy || state.retryOperation || flowState.busy || flowState.retryOperation) return
+    if (state.processing || state.busy || state.retryOperation || flowState.busy || flowState.retryOperation) return
     locatorVisit.suppress(location.pathname, locator)
     const next = new URLSearchParams(searchParams)
     next.delete('import_id')

@@ -872,3 +872,68 @@ test('explicit mock adapter retains 60 rejected receipts across pages and seals 
     (error) => error.status === 409)
   assert.equal((await source.read(batch.import_id)).quota.accepted_file_count, 1)
 })
+
+test('process uploads and analyzes once without a separate source confirmation action', async () => {
+  const fixture = workflowFixture()
+  fixture.workflow.setFiles([csv()])
+  await Promise.all([fixture.workflow.process(), fixture.workflow.process()])
+  assert.equal(fixture.calls.drafts.length, 1)
+  assert.equal(fixture.calls.uploads.length, 1)
+  assert.equal(fixture.calls.analyses.length, 1)
+  assert.deepEqual(fixture.calls.analyses[0].intent.acceptedFileIds, fixture.current.source_set.accepted_file_ids)
+  assert.equal(fixture.workflow.getSnapshot().sealedLocked, true)
+  assert.equal(fixture.workflow.getSnapshot().processing, false)
+})
+
+test('process reads all rejected receipt pages before starting analysis', async () => {
+  const fixture = workflowFixture()
+  fixture.workflow.setFiles([csv()])
+  await fixture.workflow.upload()
+  const rejectedIds = addRejectedPages(fixture)
+  await fixture.workflow.process()
+  assert.equal(fixture.calls.analyses.length, 1)
+  assert.deepEqual(fixture.calls.analyses[0].intent.rejectedClientFileIds, rejectedIds)
+  assert.equal(fixture.workflow.getSnapshot().receipts.length, 3)
+})
+
+test('process stops at uncertain upload and exact retry does not silently analyze', async () => {
+  const fixture = workflowFixture()
+  const original = fixture.source.upload
+  let loseResponse = true
+  fixture.source.upload = async (...args) => {
+    const result = await original(...args)
+    if (loseResponse) { loseResponse = false; throw new HttpError('transport', 'response lost') }
+    return result
+  }
+  fixture.workflow.setFiles([csv()])
+  await fixture.workflow.process()
+  assert.equal(fixture.workflow.getSnapshot().retryOperation, 'upload')
+  assert.equal(fixture.calls.analyses.length, 0)
+  await fixture.workflow.process()
+  assert.equal(fixture.calls.uploads.length, 1)
+  await fixture.workflow.retry()
+  assert.equal(fixture.calls.analyses.length, 0)
+  assert.equal(fixture.calls.uploads[0].intent, fixture.calls.uploads[1].intent)
+  await fixture.workflow.process()
+  assert.equal(fixture.calls.analyses.length, 1)
+})
+
+test('process stops when receipt pages change revision and prevents edits during upload', async () => {
+  const fixture = workflowFixture()
+  const original = fixture.source.upload
+  fixture.source.upload = async (...args) => {
+    fixture.workflow.setFiles([csv('changed.csv')])
+    fixture.workflow.startNewDraft()
+    assert.equal(fixture.workflow.getSnapshot().files[0].name, 'source.csv')
+    return original(...args)
+  }
+  fixture.workflow.setFiles([csv()])
+  await fixture.workflow.upload()
+  addRejectedPages(fixture)
+  const readPage = fixture.source.read
+  fixture.source.read = async (id, cursor) => ({ ...await readPage(id, cursor), ...(cursor ? { import_revision: 'changed' } : {}) })
+  await fixture.workflow.process()
+  assert.equal(fixture.calls.analyses.length, 0)
+  assert.match(fixture.workflow.getSnapshot().error, /thay đổi/)
+  assert.equal(fixture.workflow.getSnapshot().processing, false)
+})

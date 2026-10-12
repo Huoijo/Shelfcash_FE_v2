@@ -55,7 +55,7 @@ test('mapping UI joins flat files/top-level sheets, escapes evidence and never f
   assert.doesNotMatch(html, /<script>|<img src=x/)
   assert.doesNotMatch(html, /filter_counts|unresolved_required|schema_blocker_count/)
   assert.match(html, /Đã xác nhận đề xuất/)
-  assert.match(html, /Lưu ghép cột/)
+  assert.match(html, /Xác nhận/)
 })
 
 test('read-only mapping still renders catalogue and descriptor semantics without granting mutations', () => {
@@ -65,7 +65,7 @@ test('read-only mapping still renders catalogue and descriptor semantics without
   assert.match(html, /Mô tả exact descriptor/)
   assert.match(html, /Bắt buộc/)
   assert.match(html, /Cho phép null/)
-  assert.match(html, /disabled=""[^>]*>Lưu ghép cột/)
+  assert.match(html, /disabled=""[^>]*>Xác nhận/)
 })
 
 test('classification offers only returned schema catalogue and explicit whole-sheet IGNORE', () => {

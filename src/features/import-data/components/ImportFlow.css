@@ -94,17 +94,15 @@
 .import-mapping-progress dd { margin: 0; color: #454545; font-size: 24px; line-height: 32px; }
 .import-mapping-progress__track { width: 234px; max-width: 100%; color: #7a7a7a; font-size: 12px; }
 .import-mapping-progress__track strong { color: #484848; }
-.import-mapping-progress progress { appearance: none; display: block; width: 100%; height: 6px; margin-top: 10px; border: 0; border-radius: 4px; overflow: hidden; background: #e5e5e5; color: #575757; }
-.import-mapping-progress progress::-webkit-progress-bar { background: #e5e5e5; }
-.import-mapping-progress progress::-webkit-progress-value { background: #575757; }
-.import-mapping-progress progress::-moz-progress-bar { background: #575757; }
+.import-mapping-progress__bar { height: 6px; margin-top: 10px; border-radius: 4px; overflow: hidden; background: #e5e5e5; }
+.import-mapping-progress__bar > span { display: block; height: 100%; border-radius: inherit; background: #575757; transform-origin: left; }
 .import-mapping-sheet-header { padding: 14px 20px; border-bottom: 1px solid #e9e9e9; }
 .import-mapping-sheet-header p { margin: 0 0 3px; }
 .import-mapping-sheet-header h3 { margin: 0; font-size: 18px; line-height: 26px; }
 .import-mapping-sheet-header details { margin-top: 8px; }
 .import-mapping-filter-tabs { display: flex; flex-wrap: wrap; gap: 4px; }
-.import-mapping-filter-tabs button { min-height: 30px; padding: 5px 8px; border-color: transparent; border-radius: 6px; font-size: 11px; color: #737373; }
-.import-mapping-filter-tabs button[aria-pressed="true"] { border-color: #d8d8d8; background: #eee; color: #424242; }
+.import-mapping-filter-tabs button { position: relative; isolation: isolate; min-height: 30px; padding: 5px 8px; border-color: transparent; border-radius: 6px; font-size: 11px; color: #737373; }
+.import-mapping-filter-tabs button[aria-pressed="true"] { color: #424242; }
 .import-mapping-card-list { padding: 16px; max-height: 560px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .import-mapping-card-list .import-flow__issue { padding: 16px; border-radius: 9px; margin-bottom: 12px; }
 .import-flow__issue-heading h3 { margin-bottom: 0; font-size: 15px; }
@@ -140,3 +138,21 @@
 @media (max-width: 1100px) { .import-flow__layout { grid-template-columns: 200px minmax(0, 1fr); gap: 16px; } }
 @media (max-width: 760px) { .import-flow__layout { grid-template-columns: minmax(0, 1fr); } .import-mapping-card-list { max-height: none; } .import-flow__impacts { grid-template-columns: minmax(0, 1fr); } .import-mapping-progress { padding: 16px; gap: 16px; } .import-mapping-progress__track { width: 100%; } }
 @media (max-width: 480px) { .import-result__summary { padding: 16px; } .import-result__summary dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } .import-result__summary dl > div { padding: 0; border: 0; } .import-result__summary h2 { font-size: 19px; } .import-result__cta { width: 100%; } .import-mapping-progress dl { gap: 16px; } }
+
+.import-flow__issue-heading h3 { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 17px; overflow-wrap: anywhere; }
+.import-mapping-card-list .import-flow__issue { padding: 18px; border-radius: 10px; }
+.import-flow__issue .import-flow__selector { margin-top: 12px; }
+.import-flow__issue .import-flow__selector label { font-size: 12px; }
+.import-flow__issue .import-flow__selector select { min-height: 42px; font-size: 13px; }
+.import-mapping-card-actions { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-top: 10px; }
+.import-mapping-card-actions > details { flex: 1; min-width: 0; margin: 0; }
+.import-mapping-card-actions > details > summary { width: fit-content; padding-top: 8px; text-decoration: underline; text-underline-offset: 3px; list-style: none; font-size: 12px; }
+.import-mapping-card-actions > button { flex: none; min-height: 38px; padding: 7px 12px; font-size: 12px; }
+.import-mapping-completed { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin: 16px 0 0 288px; padding: 14px 18px; border: 1px solid #e1e1e1; border-radius: 10px; background: #fafafa; color: #777; font-size: 12px; }
+.import-flow .import-mapping-completed button { border: 0; min-height: 30px; padding: 0; background: transparent; color: #777; text-decoration: underline; text-underline-offset: 3px; font-size: 12px; }
+@media (max-width: 1100px) { .import-mapping-completed { margin-left: 216px; } }
+@media (max-width: 760px) { .import-mapping-completed { margin-left: 0; } }
+
+.import-flow__navigator .import-mapping-file { margin: 0; padding: 12px 10px; }
+.import-mapping-file > summary { padding: 6px 8px; color: #505050; font-size: 13px; font-weight: 500; overflow-wrap: anywhere; }
+.import-mapping-file ul { padding-left: 16px; margin-top: 6px; }

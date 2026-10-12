@@ -1,4 +1,7 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { ActiveIndicator } from '../../../shared/motion/ActiveIndicator'
+import { useContentReveal } from '../../../shared/motion/useContentReveal'
+import { usePanelMotion } from '../../../shared/motion/usePanelMotion'
 import { HttpError } from '../../../shared/http/httpClient'
 import { useCurrentStore } from '../../store/store.context'
 import { getInventoryIngredient, getInventoryLots, getInventoryMovements } from '../inventory.data'
@@ -120,12 +123,14 @@ function InventoryMovements({ ingredientId, snapshot, onInvalidSnapshot, unit }:
 }
 
 export function InventoryDetail({ ingredientId, snapshot, onClose, onInvalidSnapshot }: DetailProps) {
+  const { scope, close } = usePanelMotion<HTMLElement>()
+  const requestClose = useCallback(() => close(onClose), [close, onClose])
   const { currentStoreId } = useCurrentStore()
   const prefix = useId()
   const closeRef = useRef<HTMLButtonElement>(null)
-  const scrollRef = useRef<HTMLDivElement>(null)
   const continuation = useRef<AbortController | null>(null)
   const [view, setView] = useState<'lots' | 'movements'>('lots')
+  const scrollRef = useContentReveal<HTMLDivElement>(view)
   const [retry, setRetry] = useState(0)
   const [state, setState] = useState<Load<InventoryDetailResponse>>({ status: 'loading' })
   const [lots, setLots] = useState<{ items: InventoryLot[]; cursor: string | null }>({ items: [], cursor: null })
@@ -137,12 +142,12 @@ export function InventoryDetail({ ingredientId, snapshot, onClose, onInvalidSnap
   }, [])
 
   useEffect(() => {
-    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape') { event.preventDefault(); onClose() } }
+    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape') { event.preventDefault(); requestClose() } }
     window.addEventListener('keydown', escape)
     return () => window.removeEventListener('keydown', escape)
-  }, [onClose])
+  }, [requestClose])
 
-  useEffect(() => { if (scrollRef.current) scrollRef.current.scrollTop = 0 }, [view])
+  useEffect(() => { if (scrollRef.current) scrollRef.current.scrollTop = 0 }, [view, scrollRef])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -184,10 +189,10 @@ export function InventoryDetail({ ingredientId, snapshot, onClose, onInvalidSnap
 
   const info = state.status === 'success' ? state.response.data : null
 
-  return <aside id="inventory-detail" className="inventory-detail" aria-labelledby={`${prefix}-title`}>
+  return <aside ref={scope} id="inventory-detail" className="inventory-detail" aria-labelledby={`${prefix}-title`}>
     <header className="inventory-detail-header"><div><h2 id={`${prefix}-title`}>{info?.name ?? 'Chi tiết nguyên liệu'}</h2>
       {info && <span className="inventory-status">{inventoryStatusLabels[info.status]}</span>}</div>
-      <button ref={closeRef} type="button" className="inventory-close" aria-label="Đóng chi tiết nguyên liệu" onClick={onClose}>
+      <button ref={closeRef} type="button" className="inventory-close" aria-label="Đóng chi tiết nguyên liệu" onClick={requestClose}>
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
       </button>
     </header>
@@ -202,7 +207,7 @@ export function InventoryDetail({ ingredientId, snapshot, onClose, onInvalidSnap
             const next = event.key === 'Home' ? 0 : event.key === 'End' ? 1 : 1 - index
             setView(next === 0 ? 'lots' : 'movements')
             event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>('button')[next]?.focus()
-          }}>{tab === 'lots' ? 'Lô hàng' : 'Biến động'}</button>)}
+          }}>{view === tab && <ActiveIndicator id={`${prefix}-detail-tabs`} underline />}{tab === 'lots' ? 'Lô hàng' : 'Biến động'}</button>)}
       </div>
     </>}
     <div ref={scrollRef} id={`${prefix}-panel`} className="inventory-detail-scroll" role={info ? 'tabpanel' : 'region'}
