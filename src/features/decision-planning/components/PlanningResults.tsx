@@ -1,4 +1,5 @@
-import { useId, useRef, useState } from 'react'
+import { UnderConstructionButton } from '../../../shared/UnderConstruction'
+import { useId, useRef, useState, type ReactNode } from 'react'
 import { ActiveIndicator } from '../../../shared/motion/ActiveIndicator'
 import { useContentReveal } from '../../../shared/motion/useContentReveal'
 import type { PlanningIngredient, PlanningIngredients, PlanningReasons, PlanningRun } from '../planning.types'
@@ -7,6 +8,8 @@ import { PlanningEngineReasons, PlanningIngredientPanel, PlanningNotifications, 
 import './Planning.css'
 
 export type PlanningResultsProps = {
+  exportAction?:ReactNode
+  historical?:boolean
   run: PlanningRun
   ingredients?: PlanningIngredients | null
   ingredient?: PlanningIngredient | null
@@ -20,7 +23,7 @@ export type PlanningResultsProps = {
   reasonsError?: string | null
   hasMoreIngredients?: boolean
   ingredientsTotal?: number | null
-  initialTab?: 'overview' | 'ingredients' | 'strategies'
+  initialTab?: 'overview' | 'ingredients' | 'strategies' | 'reasons'
   onSelectOption: (id: string | null) => void
   onLoadIngredients: () => void
   onMoreIngredients: () => void
@@ -29,7 +32,7 @@ export type PlanningResultsProps = {
   onNewPlan: () => void
 }
 
-const tabs = [{ id: 'overview', label: 'Tổng quan' }, { id: 'ingredients', label: 'Nguyên liệu' }, { id: 'strategies', label: 'Phương án khác' }] as const
+const tabs = [{ id: 'overview', label: 'Tổng quan' }, { id: 'ingredients', label: 'Nguyên liệu' }, { id: 'strategies', label: 'Phương án khác' }, { id: 'reasons', label: 'Lý do' }] as const
 type Tab = typeof tabs[number]['id']
 
 export function PlanningResults(props: PlanningResultsProps) {
@@ -50,13 +53,14 @@ export function PlanningResults(props: PlanningResultsProps) {
     return captured?.name_availability === 'captured' && captured.display_name !== null ? captured.display_name : id
   }
   const inspect = (id: string) => { setTab('ingredients'); onSelectIngredient(id) }
-  function changeTab(next: Tab) { setTab(next); if (next === 'ingredients' && !ingredients) onLoadIngredients() }
+  function changeTab(next: Tab) { setTab(next); if (next === 'ingredients' && !ingredients) onLoadIngredients(); if(next==='reasons'&&!reasons)onLoadReasons() }
 
   return <main className="sc-proc-content" aria-labelledby={`${prefix}-title`} aria-busy={busy || undefined}>
-    <header className="sc-proc-page-header"><h1 id={`${prefix}-title`}>Kế hoạch nhập</h1><div className="sc-proc-header-actions">
-      <button type="button" className="sc-proc-secondary-action" disabled title="Backend hiện hành chưa có contextual AI/explanation endpoint.">Hỏi AI</button>
+    <header className="sc-proc-page-header"><div><h1 id={`${prefix}-title`}>Kế hoạch nhập</h1><p className="sc-proc-page-subtitle">{formatPlanningDate(run.request.forecast_start_date)} · 7 ngày · kết quả đã lưu</p></div><div className="sc-proc-header-actions">
+      {props.exportAction}<UnderConstructionButton feature="Hỏi AI" className="sc-proc-secondary-action">Hỏi AI</UnderConstructionButton>
       <button type="button" className="sc-proc-text-action" disabled={busy} onClick={onNewPlan}>Thiết lập mới</button>
     </div></header>
+    {props.historical&&<section className="sc-proc-retained-strip"><strong>Run lịch sử · chỉ đọc</strong><span>Kết quả lịch sử bất biến. Không tái dựng từ tồn kho, công thức hoặc ngân sách hiện tại.</span></section>}
     {run.status === 'failed' && <section className="sc-proc-warning" role="alert"><strong>Chạy kế hoạch thất bại.</strong><span>Dữ liệu một phần bên dưới chỉ để kiểm tra, không phải khuyến nghị đã hoàn tất.</span>{winner && <span>Phương án một phần được máy chủ xác minh và giữ lại; không đổi trạng thái thất bại của lần chạy.</span>}</section>}
     {run.status === 'completed' && !winner && <section className="sc-proc-warning" role="status"><strong>Đã hoàn tất — chưa có phương án đủ điều kiện.</strong><span>Kết quả: {run.outcome ?? 'Chưa đánh giá'}. Không tạo kế hoạch mua giả.</span></section>}
     {['queued', 'running'].includes(run.status) && <p role="status">Máy chủ đang tính kế hoạch. Chưa có khuyến nghị hoàn tất.</p>}
@@ -69,7 +73,7 @@ export function PlanningResults(props: PlanningResultsProps) {
           if (next === null) return
           event.preventDefault(); changeTab(tabs[next].id); refs.current[next]?.focus()
         }}>{tab === item.id && <ActiveIndicator id={`${prefix}-planning-tabs`} underline />}{item.label}</button>)}
-      <button type="button" role="tab" aria-selected={false} aria-disabled="true" disabled title="Chưa có API What-if; không sửa hoặc thay thế kết quả gốc.">Kịch bản giả định</button>
+      <UnderConstructionButton feature="Kịch bản giả định">Kịch bản giả định</UnderConstructionButton>
     </div>
     <section ref={panelRef} className="sc-proc-tab-panel" role="tabpanel" id={`${prefix}-panel-${tab}`} aria-labelledby={`${prefix}-tab-${tab}`} tabIndex={0}>
       {tab === 'overview' && <div className="sc-proc-overview">
@@ -94,11 +98,11 @@ export function PlanningResults(props: PlanningResultsProps) {
         </details>}
         {run.forecast && <details className="sc-proc-disclosure"><summary>Thông tin dự báo đã lưu</summary><p>{formatPlanningDate(run.forecast.start_date)} → {formatPlanningDate(run.forecast.end_date)} · {run.forecast.model_type} · Chất lượng: {run.forecast.quality_status}</p><p>Lịch sử đến {formatPlanningDate(run.forecast.history_end_date)}. Không có chuỗi lượng dự báo tổng để dựng biểu đồ tại đây.</p></details>}
         {run.operational_basis && <p className="sc-planning-note">Cơ sở vận hành: {run.operational_basis.kind} · Ngày chụp {formatPlanningDate(run.operational_basis.local_capture_date)} · {run.operational_basis.timezone}. Đây không phải tái tạo tồn kho lịch sử.</p>}
-        <div className="sc-proc-overview-actions"><button type="button" className="sc-proc-primary-cta" disabled title="Chưa có UI/contract/implementation đồng bộ cho tạo PO từ kết quả này.">Tạo Draft PO</button>
+        <div className="sc-proc-overview-actions"><UnderConstructionButton feature="Draft PO" className="sc-proc-primary-cta">Tạo Draft PO</UnderConstructionButton>
           <button type="button" className="sc-proc-secondary-action" onClick={() => changeTab('strategies')}>Xem phương án khác</button>
-          <button type="button" className="sc-proc-secondary-action" disabled={busy || detailBusy} onClick={onLoadReasons}>{detailBusy ? 'Đang đọc…' : 'Xem lý do từ engine'}</button></div>
+          <button type="button" className="sc-proc-secondary-action" disabled={busy || detailBusy} onClick={()=>{setTab('reasons');onLoadReasons()}}>{detailBusy ? 'Đang đọc…' : 'Xem lý do từ engine'}</button></div>
         <details className="sc-proc-disclosure"><summary>Thông tin lần lập kế hoạch</summary><p className="sc-planning-note planning-run-identity">Lần chạy {run.run_id} · {run.status} · Bắt đầu {formatPlanningDate(run.request.forecast_start_date)} · Ngân sách đã chụp {formatPlanningMoney(run.configuration.budget.limit, run.configuration.budget.currency)}</p><p className="sc-planning-note">Hỏi AI và kịch bản giả định chưa khả dụng.</p></details>
-        {props.reasonsError && <p role="alert">{props.reasonsError}</p>}{reasons && <PlanningEngineReasons reasons={reasons} />}
+        {props.reasonsError && <p role="alert">{props.reasonsError}</p>}
       </div>}
       {tab === 'ingredients' && <div className="sc-proc-ingredient-workspace">
         <section className="sc-proc-ingredient-navigator" aria-label="Nguyên liệu của lần chạy"><header><h2>Nguyên liệu</h2><p className="sc-planning-note">{selectedOptionId ? 'Đang kiểm tra phương án riêng; khuyến nghị gốc không đổi.' : 'Theo phương án được máy chủ chọn.'}</p>
@@ -130,6 +134,7 @@ export function PlanningResults(props: PlanningResultsProps) {
         {selected && <><PlanningOptionFacts option={selected} run={run} /><PlanningPurchases option={selected} currency={run.configuration.budget.currency} nameFor={nameFor} onInspect={inspect} /></>}
         {!result?.strategies.length && <p>Chưa có dữ liệu so sánh chiến lược.</p>}
       </div>}
+      {tab==='reasons'&&<section className="sc-proc-reasons-section"><h2>Lý do lựa chọn phương án</h2><p className="sc-planning-note">Bằng chứng của lần chạy đã lưu, độc lập với dữ liệu cửa hàng hiện tại.</p>{props.reasonsError&&<p className="sc-proc-warning" role="alert">{props.reasonsError}</p>}{detailBusy&&<p role="status">Đang tải lý do…</p>}{reasons?<PlanningEngineReasons reasons={reasons}/>:<p>Chưa đọc được bằng chứng lựa chọn. Các phần đã tải vẫn có thể xem.</p>}<button type="button" className="sc-proc-secondary-action" disabled={busy||detailBusy} onClick={onLoadReasons}>Thử lại lý do từ engine</button></section>}
     </section>
   </main>
 }

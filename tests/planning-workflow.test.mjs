@@ -425,3 +425,16 @@ test('terminal results stop polling and reset clears canonical result/inspection
   assert.equal(workflow.getSnapshot().ingredients, null); assert.equal(workflow.getSnapshot().readiness, null)
   assert.ok(workflow.getSnapshot().context)
 })
+
+test('transient reasons failure preserves previously validated ingredient evidence and scopes retry to reasons',async()=>{
+  let failRead=true
+  const {workflow}=await retained({reasons:async()=>{if(failRead)throw new HttpError('transport','Controlled reasons connection loss');return whyEnvelope()}})
+  await workflow.loadIngredients();await workflow.loadIngredient(ids.ingredient)
+  const before=workflow.getSnapshot()
+  await workflow.loadReasons()
+  assert.equal(workflow.getSnapshot().inspectionArea,'reasons')
+  assert.ok(workflow.getSnapshot().inspectionError)
+  assert.deepEqual(workflow.getSnapshot().ingredients,before.ingredients)
+  assert.deepEqual(workflow.getSnapshot().ingredient,before.ingredient)
+  failRead=false;await workflow.loadReasons();assert.equal(workflow.getSnapshot().inspectionError,null);assert.ok(workflow.getSnapshot().reasons)
+})

@@ -25,9 +25,9 @@ export function ImportPage() {
   const helpId = useId()
   const showFlow = state.sealedLocked && !locatorMismatch
   const rejectedFiles = state.receipts.filter((file) => file.upload_status === 'rejected')
-  const stepTitles = { mapping: 'Ghép cột dữ liệu', review: 'Xem lại dữ liệu', preview: 'Xem trước và ghi dữ liệu', result: 'Hoàn tất' }
+  const stepTitles = { mapping: 'Ghép cột dữ liệu', review: 'Kiểm tra + xác nhận ghi', preview: 'Xem trước dữ liệu', result: 'Hoàn tất' }
   const title = showFlow ? stepTitles[flowState.tab] : 'Nhập dữ liệu'
-  const step = showFlow ? ({ mapping: 2, review: 3, preview: 4, result: 5 }[flowState.tab]) : 1
+  const step = showFlow ? ({ mapping: 2, preview: 3, review: 4, result: 5 }[flowState.tab]) : 1
 
   return (
     <div className="import-page">

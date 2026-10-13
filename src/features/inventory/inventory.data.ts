@@ -1,6 +1,6 @@
+import { mockInventory, mockSummary } from '../mock/mockRepository'
 import { config } from '../../app/config'
 import { HttpError, requestJson } from '../../shared/http/httpClient'
-import { inventoryFixtureItems, inventoryFixtureLots, inventoryFixtureMeta, inventoryFixtureMovements, inventoryFixtureSnapshot, inventoryFixtureSummary } from './inventory.fixtures'
 import type { InventoryDetailResponse, InventoryEvidenceRequest, InventoryLotsResponse, InventoryMovementsResponse, InventoryRequest, InventoryResponse } from './inventory.types'
 import { validateInventory, validateInventoryIngredient, validateInventoryLots, validateInventoryMovements } from './inventory.validation'
 
@@ -29,8 +29,8 @@ function fixtureError(code: string, message: string, status: number): never {
   throw new HttpError('contract', message, status, { code, message, details: {} })
 }
 
-function assertSnapshot(snapshot: string): void {
-  if (snapshot !== inventoryFixtureSnapshot) fixtureError('SNAPSHOT_NOT_AVAILABLE', 'Snapshot không còn khả dụng. Vui lòng tải lại Kho.', 409)
+function assertSnapshot(snapshot: string, storeId: string | null): void {
+  if (snapshot !== mockInventory(storeId).meta.snapshot_id) fixtureError('SNAPSHOT_NOT_AVAILABLE', 'Snapshot không còn khả dụng. Vui lòng tải lại Kho.', 409)
 }
 
 function assertIngredientId(ingredientId: string): void {
@@ -40,8 +40,8 @@ function assertIngredientId(ingredientId: string): void {
   }
 }
 
-function fixtureIngredient(ingredientId: string) {
-  const item = inventoryFixtureItems.find((row) => row.ingredient_id === ingredientId)
+function fixtureIngredient(ingredientId: string, storeId: string | null) {
+  const item = mockInventory(storeId).items.find((row) => row.ingredient_id === ingredientId)
   if (!item) fixtureError('RESOURCE_NOT_FOUND', 'Không tìm thấy nguyên liệu trong dữ liệu minh họa.', 404)
   return item
 }
@@ -66,6 +66,9 @@ export async function getInventory(params: InventoryRequest, signal: AbortSignal
     return validateInventory(await requestJson<unknown>(config.apiBaseUrl, inventoryPath(storeId, '', params), { signal }))
   }
   await waitForFixture(signal)
+  const { items: inventoryFixtureItems, meta: inventoryFixtureMeta } = mockInventory(storeId)
+  const inventoryFixtureSnapshot = inventoryFixtureMeta.snapshot_id
+  const inventoryFixtureSummary = mockSummary(inventoryFixtureItems)
   const q = normalized(params.q ?? '')
   const items = inventoryFixtureItems.filter((row) => (!q || normalized(`${row.name} ${row.sku ?? ''}`).includes(q)) &&
     (!params.status?.length || params.status.includes(row.status)) &&
@@ -93,8 +96,9 @@ export async function getInventoryIngredient(ingredientId: string, snapshotId: s
     return validateInventoryIngredient(value, ingredientId, snapshotId)
   }
   await waitForFixture(signal)
-  assertSnapshot(snapshotId)
-  const ingredient = fixtureIngredient(ingredientId)
+  const { lots: inventoryFixtureLots, meta: inventoryFixtureMeta } = mockInventory(storeId)
+  assertSnapshot(snapshotId, storeId)
+  const ingredient = fixtureIngredient(ingredientId, storeId)
   const result = fixturePage(inventoryFixtureLots[ingredientId] ?? [], {}, `${snapshotId}:${ingredientId}:lots`)
   return {
     data: { ...ingredient, lots: result.items, lots_page: { next_cursor: result.pagination.next_cursor, total_count: result.pagination.total_count },
@@ -110,8 +114,9 @@ export async function getInventoryLots(ingredientId: string, params: InventoryEv
     return validateInventoryLots(value, ingredientId, params.snapshot_id)
   }
   await waitForFixture(signal)
-  assertSnapshot(params.snapshot_id)
-  fixtureIngredient(ingredientId)
+  const { lots: inventoryFixtureLots, meta: inventoryFixtureMeta } = mockInventory(storeId)
+  assertSnapshot(params.snapshot_id, storeId)
+  fixtureIngredient(ingredientId, storeId)
   const result = fixturePage(inventoryFixtureLots[ingredientId] ?? [], params, `${params.snapshot_id}:${ingredientId}:lots`)
   return { data: { ingredient_id: ingredientId, items: result.items }, meta: { ...inventoryFixtureMeta, pagination: result.pagination }, error: null }
 }
@@ -123,8 +128,9 @@ export async function getInventoryMovements(ingredientId: string, params: Invent
     return validateInventoryMovements(value, ingredientId, params.snapshot_id)
   }
   await waitForFixture(signal)
-  assertSnapshot(params.snapshot_id)
-  fixtureIngredient(ingredientId)
+  const { movements: inventoryFixtureMovements, meta: inventoryFixtureMeta } = mockInventory(storeId)
+  assertSnapshot(params.snapshot_id, storeId)
+  fixtureIngredient(ingredientId, storeId)
   const result = fixturePage(inventoryFixtureMovements[ingredientId] ?? [], params, `${params.snapshot_id}:${ingredientId}:movements`)
   return { data: { ingredient_id: ingredientId, items: result.items }, meta: { ...inventoryFixtureMeta, pagination: result.pagination }, error: null }
 }

@@ -13,7 +13,7 @@ try {
   if (suites.some((suite) => !available.includes(suite))) throw new Error('Unknown Planning test suite')
   for (const suite of suites) await build({
     root, configFile: false, logLevel: 'error',
-    ...(suite === 'planning-ui' ? { ssr: { noExternal: ['react', 'react-dom', 'motion', 'framer-motion', 'motion-dom', 'motion-utils'] } } : {}),
+    ...(suite === 'planning-ui' ? { ssr: { noExternal: ['react', 'react-dom', 'react-router', 'motion', 'framer-motion', 'motion-dom', 'motion-utils'] } } : {}),
     define: { 'import.meta.env': JSON.stringify({ VITE_DATA_SOURCE: 'mock' }) },
     build: { ssr: resolve(root, `tests/${suite}.test.mjs`), outDir: output, emptyOutDir: false,
       minify: false, rollupOptions: { output: { entryFileNames: `${suite}.test.mjs` } } },

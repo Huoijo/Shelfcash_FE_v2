@@ -1,3 +1,7 @@
+import { StoreActivityPage } from '../features/operations/StoreActivityPage'
+import { RecipeSchedulePage } from '../features/operations/RecipeSchedulePage'
+import { PlanningHistoryPage } from '../features/operations/PlanningHistoryPage'
+import { CredentialsPage, InvitationPage } from '../features/auth/OnboardingPages'
 import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router'
 import { lazy, Suspense } from 'react'
 import { AppShell } from '../layouts/app-shell/AppShell'
@@ -9,7 +13,7 @@ import { ImportWorkspace } from '../pages/imports/ImportWorkspace'
 import { InventoryPage } from '../pages/inventory/InventoryPage'
 import { MenuPage } from '../pages/menu/MenuPage'
 import { HomePage } from '../pages/home/HomePage'
-import { TodayPage } from '../pages/today/TodayPage'
+import { UnderConstructionPage } from '../shared/UnderConstruction'
 
 const PlanningPage = lazy(() => import('../pages/forecast/PlanningPage').then((module) => ({ default: module.PlanningPage })))
 const StorePage = lazy(() => import('../pages/store/StorePage').then((module) => ({ default: module.StorePage })))
@@ -28,13 +32,18 @@ export function AppRouter() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginRoute />} />
+      <Route path="/credentials/complete" element={<CredentialsPage />} />
+      <Route path="/invitations/:invitationId" element={<InvitationPage />} />
       <Route element={<AuthGuard />}>
         <Route element={<StoreProvider><AppShell /></StoreProvider>}>
           <Route path="/store" element={<Suspense fallback={<p role="status">Đang tải Cửa hàng…</p>}><StorePage /></Suspense>} />
           <Route element={<StoreGate><Outlet /></StoreGate>}>
-          <Route path="/today" element={<TodayPage />} />
+          <Route path="/store/activity" element={<StoreActivityPage />} />
+          <Route path="/today" element={<UnderConstructionPage feature="Hôm nay" />} />
           <Route path="/inventory" element={<InventoryPage />} />
+          <Route path="/menu/recipe" element={<RecipeSchedulePage />} />
           <Route path="/menu" element={<MenuPage />} />
+          <Route path="/forecast/planning/history" element={<PlanningHistoryPage />} />
           <Route path="/forecast" element={<PlanningRedirect />} />
           <Route path="/forecast/planning" element={<Suspense fallback={<p role="status">Đang tải kế hoạch nhập…</p>}><PlanningPage /></Suspense>} />
           <Route path="/forecast/planning/results" element={<PlanningRedirect />} />

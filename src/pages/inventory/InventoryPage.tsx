@@ -1,3 +1,4 @@
+import { InventoryActions } from '../../features/operations/InventoryActions'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router'
 import { InventoryDetail } from '../../features/inventory/components/InventoryDetail'
@@ -86,6 +87,7 @@ export function InventoryPage() {
             <span><strong>{response.data.summary.positive_lot_count}</strong> lô còn tồn</span><i aria-hidden="true" />
             <span><strong>{response.data.summary.near_expiry_lot_count}</strong> lô gần hạn</span>
           </section>}
+          {response && <InventoryActions response={response} onRefresh={refresh} />}
           <div className="inventory-toolbar">
             <div className="inventory-filters" role="group" aria-label="Lọc trạng thái tồn kho">
               {filters.map((item) => <button type="button" key={item.value} aria-pressed={(status ?? '') === item.value}

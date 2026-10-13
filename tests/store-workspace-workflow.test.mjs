@@ -86,14 +86,18 @@ test('known budget cap accepts exact zero and preserves original CAS without cha
   assert.deepEqual(flow.getSnapshot().context.default_requirements, requirements)
 })
 
-test('unknown/null budget ceiling blocks create-only mutation instead of guessing absence', async () => {
-  let writes = 0
-  const { flow } = ownerFlow({ planningContext: async () => envelope(planningContextFixture({ budget_ceiling: null })),
-    updateBudget: async () => { writes++; throw new Error('must not write') } })
-  await flow.loadBudget(); await flow.saveBudget('100')
-  assert.equal(writes, 0)
-  assert.match(flow.getSnapshot().error, /Chưa xác minh/)
-  assert.equal(flow.getSnapshot().uncertain, false)
+test('authorized null ceiling creates initial cap with create-only condition and preserves exact zero', async () => {
+  const writes=[]
+  let budget=null
+  const { flow } = ownerFlow({ planningContext: async () => envelope(planningContextFixture({ budget_ceiling: budget })),
+    updateBudget: async (_s,intent) => { writes.push(clone(intent)); budget={amount:'0',currency:'VND',version:'created/1',updated_at:'2026-10-13T00:00:00Z'}; return envelope({store_id:MOCK_STORE_IDS.first,budget_ceiling:budget}) } })
+  await flow.loadBudget(); await flow.saveBudget('0')
+  assert.equal(writes.length,1)
+  assert.equal(flow.getSnapshot().context.budget_ceiling.amount,'0')
+  assert.equal(flow.getSnapshot().error,null)
+  assert.deepEqual(writes[0].condition,{kind:'create'})
+  assert.equal(writes[0].request.amount,'0')
+  assert.equal(flow.getSnapshot().uncertain,false)
 })
 
 test('money input keeps up to 18 fractional digits without Number coercion; invalid input never writes', async () => {
@@ -485,4 +489,24 @@ test('N17 receipt for a different target email stays uncertain and cannot silent
   await flow.retry()
   assert.equal(sent.length, 2)
   assert.deepEqual(sent[1], sent[0])
+})
+test('initial budget lost ACK replays original create-only key/body and fresh reads cap zero',async()=>{
+ let cap=null;const sent=[]
+ const {flow}=ownerFlow({planningContext:async()=>envelope(planningContextFixture({budget_ceiling:cap})),updateBudget:async(_s,intent)=>{
+   sent.push(clone(intent));cap={amount:'0',currency:'VND',version:'initial/1',updated_at:'2026-10-13T03:00:00Z'}
+   if(sent.length===1)throw lost()
+   return envelope({store_id:MOCK_STORE_IDS.first,budget_ceiling:cap})
+ }})
+ await flow.loadBudget();await flow.saveBudget('0');assert.equal(flow.getSnapshot().uncertain,true)
+ await flow.retry();assert.deepEqual(sent[0],sent[1]);assert.deepEqual(sent[1].condition,{kind:'create'})
+ assert.equal(flow.getSnapshot().context.budget_ceiling.amount,'0');assert.equal(flow.getSnapshot().uncertain,false)
+})
+test('initial budget race rereads competing cap without converting create to replace',async()=>{
+ let cap=null;const sent=[]
+ const {flow}=ownerFlow({planningContext:async()=>envelope(planningContextFixture({budget_ceiling:cap})),updateBudget:async(_s,intent)=>{
+   sent.push(clone(intent));cap={amount:'250',currency:'VND',version:'competing/1',updated_at:'2026-10-13T03:00:00Z'};throw conflict()
+ }})
+ await flow.loadBudget();await flow.saveBudget('0');await flow.retry()
+ assert.equal(sent.length,1);assert.deepEqual(sent[0].condition,{kind:'create'})
+ assert.equal(flow.getSnapshot().context.budget_ceiling.amount,'250');assert.equal(flow.getSnapshot().uncertain,false)
 })

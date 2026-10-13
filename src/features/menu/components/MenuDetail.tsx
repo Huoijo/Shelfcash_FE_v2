@@ -1,3 +1,4 @@
+import { UnderConstructionButton } from '../../../shared/UnderConstruction'
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { usePanelMotion } from '../../../shared/motion/usePanelMotion'
 import { HttpError } from '../../../shared/http/httpClient'
@@ -119,7 +120,7 @@ export function MenuDetail({ productId, listMeta, listedProduct, onClose, onInva
     </div>
     <footer className="menu-detail-actions">
       <button className="menu-text-action" type="button" disabled title="Chưa tích hợp điều hướng Kho theo ingredient_id; không mở toàn bộ Kho thay cho nguyên liệu của công thức.">Xem tồn kho nguyên liệu</button>
-      <button className="menu-ai-entry" type="button" disabled title="AI cho Menu chưa có contract được duyệt và tích hợp.">Hỏi AI về món này</button>
+      <UnderConstructionButton feature="Hỏi AI về món này" className="menu-ai-entry">Hỏi AI về món này</UnderConstructionButton>
     </footer>
   </aside>
 }

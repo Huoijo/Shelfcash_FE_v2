@@ -201,8 +201,9 @@ test('budget unavailable and true zero remain distinct; no rights, loading or un
   const context = planningContextFixture({ budget_ceiling: { amount: '0', currency: 'VND', version: 'zero/1', updated_at: at } })
   assert.match(render(StoreOperatingDefaults, { ...operatingProps, planningContext: context }), /Trần hiện hành: 0 VND/)
   const ambiguousAbsence = render(StoreOperatingDefaults, { ...operatingProps, planningContext: planningContextFixture({ budget_ceiling: null }) })
-  assert.match(ambiguousAbsence, /Chưa xác minh được trần ngân sách hiện hành/)
-  assert.match(ambiguousAbsence, /input[^>]*disabled=""[^>]*value=""/)
+  assert.match(ambiguousAbsence, /Cửa hàng chưa có trần ngân sách/)
+  assert.match(ambiguousAbsence, /Tạo ngân sách ban đầu/)
+  assert.doesNotMatch(ambiguousAbsence, /input[^>]*disabled=""[^>]*value=""/)
   for (const overrides of [{ canUpdateBudget: false }, { loading: true }, { busy: true }, { locked: true }]) {
     const html = render(StoreOperatingDefaults, { ...operatingProps, ...overrides })
     assert.match(html, /input[^>]*disabled=""[^>]*value="1000000"/)

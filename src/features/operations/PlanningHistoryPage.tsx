@@ -1,0 +1,39 @@
+import { useEffect,useState } from 'react'
+import { Link,useNavigate,useSearchParams } from 'react-router'
+import { useCurrentStore } from '../store/store.context'
+import { operationsSource } from './operations.source'
+import type { HistoryQuery } from './operations.data'
+import type { WireRunHistoryEnvelope } from './operations.wire'
+import { FlowState } from '../../shared/flow/FlowDialog'
+import { formatPlanningDate } from '../decision-planning/planning.format'
+import './Operations.css'
+const statusLabels:Record<string,string>={queued:'Đang chờ',running:'Đang xử lý',completed:'Hoàn tất',failed:'Không thể hoàn tất'}
+const modes:Record<string,string>={default:'Mặc định',custom:'Tùy chỉnh',saved:'Đã lưu'}
+const outcomes:Record<string,string>={recommendation_available:'Có phương án đề xuất',no_feasible_recommendation:'Không có phương án đáp ứng',no_feasible_option:'Không có phương án đáp ứng',unproven:'Chưa chứng minh được phương án',no_recommendation:'Chưa có khuyến nghị'}
+export function PlanningHistoryPage(){const {state}=useCurrentStore();if(state.status!=='ready'&&state.status!=='mock_preview')return null
+  if(!['planning.result.read','budget.read','procurement.cost.read'].every(p=>state.store.membership.effective_permissions.includes(p)))return <main className="sc-operations"><FlowState title="Không thể truy cập lịch sử kế hoạch" error><p>Chưa đủ quyền đọc lịch sử kế hoạch và dữ liệu chi phí.</p></FlowState></main>
+  return <History key={state.store.store_id+state.store.authorization_version} storeId={state.store.store_id} timezone={state.store.timezone}/>
+}
+function History({storeId,timezone}:{storeId:string;timezone:string}){
+  const navigate=useNavigate(),[params,setParams]=useSearchParams(),[retry,setRetry]=useState(0)
+  const [state,setState]=useState<{key:string;scope:string;data?:WireRunHistoryEnvelope;error?:string}>({key:'',scope:''})
+  const query:HistoryQuery={...(params.get('status')?{status:params.get('status') as HistoryQuery['status']}:{}),...(params.get('from')?{forecast_start_from:params.get('from')!}:{}),...(params.get('to')?{forecast_start_to:params.get('to')!}:{}),...(params.get('cursor')?{cursor:params.get('cursor')!}:{})}
+  const scope=JSON.stringify([storeId,query.status,query.forecast_start_from,query.forecast_start_to,retry]),key=JSON.stringify([scope,query.cursor])
+  useEffect(()=>{const c=new AbortController();const filter=JSON.parse(scope);const cursor=JSON.parse(key)[1];const request:HistoryQuery={...(filter[1]?{status:filter[1]}:{}),...(filter[2]?{forecast_start_from:filter[2]}:{}),...(filter[3]?{forecast_start_to:filter[3]}:{}),...(cursor?{cursor}:{})};operationsSource.history(storeId,request,c.signal).then(data=>{if(c.signal.aborted)return;setState(old=>{
+    if(request.cursor&&old.scope===scope&&old.data?.meta.pagination.next_cursor===request.cursor){if(old.data.meta.snapshot_id!==data.meta.snapshot_id||old.data.meta.pagination.total_count!==data.meta.pagination.total_count||data.meta.pagination.next_cursor===request.cursor||data.data.items.some(r=>old.data!.data.items.some(p=>p.run_id===r.run_id)))return {key,scope,error:'Lịch sử đã thay đổi. Đọc lại từ trang đầu để tránh trộn snapshots.'};return {key,scope,data:{...data,data:{items:[...old.data.data.items,...data.data.items]}}}}
+    return {key,scope,data}
+  })}).catch(e=>{if(!c.signal.aborted)setState({key,scope,error:e.message})});return()=>c.abort()
+  },[storeId,key,scope])
+  const current=state.key===key?state:undefined,filtered=!!(query.status||query.forecast_start_from||query.forecast_start_to)
+  const update=(k:string,value:string)=>{const p=new URLSearchParams(params);p.delete('cursor');if(value)p.set(k,value);else p.delete(k);setParams(p)}
+  const clear=()=>setParams({})
+  const restart=()=>{const p=new URLSearchParams(params);p.delete('cursor');setParams(p);setRetry(n=>n+1)}
+  const timestamp=(value:string)=>{const d=new Date(value);return Number.isNaN(d.getTime())?value:new Intl.DateTimeFormat('vi-VN',{dateStyle:'short',timeStyle:'short',timeZone:timezone}).format(d)}
+  return <main className="sc-operations"><header className="sc-flow-page-header"><div><Link to="/forecast/planning">← Kế hoạch nhập</Link><h1>Lịch sử kế hoạch</h1><p>Xem lại các lần chạy đã lưu của cửa hàng hiện tại.</p></div></header>
+    <section className="sc-operations-card" aria-label="Bộ lọc lịch sử kế hoạch"><div className="sc-operations-fields"><label>Trạng thái<select aria-label="Trạng thái" value={query.status??''} onChange={e=>update('status',e.target.value)}><option value="">Tất cả</option>{Object.entries(statusLabels).map(([value,label])=><option key={value} value={value}>{label}</option>)}</select></label><label>Ngày bắt đầu dự báo từ<input type="date" value={query.forecast_start_from??''} onChange={e=>update('from',e.target.value)}/></label><label>Đến ngày<input type="date" value={query.forecast_start_to??''} onChange={e=>update('to',e.target.value)}/></label></div>{filtered&&<button onClick={clear}>Xóa bộ lọc</button>}</section>
+    {!current&&<FlowState title="Đang tải lịch sử kế hoạch…"><p>Đang đọc các lần chạy đã lưu.</p></FlowState>}
+    {current?.error&&<FlowState title="Không thể tải lịch sử kế hoạch" error><p>{current.error}</p><button onClick={restart}>Thử lại từ trang đầu</button></FlowState>}
+    {current?.data&&!current.data.data.items.length?<section className="sc-operations-card sc-history-empty"><h2>{filtered?'Không có run phù hợp bộ lọc':'Chưa có kế hoạch nào'}</h2><p>{filtered?'Không có lần chạy khớp điều kiện hiện tại.':'Khi cửa hàng có Planning Run, lịch sử sẽ xuất hiện ở đây.'}</p>{filtered?<button onClick={clear}>Xóa bộ lọc</button>:<Link to="/forecast/planning">Tạo kế hoạch nhập</Link>}</section>:current?.data&&<section className="sc-operations-card sc-operations-scroll"><table><caption>Các lần chạy đã lưu · tổng {current.data.meta.pagination.total_count??'chưa rõ'}</caption><thead><tr><th>Forecast bắt đầu</th><th>Tạo lúc</th><th>Thiết lập</th><th>Ngân sách</th><th>Kết quả</th><th>Trạng thái</th><th>Mở Run</th></tr></thead><tbody>{current.data.data.items.map(r=><tr key={r.run_id} tabIndex={0} onClick={()=>navigate(`/forecast/planning?plan_id=${r.run_id}&historical=1`)} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();navigate(`/forecast/planning?plan_id=${r.run_id}&historical=1`)}}}><td><strong>{formatPlanningDate(r.forecast_start_date)}</strong><p>{formatPlanningDate(r.forecast_start_date)} → {formatPlanningDate(r.forecast_end_date)}</p></td><td>{timestamp(r.accepted_at)}</td><td>7 ngày · {modes[r.requirements_mode]}</td><td><span title="Mở Run để xem ngân sách đã chụp; danh sách không cung cấp giá trị này.">Xem trong Run</span></td><td>{r.outcome?(outcomes[r.outcome]??r.outcome):'Chưa có kết quả'}{r.error_code&&<p>{r.error_code}</p>}</td><td><span className="sc-flow-badge">{statusLabels[r.status]}</span></td><td><Link onClick={e=>e.stopPropagation()} to={`/forecast/planning?plan_id=${r.run_id}&historical=1`}>Xem kế hoạch</Link></td></tr>)}</tbody></table><div className="sc-operations-actions"><span>Đang hiển thị {current.data.data.items.length} run</span>{query.cursor&&<button onClick={restart}>Trang đầu</button>}{current.data.meta.pagination.next_cursor?<button onClick={()=>update('cursor',current.data!.meta.pagination.next_cursor!)}>Tải thêm</button>:<span>Đã hết dữ liệu</span>}</div></section>}
+    <button onClick={restart}>Đọc lại lịch sử</button>
+  </main>
+}

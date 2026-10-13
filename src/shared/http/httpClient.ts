@@ -78,6 +78,11 @@ export async function requestNoContent(
   await requestResponse(baseUrl, path, options, undefined, true)
 }
 
+/** Authenticated downloads share cookie, timeout and session-expiry handling with JSON reads. */
+export async function requestPdf(baseUrl: string, path: string, options: HttpRequestOptions = {}): Promise<Blob> {
+  return await requestResponse(baseUrl, path, options, undefined, 'pdf') as Blob
+}
+
 async function requestEnvelope<T, M>(
   baseUrl: string, path: string, options: HttpRequestOptions, body?: BodyInit,
 ): Promise<ApiSuccess<T, M>> {
@@ -85,12 +90,12 @@ async function requestEnvelope<T, M>(
 }
 
 async function requestResponse(
-  baseUrl: string, path: string, options: HttpRequestOptions, body: BodyInit | undefined, noContent: boolean,
+  baseUrl: string, path: string, options: HttpRequestOptions, body: BodyInit | undefined, noContent: boolean | 'pdf',
 ): Promise<unknown> {
   const { signal, timeoutMs = 15_000, auth = 'protected', getCsrfToken, ...init } = options
   signal?.throwIfAborted()
   const headers = new Headers(options.headers)
-  if (!noContent) headers.set('Accept', 'application/json')
+  headers.set('Accept', noContent === 'pdf' ? 'application/pdf' : 'application/json')
   const capturedHooks = auth === 'protected' ? sessionHooks : null
   const capturedToken = capturedHooks?.getCsrfToken() ?? null
   const mutation = !['GET', 'HEAD', 'OPTIONS'].includes((init.method ?? 'GET').toUpperCase())
@@ -119,7 +124,17 @@ async function requestResponse(
     if (response.status === 401 && auth === 'protected' && capturedHooks &&
       sessionHooks === capturedHooks && !signal?.aborted && !timeout.aborted &&
       capturedHooks.getCsrfToken() === capturedToken) capturedHooks.onUnauthenticated()
-    if (noContent && response.status === 204) return
+    if (noContent === true && response.status === 204) return
+    if (noContent === 'pdf' && response.ok) {
+      if (response.headers.get('Content-Type')?.split(';')[0].trim().toLowerCase() !== 'application/pdf') {
+        throw new HttpError('protocol', 'Máy chủ chưa trả về PDF hợp lệ.', response.status, undefined, requestId)
+      }
+      const blob = await response.blob()
+      if (blob.size < 8 || await blob.slice(0, 5).text() !== '%PDF-') {
+        throw new HttpError('protocol', 'Nội dung PDF bị thiếu hoặc hỏng.', response.status, undefined, requestId)
+      }
+      return blob
+    }
     const text = await response.text()
     try { payload = JSON.parse(text) } catch {
       throw new HttpError(

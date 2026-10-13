@@ -1,0 +1,1 @@
+export const previewDomainLabels:Record<string,string>={sales:'Bán hàng',inventory_count:'Kiểm kê tồn kho',recipes:'Công thức',products:'Món',ingredients:'Nguyên liệu',suppliers:'Nhà cung cấp',supplier_terms:'Điều khoản nhà cung cấp',payable_fees:'Phí phải trả',scope_declarations:'Khai báo phạm vi',unknown:'Chưa phân loại'}

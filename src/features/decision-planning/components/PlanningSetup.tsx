@@ -1,95 +1,30 @@
-import { useEffect, useId, useState } from 'react'
-import type { FormEvent } from 'react'
-import type { PlanningContext, PlanningReadiness, PlanningRequest } from '../planning.types'
-import { buildPlanningSetupRequest, defaultPlanningCutoff, formatPlanningDate, formatPlanningMoney, parsePlanningBudget, planningStrategyLabels, shiftPlanningDate } from '../planning.format'
+import type { OperationsSource } from '../../operations/operations.data'
+import { RequirementsControls,type RequirementsSelection } from '../../operations/RequirementsControls'
+import { comparePlanningDecimal,validatePlanningRequest } from '../planning.validation'
+import { useEffect,useId,useState,type FormEvent } from 'react'
+import { Link } from 'react-router'
+import type { PlanningContext,PlanningReadiness,PlanningRequest,PlanningDataSource } from '../planning.types'
+import { buildPlanningSetupRequest,defaultPlanningCutoff,formatPlanningDate,formatPlanningMoney,parsePlanningBudget,planningStrategyLabels,shiftPlanningDate } from '../planning.format'
 import './Planning.css'
-
-export type PlanningSetupProps = {
-  context: PlanningContext
-  busy: boolean
-  canCreate: boolean
-  canCreateReason?: string
-  onCreate: (request: PlanningRequest) => void
-  onAssessDate: (forecastStartDate: string) => void
-  readiness?: PlanningReadiness | null
-  readinessDate?: string | null
-  readinessBusy?: boolean
-  readinessError?: string | null
-}
-
-export function PlanningSetup({ context, busy, canCreate, canCreateReason, onCreate, onAssessDate,
-  readiness, readinessDate, readinessBusy, readinessError }: PlanningSetupProps) {
-  const prefix = useId()
-  const [cutoff, setCutoff] = useState(() => defaultPlanningCutoff(context))
-  const [budget, setBudget] = useState('')
-  const start = shiftPlanningDate(cutoff, 1)
-  const request = buildPlanningSetupRequest(context, cutoff, budget)
-  const action = readiness?.actions.find((item) => item.action === 'planning')
-  const assessed = !!start && readinessDate === start && readiness?.evaluated_forecast_start_date === start
-  const ready = assessed && action?.can_execute === true && action.availability === 'ready' && action.execution_status === 'available' && action.blockers.length === 0
-  const canSubmit = canCreate && context.capabilities.winner_selection && !!request && ready && !busy && !readinessBusy
-  const invalidBudget = budget.trim() !== '' && parsePlanningBudget(budget) === null
-
-  useEffect(() => { if (start) onAssessDate(start) }, [start, onAssessDate])
-
-  function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    if (canSubmit && request) onCreate(request)
-  }
-
-  return <main className="sc-planning-content" aria-labelledby={`${prefix}-title`}>
-    <h1 id={`${prefix}-title`}>Kế hoạch nhập</h1>
-    <form onSubmit={submit} noValidate>
-      <section className="sc-planning-setup-card" aria-label="Thiết lập kế hoạch nhập" aria-busy={busy || undefined}>
-        <div className="sc-planning-main-fields">
-          <label className="sc-planning-field" htmlFor={`${prefix}-date`}><span>Dữ liệu tính đến ngày</span>
-            <input id={`${prefix}-date`} type="date" required value={cutoff} disabled={busy} aria-invalid={!start || undefined}
-              onChange={(event) => setCutoff(event.target.value)} aria-describedby={`${prefix}-dates`} />
-          </label>
-          <label className="sc-planning-field" htmlFor={`${prefix}-horizon`}><span>Lập kế hoạch cho</span>
-            <select id={`${prefix}-horizon`} value="7" disabled><option value="7">7 ngày</option></select>
-          </label>
-          <label className="sc-planning-field" htmlFor={`${prefix}-budget`}><span>Ngân sách nhập hàng</span>
-            <div className="sc-planning-currency-control" data-invalid={invalidBudget || undefined}>
-              <input id={`${prefix}-budget`} type="text" inputMode="decimal" autoComplete="off" spellCheck={false} value={budget} disabled={busy}
-                placeholder="Để trống: dùng cấu hình hiện hành" aria-invalid={invalidBudget || undefined} aria-describedby={`${prefix}-budget-note`}
-                onChange={(event) => setBudget(event.target.value)} /><span>{context.currency}</span>
-            </div>
-          </label>
-        </div>
-        <fieldset className="sc-planning-priority" aria-describedby={`${prefix}-priority-note`}>
-          <legend>Ưu tiên</legend><div className="sc-planning-priority-options">
-            {(['lean', 'balanced', 'protected'] as const).map((strategy) => <label key={strategy} className="sc-planning-priority-option">
-              <input type="radio" name={`${prefix}-priority`} value={strategy} checked={false} disabled readOnly /><span>{planningStrategyLabels[strategy]}</span>
-            </label>)}
-          </div><p id={`${prefix}-priority-note`} className="sc-planning-note">Ưu tiên được xác định khi lập kế hoạch. Chưa hỗ trợ chọn thủ công.</p>
-        </fieldset>
-        <div><label className="sc-planning-open-orders"><input type="checkbox" checked={false} disabled readOnly aria-describedby={`${prefix}-po-note`} /><span>Tính cả đơn hàng đang chờ</span></label>
-          <p id={`${prefix}-po-note`} className="sc-planning-note">Chưa hỗ trợ tính đơn hàng đang chờ.</p></div>
-        <details className="sc-planning-advanced"><summary>Cài đặt nâng cao <span aria-hidden="true">⌄</span></summary>
-          <div className="sc-planning-advanced-controls">
-            <label className="sc-planning-field"><span>Phương pháp tính</span><select disabled value="standard"><option value="standard">Tiêu chuẩn</option><option value="scenarios">Theo kịch bản — chưa hỗ trợ</option></select></label>
-            <label className="sc-planning-field"><span>Mức độ mô phỏng</span><select disabled value="unavailable"><option value="unavailable">Chưa hỗ trợ</option></select></label>
-            <p className="sc-planning-note">Các tùy chọn nâng cao chưa khả dụng.</p>
-          </div>
-          <p id={`${prefix}-dates`} className="sc-planning-note">{start ? `Kế hoạch từ ${formatPlanningDate(start)} đến ${formatPlanningDate(shiftPlanningDate(start, 6))} · ${context.timezone}.` : 'Chọn ngày lịch hợp lệ.'} Chỉ hỗ trợ 7 ngày.</p>
-          <p id={`${prefix}-budget-note`} className="sc-planning-note">Ngân sách hiện hành: {formatPlanningMoney(context.default_requirements?.budget_limit ?? context.budget_ceiling?.amount, context.currency)}. Trần: {formatPlanningMoney(context.budget_ceiling?.amount, context.currency)}. Có thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.</p>
-        </details>
-        <div className="sc-planning-assessment" aria-live="polite">
-          {readinessBusy && <p role="status">Đang kiểm tra khả năng lập kế hoạch cho ngày đã chọn…</p>}
-          {readinessError && <p role="alert">{readinessError}</p>}
-          {canCreateReason && <p>{canCreateReason}</p>}
-          {!context.capabilities.winner_selection && <p>Backend hiện chưa cho phép chọn phương án kế hoạch; chưa thể tạo lần chạy từ màn hình này.</p>}
-          {!request && <p>Ngày, ngân sách hoặc cấu hình yêu cầu chưa hợp lệ/khả dụng. Ngân sách không được vượt trần hiện hành.</p>}
-          {assessed && action && <>
-            {action.blockers.map((issue, index) => <p key={`${issue.code}-${index}`}>Chặn: <code>{issue.code}</code> · {issue.source} · {issue.scope}</p>)}
-            {action.warnings.map((issue, index) => <p key={`${issue.code}-${index}`}>Cảnh báo: <code>{issue.code}</code> · {issue.source} · {issue.scope}</p>)}
-          </>}
-        </div>
-        <footer className="sc-planning-actions"><span className="sc-planning-ready-status" role="status">{canSubmit ? 'Sẵn sàng lập kế hoạch' : busy ? 'Đang tạo kế hoạch…' : 'Chưa sẵn sàng lập kế hoạch'}</span>
-          <button className="sc-planning-primary-cta" type="submit" disabled={!canSubmit}>Tạo kế hoạch nhập hàng</button>
-        </footer>
-      </section>
-    </form>
-  </main>
+export type PlanningSetupProps={readContext?:PlanningDataSource['context'];operationsSource?:OperationsSource;permissions?:string[];context:PlanningContext;busy:boolean;canCreate:boolean;canCreateReason?:string;onCreate:(request:PlanningRequest)=>void;onAssessDate:(forecastStartDate:string)=>void;readiness?:PlanningReadiness|null;readinessDate?:string|null;readinessBusy?:boolean;readinessError?:string|null}
+export function PlanningSetup({readContext,operationsSource,permissions,context,busy,canCreate,canCreateReason,onCreate,onAssessDate,readiness,readinessDate,readinessBusy,readinessError}:PlanningSetupProps){
+  const prefix=useId(),[cutoff,setCutoff]=useState(()=>defaultPlanningCutoff(context)),[budget,setBudget]=useState(''),[selection,setSelection]=useState<RequirementsSelection|null>(null),[requirementsPending,setRequirementsPending]=useState(false)
+  const start=shiftPlanningDate(cutoff,1),saved=selection?.requirements_mode==='saved'
+  let request=buildPlanningSetupRequest(context,cutoff,budget)
+  if(selection&&selection.requirements_mode!=='default'&&start){try{request=validatePlanningRequest({forecast_start_date:start,...selection,...(selection.requirements_mode==='custom'&&budget.trim()?{requirements:{...selection.requirements!,budget_limit:parsePlanningBudget(budget)!}}:{})})}catch{request=null}}
+  if(request?.requirements?.budget_limit!=null&&context.budget_ceiling&&comparePlanningDecimal(request.requirements.budget_limit,context.budget_ceiling.amount)>0)request=null
+  if(!saved&&budget.trim()&&parsePlanningBudget(budget)===null)request=null
+  const action=readiness?.actions.find(a=>a.action==='planning'),assessed=!!start&&readinessDate===start&&readiness?.evaluated_forecast_start_date===start
+  const ready=assessed&&action?.can_execute===true&&action.availability==='ready'&&action.execution_status==='available'&&action.blockers.length===0
+  const canSubmit=canCreate&&context.capabilities.winner_selection&&!!request&&ready&&!busy&&!readinessBusy&&!requirementsPending
+  const invalidBudget=!saved&&budget.trim()!==''&&parsePlanningBudget(budget)===null
+  useEffect(()=>{if(start)onAssessDate(start)},[start,onAssessDate])
+  function submit(e:FormEvent<HTMLFormElement>){e.preventDefault();if(canSubmit&&request)onCreate(request)}
+  return <main className="sc-planning-content" aria-labelledby={`${prefix}-title`}><header className="sc-flow-page-header"><div><h1 id={`${prefix}-title`}>Kế hoạch nhập</h1><p>Cấu hình một lần chạy cho cửa hàng hiện tại.</p></div></header><form onSubmit={submit} noValidate><section className="sc-planning-setup-card" aria-label="Thiết lập kế hoạch nhập" aria-busy={busy||undefined}>
+    <section className="sc-planning-numbered"><header><span>1</span><div><h2>Kỳ kế hoạch</h2><p>Xác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.</p></div></header><div className="sc-planning-main-fields sc-planning-two-fields"><label className="sc-planning-field" htmlFor={`${prefix}-date`}><span>Ngày tham chiếu dữ liệu</span><input id={`${prefix}-date`} type="date" required value={cutoff} disabled={busy} aria-invalid={!start||undefined} onChange={e=>setCutoff(e.target.value)} aria-describedby={`${prefix}-dates`}/></label><label className="sc-planning-field" htmlFor={`${prefix}-horizon`}><span>Lập kế hoạch cho</span><select id={`${prefix}-horizon`} value="7" disabled><option value="7">7 ngày</option></select></label></div><p id={`${prefix}-dates`} className="sc-planning-note">{start?`Kế hoạch từ ${formatPlanningDate(start)} đến ${formatPlanningDate(shiftPlanningDate(start,6))} · ${context.timezone}.`:'Chọn ngày lịch hợp lệ.'} Chỉ hỗ trợ 7 ngày.</p></section>
+    <section className="sc-planning-numbered"><header><span>2</span><div><h2>Yêu cầu</h2><p>Chọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.</p></div></header><RequirementsControls readContext={readContext} source={operationsSource} permissions={permissions} context={context} onChange={setSelection} onPendingChange={setRequirementsPending} disabled={busy}/><details className="sc-planning-advanced"><summary>Cài đặt nâng cao</summary><fieldset className="sc-planning-priority"><legend>Ưu tiên</legend><div className="sc-planning-priority-options">{(['lean','balanced','protected'] as const).map(s=><label key={s} className="sc-planning-priority-option"><input type="radio" name={`${prefix}-priority`} value={s} checked={false} disabled readOnly/><span>{planningStrategyLabels[s]}</span></label>)}</div><p className="sc-planning-note">Ưu tiên được xác định khi lập kế hoạch. Chưa hỗ trợ chọn thủ công.</p></fieldset><label className="sc-planning-open-orders"><input type="checkbox" checked={false} disabled readOnly/><span>Tính cả đơn hàng đang chờ</span></label><p className="sc-planning-note">Chưa hỗ trợ tính đơn hàng đang chờ.</p><div className="sc-planning-advanced-controls"><label className="sc-planning-field"><span>Phương pháp tính</span><select disabled value="standard"><option value="standard">Tiêu chuẩn</option><option value="scenarios">Theo kịch bản — chưa hỗ trợ</option></select></label><label className="sc-planning-field"><span>Mức độ mô phỏng</span><select disabled value="unavailable"><option value="unavailable">Chưa hỗ trợ</option></select></label></div><p className="sc-planning-note">Các tùy chọn nâng cao chưa khả dụng.</p></details></section>
+    <section className="sc-planning-numbered"><header><span>3</span><div><h2>Ngân sách</h2><p>Trần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.</p></div></header><div className="sc-planning-budget-grid"><div className="sc-flow-notice"><span>Trần ngân sách của Store</span><strong>{context.budget_ceiling?formatPlanningMoney(context.budget_ceiling.amount,context.currency):'Chưa cấu hình'}</strong><small>{context.budget_ceiling?'Giới hạn cấu hình hiện hành của cửa hàng.':'Không giả định bằng 0.'}</small></div><label className="sc-planning-field" htmlFor={`${prefix}-budget`}><span>Ngân sách cho lần chạy này</span><div className="sc-planning-currency-control" data-invalid={invalidBudget||undefined}><input id={`${prefix}-budget`} type="text" inputMode="decimal" autoComplete="off" spellCheck={false} value={budget} disabled={busy||saved} placeholder={saved?'Theo bộ yêu cầu đã lưu':'Để trống: dùng nguồn yêu cầu đã chọn'} aria-invalid={invalidBudget||undefined} aria-describedby={`${prefix}-budget-note`} onChange={e=>setBudget(e.target.value)}/><span>{context.currency}</span></div></label></div><p id={`${prefix}-budget-note`} className="sc-planning-note">{saved?'Ngân sách lấy từ bộ yêu cầu đã lưu; không ghi đè khi chạy bằng saved ID.':'Có thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.'}</p></section>
+    <section className="sc-planning-numbered"><header><span>4</span><div><h2>Readiness</h2><p>Kiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.</p></div></header><div className="sc-planning-assessment" aria-live="polite"><strong>{readinessBusy?'Đang kiểm tra khả năng lập kế hoạch…':ready?(action?.warnings.length?'Có thể tạo kế hoạch · có cảnh báo':'Sẵn sàng tạo kế hoạch'):'Chưa thể tạo kế hoạch'}</strong>{readinessError&&<p role="alert">{readinessError}</p>}{canCreateReason&&<p>{canCreateReason}</p>}{!context.capabilities.winner_selection&&<p>Backend hiện chưa cho phép chọn phương án kế hoạch.</p>}{!request&&<p>Ngày, ngân sách hoặc cấu hình yêu cầu chưa hợp lệ/khả dụng. Ngân sách không được vượt trần hiện hành.</p>}{assessed&&action&&[...action.blockers.map(issue=>({issue,kind:'Chặn'})),...action.warnings.map(issue=>({issue,kind:'Cảnh báo'}))].map(({issue,kind},i)=><article className="sc-planning-readiness-issue" key={issue.code+i}><strong>{kind}: {issue.code}</strong><p>{issue.source} · {issue.scope}</p>{issue.source==='sales'?<Link to="/imports">Nhập dữ liệu</Link>:issue.source==='recipe'?<Link to="/menu">Mở Menu</Link>:issue.source==='inventory'?<Link to="/inventory">Mở Kho</Link>:null}</article>)}</div></section>
+    <footer className="sc-planning-actions"><span className="sc-planning-ready-status" role="status">{canSubmit?'Sẵn sàng lập kế hoạch':busy?'Đang tạo kế hoạch…':requirementsPending?'Đang xác nhận bộ yêu cầu…':'Chưa sẵn sàng lập kế hoạch'}</span><button className="sc-planning-primary-cta" type="submit" disabled={!canSubmit}>Tạo kế hoạch nhập hàng</button></footer>
+  </section></form></main>
 }

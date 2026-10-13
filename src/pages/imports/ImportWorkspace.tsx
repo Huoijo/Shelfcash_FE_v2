@@ -1,3 +1,4 @@
+import { UnderConstructionButton } from '../../shared/UnderConstruction'
 import { useEffect, useState, useSyncExternalStore } from 'react'
 import { Outlet, useLocation, useSearchParams } from 'react-router'
 import { config } from '../../app/config'
@@ -94,6 +95,6 @@ function ScopedImportWorkspace({ storeId }: { storeId: string | null }) {
     setSearchParams(next, { replace: true })
     workflow.startNewDraft()
   }
-  return <Outlet context={{ state, workflow, flow, flowState, canDecideProfile,
-    canProposeMapping: config.mockPreview || permissions.includes('mapping.propose'), startNewDraft } satisfies ImportSelection} />
+  return <><div style={{padding:"8px 32px"}}><UnderConstructionButton feature="Duyệt mapping toàn cửa hàng">Duyệt mapping toàn cửa hàng</UnderConstructionButton></div><Outlet context={{ state, workflow, flow, flowState, canDecideProfile,
+    canProposeMapping: config.mockPreview || permissions.includes('mapping.propose'), startNewDraft } satisfies ImportSelection} /></>
 }

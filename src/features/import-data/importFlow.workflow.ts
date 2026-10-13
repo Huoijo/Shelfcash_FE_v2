@@ -229,8 +229,8 @@ export class ImportFlowWorkflow {
   }
   setTab = (tab: ImportFlowTab) => {
     if (tab === 'result' && !this.state.completion) return
-    if (tab === 'preview' && !this.state.preview && !this.processReceipt) return
-    if (tab === 'review' && !this.state.summary?.can_preview) return
+    if (tab === 'preview' && !this.state.preview && !this.processReceipt && !this.state.summary?.can_preview) return
+    if (tab === 'review' && !this.state.preview) return
     this.update({ tab })
   }
   acknowledgeCommit = (value: boolean) => {

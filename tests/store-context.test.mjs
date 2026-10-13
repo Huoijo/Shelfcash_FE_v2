@@ -48,7 +48,7 @@ test('multiple Stores with null default require explicit selection, never items[
   assert.deepEqual(calls, [])
   assert.equal(await flow.selectStore(B), true)
   assert.equal(flow.getSnapshot().state.store.store_id, B)
-  assert.deepEqual(flow.getSnapshot().state.store.membership.effective_permissions, ['ingredient.read', 'inventory.read', 'menu.read'])
+  assert.deepEqual(flow.getSnapshot().state.store.membership.effective_permissions, ['ingredient.read', 'inventory.read', 'menu.read', 'recipe.read'])
 })
 
 test('no accessible Store is a valid empty state without T02 or fabricated Store', async () => {
@@ -274,7 +274,7 @@ test('late paginated list from an old owner cannot enter the new owner list', as
 
 test('DEV preview has deterministic two-Store discovery and never calls auth or fetch', async (t) => {
   t.mock.method(globalThis, 'fetch', () => { throw new Error('mock preview must not use network') })
-  const flow = new StoreWorkflow(createMockStoreDataSource(), { mockDefaultStoreId: A })
+  const flow = new StoreWorkflow(createMockStoreDataSource('multi-store'), { mockDefaultStoreId: A })
   await flow.activate('mock')
   assert.equal(flow.getSnapshot().state.status, 'mock_preview')
   assert.equal(flow.getSnapshot().state.store.store_id, A)
@@ -284,7 +284,7 @@ test('DEV preview has deterministic two-Store discovery and never calls auth or 
 })
 
 test('DEV fixtures pass the same T01/T02 boundary validation', async () => {
-  const mock = createMockStoreDataSource()
+  const mock = createMockStoreDataSource('multi-store')
   const list = await mock.list()
   assert.deepEqual(validateStoreList(envelope({ items: list.items }, { pagination: list.pagination })), list)
   for (const row of list.items) {

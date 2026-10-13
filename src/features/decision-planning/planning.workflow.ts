@@ -28,6 +28,7 @@ export type PlanningState = {
   nextIngredientCursor: string | null
   ingredientsTotal: number | null
   detailBusy: boolean
+  inspectionArea: 'ingredients' | 'ingredient' | 'reasons' | null
   inspectionError: string | null
 }
 const initial = (): PlanningState => ({
@@ -35,7 +36,7 @@ const initial = (): PlanningState => ({
   uncertain: false, pollAfterMs: null, pollStopped: false, readiness: null, readinessDate: null,
   readinessBusy: false, readinessError: null, selectedOptionId: null, ingredients: null,
   ingredient: null, reasons: null, nextIngredientCursor: null, ingredientsTotal: null,
-  detailBusy: false, inspectionError: null,
+  detailBusy: false, inspectionArea: null, inspectionError: null,
 })
 const moneyRights = ['budget.read', 'procurement.cost.read']
 const isPending = (status: PlanningRun['status']) => status === 'queued' || status === 'running'
@@ -92,7 +93,7 @@ export class PlanningWorkflow {
     this.inspectionEpoch += 1
     this.inspectionPin = null
     return { ingredients: null, ingredient: null, reasons: null, nextIngredientCursor: null,
-      ingredientsTotal: null, detailBusy: false, inspectionError: null }
+      ingredientsTotal: null, detailBusy: false, inspectionArea: null, inspectionError: null }
   }
   private publish(response: PlanningRunResponse) {
     const run = response.data
@@ -207,17 +208,17 @@ export class PlanningWorkflow {
     if (id !== null && !this.state.run.result?.options.some((option) => option.option_id === id)) return
     this.update({ ...this.clearInspection(), selectedOptionId: id })
   }
-  private async inspect(task: (storeId: string, runId: string, signal: AbortSignal) => Promise<void>) {
+  private async inspect(task: (storeId: string, runId: string, signal: AbortSignal) => Promise<void>,area:NonNullable<PlanningState['inspectionArea']>) {
     if (this.state.detailBusy || !this.state.run || isPending(this.state.run.status)) return
     const epoch = ++this.inspectionEpoch
     const controller = new AbortController()
     this.inspectionController?.abort()
     this.inspectionController = controller
-    this.update({ detailBusy: true, inspectionError: null })
+    this.update({ detailBusy: true, inspectionArea:area, inspectionError: null })
     try { await task(this.authorize('planning.result.read'), this.state.run.run_id, controller.signal) }
     catch (error) {
       if (epoch === this.inspectionEpoch && !controller.signal.aborted)
-        this.update({ ...this.clearInspection(), inspectionError: describePlanningError(error) })
+        this.update({ ...(error instanceof HttpError&&(error.kind==='transport'||error.kind==='contract'&&(error.status??0)>=500)?{}:this.clearInspection()), inspectionArea:area, inspectionError: describePlanningError(error) })
     } finally {
       if (epoch === this.inspectionEpoch && !controller.signal.aborted) this.update({ detailBusy: false })
     }
@@ -245,7 +246,7 @@ export class PlanningWorkflow {
       throw new Error('Trang nguyên liệu không nhất quán; không trộn snapshots hoặc bỏ qua dòng trùng.')
     this.update({ ingredients: { ...response.data, items }, nextIngredientCursor: pagination.next_cursor,
       ingredientsTotal: pagination.total_count })
-  })
+  },'ingredients')
   loadIngredient = (id: string) => this.inspect(async (storeId, runId, signal) => {
     const inspected = this.state.run?.result?.options.find((option) => option.option_id ===
       (this.state.selectedOptionId ?? this.state.run?.result?.winner_option_id))
@@ -257,13 +258,13 @@ export class PlanningWorkflow {
     if (signal.aborted) return
     this.pin(response.data.result_digest, response.meta.response_version)
     this.update({ ingredient: response.data })
-  })
+  },'ingredient')
   loadReasons = () => this.inspect(async (storeId, runId, signal) => {
     const response = await this.source.reasons(storeId, runId, this.state.selectedOptionId ?? undefined, signal)
     if (signal.aborted) return
     this.pin(response.data.result_digest)
     this.update({ reasons: response.data })
-  })
+  },'reasons')
   reset = () => {
     if (this.state.busy || this.pending) return false
     this.epoch += 1

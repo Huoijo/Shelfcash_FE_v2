@@ -84,15 +84,16 @@ export function ImportMapping(props: Props) {
         </header>}
         <div className="import-flow__filters">
           <div className="import-mapping-filter-tabs" role="group" aria-label="Lọc trạng thái ghép cột">
-            {[['all', 'Tất cả'], ['needs_confirmation', 'Cần xác nhận'], ['ambiguous', 'Mơ hồ'], ['unmatched', 'Chưa ghép']].map(([value, label]) =>
-              <button key={value} type="button" aria-pressed={props.filter === value} disabled={busy || locked} onClick={() => props.onFilter(value, props.reviewOnly)}>{props.filter === value && <ActiveIndicator id={`${indicatorId}-mapping-filter`} />}{label}</button>)}
+            {[['all', 'Tất cả'], ['needs_confirmation', 'Cần xác nhận'], ['ambiguous', 'Mơ hồ'], ['unmatched', 'Chưa ghép'], ['auto_mapped', 'Đã ghép tự động'], ['resolved', 'Đã xác nhận đề xuất']].map(([value, label]) =>
+              <button key={value} type="button" aria-pressed={props.filter === value} disabled={busy || locked} onClick={() => props.onFilter(value, ['auto_mapped','resolved'].includes(value)?false:props.reviewOnly)}>{props.filter === value && <ActiveIndicator id={`${indicatorId}-mapping-filter`} />}{label}</button>)}
           </div>
           <label><input type="checkbox" checked={props.reviewOnly} disabled={busy || locked} onChange={(event) => props.onFilter(props.filter, event.target.checked)} />Chỉ hiện trường cần xử lý</label>
         </div>
         <div className="import-mapping-card-list">
         {!props.canPropose && <p className="import-flow__notice">Bạn đang xem chỉ đọc: cần quyền mapping.propose và quyền đọc dữ liệu liên quan để sửa đề xuất.</p>}
         {!queue && <p role="status">Chọn một Sheet để đọc danh sách từ máy chủ.</p>}
-        {queue && !queue.items.length && <p className="import-flow__notice">{summary.can_preview ? '✓ Các trường cần xử lý đã hoàn tất.' : 'Không có trường trong bộ lọc này.'}</p>}
+        {queue&&<p className="import-flow__muted">Đã đọc {queue.items.length} mục; tổng khớp Sheet / bộ lọc hiện tại: {queue.pagination.total_count??'Chưa được cung cấp'}. Tiến độ phía trên tính cho toàn bộ lô.</p>}
+        {queue && !queue.items.length && <p className="import-flow__notice">Không có trường trong bộ lọc này.</p>}
         {queue?.items.map((issue) => <MappingCard key={`${summary.mapping_revision}:${issue.mapping_id}`} issue={issue} options={props.options[issue.mapping_id]} busy={busy || locked || !props.canPropose} readBusy={busy || locked} onLoadOptions={() => props.onLoadOptions(issue.mapping_id)} onConfirm={(target) => props.onConfirm(issue.mapping_id, target)} onResolve={(resolution) => props.onResolve(issue.mapping_id, resolution)} />)}
         {queue?.pagination.next_cursor && <button type="button" disabled={busy || locked} onClick={props.onLoadMore}>Xem thêm mục</button>}
 

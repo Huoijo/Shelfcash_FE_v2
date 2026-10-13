@@ -144,9 +144,8 @@ export class StoreWorkspaceWorkflow {
     if (!this.available() || !this.canUpdateBudget || !this.state.context) return
     try { validateWorkspaceBudgetRequest({ amount }) } catch (error) { this.publish({ error: message(error) }); return }
     const cap = this.state.context.budget_ceiling
-    // C01 has no absence-vs-unavailable discriminator for a null ceiling. Fail closed.
-    if (!cap) { this.publish({ error: 'Chưa xác minh trần ngân sách chưa tồn tại. Cần BE xác nhận trạng thái trước khi tạo trần ban đầu.' }); return }
-    this.pending = { kind: 'budget', intent: { key: crypto.randomUUID(), request: { amount }, condition: { kind: 'replace', version: cap.version } } }; await this.send()
+    // BE 13/10: an authorized successful C01 returns null only for an absent cap.
+    this.pending = { kind: 'budget', intent: { key: crypto.randomUUID(), request: { amount }, condition: cap ? { kind: 'replace', version: cap.version } : { kind: 'create' } } }; await this.send()
   }
   retry = async (): Promise<void> => { if (this.state.uncertain && !this.state.busy && this.pending) await this.send() }
   private async send() {

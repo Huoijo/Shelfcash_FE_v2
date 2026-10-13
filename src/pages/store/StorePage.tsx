@@ -1,10 +1,13 @@
+import { Link,useSearchParams } from 'react-router'
+import { RequestedStore } from '../../features/store/RequestedStore'
+import { isPlanningUuid } from '../../features/decision-planning/planning.validation'
+import { mockWorkspaceSource } from '../../features/mock/mockSources'
 import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import { config } from '../../app/config'
 import { useAuth } from '../../features/auth/auth.context'
 import { useCurrentStore } from '../../features/store/store.context'
 import type { StoreContext } from '../../features/store/store.types'
 import { createStoreWorkspaceDataSource } from '../../features/store-workspace/storeWorkspace.data'
-import { createMockStoreWorkspaceDataSource } from '../../features/store-workspace/storeWorkspace.fixtures'
 import { StoreWorkspaceWorkflow } from '../../features/store-workspace/storeWorkspace.workflow'
 import {
   InvitationActionDrawer, MemberPermissionDrawer, StaffInviteDrawer, StoreMembers, StoreNoAccess,
@@ -17,7 +20,7 @@ import './StorePage.css'
 
 // Explicit DEV-only synthetic server memory, isolated per Store; cleared on reload.
 // Re-reading T02 must not immediately erase an acknowledged fixture mutation.
-const previewSource = config.mockPreview ? createMockStoreWorkspaceDataSource() : undefined
+const previewSource = config.mockPreview ? mockWorkspaceSource : undefined
 
 function StoreSelector({ locked = false }: { locked?: boolean }) {
   const { accessibleStores, currentStoreId, listBusy, listError, hasMore, loadMore, selectStore, state } = useCurrentStore()
@@ -34,11 +37,15 @@ function StoreSelector({ locked = false }: { locked?: boolean }) {
 
 export function StorePage() {
   const { state, retry } = useCurrentStore()
+  const [params,setParams]=useSearchParams()
+  const requested=params.get('store_id')
+  const clearRequested=()=>{const next=new URLSearchParams(params);next.delete('store_id');setParams(next,{replace:true})}
   const store = state.status === 'ready' || state.status === 'mock_preview' ? state.store : null
+  useEffect(()=>{if(requested&&store?.store_id===requested){const next=new URLSearchParams(params);next.delete('store_id');setParams(next,{replace:true})}},[requested,store?.store_id,params,setParams])
   return <><AppShellHeader><span className="store-page-breadcrumb">Cửa hàng</span></AppShellHeader>
     {config.mockPreview && <p className="store-page-preview" role="note">DEV/QA minh họa — dữ liệu và thay đổi chỉ ở bộ nhớ; không ghi Backend hoặc gửi email thật.</p>}
     <main className="store-page">
-      {store ? <ScopedStoreWorkspace store={store} /> : state.status === 'empty' ? <StoreNoAccess />
+      {requested&&store?.store_id!==requested?(isPlanningUuid(requested)?<RequestedStore key={requested} storeId={requested} onCancel={clearRequested}/>:<><p role="alert">Liên kết cửa hàng không hợp lệ.</p><button onClick={clearRequested}>Chọn cửa hàng</button></>):store ? <ScopedStoreWorkspace store={store} /> : state.status === 'empty' ? <StoreNoAccess />
         : state.status === 'loading' ? <StoreWorkspaceLoading />
           : state.status === 'selecting' ? <><h1>Cửa hàng</h1><p>{state.message}</p><StoreSelector /></>
             : <><StoreWorkspaceFeedback title="Chưa mở được cửa hàng" message={state.status === 'error' || state.status === 'unavailable' ? state.message : 'Chưa có cửa hàng hiện hành.'} onRetry={retry} /><StoreSelector /></>}
@@ -96,9 +103,10 @@ function ScopedStoreWorkspace({ store }: { store: StoreContext }) {
         onInvite={() => { if (state.catalogVersion && !readsBusy) setDrawer({ kind: 'invite', openedAt: state.receiptSerial }) }} onSelectIdentity={() => setDrawer({ kind: 'self' })}
         onSelectMember={(item) => setDrawer({ kind: 'member', id: item.membership_id })} onSelectInvitation={(item) => setDrawer({ kind: 'invitation', id: item.invitation_id })}
         onRetry={() => { void workflow.loadMembers(); void workflow.loadInvitations() }} onMoreMembers={() => { void workflow.loadMembers(true) }} onMoreInvitations={() => { void workflow.loadInvitations(true) }} />}
+      {store.role === 'OWNER' && <p><Link to="/store/activity">Hoạt động quản trị</Link></p>}
       {tab === 'operations' && <StoreOperatingDefaults key={`${state.context?.context_version ?? 'unread'}:${state.context?.budget_ceiling?.version ?? 'unknown'}:${state.revision}`}
-        store={store} planningContext={state.context} loading={state.contextBusy} error={state.contextError || (!workflow.canReadBudget ? 'Cần đủ quyền planning.context.read, budget.read và procurement.cost.read để đọc C01; không suy quyền từ vai trò.' : state.context && !state.context.budget_ceiling ? 'Trần chưa xác minh: API chưa phân biệt rõ chưa cấu hình và không đọc được. Chưa thể tạo trần ban đầu.' : null)}
-        canUpdateBudget={workflow.canUpdateBudget && !!state.context?.budget_ceiling} busy={state.busy} locked={state.uncertain} onSaveBudget={(amount) => { void workflow.saveBudget(amount) }} onRetry={() => { if (!isDirty && !locked) void workflow.loadBudget() }} onDirtyChange={dirtyChange} />}
+        store={store} planningContext={state.context} loading={state.contextBusy} error={state.contextError || (!workflow.canReadBudget ? 'Cần đủ quyền planning.context.read, budget.read và procurement.cost.read để đọc C01; không suy quyền từ vai trò.' : null)}
+        canUpdateBudget={workflow.canUpdateBudget && !!state.context} busy={state.busy} locked={state.uncertain} onSaveBudget={(amount) => { void workflow.saveBudget(amount) }} onRetry={() => { if (!isDirty && !locked) void workflow.loadBudget() }} onDirtyChange={dirtyChange} />}
     </section>
     <div className="store-page-refresh"><button type="button" className="sc-store-secondary" disabled={locked || isDirty || readsBusy} onClick={() => { void refresh() }}>Đọc lại cửa hàng và quyền hiện hành</button></div>
     {!state.authorizationInvalidated && (drawer?.kind === 'self' || member) && <MemberPermissionDrawer key={`${member?.membership_id ?? 'self'}:${member?.version ?? store.membership.authorization_version}:${state.catalogVersion}:${state.revision}`}

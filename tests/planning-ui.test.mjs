@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { createElement } from 'react'
+import { MemoryRouter } from 'react-router'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { PlanningSetup } from '../src/features/decision-planning/components/PlanningSetup'
 import { PlanningResults } from '../src/features/decision-planning/components/PlanningResults'
@@ -10,7 +11,7 @@ import { PLANNING_FIXTURE_IDS, planningContextFixture, planningFailedPartialFixt
   planningNoWinnerFixture, planningOptionFixture, planningReadinessFixture, planningReasonsFixture, planningRunFixture } from '../src/features/decision-planning/planning.fixtures'
 
 const noop = () => {}
-const render = (component, props) => renderToStaticMarkup(createElement(component, props))
+const render = (component, props) => renderToStaticMarkup(createElement(MemoryRouter, null,createElement(component, props)))
 const setup = (overrides = {}) => render(PlanningSetup, { context: planningContextFixture(), busy: false, canCreate: true,
   onCreate: noop, onAssessDate: noop, readiness: planningReadinessFixture(), readinessDate: '2026-10-11', ...overrides })
 const results = (overrides = {}) => render(PlanningResults, { run: planningRunFixture(), selectedOptionId: null, busy: false, detailBusy: false,
@@ -18,7 +19,7 @@ const results = (overrides = {}) => render(PlanningResults, { run: planningRunFi
 
 test('setup preserves labeled MagicPath concepts, only actual seven-day horizon and explicit unsupported controls', () => {
   const html = setup()
-  for (const label of ['Dữ liệu tính đến ngày', 'Lập kế hoạch cho', 'Ngân sách nhập hàng', 'Ưu tiên', 'Tiết kiệm', 'Cân bằng', 'An toàn', 'Tính cả đơn hàng đang chờ', 'Cài đặt nâng cao', 'Tạo kế hoạch nhập hàng']) assert.ok(html.includes(label), label)
+  for (const label of ['Ngày tham chiếu dữ liệu', 'Lập kế hoạch cho', 'Ngân sách cho lần chạy này', 'Ưu tiên', 'Tiết kiệm', 'Cân bằng', 'An toàn', 'Tính cả đơn hàng đang chờ', 'Cài đặt nâng cao', 'Tạo kế hoạch nhập hàng']) assert.ok(html.includes(label), label)
   assert.match(html, /type="date"[^>]*value="2026-10-10"/)
   assert.match(html, /<option value="7" selected="">7 ngày/)
   assert.equal((html.match(/type="radio"[^>]*disabled=""/g) ?? []).length, 3)
@@ -75,15 +76,15 @@ test('setup request maps calendar cutoff and copies full resolved requirements f
   assert.equal(shiftPlanningDate('2028-02-28', 1), '2028-02-29')
 })
 
-test('result overview renders retained exact winner cost, unknown aggregate KPIs and honest disabled actions', () => {
+test('result overview renders retained exact winner cost, unknown aggregate KPIs and under-construction entry actions', () => {
   const html = results()
   assert.match(html, /7\.000 VND/)
   assert.match(html, /Chưa có tổng nguyên liệu toàn kế hoạch|chưa có tổng nguyên liệu toàn kế hoạch/)
   assert.match(html, /Không có tỷ lệ tổng/)
   assert.match(html, /không phải thứ tự ưu tiên/)
-  assert.match(html, /disabled=""[^>]*>Hỏi AI/)
-  assert.match(html, /disabled=""[^>]*>Tạo Draft PO/)
-  assert.match(html, /disabled=""[^>]*>Kịch bản giả định/)
+  assert.match(html, /Hỏi AI đang được xây dựng/)
+  assert.match(html, /Draft PO đang được xây dựng/)
+  assert.match(html, /Kịch bản giả định đang được xây dựng/)
   assert.doesNotMatch(html, /AI tóm tắt|100% ngân sách|Nguy cơ thiếu.*\d+%/)
 })
 

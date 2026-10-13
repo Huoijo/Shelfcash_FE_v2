@@ -88,6 +88,7 @@ export function MenuPage() {
     <AppShellHeader><span className="menu-location">Menu</span></AppShellHeader>
     <div className="menu-workspace" data-panel-open={Boolean(response && productId)}>
       <main className="menu-content" aria-labelledby="menu-title">
+        {productId && <p><Link to={`/menu/recipe?product_id=${productId}`}>Xem lịch và quản lý công thức</Link></p>}
         <header className="menu-heading">
           <h1 id="menu-title" ref={headingRef} tabIndex={-1}>Menu</h1>
           {response && <span>Cập nhật: {formatMenuTimestamp(response.meta.updated_at, response.meta.timezone)}</span>}

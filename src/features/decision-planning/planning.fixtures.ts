@@ -1,3 +1,4 @@
+import type { WireSavedDetail } from '../operations/operations.wire'
 import { HttpError } from '../../shared/http/httpClient'
 import { comparePlanningDecimal, isPlanningUuid, validatePlanningRequest } from './planning.validation'
 import type {
@@ -174,7 +175,7 @@ const inspectedMeta = (run: PlanningRun, digest: string | null = ids.digest) => 
   run_id: run.run_id, result_digest: digest, response_version: run.response_version })
 
 /** Each call owns an isolated in-memory scenario; never used after an API error. */
-export function createMockPlanningDataSource(): PlanningDataSource {
+export function createMockPlanningDataSource(authority?:{context:PlanningDataSource['context'];saved:(s:string,id:string)=>WireSavedDetail|undefined}): PlanningDataSource {
   const runs = new Map<string, { run: PlanningRun; reads: number }>()
   const receipts = new Map<string, { fingerprint: string; runId: string }>()
   let sequence = 10
@@ -193,6 +194,7 @@ export function createMockPlanningDataSource(): PlanningDataSource {
   }
   return {
     async context(storeId, signal) { signal?.throwIfAborted(); checkStore(storeId)
+      if(authority)return authority.context(storeId,signal)
       return { data: planningContextFixture(), meta: { request_id: 'synthetic-context' }, error: null } },
     async readiness(storeId, forecastStartDate, signal) { signal?.throwIfAborted(); checkStore(storeId)
       return { data: planningReadinessFixture(forecastStartDate), meta: { request_id: 'synthetic-readiness' }, error: null } },
@@ -200,15 +202,19 @@ export function createMockPlanningDataSource(): PlanningDataSource {
       signal?.throwIfAborted(); checkStore(storeId)
       validatePlanningRequest(intent.request)
       if (!isPlanningUuid(intent.key)) fail(400, 'INVALID_REQUEST')
-      if (intent.request.requirements?.budget_limit && comparePlanningDecimal(intent.request.requirements.budget_limit, '1000000') > 0) fail(422, 'INVALID_PLANNING_CONFIGURATION')
       const fingerprint = JSON.stringify(intent.request)
       let retained = receipts.get(intent.key)
       if (retained && retained.fingerprint !== fingerprint) fail(409, 'IDEMPOTENCY_KEY_REUSED')
       if (!retained) {
+        const context=authority?(await authority.context(storeId,signal)).data:planningContextFixture()
+        const saved=intent.request.requirements_mode==='saved'?authority?.saved(storeId,intent.request.saved_requirement_id!):undefined
+        if(authority&&intent.request.requirements_mode==='saved'&&(!saved||saved.state!=='active'))fail(404,'REQUIREMENTS_NOT_FOUND')
         const runId = `d0900000-0000-4000-8000-${String(sequence++).padStart(12, '0')}`
         const run = planningRunFixture({ run_id: runId, request: clone(intent.request), status: 'queued', outcome: null,
           started_at: null, finished_at: null, operational_basis: null, forecast: null, scope: null, execution: null, result: null,
           response_version: 'synthetic-run-version/1' })
+        if(context.default_requirements)run.configuration.effective_requirements=clone(context.default_requirements)
+        run.configuration.default_version=context.default_requirements_version
         run.configuration.requirements_mode = intent.request.requirements_mode
         if (intent.request.requirements_mode === 'custom') {
           run.configuration.effective_requirements = { budget_limit: intent.request.requirements?.budget_limit ?? null,
@@ -217,9 +223,14 @@ export function createMockPlanningDataSource(): PlanningDataSource {
           run.configuration.default_version = intent.request.default_requirements_version ?? null
         } else if (intent.request.requirements_mode === 'saved') {
           run.configuration.default_version = null
-          run.configuration.saved_reference = { id: intent.request.saved_requirement_id!, version: 'synthetic-saved/1', updated_at: at }
+          run.configuration.saved_reference = { id: intent.request.saved_requirement_id!, version: saved?.version??'synthetic-saved/1', updated_at: saved?.updated_at??at }
         }
-        run.configuration.budget.limit = run.configuration.effective_requirements.budget_limit ?? '1000000'
+        if(saved)run.configuration.effective_requirements=clone(saved.requirements)
+        if(!context.budget_ceiling)fail(422,'BUDGET_NOT_CONFIGURED')
+        run.configuration.budget.limit = run.configuration.effective_requirements.budget_limit ?? context.budget_ceiling!.amount
+        run.configuration.budget.ceiling_at_acceptance=context.budget_ceiling!.amount
+        run.configuration.budget.ceiling_version=context.budget_ceiling!.version
+        if(context.budget_ceiling&&run.configuration.budget.limit!==null&&comparePlanningDecimal(run.configuration.budget.limit,context.budget_ceiling.amount)>0)fail(422,'INVALID_PLANNING_CONFIGURATION')
         runs.set(runId, { run, reads: 0 }); retained = { fingerprint, runId }; receipts.set(intent.key, retained)
       }
       const run = runs.get(retained.runId)!.run

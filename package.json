@@ -14,7 +14,10 @@
     "check:planning-wire": "node scripts/check-planning-wire.mjs --check",
     "test:store": "node tests/run-store-workspace.mjs",
     "check:store-wire": "node scripts/check-store-wire.mjs --check",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:operations": "node tests/run-operations.mjs",
+    "check:operations-wire": "node scripts/check-operations-wire.mjs --check",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "motion": "^14.1.0",
@@ -23,6 +26,7 @@
     "react-router": "^8.4.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.0",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",

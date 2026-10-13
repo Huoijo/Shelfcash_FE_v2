@@ -28,7 +28,7 @@ export function StoreOperatingDefaults({ store, planningContext, loading, error,
   const amount = draft.owner === owner ? draft.amount : base
   const dirty = amount !== base
   const parsed = parseStoreBudget(amount)
-  const editable = canUpdateBudget && !!planningContext?.budget_ceiling && !loading && !busy && !locked && !error
+  const editable = canUpdateBudget && !!planningContext && !loading && !busy && !locked && !error
   useEffect(() => { onDirtyChange?.(dirty); return () => onDirtyChange?.(false) }, [dirty, onDirtyChange])
   function save(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -54,12 +54,12 @@ export function StoreOperatingDefaults({ store, planningContext, loading, error,
         <p className="sc-store-note sc-store-note-spaced">Ngân sách yêu cầu mặc định: {planningContext ? planningContext.default_requirements?.budget_limit === null ? 'Kế thừa trần cửa hàng' : formatStoreBudget(planningContext.default_requirements?.budget_limit, store.currency) : 'Chưa đọc được'}.</p>
         <p className="sc-store-note sc-store-note-spaced" id={`${id}-budget-note`}>Lưu chỉ thay trần ngân sách, không đổi yêu cầu phục vụ đã lưu. Nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chưa thiết lập không có nghĩa không giới hạn.</p>
         {!canUpdateBudget && <p className="sc-store-note sc-store-note-spaced">Bạn chưa có đủ quyền đọc cấu hình và thay đổi ngân sách.</p>}
-        {planningContext && !planningContext.budget_ceiling && <p className="sc-store-note sc-store-note-spaced">Chưa xác minh được trần ngân sách hiện hành. Chưa thể tạo hoặc ghi đè ngân sách từ thông tin này.</p>}
+        {planningContext && !planningContext.budget_ceiling && <p className="sc-store-note sc-store-note-spaced">Cửa hàng chưa có trần ngân sách. Lưu sẽ tạo cấu hình ban đầu; nếu người khác vừa tạo, hãy đọc lại để đối chiếu.</p>}
         {loading && <p className="sc-store-note sc-store-note-spaced" role="status">Đang tải ngân sách hiện hành…</p>}
       </section></div>
     {error && <StoreWorkspaceFeedback title="Không tải hoặc lưu được ngân sách" message={error} onRetry={onRetry} />}
     {notice && <p className="sc-store-note" role="status">{notice}</p>}
     {locked && <p className="sc-store-note" role="status">Yêu cầu ngân sách trước chưa được giải quyết. Chưa thể gửi thay đổi mới.</p>}
-    <footer className="sc-store-actions"><span className="sc-store-note">Các thiết lập chưa hỗ trợ không được lưu cùng ngân sách.</span><button type="submit" className="sc-store-primary" disabled={!editable || parsed === null || !dirty}>{busy ? 'Đang lưu…' : 'Lưu ngân sách'}</button></footer>
+    <footer className="sc-store-actions"><span className="sc-store-note">Các thiết lập chưa hỗ trợ không được lưu cùng ngân sách.</span><button type="submit" className="sc-store-primary" disabled={!editable || parsed === null || !dirty}>{busy ? 'Đang lưu…' : planningContext && !planningContext.budget_ceiling ? 'Tạo ngân sách ban đầu' : 'Lưu ngân sách'}</button></footer>
   </form>
 }

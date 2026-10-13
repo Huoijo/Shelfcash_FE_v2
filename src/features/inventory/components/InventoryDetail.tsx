@@ -1,3 +1,4 @@
+import { UnderConstructionButton } from '../../../shared/UnderConstruction'
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { ActiveIndicator } from '../../../shared/motion/ActiveIndicator'
 import { useContentReveal } from '../../../shared/motion/useContentReveal'
@@ -234,7 +235,7 @@ export function InventoryDetail({ ingredientId, snapshot, onClose, onInvalidSnap
       {info && view === 'movements' && <InventoryMovements ingredientId={ingredientId} snapshot={snapshot} unit={info.unit} onInvalidSnapshot={onInvalidSnapshot} />}
     </div>
     <footer className="inventory-detail-actions">
-      <button type="button" disabled title="AI chưa có contract được duyệt và tích hợp">Hỏi AI về tồn kho</button>
+      <UnderConstructionButton feature="Hỏi AI về tồn kho">Hỏi AI về tồn kho</UnderConstructionButton>
       <button type="button" disabled title="Workspace dự báo chưa triển khai">Xem dự báo</button>
     </footer>
   </aside>

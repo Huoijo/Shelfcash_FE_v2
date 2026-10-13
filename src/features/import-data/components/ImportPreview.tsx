@@ -1,52 +1,34 @@
 import { useState } from 'react'
-import type { PreviewBundle, PreviewRow, SalesResolution, SupplierConfirmation } from '../importFlow.types'
+import type { PreviewBundle, PreviewRow, SalesResolution, SupplierConfirmation, MappingSummary } from '../importFlow.types'
+import { ImportPreviewExplorer } from './ImportPreviewExplorer'
+import { previewDomainLabels } from './preview.labels'
+import { FlowDialog } from '../../../shared/flow/FlowDialog'
+import { RecordFacts } from '../../../shared/flow/RecordFacts'
 import { Evidence } from './ImportMapping'
 
-export function ImportPreview({ bundle, busy, locked, blockers, reason, acknowledged, reviewReason, reviewAcknowledged, reviewBlockers,
+export function ImportPreview({ mapping,stage = 'all', bundle, busy, locked, blockers, reason, acknowledged, reviewReason, reviewAcknowledged, reviewBlockers,
   resolutions, supplierChanges, onReviewReason, onReviewAcknowledge, onConfirmReview, onResolutions, onSupplierChanges,
   onReason, onAcknowledge, onLoadMore, onCommit }: {
-  bundle: PreviewBundle; busy: boolean; locked: boolean; blockers: string[]; reason: string; acknowledged: boolean
+  mapping?:MappingSummary|null;stage?: 'all' | 'preview' | 'review'; bundle: PreviewBundle; busy: boolean; locked: boolean; blockers: string[]; reason: string; acknowledged: boolean
   reviewReason: string; reviewAcknowledged: boolean; reviewBlockers: string[]
   resolutions: SalesResolution[]; supplierChanges: SupplierConfirmation[]
   onReviewReason: (reason: string) => void; onReviewAcknowledge: (value: boolean) => void; onConfirmReview: () => void
   onResolutions: (resolutions: SalesResolution[]) => void; onSupplierChanges: (changes: SupplierConfirmation[]) => void
   onReason: (reason: string) => void; onAcknowledge: (value: boolean) => void; onLoadMore: () => void; onCommit: () => void
 }) {
+  const [confirmOpen,setConfirmOpen]=useState(false)
   const { summary, rows, rows_page: page } = bundle.preview
   return <>
-    <h2>Preview dữ liệu canonical</h2>
-    <p>Snapshot chỉ đọc · Toàn bộ lô được ghi nguyên tử sau khi bạn xác nhận. Preview chưa ghi dữ liệu nghiệp vụ.</p>
-    <p className="import-flow__muted">Preview: {summary.preview_id} · Policy: {summary.policy_version} · {summary.validation_status}</p>
-    <Evidence value={{ digest: summary.digest, source_set_version: summary.source_set_version, mapping_bindings: summary.mapping_bindings, created_at: summary.created_at }} label="Phiên bản và nguồn của snapshot" />
-    <div className="import-flow__table-scroll" tabIndex={0} role="region" aria-label="Nhóm thay đổi toàn lô">
-      <table>
-        <caption>Nhóm thay đổi toàn snapshot từ máy chủ — không tính từ trang dòng đang hiển thị</caption>
-        <thead><tr><th scope="col">Nhóm</th><th scope="col">Quyền ghi</th><th scope="col">Dòng</th><th scope="col">Thêm</th><th scope="col">Cập nhật</th><th scope="col">Không đổi</th><th scope="col">Bị chặn</th></tr></thead>
-        <tbody>{summary.groups.map((group) => <tr key={`${group.canonical_domain}:${group.required_write_action}`}><th scope="row">{group.canonical_domain}</th><td>{group.required_write_action}</td><td>{group.row_count}</td><td>{group.planned_insert_count}</td><td>{group.planned_update_count}</td><td>{group.no_op_count}</td><td>{group.blocked_count}</td></tr>)}</tbody>
-      </table>
-    </div>
-    <Evidence value={summary.counts} label="Số lượng phân loại từ máy chủ" />
-    {!!summary.blockers.length && <Evidence value={summary.blockers} label={`Lỗi chặn (${summary.blockers.length})`} />}
-    {!!summary.warnings.length && <Evidence value={summary.warnings} label={`Cảnh báo (${summary.warnings.length})`} />}
-    <div className="import-flow__table-scroll" tabIndex={0} role="region" aria-label="Các dòng Preview">
-      <table>
-        <caption>Dòng Preview đã đọc: {rows.length}; tổng trong snapshot: {page.total_count ?? 'Chưa biết'}. Giá trị giữ nguyên chuỗi chính xác; null không phải 0.</caption>
-        <thead><tr><th scope="col">Nguồn</th><th scope="col">Phân loại / Thao tác</th><th scope="col">Trước</th><th scope="col">Sau</th><th scope="col">Thay đổi / Bằng chứng</th></tr></thead>
-        <tbody>{rows.map((row) => <tr key={row.row_id}>
-          <th scope="row">{row.row_id}<Evidence value={row.source_location} label="Vị trí nguồn" /></th>
-          <td>{row.classification}<br />{row.proposed_action}{row.confirmation_required && <p>Cần xác nhận</p>}</td>
-          <td><pre>{JSON.stringify(row.before, null, 2)}</pre></td>
-          <td><pre>{JSON.stringify(row.after, null, 2)}</pre></td>
-          <td><Evidence value={{ changes: row.changes, entity_refs: row.entity_refs, provenance: row.provenance, source_locations: row.source_locations,
-            line_provenance: row.line_provenance, nested_provenance: row.nested_provenance, nested_references: row.nested_references,
-            dependencies: row.dependencies, canonical_domain: row.canonical_domain, target_reserved_or_existing_id: row.target_reserved_or_existing_id,
-            expected_version: row.expected_version, normalized_source_quantity: row.normalized_source_quantity, required_permissions: row.required_permissions,
-            blockers: row.blockers, warnings: row.warnings }} label="Xem thay đổi, nguồn lồng nhau và provenance" />{!!row.unsupportedFields.length && <p>Chưa hỗ trợ: {row.unsupportedFields.join(', ')}</p>}</td>
-        </tr>)}</tbody>
-      </table>
-    </div>
-    {page.next_cursor && <p><button type="button" disabled={busy || locked} onClick={onLoadMore}>Xem thêm dòng Preview</button></p>}
-    {bundle.configurations && <Evidence value={bundle.configurations} label="Cấu hình của các trang preview đã đọc — không phải toàn bộ cấu hình Store" />}
+    {stage !== 'review' && <>
+    <ImportPreviewExplorer key={summary.preview_id} bundle={bundle} mapping={mapping} busy={busy} locked={locked} onLoadMore={onLoadMore}/>
+    <details><summary>Snapshot và các nhóm thao tác từ máy chủ</summary><Evidence value={{preview_id:summary.preview_id,digest:summary.digest,source_set_version:summary.source_set_version,mapping_bindings:summary.mapping_bindings,created_at:summary.created_at}} label="Phiên bản và nguồn của snapshot"/><RecordFacts value={summary.groups}/></details>
+    <details><summary>Bằng chứng đầy đủ và nguồn lồng nhau của các dòng đã tải</summary><RecordFacts value={rows.map(r=>({row_id:r.row_id,provenance:r.provenance,source_locations:r.source_locations,line_provenance:r.line_provenance,nested_provenance:r.nested_provenance,nested_references:r.nested_references,expected_version:r.expected_version,required_permissions:r.required_permissions,normalized_source_quantity:r.normalized_source_quantity}))}/></details>
+    {bundle.configurations&&<details><summary>Cấu hình thuộc Preview hiện tại</summary><p>Đây là projection của Preview, không phải toàn bộ cấu hình Store.</p><RecordFacts value={bundle.configurations}/></details>}
+    </>}
+    {stage !== 'preview' && <>
+    <header><h2>Kiểm tra trước khi nhập</h2><p>Bước 4/5 · Review xác nhận thay đổi sẽ ghi. Chưa ghi dữ liệu nghiệp vụ.</p></header>
+    <div className="sc-preview-review-summary">{summary.groups.map(g=><div key={g.canonical_domain+g.required_write_action}><span>{previewDomainLabels[g.canonical_domain]}</span><strong>{g.row_count}</strong><small>{g.planned_insert_count} thêm · {g.planned_update_count} cập nhật · {g.no_op_count} không đổi · {g.blocked_count} chặn</small></div>)}</div>
+    <section className="import-flow__card"><h3>Cần chú ý</h3>{[...summary.blockers,...summary.warnings].map((n,i)=><p key={n.code+i}>{n.severity==='ERROR'?'Chặn':'Cảnh báo'}: {n.message}</p>)}{!summary.blockers.length&&!summary.warnings.length&&<p>Không có cảnh báo hoặc lỗi chặn toàn snapshot.</p>}</section>
     <section className="import-flow__card" aria-labelledby="import-review-title">
       <h3 id="import-review-title">1. Xác nhận đã review snapshot</h3>
       <p>Xác nhận này được lưu trên máy chủ cho đúng nguồn, mapping và preview. Chưa ghi dữ liệu nghiệp vụ.</p>
@@ -70,8 +52,10 @@ export function ImportPreview({ bundle, busy, locked, blockers, reason, acknowle
       <textarea id="import-commit-reason" value={reason} disabled={busy || locked} maxLength={1000} onChange={(event) => onReason(event.target.value)} />
       <label className="import-flow__check"><input type="checkbox" checked={acknowledged} disabled={busy || locked} onChange={(event) => onAcknowledge(event.target.checked)} /><span>Tôi đã kiểm tra snapshot, cảnh báo và phạm vi ghi toàn bộ lô.</span></label>
       {!!blockers.length && <div className="import-flow__notice" id="import-commit-blockers"><p>Chưa thể ghi dữ liệu:</p><ul>{blockers.map((blocker) => <li key={blocker}>{blocker}</li>)}</ul></div>}
-      <p><button type="button" className="import-flow__primary" disabled={busy || locked || !!blockers.length || !acknowledged} aria-describedby={blockers.length ? 'import-commit-blockers' : undefined} onClick={onCommit}>Ghi nguyên tử toàn bộ lô</button></p>
+      <p><button type="button" className="import-flow__primary" disabled={busy || locked || !!blockers.length || !acknowledged} aria-describedby={blockers.length ? 'import-commit-blockers' : undefined} onClick={() => setConfirmOpen(true)}>Ghi nguyên tử toàn bộ lô</button></p>
     </section>
+    {confirmOpen&&<FlowDialog title="Ghi dữ liệu vào ShelfCash?" center onClose={()=>{if(!busy)setConfirmOpen(false)}} closeDisabled={busy} footer={<><button type="button" disabled={busy} onClick={()=>setConfirmOpen(false)}>Quay lại Review</button><button type="button" className="sc-flow-primary" disabled={busy||locked||!!blockers.length||!acknowledged||bundle.preview.stale} onClick={()=>{setConfirmOpen(false);onCommit()}}>Xác nhận ghi</button></>}><p>Thao tác này ghi nguyên tử toàn bộ lô đã qua Preview và Review vào cửa hàng hiện tại.</p><p>{summary.groups.length} nhóm thao tác · {page.total_count??'Chưa biết tổng'} dòng trong snapshot.</p><p>Nếu file hoặc mapping thay đổi, cần tạo lại Preview/Review.</p></FlowDialog>}
+    </>}
   </>
 }
 
