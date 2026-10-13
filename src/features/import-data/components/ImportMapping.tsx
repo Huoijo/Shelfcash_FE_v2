@@ -75,6 +75,9 @@ export function ImportMapping(props: Props) {
           <details><summary>Thông tin và quy tắc của Sheet</summary>
           {selectedSheet.suggested_type && <p className="import-flow__muted">Gợi ý từ máy chủ: {selectedSheet.suggested_type} · {selectedSheet.classification_origin}. Gợi ý không tự trở thành quyết định.</p>}
           {selectedSheet.ignore_reason && <p>Lý do bỏ qua: {selectedSheet.ignore_reason}</p>}
+          {selectedSheet.header_row!=null&&<p>Dòng header: {selectedSheet.header_row} · Epoch Excel: {selectedSheet.excel_date_system??'Không được cung cấp'}</p>}
+          {!!selectedSheet.preamble_samples?.length&&<Evidence value={{rows:selectedSheet.preamble_rows,samples:selectedSheet.preamble_samples}} label="Preamble nguồn (mẫu giới hạn)"/>}
+          {selectedSheet.suggestion_diagnostic&&<Evidence value={selectedSheet.suggestion_diagnostic} label="Chẩn đoán gợi ý từ server"/>}
           <p className="import-flow__muted">Các cột: {selectedSheet.headers.join(' · ') || 'Không có header'}</p>
           {!sheetOptions && props.onLoadSheetOptions && <button type="button" disabled={busy || locked} onClick={() => props.onLoadSheetOptions?.(selectedSheet.sheet_id)}>Xem catalogue schema và trường dữ liệu</button>}
           {sheetOptions && <SchemaCatalogue options={sheetOptions} />}
@@ -143,6 +146,7 @@ function MappingCard({ issue, options, busy, readBusy, onLoadOptions, onConfirm,
     </div>
     <p className="import-flow__samples">Mẫu dữ liệu: {issue.samples.length ? issue.samples.map((sample) => sample === '' ? '"" (chuỗi rỗng)' : sample).join(' · ') : 'Không có mẫu'}</p>
     {issue.suggested_target_field && <p className="import-flow__muted">{issue.suggestion_origin === 'QWEN' ? 'AI đề xuất' : 'Gợi ý ghép cột'}{typeof issue.confidence === 'number' ? ` · ${Math.round(issue.confidence * 100)}%` : ''}</p>}
+    {issue.issue_type === 'source_context' && <p className="import-flow__notice">Xác nhận nguồn và loại báo cáo của lần nhập này, kèm bằng chứng. Header giống profile cũ không chứng minh file mới cùng nguồn; duyệt profile không thay bước Preview/Review.</p>}
     {issue.status === 'ambiguous' && <p className="import-flow__muted">Có nhiều trường phù hợp</p>}
     {issue.issue_type === 'column' && <div className="import-flow__selector">
       <label htmlFor={`${id}-target`}>Ghép với trường ShelfCash

@@ -296,3 +296,38 @@ test('API errors never fall back to mock; aborted reads never fetch', async (t) 
   await assert.rejects(api.summary(IMPORT, controller.signal), (error) => error.name === 'AbortError')
   assert.equal(calls, 1); assert.equal(mockCalls, 0)
 })
+
+test('011 pinned main opening preview preserves physical balance effect and raw lexical evidence', () => {
+ const data=previewRead(),row=data.preview.rows[0]
+ row.canonical_domain='opening_stock';row.proposed_action='CREATE_OPENING_STOCK';row.classification='NEW';row.confirmation_required=false;row.before=null
+ row.after={domain:'opening_stock',source_record_id:'physical-lot-1',ingredient_id:id(14),supplier_id:null,lot_code:null,quantity:'12.000000000000000001',unit:'l',received_date:null,expiry_date:null,unit_cost:null,currency:'VND',observed_at:at,reason:'Confirmed physical remainder',lot_id:id(12)}
+ row.inventory_effect={origin:'OPENING_STOCK',lot_id:id(12),before_quantity:null,after_quantity:'12.000000000000000001',quantity_delta:'12.000000000000000001',movement_type:'COUNT_CORRECTION',unit:'l',observed_at:at}
+ row.provenance={quantity:{origin:'SOURCE_EXPLICIT',applied_rule_ids:[],source_value:'12.000000000000000001',value_source:'SOURCE_COLUMN',source_column_index:2,declaration_id:null}}
+ const value=validatePreviewBundle(envelope(data),IMPORT,PREVIEW).preview.rows[0]
+ assert.deepEqual(value.inventory_effect,row.inventory_effect);assert.equal(value.after.received_date,null);assert.equal(value.after.unit_cost,null);assert.equal(value.provenance.quantity.source_value,'12.000000000000000001')
+ row.inventory_effect.movement_type='RECEIPT'
+ assert.throws(()=>validatePreviewBundle(envelope(data),IMPORT,PREVIEW),e=>e.kind==='protocol')
+})
+
+test('011 supplier source semantics stay distinct from canonical price/MOQ and reject numeric money', () => {
+ const data=previewRead(),row=data.preview.rows[0]
+ row.canonical_domain='supplier_terms';row.proposed_action='CREATE_SUPPLIER_TERM';row.before=null
+ row.after={domain:'supplier_terms',source_term_key:'term-1',supplier_id:id(20),ingredient_id:id(14),effective_from:'2026-10-11',effective_to:null,unit:'g',pack_size_base_quantity:'1000',pack_cost:'100000',currency:'VND',minimum_order_packs:2,lead_time_days:0,shelf_life_days:null,active:true,maximum_order_base_quantity:null}
+ row.supplier_term_semantics={pack_label:'thùng',source_pack_quantity:'1',source_pack_unit:'kg',source_price:'100000',price_basis:'PER_PACK',price_quantity:null,price_unit:null,canonical_price_quantity:null,moq_basis:'PHYSICAL_QUANTITY',source_moq_quantity:'1500',moq_unit:'g',canonical_moq_quantity:'1500',minimum_order_packs:2,fee_coverage:'UNKNOWN',fee_coverage_date:'2026-10-11'}
+ const value=validatePreviewBundle(envelope(data),IMPORT,PREVIEW).preview.rows[0]
+ assert.equal(value.after.pack_size_base_quantity,'1000');assert.equal(value.supplier_term_semantics.source_pack_quantity,'1');assert.equal(value.supplier_term_semantics.source_moq_quantity,'1500');assert.equal(value.after.minimum_order_packs,2);assert.equal(value.supplier_term_semantics.fee_coverage,'UNKNOWN')
+ row.supplier_term_semantics.source_price=100000
+ assert.throws(()=>validatePreviewBundle(envelope(data),IMPORT,PREVIEW),e=>e.kind==='protocol')
+})
+
+test('011 recipe basis and workbook diagnostics survive canonical adapters, not reinterpreted by FE', () => {
+ const data=previewRead(),row=data.preview.rows[0],location=row.source_location
+ row.line_provenance=[{ingredient_id:id(14),source_location:location,quantity_basis:'PER_SERVING',provenance:{quantity:{origin:'DETERMINISTIC_DERIVED',applied_rule_ids:['whole-yield'],source_value:'100'}}}]
+ const result=validatePreviewBundle(envelope(data),IMPORT,PREVIEW)
+ assert.equal(result.preview.rows[0].line_provenance[0].quantity_basis,'PER_SERVING');assert.equal(result.preview.rows[0].line_provenance[0].provenance.quantity.source_value,'100')
+ const mapping=summary();Object.assign(mapping.sheets[0],{header_row:3,preamble_rows:[1,2],preamble_samples:['<script>plain source</script>'],excel_date_system:'1904',suggestion_diagnostic:{status:'disabled',model:'qwen/qwen3.5-9b'}})
+ const projected=validateMappingSummary(envelope(mapping),IMPORT).sheets[0]
+ assert.equal(projected.excel_date_system,'1904');assert.equal(projected.header_row,3);assert.deepEqual(projected.preamble_samples,['<script>plain source</script>']);assert.equal(projected.suggestion_diagnostic.status,'disabled')
+ row.line_provenance[0].quantity_basis='GUESSED'
+ assert.throws(()=>validatePreviewBundle(envelope(data),IMPORT,PREVIEW),e=>e.kind==='protocol')
+})

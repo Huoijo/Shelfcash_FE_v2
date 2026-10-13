@@ -155,6 +155,7 @@ test('receipt dirty close keeps draft and combobox Escape closes only its popup'
   await expect(page.getByRole('dialog',{name:'Bạn có thay đổi chưa lưu'})).toBeVisible()
   await page.getByRole('button',{name:'Tiếp tục chỉnh sửa'}).click()
   await expect(d.getByLabel(/Số lượng thực nhận/)).toHaveValue('2')
-  await page.keyboard.press('Escape');await page.getByRole('button',{name:'Đóng và bỏ thay đổi'}).click()
+  // Returning focus to the combobox can reopen its popup; use the drawer close action here.
+  await d.getByRole('button',{name:'Đóng Nhận hàng vào Kho',exact:true}).click();await page.getByRole('button',{name:'Đóng và bỏ thay đổi'}).click()
   await expect(page.getByRole('dialog')).toHaveCount(0)
 })

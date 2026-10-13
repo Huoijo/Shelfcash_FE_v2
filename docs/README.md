@@ -48,3 +48,15 @@ Khi có thay đổi lớn về kiến trúc hoặc hoàn thành một cột mố
 - [009 Implementation Receipt](009_Implementation_Receipt.md): triển khai bảy flow theo MagicPath mới, giữ contract BE; 350 unit/component/workflow tests và 22 browser tests đạt.
 - [009 TechDebt cần resolve](009_TechDebt.md): dependencies BE/Product, live verification và FE/QA còn lại; không bao gồm phạm vi Underconstruction.
 - [Underconstruction_by_BE](Underconstruction_by_BE.md): M04/M10/M12/M13/M14 tạm dừng theo chủ dự án; entry FE thông báo đang xây dựng.
+
+### Prompt 010 — reconcile Technical Debt với BE chiều 13/10
+
+- [010 Implementation Receipt](010_Implementation_Receipt.md): nguồn đã đọc, reconcile baseline 009, authority và runtime parity; audit tài liệu, không wire APIs mới.
+- [010 TechDebt](010_TechDebt.md): các phần resolved, design-ready/not-runtime, partial và blocked; không gồm phạm vi Underconstruction.
+- [010 FE → BE API / capability requests](../FE_ask/010_FE_to_BE_API_Capability_Requests.md): một file gửi BE review, phân biệt thiết kế BE đã chốt với FE PROPOSAL TO BE.
+
+### Sprint 011 — BE night handoff và triển khai current-contract
+
+- [011 Implementation Receipt](011_Implementation_Receipt.md): pin main OpenAPI, cập nhật Import evidence/basis/opening, PDF reference/recovery và kiểm chứng sprint.
+- [011 TechDebt](011_TechDebt.md): local parity đã resolve, các WIP/design-ready và integration/live/FE-QA còn mở; không gồm Underconstruction.
+- [011 FE → BE follow-up](../FE_ask/011_FE_to_BE_Followup.md): dependencies còn thiếu sau khi nhận đủ snapshots; R05/R09 đã accepted, không hỏi lại Product.

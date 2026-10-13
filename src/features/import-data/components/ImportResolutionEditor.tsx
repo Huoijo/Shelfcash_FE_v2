@@ -52,7 +52,6 @@ function SourceContextEditor({ disabled, onResolve }: Props) {
   const [inventory, setInventory] = useState<NonNullable<SourceContext['inventory_semantics']> | ''>('')
   const [decimal, setDecimal] = useState<NonNullable<SourceContext['decimal_locale']> | ''>('')
   const [date, setDate] = useState<NonNullable<SourceContext['date_format']> | ''>('')
-  const [cost, setCost] = useState<NonNullable<SourceContext['pack_cost_basis']> | ''>('')
   const [expiry, setExpiry] = useState(false)
   const [expiryEvidence, setExpiryEvidence] = useState('')
   const [terms, setTerms] = useState<PeriodAmendment[]>([])
@@ -63,7 +62,7 @@ function SourceContextEditor({ disabled, onResolve }: Props) {
     const resolution: SourceContext = {
       kind: 'source_context', source_system_key: source, report_type: report, evidence_reference: evidence.trim(),
       ...(sales ? { sales_semantics: sales } : {}), ...(inventory ? { inventory_semantics: inventory } : {}),
-      ...(decimal ? { decimal_locale: decimal } : {}), ...(date ? { date_format: date } : {}), ...(cost ? { pack_cost_basis: cost } : {}),
+      ...(decimal ? { decimal_locale: decimal } : {}), ...(date ? { date_format: date } : {}),
       ...(expiry ? { planned_arrival_expiry_rule: { basis: 'ARRIVAL_PLUS_DECLARED_SHELF_LIFE_DAYS', evidence_reference: expiryEvidence.trim() } } : {}),
       term_period_amendments: terms.map((item) => ({ supplier_term_id: item.id, expected_version: item.expected_version.trim(), effective_to: item.effective_to, reason: item.reason.trim() })),
       fee_period_amendments: fees.map((item) => ({ fee_id: item.id, expected_version: item.expected_version.trim(), effective_to: item.effective_to, reason: item.reason.trim() })),
@@ -83,9 +82,10 @@ function SourceContextEditor({ disabled, onResolve }: Props) {
         <label>Doanh số<select value={sales} onChange={(event) => setSales(event.target.value as typeof sales)}><option value="">Không khai báo</option><option value="daily_total">Tổng theo ngày · daily_total</option><option value="disjoint_contribution">Phần đóng góp không trùng · disjoint_contribution</option></select></label>
         <label>Kiểm kho<select value={inventory} onChange={(event) => setInventory(event.target.value as typeof inventory)}><option value="">Không khai báo</option><option value="lot_stock_count">Số đếm theo lô · lot_stock_count</option></select></label>
         <label>Dấu thập phân<select value={decimal} onChange={(event) => setDecimal(event.target.value as typeof decimal)}><option value="">Không khai báo</option><option value="dot">Dấu chấm</option><option value="comma">Dấu phẩy</option></select></label>
-        <label>Ngày nguồn<select value={date} onChange={(event) => setDate(event.target.value as typeof date)}><option value="">Không khai báo</option><option value="ISO">ISO · YYYY-MM-DD</option><option value="DMY_SLASH">DD/MM/YYYY</option><option value="MDY_SLASH">MM/DD/YYYY</option></select></label>
-        <label>Cơ sở giá gói<select value={cost} onChange={(event) => setCost(event.target.value as typeof cost)}><option value="">Không khai báo</option><option value="PER_PACK">Giá trên gói · PER_PACK</option><option value="PER_SOURCE_UNIT">Giá trên đơn vị nguồn · PER_SOURCE_UNIT</option></select></label>
+        <label>Ngày nguồn<select value={date} onChange={(event) => setDate(event.target.value as typeof date)}><option value="">Không khai báo</option><option value="ISO">ISO · YYYY-MM-DD</option><option value="DMY_SLASH">DD/MM/YYYY</option><option value="MDY_SLASH">MM/DD/YYYY</option><option value="EXCEL_SERIAL">Excel serial · theo epoch workbook 1900/1904</option></select></label>
+
       </div>
+      <p className="import-flow__muted">Giá/MOQ nhà cung cấp cần khai báo price_basis, mẫu số giá và moq_basis qua cột nguồn hoặc giá trị dùng chung được server cho phép; không dùng pack_cost_basis cũ thay thế. Excel serial chỉ áp dụng date fields được hỗ trợ, không biến date-only thành thời điểm nhận/kiểm kho.</p>
       <label className="import-flow__check"><input type="checkbox" checked={expiry} onChange={(event) => setExpiry(event.target.checked)} />Khai báo expiry từ ngày nhận dự kiến + số ngày shelf-life đã được khai báo.</label>
       {expiry && <EvidenceInput label="Bằng chứng quy tắc expiry" value={expiryEvidence} onChange={setExpiryEvidence} />}
     </details>

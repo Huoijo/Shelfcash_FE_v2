@@ -1,0 +1,811 @@
+{
+  "entrypoint": "backend/docs/handoff/010_BE_CAPABILITY_RESPONSE_VI.md",
+  "scope": "Entrypoint and all directly linked local files; transitive references and Python import dependencies are not expanded.",
+  "copied_at_asia_saigon": "2026-10-13T19:56:03.802751+07:00",
+  "file_count": 80,
+  "direct_reference_unique_files": 79,
+  "files": [
+    {
+      "path": "backend-auth-self-service/alembic/versions/0018_email_verification.py",
+      "bytes": 3791,
+      "sha256": "93303ee09356ffc75f66ba5900686951fed4a8026dfef7543db6ac9d03a4d662"
+    },
+    {
+      "path": "backend-auth-self-service/alembic/versions/0020_password_reset_delivery.py",
+      "bytes": 1572,
+      "sha256": "8fbe032b6464810c389b58b669ba55c80073c1e624ce690b538d59574da5e2b3"
+    },
+    {
+      "path": "backend-auth-self-service/alembic/versions/0022_invitation_decline.py",
+      "bytes": 1359,
+      "sha256": "8475656188ab509e4084b08f2f5708c8d91e6ccbd58381dba68eb69a38ab7e3f"
+    },
+    {
+      "path": "backend-auth-self-service/app/api/auth.py",
+      "bytes": 8097,
+      "sha256": "83c6861020d77d32b01933ad78c13540df1a44a98166db8a29a168e5939db20f"
+    },
+    {
+      "path": "backend-auth-self-service/app/api/staff.py",
+      "bytes": 8263,
+      "sha256": "ba4aeb4176d0b99a2aceb6f622576700a0ab69294440465be234aba95dc5dcae"
+    },
+    {
+      "path": "backend-auth-self-service/app/application/contracts/auth.py",
+      "bytes": 5135,
+      "sha256": "3f0f2d5fb524a49d8688713d38959bb06023f917c73b9c2f1a6ef84c84da8a7f"
+    },
+    {
+      "path": "backend-auth-self-service/app/application/contracts/staff.py",
+      "bytes": 7215,
+      "sha256": "8e8278dd333f00f5f8851ee096e5be114183b9b8a4193b94b72362d315d3a3cb"
+    },
+    {
+      "path": "backend-auth-self-service/app/application/use_cases/auth.py",
+      "bytes": 15141,
+      "sha256": "c0ae81768a0dc9afa404121a5b7d3aadb7210e2804eec1d6236801a8a2d466d2"
+    },
+    {
+      "path": "backend-auth-self-service/app/application/use_cases/durable_delivery.py",
+      "bytes": 1914,
+      "sha256": "c85d206ff465fadcb09d9f6dd29a7102233a1fe7c917e4fc8f10e70e74ced501"
+    },
+    {
+      "path": "backend-auth-self-service/app/application/use_cases/email_verification.py",
+      "bytes": 7788,
+      "sha256": "2a7224cc016ac26f41a15073c9ae3da9667db04373451eeeb6e15a91b21e4512"
+    },
+    {
+      "path": "backend-auth-self-service/app/application/use_cases/email_verification_delivery.py",
+      "bytes": 4391,
+      "sha256": "88bd51151ebbe51773e776d958e8f9c303d6b340548a0d87ba805ee0030cb095"
+    },
+    {
+      "path": "backend-auth-self-service/app/application/use_cases/password_reset.py",
+      "bytes": 3819,
+      "sha256": "12cd2f9709e7722184603cbc79aec6a90d3753cebc09955aca4319bc1c6bd314"
+    },
+    {
+      "path": "backend-auth-self-service/app/application/use_cases/password_reset_delivery.py",
+      "bytes": 4563,
+      "sha256": "4b08dab06796d3d7f0a643fe2418dc24cee1f5be154fb6e9368b417c42adad5e"
+    },
+    {
+      "path": "backend-auth-self-service/app/application/use_cases/staff.py",
+      "bytes": 29143,
+      "sha256": "ab9f34af9cbe5076c88a423da2872bc87210a4dc0a85fd6e572b8f6ff040a5fa"
+    },
+    {
+      "path": "backend-auth-self-service/app/infrastructure/email_verification_transport.py",
+      "bytes": 1589,
+      "sha256": "e00c4a24f91c59becc320ef0f16ba09308af235774c523b05686200ae270977b"
+    },
+    {
+      "path": "backend-auth-self-service/app/main.py",
+      "bytes": 17576,
+      "sha256": "760ecc8c7872d72f11c2d2f6b3e3bac8044b0c06965785e73069db12376c774c"
+    },
+    {
+      "path": "backend-auth-self-service/app/repositories/email_verification.py",
+      "bytes": 4013,
+      "sha256": "2bdd964e0bfbd610baface834a0643988783bde2629d34dc410cf79458b7f18d"
+    },
+    {
+      "path": "backend-auth-self-service/app/repositories/password_reset.py",
+      "bytes": 2510,
+      "sha256": "66f0e7c5d4d791477af431abffa002b4451f3ac5d365041309982fbdad67e875"
+    },
+    {
+      "path": "backend-auth-self-service/docs/CURRENT_STATE.md",
+      "bytes": 14849,
+      "sha256": "85909f6c29eb334c67f14b00eac2003e19fb04a1c5ba4f845adb4afa2f9b7695"
+    },
+    {
+      "path": "backend-auth-self-service/docs/ROADMAP.md",
+      "bytes": 10890,
+      "sha256": "245b3bf6e8e55c4a16730500bfedd3ff4a2f52d144d17e215280d64e12311710"
+    },
+    {
+      "path": "backend-auth-self-service/docs/features/AUTH_SESSION.md",
+      "bytes": 21692,
+      "sha256": "ab5304ced50f8ad36a906feb2356e0f5e641fcecc9304f9c99bd45a7857da267"
+    },
+    {
+      "path": "backend-auth-self-service/tests/api/test_invitation_decline_openapi.py",
+      "bytes": 1397,
+      "sha256": "b93c7572a1bb472ef43a342eebe176a2dbce9393e056f756fa78886db0849ff3"
+    },
+    {
+      "path": "backend-auth-self-service/tests/integration/test_email_verification.py",
+      "bytes": 33873,
+      "sha256": "a61617cf08b6ce18712a375325cab64583143522d32a576b32c1994d26caadf6"
+    },
+    {
+      "path": "backend-auth-self-service/tests/integration/test_password_reset.py",
+      "bytes": 25521,
+      "sha256": "ecc02b18c8c0ae99c34e2448f50a140767120e8d119b23eb54abc188b176c924"
+    },
+    {
+      "path": "backend-import-sales-stockout/app/application/forecast_demand.py",
+      "bytes": 1771,
+      "sha256": "afcdf164951d553b3ce249deb574309ac48ac0117ca96dd987a1de4d22e23c52"
+    },
+    {
+      "path": "backend-import-sales-stockout/app/application/import_sales_groups.py",
+      "bytes": 7796,
+      "sha256": "610a0fa2964877458038edbcb0172785db6ee5ceec1ae40000688a3914588229"
+    },
+    {
+      "path": "backend-import-sales-stockout/app/application/use_cases/import_history_write.py",
+      "bytes": 1690,
+      "sha256": "757329a15cb26ccd982e74f35cea6638057294c774ae0a49ea98101462aa3664"
+    },
+    {
+      "path": "backend-import-sales-stockout/app/domain/forecasting/stockout.py",
+      "bytes": 3341,
+      "sha256": "54d0f2d29f4249713689d6f66db6c47734b6e2c8a043390888e867cdca3db7b6"
+    },
+    {
+      "path": "backend-import-sales-stockout/app/models/import_history.py",
+      "bytes": 1705,
+      "sha256": "081f052a052266c1825832cce9c7dd4a4ecf091d1a7ff1857dfd12be8b2ff1a7"
+    },
+    {
+      "path": "backend-import-sales-stockout/app/models/sales_daily.py",
+      "bytes": 1774,
+      "sha256": "5cc16f73b6f87adceb9b3ef57c6a7ab773c6cba2cc2b6ee31d4fa4d24fe374b1"
+    },
+    {
+      "path": "backend-import-sales-stockout/docs/CURRENT_STATE.md",
+      "bytes": 17239,
+      "sha256": "9aac8c65339369e13ff584efcbf22950c9e0acd560cbd5e0257420609edab944"
+    },
+    {
+      "path": "backend-import-sales-stockout/docs/ROADMAP.md",
+      "bytes": 10238,
+      "sha256": "9b3835cdcf7560b24d6dd27381c9481663cc11ceb5efe1d0ff32375d94bb1974"
+    },
+    {
+      "path": "backend-import-sales-stockout/docs/adr/ADR-A1-observed-stockout-demand-policy.md",
+      "bytes": 3709,
+      "sha256": "590f304e30c8085f31d0c777177ae00eb588aa1198b76bec779fcb9ef3bb1544"
+    },
+    {
+      "path": "backend-import-sales-stockout/tests/integration/test_forecast_stockout_a1.py",
+      "bytes": 6498,
+      "sha256": "8e06482b29e2113f21e277b2eeec62b114ddf753a2ce91844ecd962fd30fb735"
+    },
+    {
+      "path": "backend-import-sales-stockout/tests/integration/test_import_stockout_a1.py",
+      "bytes": 14069,
+      "sha256": "13e375623e87cd29b215aeaab1c8a73471b8e5c76f026fe8bf5d2acc6b61f947"
+    },
+    {
+      "path": "backend-import-sales-stockout/tests/integration/test_planning_stockout_a1.py",
+      "bytes": 3536,
+      "sha256": "7815c0ba17768babfdf555f3a1aee484b0faf9d053b4315ccfe9b4f6a22da08b"
+    },
+    {
+      "path": "backend/008_Implementation_Receipt.md",
+      "bytes": 54332,
+      "sha256": "bea7c475cc9a61399ea13d55c70b9012703f01771834849dd24cce83c7a7e375"
+    },
+    {
+      "path": "backend/010_FE_to_BE_API_Capability_Requests.md",
+      "bytes": 18126,
+      "sha256": "0a2ea82ecc46bc0a9a28c54d6df480732fe87fd329d05147011597e6c546c0ef"
+    },
+    {
+      "path": "backend/app/api/history.py",
+      "bytes": 2981,
+      "sha256": "4f0b925412068f32f5b93796b0c00d7b4e8425bd7a02c66eeb9d97a4fe037987"
+    },
+    {
+      "path": "backend/app/api/import_staging.py",
+      "bytes": 13929,
+      "sha256": "a2f06e3f55bd012c37daf7b84b8e84e9d4d9ddb6b04e33047972f139721a9ddf"
+    },
+    {
+      "path": "backend/app/api/planning_exports.py",
+      "bytes": 2257,
+      "sha256": "e0c4f05907b1d897d4580a7a96dbacc08bc2201aaba0fa781374273c0d4054e3"
+    },
+    {
+      "path": "backend/app/api/staff.py",
+      "bytes": 7423,
+      "sha256": "bf2c93bfc76da38adc27c38220b8131c44fce7fd9dc2c817c35c579bb1bc6d0e"
+    },
+    {
+      "path": "backend/app/api/stock_writes.py",
+      "bytes": 2065,
+      "sha256": "9789ecdc7b38fc6055e227cf82b2ed85ac18b7b2e251802ce2fc7ffe126ac86b"
+    },
+    {
+      "path": "backend/app/application/contracts/history.py",
+      "bytes": 2283,
+      "sha256": "353537fbc7ea5d34a83838cf73e8cbebae1f65870a76102d52e426f54c90a645"
+    },
+    {
+      "path": "backend/app/application/contracts/import_mapping.py",
+      "bytes": 36217,
+      "sha256": "19f2312d1e4834253e9cf5d78ba973a9957f6ef9094026073175ccec204f52f8"
+    },
+    {
+      "path": "backend/app/application/contracts/planning_public.py",
+      "bytes": 9354,
+      "sha256": "c42ae8af5d93bdd02179b37ab3d80ae8834fddb73bdd674a75f38f0bdc0114c2"
+    },
+    {
+      "path": "backend/app/application/contracts/staff.py",
+      "bytes": 6007,
+      "sha256": "d91175ba4a30a8390f0c9e1aa1bad403d38e0266eab3784ad3b5e03c1247b82c"
+    },
+    {
+      "path": "backend/app/application/contracts/stock_writes.py",
+      "bytes": 1937,
+      "sha256": "25f54852e5c8ca4cd562e93d463295af7a49b6d2218c9580fdb30ca21682ebc0"
+    },
+    {
+      "path": "backend/app/application/import_analysis.py",
+      "bytes": 32257,
+      "sha256": "6369fc74c88f49ea34fad6cb2e57224deb09fa7947ace1096f23e872533ff5bc"
+    },
+    {
+      "path": "backend/app/application/import_commit.py",
+      "bytes": 20381,
+      "sha256": "8801e79b278365c2caec47a4452fc0403d60b30c4e0f1156d7370932cb8cc37e"
+    },
+    {
+      "path": "backend/app/application/import_descriptors.py",
+      "bytes": 19255,
+      "sha256": "a989b252b6b05bfea7979007a7287e34ddac17f097fa541aaa6c965b78762877"
+    },
+    {
+      "path": "backend/app/application/import_opening_stock.py",
+      "bytes": 4794,
+      "sha256": "280a053b3d91eebd6c4cf3bed2c1bdf9d60363a3b885e39277e78437ad109da8"
+    },
+    {
+      "path": "backend/app/application/import_preview.py",
+      "bytes": 66190,
+      "sha256": "7082262a1eb85c6eed26e1865ad7ba4ed0002a9ef5a63b8463631d5b805cee26"
+    },
+    {
+      "path": "backend/app/application/use_cases/import_staging.py",
+      "bytes": 171603,
+      "sha256": "7a8d9fac3f0b5c0aaef424222acc51342ad9a665fc868db2167674f941d4f31f"
+    },
+    {
+      "path": "backend/app/application/use_cases/inventory.py",
+      "bytes": 5873,
+      "sha256": "492acc537e92f1d67697d56b4ad7be42b07c58f611cd56d591df400b1d1ad09f"
+    },
+    {
+      "path": "backend/app/application/use_cases/planning_exports.py",
+      "bytes": 17383,
+      "sha256": "f44b57baa669e1bcd91e6c6334c055d5bfc82c71c03f7da72400461fdc9181e7"
+    },
+    {
+      "path": "backend/app/application/use_cases/planning_public.py",
+      "bytes": 16233,
+      "sha256": "dcf0c81d5c65ec53c292aa1a7130e710c2d1ffdfb476e6243d82c24a894a9416"
+    },
+    {
+      "path": "backend/app/application/use_cases/staff.py",
+      "bytes": 26145,
+      "sha256": "ac4e00155bd8ff500fa8df6a0e75bb912f8418a07d9c408bbae070e325c2e932"
+    },
+    {
+      "path": "backend/app/application/use_cases/stock_writes.py",
+      "bytes": 14667,
+      "sha256": "4c5243278b780ae14df6f6482bf0468464394399f6691d1acd0ab77136e5b2c0"
+    },
+    {
+      "path": "backend/app/infrastructure/import_parser.py",
+      "bytes": 10325,
+      "sha256": "02647a9b98cf0ac61e42051db772e974c6735bb0e1f7e8ab36d7f61a0d2e2b6f"
+    },
+    {
+      "path": "backend/app/models/supplier.py",
+      "bytes": 1410,
+      "sha256": "6db0f45619af0704f6f02ef6e2dcf4217be29bf206f04bc3cdab22a7eccbf51c"
+    },
+    {
+      "path": "backend/docs/API_CONTRACT.md",
+      "bytes": 78326,
+      "sha256": "322f4fce741d1635e1723366a8a531a813af4222b7b5d7beff8846f2b1f7014d"
+    },
+    {
+      "path": "backend/docs/AUTHORIZATION_CONTRACT_VI.md",
+      "bytes": 62800,
+      "sha256": "b3a6861b344530a480144e87d814f8886a8382c742fbe78205006e378b281a14"
+    },
+    {
+      "path": "backend/docs/CURRENT_STATE.md",
+      "bytes": 11497,
+      "sha256": "be134ed1d381c2326dd499fedd331f98ef426c02ab70cf50a2d4518afa454f21"
+    },
+    {
+      "path": "backend/docs/DECISIONS.md",
+      "bytes": 7676,
+      "sha256": "fbd4988a5f0543fb52c7fbd2eb8db1524ee55a20ed220b8f4a304b7b755eafb7"
+    },
+    {
+      "path": "backend/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "bytes": 180908,
+      "sha256": "3b2c2a41fb6542b49048c523b493a8608208ff103389a309740479a58b3577bb"
+    },
+    {
+      "path": "backend/docs/NOTIFICATION_API_CONTRACT_VI.md",
+      "bytes": 11909,
+      "sha256": "a74ecfb85a0ef66b02f23517b72a33d09610daae22dc4c0f65d106c84930db61"
+    },
+    {
+      "path": "backend/docs/PROCUREMENT_API_CONTRACT_VI.md",
+      "bytes": 103930,
+      "sha256": "d878c2f1e531bb3eec12c01fd80e4ce709aeb0277540c6720a8b9ffcfd13b61b"
+    },
+    {
+      "path": "backend/docs/ROADMAP.md",
+      "bytes": 9407,
+      "sha256": "d8372382b04b2b8f16a481f2230088d51f129cd0a320d890d36fe1960a4c000b"
+    },
+    {
+      "path": "backend/docs/features/IMPORT_CANONICAL_COMMIT.md",
+      "bytes": 18628,
+      "sha256": "855d9d903167c6bee6159a13834433d0990ba30ef7d3f1024442ab51f1f03e83"
+    },
+    {
+      "path": "backend/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+      "bytes": 54776,
+      "sha256": "cd76a695c03a1e9e163744f7135bb98afd578433885b852c710bca37b09c32f1"
+    },
+    {
+      "path": "backend/docs/features/S411_FE_INTEGRATION.md",
+      "bytes": 4576,
+      "sha256": "106875d8b678f5a24993c27e42961a7ad615fc141d9a15e36c8bcb6e4dc6bc8c"
+    },
+    {
+      "path": "backend/docs/handoff/010_BE_CAPABILITY_RESPONSE_VI.md",
+      "bytes": 45171,
+      "sha256": "73b118604742c3c3c1521a26f62377ca9bed8ce75b56999cf51113a1ae7ea129"
+    },
+    {
+      "path": "backend/docs/handoff/010_openapi_auth-wip.json",
+      "bytes": 806754,
+      "sha256": "cfd80d728652aef08d86b39cd70cb90662ca0f0cf76f6b40edcb337112040ceb"
+    },
+    {
+      "path": "backend/docs/handoff/010_openapi_import-wip.json",
+      "bytes": 805227,
+      "sha256": "24cad7d12090301b4993c3b68924a47b5fe1f2d29ece1e19f67f1e922b022c2d"
+    },
+    {
+      "path": "backend/docs/handoff/010_openapi_main.json",
+      "bytes": 776996,
+      "sha256": "d45b25e6423c52a854bae39efc7896df5c44a22f15549fa7f7259b565e2d837d"
+    },
+    {
+      "path": "backend/docs/runbooks/FULL_TEST_FLOW.md",
+      "bytes": 16654,
+      "sha256": "6216a1560eddd1c691c6c53c4ee1ce9b1b8fe170b565a1e5b94c571e1643effe"
+    },
+    {
+      "path": "backend/tests/integration/test_import_recipe_basis.py",
+      "bytes": 17632,
+      "sha256": "cc5e7308012f836e048065bbb1ebbef999c599d99a049494dc3c5a6ae28b27aa"
+    },
+    {
+      "path": "backend/tests/integration/test_import_setup_stock.py",
+      "bytes": 23815,
+      "sha256": "6552fccb54d2d207d7d7808a2c20088cd63b5674eab6a08149d1dfd043a6b96c"
+    },
+    {
+      "path": "backend/tests/integration/test_import_source_reuse.py",
+      "bytes": 5119,
+      "sha256": "0567e79b20acec524ec2c0aabbf81a692a21822ddb7422c5b61c75cb10672e14"
+    }
+  ],
+  "links": [
+    {
+      "link": "../../010_FE_to_BE_API_Capability_Requests.md",
+      "file": "backend/010_FE_to_BE_API_Capability_Requests.md"
+    },
+    {
+      "link": "../IMPORT_MAPPING_API_CONTRACT_VI.md#preview-aggregates",
+      "file": "backend/docs/IMPORT_MAPPING_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../PROCUREMENT_API_CONTRACT_VI.md#history-captured-budget",
+      "file": "backend/docs/PROCUREMENT_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../IMPORT_MAPPING_API_CONTRACT_VI.md#preview-aggregates",
+      "file": "backend/docs/IMPORT_MAPPING_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../PROCUREMENT_API_CONTRACT_VI.md#history-captured-budget",
+      "file": "backend/docs/PROCUREMENT_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../IMPORT_MAPPING_API_CONTRACT_VI.md#schema-correction",
+      "file": "backend/docs/IMPORT_MAPPING_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../runbooks/FULL_TEST_FLOW.md",
+      "file": "backend/docs/runbooks/FULL_TEST_FLOW.md"
+    },
+    {
+      "link": "../../../backend-auth-self-service/docs/features/AUTH_SESSION.md#local-gmail-smokedemo-profile",
+      "file": "backend-auth-self-service/docs/features/AUTH_SESSION.md"
+    },
+    {
+      "link": "../IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "file": "backend/docs/IMPORT_MAPPING_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../PROCUREMENT_API_CONTRACT_VI.md#history-captured-budget",
+      "file": "backend/docs/PROCUREMENT_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../ROADMAP.md",
+      "file": "backend/docs/ROADMAP.md"
+    },
+    {
+      "link": "010_openapi_main.json",
+      "file": "backend/docs/handoff/010_openapi_main.json"
+    },
+    {
+      "link": "010_openapi_import-wip.json",
+      "file": "backend/docs/handoff/010_openapi_import-wip.json"
+    },
+    {
+      "link": "010_openapi_auth-wip.json",
+      "file": "backend/docs/handoff/010_openapi_auth-wip.json"
+    },
+    {
+      "link": "../API_CONTRACT.md",
+      "file": "backend/docs/API_CONTRACT.md"
+    },
+    {
+      "link": "../AUTHORIZATION_CONTRACT_VI.md",
+      "file": "backend/docs/AUTHORIZATION_CONTRACT_VI.md"
+    },
+    {
+      "link": "../IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "file": "backend/docs/IMPORT_MAPPING_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../PROCUREMENT_API_CONTRACT_VI.md",
+      "file": "backend/docs/PROCUREMENT_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../NOTIFICATION_API_CONTRACT_VI.md",
+      "file": "backend/docs/NOTIFICATION_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../DECISIONS.md",
+      "file": "backend/docs/DECISIONS.md"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/docs/adr/ADR-A1-observed-stockout-demand-policy.md",
+      "file": "backend-import-sales-stockout/docs/adr/ADR-A1-observed-stockout-demand-policy.md"
+    },
+    {
+      "link": "../../../backend-auth-self-service/docs/CURRENT_STATE.md",
+      "file": "backend-auth-self-service/docs/CURRENT_STATE.md"
+    },
+    {
+      "link": "../../../backend-auth-self-service/docs/ROADMAP.md",
+      "file": "backend-auth-self-service/docs/ROADMAP.md"
+    },
+    {
+      "link": "../../../backend-auth-self-service/docs/features/AUTH_SESSION.md",
+      "file": "backend-auth-self-service/docs/features/AUTH_SESSION.md"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/docs/CURRENT_STATE.md",
+      "file": "backend-import-sales-stockout/docs/CURRENT_STATE.md"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/docs/ROADMAP.md",
+      "file": "backend-import-sales-stockout/docs/ROADMAP.md"
+    },
+    {
+      "link": "../CURRENT_STATE.md",
+      "file": "backend/docs/CURRENT_STATE.md"
+    },
+    {
+      "link": "../features/IMPORT_SCHEMA_INVENTORY.md",
+      "file": "backend/docs/features/IMPORT_SCHEMA_INVENTORY.md"
+    },
+    {
+      "link": "../features/S411_FE_INTEGRATION.md",
+      "file": "backend/docs/features/S411_FE_INTEGRATION.md"
+    },
+    {
+      "link": "../CURRENT_STATE.md",
+      "file": "backend/docs/CURRENT_STATE.md"
+    },
+    {
+      "link": "../../008_Implementation_Receipt.md",
+      "file": "backend/008_Implementation_Receipt.md"
+    },
+    {
+      "link": "../../app/application/import_descriptors.py",
+      "file": "backend/app/application/import_descriptors.py"
+    },
+    {
+      "link": "../features/IMPORT_CANONICAL_COMMIT.md",
+      "file": "backend/docs/features/IMPORT_CANONICAL_COMMIT.md"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/api/auth.py",
+      "file": "backend-auth-self-service/app/api/auth.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/application/contracts/auth.py",
+      "file": "backend-auth-self-service/app/application/contracts/auth.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/application/use_cases/email_verification.py",
+      "file": "backend-auth-self-service/app/application/use_cases/email_verification.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/repositories/email_verification.py",
+      "file": "backend-auth-self-service/app/repositories/email_verification.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/alembic/versions/0018_email_verification.py",
+      "file": "backend-auth-self-service/alembic/versions/0018_email_verification.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/application/use_cases/password_reset.py",
+      "file": "backend-auth-self-service/app/application/use_cases/password_reset.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/repositories/password_reset.py",
+      "file": "backend-auth-self-service/app/repositories/password_reset.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/alembic/versions/0020_password_reset_delivery.py",
+      "file": "backend-auth-self-service/alembic/versions/0020_password_reset_delivery.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/application/use_cases/auth.py",
+      "file": "backend-auth-self-service/app/application/use_cases/auth.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/application/use_cases/email_verification_delivery.py",
+      "file": "backend-auth-self-service/app/application/use_cases/email_verification_delivery.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/application/use_cases/password_reset_delivery.py",
+      "file": "backend-auth-self-service/app/application/use_cases/password_reset_delivery.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/application/use_cases/durable_delivery.py",
+      "file": "backend-auth-self-service/app/application/use_cases/durable_delivery.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/infrastructure/email_verification_transport.py",
+      "file": "backend-auth-self-service/app/infrastructure/email_verification_transport.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/main.py",
+      "file": "backend-auth-self-service/app/main.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/tests/integration/test_email_verification.py",
+      "file": "backend-auth-self-service/tests/integration/test_email_verification.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/tests/integration/test_password_reset.py",
+      "file": "backend-auth-self-service/tests/integration/test_password_reset.py"
+    },
+    {
+      "link": "../../app/application/contracts/staff.py",
+      "file": "backend/app/application/contracts/staff.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/api/staff.py",
+      "file": "backend-auth-self-service/app/api/staff.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/application/contracts/staff.py",
+      "file": "backend-auth-self-service/app/application/contracts/staff.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/app/application/use_cases/staff.py",
+      "file": "backend-auth-self-service/app/application/use_cases/staff.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/alembic/versions/0022_invitation_decline.py",
+      "file": "backend-auth-self-service/alembic/versions/0022_invitation_decline.py"
+    },
+    {
+      "link": "../../../backend-auth-self-service/tests/api/test_invitation_decline_openapi.py",
+      "file": "backend-auth-self-service/tests/api/test_invitation_decline_openapi.py"
+    },
+    {
+      "link": "../../app/application/import_analysis.py",
+      "file": "backend/app/application/import_analysis.py"
+    },
+    {
+      "link": "../../app/application/use_cases/import_staging.py",
+      "file": "backend/app/application/use_cases/import_staging.py"
+    },
+    {
+      "link": "../../app/application/import_preview.py",
+      "file": "backend/app/application/import_preview.py"
+    },
+    {
+      "link": "../../tests/integration/test_import_source_reuse.py",
+      "file": "backend/tests/integration/test_import_source_reuse.py"
+    },
+    {
+      "link": "../../tests/integration/test_import_recipe_basis.py",
+      "file": "backend/tests/integration/test_import_recipe_basis.py"
+    },
+    {
+      "link": "../../tests/integration/test_import_setup_stock.py",
+      "file": "backend/tests/integration/test_import_setup_stock.py"
+    },
+    {
+      "link": "../../app/api/import_staging.py",
+      "file": "backend/app/api/import_staging.py"
+    },
+    {
+      "link": "../../app/application/contracts/import_mapping.py",
+      "file": "backend/app/application/contracts/import_mapping.py"
+    },
+    {
+      "link": "../IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "file": "backend/docs/IMPORT_MAPPING_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../ROADMAP.md",
+      "file": "backend/docs/ROADMAP.md"
+    },
+    {
+      "link": "../../app/infrastructure/import_parser.py",
+      "file": "backend/app/infrastructure/import_parser.py"
+    },
+    {
+      "link": "../../app/models/supplier.py",
+      "file": "backend/app/models/supplier.py"
+    },
+    {
+      "link": "../../app/application/use_cases/stock_writes.py",
+      "file": "backend/app/application/use_cases/stock_writes.py"
+    },
+    {
+      "link": "../../app/api/stock_writes.py",
+      "file": "backend/app/api/stock_writes.py"
+    },
+    {
+      "link": "../API_CONTRACT.md#today-operations",
+      "file": "backend/docs/API_CONTRACT.md"
+    },
+    {
+      "link": "../../app/api/history.py",
+      "file": "backend/app/api/history.py"
+    },
+    {
+      "link": "../../app/application/use_cases/planning_public.py",
+      "file": "backend/app/application/use_cases/planning_public.py"
+    },
+    {
+      "link": "../../app/application/contracts/history.py",
+      "file": "backend/app/application/contracts/history.py"
+    },
+    {
+      "link": "../PROCUREMENT_API_CONTRACT_VI.md",
+      "file": "backend/docs/PROCUREMENT_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../../app/api/planning_exports.py",
+      "file": "backend/app/api/planning_exports.py"
+    },
+    {
+      "link": "../../app/application/use_cases/planning_exports.py",
+      "file": "backend/app/application/use_cases/planning_exports.py"
+    },
+    {
+      "link": "../../app/api/staff.py",
+      "file": "backend/app/api/staff.py"
+    },
+    {
+      "link": "../../app/application/use_cases/staff.py",
+      "file": "backend/app/application/use_cases/staff.py"
+    },
+    {
+      "link": "../AUTHORIZATION_CONTRACT_VI.md#permission-requests",
+      "file": "backend/docs/AUTHORIZATION_CONTRACT_VI.md"
+    },
+    {
+      "link": "../NOTIFICATION_API_CONTRACT_VI.md#notification-v1",
+      "file": "backend/docs/NOTIFICATION_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../ROADMAP.md",
+      "file": "backend/docs/ROADMAP.md"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/docs/ROADMAP.md",
+      "file": "backend-import-sales-stockout/docs/ROADMAP.md"
+    },
+    {
+      "link": "../../../backend-auth-self-service/docs/ROADMAP.md",
+      "file": "backend-auth-self-service/docs/ROADMAP.md"
+    },
+    {
+      "link": "../../app/application/contracts/history.py",
+      "file": "backend/app/application/contracts/history.py"
+    },
+    {
+      "link": "../../app/application/contracts/planning_public.py",
+      "file": "backend/app/application/contracts/planning_public.py"
+    },
+    {
+      "link": "../PROCUREMENT_API_CONTRACT_VI.md#history-captured-budget",
+      "file": "backend/docs/PROCUREMENT_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../../app/application/import_commit.py",
+      "file": "backend/app/application/import_commit.py"
+    },
+    {
+      "link": "../../app/application/import_opening_stock.py",
+      "file": "backend/app/application/import_opening_stock.py"
+    },
+    {
+      "link": "../../app/application/use_cases/inventory.py",
+      "file": "backend/app/application/use_cases/inventory.py"
+    },
+    {
+      "link": "../../app/application/contracts/stock_writes.py",
+      "file": "backend/app/application/contracts/stock_writes.py"
+    },
+    {
+      "link": "../IMPORT_MAPPING_API_CONTRACT_VI.md#excel-actual-receipt",
+      "file": "backend/docs/IMPORT_MAPPING_API_CONTRACT_VI.md"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/app/models/sales_daily.py",
+      "file": "backend-import-sales-stockout/app/models/sales_daily.py"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/app/application/import_sales_groups.py",
+      "file": "backend-import-sales-stockout/app/application/import_sales_groups.py"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/app/application/forecast_demand.py",
+      "file": "backend-import-sales-stockout/app/application/forecast_demand.py"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/app/domain/forecasting/stockout.py",
+      "file": "backend-import-sales-stockout/app/domain/forecasting/stockout.py"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/tests/integration/test_import_stockout_a1.py",
+      "file": "backend-import-sales-stockout/tests/integration/test_import_stockout_a1.py"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/tests/integration/test_forecast_stockout_a1.py",
+      "file": "backend-import-sales-stockout/tests/integration/test_forecast_stockout_a1.py"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/tests/integration/test_planning_stockout_a1.py",
+      "file": "backend-import-sales-stockout/tests/integration/test_planning_stockout_a1.py"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/app/application/use_cases/import_history_write.py",
+      "file": "backend-import-sales-stockout/app/application/use_cases/import_history_write.py"
+    },
+    {
+      "link": "../../../backend-import-sales-stockout/app/models/import_history.py",
+      "file": "backend-import-sales-stockout/app/models/import_history.py"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { loadWireSource } from './wire-source.mjs'
 import { readFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -7,7 +8,7 @@ import { createHash } from 'node:crypto'
 // Business guards in planning.validation/data are intentionally not generated.
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const wire = readFileSync(resolve(root, 'src/features/decision-planning/planning.wire.ts'), 'utf8')
-const current = JSON.parse(readFileSync(resolve(root, 'api-contract-v2/generated/openapi.json'), 'utf8')).components.schemas
+const current = loadWireSource().components.schemas
 const frozen = Object.fromEntries([...wire.matchAll(/^  ("[^"]+"): (\{.*\}),$/gm)].map((match) => [JSON.parse(match[1]), JSON.parse(match[2])]))
 const identifier = (name) => `Wire${name.replace(/[^A-Za-z0-9_]/g, '_')}`
 

@@ -1,3 +1,4 @@
+import { ImportGuardHelp } from './ImportGuardHelp'
 import { useState } from 'react'
 import type { PreviewBundle, PreviewRow, SalesResolution, SupplierConfirmation, MappingSummary } from '../importFlow.types'
 import { ImportPreviewExplorer } from './ImportPreviewExplorer'
@@ -28,7 +29,7 @@ export function ImportPreview({ mapping,stage = 'all', bundle, busy, locked, blo
     {stage !== 'preview' && <>
     <header><h2>Kiểm tra trước khi nhập</h2><p>Bước 4/5 · Review xác nhận thay đổi sẽ ghi. Chưa ghi dữ liệu nghiệp vụ.</p></header>
     <div className="sc-preview-review-summary">{summary.groups.map(g=><div key={g.canonical_domain+g.required_write_action}><span>{previewDomainLabels[g.canonical_domain]}</span><strong>{g.row_count}</strong><small>{g.planned_insert_count} thêm · {g.planned_update_count} cập nhật · {g.no_op_count} không đổi · {g.blocked_count} chặn</small></div>)}</div>
-    <section className="import-flow__card"><h3>Cần chú ý</h3>{[...summary.blockers,...summary.warnings].map((n,i)=><p key={n.code+i}>{n.severity==='ERROR'?'Chặn':'Cảnh báo'}: {n.message}</p>)}{!summary.blockers.length&&!summary.warnings.length&&<p>Không có cảnh báo hoặc lỗi chặn toàn snapshot.</p>}</section>
+    <section className="import-flow__card"><h3>Cần chú ý</h3><ImportGuardHelp codes={summary.blockers.map(n=>n.code)}/>{[...summary.blockers,...summary.warnings].map((n,i)=><p key={n.code+i}>{n.severity==='ERROR'?'Chặn':'Cảnh báo'}: {n.message}</p>)}{!summary.blockers.length&&!summary.warnings.length&&<p>Không có cảnh báo hoặc lỗi chặn toàn snapshot.</p>}</section>
     <section className="import-flow__card" aria-labelledby="import-review-title">
       <h3 id="import-review-title">1. Xác nhận đã review snapshot</h3>
       <p>Xác nhận này được lưu trên máy chủ cho đúng nguồn, mapping và preview. Chưa ghi dữ liệu nghiệp vụ.</p>

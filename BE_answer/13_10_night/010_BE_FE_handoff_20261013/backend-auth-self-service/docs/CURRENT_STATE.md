@@ -1,0 +1,192 @@
+# Current state
+
+CURRENT FACT: isolated local Gmail smoke is SMTP-accepted (one non-token email to
+the configured username); inbox arrival is confirmed by the user. No further
+smoke email is authorized. Auth demo uses its own
+DB/role `shelfcash_auth_demo` at5434 and HTTPS backend8102, with only email delivery
+enabled. HTTPS health/CORS and graceful shutdown were exercised on the empty DB.
+The Gmail demo is retained at its B2 schema; B3/B4 migrations are applied only to the
+guarded Auth acceptance DB. A demo restart using current source requires a separately
+authorized demo upgrade; this slice neither migrates nor resets that database.
+Real credential-email/browser acceptance remains unverified: the inspected FE
+lacks signup/verify/setup/forgot/reset pages/adapters and HTTPS setup. Scope is
+BE only; the BE launcher neither configures nor starts FE. Account workflow email to
+the configured test username is authorized. See
+[Auth local demo instructions](features/AUTH_SESSION.md#local-gmail-smokedemo-profile).
+
+## CURRENT FACT — source B1/B2/B3/B4 trên nền v1.0, 13/10/2026
+
+The source composes 58 core HTTP operations plus health (59 operations/55 paths).
+Alembic has one Auth head `0023_auth_permissions_v3`; registered metadata has 63 application
+tables. This source inventory is not proof of the schema/data in a running DB.
+CURRENT FACT B4: backend/fake-delivery acceptance is COMPLETE / VERIFIED on
+shelfcash_auth_test/shelfcash_auth_tester. Linked HTTP flows cover verified and
+not-yet-registered invitees, exact grants/live revocation, two-Store isolation,
+decline/new identity and password-reset session revocation, with fresh-session reads.
+Catalogue v3/43 descriptors exactly matches Import A2 and retains all37 v2
+descriptors; existing Staff receives no automatic grants. Additive Auth0023 extends
+only the grants CHECK, preserves pending/token/membership state, and refuses unsafe
+downgrade. Pending invitation delivery also recovers in a fresh fake-delivery process.
+Affected Auth/Staff/API/schema regressions passed. No new route: N19 const:true
+corrects its schema while keeping strict consent. The Import0021 CHECK overlap is
+an explicit central BE merge concern, not a head merge performed here. Browser and
+real credential-email workflow acceptance remain pending; targeted results are not
+a new full-suite pass. Coverage and commands belong to the existing runbook.
+CURRENT FACT B3: backend/fake-delivery acceptance is COMPLETE on
+shelfcash_auth_test/shelfcash_auth_tester. Fresh-session state proves decline gives
+no membership/grants/access; targeted tests cover token/proof/authority/expiry/CAS,
+Origin/CSRF, replay/key conflict, rollback/lost acknowledgment, accept/decline/revoke
+races, terminal offer/filter/events and later new-invitation acceptance. Related
+invitation/B1/B2/session and migration/schema regressions passed after fixture and
+route-inventory fixes. This is targeted coverage, not a fresh full-suite pass.
+
+| Area | Implemented source and relevant acceptance coverage |
+| --- | --- |
+| Auth/Store/Staff | B1 signup/verify/resend and B2 forgot/reset with no automatic membership, cookie sessions, current Store grants, assisted setup, invitations/consent/audit; auth/staff API and persistence tests |
+| Catalog/Inventory | Menu, live recipes, inventory/lots/movements, receipt/opening/threshold and future recipe calendar; public-read/stock/schedule tests |
+| Import | Upload quota/seal/ACK, parser, typed descriptors/manual mappings, Owner profile approval, preview/confirm_review, nine-schema atomic commit, completion/history; Import API/unit/persistence tests |
+| Forecast/Planning | Baseline/trained serving, explicit versioned configuration, readiness, durable acceptance/capture/worker, BOM/FEFO/procurement/2/comparison/winner, retained reads; forecast/planning tests |
+| Retained/PDF | Ingredient/detail/reasons, Run/Import history, durable private PDF publication/download with current rights and hash/size proof; inspection/history/export durability tests |
+
+Composition: `app/main.py`; one backend process with independent default-OFF
+Import, Planning, PDF and account-email delivery thread flags. B1 atomically stores
+unverified account/token/encrypted intent, then dispatches outside transactions using
+the invitation dispatch loop. Completion verifies email and sets holder password
+without issuing a session. B2 reuses RESET credential tokens and N7; requests
+preserve credentials/sessions, completion atomically changes the password and
+revokes all account sessions. B3 adds holder decline through IN01 with atomic terminal/event/receipt and no
+membership/grants/Store access; Store creation remains outside these slices. Backend B1/B2 acceptance is COMPLETE with fake delivery on the isolated
+`shelfcash_auth_test` database using role `shelfcash_auth_tester`. Coverage includes
+fresh-session state, delivery recovery in a new process, token lifecycle, retry,
+concurrency and auth/session/invitation regressions. Real credential-email workflows and browser delivery
+remain unverified; the separate Gmail non-token smoke is inbox-confirmed. Configuration/FE flow:
+[Auth feature](features/AUTH_SESSION.md). No automatic migration/reset/seed, model
+activation, paid provider, order placement or customer selection persistence.
+
+## CURRENT FACT ? local workflow and acceptance limits
+
+The supported S4.11 environment uses `shelfcash_integration_s411` on port5433,
+owned private runtime and explicit per-Store BASELINE. Automated persistence tests
+own explicitly allowlisted `shelfcash_test`, `shelfcash_import_test` or `shelfcash_auth_test`; neither target is the development database.
+See [the runbook](runbooks/FULL_TEST_FLOW.md).
+
+CURRENT FACT: người dùng đã thử FE thật thành công ít nhất tới mapping lần đầu.
+Điều này chưa chứng minh toàn browser flow import/planning end-to-end thành công.
+HISTORICAL INFORMATION: tag `v1.0` tại `cf6732e` giữ discovery lấy dòng đầu làm
+header, đã push cùng nhánh `feat/from_forecast_to_decision_run`.
+CURRENT FACT trên `feat/import_mapping_rules`: discovery nhận diện header trong
+tám dòng đầu sau preamble đơn cột, giữ raw preamble/header và số dòng vật lý;
+controlled aliases, indexed candidates/reasons, Owner full-spec group review,
+approved-profile reuse và cảnh báo drift theo scope đã khai báo. Lần đầu vẫn cần
+nguồn/định danh/conventions và xử lý mọi cột mơ hồ/ngoài phạm vi. Không auto-approval.
+Adapter OpenRouter có bounded semantic candidates/reasons, safe diagnostics,
+configurable sample/token/timeout/provider bounds và stale mapping publication fence.
+Cần opt-in mặc định OFF và key. Live gateway probe trên POS demo qua Qwen3.5-9B /
+DeepInfra đã trả proposal hợp lệ: SLX → sales.quantity, giữ hai target RULE, bốn
+cột ngoài schema để null; không activate profile/commit. HTTP/DB lifecycle tests
+vẫn dùng mock; một live probe không chứng minh whole browser flow hoặc reliability.
+M04 EXCEL_SERIAL + workbook epoch cho Owner duyệt deterministic date-only normalization;
+không tạo count/receipt timestamp. Header reorder/epoch change là profile drift;
+profile XLSX cũ thiếu epoch cần review lại. Unknown/unsupported/README không tự IGNORE;
+atomic commit và permissions giữ nguyên. Sáu workbook gốc không bị sửa; 21/72 cột
+nghiệp vụ có target rules, 51 còn unresolved/ngoài workflow, 2 cột README chỉ ignore hints.
+Chi tiết/giới hạn tại [Import feature](features/IMPORT_STAGING_PREVIEW.md).
+
+CURRENT FACT: đối chiếu [legacy handoff](../IMPORT_SCHEMA_LEGACY_HANDOFF_VI.md) và
+current source xác nhận cả chín import schemas có canonical writers; core gaps cần
+tách source resolution, consumer và readiness khỏi registry/mapping coverage.
+Recipe per-serving/batch đã có explicit quantity_basis column/shared resolution,
+exact whole-yield normalization, source-value/line-basis provenance và old-profile
+review guard. Existing writer/BOM/readiness dùng canonical values; không migration,
+loss vẫn áp một lần ở BOM. Supplier price/MOQ có explicit source basis, denominator
+quantity/unit, exact pack price và physical MOQ ceil; source/canonical DTO tách riêng,
+preview/completion giữ semantics/raw/declaration/rule chains. Old profiles thiếu basis
+cần review; fees thuộc preview read-set. Coverage tại term start không thay horizon
+readiness. Excel opening_stock đã nối InventoryUseCases writer và receipt identity
+của N6; inventory_count giữ target/delta trên existing lots. Whole-batch dependencies
+gồm master rows/reservations, nested declaration bindings và current scoped completeness
+nối operational/2 capture. Analyze không auto-bind từ signature; M04 source
+declaration trước compatible reuse, unknown row identity không tự fork profile.
+Recipe cùng Product/version qua nhiều sheets bị RECIPE_SOURCE_SCOPE_AMBIGUOUS;
+split-part grain chưa hỗ trợ. Fresh Store public intake/custom Planning không seed
+business entities; R01 vẫn unknown nếu default configuration chưa có. Explicit EMPTY
+với retained zero lots dùng được ở operational/2; historical /1 giữ semantics cũ.
+Legacy stockout có consumer forecast
+thật theo source; bản mới chưa có observation/forecast chain tương ứng và giữ nó ở
+lát tiếp theo riêng. Sáu workbook là acceptance inputs, không schema authority.
+Đối chiếu legacy là static source audit, không chạy legacy runtime. Recipe source
+acceptance dùng synthetic public flow/guarded PostgreSQL test, fresh-session read,
+dated BOM và recipe-dependency readiness; Supplier acceptance dùng fresh-session term
+read, exact fixed-basket budget/MOQ oracle, public planning capture/retained Run và
+fee readiness. Không real-provider/whole FE acceptance.
+Danh mục và trace thuộc [Import schema inventory](features/IMPORT_SCHEMA_INVENTORY.md).
+
+HISTORICAL INFORMATION: prior S4.11 verification recorded API/native-worker/fresh-
+session/PDF/restart gates and twelve current-screen Edge gates. Those are previous
+results, not a new run. Current FE has Import mapping/preview/confirm/commit and
+planning C01-C05/C08 source. Whole mapping browser continuation remains NOT_RUN;
+PDF and planning-history UI remain incomplete. S4.11 stays PARTIAL; API acceptance
+cannot certify the whole UI. No FE repository changes are part of cleanup.
+
+## TECHNICAL DEBT / known discrepancies
+
+- [Historical review TD-BE-001–013](../008_TechDebt.md): Store-wide mapping
+  queue, supplier discovery, detailed preview projections, export discovery và
+  Today facts chưa có public capability tương ứng. V01 canonical Ingredient paging,
+  M02 auto filter/batch counters và C01 budget absence/create đã có source contract;
+  không đồng nghĩa FE integration acceptance hoặc deployment đã xác minh.
+- CURRENT FACT B4: N19 structural drift is corrected with const:true and strict
+  validation; B3 implements decline separately through IN01. Historical review
+  status outside this worktree does not override these source/test facts.
+- Cold deep retained validation measured about13s for a synthetic50-Product Run;
+  this is historical diagnostic evidence, not a capacity/SLA guarantee.
+- Privileged SQL/tracked ORM can bypass some internal application guards. Public
+  authorization does not retroactively turn trusted internal commands into public APIs.
+- Real-data forecast accuracy and long-term retention/operational purge are not
+  evaluated/approved. Model artifacts and operational private resources are preserved.
+
+## CURRENT FACT - authorized contract/query-boundary repair, 2026-10-12
+
+ADR-013 permits authorized self-approval and remains ACCEPTED, not superseded.
+Current Owner-only reusable-profile approval/activation implements the detailed
+product authority; Staff may propose, and batch confirmation/commit separately
+recheck current rights. Original unimplemented ADR status is historical.
+
+Import history, public Planning, Planning worker and PDF query access now lives
+in concrete repositories using the caller Session. Application retains authority,
+transactions, locks, idempotency and recovery orchestration. Recipe adapter fakes
+explicitly filter assignment/Store/Product; Money tests distinguish new-input
+bounds, numeric-equivalent NO_OP and exact retained evidence. Independent API
+inventories include current inspection/export/history paths and GET methods.
+Full-suite collection uses importlib and qualified shared-fixture imports to
+retain both unit/integration PlanningRun modules with identical basenames.
+Real Planning/PDF process test targets use a fixture-free helper module for
+Windows spawn; service calls, DB guards and original waits remain unchanged.
+No API, schema, permission, business calculation or worker policy changed.
+Verification outcomes and limits are reported in the conversation.
+
+## CURRENT FACT ? documentation/tooling ownership
+
+Shared API conventions and Catalog/Inventory now belong to API_CONTRACT, with
+three independent Authorization/Import/Planning contracts. Original10/10 OpenAPI
+bytes, archive/entry provenance and pinned hashes survive as a fixture and the
+compatibility changelog. Browser dependency manifests belong in scripts/browser.
+Routine outputs use ignored runtime/verification; canonical source, fixtures and
+business audit/provenance are kept. No cleanup changes to business APIs/algorithms/
+schema are authorized. Exact current verification is reported in the conversation,
+not accumulated here as a PASS log.
+
+## HISTORICAL INFORMATION — cleanup verification, 2026-10-12
+
+On isolated local shelfcash_test, the selected unit/API/public-planning/export
+run returned 1039 passed, 15 failed, 2 skipped. This is not a full-suite pass.
+Observed failures: application query boundary (1), obsolete recipe-repository
+mocks missing assigned_only (11), fee precision expectation beyond current
+input limit (1), outdated exhaustive OpenAPI inventories (2). Product source and
+these tests were hash-identical to the pre-cleanup worktree; none was weakened.
+This establishes unchanged related files, not reproduction of all 15 failures
+immediately before cleanup or equivalence of the entire test environment.
+Tooling tests pass (20). Real native HTTP import/commit/readiness/planning/retained
+PDF, current-rights/replay/negative cases and same-cookie restart passed against
+a separate test profile, with fresh-session persistence assertions. This evidence
+does not establish whole FE UI acceptance or real forecast quality.

@@ -1,4 +1,4 @@
-// Generated from api-contract-v2/generated/openapi.json. Run node scripts/check-operations-wire.mjs --write.
+// Generated from contracts/011/openapi.main.json. Run node scripts/check-operations-wire.mjs --write.
 export type JsonValue = null | boolean | number | string | JsonValue[] | { [key: string]: JsonValue }
 export type WireAcceptInvitation = { "token": string; "accept": boolean }
 export type WireAcceptanceReceipt = { "invitation_id": string; "invitation_version_at_acceptance": string; "store_id": string; "membership_id": string; "role"?: "STAFF"; "accepted_grants": (string)[]; "authorization_version_at_acceptance": string; "accepted_at": string; "event_id": string; "next_action"?: "refresh_store_context" }

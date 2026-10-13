@@ -80,7 +80,7 @@ test('classification offers only returned schema catalogue and explicit whole-sh
 
 test('source context exposes typed optional semantics and explicit period amendments', () => {
   const html = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('source_context'), options, disabled: false, onResolve: noop }))
-  for (const text of ['Mã hệ thống nguồn', 'Mã loại báo cáo', 'daily_total', 'disjoint_contribution', 'lot_stock_count', 'DMY_SLASH', 'PER_PACK', 'Supplier term', 'Payable fee']) assert.ok(html.includes(text), text)
+  for (const text of ['Mã hệ thống nguồn', 'Mã loại báo cáo', 'daily_total', 'disjoint_contribution', 'lot_stock_count', 'DMY_SLASH', 'EXCEL_SERIAL', 'price_basis', 'moq_basis', 'Supplier term', 'Payable fee']) assert.ok(html.includes(text), text)
   assert.match(html, /Không tự động đóng kỳ lịch sử/)
   assert.match(html, /disabled=""[^>]*>Lưu ngữ cảnh nguồn/)
 })
@@ -132,7 +132,7 @@ test('Owner review uses exact profile/version baseline, never substitutes unrela
   assert.match(matched, /lifecycle-v3/)
 })
 
-const renderPreview = (page = { limit: 50, next_cursor: null, total_count: 1 }, stale = false) => {
+const renderPreview = (page = { limit: 50, next_cursor: null, total_count: 1 }, stale = false, serverBlockers = []) => {
   const location = { file_id: id(2), sheet_id: id(3), row_number: 2 }
   const row = { row_id: id(40), source_location: location, classification: 'CHANGED', proposed_action: 'AMEND_TERM_PERIOD',
     canonical_domain: 'supplier_terms', entity_refs: { supplier_term_id: id(41) }, before: null, after: null,
@@ -147,7 +147,7 @@ const renderPreview = (page = { limit: 50, next_cursor: null, total_count: 1 }, 
     preview: { summary: { preview_id: id(43), digest: 'opaque-preview-digest', created_at: '2026-10-11T01:00:00Z',
       source_set_version: 'source-v1', mapping_bindings: [], policy_version: 'import_mapping_policy/1', mode: 'atomic',
       validation_status: 'confirmation_required', can_commit: false, required_actions: ['supplier.terms.correct'], groups: [],
-      counts: { CHANGED: 1 }, blockers: [], warnings: [], confirmed_resolutions_version: null }, rows: [row], rows_page: page, stale },
+      counts: { CHANGED: 1 }, blockers: serverBlockers, warnings: [], confirmed_resolutions_version: null }, rows: [row], rows_page: page, stale },
     configurations: { suppliers: [], terms: [], fees: [], declarations: [], preview_id: id(43), preview_digest: 'opaque-preview-digest',
       blocked_row_ids: [], rows_page: page, analysis_rows: [], basis: 'preview', stale } }
   return renderToStaticMarkup(createElement(ImportPreview, { bundle, busy: false, locked: false,
@@ -173,4 +173,16 @@ test('preview UI exposes nested source, configuration projections and exact supp
   assert.match(html, /1\. Xác nhận đã review snapshot/)
   assert.match(html, /2\. Xác nhận ghi toàn bộ lô/)
   assert.match(html, /disabled=""[^>]*>Ghi nguyên tử toàn bộ lô/)
+})
+
+
+test('source/recipe scope guards explain recovery without enabling whole-batch commit', () => {
+  const html = renderPreview(undefined, false, [
+    {code:'SOURCE_CONTEXT_REQUIRED',severity:'ERROR',message:'Source declaration required'},
+    {code:'RECIPE_SOURCE_SCOPE_AMBIGUOUS',severity:'ERROR',message:'Ambiguous recipe source scope'},
+  ])
+  assert.match(html,/xác nhận nguồn, loại báo cáo và bằng chứng/)
+  assert.match(html,/chưa hỗ trợ ghép các phần qua nhiều file\/Sheet/)
+  assert.match(html,/Lỗi chặn toàn lô/)
+  assert.match(html,/disabled=""[^>]*>Ghi nguyên tử toàn bộ lô/)
 })
