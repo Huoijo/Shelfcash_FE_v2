@@ -49,7 +49,7 @@ const renderMapping = (overrides = {}) => renderToStaticMarkup(createElement(Imp
 test('mapping UI joins flat files/top-level sheets, escapes evidence and never fabricates filter counts', () => {
   const html = renderMapping()
   assert.match(html, /Joined Sheet/)
-  assert.match(html, /12\s*\/\s*17/)
+  assert.doesNotMatch(html, /Tiến độ toàn lô từ máy chủ|filter_counts/)
   assert.match(html, /120 dòng/)
   assert.match(html, /&lt;script&gt;unsafe\(\)&lt;\/script&gt;/)
   assert.doesNotMatch(html, /<script>|<img src=x/)
@@ -60,48 +60,48 @@ test('mapping UI joins flat files/top-level sheets, escapes evidence and never f
 
 test('read-only mapping still renders catalogue and descriptor semantics without granting mutations', () => {
   const html = renderMapping({ canPropose: false })
-  assert.match(html, /Bạn đang xem chỉ đọc/)
-  assert.match(html, /Schema nhãn từ BE/)
+  assert.match(html, /Bạn chỉ có quyền xem/)
+  assert.doesNotMatch(html, /Catalogue schema từ máy chủ/)
   assert.match(html, /Mô tả exact descriptor/)
   assert.match(html, /Bắt buộc/)
-  assert.match(html, /Cho phép null/)
+  assert.doesNotMatch(html, /Cho phép null|unsupportedFields/)
   assert.match(html, /disabled=""[^>]*>Xác nhận/)
 })
 
 test('classification offers only returned schema catalogue and explicit whole-sheet IGNORE', () => {
   const html = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('classification'), options, disabled: false, onResolve: noop }))
-  assert.match(html, /Schema nhãn từ BE/)
-  assert.match(html, /IGNORE — Không nhập dữ liệu của Sheet này/)
+  assert.doesNotMatch(html, /Catalogue schema từ máy chủ/)
+  assert.match(html, /value="IGNORE">Không nhập dữ liệu của Sheet này/)
   assert.match(html, /Lý do phân loại hoặc bỏ qua/)
-  assert.match(html, /Staff được IGNORE toàn Sheet của chính batch mình/)
+  assert.doesNotMatch(html, /Staff được IGNORE|business-required/)
   assert.doesNotMatch(html, /value="recipes"|value="inventory_count"/)
   assert.match(html, /disabled=""[^>]*>Lưu loại dữ liệu/)
 })
 
 test('source context exposes typed optional semantics and explicit period amendments', () => {
   const html = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('source_context'), options, disabled: false, onResolve: noop }))
-  for (const text of ['Mã hệ thống nguồn', 'Mã loại báo cáo', 'daily_total', 'disjoint_contribution', 'lot_stock_count', 'DMY_SLASH', 'EXCEL_SERIAL', 'price_basis', 'moq_basis', 'Supplier term', 'Payable fee']) assert.ok(html.includes(text), text)
+  for (const text of ['Hệ thống nguồn', 'Loại báo cáo', 'daily_total', 'disjoint_contribution', 'lot_stock_count', 'DMY_SLASH', 'EXCEL_SERIAL', 'Giá và MOQ', 'Supplier term', 'Payable fee']) assert.ok(html.includes(text), text)
   assert.match(html, /Không tự động đóng kỳ lịch sử/)
   assert.match(html, /disabled=""[^>]*>Lưu ngữ cảnh nguồn/)
 })
 
 test('identity/conversion/ignored forms expose exact supported inputs, not arbitrary JSON mutation', () => {
   const identity = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('identity'), disabled: false, onResolve: noop }))
-  assert.match(identity, /Canonical ID \(UUID lowercase\)/)
+  assert.match(identity, /Mã đối tượng/)
   assert.match(identity, /Đề xuất tạo đối tượng mới/)
   const conversion = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('conversion'), disabled: false, onResolve: noop }))
   assert.match(conversion, /Tử số/)
   assert.match(conversion, /Mẫu số/)
-  assert.match(conversion, /exact decimal string/)
+  assert.match(conversion, /Không tự làm tròn/)
   const ignored = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue(), disabled: false, onResolve: noop }))
-  assert.match(ignored, /Đề xuất ignored optional binding/)
+  assert.match(ignored, /Bỏ qua cột không bắt buộc/)
   assert.match(ignored, /Đề xuất này vẫn cần Owner duyệt/)
   assert.doesNotMatch(identity + conversion + ignored, /placeholder=".*JSON|JSON editor/i)
 })
 
 test('shared editor is available even on source-context issue and explicitly separates false/zero/null', () => {
   const html = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('source_context'), options, disabled: false, onResolve: noop }))
-  for (const text of ['Phạm vi', 'Chọn phạm vi', 'Boolean', 'Integer int32', 'null — giá trị null rõ ràng', 'false, 0 và null', 'Chuyển nguồn từ cột đã ghép sang shared value']) assert.ok(html.includes(text), text)
+  for (const text of ['Phạm vi', 'Chọn phạm vi', 'Có / Không', 'Số nguyên', 'Chưa xác định', 'Không, 0 và chưa xác định', 'Dùng giá trị khai báo thay cho cột nguồn']) assert.ok(html.includes(text), text)
   assert.match(html, /disabled=""[^>]*>Lưu giá trị đã khai báo/)
 })
 
@@ -110,26 +110,26 @@ test('Staff can inspect full proposed evidence but sees no Owner decision action
   const html = renderToStaticMarkup(createElement(ImportProfileReview, { summary: value, busy: false, locked: false, canDecide: false, onDecision: noop }))
   assert.match(html, /FULL_PROPOSED_EVIDENCE/)
   assert.match(html, /evidence:FULL_PROPOSED_EVIDENCE/)
-  assert.match(html, /Bạn không phải Owner/)
-  assert.doesNotMatch(html, />Duyệt và kích hoạt profile<|>Từ chối đề xuất<|>Retire active version</)
+  assert.match(html, /Đề xuất được giữ lại để Owner xem và quyết định/)
+  assert.doesNotMatch(html, />Duyệt profile<|>Từ chối đề xuất<|>Ngừng sử dụng profile</)
 })
 
 test('Owner review uses exact profile/version baseline, never substitutes unrelated approved spec', () => {
   const value = summary(); value.profile_proposals = [proposal('approved/1')]
   value.approved_profiles = [{ binding: { sheet_id: id(3), profile_id: id(50), version: 'approved/1', content_digest: 'opaque' }, spec: spec('UNRELATED_BASELINE') }]
   const missing = renderToStaticMarkup(createElement(ImportProfileReview, { summary: value, busy: false, locked: false, canDecide: true, onDecision: noop }))
-  assert.match(missing, /Chưa nhận được approved spec đúng profile và active version/)
+  assert.match(missing, /Chưa tải đủ cách đọc đã duyệt để so sánh/)
   assert.doesNotMatch(missing, /UNRELATED_BASELINE/)
-  assert.match(missing, /disabled=""[^>]*>Duyệt và kích hoạt profile/)
+  assert.match(missing, /disabled=""[^>]*>Duyệt profile/)
   value.approved_profiles[0].binding.profile_id = id(5)
   value.approved_profiles[0].spec = spec('MATCHED_FULL_BASELINE')
   const matched = renderToStaticMarkup(createElement(ImportProfileReview, { summary: value, busy: false, locked: false, canDecide: true, onDecision: noop }))
   assert.match(matched, /MATCHED_FULL_BASELINE/)
   assert.match(matched, /FULL_PROPOSED_EVIDENCE/)
-  assert.doesNotMatch(matched, /Chưa nhận được approved spec đúng profile và active version/)
+  assert.doesNotMatch(matched, /Chưa tải đủ cách đọc đã duyệt để so sánh/)
   // An initial render has no deliberate review checkbox/reason; no autoapproval.
-  assert.match(matched, /disabled=""[^>]*>Duyệt và kích hoạt profile/)
-  assert.match(matched, /lifecycle-v3/)
+  assert.match(matched, /disabled=""[^>]*>Duyệt profile/)
+  assert.doesNotMatch(matched, /lifecycle-v3/)
 })
 
 const renderPreview = (page = { limit: 50, next_cursor: null, total_count: 1 }, stale = false, serverBlockers = []) => {
@@ -165,16 +165,15 @@ test('preview UI review checkbox remains disabled until complete same-pin nonsta
   assert.doesNotMatch(reviewCheckbox(renderPreview()), /disabled=/)
 })
 
-test('preview UI exposes nested source, configuration projections and exact supplier action ID', () => {
+test('preview UI keeps business confirmation and isolates raw source/configuration/action IDs from product content', () => {
   const html = renderPreview()
-  for (const text of ['EXACT_NESTED_EVIDENCE', 'term.component[0]', 'expected-term-v1', 'supplier.terms.correct',
-    '123456789012345678.123456789012345678', 'nguồn lồng nhau', 'không phải toàn bộ cấu hình Store', 'Action ID:']) assert.ok(html.includes(text), text)
-  assert.ok(html.includes(id(40)))
-  assert.match(html, /1\. Xác nhận đã review snapshot/)
+  for (const text of ['EXACT_NESTED_EVIDENCE','term.component[0]','expected-term-v1','supplier.terms.correct','Action ID:']) assert.ok(!html.includes(text),text)
+  assert.ok(!html.replace(/<[^>]*>/g,'').includes(id(40)))
+  assert.match(html, /1\. Xác nhận đã kiểm tra dữ liệu/)
   assert.match(html, /2\. Xác nhận ghi toàn bộ lô/)
-  assert.match(html, /disabled=""[^>]*>Ghi nguyên tử toàn bộ lô/)
+  assert.match(html, /Lý do thay đổi/)
+  assert.match(html, /disabled=""[^>]*>Xác nhận và nhập dữ liệu/)
 })
-
 
 test('source/recipe scope guards explain recovery without enabling whole-batch commit', () => {
   const html = renderPreview(undefined, false, [
@@ -184,5 +183,5 @@ test('source/recipe scope guards explain recovery without enabling whole-batch c
   assert.match(html,/xác nhận nguồn, loại báo cáo và bằng chứng/)
   assert.match(html,/chưa hỗ trợ ghép các phần qua nhiều file\/Sheet/)
   assert.match(html,/Lỗi chặn toàn lô/)
-  assert.match(html,/disabled=""[^>]*>Ghi nguyên tử toàn bộ lô/)
+  assert.match(html,/disabled=""[^>]*>Xác nhận và nhập dữ liệu/)
 })

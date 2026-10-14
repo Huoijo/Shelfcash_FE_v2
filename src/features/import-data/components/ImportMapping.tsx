@@ -1,8 +1,12 @@
+import { DebugContent, DebugValue } from '../../../shared/debug/DevelopmentTools'
+import { businessField, schemaLabel, sourceLabel, reportLabel, importMessage } from '../importPresentation'
+import { ImportBusinessFacts } from './ImportBusinessFacts'
+import { resolutionGroup, type ResolutionGroup } from '../importExperience'
 import { useId, useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { ActiveIndicator } from '../../../shared/motion/ActiveIndicator'
 import { uiTransition } from '../../../shared/motion/motion'
-import type { MappingIssue, MappingOption, MappingOptions, MappingQueue, MappingResolution, MappingStatus, MappingSummary, ProfileDecisionRequest } from '../importFlow.types'
+import type { MappingIssue, MappingOption, MappingOptions, MappingQueue, MappingResolution, MappingStatus, MappingSummary, MappingProfileSpec, ProfileDecisionRequest } from '../importFlow.types'
 import { ImportResolutionEditor } from './ImportResolutionEditor'
 
 const statusLabels: Record<MappingStatus, string> = {
@@ -11,14 +15,15 @@ const statusLabels: Record<MappingStatus, string> = {
 }
 const issueLabels: Record<MappingIssue['issue_type'], string> = {
   column: 'Ghép cột', classification: 'Loại dữ liệu của Sheet', source_context: 'Ngữ cảnh nguồn',
-  identity: 'Nhận diện đối tượng', conversion: 'Quy đổi đơn vị', schema_blocker: 'Dữ liệu / schema bị chặn',
+  identity: 'Nhận diện đối tượng', conversion: 'Quy đổi đơn vị', schema_blocker: 'Dữ liệu bị chặn',
 }
 
 export function Evidence({ value, label = 'Chi tiết từ máy chủ' }: { value: unknown; label?: string }) {
-  return <details><summary>{label}</summary><pre>{JSON.stringify(value, null, 2)}</pre></details>
+  return <DebugValue label={label} value={value} />
 }
 
 type Props = {
+  category?: ResolutionGroup | 'all'
   summary: MappingSummary
   queue: MappingQueue | null
   selectedSheetId: string | null
@@ -44,7 +49,7 @@ export function ImportMapping(props: Props) {
   const selectedSheet = summary.sheets.find((sheet) => sheet.sheet_id === props.selectedSheetId)
   const sheetOptions = props.selectedSheetId ? props.options[props.selectedSheetId] : undefined
   return <>
-    <div className="import-mapping-progress">
+    <DebugContent><div className="import-mapping-progress">
       <dl aria-label="Tiến độ toàn lô từ máy chủ">
         <div><dt>mục được phát hiện</dt><dd>{summary.progress.total_fields}</dd></div>
         <div><dt>đã xử lý</dt><dd>{summary.progress.completed_fields}</dd></div>
@@ -56,31 +61,26 @@ export function ImportMapping(props: Props) {
           animate={{ scaleX: summary.progress.total_fields ? Math.min(1, summary.progress.completed_fields / summary.progress.total_fields) : 0 }}
           transition={reducedMotion ? { duration: 0 } : uiTransition} /></div></div>
     </div>
-    <div className="import-flow__layout">
+    </DebugContent><div className="import-flow__layout">
       <nav className="import-flow__navigator" aria-label="File và Sheet của lô">
         <header><h3>File / Sheet</h3><p className="import-flow__muted">{summary.files.length} file · {summary.sheets.length} sheets</p></header>
         {summary.files.map((file, index) => <details className="import-mapping-file" open key={file.file_id ?? file.client_file_id ?? `file-${index}`}>
           <summary>{file.filename}</summary>
           <ul>{summary.sheets.filter((sheet) => sheet.file_id === file.file_id).map((sheet) => <li key={sheet.sheet_id}>
             <button type="button" disabled={busy || locked} aria-current={props.selectedSheetId === sheet.sheet_id ? 'true' : undefined} onClick={() => props.onSelectSheet(sheet.sheet_id)}>
-              {sheet.name}<br /><span className="import-flow__muted">{sheet.row_count} dòng · {sheet.ignored ? 'Bỏ qua Sheet' : sheet.selected_type ?? 'Chưa chọn loại dữ liệu'}</span>
+              {sheet.name}<br /><span className="import-flow__muted">{sheet.row_count} dòng · {sheet.ignored ? 'Bỏ qua Sheet' : schemaLabel(sheet.selected_type)}</span>
             </button>
           </li>)}</ul>
         </details>)}
       </nav>
       <section className="import-flow__queue" aria-label="Các mục cần ghép">
         {selectedSheet && <header className="import-mapping-sheet-header">
-          <p className="import-flow__muted">{summary.files.find((file) => file.file_id === selectedSheet.file_id)?.filename} · {selectedSheet.ignored ? 'Bỏ qua Sheet' : selectedSheet.selected_type ?? 'Chưa xác định loại dữ liệu'}</p>
+          <p className="import-flow__muted">{summary.files.find((file) => file.file_id === selectedSheet.file_id)?.filename} · {selectedSheet.ignored ? 'Bỏ qua Sheet' : schemaLabel(selectedSheet.selected_type)}</p>
           <h3>Sheet: {selectedSheet.name}</h3>
           <details><summary>Thông tin và quy tắc của Sheet</summary>
-          {selectedSheet.suggested_type && <p className="import-flow__muted">Gợi ý từ máy chủ: {selectedSheet.suggested_type} · {selectedSheet.classification_origin}. Gợi ý không tự trở thành quyết định.</p>}
+          <DebugValue label="Sheet diagnostics / schema" value={{sheet:selectedSheet,options:sheetOptions}} />
           {selectedSheet.ignore_reason && <p>Lý do bỏ qua: {selectedSheet.ignore_reason}</p>}
-          {selectedSheet.header_row!=null&&<p>Dòng header: {selectedSheet.header_row} · Epoch Excel: {selectedSheet.excel_date_system??'Không được cung cấp'}</p>}
-          {!!selectedSheet.preamble_samples?.length&&<Evidence value={{rows:selectedSheet.preamble_rows,samples:selectedSheet.preamble_samples}} label="Preamble nguồn (mẫu giới hạn)"/>}
-          {selectedSheet.suggestion_diagnostic&&<Evidence value={selectedSheet.suggestion_diagnostic} label="Chẩn đoán gợi ý từ server"/>}
-          <p className="import-flow__muted">Các cột: {selectedSheet.headers.join(' · ') || 'Không có header'}</p>
-          {!sheetOptions && props.onLoadSheetOptions && <button type="button" disabled={busy || locked} onClick={() => props.onLoadSheetOptions?.(selectedSheet.sheet_id)}>Xem catalogue schema và trường dữ liệu</button>}
-          {sheetOptions && <SchemaCatalogue options={sheetOptions} />}
+          <p>Các cột: {selectedSheet.headers.join(' · ') || 'Không có header'}</p>
           {!!selectedSheet.shared_field_bindings?.length && <Evidence value={selectedSheet.shared_field_bindings} label="Quy tắc giá trị dùng chung đã khai báo" />}
           {!!selectedSheet.import_values?.length && <Evidence value={selectedSheet.import_values} label="Giá trị riêng của lần import này" />}
           </details>
@@ -93,39 +93,31 @@ export function ImportMapping(props: Props) {
           <label><input type="checkbox" checked={props.reviewOnly} disabled={busy || locked} onChange={(event) => props.onFilter(props.filter, event.target.checked)} />Chỉ hiện trường cần xử lý</label>
         </div>
         <div className="import-mapping-card-list">
-        {!props.canPropose && <p className="import-flow__notice">Bạn đang xem chỉ đọc: cần quyền mapping.propose và quyền đọc dữ liệu liên quan để sửa đề xuất.</p>}
+        {!props.canPropose && <p className="import-flow__notice">Bạn chỉ có quyền xem. Cần người có quyền chỉnh sửa xử lý mục này.</p>}
         {!queue && <p role="status">Chọn một Sheet để đọc danh sách từ máy chủ.</p>}
-        {queue&&<p className="import-flow__muted">Đã đọc {queue.items.length} mục; tổng khớp Sheet / bộ lọc hiện tại: {queue.pagination.total_count??'Chưa được cung cấp'}. Tiến độ phía trên tính cho toàn bộ lô.</p>}
+        <DebugValue label="Mapping paging" value={queue?.pagination} />
         {queue && !queue.items.length && <p className="import-flow__notice">Không có trường trong bộ lọc này.</p>}
-        {queue?.items.map((issue) => <MappingCard key={`${summary.mapping_revision}:${issue.mapping_id}`} issue={issue} options={props.options[issue.mapping_id]} busy={busy || locked || !props.canPropose} readBusy={busy || locked} onLoadOptions={() => props.onLoadOptions(issue.mapping_id)} onConfirm={(target) => props.onConfirm(issue.mapping_id, target)} onResolve={(resolution) => props.onResolve(issue.mapping_id, resolution)} />)}
+        {queue?.items.filter(issue => !props.category || props.category === 'all' || resolutionGroup(issue) === props.category).map((issue) => <MappingCard key={`${summary.mapping_revision}:${issue.mapping_id}`} issue={issue} options={props.options[issue.mapping_id]} busy={busy || locked || !props.canPropose} readBusy={busy || locked} onLoadOptions={() => props.onLoadOptions(issue.mapping_id)} onConfirm={(target) => props.onConfirm(issue.mapping_id, target)} onResolve={(resolution) => props.onResolve(issue.mapping_id, resolution)} />)}
+        {props.category && props.category !== 'all' && <p className="import-flow__muted">Các mục đã tải trong nhóm này.</p>}
         {queue?.pagination.next_cursor && <button type="button" disabled={busy || locked} onClick={props.onLoadMore}>Xem thêm mục</button>}
 
         </div>
       </section>
     </div>
-    <div className="import-mapping-completed"><span>✓ {summary.progress.completed_fields} mục đã xử lý</span><button type="button" disabled={busy || locked} onClick={() => props.onFilter('all', !props.reviewOnly)}>{props.reviewOnly ? 'Xem các trường đã ghép' : 'Chỉ xem trường cần xử lý'}</button></div>
+    <DebugContent><div className="import-mapping-completed"><span>✓ {summary.progress.completed_fields} mục đã xử lý</span><button type="button" disabled={busy || locked} onClick={() => props.onFilter('all', !props.reviewOnly)}>{props.reviewOnly ? 'Xem các trường đã ghép' : 'Chỉ xem trường cần xử lý'}</button></div>
+    </DebugContent>
   </>
 }
 
 export function FieldDescriptor({ option }: { option: MappingOption | MappingOptions['schemas'][number]['fields'][number] }) {
   return <div className="import-flow__field-info">
-    <strong>{option.label || option.key}</strong> <code>{option.key}</code>
-    <p>{option.description || option.input_help || 'Không có mô tả bổ sung.'}</p>
-    <p className="import-flow__muted">{option.type} · {option.requiredness === 'required' ? 'Bắt buộc' : 'Không bắt buộc'} · {option.nullable ? 'Cho phép null' : 'Không cho phép null'}{option.unit_semantics ? ` · Đơn vị: ${option.unit_semantics}` : ''} · {option.support}</p>
+    <strong>{option.label || businessField(option.key)}</strong><DebugValue label="Field descriptor" value={option} />
+    {(option.description || option.input_help) && <p>{option.description || option.input_help}</p>}
+    <p className="import-flow__muted">{option.requiredness === 'required' ? 'Bắt buộc' : 'Không bắt buộc'}{option.unit_semantics ? ` · Đơn vị: ${option.unit_semantics}` : ''}</p>
     {option.input_help && option.description && <p>{option.input_help}</p>}
     {!!option.conditional_requirements?.length && <p>Điều kiện: {option.conditional_requirements.join(' · ')}</p>}
-    {!option.available && <p className="import-flow__notice">Chưa thể ghép cột: {option.reason_code ?? 'Trường không sẵn sàng'}.</p>}
+    {!option.available && <p className="import-flow__notice">Chưa thể ghép cột: {importMessage(option.reason_code ?? '', 'Trường không sẵn sàng')}.</p>}
   </div>
-}
-
-function SchemaCatalogue({ options }: { options: MappingOptions }) {
-  return <details className="import-flow__catalogue"><summary>Catalogue schema từ máy chủ ({options.schemas.length})</summary>
-    <p className="import-flow__muted">Catalogue mô tả dữ liệu hỗ trợ. Khả dụng/duy nhất trong Sheet phải lấy từ field-options của từng mục ghép.</p>
-    {options.schemas.map((schema) => <details key={schema.schema_id}><summary>{schema.label} · {schema.schema_id}{schema.schema_id === options.schema ? ' · đang chọn' : ''}</summary>
-      <p>{schema.description}</p>
-      {schema.fields.map((field) => <FieldDescriptor key={field.key} option={field} />)}
-    </details>)}
-  </details>
 }
 
 function MappingCard({ issue, options, busy, readBusy, onLoadOptions, onConfirm, onResolve }: {
@@ -140,6 +132,7 @@ function MappingCard({ issue, options, busy, readBusy, onLoadOptions, onConfirm,
   return <motion.article className="import-flow__issue" aria-labelledby={`${id}-title`}
     layout={reducedMotion ? false : 'position'} initial={reducedMotion ? false : { opacity: 0.7 }}
     animate={{ opacity: 1 }} transition={reducedMotion ? { duration: 0 } : uiTransition}>
+    <p className="import-flow__muted">{issueLabels[issue.issue_type]}</p>
     <div className="import-flow__issue-heading">
       <h3 id={`${id}-title`}>{issue.source_header ?? issueLabels[issue.issue_type]}</h3>
       <span className="import-flow__badge">{statusLabels[issue.status]}{issue.ignored ? ' · Bỏ qua' : ''}</span>
@@ -153,7 +146,7 @@ function MappingCard({ issue, options, busy, readBusy, onLoadOptions, onConfirm,
         <select id={`${id}-target`} value={value} disabled={busy || !options} onFocus={() => { if (!options && !readBusy) onLoadOptions() }} onChange={(event) => setTarget(event.target.value)}>
           <option value="">{options ? 'Chọn trường ShelfCash' : 'Đang tải danh sách trường…'}</option>
           {options?.options.map((option) => <option key={option.key} value={option.key} disabled={!option.available || option.support !== 'supported'}>
-            {option.key} — {option.label || option.key}{option.key === issue.suggested_target_field ? ' · Đề xuất' : ''}{!option.available || option.support !== 'supported' ? ` · ${option.reason_code ?? option.support}` : ''}
+            {option.label || businessField(option.key)}{option.key === issue.suggested_target_field ? ' · Đề xuất' : ''}{!option.available || option.support !== 'supported' ? ' · Không khả dụng' : ''}
           </option>)}
         </select>
       </label>
@@ -183,9 +176,8 @@ type ReviewProps = {
 
 export function ImportProfileReview({ summary, busy, locked, canDecide, onDecision }: ReviewProps) {
   return <section aria-label="Owner duyệt mapping profile">
-    <h3>Duyệt mapping profile</h3>
-    <p className="import-flow__muted">Chỉ Owner của Store hiện tại có thể kích hoạt, từ chối hoặc retire. Duyệt profile không thay bước review của từng import hoặc cấp thêm quyền commit.</p>
-    {!summary.profile_proposals.length && <p>Không có đề xuất profile mới trong summary hiện tại. Profile được tái sử dụng đúng binding không cần duyệt lại.</p>}
+
+    {!summary.profile_proposals.length && summary.approved_profiles.filter(profile => summary.binding_refs.some(binding => binding.profile_id === profile.binding.profile_id && binding.version === profile.binding.version)).map(profile => <ProfileInterpretation key={profile.binding.profile_id + profile.binding.version} spec={profile.spec} />)}
     {summary.profile_proposals.map((proposal) => {
       const approved = summary.approved_profiles.find((profile) => profile.binding.profile_id === proposal.profile_id && profile.binding.version === proposal.active_version)
       return <ProfileReviewCard key={`${proposal.profile_id}:${proposal.lifecycle_revision}:${proposal.proposal_revision}`} proposal={proposal} approvedSpec={approved?.spec} busy={busy || locked} canDecide={canDecide} onDecision={(decision) => onDecision(proposal.profile_id, proposal.lifecycle_revision, decision)} />
@@ -205,33 +197,34 @@ function ProfileReviewCard({ proposal, approvedSpec, busy, canDecide, onDecision
   const hasBaseline = proposal.active_version === null || !!approvedSpec
   const canApprove = !busy && canDecide && reviewed && !!reason.trim() && !!proposal.spec && !proposal.missing_fields.length && hasBaseline
   return <article className="import-flow__card">
-    <h3>Profile {proposal.profile_id}</h3>
-    <p className="import-flow__muted">Proposal {proposal.proposal_revision} · lifecycle {proposal.lifecycle_revision} · active {proposal.active_version ?? 'chưa có'}</p>
-    {!!proposal.missing_fields.length && <p className="import-flow__notice">Chưa thể duyệt: còn thiếu {proposal.missing_fields.join(', ')}.</p>}
-    {!proposal.spec && <p className="import-flow__notice">Chưa có full proposed spec. Cần đọc summary với include_profile_details=true trước khi duyệt.</p>}
-    {!hasBaseline && <p className="import-flow__notice">Chưa nhận được approved spec đúng profile và active version để so sánh. Không dùng version khác làm baseline; hãy tải lại đầy đủ hoặc nhờ BE/Owner kiểm tra.</p>}
-    <div className="import-flow__profile-comparison">
-      <section><h4>Spec đang được phê duyệt · {proposal.active_version ?? 'profile mới'}</h4>{approvedSpec ? <ReadOnlySpec value={approvedSpec} /> : <p>{proposal.active_version === null ? 'Profile mới, không có approved baseline.' : 'Chưa có baseline đúng version.'}</p>}</section>
-      <section><h4>Full spec đề xuất · {proposal.proposal_revision}</h4>{proposal.spec && <ReadOnlySpec value={proposal.spec} />}</section>
-    </div>
-    <p className="import-flow__muted">Hiển thị toàn bộ spec và evidence được trả về; đây không phải computed diff của backend. Kiểm tra cả ngữ cảnh, identity, conversion, metadata và giá trị dùng chung.</p>
-    {!canDecide ? <p className="import-flow__notice">Bạn không phải Owner của Store hiện tại. Đề xuất được giữ lại để Owner xem và quyết định.</p> : <fieldset disabled={busy} className="import-flow__form">
+    <DebugValue label="Profile / CAS" value={proposal} />
+    {!!proposal.missing_fields.length && <p className="import-flow__notice">Chưa thể duyệt: còn thiếu {proposal.missing_fields.map(businessField).join(', ')}.</p>}
+    {!proposal.spec && <p className="import-flow__notice">Chưa tải đủ cách đọc đề xuất. Tải lại trước khi duyệt.</p>}
+    {!hasBaseline && <p className="import-flow__notice">Chưa tải đủ cách đọc đã duyệt để so sánh. Tải lại trước khi quyết định.</p>}
+    {proposal.spec && <ProfileInterpretation spec={proposal.spec} />}
+    <details className="input-profile-evidence"><summary>Xem toàn bộ cách đọc và bằng chứng</summary><div className="import-flow__profile-comparison">
+      <section><h4>Cách đọc đã duyệt</h4>{approvedSpec ? <ImportBusinessFacts value={approvedSpec} /> : <p>{proposal.active_version === null ? 'Profile mới.' : 'Chưa tải được cách đọc đã duyệt.'}</p>}</section>
+      <section><h4>Cách đọc đề xuất</h4>{proposal.spec && <ImportBusinessFacts value={proposal.spec} />}</section>
+    </div></details>
+    {!canDecide ? <p className="import-flow__notice">Đề xuất được giữ lại để Owner xem và quyết định.</p> : <fieldset disabled={busy} className="import-flow__form">
       <legend>Quyết định của Owner</legend>
       <label>Lý do quyết định<textarea maxLength={1000} value={reason} onChange={(event) => setReason(event.target.value)} /></label>
-      <label className="import-flow__check"><input type="checkbox" checked={reviewed} onChange={(event) => setReviewed(event.target.checked)} />Tôi đã xem toàn bộ proposed spec, evidence và approved baseline đúng version (nếu có).</label>
+      <label className="import-flow__check"><input type="checkbox" checked={reviewed} onChange={(event) => setReviewed(event.target.checked)} />Tôi đã kiểm tra cách đọc đề xuất, bằng chứng và cách đọc đã duyệt (nếu có).</label>
       <div className="import-flow__actions">
-        <button type="button" disabled={!canApprove} onClick={() => onDecision({ decision: 'approve_activate', proposal_revision: proposal.proposal_revision, expected_active_version: proposal.active_version, reason: reason.trim() })}>Duyệt và kích hoạt profile</button>
+        <button type="button" className="import-flow__primary" disabled={!canApprove} onClick={() => onDecision({ decision: 'approve_activate', proposal_revision: proposal.proposal_revision, expected_active_version: proposal.active_version, reason: reason.trim() })}>Duyệt profile</button>
         <button type="button" disabled={busy || !reason.trim()} onClick={() => onDecision({ decision: 'reject', proposal_revision: proposal.proposal_revision, reason: reason.trim() })}>Từ chối đề xuất</button>
-        {proposal.active_version && <button type="button" disabled={busy || !reason.trim() || !reviewed} onClick={() => onDecision({ decision: 'retire', active_version: proposal.active_version!, reason: reason.trim() })}>Retire active version</button>}
+        {proposal.active_version && <button type="button" disabled={busy || !reason.trim() || !reviewed} onClick={() => onDecision({ decision: 'retire', active_version: proposal.active_version!, reason: reason.trim() })}>Ngừng sử dụng profile</button>}
       </div>
-      <p className="import-flow__muted">Retire chặn các pin chưa commit dùng version này, không xóa completion đã ghi. Mỗi quyết định dùng lifecycle CAS riêng.</p>
+
     </fieldset>}
   </article>
 }
 
-function ReadOnlySpec({ value }: { value: unknown }) {
-  if (value === null) return <span className="import-flow__muted">null</span>
-  if (Array.isArray(value)) return value.length ? <ol className="import-flow__spec-list">{value.map((item, index) => <li key={index}><ReadOnlySpec value={item} /></li>)}</ol> : <span className="import-flow__muted">[]</span>
-  if (typeof value === 'object') return <dl className="import-flow__spec">{Object.entries(value).map(([key, item]) => <div key={key}><dt>{key}</dt><dd><ReadOnlySpec value={item} /></dd></div>)}</dl>
-  return <span>{String(value)}</span>
+function ProfileInterpretation({ spec }: { spec: MappingProfileSpec }) {
+  return <div className="input-resolve-grid input-profile-grid">
+    <section><span>1</span><h3>Nguồn</h3><p>{sourceLabel(spec.scope.source_system_key)} · {reportLabel(spec.scope.report_type)}</p><p>Bằng chứng: {spec.source_provenance.evidence_references.join(', ') || 'Chưa được cung cấp'}</p></section>
+    <section><span>2</span><h3>Cách hiểu tái sử dụng</h3>{spec.field_bindings.map((binding, i) => <p key={i}><strong>{binding.source_header}</strong> → {binding.ignored ? 'Bỏ qua đã khai báo' : binding.target_field ? businessField(binding.target_field) : 'Chưa xác định'}</p>)}</section>
+    <section><span>3</span><h3>Identity và binding</h3><p>{spec.identity_rules?.length ?? 'Chưa được cung cấp'} liên kết · {spec.aliases?.length ?? 'Chưa được cung cấp'} tên gọi · {spec.entity_proposals?.length ?? 'Chưa được cung cấp'} đề xuất entity</p><details><summary>Xem liên kết đối tượng</summary><ImportBusinessFacts value={{ identity_rules: spec.identity_rules, aliases: spec.aliases, entity_proposals: spec.entity_proposals }} /></details></section>
+    <section><span>4</span><h3>Declaration và units</h3><p>{spec.conversions?.length ?? 'Chưa được cung cấp'} quy đổi · {spec.shared_field_bindings?.length ?? 'Chưa được cung cấp'} khai báo giá trị dùng chung</p><details><summary>Xem khai báo và quy đổi</summary><ImportBusinessFacts value={{ conversions: spec.conversions, shared_field_bindings: spec.shared_field_bindings, normalizations: spec.normalizations, planned_arrival_expiry_rule: spec.planned_arrival_expiry_rule, term_period_amendments: spec.term_period_amendments, fee_period_amendments: spec.fee_period_amendments }} /></details></section>
+  </div>
 }

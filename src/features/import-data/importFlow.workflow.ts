@@ -1,3 +1,4 @@
+import { importFault, previewCanContinue, type ImportFault } from './importExperience'
 import { HttpError } from '../../shared/http/httpClient'
 import type { ImportBatch } from './importData.types'
 import { describeImportError } from './importData.workflow'
@@ -9,7 +10,7 @@ import type {
   ProfileDecisionRequest, ProfileDecisionIntent, ReviewIntent, SupplierConfirmation,
 } from './importFlow.types'
 
-export type ImportFlowTab = 'mapping' | 'review' | 'preview' | 'result'
+export type ImportFlowTab = 'mapping' | 'profile' | 'review' | 'preview' | 'result'
 type Pending =
   | { operation: 'mapping'; mappingId: string; intent: MappingIntent }
   | { operation: 'resolution'; mappingId: string; intent: ResolutionIntent }
@@ -35,6 +36,7 @@ export type ImportFlowState = {
   reviewOnly: boolean
   busy: boolean
   error: string | null
+  fault: ImportFault | null
   notice: string
   retryOperation: Pending['operation'] | null
   reviewAcknowledged: boolean
@@ -53,7 +55,7 @@ export type ImportFlowState = {
 const initial = (): ImportFlowState => ({
   batch: null, tab: 'mapping', summary: null, queue: null, mappingOptions: {}, options: null,
   optionsMappingId: null, preview: null, previewStale: false, completion: null,
-  job: null, selectedSheetId: null, filter: 'all', reviewOnly: true, busy: false, error: null,
+  job: null, selectedSheetId: null, filter: 'all', reviewOnly: true, busy: false, error: null, fault: null,
   notice: '', retryOperation: null, reviewAcknowledged: false, reviewReason: '',
   reviewBlockers: ['Chưa có bản xem trước từ máy chủ.'], canConfirmReview: false,
   commitAcknowledged: false, commitReason: '',
@@ -114,7 +116,7 @@ function commitBlockers(state: ImportFlowState, mappingRevision: string | null, 
 }
 
 function uncertain(error: unknown) {
-  return error instanceof HttpError && (error.kind !== 'contract' || (error.status ?? 0) >= 500)
+  return error instanceof HttpError && ![401, 403].includes(error.status ?? 0) && (error.kind !== 'contract' || (error.status ?? 0) >= 500)
 }
 
 function permitted(batch: ImportBatch, action: string) {
@@ -228,9 +230,11 @@ export class ImportFlowWorkflow {
     this.reevaluatePermissions()
   }
   setTab = (tab: ImportFlowTab) => {
+    if (this.state.completion && tab !== 'result') return
     if (tab === 'result' && !this.state.completion) return
     if (tab === 'preview' && !this.state.preview && !this.processReceipt && !this.state.summary?.can_preview) return
-    if (tab === 'review' && !this.state.preview) return
+    if (tab === 'profile' && !this.state.summary) return
+    if (tab === 'review' && !previewCanContinue(this.state)) return
     this.update({ tab })
   }
   acknowledgeCommit = (value: boolean) => {
@@ -262,9 +266,9 @@ export class ImportFlowWorkflow {
     const epoch = this.epoch
     this.abort = new AbortController()
     const signal = this.abort.signal
-    this.update({ busy: true, error: null })
+    this.update({ busy: true, error: null, fault: null })
     try { await task(batch.import_id, epoch, signal) }
-    catch (error) { if (this.current(epoch, batch.import_id)) this.update({ error: stageError(stage, error) }) }
+    catch (error) { if (this.current(epoch, batch.import_id)) this.update({ error: stageError(stage, error), fault: importFault(error) }) }
     finally { if (this.current(epoch, batch.import_id)) this.update({ busy: false }) }
   }
 
@@ -549,7 +553,7 @@ export class ImportFlowWorkflow {
         if (!this.current(epoch, id)) return
         this.pending = null
         this.update({ retryOperation: null, options: null, previewStale: !!this.state.preview, commitAcknowledged: false, reviewAcknowledged: false,
-          notice: pending.operation === 'profile' ? 'Đã lưu quyết định Owner. Đang đọc lại binding và quyền; chưa ghi dữ liệu Import.' :
+          notice: pending.operation === 'profile' ? pending.intent.decision.decision === 'reject' ? 'Owner đã từ chối đề xuất. Quay lại kiểm tra cách hiểu; file và context vẫn được giữ.' : pending.intent.decision.decision === 'retire' ? 'Profile đã ngừng sử dụng. Kiểm tra lại cách hiểu trước khi tiếp tục; không ảnh hưởng completion đã ghi.' : 'Owner đã duyệt reusable profile. Đang đọc lại binding và quyền; chưa ghi dữ liệu Import.' :
             'approval_required' in result && result.approval_required ? 'Đã sửa đề xuất. Vẫn cần Owner duyệt toàn bộ profile; chưa ghi dữ liệu.' : 'Đã cập nhật mapping; chưa ghi dữ liệu.' })
         await this.readMappings(id, epoch, signal)
         if (this.current(epoch, id)) await this.readParent(id, epoch)
@@ -619,7 +623,7 @@ export class ImportFlowWorkflow {
     }
     this.update({ job, pollAfterMs: ['queued', 'running'].includes(job.status) ? job.poll_after_ms : null })
     if (job.status === 'failed') {
-      this.update({ error: `${job.error?.message ?? 'Tiến trình thất bại'} (${job.error?.code ?? 'JOB_FAILED'})`, commitAcknowledged: false })
+      this.update({ error: `${job.error?.message ?? 'Tiến trình thất bại'} (${job.error?.code ?? 'JOB_FAILED'})`, fault: importFault(new HttpError('contract', job.error?.message ?? 'Tiến trình thất bại', undefined, { code: job.error?.code ?? 'JOB_FAILED', message: job.error?.message ?? 'Tiến trình thất bại', details: {} })), commitAcknowledged: false })
       await this.readParent(id, epoch)
       return
     }

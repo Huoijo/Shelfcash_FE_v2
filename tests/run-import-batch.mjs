@@ -9,7 +9,7 @@ import { build } from 'vite'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const output = await mkdtemp(join(tmpdir(), 'shelfcash-import-tests-'))
 try {
-  const available = ['import-batch', 'import-flow-boundary', 'import-flow-workflow', 'import-stage', 'import-mapping-ui', 'import-locator']
+  const available = ['import-batch', 'import-flow-boundary', 'import-flow-workflow', 'import-stage', 'import-mapping-ui', 'import-locator', 'import-playground']
   const suites = process.argv.length > 2 ? process.argv.slice(2) : available
   if (suites.some((suite) => !available.includes(suite))) throw new Error('Unknown Import test suite')
   for (const suite of suites) await build({
@@ -18,7 +18,9 @@ try {
     logLevel: 'error',
     ...(suite === 'import-mapping-ui' ? { ssr: { noExternal: ['react', 'react-dom', 'motion', 'framer-motion', 'motion-dom', 'motion-utils'] } } : {}),
     define: {
-      'import.meta.env': JSON.stringify({ VITE_DATA_SOURCE: 'mock' }),
+      'import.meta.env': JSON.stringify({ VITE_DATA_SOURCE: 'mock', DEV: true }),
+      'import.meta.env.VITE_DATA_SOURCE': JSON.stringify('mock'),
+      'import.meta.env.DEV': 'true',
     },
     build: {
       ssr: resolve(root, `tests/${suite}.test.mjs`),

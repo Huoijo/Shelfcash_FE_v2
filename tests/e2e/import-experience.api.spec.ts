@@ -1,0 +1,152 @@
+import { test, expect, type Page } from '@playwright/test'
+import { backend, env, paging, s, member, at, permissions, errorResponse } from './helpers/api'
+import { ImportBatchWorkflow } from '../../src/features/import-data/importData.workflow'
+import { createMockImportDataSource } from '../../src/features/import-data/importData.fixtures'
+import { createMockImportFlowDataSource } from '../../src/features/import-data/importFlow.fixtures'
+import { planningReadinessFixture } from '../../src/features/decision-planning/planning.fixtures'
+
+const wire = (value: any): any => Array.isArray(value) ? value.map(wire) : value && typeof value === 'object' ? Object.fromEntries(Object.entries(value).filter(([key]) => !['unsupportedFields', 'poll_after_ms'].includes(key)).map(([key, item]) => [key, wire(item)])) : value
+const importEnvelope = (data: unknown, pagination: unknown = null, poll?: number) => env(wire(data), { warnings: [], pagination, ...(poll !== undefined ? { poll_after_ms: poll } : {}) })
+async function prepared(ownerRequired = false) {
+  const batches = createMockImportDataSource({ continuation: true })
+  const upload = new ImportBatchWorkflow(batches, s)
+  upload.setDataDate('2026-10-11')
+  upload.setFiles([new File(['lot,on_hand\nLOT,10'], 'observed.csv', { type: 'text/csv' })])
+  await upload.upload(); await upload.prepareAnalysis(); upload.acknowledgeRejected(true); await upload.analyze()
+  const source = createMockImportFlowDataSource(batches, { ownerRequired, pageSize: 2 })
+  const id = upload.getSnapshot().batch!.import_id
+  if (ownerRequired) {
+    const summary = await source.summary(id), queue = await source.queue(id, {})
+    await source.confirm(id, queue.items[0].mapping_id, { key: crypto.randomUUID(), mappingRevision: summary.mapping_revision, targetField: 'on_hand' })
+  }
+  return { batches, upload, source, id }
+}
+async function api(page: Page, work: Awaited<ReturnType<typeof prepared>>, hook?: (path: string, method: string, body: any, headers: Record<string, string>, url: URL) => any) {
+  const writes: any[] = []
+  await backend(page, async (path, method, body, headers, url) => {
+    if (!['GET', 'OPTIONS'].includes(method)) writes.push({ path, body, key: headers['idempotency-key'], version: headers['if-match'] })
+    const intercepted = await hook?.(path, method, body, headers, url)
+    if (intercepted !== undefined) return intercepted
+    if (path === '/api/v1/stores') return env({ items: [{ store_id: s, name: 'Controlled Store', timezone: 'Asia/Ho_Chi_Minh', currency: 'VND', role: 'STAFF', membership_id: member, authorization_version: 'controlled-member/1' }] }, paging(1))
+    if (path === `/api/v1/stores/${s}`) return env({ store_id: s, name: 'Controlled Store', timezone: 'Asia/Ho_Chi_Minh', currency: 'VND', role: 'STAFF', membership_id: member, authorization_version: 'controlled-member/1', active: true, server_now: at, as_of_date: '2026-10-12', membership: { membership_id: member, role: 'STAFF', authorization_version: 'controlled-member/1', effective_permissions: [...permissions, 'mapping.read', 'mapping.propose', 'import.preview', 'import.commit', 'inventory.count.correct'] }, permission_catalog_version: 'permissions-v2' })
+    if (path === `/api/v1/imports/${work.id}`) {
+      const batch = await work.batches.read(work.id)
+      if (url.searchParams.has('include')) return importEnvelope({ ...batch, ...await work.source.readPreview(work.id, { previewId: url.searchParams.get('preview_id') ?? undefined, rowsCursor: url.searchParams.get('rows_cursor') ?? undefined }) })
+      return importEnvelope(batch)
+    }
+    if (path.endsWith('/mapping-summary')) return importEnvelope(await work.source.summary(work.id))
+    if (path.endsWith('/mappings')) {
+      const queue = await work.source.queue(work.id, { sheet_id: url.searchParams.get('sheet_id') ?? undefined, review_only: url.searchParams.get('review_only') !== 'false' })
+      return importEnvelope({ items: queue.items, counts: queue.counts }, queue.pagination)
+    }
+    if (path.endsWith('/field-options')) return importEnvelope(await work.source.options(work.id, path.split('/').at(-2)!, url.searchParams.get('mapping_id') ?? undefined))
+    if (path.endsWith('/process')) {
+      const key = headers['idempotency-key'], importRevision = JSON.parse(headers['if-match'])
+      if (body.phase === 'preview') return importEnvelope(await work.source.preview(work.id, { key, importRevision, mappingRevision: body.mapping_revision }), null, 2000)
+      if (body.phase === 'confirm_review') return importEnvelope(await work.source.confirmReview(work.id, { key, importRevision, mappingRevision: body.mapping_revision, previewId: body.preview_id, previewDigest: body.preview_digest, reason: body.reason }))
+      if (body.phase === 'commit') return importEnvelope(await work.source.commit(work.id, { key, importRevision, previewId: body.preview_id, previewDigest: body.preview_digest, reason: body.reason, resolutions: body.resolutions, supplierChanges: body.supplier_changes }), null, 2000)
+    }
+    if (path.startsWith('/api/v1/jobs/')) { const job = await work.source.job(path.split('/').at(-1)!); return importEnvelope(job, null, job.poll_after_ms) }
+    if (path.endsWith('/completion')) return importEnvelope(await work.source.completion(work.id))
+  })
+  return writes
+}
+async function resolve(page: Page, id: string) {
+  await page.goto(`/imports?import_id=${id}`)
+  await page.getByRole('button', { name: 'Kiểm tra cách hiểu', exact: true }).click()
+}
+async function review(page: Page) {
+  await page.getByRole('button', { name: 'Tạo Preview', exact: true }).click()
+  await page.getByRole('button', { name: 'Tiếp tục xác nhận' }).click()
+  await page.getByLabel('Lý do review (bắt buộc)').fill('Controlled reviewed snapshot')
+  await page.getByLabel('Tôi đã đọc đủ dữ liệu, nguồn báo cáo, cách đọc và cảnh báo.').check()
+  await page.getByRole('button', { name: 'Lưu xác nhận review' }).click()
+  await page.getByLabel('Lý do (bắt buộc khi sửa / ghép dữ liệu hoặc kiểm kê)').fill('Controlled stock correction')
+  await page.getByLabel('Tôi đã kiểm tra dữ liệu, cảnh báo và phạm vi nhập.').check()
+  await page.getByRole('button', { name: 'Xác nhận và nhập dữ liệu' }).click()
+  await page.getByRole('button', { name: 'Xác nhận ghi', exact: true }).click()
+}
+
+test('012 API Staff proposal uses exact batch handoff, no synthetic queue write, and resumes after external Owner decision', async ({ page }) => {
+  const work = await prepared(true), writes = await api(page, work)
+  await resolve(page, work.id)
+  await page.getByRole('button', { name: 'Bàn giao cho Owner', exact: true }).click()
+  await expect(page.getByLabel('Đường dẫn bàn giao lô')).toHaveValue(`http://127.0.0.1:4174/imports?import_id=${work.id}`)
+  await expect(page.getByRole('button', { name: /DEV/ })).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'Duyệt profile' })).toHaveCount(0)
+  const summary = await work.source.summary(work.id), proposal = summary.profile_proposals[0]
+  await work.source.decideProfile(s, proposal.profile_id, { key: crypto.randomUUID(), lifecycleRevision: proposal.lifecycle_revision, decision: { decision: 'approve_activate', proposal_revision: proposal.proposal_revision, expected_active_version: proposal.active_version, reason: 'Separate Owner actor reviewed full spec' } })
+  await page.getByRole('button', { name: 'Đọc lại quyết định Owner' }).click()
+  await expect(page.getByText('Đang dùng cách đọc đã duyệt', { exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Tạo Preview', exact: true })).toBeEnabled()
+  await page.reload()
+  await page.getByRole('button', { name: 'Kiểm tra cách hiểu', exact: true }).click()
+  expect(writes).toHaveLength(0)
+  expect(new URL(page.url()).searchParams.get('import_id')).toBe(work.id)
+})
+
+test('012 API permission revoked at commit has its own state and retains batch/review without retrying a new write', async ({ page }) => {
+  const work = await prepared(), writes = await api(page, work, (path, method, body) => path.endsWith('/process') && method === 'POST' && body.phase === 'commit' ? errorResponse(403, 'WRITE_PERMISSION_REVOKED') : undefined)
+  await resolve(page, work.id); await review(page)
+  await expect(page.getByText('Quyền hiện tại không cho phép thao tác này', { exact: true })).toBeVisible()
+  await expect(page.getByLabel('Lý do review (bắt buộc)')).toHaveValue('Controlled reviewed snapshot')
+  await expect(page.getByRole('button', { name: 'Kiểm tra lại trạng thái' })).toHaveCount(0)
+  expect(writes.filter(w => w.body.phase === 'commit')).toHaveLength(1)
+  expect(new URL(page.url()).searchParams.get('import_id')).toBe(work.id)
+})
+
+test('012 API lost commit acknowledgement retains exact intent; completion may still have blocked Readiness', async ({ page }) => {
+  const work = await prepared(); let lost = false
+  const writes = await api(page, work, async (path, method, body, headers, url) => {
+    if (path.endsWith('/process') && body?.phase === 'commit' && !lost) {
+      lost = true
+      await work.source.commit(work.id, { key: headers['idempotency-key'], importRevision: JSON.parse(headers['if-match']), previewId: body.preview_id, previewDigest: body.preview_digest, reason: body.reason, resolutions: body.resolutions, supplierChanges: body.supplier_changes })
+      return 'ABORT'
+    }
+    if (path.endsWith('/readiness')) {
+      const value = planningReadinessFixture(url.searchParams.get('forecast_start_date')!)
+      value.actions = value.actions.map(action => ({ ...action, availability: 'blocked' as const, can_execute: false, data_status: 'incomplete' as const, blockers: [{ code: 'SALES_COVERAGE_INCOMPLETE', source: 'sales' as const, scope: 'STORE' as const, entity_id: null, affected_dates: [], details: {} }] }))
+      return env(value)
+    }
+  })
+  await resolve(page, work.id); await review(page)
+  await expect(page.getByText(/Đang kiểm tra trạng thái lần nhập/)).toBeVisible()
+  await page.getByRole('button', { name: 'Kiểm tra lại trạng thái' }).click()
+  await expect(page.getByRole('heading', { name: 'Dữ liệu đã được cập nhật', exact: true, level: 2 })).toBeVisible()
+  const commits = writes.filter(w => w.body.phase === 'commit')
+  expect(commits).toHaveLength(2); expect(commits[0]).toEqual(commits[1])
+  await page.getByRole('button', { name: 'Kiểm tra Readiness', exact: true }).click()
+  await expect(page.getByText('Cần bổ sung', { exact: true })).toBeVisible()
+  await expect(page.getByText(/Sales coverage chưa đủ/)).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Dữ liệu đã được cập nhật', exact: true, level: 2 })).toBeVisible()
+  await page.screenshot({ path: 'test-results/012-api-complete-not-ready.png', fullPage: true })
+  await page.reload()
+  await expect(page.getByRole('heading', { name: 'Dữ liệu đã được cập nhật', exact: true, level: 2 })).toBeVisible()
+  expect(writes.filter(w => w.body.phase === 'commit')).toHaveLength(2)
+})
+
+for (const variant of ['stale', 'blocked'] as const) test(`012 API Preview ${variant} cannot enter Review and offers correct recovery`, async ({ page }) => {
+  const work = await prepared(); let first = true
+  const writes = await api(page, work, async (path, method, body, headers, url) => {
+    if (path === `/api/v1/imports/${work.id}` && url.searchParams.has('include') && first) {
+      const bundle = await work.source.readPreview(work.id, {})
+      if (variant === 'stale') { bundle.preview.stale = true; first = false }
+      else { bundle.preview.summary.validation_status = 'blocked'; bundle.preview.summary.blockers = [{ code: 'INVALID_ROW', message: 'Cần xử lý dữ liệu nguồn.', severity: 'ERROR' }] }
+      return importEnvelope({ ...await work.batches.read(work.id), ...bundle })
+    }
+  })
+  await resolve(page, work.id)
+  await page.getByRole('button', { name: 'Tạo Preview', exact: true }).click()
+  await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toHaveCount(0)
+  if (variant === 'stale') {
+    await expect(page.getByText('Preview không còn mới nhất', { exact: true })).toBeVisible()
+    await page.getByRole('button', { name: 'Tạo lại Preview', exact: true }).click()
+    await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()
+  } else {
+    await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()
+    await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()
+    await expect(page.getByRole('heading', { name: 'Kiểm tra cách hiểu', exact: true })).toBeVisible()
+    await expect(page.getByRole('list', { name: 'Tiến trình nhập dữ liệu 6 bước' }).locator('[aria-current=step]')).toContainText('Kiểm tra')
+  }
+  expect(writes.filter(w => ['confirm_review', 'commit'].includes(w.body?.phase))).toHaveLength(0)
+})

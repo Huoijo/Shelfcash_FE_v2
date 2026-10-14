@@ -11,3 +11,33 @@ test('mobile Inventory and public credential page remain usable',async({page})=>
   await page.goto('/credentials/complete')
   await expect(page.getByText(/Mở liên kết thiết lập mật khẩu/)).toBeVisible()
 })
+
+test('012 mobile Staff import keeps six steps, usable Resolve actions and page width', async ({page}) => {
+  await page.addInitScript(() => sessionStorage.setItem('shelfcash:dev-scenario:v1', 'staff-importer'))
+  await page.goto('/imports')
+  await page.screenshot({path:'test-results/012-mobile-upload.png',fullPage:true})
+  await page.getByLabel('Ngày dữ liệu',{exact:true}).fill('2026-10-11')
+  await page.locator('input[type=file]').setInputFiles({name:'observed.csv',mimeType:'text/csv',buffer:Buffer.from('lot,on_hand\nLOT,10')})
+  await page.getByRole('button',{name:'Phân tích dữ liệu',exact:true}).click()
+  await page.getByRole('button',{name:'Kiểm tra cách hiểu',exact:true}).click()
+  await expect(page.getByRole('button',{name:'Tạo Preview',exact:true})).toBeEnabled()
+  await expect(page.getByRole('list',{name:'Tiến trình nhập dữ liệu 6 bước'}).getByRole('listitem')).toHaveCount(6)
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
+  await page.screenshot({path:'test-results/012-mobile-resolve.png',fullPage:true})
+})
+
+
+test('014 mobile playground changes role/state without resizing the page',async({page})=>{
+  await page.goto('/imports')
+  const before=await page.locator('.app-shell__header').boundingBox()
+  await page.getByRole('button',{name:'Debug',exact:true}).click()
+  const debug=page.getByRole('dialog',{name:'UI State Preview',exact:true})
+  await expect(debug.getByLabel('Scenario',{exact:true})).toBeVisible()
+  expect(await page.locator('.app-shell__header').boundingBox()).toEqual(before)
+  await debug.getByRole('button',{name:'STAFF · Final',exact:true}).click()
+  await expect(page.locator('[data-ui-preview="complete-ready"]')).toContainText('Đủ dữ liệu cho hành động tiếp theo')
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true)
+  await page.screenshot({path:'test-results/014-mobile-playground.png',fullPage:false})
+  await debug.getByRole('button',{name:'Đóng Debug',exact:true}).click()
+  await expect(page.locator('[data-ui-preview="complete-ready"]')).toContainText('STAFF FLOW')
+})

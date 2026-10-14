@@ -1,5 +1,8 @@
-import { UnderConstructionButton } from '../../shared/UnderConstruction'
-import { useEffect, useState, useSyncExternalStore } from 'react'
+import type { DevOwnerReviewGateway, ImportRole } from '../../features/import-data/importExperience'
+import { mockScenario } from '../../features/mock/scenarios'
+import { lazy, Suspense, useEffect, useState, useSyncExternalStore } from 'react'
+import type { ImportScreen, ResolutionGroup } from '../../features/import-data/importExperience'
+import type { PlanningReadiness } from '../../features/decision-planning/planning.types'
 import { Outlet, useLocation, useSearchParams } from 'react-router'
 import { config } from '../../app/config'
 import { createImportDataSource } from '../../features/import-data/importData.data'
@@ -17,9 +20,14 @@ export type ImportSelection = {
   flow: ImportFlowWorkflow
   flowState: ImportFlowState
   canDecideProfile: boolean
+  role: ImportRole
+  devOwnerReview?: DevOwnerReviewGateway
   canProposeMapping: boolean
   startNewDraft: () => void
+  preview?: { scenario: string; screen?: ImportScreen; editor?: ResolutionGroup; submit?: boolean; readiness: PlanningReadiness }
 }
+
+const Playground = import.meta.env.DEV ? lazy(() => import('../../shared/debug/ImportPlaygroundBoundary')) : null
 
 // URL persists only an identifier locator. Every resumed state is read from I04;
 // no workflow, credentials, preview content or mutation intent is stored locally.
@@ -30,18 +38,21 @@ export function ImportWorkspace() {
 
 function ScopedImportWorkspace({ storeId }: { storeId: string | null }) {
   const { state: storeState } = useCurrentStore()
-  const canDecideProfile = config.mockPreview || storeState.status === 'ready' && storeState.store.membership.role === 'OWNER'
-  const permissions = storeState.status === 'ready' ? storeState.store.membership.effective_permissions : []
+  const membership = storeState.status === 'ready' || storeState.status === 'mock_preview' ? storeState.store.membership : null
+  const role = membership?.role ?? 'STAFF'
+  const canDecideProfile = role === 'OWNER'
+  const permissions = membership?.effective_permissions ?? []
   const [searchParams, setSearchParams] = useSearchParams()
   const location = useLocation()
   const locator = searchParams.get('import_id')
   const [locatorVisit] = useState(() => new ImportLocatorVisit())
-  const [{ workflow, flow }] = useState(() => {
+  const [{ workflow, flow, devOwnerReview }] = useState(() => {
     const mock = config.dataSource === 'mock' ? createMockImportDataSource({ continuation: true }) : undefined
     const workflow = new ImportBatchWorkflow(mock ?? createImportDataSource({ dataSource: config.dataSource, apiBaseUrl: config.apiBaseUrl }), storeId)
+    const mockFlow = mock ? createMockImportFlowDataSource(mock, { ownerRequired: role === 'OWNER' || mockScenario === 'staff-approval' || mockScenario === 'staff-rejected', rejectOwnerReview: mockScenario === 'staff-rejected' }) : undefined
     const flow = new ImportFlowWorkflow(createImportFlowDataSource({
       dataSource: config.dataSource, apiBaseUrl: config.apiBaseUrl,
-      ...(mock ? { mockSource: createMockImportFlowDataSource(mock) } : {}),
+      ...(mockFlow ? { mockSource: mockFlow } : {}),
     }), {
       refreshBatch: async () => {
         await workflow.refresh()
@@ -50,18 +61,14 @@ function ScopedImportWorkspace({ storeId }: { storeId: string | null }) {
         return snapshot.batch
       },
     })
-    return { workflow, flow }
+    return { workflow, flow, devOwnerReview: mockFlow?.ownerReview }
   })
   const state = useSyncExternalStore(workflow.subscribe, workflow.getSnapshot)
   const flowState = useSyncExternalStore(flow.subscribe, flow.getSnapshot)
 
   useEffect(() => {
-    flow.setAuthorization(canDecideProfile, config.mockPreview ? [
-      'mapping.propose', 'import.commit', 'inventory.count.correct', 'sales.record', 'sales.correct', 'sales.merge',
-      'product.create', 'ingredient.create', 'recipe.create_version', 'supplier.create', 'supplier.terms.create',
-      'supplier.terms.correct', 'supplier.fees.manage', 'budget.read',
-    ] : storeState.status === 'ready' ? storeState.store.membership.effective_permissions : [])
-  }, [storeState, canDecideProfile, flow])
+    flow.setAuthorization(canDecideProfile, membership?.effective_permissions ?? [])
+  }, [membership, canDecideProfile, flow])
   useEffect(() => {
     if (locatorVisit.claim(location.pathname, locator, state.draft?.import_id,
       state.processing || state.busy || !!state.retryOperation || flowState.busy || !!flowState.retryOperation) && locator) void workflow.resume(locator)
@@ -95,6 +102,7 @@ function ScopedImportWorkspace({ storeId }: { storeId: string | null }) {
     setSearchParams(next, { replace: true })
     workflow.startNewDraft()
   }
-  return <><div style={{padding:"8px 32px"}}><UnderConstructionButton feature="Duyệt mapping toàn cửa hàng">Duyệt mapping toàn cửa hàng</UnderConstructionButton></div><Outlet context={{ state, workflow, flow, flowState, canDecideProfile,
-    canProposeMapping: config.mockPreview || permissions.includes('mapping.propose'), startNewDraft } satisfies ImportSelection} /></>
+  const outlet = <Outlet context={{ state, workflow, flow, flowState, role, devOwnerReview, canDecideProfile,
+    canProposeMapping: permissions.includes('mapping.propose'), startNewDraft } satisfies ImportSelection} />
+  return Playground && location.pathname === '/imports' ? <Suspense fallback={outlet}><Playground>{outlet}</Playground></Suspense> : outlet
 }

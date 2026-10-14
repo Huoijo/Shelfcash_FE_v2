@@ -6,7 +6,7 @@ export function SessionActions() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const submitting = useRef(false)
-  if (state.status === 'mock_preview') return <span className="session-actions__preview">Xem trước · không có phiên đăng nhập</span>
+  if (state.status === 'mock_preview') return null
   if (state.status !== 'authenticated') return null
 
   async function leave() {

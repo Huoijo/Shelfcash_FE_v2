@@ -23,6 +23,6 @@ export function importStage(state: ImportBatchState): ImportStage {
 
 export const importStageLabels: Record<ImportStage, string> = {
   LOCAL_SELECTION: 'Chọn file', DRAFT: 'Bản nháp', UPLOADING: 'Đang tải file', UPLOAD_REVIEW: 'Kiểm tra file đã nhận',
-  ANALYZING: 'Đang phân tích', MAPPING: 'Ghép cột', MAPPING_COMPLETE: 'Sẵn sàng xem lại', PREVIEWING: 'Đang tạo Preview',
+  ANALYZING: 'Đang phân tích', MAPPING: 'Kiểm tra cách hiểu', MAPPING_COMPLETE: 'Sẵn sàng xem lại', PREVIEWING: 'Đang tạo Preview',
   PREVIEW_READY: 'Preview đã sẵn sàng', COMMITTING: 'Đang ghi dữ liệu', COMPLETED: 'Lô có biên nhận hoàn tất', BLOCKED: 'Có lỗi chặn', FAILED: 'Có lỗi cần kiểm tra',
 }

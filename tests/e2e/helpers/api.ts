@@ -9,7 +9,7 @@ export const errorResponse=(status:number,code:string)=>({httpStatus:status,body
 export async function backend(page:Page,handler:(path:string,method:string,body:any,headers:Record<string,string>,url:URL)=>Promise<unknown>|unknown){
   await page.route('http://127.0.0.1:18001/**',async route=>{
     const req=route.request(),url=new URL(req.url()),path=url.pathname
-    const headers={'Access-Control-Allow-Origin':'http://127.0.0.1:4174','Access-Control-Allow-Credentials':'true','Access-Control-Allow-Headers':'content-type,x-csrf-token,idempotency-key,if-match,if-none-match,x-invitation-token','Access-Control-Allow-Methods':'GET,POST,PUT,OPTIONS'}
+    const headers={'Access-Control-Allow-Origin':req.headers().origin??'http://127.0.0.1:4174','Access-Control-Allow-Credentials':'true','Access-Control-Allow-Headers':'content-type,x-csrf-token,idempotency-key,if-match,if-none-match,x-invitation-token','Access-Control-Allow-Methods':'GET,POST,PUT,OPTIONS'}
     if(req.method()==='OPTIONS'){await route.fulfill({status:204,headers});return}
     let data:any=await handler(path,req.method(),req.postDataJSON(),req.headers(),url)
     if(data===undefined){

@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import { DebugValue } from '../../../shared/debug/DevelopmentTools'
+import { businessField } from '../importPresentation'
+import { useContext, useState } from 'react'
+import { ImportResolutionView } from '../importResolutionView.context'
 import type { MappingIssue, MappingOptions, MappingResolution } from '../importFlow.types'
 
 type Props = { issue: MappingIssue; options?: MappingOptions; disabled: boolean; onResolve: (resolution: MappingResolution) => void }
 type SourceContext = Extract<MappingResolution, { kind: 'source_context' }>
 type PeriodAmendment = { id: string; expected_version: string; effective_to: string; reason: string }
+
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 const namespace = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/
 const money = /^(0|[1-9][0-9]{0,17})(\.[0-9]{1,18})?$/
@@ -12,12 +16,13 @@ const positiveDecimal = (value: string) => value.length <= 200 && /^(0|[1-9][0-9
 export function ImportResolutionEditor(props: Props) {
   const { issue, options } = props
   return <>
+    <DebugValue label="Resolution descriptor" value={{issue,options}} />
     {issue.issue_type === 'classification' && <ClassificationEditor {...props} />}
     {issue.issue_type === 'source_context' && <SourceContextEditor {...props} />}
     {issue.issue_type === 'identity' && <IdentityEditor {...props} />}
     {issue.issue_type === 'conversion' && <ConversionEditor {...props} />}
     {issue.issue_type === 'column' && <OptionalIgnoreEditor {...props} />}
-    {issue.issue_type === 'schema_blocker' && <p className="import-flow__notice">Không có thao tác “bỏ qua lỗi schema” chung. Kiểm tra code, mẫu nguồn và ngữ cảnh; sửa input hoặc khai báo được hỗ trợ rồi phân tích lại. Không tự thay dữ liệu thiếu thành 0.</p>}
+    {issue.issue_type === 'schema_blocker' && <p className="import-flow__notice">Cần kiểm tra dữ liệu nguồn trước khi tiếp tục. Không tự thay dữ liệu thiếu thành 0.</p>}
     {options?.schema && options.options.some((field) => field.support === 'supported' && field.input_sources?.includes('shared_value') && field.allowed_shared_scopes?.length) && <SharedValueEditor {...props} options={options} />}
   </>
 }
@@ -30,16 +35,16 @@ function ClassificationEditor({ options, disabled, onResolve }: Props) {
   const selected = options?.schemas.find((entry) => entry.schema_id === schema)
   return <fieldset disabled={disabled} className="import-flow__form">
     <legend>Chọn loại dữ liệu cho Sheet</legend>
-    <label>Schema<select value={schema} onChange={(event) => { setSchema(event.target.value); setAcknowledged(false) }}>
-      <option value="">Chọn schema…</option>
-      {options?.schemas.map((entry) => <option key={entry.schema_id} value={entry.schema_id}>{entry.label} · {entry.schema_id}</option>)}
-      <option value="IGNORE">IGNORE — Không nhập dữ liệu của Sheet này</option>
+    <label>Loại dữ liệu<select value={schema} onChange={(event) => { setSchema(event.target.value); setAcknowledged(false) }}>
+      <option value="">Chọn loại dữ liệu…</option>
+      {options?.schemas.map((entry) => <option key={entry.schema_id} value={entry.schema_id}>{entry.label}</option>)}
+      <option value="IGNORE">Không nhập dữ liệu của Sheet này</option>
     </select></label>
     {selected && <p>{selected.description}</p>}
-    {!options && <p className="import-flow__muted">Đọc schema / trường đích ở trên để nhận catalogue đầy đủ từ máy chủ.</p>}
+    {!options && <p className="import-flow__muted">Đang tải các loại dữ liệu có thể chọn.</p>}
     <label>Lý do phân loại hoặc bỏ qua<textarea maxLength={1000} value={reason} onChange={(event) => setReason(event.target.value)} /></label>
     {ignored && <label className="import-flow__check"><input type="checkbox" checked={acknowledged} onChange={(event) => setAcknowledged(event.target.checked)} />Tôi xác nhận toàn bộ Sheet này không tham gia import. Thao tác làm mất hiệu lực Preview/review hiện tại.</label>}
-    <p className="import-flow__muted">Staff được IGNORE toàn Sheet của chính batch mình khi đủ quyền; đây không phải phê duyệt profile hoặc bỏ qua một trường bắt buộc.</p>
+
     <button type="button" disabled={disabled || !reason.trim() || (!selected && !ignored) || (ignored && !acknowledged)} onClick={() => onResolve({ kind: 'sheet_type', sheet_type: ignored ? null : selected!.schema_id, ignored, acknowledgment: ignored && acknowledged, reason: reason.trim() })}>Lưu loại dữ liệu</button>
   </fieldset>
 }
@@ -72,25 +77,25 @@ function SourceContextEditor({ disabled, onResolve }: Props) {
   return <fieldset disabled={disabled} className="import-flow__form">
     <legend>Khai báo ngữ cảnh nguồn</legend>
     <div className="import-flow__form-grid">
-      <label>Mã hệ thống nguồn<input maxLength={128} value={source} onChange={(event) => setSource(event.target.value)} placeholder="Mã từ hệ thống xuất dữ liệu" /></label>
-      <label>Mã loại báo cáo<input maxLength={128} value={report} onChange={(event) => setReport(event.target.value)} /></label>
+      <label>Hệ thống nguồn<input maxLength={128} value={source} onChange={(event) => setSource(event.target.value)} placeholder="Mã từ hệ thống xuất dữ liệu" /></label>
+      <label>Loại báo cáo<input maxLength={128} value={report} onChange={(event) => setReport(event.target.value)} /></label>
     </div>
-    <p className="import-flow__muted">Mã namespace gồm chữ/số và . _ : -; không dùng nhãn hiển thị thay mã nguồn.</p>
+    <p className="import-flow__muted">Dùng mã nguồn báo cáo đã được thống nhất với cửa hàng.</p>
     <EvidenceInput value={evidence} onChange={setEvidence} />
     <details><summary>Semantics và định dạng nguồn (chỉ khai báo khi đã biết)</summary>
       <div className="import-flow__form-grid">
-        <label>Doanh số<select value={sales} onChange={(event) => setSales(event.target.value as typeof sales)}><option value="">Không khai báo</option><option value="daily_total">Tổng theo ngày · daily_total</option><option value="disjoint_contribution">Phần đóng góp không trùng · disjoint_contribution</option></select></label>
-        <label>Kiểm kho<select value={inventory} onChange={(event) => setInventory(event.target.value as typeof inventory)}><option value="">Không khai báo</option><option value="lot_stock_count">Số đếm theo lô · lot_stock_count</option></select></label>
+        <label>Doanh số<select value={sales} onChange={(event) => setSales(event.target.value as typeof sales)}><option value="">Không khai báo</option><option value="daily_total">Tổng theo ngày</option><option value="disjoint_contribution">Phần đóng góp không trùng</option></select></label>
+        <label>Kiểm kho<select value={inventory} onChange={(event) => setInventory(event.target.value as typeof inventory)}><option value="">Không khai báo</option><option value="lot_stock_count">Số đếm theo lô</option></select></label>
         <label>Dấu thập phân<select value={decimal} onChange={(event) => setDecimal(event.target.value as typeof decimal)}><option value="">Không khai báo</option><option value="dot">Dấu chấm</option><option value="comma">Dấu phẩy</option></select></label>
-        <label>Ngày nguồn<select value={date} onChange={(event) => setDate(event.target.value as typeof date)}><option value="">Không khai báo</option><option value="ISO">ISO · YYYY-MM-DD</option><option value="DMY_SLASH">DD/MM/YYYY</option><option value="MDY_SLASH">MM/DD/YYYY</option><option value="EXCEL_SERIAL">Excel serial · theo epoch workbook 1900/1904</option></select></label>
+        <label>Ngày nguồn<select value={date} onChange={(event) => setDate(event.target.value as typeof date)}><option value="">Không khai báo</option><option value="ISO">ISO · YYYY-MM-DD</option><option value="DMY_SLASH">DD/MM/YYYY</option><option value="MDY_SLASH">MM/DD/YYYY</option><option value="EXCEL_SERIAL">Ngày dạng số Excel</option></select></label>
 
       </div>
-      <p className="import-flow__muted">Giá/MOQ nhà cung cấp cần khai báo price_basis, mẫu số giá và moq_basis qua cột nguồn hoặc giá trị dùng chung được server cho phép; không dùng pack_cost_basis cũ thay thế. Excel serial chỉ áp dụng date fields được hỗ trợ, không biến date-only thành thời điểm nhận/kiểm kho.</p>
+      <p className="import-flow__muted">Giá và MOQ cần có cơ sở tính rõ ràng.</p>
       <label className="import-flow__check"><input type="checkbox" checked={expiry} onChange={(event) => setExpiry(event.target.checked)} />Khai báo expiry từ ngày nhận dự kiến + số ngày shelf-life đã được khai báo.</label>
       {expiry && <EvidenceInput label="Bằng chứng quy tắc expiry" value={expiryEvidence} onChange={setExpiryEvidence} />}
     </details>
     <details><summary>Amendment kỳ hạn/fee (cần Owner review policy)</summary>
-      <p className="import-flow__muted">Chỉ đóng kỳ với ID, expected version, ngày cuối kỳ và lý do rõ ràng. Không tự động đóng kỳ lịch sử.</p>
+      <p className="import-flow__muted">Không tự động đóng kỳ lịch sử.</p>
       <PeriodAmendments label="Supplier term" items={terms} onChange={setTerms} />
       <PeriodAmendments label="Payable fee" items={fees} onChange={setFees} />
     </details>
@@ -104,7 +109,7 @@ function PeriodAmendments({ label, items, onChange }: { label: string; items: Pe
     {items.map((item, index) => <div key={index} className="import-flow__field-info">
       <div className="import-flow__form-grid">
         <label>{label} ID (UUID)<input value={item.id} maxLength={36} onChange={(event) => update(index, { id: event.target.value })} /></label>
-        <label>Expected version<input value={item.expected_version} maxLength={128} onChange={(event) => update(index, { expected_version: event.target.value })} /></label>
+        <label>Phiên bản hiện tại<input value={item.expected_version} maxLength={128} onChange={(event) => update(index, { expected_version: event.target.value })} /></label>
         <label>Ngày cuối kỳ<input type="date" value={item.effective_to} onChange={(event) => update(index, { effective_to: event.target.value })} /></label>
         <label>Lý do<textarea maxLength={1000} value={item.reason} onChange={(event) => update(index, { reason: event.target.value })} /></label>
       </div><button type="button" onClick={() => onChange(items.filter((_, at) => at !== index))}>Bỏ amendment {index + 1}</button>
@@ -114,7 +119,8 @@ function PeriodAmendments({ label, items, onChange }: { label: string; items: Pe
 }
 
 function IdentityEditor({ disabled, onResolve }: Props) {
-  const [mode, setMode] = useState<'existing' | 'new'>('existing')
+  const view=useContext(ImportResolutionView)
+  const [mode, setMode] = useState<'existing' | 'new'>(view.identityMode)
   const [canonicalId, setCanonicalId] = useState('')
   const [entity, setEntity] = useState<'product' | 'ingredient' | 'supplier'>('product')
   const [businessKey, setBusinessKey] = useState('')
@@ -134,23 +140,23 @@ function IdentityEditor({ disabled, onResolve }: Props) {
   }
   return <fieldset disabled={disabled} className="import-flow__form">
     <legend>Xác nhận đối tượng</legend>
-    <label>Cách xử lý<select value={mode} onChange={(event) => setMode(event.target.value as typeof mode)}><option value="existing">Gắn đối tượng hiện có trong Store / reservation đã duyệt</option><option value="new">Đề xuất tạo đối tượng mới</option></select></label>
-    <p className="import-flow__muted">Đối tượng và business key phải khớp issue hiện tại. Không tạo UUID từ tên; không tra danh tính toàn hệ thống hoặc tạo lot mới qua đây.</p>
+    <label>Cách xử lý<select value={mode} onChange={(event) => setMode(event.target.value as typeof mode)}><option value="existing">Gắn đối tượng đã có trong cửa hàng</option><option value="new">Đề xuất tạo đối tượng mới</option></select></label>
+    <p className="import-flow__muted">Chọn đúng đối tượng thuộc cửa hàng.</p>
     {mode === 'existing' ? <>
-      <label>Canonical ID (UUID lowercase)<input value={canonicalId} maxLength={36} onChange={(event) => setCanonicalId(event.target.value)} /></label>
+      <label>Mã đối tượng<input value={canonicalId} maxLength={36} onChange={(event) => setCanonicalId(event.target.value)} /></label>
       <button type="button" disabled={disabled || !uuid.test(canonicalId)} onClick={() => onResolve({ kind: 'identity_binding', canonical_id: canonicalId })}>Lưu liên kết đối tượng</button>
     </> : <>
-      <label>Loại đối tượng<select value={entity} onChange={(event) => setEntity(event.target.value as typeof entity)}><option value="product">Product</option><option value="ingredient">Ingredient</option><option value="supplier">Supplier</option></select></label>
-      <label>Business key chính xác trong nguồn<input maxLength={1000} value={businessKey} onChange={(event) => setBusinessKey(event.target.value)} /></label>
+      <label>Loại đối tượng<select value={entity} onChange={(event) => setEntity(event.target.value as typeof entity)}><option value="product">Món</option><option value="ingredient">Nguyên liệu</option><option value="supplier">Nhà cung cấp</option></select></label>
+      <label>Mã chính xác trong nguồn<input maxLength={1000} value={businessKey} onChange={(event) => setBusinessKey(event.target.value)} /></label>
       <div className="import-flow__form-grid">
         <label>Tên<input maxLength={200} value={name} onChange={(event) => setName(event.target.value)} /></label>
-        {entity !== 'supplier' && <><label>{entity === 'ingredient' ? 'Base unit' : 'Selling unit'}<input maxLength={32} value={unit} onChange={(event) => setUnit(event.target.value)} /></label><label>SKU (để trống = null)<input maxLength={64} value={sku} onChange={(event) => setSku(event.target.value)} /></label></>}
-        {entity === 'product' && <label>Giá exact decimal (để trống = null)<input inputMode="decimal" value={price} maxLength={37} onChange={(event) => setPrice(event.target.value)} /><span className="import-flow__muted">Tối đa 18 chữ số phần nguyên và 18 phần thập phân; không đổi qua JS number.</span></label>}
-        <label>Active<select value={active === null ? '' : String(active)} onChange={(event) => setActive(event.target.value === '' ? null : event.target.value === 'true')}><option value="">Chọn rõ trạng thái…</option><option value="true">true — Đang dùng</option><option value="false">false — Không hoạt động</option></select></label>
-        {entity === 'ingredient' && <label>Theo dõi expiry<select value={expiry === null ? '' : String(expiry)} onChange={(event) => setExpiry(event.target.value === '' ? null : event.target.value === 'true')}><option value="">Chọn rõ policy…</option><option value="true">true — Có</option><option value="false">false — Không</option></select></label>}
+        {entity !== 'supplier' && <><label>{entity === 'ingredient' ? 'Base unit' : 'Selling unit'}<input maxLength={32} value={unit} onChange={(event) => setUnit(event.target.value)} /></label><label>SKU (không bắt buộc)<input maxLength={64} value={sku} onChange={(event) => setSku(event.target.value)} /></label></>}
+        {entity === 'product' && <label>Giá (để trống nếu chưa xác định)<input inputMode="decimal" value={price} maxLength={37} onChange={(event) => setPrice(event.target.value)} /></label>}
+        <label>Trạng thái<select value={active === null ? '' : String(active)} onChange={(event) => setActive(event.target.value === '' ? null : event.target.value === 'true')}><option value="">Chọn rõ trạng thái…</option><option value="true">Đang dùng</option><option value="false">Không hoạt động</option></select></label>
+        {entity === 'ingredient' && <label>Theo dõi hạn sử dụng<select value={expiry === null ? '' : String(expiry)} onChange={(event) => setExpiry(event.target.value === '' ? null : event.target.value === 'true')}><option value="">Chọn rõ trạng thái…</option><option value="true">Có</option><option value="false">Không</option></select></label>}
       </div>
       <EvidenceInput value={evidence} onChange={setEvidence} />
-      <p className="import-flow__muted">Đây chỉ là đề xuất/reservation cần Owner review; chưa tạo canonical entity.</p>
+      <p className="import-flow__muted">Đề xuất đối tượng mới cần Owner duyệt.</p>
       <button type="button" disabled={disabled || !canPropose} onClick={submitNew}>Lưu đề xuất đối tượng mới</button>
     </>}
   </fieldset>
@@ -170,7 +176,7 @@ function ConversionEditor({ issue, disabled, onResolve }: Props) {
       <label>Mẫu số (decimal text &gt; 0)<input maxLength={200} inputMode="decimal" value={denominator} onChange={(event) => setDenominator(event.target.value)} /></label>
     </div>
     <EvidenceInput value={evidence} onChange={setEvidence} />
-    <p className="import-flow__muted">Tỉ lệ = tử số / mẫu số. Giữ nguyên exact decimal string; không suy đoán đơn vị hay tự làm tròn.</p>
+    <p className="import-flow__muted">Tỉ lệ = tử số / mẫu số. Không tự làm tròn.</p>
     <button type="button" disabled={disabled || !from || !to || from.length > 32 || to.length > 32 || !positiveDecimal(numerator) || !positiveDecimal(denominator) || !evidence.trim()} onClick={() => onResolve({ kind: 'declared_conversion', from_unit: from!, to_unit: to!, factor: { numerator, denominator }, evidence_reference: evidence.trim() })}>Lưu quy đổi</button>
   </fieldset>
 }
@@ -180,8 +186,8 @@ function OptionalIgnoreEditor({ disabled, onResolve }: Props) {
   const [acknowledged, setAcknowledged] = useState(false)
   return <details><summary>Bỏ qua cột nguồn không bắt buộc</summary>
     <fieldset disabled={disabled} className="import-flow__form">
-      <legend>Đề xuất ignored optional binding</legend>
-      <p className="import-flow__muted">Backend kiểm tra tính optional; không được bỏ qua business-required fact để vượt validation. Đề xuất này vẫn cần Owner duyệt.</p>
+      <legend>Bỏ qua cột không bắt buộc</legend>
+      <p className="import-flow__muted">Không bỏ qua dữ liệu bắt buộc. Đề xuất này vẫn cần Owner duyệt.</p>
       <EvidenceInput value={evidence} onChange={setEvidence} />
       <label className="import-flow__check"><input type="checkbox" checked={acknowledged} onChange={(event) => setAcknowledged(event.target.checked)} />Tôi xác nhận cột này không chứa dữ kiện bắt buộc cần nhập.</label>
       <button type="button" disabled={disabled || !evidence.trim() || !acknowledged} onClick={() => onResolve({ kind: 'ignored_optional_field', evidence_reference: evidence.trim() })}>Lưu đề xuất bỏ qua cột</button>
@@ -190,6 +196,8 @@ function OptionalIgnoreEditor({ disabled, onResolve }: Props) {
 }
 
 function SharedValueEditor({ issue, options, disabled, onResolve }: Props & { options: MappingOptions }) {
+  const view=useContext(ImportResolutionView)
+  const [expanded,setExpanded]=useState(view.sharedValueExpanded)
   const [target, setTarget] = useState('')
   const [scope, setScope] = useState<'PROFILE_CONSTANT' | 'IMPORT_VALUE' | ''>('')
   const [kind, setKind] = useState<'string' | 'boolean' | 'integer' | 'null' | ''>('')
@@ -209,20 +217,20 @@ function SharedValueEditor({ issue, options, disabled, onResolve }: Props & { op
     const value = kind === 'null' ? null : kind === 'boolean' ? boolean === 'true' : kind === 'integer' ? numeric : text
     if (scope) onResolve({ kind: 'shared_value', target_field: target, scope, value, evidence_reference: evidence.trim(), ...(replace ? { replace_source_column_index: Number(index), acknowledgment: acknowledged } : {}) })
   }
-  return <details><summary>Khai báo giá trị dùng chung / giá trị riêng lần import</summary>
+  return <details open={expanded} onToggle={event=>setExpanded(event.currentTarget.open)}><summary>Khai báo giá trị dùng chung / giá trị riêng lần import</summary>
     <fieldset disabled={disabled} className="import-flow__form">
       <legend>Nguồn giá trị cho trường</legend>
-      <label>Trường đích<select value={target} onChange={(event) => { setTarget(event.target.value); setScope(''); setKind(''); setText(''); setBoolean('') }}><option value="">Chọn trường hỗ trợ shared value…</option>{fields.map((field) => <option key={field.key} value={field.key}>{field.label || field.key} · {field.key}</option>)}</select></label>
-      {selected && <p className="import-flow__muted">{selected.type} · {selected.requiredness} · {selected.nullable ? 'Cho phép null' : 'Không cho phép null'}{selected.unit_semantics ? ` · ${selected.unit_semantics}` : ''}. {selected.input_help || selected.description}</p>}
-      <label>Phạm vi<select value={scope} onChange={(event) => setScope(event.target.value as typeof scope)}><option value="">Chọn phạm vi…</option>{selected?.allowed_shared_scopes?.map((entry) => <option key={entry} value={entry}>{entry === 'PROFILE_CONSTANT' ? 'Hằng số profile — cần Owner duyệt' : 'Giá trị của riêng lần import — phải khai báo lại'} · {entry}</option>)}</select></label>
+      <label>Trường đích<select value={target} onChange={(event) => { setTarget(event.target.value); setScope(''); setKind(''); setText(''); setBoolean('') }}><option value="">Chọn trường dữ liệu…</option>{fields.map((field) => <option key={field.key} value={field.key}>{field.label || businessField(field.key)}</option>)}</select></label>
+      {selected && <p className="import-flow__muted">{selected.nullable ? 'Cho phép null' : 'Không cho phép null'}{selected.unit_semantics ? ` · ${selected.unit_semantics}` : ''}. {selected.input_help || selected.description}</p>}
+      <label>Phạm vi<select value={scope} onChange={(event) => setScope(event.target.value as typeof scope)}><option value="">Chọn phạm vi…</option>{selected?.allowed_shared_scopes?.map((entry) => <option key={entry} value={entry}>{entry === 'PROFILE_CONSTANT' ? 'Hằng số profile — cần Owner duyệt' : 'Giá trị của riêng lần import — phải khai báo lại'}</option>)}</select></label>
       <div className="import-flow__form-grid">
-        <label>Kiểu giá trị<select value={kind} onChange={(event) => setKind(event.target.value as typeof kind)}><option value="">Chọn rõ kiểu…</option><option value="string">Chuỗi (date/decimal giữ lexical text)</option><option value="boolean">Boolean</option><option value="integer">Integer int32</option><option value="null" disabled={!selected?.nullable}>null — giá trị null rõ ràng</option></select></label>
+        <label>Kiểu giá trị<select value={kind} onChange={(event) => setKind(event.target.value as typeof kind)}><option value="">Chọn rõ kiểu…</option><option value="string">Văn bản, ngày hoặc số thập phân</option><option value="boolean">Có / Không</option><option value="integer">Số nguyên</option><option value="null" disabled={!selected?.nullable}>Chưa xác định</option></select></label>
         {(kind === 'string' || kind === 'integer') && <label>Giá trị<input maxLength={kind === 'string' ? 1000 : 11} inputMode={kind === 'integer' ? 'numeric' : 'text'} value={text} onChange={(event) => setText(event.target.value)} /></label>}
-        {kind === 'boolean' && <label>Boolean<select value={boolean} onChange={(event) => setBoolean(event.target.value as typeof boolean)}><option value="">Chọn…</option><option value="true">true</option><option value="false">false</option></select></label>}
+        {kind === 'boolean' && <label>Giá trị<select value={boolean} onChange={(event) => setBoolean(event.target.value as typeof boolean)}><option value="">Chọn…</option><option value="true">Có</option><option value="false">Không</option></select></label>}
       </div>
-      <p className="import-flow__muted">false, 0 và null là ba giá trị khác nhau. Backend kiểm kiểu/format theo field authority; không tự dùng giá trị mặc định cho dữ liệu thiếu.</p>
-      <label className="import-flow__check"><input type="checkbox" checked={replace} onChange={(event) => { setReplace(event.target.checked); setAcknowledged(false) }} />Chuyển nguồn từ cột đã ghép sang shared value</label>
-      {selected && !selected.available && <p className="import-flow__notice">Khả dụng ghép cột: {selected.reason_code ?? 'không sẵn sàng'}. Nếu trường đang lấy nguồn từ cột, phải khai báo chuyển nguồn đúng index; backend kiểm tra xung đột. Cập nhật giá trị dưới approved IMPORT_VALUE rule không cần chuyển nguồn cột.</p>}
+      <p className="import-flow__muted">Không, 0 và chưa xác định là ba giá trị khác nhau.</p>
+      <label className="import-flow__check"><input type="checkbox" checked={replace} onChange={(event) => { setReplace(event.target.checked); setAcknowledged(false) }} />Dùng giá trị khai báo thay cho cột nguồn</label>
+      {selected && !selected.available && <p className="import-flow__notice">Trường này đang lấy dữ liệu từ cột nguồn. Xác nhận chuyển nguồn nếu muốn dùng giá trị khai báo.</p>}
       {replace && <><label>Source column index chính xác (zero-based 0–255)<input inputMode="numeric" value={index} maxLength={3} onChange={(event) => setIndex(event.target.value)} /></label><label className="import-flow__check"><input type="checkbox" checked={acknowledged} onChange={(event) => setAcknowledged(event.target.checked)} />Tôi xác nhận thay nguồn của đúng cột này; dữ liệu cột không còn là nguồn cho trường đích.</label></>}
       <EvidenceInput value={evidence} onChange={setEvidence} />
       <button type="button" disabled={disabled || !valid} onClick={submit}>Lưu giá trị đã khai báo</button>

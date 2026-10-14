@@ -665,3 +665,56 @@ test('visible column options with a stale revision never populate selectors or p
   await work.controller.confirmMapping(row.mapping_id, 'on_hand')
   assert.equal(writes, 0)
 })
+
+test('012 IMPORT_VALUE fact resolution does not itself request reusable Owner approval', async () => {
+  const work = await workspace()
+  const before = work.controller.getSnapshot().summary
+  const queue = await work.source.queue(before.import_id, { review_only: false })
+  const result = await work.source.resolve(before.import_id, queue.items[0].mapping_id, { key: crypto.randomUUID(), mappingRevision: before.mapping_revision,
+    resolution: { kind: 'shared_value', target_field: 'on_hand', scope: 'IMPORT_VALUE', value: '10', evidence_reference: 'observed-batch-only' } })
+  const after = await work.source.summary(before.import_id)
+  assert.equal(result.approval_required, false)
+  assert.equal(after.profile_proposals.length, 0)
+  assert.equal(after.can_preview, true)
+  assert.deepEqual(after.binding_refs, before.binding_refs)
+})
+
+test('012 DEV approval rejection requires an edited revision and retains original uploaded batch', async () => {
+  const work = await workspace({ ownerRequired: true, rejectOwnerReview: true })
+  const original = work.upload.getSnapshot().batch
+  await work.controller.loadVisibleOptions()
+  await work.controller.confirmMapping(work.controller.getSnapshot().queue.items[0].mapping_id, 'on_hand')
+  const first = work.controller.getSnapshot().summary.profile_proposals[0]
+  const gateway = work.source.ownerReview
+  assert.equal((await gateway.submit(original.import_id, first.proposal_revision)).status, 'waiting')
+  assert.equal((await gateway.read(original.import_id)).status, 'waiting')
+  assert.equal((await gateway.read(original.import_id)).status, 'rejected')
+  await assert.rejects(gateway.submit(original.import_id, first.proposal_revision), /REJECTED_PROPOSAL_REQUIRES_EDIT/)
+  await work.controller.refresh()
+  await work.controller.loadVisibleOptions()
+  await work.controller.confirmMapping(work.controller.getSnapshot().queue.items[0].mapping_id, 'on_hand')
+  const changed = work.controller.getSnapshot().summary.profile_proposals[0]
+  assert.notEqual(changed.proposal_revision, first.proposal_revision)
+  await gateway.submit(original.import_id, changed.proposal_revision)
+  await gateway.read(original.import_id)
+  assert.equal((await gateway.read(original.import_id)).status, 'approved')
+  const after = await work.mock.read(original.import_id)
+  assert.equal(after.import_id, original.import_id)
+  assert.deepEqual(after.source_set, original.source_set)
+  assert.deepEqual(after.files, original.files)
+})
+
+test('012 Review navigation cannot bypass stale/blocked or incomplete retained Preview pages', async () => {
+  const work = await workspace()
+  await work.controller.startPreview(); await work.controller.pollJob(); await work.controller.pollJob()
+  work.controller.setTab('review')
+  assert.equal(work.controller.getSnapshot().tab, 'preview')
+  await work.controller.loadMorePreview()
+  work.controller.setTab('review')
+  assert.equal(work.controller.getSnapshot().tab, 'review')
+  work.controller.setTab('preview')
+  const old = work.controller.getSnapshot().batch
+  work.controller.setBatch({ ...old, import_revision: 'changed-revision', status: 'ready_for_preview' })
+  work.controller.setTab('review')
+  assert.equal(work.controller.getSnapshot().tab, 'preview')
+})

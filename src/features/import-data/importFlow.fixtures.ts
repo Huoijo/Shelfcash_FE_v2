@@ -1,9 +1,10 @@
+import type { DevOwnerReviewGateway, OwnerReviewState } from './importExperience'
 import { HttpError } from '../../shared/http/httpClient'
 import type { MockImportDataSource } from './importData.fixtures'
 import type { ImportBatch } from './importData.types'
 import type {
   ImportCompletion, ImportFlowDataSource, ImportJob, MappingIssue, MappingProgress,
-  MappingSummary, PreviewBundle, PreviewRow, ProcessReceipt, ReviewConfirmation,
+  MappingSummary, PreviewBundle, PreviewRow, ProcessReceipt, ReviewConfirmation, MappingResolution,
 } from './importFlow.types'
 
 const timestamp = '2026-10-11T01:00:00Z'
@@ -36,8 +37,8 @@ function fail(status: number, code: string): never {
  */
 export function createMockImportFlowDataSource(
   batches: MockImportDataSource,
-  options: { ownerRequired?: boolean; pageSize?: number } = {},
-): ImportFlowDataSource {
+  options: { ownerRequired?: boolean; pageSize?: number; rejectOwnerReview?: boolean } = {},
+): ImportFlowDataSource & { ownerReview: DevOwnerReviewGateway } {
   const fixtures = new Map<string, Fixture>()
   const jobs = new Map<string, FixtureJob>()
   const receipts = new Map<string, { fingerprint: string; value: unknown }>()
@@ -78,11 +79,11 @@ export function createMockImportFlowDataSource(
       schema: 'inventory_count' as const,
       structure: { sheet_roles: ['inventory_count'], header_rules: [], schema_signature: 'mock-inventory-signature' },
       field_bindings: [{ source_column_index: 2, source_header: 'on_hand', target_field: record.mappingResolved ? record.targetField : null,
-        requiredness: 'required' as const, ignored: false, evidence_reference: 'synthetic-example', origin: 'MANUAL' as const, confidence: null }],
+        requiredness: 'required' as const, ignored: false, evidence_reference: 'Phiếu kiểm kê', origin: 'MANUAL' as const, confidence: null }],
       identity_rules: [], entity_proposals: [], aliases: [], normalizations: [], conversions: [],
       sales_semantics: null, inventory_semantics: 'lot_stock_count' as const,
       planned_arrival_expiry_rule: null, term_period_amendments: [], fee_period_amendments: [],
-      source_provenance: { declared_by: record.batch.store_id, evidence_references: ['synthetic-example'],
+      source_provenance: { declared_by: record.batch.store_id, evidence_references: ['Phiếu kiểm kê'],
         verification: 'USER_DECLARED' as const, owner_reviewed: !record.ownerRequired }, shared_field_bindings: [] }
   }
   function summary(record: Fixture): MappingSummary {
@@ -93,7 +94,7 @@ export function createMockImportFlowDataSource(
       profile_proposals: record.ownerRequired ? [{ profile_id: record.profileId,
         proposal_revision: record.proposalRevision, lifecycle_revision: record.lifecycleRevision,
         active_version: null, spec: spec(record), missing_fields: record.mappingResolved ? [] : ['on_hand'] }] : [],
-      approved_profiles: [], approved_contexts: [], warnings: [],
+      approved_profiles: record.ownerRequired ? [] : [{ binding: { sheet_id: record.sheetId, profile_id: record.profileId, version: 'mock-approved/1', content_digest: digest }, spec: spec(record) }], approved_contexts: [], warnings: [],
       can_preview: !record.ownerRequired,
       blockers: record.ownerRequired ? [{ code: 'OWNER_MAPPING_APPROVAL_REQUIRED', severity: 'ERROR',
         message: 'Ví dụ bị chặn: cần Owner duyệt toàn bộ profile.' }] : [],
@@ -128,9 +129,9 @@ export function createMockImportFlowDataSource(
           row_number: index + 2, source_column_index: 2 },
         classification: 'CHANGED', proposed_action: 'COUNT_CORRECTION', entity_refs: { ingredient_id: ingredientId, lot_id: lotId },
         before: { domain: 'inventory_count', ingredient_id: ingredientId, lot_id: lotId,
-          on_hand: index ? '9' : '12', unit: 'l', observed_at: timestamp, reason: 'Synthetic observed count' },
+          on_hand: index ? '9' : '12', unit: 'l', observed_at: timestamp, reason: 'Đối chiếu số lượng kiểm kê' },
         after: { domain: 'inventory_count', ingredient_id: ingredientId, lot_id: lotId,
-          on_hand: index ? '8' : '10', unit: 'l', observed_at: timestamp, reason: 'Synthetic observed count' },
+          on_hand: index ? '8' : '10', unit: 'l', observed_at: timestamp, reason: 'Đối chiếu số lượng kiểm kê' },
         changes: [{ field: 'on_hand', before: index ? '9' : '12', after: index ? '8' : '10', delta: index ? '-1' : '-2' }],
         provenance: { on_hand: { origin: 'SOURCE_EXPLICIT', applied_rule_ids: [], value_source: 'SOURCE_COLUMN', source_column_index: 2 } },
         blockers: [], warnings: [], confirmation_required: true, unsupportedFields: [] }
@@ -154,7 +155,7 @@ export function createMockImportFlowDataSource(
     return { ...common, status: 'committing', phase: 'commit', commit_id: record.commitId,
       preview_id: record.preview!.preview.summary.preview_id, effective_plan_digest: digest }
   }
-  async function resolve(importId: string, mappingId: string, intent: { key: string; mappingRevision: string; targetField?: string; resolution?: unknown }) {
+  async function resolve(importId: string, mappingId: string, intent: { key: string; mappingRevision: string; targetField?: string; resolution?: MappingResolution }) {
     const record = await fixture(importId)
     const scope = `mapping:${importId}:${mappingId}:${intent.key}`
     const old = replay<Awaited<ReturnType<ImportFlowDataSource['confirm']>>>(scope, intent)
@@ -162,22 +163,23 @@ export function createMockImportFlowDataSource(
     if (mappingId !== record.mappingId) fail(404, 'RESOURCE_NOT_FOUND')
     if (intent.mappingRevision !== record.mappingRevision) fail(412, 'MAPPING_REVISION_CONFLICT')
     if (intent.targetField) record.targetField = intent.targetField
-    record.ownerRequired = true
+    const batchOnly = intent.resolution?.kind === 'shared_value' && intent.resolution.scope === 'IMPORT_VALUE' && intent.resolution.replace_source_column_index == null
+    record.ownerRequired ||= !batchOnly
     record.mappingResolved = true
     record.mappingRevision = revision()
     record.proposalRevision = revision()
     record.lifecycleRevision = revision()
     record.preview = null
     update(record, { status: 'review_required', import_revision: revision(), preview: null,
-      review_confirmation: null, confirmation_usable: false, allowed_actions: ['mapping.read', 'mapping.propose'] })
+      review_confirmation: null, confirmation_usable: false, allowed_actions: ['mapping.read', 'mapping.propose', ...(!record.ownerRequired ? ['preview'] : [])] })
     const result = { mapping_id: mappingId, status: 'resolved', mapping_revision: record.mappingRevision,
       progress: progress(record), sheets: [sheet(record)], proposal_revision: record.proposalRevision,
-      approval_required: true, unsupportedFields: [] }
+      approval_required: record.ownerRequired, unsupportedFields: [] }
     retain(scope, intent, result)
     return result
   }
 
-  return {
+  const source: ImportFlowDataSource = {
     async summary(importId) { return summary(await fixture(importId)) },
     async queue(importId, query = {}) {
       const record = await fixture(importId)
@@ -353,4 +355,38 @@ export function createMockImportFlowDataSource(
       return structuredClone(record.completion)
     },
   }
+  // Simulates a separate Owner actor only in the explicitly selected DEV source.
+  // No Staff control calls N5; this gateway is absent from the HTTP data source.
+  const reviews = new Map<string, { state: OwnerReviewState; polls: number; rejectedOnce: boolean }>()
+  const ownerReview: DevOwnerReviewGateway = {
+    async submit(importId, proposalRevision) {
+      const record = await fixture(importId)
+      if (!record.ownerRequired || !record.mappingResolved || record.proposalRevision !== proposalRevision) fail(412, 'PROFILE_REVISION_CONFLICT')
+      const old = reviews.get(importId)
+      if (old?.state.status === 'rejected' && old.state.proposalRevision === proposalRevision) fail(409, 'REJECTED_PROPOSAL_REQUIRES_EDIT')
+      if (old?.state.status === 'waiting' && old.state.proposalRevision === proposalRevision) return structuredClone(old.state)
+      const entry = { state: { status: 'waiting', proposalRevision } as OwnerReviewState, polls: 0, rejectedOnce: old?.rejectedOnce ?? false }
+      reviews.set(importId, entry)
+      return structuredClone(entry.state)
+    },
+    async read(importId) {
+      const entry = reviews.get(importId)
+      if (!entry) return { status: 'idle' }
+      if (entry.state.status !== 'waiting' || ++entry.polls < 2) return structuredClone(entry.state)
+      const record = await fixture(importId)
+      if (record.proposalRevision !== entry.state.proposalRevision) fail(412, 'PROFILE_REVISION_CONFLICT')
+      const reject = options.rejectOwnerReview === true && !entry.rejectedOnce
+      await source.decideProfile(record.batch.store_id, record.profileId, {
+        key: id(), lifecycleRevision: record.lifecycleRevision,
+        decision: reject ? { decision: 'reject', proposal_revision: record.proposalRevision, reason: 'DEV Owner: kiểm tra lại cách hiểu cột nguồn.' } :
+          { decision: 'approve_activate', proposal_revision: record.proposalRevision, expected_active_version: null, reason: 'DEV Owner reviewed synthetic full spec.' },
+      })
+      entry.state = reject ? { status: 'rejected', proposalRevision: record.proposalRevision, reason: 'Kiểm tra lại cách hiểu cột nguồn trước khi gửi lại.' } :
+        { status: 'approved', proposalRevision: record.proposalRevision }
+      entry.rejectedOnce ||= reject
+      return structuredClone(entry.state)
+    },
+  }
+  return Object.assign(source, { ownerReview })
+
 }

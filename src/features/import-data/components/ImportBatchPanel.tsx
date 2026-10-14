@@ -73,7 +73,7 @@ export function ImportBatchPanel({ state, workflow, continuationLocked = false, 
       {sealed && <p className="import-batch__sealed">Để nhập thêm hoặc thay file, hãy bắt đầu lần nhập mới.</p>}
       {batch?.status === 'analyzing' && <p role="status">Đang phân tích dữ liệu…</p>}
       {batch?.status === 'failed' && <p role="status">Phân tích thất bại. Chỉ có thể thử lại khi máy chủ cho phép; tập file vẫn giữ nguyên.</p>}
-      {batch && ['review_required', 'ready_for_preview'].includes(batch.status) && <p>Đã kết thúc bước phân tích. Tiếp tục ở bước Ghép cột; chưa ghi dữ liệu nghiệp vụ.</p>}
+      {batch && ['review_required', 'ready_for_preview'].includes(batch.status) && <p>Đã kết thúc bước phân tích. Tiếp tục ở bước Kiểm tra cách hiểu; chưa ghi dữ liệu nghiệp vụ.</p>}
       {state.draft && <button className="import-batch__new" type="button" disabled={busy || !!state.retryOperation || continuationLocked} onClick={onNewDraft ?? workflow.startNewDraft}>Lô mới — giữ file chưa tải</button>}
     </section>
   )
