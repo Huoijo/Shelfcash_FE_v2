@@ -36,6 +36,7 @@ test('013 row evidence is available only in Debug, including while a product dra
   await page.getByLabel('Ngày dữ liệu',{exact:true}).fill('2026-10-11')
   await page.locator('input[type=file]').setInputFiles({name:'observed.csv',mimeType:'text/csv',buffer:Buffer.from('lot,on_hand\nLOT,10')})
   await page.getByRole('button',{name:'Phân tích dữ liệu',exact:true}).click()
+  await page.getByRole('button', { name: /^Phân tích [0-9]+ file$/ }).click()
   await expect(page.getByRole('heading',{name:'Phân tích hoàn tất',exact:true})).toBeVisible()
   await expect(page.getByRole('main')).not.toContainText(/Stage:|mock\.synthetic|Bindings và|schema\/|DEV\/QA/)
   await page.screenshot({path:'test-results/013-staff-analyze.png',fullPage:true})

@@ -1,3 +1,4 @@
+import { importDomainBlockers } from './importDomainReview'
 import type { MappingIssue } from './importFlow.types'
 import type { ImportBatchState } from './importData.workflow'
 import type { ImportFlowState } from './importFlow.workflow'
@@ -36,7 +37,7 @@ export function experienceStep(role: ImportRole, screen: ImportScreen): number {
 
 export function previewCanContinue(state: ImportFlowState): boolean {
   const p = state.preview
-  return !!p && !state.previewStale && !p.preview.stale && p.preview.summary.validation_status !== 'blocked' &&
+  return !importDomainBlockers(p, state.resolutions, state.supplierChanges).length && !!p && !state.previewStale && !p.preview.stale && p.preview.summary.validation_status !== 'blocked' &&
     !p.preview.summary.blockers.length && !p.unsupportedFields.length && !p.preview.rows.some(row => row.unsupportedFields.length) &&
     !p.preview.rows_page.next_cursor && (p.preview.rows_page.total_count === null || p.preview.rows.length === p.preview.rows_page.total_count) &&
     state.batch?.status === 'preview_ready' && !state.batch.active_job_id

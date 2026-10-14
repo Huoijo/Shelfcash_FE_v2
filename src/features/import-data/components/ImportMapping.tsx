@@ -7,6 +7,8 @@ import { motion, useReducedMotion } from 'motion/react'
 import { ActiveIndicator } from '../../../shared/motion/ActiveIndicator'
 import { uiTransition } from '../../../shared/motion/motion'
 import type { MappingIssue, MappingOption, MappingOptions, MappingQueue, MappingResolution, MappingStatus, MappingSummary, MappingProfileSpec, ProfileDecisionRequest } from '../importFlow.types'
+import { ImportProfileSpecification } from './ImportProfileSpecification'
+import { FlowDialog } from '../../../shared/flow/FlowDialog'
 import { ImportResolutionEditor } from './ImportResolutionEditor'
 
 const statusLabels: Record<MappingStatus, string> = {
@@ -194,6 +196,8 @@ function ProfileReviewCard({ proposal, approvedSpec, busy, canDecide, onDecision
 }) {
   const [reason, setReason] = useState('')
   const [reviewed, setReviewed] = useState(false)
+  const [rejectOpen,setRejectOpen]=useState(false),[rejectReason,setRejectReason]=useState(''),[rejectAck,setRejectAck]=useState(false)
+  const [retireOpen,setRetireOpen]=useState(false),[retireReason,setRetireReason]=useState(''),[retireAck,setRetireAck]=useState(false)
   const hasBaseline = proposal.active_version === null || !!approvedSpec
   const canApprove = !busy && canDecide && reviewed && !!reason.trim() && !!proposal.spec && !proposal.missing_fields.length && hasBaseline
   return <article className="import-flow__card">
@@ -201,22 +205,25 @@ function ProfileReviewCard({ proposal, approvedSpec, busy, canDecide, onDecision
     {!!proposal.missing_fields.length && <p className="import-flow__notice">Chưa thể duyệt: còn thiếu {proposal.missing_fields.map(businessField).join(', ')}.</p>}
     {!proposal.spec && <p className="import-flow__notice">Chưa tải đủ cách đọc đề xuất. Tải lại trước khi duyệt.</p>}
     {!hasBaseline && <p className="import-flow__notice">Chưa tải đủ cách đọc đã duyệt để so sánh. Tải lại trước khi quyết định.</p>}
-    {proposal.spec && <ProfileInterpretation spec={proposal.spec} />}
+    <section className="input-profile-version"><strong>{proposal.active_version===null?'Tạo Profile đầu tiên':`Profile hiện tại · v${proposal.active_version}`}</strong><span>{proposal.active_version===null?'Chưa có reusable Profile baseline':'Đề xuất version mới · Chưa có hiệu lực'}</span></section>
+    {proposal.spec && <ImportProfileSpecification proposed={proposal.spec} baseline={approvedSpec} first={proposal.active_version===null}/>}
     <details className="input-profile-evidence"><summary>Xem toàn bộ cách đọc và bằng chứng</summary><div className="import-flow__profile-comparison">
       <section><h4>Cách đọc đã duyệt</h4>{approvedSpec ? <ImportBusinessFacts value={approvedSpec} /> : <p>{proposal.active_version === null ? 'Profile mới.' : 'Chưa tải được cách đọc đã duyệt.'}</p>}</section>
       <section><h4>Cách đọc đề xuất</h4>{proposal.spec && <ImportBusinessFacts value={proposal.spec} />}</section>
     </div></details>
     {!canDecide ? <p className="import-flow__notice">Đề xuất được giữ lại để Owner xem và quyết định.</p> : <fieldset disabled={busy} className="import-flow__form">
       <legend>Quyết định của Owner</legend>
-      <label>Lý do quyết định<textarea maxLength={1000} value={reason} onChange={(event) => setReason(event.target.value)} /></label>
+      <label>Lý do duyệt<textarea maxLength={1000} value={reason} onChange={(event) => setReason(event.target.value)} /></label>
       <label className="import-flow__check"><input type="checkbox" checked={reviewed} onChange={(event) => setReviewed(event.target.checked)} />Tôi đã kiểm tra cách đọc đề xuất, bằng chứng và cách đọc đã duyệt (nếu có).</label>
       <div className="import-flow__actions">
         <button type="button" className="import-flow__primary" disabled={!canApprove} onClick={() => onDecision({ decision: 'approve_activate', proposal_revision: proposal.proposal_revision, expected_active_version: proposal.active_version, reason: reason.trim() })}>Duyệt profile</button>
-        <button type="button" disabled={busy || !reason.trim()} onClick={() => onDecision({ decision: 'reject', proposal_revision: proposal.proposal_revision, reason: reason.trim() })}>Từ chối đề xuất</button>
-        {proposal.active_version && <button type="button" disabled={busy || !reason.trim() || !reviewed} onClick={() => onDecision({ decision: 'retire', active_version: proposal.active_version!, reason: reason.trim() })}>Ngừng sử dụng profile</button>}
+        <button type="button" disabled={busy} onClick={() => setRejectOpen(true)}>Từ chối</button>
+        {proposal.active_version && <button type="button" disabled={busy} onClick={() => setRetireOpen(true)}>Ngừng sử dụng profile</button>}
       </div>
 
     </fieldset>}
+    {rejectOpen&&<section className="input-profile-reject"><h3>Trả Profile proposal về để chỉnh lại</h3><label>Lý do từ chối<textarea value={rejectReason} maxLength={1000} disabled={busy} onChange={event=>setRejectReason(event.target.value)}/></label><label className="import-flow__check"><input type="checkbox" checked={rejectAck} disabled={busy} onChange={event=>setRejectAck(event.target.checked)}/>Tôi xác nhận trả đề xuất này về để chỉnh lại.</label><div className="input-actions"><button type="button" disabled={busy} onClick={()=>setRejectOpen(false)}>Hủy</button><button type="button" disabled={busy||!canDecide||!rejectAck||!rejectReason.trim()} onClick={()=>onDecision({decision:'reject',proposal_revision:proposal.proposal_revision,reason:rejectReason.trim()})}>Từ chối đề xuất</button></div></section>}
+    {retireOpen&&<FlowDialog center title="Ngừng sử dụng Profile này?" onClose={()=>{if(!busy)setRetireOpen(false)}} closeDisabled={busy} footer={<><button type="button" disabled={busy} onClick={()=>setRetireOpen(false)}>Hủy</button><button type="button" className="sc-flow-primary" disabled={busy||!canDecide||!retireAck||!retireReason.trim()} onClick={()=>onDecision({decision:'retire',active_version:proposal.active_version!,reason:retireReason.trim()})}>Ngừng sử dụng Profile</button></>}><p>Profile version này sẽ không được chọn cho import mới. Import đã hoàn tất không bị thay đổi; không tự kích hoạt version khác.</p><label>Lý do ngừng sử dụng<textarea disabled={busy} value={retireReason} maxLength={1000} onChange={event=>setRetireReason(event.target.value)}/></label><label className="import-flow__check"><input type="checkbox" checked={retireAck} disabled={busy} onChange={event=>setRetireAck(event.target.checked)}/>Tôi xác nhận không dùng Profile version này cho import mới.</label></FlowDialog>}
   </article>
 }
 

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
+import {ImportEntitySearchContext} from '../../features/import-data/importEntitySearch.context'
 import { ImportResolutionView } from '../../features/import-data/importResolutionView.context'
 import { ImportPage } from '../../pages/imports/ImportPage'
 import { DebugVisibility } from './debugVisibility.context'
@@ -44,5 +45,5 @@ function PreviewScreen({session}:{session:ImportPlaygroundSession}) {
     const timer=setTimeout(()=>{void session.poll()},Math.max(250,selection.flowState.pollAfterMs))
     return()=>clearTimeout(timer)
   },[session,selection])
-  return <ImportResolutionView value={{identityMode:selection.preview?.scenario==='resolve-new'?'new':'existing',sharedValueExpanded:selection.preview?.scenario==='resolve-declaration'}}><ImportPage selection={selection}/></ImportResolutionView>
+  return <ImportEntitySearchContext value={async({kind,q})=>({items:[{id:'00000000-0000-0000-0000-000000000011',name:q||'Sữa tươi',code:'ING-014',kind},{id:'00000000-0000-0000-0000-000000000012',name:(q||'Sữa tươi')+' không đường',code:'ING-021',kind}],nextCursor:null})}><ImportResolutionView value={{identityMode:selection.preview?.scenario==='resolve-new'?'new':'existing',sharedValueExpanded:selection.preview?.scenario==='resolve-declaration'}}><ImportPage selection={selection}/></ImportResolutionView></ImportEntitySearchContext>
 }

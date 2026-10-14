@@ -10,7 +10,7 @@ const labels: Record<string, string> = {
   planned_arrival_expiry_rule: 'Quy tắc hạn sử dụng', term_period_amendments: 'Điều chỉnh thời hạn cung cấp', fee_period_amendments: 'Điều chỉnh thời hạn phí',
   value: 'Giá trị', factor: 'Hệ số quy đổi', numerator: 'Tử số', denominator: 'Mẫu số', from_unit: 'Đơn vị nguồn', to_unit: 'Đơn vị đích', recipe_quantity_basis: 'Recipe basis',
 }
-const technical = new Set(['schema', 'schema_version', 'schema_signature', 'version', 'content_digest', 'declared_by', 'resolved_by', 'reserved_canonical_id'])
+const technical = new Set(['schema', 'schema_version', 'schema_signature', 'version', 'content_digest', 'declared_by', 'resolved_by', 'reserved_canonical_id','confidence'])
 const values: Record<string, string> = { COUNT_CORRECTION: 'Đối chiếu kiểm kê', OPENING_STOCK: 'Tồn đầu kỳ', IMPORT_COUNT: 'Kiểm kê', PER_PACK: 'Theo pack', PER_QUANTITY: 'Theo lượng', PACKS: 'Số pack', PHYSICAL_QUANTITY: 'Lượng vật lý', UNKNOWN: 'Chưa xác định', COMPLETE: 'Đầy đủ', PER_SERVING: 'Theo khẩu phần', WHOLE_BATCH: 'Theo cả batch', PROFILE_CONSTANT: 'Tái sử dụng trong profile', IMPORT_VALUE: 'Chỉ lần nhập này', daily_total: 'Tổng theo ngày', disjoint_contribution: 'Nguồn bán hàng không giao nhau', lot_stock_count: 'Kiểm kê theo lô', USER_DECLARED: 'Người dùng xác nhận', MANUAL: 'Đã xác nhận thủ công', RULE: 'Quy tắc đọc dữ liệu', REUSED: 'Dùng cách đọc đã duyệt', product: 'Món', ingredient: 'Nguyên liệu', supplier: 'Nhà cung cấp', existing: 'Đã có trong cửa hàng', reserved: 'Đề xuất mới', required: 'Bắt buộc', optional: 'Không bắt buộc' }
 
 /** Complete business facts remain reviewable; transport pins/diagnostics belong to Debug. */

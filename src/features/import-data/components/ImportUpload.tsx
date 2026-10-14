@@ -1,3 +1,4 @@
+import {DebugContent} from '../../../shared/debug/DevelopmentTools'
 import { useId, useRef, useState, type DragEvent } from 'react'
 import {
   formatImportFileSize,
@@ -102,7 +103,7 @@ export function ImportUpload({ files, onFilesChange, disabled = false, uncertain
         }}
       />
 
-      <p id={`${id}-limits`} className="import-upload__limits">
+      <p id={`${id}-limits`} className="sr-only">
         Phần mở rộng .csv hoặc .xlsx · Tối đa {importFileLimits.count} file/lô · {formatImportFileSize(importFileLimits.perFileBytes)}/file · {formatImportFileSize(importFileLimits.totalBytes)} tổng dung lượng trước giải nén/lô
       </p>
       <p id={`${id}-local`} className={uncertainFiles ? 'import-upload__local' : 'sr-only'}>{uncertainFiles ? 'Các file có thể đã được máy chủ nhận. Giữ nguyên yêu cầu và dùng nút thử lại để xác định kết quả.' : ''}</p>
@@ -113,7 +114,7 @@ export function ImportUpload({ files, onFilesChange, disabled = false, uncertain
         <div className="import-upload__files-heading">
           <h2 id={`${id}-files-title`}>{uncertainFiles ? 'File chờ xác định kết quả' : 'File đã thêm'} <span>({files.length})</span></h2>
           {files.length > 0 && (
-            <button
+            <DebugContent><button
               type="button"
               disabled={disabled}
               className="import-upload__clear"
@@ -125,11 +126,11 @@ export function ImportUpload({ files, onFilesChange, disabled = false, uncertain
               }}
             >
               Bỏ tất cả
-            </button>
+            </button></DebugContent>
           )}
         </div>
         {files.length === 0 ? (
-          <p className="import-upload__empty">Chưa có file nào được chọn.</p>
+          <p className="import-upload__empty">Chưa có file nào.</p>
         ) : (
           <ul className="import-upload__file-list">
             {files.map((file, index) => (
@@ -137,10 +138,10 @@ export function ImportUpload({ files, onFilesChange, disabled = false, uncertain
                 <span className="import-upload__file-icon" aria-hidden="true">▤</span>
                 <div className="import-upload__file-info">
                   <p className="import-upload__filename">{file.name}</p>
-                  <p className="import-upload__file-size">{formatImportFileSize(file.size)} · {uncertainFiles ? 'Chưa xác định kết quả' : 'Chưa tải lên'}</p>
+                  <p className="import-upload__file-size">{formatImportFileSize(file.size)}{uncertainFiles ? ' · Chưa xác định kết quả' : ''}</p>
                 </div>
                 <button type="button" disabled={disabled} className="import-upload__remove" aria-label={`Bỏ file ${file.name}`} onClick={() => removeFile(index)}>
-                  Bỏ
+                  ×
                 </button>
               </li>
             ))}

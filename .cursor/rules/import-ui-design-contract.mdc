@@ -1,0 +1,18 @@
+---
+description: Import visual authority and Found Missing UI audit
+globs: src/features/import-data/**,src/pages/imports/**
+alwaysApply: false
+---
+
+# Import UI design contract
+
+- Before changes, read the latest business specification and inspect latest MagicPath OWNER/STAFF revisions in project 458079658328604672.
+- Docs define behavior; MagicPath defines visual and interaction patterns. Do not invent final production screens.
+- Map required states to explicit design states across the entire flow, including errors/recovery and permissions.
+- If required behavior lacks a sufficient design, update docs/FOUND_MISSING_UI.md using its entry format and next sequential FM ID. Deduplicate; classify blocking yes/no.
+- Do not log API TODOs, CSS bugs, developer controls or obvious reuse as missing UI.
+- Keep entries when design arrives: FOUND → DESIGN_READY → IMPLEMENTED; fallback is not resolution.
+- Share Owner/Staff Step 3 overview, focused resolver shell, footer and validation geometry. Role changes availability/transition, not layout.
+- Retain business/API semantics, exact intents/CAS, source proof, atomic commit and independent Readiness. Never wire DESIGN_READY endpoints as runtime.
+- Keep developer state controls DEV-only, outside layout; diagnostics secondary/collapsed.
+- End each Import pass by reviewing the missing-design register and disclosing any bounded speculative production fallback.

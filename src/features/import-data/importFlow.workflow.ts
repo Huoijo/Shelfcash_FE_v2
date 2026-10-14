@@ -1,4 +1,5 @@
 import { importFault, previewCanContinue, type ImportFault } from './importExperience'
+import { importDomainBlockers } from './importDomainReview'
 import { HttpError } from '../../shared/http/httpClient'
 import type { ImportBatch } from './importData.types'
 import { describeImportError } from './importData.workflow'
@@ -37,6 +38,8 @@ export type ImportFlowState = {
   busy: boolean
   error: string | null
   fault: ImportFault | null
+  faultOperation: 'commit' | null
+  savingOperation: Pending['operation'] | null
   notice: string
   retryOperation: Pending['operation'] | null
   reviewAcknowledged: boolean
@@ -55,7 +58,7 @@ export type ImportFlowState = {
 const initial = (): ImportFlowState => ({
   batch: null, tab: 'mapping', summary: null, queue: null, mappingOptions: {}, options: null,
   optionsMappingId: null, preview: null, previewStale: false, completion: null,
-  job: null, selectedSheetId: null, filter: 'all', reviewOnly: true, busy: false, error: null, fault: null,
+  job: null, selectedSheetId: null, filter: 'all', reviewOnly: true, busy: false, error: null, fault: null, faultOperation: null, savingOperation: null,
   notice: '', retryOperation: null, reviewAcknowledged: false, reviewReason: '',
   reviewBlockers: ['Chưa có bản xem trước từ máy chủ.'], canConfirmReview: false,
   commitAcknowledged: false, commitReason: '',
@@ -81,7 +84,7 @@ function previewBlockers(state: ImportFlowState, mappingRevision: string | null,
 }
 
 function reviewBlockers(state: ImportFlowState, mappingRevision: string | null, pending: Pending | null, currentReviewRights: boolean): string[] {
-  const blockers = previewBlockers(state, mappingRevision, pending)
+  const blockers = [...previewBlockers(state, mappingRevision, pending), ...importDomainBlockers(state.preview, state.resolutions, state.supplierChanges)]
   // can_commit is false before server confirmation, and allowed_actions has no
   // documented confirm_review literal. Use current T02 grants for this phase;
   // the server still reauthorizes the complete action set on the POST.
@@ -92,7 +95,7 @@ function reviewBlockers(state: ImportFlowState, mappingRevision: string | null, 
 }
 
 function commitBlockers(state: ImportFlowState, mappingRevision: string | null, pending: Pending | null): string[] {
-  const blockers = previewBlockers(state, mappingRevision, pending)
+  const blockers = [...previewBlockers(state, mappingRevision, pending), ...importDomainBlockers(state.preview, state.resolutions, state.supplierChanges)]
   const { batch, preview, summary } = state
   if (!batch || !preview || !summary) return blockers
   const confirmation = preview.review_confirmation
@@ -111,6 +114,7 @@ function commitBlockers(state: ImportFlowState, mappingRevision: string | null, 
   if (state.supplierChanges.length !== supplierRows.length || new Set(state.supplierChanges.map((item) => item.action_id)).size !== state.supplierChanges.length ||
     state.supplierChanges.some((item) => !supplierRows.some((row) => row.row_id === item.action_id) || !item.reason.trim())) blockers.push('Cần xác nhận đúng từng thay đổi điều khoản/phí nhà cung cấp.')
   if (preview.preview.rows.some((row) => ['COUNT_CORRECTION', 'REPLACE_DAILY_TOTAL', 'MERGE_DISJOINT_SALES', 'AMEND_TERM_PERIOD', 'AMEND_FEE_PERIOD'].includes(row.proposed_action)) && !state.commitReason.trim()) blockers.push('Cần nhập lý do đối chiếu kiểm kê hoặc thay đổi dữ liệu.')
+  if (!state.commitReason.trim()) blockers.push('Cần lý do nhập dữ liệu riêng với lý do Review.')
   if (!state.commitAcknowledged) blockers.push('Cần xác nhận rõ ràng trước khi ghi nguyên tử toàn bộ lô.')
   return blockers
 }
@@ -233,7 +237,7 @@ export class ImportFlowWorkflow {
     if (this.state.completion && tab !== 'result') return
     if (tab === 'result' && !this.state.completion) return
     if (tab === 'preview' && !this.state.preview && !this.processReceipt && !this.state.summary?.can_preview) return
-    if (tab === 'profile' && !this.state.summary) return
+    if (tab === 'profile' && (!this.state.summary || !(this.authorization?.canDecideProfile ?? this.hooks.canDecideProfile?.()))) return
     if (tab === 'review' && !previewCanContinue(this.state)) return
     this.update({ tab })
   }
@@ -250,26 +254,26 @@ export class ImportFlowWorkflow {
     if (!this.state.busy && !this.pending) this.update({ commitReason: value, commitAcknowledged: false })
   }
   setResolutions = (resolutions: SalesResolution[]) => {
-    if (!this.state.busy && !this.pending) this.update({ resolutions: structuredClone(resolutions), commitAcknowledged: false })
+    if (!this.state.busy && !this.pending) this.update({ resolutions: structuredClone(resolutions), reviewAcknowledged: false, commitAcknowledged: false })
   }
   setSupplierChanges = (changes: SupplierConfirmation[]) => {
-    if (!this.state.busy && !this.pending) this.update({ supplierChanges: structuredClone(changes), commitAcknowledged: false })
+    if (!this.state.busy && !this.pending) this.update({ supplierChanges: structuredClone(changes), reviewAcknowledged: false, commitAcknowledged: false })
   }
 
   private current(epoch: number, importId: string) {
     return this.epoch === epoch && this.state.batch?.import_id === importId
   }
 
-  private async run(stage: string, task: (importId: string, epoch: number, signal: AbortSignal) => Promise<void>) {
+  private async run(stage: string, task: (importId: string, epoch: number, signal: AbortSignal) => Promise<void>, operation: 'commit' | null = null) {
     const batch = this.state.batch
     if (!batch || this.state.busy) return
     const epoch = this.epoch
     this.abort = new AbortController()
     const signal = this.abort.signal
-    this.update({ busy: true, error: null, fault: null })
+    this.update({ busy: true, error: null, fault: null, faultOperation: null, savingOperation: null })
     try { await task(batch.import_id, epoch, signal) }
-    catch (error) { if (this.current(epoch, batch.import_id)) this.update({ error: stageError(stage, error), fault: importFault(error) }) }
-    finally { if (this.current(epoch, batch.import_id)) this.update({ busy: false }) }
+    catch (error) { if (this.current(epoch, batch.import_id)) this.update({ error: stageError(stage, error), fault: importFault(error), faultOperation: operation }) }
+    finally { if (this.current(epoch, batch.import_id)) this.update({ busy: false, savingOperation: null }) }
   }
 
   private async readParent(importId: string, epoch: number) {
@@ -540,11 +544,12 @@ export class ImportFlowWorkflow {
       reason: commitReason.trim() || null, resolutions: structuredClone(resolutions), supplierChanges: structuredClone(this.state.supplierChanges),
     } }
     await this.sendPending(id, epoch, signal)
-  })
+  }, 'commit')
 
   private async sendPending(id: string, epoch: number, signal: AbortSignal) {
     const pending = this.pending
     if (!pending) return
+    this.update({ savingOperation: pending.operation })
     try {
       if (pending.operation === 'mapping' || pending.operation === 'resolution' || pending.operation === 'profile') {
         const result = pending.operation === 'mapping' ? await this.source.confirm(id, pending.mappingId, pending.intent, signal) :
@@ -594,18 +599,73 @@ export class ImportFlowWorkflow {
     }
   }
 
-  retry = () => this.run('Đối chiếu và thử lại cùng yêu cầu', async (id, epoch, signal) => {
-    if (!this.pending) return
+  retry = () => this.checkPendingState()
+
+  /** Product recovery is read-only until authoritative state proves the intent
+   * was applied. The current API has no negative/terminal intent-status receipt;
+   * unchanged state therefore means unknown, never permission to resend. */
+  checkPendingState = () => this.run('Kiểm tra kết quả lưu', async (id, epoch, signal) => {
+    const pending = this.pending
+    if (!pending) return
     const batch = await this.readParent(id, epoch)
     if (!batch || !this.current(epoch, id)) return
-    if (this.pending.operation === 'commit' && batch.completion_available) {
-      // Read the receipt before retrying; a successful retained result resolves ambiguity.
-      const completion = await this.source.completion(id, signal)
-      if (!this.current(epoch, id)) return
-      if (completion.preview_id !== this.pending.intent.previewId) throw new HttpError('protocol', 'Biên nhận hoàn tất không khớp bản xem trước đã gửi.')
-      this.update({ notice: 'Đã tìm thấy biên nhận ghi. Đang đối chiếu lại cùng khóa để lấy đúng tiến trình đã nhận.' })
+    if (pending.operation === 'commit') {
+      if (batch.completion_available) {
+        const completion = await this.source.completion(id, signal)
+        if (!this.current(epoch, id)) return
+        if (completion.preview_id !== pending.intent.previewId) throw new HttpError('protocol', 'Biên nhận không khớp Preview đang kiểm tra.')
+        this.pending = null
+        this.update({ completion, retryOperation: null, tab: 'result', notice: 'Đã xác nhận import hoàn tất từ biên nhận máy chủ.' })
+      } else if (batch.active_job_id && batch.status === 'committing') {
+        this.pending = null
+        this.expectedPreviewId = pending.intent.previewId
+        this.update({ retryOperation: null, job: null, pollAfterMs: batch.poll_after_ms ?? 2000, notice: 'Máy chủ đang xử lý lần nhập hiện tại. Chưa có completion.' })
+      } else this.update({ notice: 'Vẫn chưa xác định kết quả. Yêu cầu gốc được giữ; chưa gửi lại.' })
+      return
     }
-    await this.sendPending(id, epoch, signal)
+    if (pending.operation === 'review') {
+      await this.readPinnedPreview(id, epoch, signal, true)
+      if (!this.current(epoch, id)) return
+      const confirmation = this.state.preview?.review_confirmation
+      if (this.state.preview?.confirmation_usable && confirmation?.preview_id === pending.intent.previewId &&
+        confirmation.preview_digest === pending.intent.previewDigest && confirmation.mapping_revision === pending.intent.mappingRevision &&
+        confirmation.reason === pending.intent.reason) {
+        this.pending = null
+        this.update({ retryOperation: null, notice: 'Đã xác nhận Review được lưu. Cần quyết định nhập dữ liệu riêng.' })
+      } else this.update({ notice: 'Chưa xác nhận được kết quả lưu Review. Chưa gửi lại.' })
+      return
+    }
+    await this.readMappings(id, epoch, signal)
+    if (!this.current(epoch, id)) return
+    // Queue may be paginated/filtered. Missing an issue is not proof of success.
+    let issue = pending.operation === 'mapping' || pending.operation === 'resolution'
+      ? this.state.queue?.items.find(item => item.mapping_id === pending.mappingId) : null
+    if (!issue && (pending.operation === 'mapping' || pending.operation === 'resolution')) {
+      // A resolved item may disappear from review_only/status-filtered reads.
+      // Read the complete current sheet without changing the user's filter.
+      const revision = this.state.summary?.mapping_revision
+      const cursors = new Set<string>()
+      let cursor: string | undefined
+      do {
+        const page = await this.source.queue(id, { sheet_id: this.state.selectedSheetId ?? undefined,
+          review_only: false, include_details: true, ...(cursor ? { cursor } : {}) }, signal)
+        if (!this.current(epoch, id)) return
+        issue = page.items.find(item => item.mapping_id === pending.mappingId)
+        cursor = page.pagination.next_cursor ?? undefined
+        if (cursor && cursors.has(cursor)) throw new HttpError('protocol', 'Cursor kiểm tra kết quả bị lặp.')
+        if (cursor) cursors.add(cursor)
+      } while (!issue && cursor)
+      const after = await this.source.summary(id, signal)
+      if (!this.current(epoch, id)) return
+      if (after.import_id !== id || after.mapping_revision !== revision) throw new HttpError('protocol', 'Cách hiểu thay đổi trong lúc kiểm tra kết quả lưu.')
+    }
+    const saved = issue && ['resolved', 'auto_mapped'].includes(issue.status) && (pending.operation === 'mapping'
+      ? issue.target_field === pending.intent.targetField
+      : pending.operation === 'resolution' && JSON.stringify(issue.resolution?.resolution) === JSON.stringify(pending.intent.resolution))
+    if (saved) {
+      this.pending = null
+      this.update({ retryOperation: null, previewStale: !!this.state.preview, notice: 'Đã xác nhận cách hiểu được lưu từ trạng thái máy chủ.' })
+    } else this.update({ notice: 'Vẫn chưa xác định kết quả lưu. Giữ nguyên giá trị đã nhập; chưa gửi lại.' })
   })
 
   pollJob = () => this.run('Đọc tiến trình', async (id, epoch, signal) => {
@@ -623,7 +683,7 @@ export class ImportFlowWorkflow {
     }
     this.update({ job, pollAfterMs: ['queued', 'running'].includes(job.status) ? job.poll_after_ms : null })
     if (job.status === 'failed') {
-      this.update({ error: `${job.error?.message ?? 'Tiến trình thất bại'} (${job.error?.code ?? 'JOB_FAILED'})`, fault: importFault(new HttpError('contract', job.error?.message ?? 'Tiến trình thất bại', undefined, { code: job.error?.code ?? 'JOB_FAILED', message: job.error?.message ?? 'Tiến trình thất bại', details: {} })), commitAcknowledged: false })
+      this.update({ error: `${job.error?.message ?? 'Tiến trình thất bại'} (${job.error?.code ?? 'JOB_FAILED'})`, faultOperation: job.operation === 'import_commit' ? 'commit' : null, fault: importFault(new HttpError('contract', job.error?.message ?? 'Tiến trình thất bại', undefined, { code: job.error?.code ?? 'JOB_FAILED', message: job.error?.message ?? 'Tiến trình thất bại', details: {} })), commitAcknowledged: false })
       await this.readParent(id, epoch)
       return
     }

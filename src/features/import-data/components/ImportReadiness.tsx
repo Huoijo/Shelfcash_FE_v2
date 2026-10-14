@@ -1,3 +1,4 @@
+import { HttpError } from '../../../shared/http/httpClient'
 import { DebugValue } from '../../../shared/debug/DevelopmentTools'
 import { importMessage } from '../importPresentation'
 import { useEffect, useMemo, useRef, useState } from 'react'
@@ -9,13 +10,14 @@ import { createMockPlanningDataSource } from '../../decision-planning/planning.f
 import type { PlanningReadiness } from '../../decision-planning/planning.types'
 import { shiftPlanningDate } from '../../decision-planning/planning.validation'
 
-type Assessment = { status: 'idle' } | { status: 'loading' } | { status: 'error'; message: string } | { status: 'loaded'; value: PlanningReadiness }
+type Assessment = { status: 'idle' } | { status: 'loading' } | { status: 'error'; message: string; permission: boolean } | { status: 'loaded'; value: PlanningReadiness }
 
 /** R01 is action/date scoped. Never interpret I06's retained import/menu/inventory checks as planning readiness. */
 export function ImportReadiness({preview}:{preview?:PlanningReadiness} = {}) {
   const { state: storeState, currentStoreId } = useCurrentStore()
   const store = storeState.status === 'ready' || storeState.status === 'mock_preview' ? storeState.store : null
   const [date, setDate] = useState(() => store ? shiftPlanningDate(store.as_of_date, 1) ?? '' : '')
+  const [selecting,setSelecting]=useState(false)
   const [record, setRecord] = useState<{ key: string; assessment: Assessment } | null>(null)
   const abort = useRef<AbortController | null>(null)
   const source = useMemo(() => createPlanningDataSource({ dataSource: config.dataSource, apiBaseUrl: config.apiBaseUrl,
@@ -33,17 +35,21 @@ export function ImportReadiness({preview}:{preview?:PlanningReadiness} = {}) {
     setAssessment({ status: 'loading' })
     try { const response = await source.readiness(currentStoreId, date, controller.signal)
       if (!controller.signal.aborted) setAssessment({ status: 'loaded', value: response.data })
-    } catch (error) { if (!controller.signal.aborted) setAssessment({ status: 'error', message: error instanceof Error ? error.message : 'Không đọc được Readiness.' }) }
+    } catch (error) { if (!controller.signal.aborted) setAssessment({ status: 'error', message: error instanceof Error ? error.message : 'Không đọc được Readiness.',permission:error instanceof HttpError&&error.status===403 }) }
   }
   const action = assessment.status === 'loaded' ? assessment.value.actions.find(a => a.action === 'planning') : null
   const ready = action?.availability === 'ready' && action.can_execute
+  const unknown=assessment.status==='loaded'&&(!action||action.availability==='unknown'||action.availability==='ready'&&!action.can_execute)
+  const unavailable=assessment.status==='error'&&!assessment.permission
+  const denied=!canRead||assessment.status==='error'&&assessment.permission
   return <section className="input-readiness" aria-labelledby="import-planning-readiness">
-    <header><div><small>Readiness</small><h2 id="import-planning-readiness">Khả năng lập kế hoạch</h2></div><span className="import-page__step">{assessment.status === 'loading' ? 'Đang kiểm tra' : action ? ready ? 'Đủ dữ liệu' : action.availability === 'blocked' ? 'Cần bổ sung' : 'Chưa xác định' : 'Chưa đánh giá'}</span></header>
-    <label>Ngày bắt đầu kế hoạch<input type="date" value={date} disabled={assessment.status === 'loading'} onChange={event => setDate(event.target.value)} /></label>
+    <header><div><small>Readiness</small><h2 id="import-planning-readiness">Khả năng lập kế hoạch</h2></div><span className="import-page__step">{denied?'Không có quyền':unavailable?'Tạm thời không khả dụng':assessment.status === 'loading' ? 'Đang kiểm tra' : action ? ready ? 'Đủ dữ liệu' : action.availability === 'blocked' ? 'Cần bổ sung' : 'Chưa xác định' : 'Chưa đánh giá'}</span></header>
+    {(selecting||assessment.status!=='idle')&&<label>Ngày bắt đầu kế hoạch<input type="date" value={date} disabled={assessment.status === 'loading'} onChange={event => setDate(event.target.value)} /></label>}
     {!canRead && <p className="input-status">Bạn chưa có quyền xem đánh giá lập kế hoạch.</p>}
-    <button className="input-primary" disabled={!canRead || !date || assessment.status === 'loading'} onClick={() => { void assess() }}>{assessment.status === 'loading' ? 'Đang kiểm tra…' : 'Kiểm tra Readiness'}</button>
+    <button className="input-primary" disabled={!canRead || !date || assessment.status === 'loading'} onClick={() => { if(!selecting&&assessment.status==='idle')setSelecting(true);else void assess() }}>{assessment.status === 'loading' ? 'Đang kiểm tra…' : 'Kiểm tra Readiness'}</button>
+    {unknown&&<p className="input-status" role="status">Chưa thể xác định readiness. Kết quả import đã hoàn tất không bị ảnh hưởng.</p>}
     {assessment.status === 'error' && <p className="input-status" role="alert">Chưa kiểm tra được khả năng lập kế hoạch. Vui lòng thử lại.</p>}
-    {assessment.status === 'loaded' && <div role="status"><p>{ready ? 'Đủ dữ liệu cho hành động tiếp theo' : 'Còn dữ liệu cần bổ sung'}</p><DebugValue label="Readiness assessment" value={assessment} />
+    {assessment.status === 'loaded' && <div role="status"><p>{ready ? 'Đủ dữ liệu cho hành động tiếp theo' : action?.availability==='blocked'?'Còn dữ liệu cần bổ sung':unknown?'Chưa thể xác định readiness':'Readiness tạm thời không khả dụng'}</p><DebugValue label="Readiness assessment" value={assessment} />
       {[...(action?.blockers ?? []).map(issue => ({ issue, kind: 'Cần bổ sung' })), ...(action?.warnings ?? []).map(issue => ({ issue, kind: 'Cảnh báo' }))].map(({ issue, kind }, i) => <article className="input-status" key={issue.code + i}><strong>{kind}: {importMessage(issue.code)}</strong><DebugValue label="Readiness issue" value={issue} />{issue.source === 'sales' ? <Link to="/imports">Nhập thêm dữ liệu</Link> : issue.source === 'inventory' ? <Link to="/inventory">Xem Kho</Link> : issue.source === 'recipe' ? <Link to="/menu">Xem Menu</Link> : null}</article>)}
     </div>}
     <footer className="input-actions"><Link to="/imports/history">Hoàn tất</Link>{canRead && <Link to="/forecast/planning">{ready ? 'Đi tới Dự đoán' : 'Xem điều kiện và thiết lập kế hoạch'}</Link>}</footer>

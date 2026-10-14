@@ -60,3 +60,10 @@ Khi có thay đổi lớn về kiến trúc hoặc hoàn thành một cột mố
 - [011 Implementation Receipt](011_Implementation_Receipt.md): pin main OpenAPI, cập nhật Import evidence/basis/opening, PDF reference/recovery và kiểm chứng sprint.
 - [011 TechDebt](011_TechDebt.md): local parity đã resolve, các WIP/design-ready và integration/live/FE-QA còn mở; không gồm Underconstruction.
 - [011 FE → BE follow-up](../FE_ask/011_FE_to_BE_Followup.md): dependencies còn thiếu sau khi nhận đủ snapshots; R05/R09 đã accepted, không hỏi lại Product.
+
+### Sprint 015 — canonical Input Flow / frozen Design Contract v1
+
+- [015 Implementation Receipt](015_Implementation_Receipt.md): changes, verified flows, exact paths and runtime boundaries.
+- [015 Design/State Audit](015_Import_State_Audit.md): pinned OWNER/STAFF revisions and frozen catalog inventory.
+- [Found Missing UI](FOUND_MISSING_UI.md): per-FM historical and current reconciliation.
+- [015 Import TechDebt](015_Import_TechDebt.md) and [FE → BE capability requests](../FE_ask/015_Frozen_Input_Flow_Capability_Requests.md).

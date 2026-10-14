@@ -32,13 +32,14 @@ export type ImportBatchState = {
   analysis: ImportAnalyzeResult | null
   error: string | null
   notice: string
+  removedRejectedIds: string[]
 }
 
 function initialState(): ImportBatchState {
   return {
     files: [], dataDate: '', draft: null, batch: null, serverFiles: [], receipts: [],
     nextCursor: null, fresh: false, busy: false, processing: false, retryOperation: null,
-    sealedLocked: false, preparation: null, analysis: null, error: null, notice: '',
+    sealedLocked: false, preparation: null, analysis: null, error: null, notice: '', removedRejectedIds: [],
   }
 }
 
@@ -84,6 +85,7 @@ export class ImportBatchWorkflow {
   private listeners = new Set<() => void>()
   private draftIntent: DraftIntent | null = null
   private uploadIntent: UploadIntent | null = null
+  private rejectedSources = new Map<string, File>()
   private analyzeIntent: AnalyzeIntent | null = null
   private readonly processToken = Symbol('process')
   private source: ImportDataSource
@@ -218,6 +220,33 @@ export class ImportBatchWorkflow {
     } finally { this.update({ processing: false }) }
   }
 
+  // Visible product action stops at the exact accepted-set confirmation.
+  prepareForAnalysis = async () => {
+    if (this.state.busy || this.state.retryOperation || this.state.sealedLocked) return
+    if (this.state.files.length) await this.upload()
+    if (!this.state.error && !this.state.retryOperation) await this.prepareAnalysis()
+  }
+
+  retryRejectedFile = async (clientId: string, replacement?: File) => {
+    if (this.state.busy || this.state.retryOperation || this.state.sealedLocked || this.state.files.length) return
+    const receipt = this.state.receipts.find(file => file.client_file_id === clientId && file.upload_status === 'rejected')
+    const file = replacement ?? this.rejectedSources.get(clientId)
+    if (!receipt || !file) return
+    this.setFiles([file])
+    await this.upload()
+    if (!this.state.error && !this.state.retryOperation) this.removeRejectedFile(clientId)
+  }
+
+  canRetryRejectedFile = (clientId: string) => this.rejectedSources.has(clientId)
+
+  removeRejectedFile = (clientId: string) => {
+    if (this.state.busy || this.state.retryOperation || this.state.sealedLocked) return
+    if (!this.state.receipts.some(file => file.client_file_id === clientId && file.upload_status === 'rejected')) return
+    // Rejected files were never members of the accepted set. Keep the canonical
+    // rejection for I03 acknowledgment; this only removes its product retry row.
+    this.update({ removedRejectedIds: [...new Set([...this.state.removedRejectedIds, clientId])], preparation: null })
+  }
+
   upload = async (token?: symbol) => {
     if ((this.state.processing && token !== this.processToken) || this.state.busy || this.state.retryOperation) return
     if (!this.storeId) { this.update({ error: 'Chưa có cửa hàng. Cần cấu hình Store hợp lệ trước khi tạo lô.' }); return }
@@ -250,6 +279,10 @@ export class ImportBatchWorkflow {
     if (!this.uploadIntent || !this.state.draft) return
     this.update({ fresh: false, notice: 'Đang tải file; vui lòng giữ trang mở.' })
     const result = await this.source.upload(this.state.draft.import_id, this.uploadIntent)
+    for (const receipt of result.items) {
+      const item = this.uploadIntent.items.find(item => item.clientFileId === receipt.client_file_id)
+      if (item && receipt.upload_status === 'rejected') this.rejectedSources.set(receipt.client_file_id, item.file)
+    }
     const receipts = new Map(this.state.receipts.map((item) => [item.client_file_id, item]))
     result.items.forEach((item) => receipts.set(item.client_file_id, item))
     const accepted = result.items.filter((item) => item.upload_status === 'uploaded').length
@@ -304,6 +337,30 @@ export class ImportBatchWorkflow {
     finally { this.update({ busy: false }) }
   }
 
+  checkUploadState = async () => {
+    if (this.state.busy || this.state.processing || !this.state.draft || this.state.retryOperation !== 'upload' || !this.uploadIntent) return
+    this.update({ busy: true, error: null })
+    try {
+      const first = await this.readCurrent()
+      if (!first) return
+      const files = [...first.files], seen = new Set<string>()
+      let cursor = first.files_page.next_cursor
+      while (cursor) {
+        if (seen.has(cursor)) throw new Error('Chưa xác minh được tập file hiện tại.')
+        seen.add(cursor)
+        const page = await this.source.read(first.import_id, cursor)
+        if (!sameRead(first, page) || page.files.some(file => files.some(old => old.client_file_id === file.client_file_id))) throw new Error('Tập file thay đổi trong lúc kiểm tra.')
+        files.push(...page.files); cursor = page.files_page.next_cursor
+      }
+      const received = this.uploadIntent.items.every(item => files.some(file => file.client_file_id === item.clientFileId))
+      if (!received) { this.update({ notice: 'Chưa xác định file đã được nhận. Không tải lại khi kết quả chưa rõ.' }); return }
+      for (const item of this.uploadIntent.items) if (files.some(file => file.client_file_id === item.clientFileId && file.upload_status === 'rejected')) this.rejectedSources.set(item.clientFileId, item.file)
+      this.uploadIntent = null
+      this.update({ retryOperation: null, files: [], serverFiles: files, receipts: files, nextCursor: null, notice: 'Đã xác nhận trạng thái file từ máy chủ.' })
+    } catch (error) { this.update({ error: describeImportError(error) }) }
+    finally { this.update({ busy: false }) }
+  }
+
   prepareAnalysis = async (token?: symbol) => {
     if ((this.state.processing && token !== this.processToken) || this.state.busy || this.state.retryOperation || !this.state.draft || this.state.files.length) return
     this.update({ busy: true, fresh: false, error: null, preparation: null })
@@ -347,6 +404,8 @@ export class ImportBatchWorkflow {
     } finally { this.update({ busy: false }) }
   }
 
+  cancelPreparation = () => { if (!this.state.busy) this.update({ preparation: null }) }
+
   acknowledgeRejected = (acknowledged: boolean) => {
     if (this.state.preparation && !this.state.busy) this.update({ preparation: { ...this.state.preparation, acknowledged } })
   }
@@ -380,6 +439,7 @@ export class ImportBatchWorkflow {
     this.draftIntent = null
     this.uploadIntent = null
     this.analyzeIntent = null
+    this.rejectedSources.clear()
     this.state = { ...initialState(), files, dataDate, notice: 'Đã mở lựa chọn cho lô mới. Lô trước vẫn được giữ trên máy chủ.' }
     this.listeners.forEach((listener) => listener())
   }

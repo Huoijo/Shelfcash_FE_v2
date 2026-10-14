@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { createImportDataSource } from '../src/features/import-data/importData.data'
 import { ImportBatchWorkflow } from '../src/features/import-data/importData.workflow'
-import { mockImportStoreId } from '../src/features/import-data/importData.fixtures'
+import { createMockImportDataSource, mockImportStoreId } from '../src/features/import-data/importData.fixtures'
 import { HttpError } from '../src/shared/http/httpClient'
 import { validateImportFiles } from '../src/features/import-data/importData.files'
 import { validateImportBatch, validateImportDraft, validateImportUpload } from '../src/features/import-data/importData.validation'
@@ -936,4 +936,47 @@ test('process stops when receipt pages change revision and prevents edits during
   assert.equal(fixture.calls.analyses.length, 0)
   assert.match(fixture.workflow.getSnapshot().error, /thay đổi/)
   assert.equal(fixture.workflow.getSnapshot().processing, false)
+})
+
+
+test('frozen v1 product admission waits for exact accepted-set acknowledgment before Analyze',async()=>{
+  const source=createMockImportDataSource({continuation:true})
+  let analyzes=0
+  const flow=new ImportBatchWorkflow({...source,analyze:async(...args)=>{analyzes++;return source.analyze(...args)}},mockImportStoreId)
+  flow.setDataDate('2026-10-10');flow.setFiles([csv()])
+  await flow.prepareForAnalysis()
+  assert.equal(analyzes,0);assert.equal(flow.getSnapshot().preparation.acknowledged,false)
+  assert.equal(flow.getSnapshot().preparation.acceptedFileIds.length,1)
+  await flow.analyze();assert.equal(analyzes,0)
+  flow.acknowledgeRejected(true);await flow.analyze();assert.equal(analyzes,1)
+})
+
+test('frozen v1 lost upload ACK reads persisted client receipts without uploading again',async()=>{
+  const source=createMockImportDataSource({continuation:true});let uploads=0
+  const flow=new ImportBatchWorkflow({...source,upload:async(...args)=>{uploads++;await source.upload(...args);throw new HttpError('transport','Lost upload response')}},mockImportStoreId)
+  flow.setDataDate('2026-10-10');flow.setFiles([csv()]);await flow.upload()
+  assert.equal(flow.getSnapshot().retryOperation,'upload')
+  await flow.checkUploadState()
+  assert.equal(uploads,1);assert.equal(flow.getSnapshot().retryOperation,null)
+  assert.equal(flow.getSnapshot().batch.quota.accepted_file_count,1)
+})
+
+test('frozen v1 rejected retry/replace/removal never removes accepted sources or drops required rejected acknowledgments',async()=>{
+  const source=createMockImportDataSource({continuation:true})
+  const flow=new ImportBatchWorkflow(source,mockImportStoreId)
+  flow.setDataDate('2026-10-10')
+  flow.setFiles(Array.from({length:19},(_,i)=>csv(`accepted-${i}.csv`,`value\n${i}`)));await flow.upload()
+  flow.setFiles([csv('last-accepted.csv'),csv('quota-rejected.csv')]);await flow.upload()
+  const rejected=flow.getSnapshot().receipts.find(file=>file.upload_status==='rejected')
+  assert.ok(rejected);assert.equal(flow.canRetryRejectedFile(rejected.client_file_id),true)
+  await flow.retryRejectedFile(rejected.client_file_id)
+  let current=flow.getSnapshot().receipts.filter(file=>file.upload_status==='rejected'&&!flow.getSnapshot().removedRejectedIds.includes(file.client_file_id)).at(-1)
+  await flow.retryRejectedFile(current.client_file_id,csv('replacement.csv','replacement\n1'))
+  current=flow.getSnapshot().receipts.filter(file=>file.upload_status==='rejected'&&!flow.getSnapshot().removedRejectedIds.includes(file.client_file_id)).at(-1)
+  flow.removeRejectedFile(current.client_file_id)
+  await flow.prepareAnalysis()
+  assert.equal(flow.getSnapshot().preparation.acceptedFileIds.length,20)
+  assert.equal(flow.getSnapshot().batch.quota.accepted_file_count,20)
+  assert.equal(flow.getSnapshot().preparation.rejectedClientFileIds.length,3)
+  assert.equal(flow.getSnapshot().preparation.acknowledged,false)
 })

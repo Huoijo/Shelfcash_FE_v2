@@ -130,10 +130,10 @@ test('mapping response loss retains key/revision/body; replay never means Owner 
   assert.equal(work.controller.getSnapshot().retryOperation, 'mapping')
   assert.equal(work.controller.getSnapshot().summary.mapping_revision, 'mapping-accepted')
   await work.controller.retry()
-  assert.deepEqual(intents[1], intents[0])
+  assert.equal(intents.length, 1)
   assert.equal(intents[0].mappingRevision, 'mapping-original')
-  assert.equal(work.controller.getSnapshot().retryOperation, null)
-  assert.match(work.controller.getSnapshot().notice, /Owner/)
+  assert.equal(work.controller.getSnapshot().retryOperation, 'mapping')
+  assert.match(work.controller.getSnapshot().notice, /chưa xác định/)
   assert.equal(work.controller.getSnapshot().summary.can_preview, false)
 })
 
@@ -172,7 +172,7 @@ test('uncertain commit retains the exact original intent even after canonical re
   work.controller.setCommitReason('must not replace retained intent')
   await work.controller.retry()
   assert.equal(work.controller.getSnapshot().retryOperation, null)
-  assert.deepEqual(intents[1], intents[0])
+  assert.equal(intents.length, 1)
   assert.equal(intents[0].resolutions.length, 0)
   await work.controller.pollJob()
   await work.controller.pollJob()
@@ -437,7 +437,7 @@ test('lost confirm_review response replays exact original pins/key/CAS despite i
   assert.equal(work.controller.getSnapshot().canCommit, false)
   work.controller.setReviewReason('Must not change retained request')
   await work.controller.retry()
-  assert.deepEqual(intents[1], intents[0])
+  assert.equal(intents.length, 1)
   assert.equal(work.controller.getSnapshot().retryOperation, null)
   assert.equal(work.controller.getSnapshot().preview.confirmation_usable, true)
   assert.equal(work.controller.getSnapshot().completion, null)
@@ -603,6 +603,7 @@ test('mixed sales and supplier review requires exact distinct confirmation row s
   work.controller.acknowledgeCommit(true)
   assert.equal(work.controller.getSnapshot().canCommit, false)
   work.controller.setSupplierChanges([{ action_id: supplier.row_id, reason: 'Reviewed exact term amendment' }])
+  work.controller.setReviewReason('Reviewed all domain decisions'); work.controller.acknowledgeReview(true); await work.controller.confirmReview()
   work.controller.acknowledgeCommit(true)
   assert.equal(work.controller.getSnapshot().canCommit, true)
   work.controller.setSupplierChanges([{ action_id: supplier.row_id, reason: 'Reviewed' }, { action_id: id(999), reason: 'Extraneous' }])
@@ -717,4 +718,80 @@ test('012 Review navigation cannot bypass stale/blocked or incomplete retained P
   work.controller.setBatch({ ...old, import_revision: 'changed-revision', status: 'ready_for_preview' })
   work.controller.setTab('review')
   assert.equal(work.controller.getSnapshot().tab, 'preview')
+})
+
+test('frozen v1 global domain gate protects routing, Review confirmation and commit independently', async () => {
+  let reviews=0,commits=0
+  const work=await workspace({}, source=>({...source,readPreview:async(...args)=>{const result=await source.readPreview(...args);result.preview.rows=result.preview.rows.map(row=>({...row,canonical_domain:'sales',proposed_action:'MERGE_DISJOINT_SALES',confirmation_required:true}));return result},confirmReview:async(...args)=>{reviews++;return source.confirmReview(...args)},commit:async(...args)=>{commits++;return source.commit(...args)}}))
+  await prepared(work)
+  work.controller.setTab('review')
+  assert.equal(work.controller.getSnapshot().tab,'preview')
+  await work.controller.confirmReview();await work.controller.commit()
+  assert.equal(reviews,0);assert.equal(commits,0)
+  const decisions=work.controller.getSnapshot().preview.preview.rows.map(row=>({row_id:row.row_id,action:'confirm_disjoint_merge',report_business_key:'SHIFT-A',evidence_reference:'disjoint source evidence',reason:'Two independent shifts',disjoint_assertion:true}))
+  work.controller.setResolutions(decisions)
+  work.controller.setTab('review')
+  assert.equal(work.controller.getSnapshot().tab,'review')
+  work.controller.setReviewReason('Reviewed independent sources');work.controller.acknowledgeReview(true)
+  await work.controller.confirmReview()
+  assert.equal(reviews,1)
+  work.controller.setResolutions([])
+  assert.equal(work.controller.getSnapshot().canCommit,false)
+  assert.equal(work.controller.getSnapshot().canConfirmReview,false)
+  await work.controller.commit();assert.equal(commits,0)
+})
+
+test('frozen v1 uncertain mapping readback cannot infer success from unchanged/absent issue or resend intent', async()=>{
+  let writes=0
+  const work=await workspace({ownerRequired:true},source=>({...source,confirm:async()=>{writes++;throw new HttpError('transport','lost response')}}))
+  const mapping=work.controller.getSnapshot().queue.items[0].mapping_id
+  await work.controller.loadOptions(mapping);await work.controller.confirmMapping(mapping,'on_hand')
+  await work.controller.checkPendingState();await work.controller.checkPendingState()
+  assert.equal(writes,1);assert.equal(work.controller.getSnapshot().retryOperation,'mapping')
+  assert.match(work.controller.getSnapshot().notice,/chưa xác định/)
+})
+
+test('frozen v1 successful mapping readback unlocks state without a second mutation',async()=>{
+  let writes=0
+  const work=await workspace({ownerRequired:true},source=>({...source,confirm:async(...args)=>{writes++;await source.confirm(...args);throw new HttpError('transport','lost ACK')}}))
+  const mapping=work.controller.getSnapshot().queue.items[0].mapping_id
+  await work.controller.loadOptions(mapping);await work.controller.confirmMapping(mapping,'on_hand')
+  await work.controller.checkPendingState()
+  assert.equal(writes,1);assert.equal(work.controller.getSnapshot().retryOperation,null)
+  assert.equal(work.controller.getSnapshot().completion,null)
+})
+
+test('frozen v1 Staff cannot route to Owner profile decisions; commit reason is independently required',async()=>{
+  const work=await workspace({},undefined,{canDecideProfile:()=>false})
+  work.controller.setTab('profile');assert.notEqual(work.controller.getSnapshot().tab,'profile')
+  await prepared(work)
+  work.controller.setCommitReason('');work.controller.acknowledgeCommit(true)
+  assert.equal(work.controller.getSnapshot().canCommit,false)
+  assert.ok(work.controller.getSnapshot().reviewReason)
+})
+
+test('frozen v1 mutation readback finds a saved issue outside the unresolved-only filter',async()=>{
+  let unfilteredReads=0,writes=0
+  const work=await workspace({ownerRequired:true},source=>({...source,queue:async(id,query,...rest)=>{const result=await source.queue(id,query,...rest);if(query.review_only)result.items=result.items.filter(item=>!['resolved','auto_mapped'].includes(item.status));else unfilteredReads++;return result},confirm:async(...args)=>{writes++;await source.confirm(...args);throw new HttpError('transport','Lost mapping ACK')}}))
+  const mapping=work.controller.getSnapshot().queue.items[0].mapping_id
+  await work.controller.loadOptions(mapping);await work.controller.confirmMapping(mapping,'on_hand')
+  assert.equal(work.controller.getSnapshot().queue.items.length,0)
+  await work.controller.checkPendingState()
+  assert.equal(writes,1);assert.ok(unfilteredReads>0)
+  assert.equal(work.controller.getSnapshot().retryOperation,null)
+})
+
+test('frozen v1 actual mutation lifecycle distinguishes saving from uncertain outcome without losing intent',async()=>{
+  let finish
+  const held=new Promise((_,reject)=>{finish=()=>reject(new HttpError('transport','ACK unknown'))})
+  const work=await workspace({ownerRequired:true},source=>({...source,confirm:async()=>held}))
+  const mapping=work.controller.getSnapshot().queue.items[0].mapping_id
+  await work.controller.loadOptions(mapping)
+  const saving=work.controller.confirmMapping(mapping,'on_hand')
+  assert.equal(work.controller.getSnapshot().busy,true)
+  assert.equal(work.controller.getSnapshot().savingOperation,'mapping')
+  finish();await saving
+  assert.equal(work.controller.getSnapshot().busy,false)
+  assert.equal(work.controller.getSnapshot().savingOperation,null)
+  assert.equal(work.controller.getSnapshot().retryOperation,'mapping')
 })

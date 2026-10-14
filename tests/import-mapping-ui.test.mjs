@@ -119,6 +119,8 @@ test('Owner review uses exact profile/version baseline, never substitutes unrela
   value.approved_profiles = [{ binding: { sheet_id: id(3), profile_id: id(50), version: 'approved/1', content_digest: 'opaque' }, spec: spec('UNRELATED_BASELINE') }]
   const missing = renderToStaticMarkup(createElement(ImportProfileReview, { summary: value, busy: false, locked: false, canDecide: true, onDecision: noop }))
   assert.match(missing, /Chưa tải đủ cách đọc đã duyệt để so sánh/)
+  assert.match(missing, /Chưa thể so sánh/)
+  assert.match(missing, /Chưa có baseline để so sánh/)
   assert.doesNotMatch(missing, /UNRELATED_BASELINE/)
   assert.match(missing, /disabled=""[^>]*>Duyệt profile/)
   value.approved_profiles[0].binding.profile_id = id(5)
@@ -162,7 +164,7 @@ test('preview UI review checkbox remains disabled until complete same-pin nonsta
   assert.match(reviewCheckbox(renderPreview({ limit: 50, next_cursor: 'signed-next', total_count: 2 })), /disabled=""/)
   assert.match(reviewCheckbox(renderPreview({ limit: 50, next_cursor: null, total_count: 2 })), /disabled=""/)
   assert.match(reviewCheckbox(renderPreview(undefined, true)), /disabled=""/)
-  assert.doesNotMatch(reviewCheckbox(renderPreview()), /disabled=/)
+  assert.match(reviewCheckbox(renderPreview()), /disabled=/) // Pending supplier decision also blocks Review.
 })
 
 test('preview UI keeps business confirmation and isolates raw source/configuration/action IDs from product content', () => {
@@ -171,7 +173,7 @@ test('preview UI keeps business confirmation and isolates raw source/configurati
   assert.ok(!html.replace(/<[^>]*>/g,'').includes(id(40)))
   assert.match(html, /1\. Xác nhận đã kiểm tra dữ liệu/)
   assert.match(html, /2\. Xác nhận ghi toàn bộ lô/)
-  assert.match(html, /Lý do thay đổi/)
+  assert.match(html, /Supplier terms|điều khoản/)
   assert.match(html, /disabled=""[^>]*>Xác nhận và nhập dữ liệu/)
 })
 

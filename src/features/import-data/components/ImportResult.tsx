@@ -12,13 +12,14 @@ export function ImportResult({ completion, readinessPreview }: { completion: Imp
   const resources = completion.updated_resources
   const metrics = [[completion.summary.rows, 'dòng đã xử lý'], [completion.summary.inserted_record_count, 'mới'], [completion.summary.changed_record_count, 'cập nhật'], [completion.summary.no_op_count, 'không đổi']] as const
   return <div className="import-result">
+    <header className="input-section-title"><small>Bước 6/6 · Hoàn tất</small><h2>Import đã hoàn tất</h2><p>Batch đã commit thành công. Readiness được đánh giá riêng bên dưới.</p></header>
     <section className="import-result__summary" aria-labelledby="import-result-title">
-      <header><h2 id="import-result-title"><motion.span className="import-result__check" aria-hidden="true"
+      <header><h3 id="import-result-title"><motion.span className="import-result__check" aria-hidden="true"
         initial={reducedMotion ? false : { opacity: 0, transform: 'scale(0.85)' }} animate={{ opacity: 1, transform: 'scale(1)' }}
-        transition={reducedMotion ? { duration: 0 } : uiTransition}>✓</motion.span>{completion.outcome === 'no_changes' ? 'Hoàn tất — không có thay đổi' : 'Dữ liệu đã được cập nhật'}</h2>
+        transition={reducedMotion ? { duration: 0 } : uiTransition}>✓</motion.span>{completion.outcome === 'no_changes' ? 'Hoàn tất — không có thay đổi' : `${completion.summary.rows} rows đã được commit`}</h3>
         <span>Ngày dữ liệu: {completion.readiness.as_of_date.split('-').reverse().join('/')}</span></header>
       <dl>{metrics.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{knownCount(value)}</dd></div>)}</dl>
-      {completion.status === 'completed_with_warnings' && <p role="status">Hoàn tất với {completion.summary.warnings} cảnh báo. Xem chi tiết biên nhận bên dưới.</p>}
+      {completion.status === 'completed_with_warnings' && <p role="status">Hoàn tất với {completion.summary.warnings} cảnh báo. </p>}
     </section>
     <div className="import-flow__impacts">
       <section className="import-result__impact"><h3>Kho</h3><p><strong>{knownCount(resources.inventory.affected_ingredient_count)}</strong> nguyên liệu bị ảnh hưởng</p><Link to="/inventory">Xem kho</Link><small>{resources.inventory.updated ? 'Đã cập nhật' : 'Không cập nhật'}</small></section>

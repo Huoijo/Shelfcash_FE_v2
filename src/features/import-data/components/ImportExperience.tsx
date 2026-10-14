@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react'
 import type { ImportBatchState, ImportBatchWorkflow } from '../importData.workflow'
 import type { ImportFlowState, ImportFlowWorkflow } from '../importFlow.workflow'
 import { analyzeAssessment, experienceStep, type ImportRole, type ImportScreen } from '../importExperience'
+import {ImportSourceContext} from './ImportSourceContext'
+import {ImportStatus} from './ImportStatus'
 import { DebugValue } from '../../../shared/debug/DevelopmentTools'
 import { importMessage, reportLabel, sourceLabel, sourceScopeLabel } from '../importPresentation'
 
@@ -21,10 +23,10 @@ export function ImportSource({ state, flow, storeName, status }: { state: Import
   const contexts = flow.summary?.profile_proposals.flatMap(p => p.spec ? [p.spec.scope] : []) ?? []
   const approved = flow.summary?.approved_profiles.flatMap(p => p.spec ? [p.spec.scope] : []) ?? []
   const sources = [...new Set([...contexts, ...approved, ...(flow.summary?.approved_contexts ?? [])].map(scope => sourceScopeLabel(scope)))]
-  return <dl className="input-source"><div><dt>Cửa hàng</dt><dd>{storeName}</dd></div><div><dt>File</dt><dd>{state.batch?.file_count ?? state.files.length} file</dd></div><div><dt>Nguồn báo cáo</dt><dd>{sources.join(', ') || (flow.summary?.binding_refs.length ? 'Cách đọc đã duyệt' : 'Chưa xác nhận')}</dd></div><div><dt>Trạng thái</dt><dd>{status}</dd></div></dl>
+  return <dl className="input-source"><div><dt>Store</dt><dd>{storeName}</dd></div><div><dt>File</dt><dd>{state.batch?.file_count ?? state.files.length} file{flow.summary ? ` · ${flow.summary.sheets.length} sheets` : ''}</dd></div><div><dt>Nguồn</dt><dd>{sources.join(', ') || (flow.summary?.binding_refs.length ? 'Cách đọc đã duyệt' : 'Chưa xác nhận')}</dd></div><div><dt>Trạng thái</dt><dd>{status}</dd></div></dl>
 }
 
-export function ImportAnalyze({ state, flowState, workflow, flow, onContinue, role }: { role: ImportRole; state: ImportBatchState; flowState: ImportFlowState; workflow: ImportBatchWorkflow; flow: ImportFlowWorkflow; onContinue: () => void }) {
+export function ImportAnalyze({ state, flowState, workflow, flow, onContinue, role, canPropose = false }: { canPropose?:boolean; role: ImportRole; state: ImportBatchState; flowState: ImportFlowState; workflow: ImportBatchWorkflow; flow: ImportFlowWorkflow; onContinue: () => void }) {
   const running = state.processing || state.batch?.status === 'analyzing' || !!state.batch?.active_job_id
   const failed = state.batch?.status === 'failed'
   const assessment = analyzeAssessment(state, flowState)
@@ -51,11 +53,13 @@ export function ImportAnalyze({ state, flowState, workflow, flow, onContinue, ro
     ['Đã đọc file', !!summary], ['Đã nhận diện sheets', !!summary], ['Kiểm tra cấu trúc', !!summary],
     ['Kiểm tra nguồn báo cáo', !!summary?.can_preview], ['Tìm profile phù hợp', !!summary?.binding_refs.length],
   ]
+  const sourceIssue=flowState.queue?.items.find(issue=>issue.issue_type==='source_context'&&!['resolved','auto_mapped'].includes(issue.status))
+  if(assessment==='source_required'&&sourceIssue&&summary)return <ImportSourceContext state={flowState} flow={flow} issue={sourceIssue} canPropose={canPropose} onContinue={onContinue}/>
   const diagnostic = summary?.sheets.filter(sheet => sheet.suggestion_diagnostic)
   return <section className="input-panel" aria-label="Phân tích dữ liệu" aria-busy={running}>
     <header className="input-section-title"><small>Bước 2/6 · Phân tích</small><h2>{messages[assessment][0]}</h2><p>{messages[assessment][1]}</p></header>
     {normalAnalysis && <div className="input-progress-list" aria-label="Tiến độ phân tích">{stages.map(([label, done]) => <div key={label}><span aria-hidden="true">{done ? '✓' : '•'}</span><strong>{label}</strong><small>{done ? 'Hoàn tất' : running ? 'Đang xử lý' : 'Cần xác nhận'}</small></div>)}</div>}
-    {!normalAnalysis && <div className="input-status" role="status"><strong>{messages[assessment][0]}</strong><p>{messages[assessment][1]}</p></div>}
+    {!normalAnalysis && <ImportStatus kind={failed?'error':'warn'} title={messages[assessment][0]} copy={messages[assessment][1]}/>}
     {summary && assessment === 'complete' && <div className={`input-readout ${role === 'OWNER' ? 'input-analysis-readout' : ''}`}>
       {role === 'STAFF' && <><div><span>Sheets</span><strong>{summary.sheets.length}</strong></div><div><span>Rows</span><strong>{summary.sheets.reduce((n, sheet) => n + sheet.row_count, 0)}</strong></div></>}
       <div><span>{role === 'OWNER' ? 'Nguồn' : 'Source context'}</span><strong>{scope ? role === 'OWNER' ? sourceLabel(scope.source_system_key) : sourceScopeLabel(scope) : 'Chưa xác nhận'}</strong></div>
@@ -66,6 +70,6 @@ export function ImportAnalyze({ state, flowState, workflow, flow, onContinue, ro
     {summary?.warnings.filter(warning => !['PROFILE_STRUCTURE_OR_SEMANTICS_DRIFT','PROFILE_MATCH_AMBIGUOUS'].includes(warning.code)).map((warning, i) => <p className="input-status" key={warning.code + i}>{importMessage(warning.code, warning.message)}</p>)}
     <DebugValue label="Analyze diagnostics" value={{job: flowState.job, sheets: diagnostic, blockers: summary?.blockers}} />
     {flowState.error && <div className="input-status" role="alert"><p>{importMessage(flowState.fault?.code ?? '', flowState.error)}</p><button disabled={state.busy || state.processing || flowState.busy} onClick={() => { void workflow.refresh().then(() => flow.refresh()) }}>Đọc lại trạng thái</button></div>}
-    <footer className="input-actions">{failed ? <button disabled={state.busy || state.processing || !state.batch?.allowed_actions.includes('analyze')} onClick={() => { void workflow.process() }}>Thử phân tích lại</button> : <button className="input-primary" disabled={running || !summary || flowState.busy || !!flowState.retryOperation || !state.fresh} onClick={onContinue}>{assessment === 'provider_unavailable' ? 'Tiếp tục thủ công' : 'Kiểm tra cách hiểu'}</button>}<DebugValue label="Analyze state" value={{assessment,failed,running}} /></footer>
+    <footer className="input-actions">{failed ? <button disabled={state.busy || state.processing || flowState.busy || !state.sealedLocked&&!state.batch?.allowed_actions.includes('analyze')} onClick={() => { if(state.sealedLocked)void workflow.refresh().then(()=>flow.refresh());else void workflow.process() }}>{state.sealedLocked?'Đọc lại trạng thái':'Thử phân tích lại'}</button> : <button className="input-primary" disabled={running || !summary || flowState.busy || !!flowState.retryOperation || !state.fresh} onClick={onContinue}>{assessment === 'provider_unavailable' ? 'Tiếp tục thủ công' : 'Kiểm tra cách hiểu'}</button>}<DebugValue label="Analyze state" value={{assessment,failed,running}} /></footer>
   </section>
 }

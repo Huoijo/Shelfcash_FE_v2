@@ -19,6 +19,7 @@ test('012 mobile Staff import keeps six steps, usable Resolve actions and page w
   await page.getByLabel('Ngày dữ liệu',{exact:true}).fill('2026-10-11')
   await page.locator('input[type=file]').setInputFiles({name:'observed.csv',mimeType:'text/csv',buffer:Buffer.from('lot,on_hand\nLOT,10')})
   await page.getByRole('button',{name:'Phân tích dữ liệu',exact:true}).click()
+  await page.getByRole('button', { name: /^Phân tích [0-9]+ file$/ }).click()
   await page.getByRole('button',{name:'Kiểm tra cách hiểu',exact:true}).click()
   await expect(page.getByRole('button',{name:'Tạo Preview',exact:true})).toBeEnabled()
   await expect(page.getByRole('list',{name:'Tiến trình nhập dữ liệu 6 bước'}).getByRole('listitem')).toHaveCount(6)

@@ -7,6 +7,7 @@ import { analyzeAssessment, importScreen } from '../../features/import-data/impo
 import { useId, useState } from 'react'
 import { Link, useOutletContext, useSearchParams } from 'react-router'
 import { ImportHelp } from '../../features/import-data/components/ImportHelp'
+import {ImportUploadAdmission} from '../../features/import-data/components/ImportUploadAdmission'
 import { ImportUpload } from '../../features/import-data/components/ImportUpload'
 import { ImportBatchPanel } from '../../features/import-data/components/ImportBatchPanel'
 import { ImportFlow } from '../../features/import-data/components/ImportFlow'
@@ -52,37 +53,38 @@ export function ImportPage({selection}:{selection?:ImportSelection} = {}) {
         <p className="input-subtitle">{role === 'OWNER' ? 'Owner nhập dữ liệu, xác nhận cách hiểu và kiểm soát điều gì được tái sử dụng.' : 'Reuse khi an toàn, xử lý khi cần; chỉ gửi Owner duyệt khi cách đọc reusable thay đổi.'}</p>
         <nav className="input-view-tabs" aria-label="Tiện ích nhập dữ liệu"><span aria-current="page">Nhập mới</span><Link to="/imports/history">Lịch sử</Link>{role === 'OWNER' && <><UnderConstructionButton feature="Duyệt mapping toàn cửa hàng">Phê duyệt Staff</UnderConstructionButton><UnderConstructionButton feature="Danh sách profile toàn cửa hàng">Profiles</UnderConstructionButton></>}</nav>
         <ImportStepper role={role} screen={screen} />
-        {showFlow && <ImportSource state={state} flow={flowState} storeName={storeName} status={flowState.retryOperation === 'commit' ? 'Đang kiểm tra kết quả' : ({upload:'Chọn file',analyze: state.processing || state.batch?.active_job_id ? 'Đang phân tích' : analyzeAssessment(state, flowState) === 'complete' ? 'Phân tích hoàn tất' : 'Cần xử lý',resolve:flowState.summary?.progress.unresolved ? 'Cần xử lý' : 'Đã xử lý',profile:flowState.summary?.can_preview ? 'Profile đã duyệt' : 'Chưa ghi dữ liệu',preview:'Preview · Chưa ghi dữ liệu',review:'Chờ xác nhận',commit:'Đang ghi dữ liệu',complete:'Import hoàn tất'})[screen]} />}
+        {showFlow && <ImportSource state={state} flow={flowState} storeName={storeName} status={flowState.retryOperation === 'commit' ? 'Đang kiểm tra kết quả' : ({upload:'Chọn file',analyze: state.processing || state.batch?.active_job_id ? 'Đang phân tích' : analyzeAssessment(state, flowState) === 'complete' ? 'Phân tích hoàn tất' : 'Cần xử lý',resolve:flowState.summary?.progress.unresolved ? 'Cần xử lý' : 'Đã xử lý',profile:flowState.error ? 'Profile cần xử lý' : flowState.summary?.can_preview ? 'Profile đã duyệt' : 'Chưa ghi dữ liệu',preview:'Preview · Chưa ghi dữ liệu',review:'Chờ xác nhận',commit:'Đang ghi dữ liệu',complete:'Import hoàn tất'})[screen]} />}
         <DebugValue label="Import workspace" value={{ role, screen, batch: state.batch, flow: flowState }} />
         <p className="sr-only" aria-live="polite">Bước hiện tại: {importStageLabels[importStage(state)]}</p>
         {locatorMismatch && <p className="import-page__error" role="status">Chưa đọc được đúng lô trong URL. Các thao tác thay đổi bị khóa; không dùng lô trước làm trạng thái của lô đang yêu cầu.{batch && <> <Link to={`/imports?import_id=${encodeURIComponent(batch.import_id)}`}>Quay lại lô đang giữ trong workspace</Link>.</>}</p>}
         {locatorMismatch && !batch && !state.draft && state.error && <button type="button" disabled={busy || !!state.retryOperation || flowState.busy || !!flowState.retryOperation} onClick={startNewDraft}>Bỏ định danh đang mở và bắt đầu lô mới</button>}
-        {!showFlow && !!rejectedFiles.length && <section className="input-status" role="alert"><strong>File chưa được nhận</strong>{rejectedFiles.map(file => <p key={file.client_file_id}>{file.filename} · {file.error?.code === 'INVALID_FILE_TYPE' ? 'Định dạng không được hỗ trợ' : file.error?.code === 'RESOURCE_LIMIT_EXCEEDED' ? 'Vượt giới hạn dung lượng của lần nhập' : 'Không thể nhận file này'}</p>)}</section>}
+
         {showFlow && <>
           {!!rejectedFiles.length && <p className="import-page__error" role="alert">{rejectedFiles.length} file không được phân tích: {rejectedFiles.map((file) => file.filename).join(', ')}. Xem lý do trong “File đã nhập và thông tin lô”.</p>}
           {state.error && <p className="import-page__error" role="alert">{importMessage('', state.error)}</p>}
-          {state.retryOperation && <button type="button" disabled={busy} onClick={() => { void workflow.retry() }}>Thử lại đúng yêu cầu trước</button>}
-          {analyzeVisible ? <ImportAnalyze role={role} state={state} flowState={flowState} workflow={workflow} flow={flow} onContinue={() => { setResolveImportId(batch?.import_id ?? null); flow.setTab('mapping') }} /> : <ImportFlow initialEditor={preview?.editor} initialSubmit={preview?.submit} readinessPreview={preview?.readiness} key={batch?.import_id} role={role} devOwnerReview={devOwnerReview} state={flowState} workflow={flow} canDecideProfile={canDecideProfile} canProposeMapping={canProposeMapping} parentBusy={busy || !!state.retryOperation} parentStale={!state.fresh || locatorMismatch} />}
+          {state.retryOperation && state.retryOperation!=='upload' && <button type="button" disabled={busy} onClick={() => { void workflow.retry() }}>Thử lại đúng yêu cầu trước</button>}
+          {analyzeVisible ? <ImportAnalyze canPropose={canProposeMapping&&!continuationLocked} role={role} state={state} flowState={flowState} workflow={workflow} flow={flow} onContinue={() => { setResolveImportId(batch?.import_id ?? null); flow.setTab('mapping') }} /> : <ImportFlow onBackToAnalyze={()=>{setResolveImportId(null);flow.setTab('mapping')}} initialEditor={preview?.editor} initialSubmit={preview?.submit} readinessPreview={preview?.readiness} key={batch?.import_id} role={role} devOwnerReview={devOwnerReview} state={flowState} workflow={flow} canDecideProfile={canDecideProfile} canProposeMapping={canProposeMapping} parentBusy={busy || !!state.retryOperation} parentStale={!state.fresh || locatorMismatch} />}
           <DebugContent><ImportBatchPanel state={state} workflow={workflow} continuationLocked={continuationLocked} onNewDraft={startNewDraft} /></DebugContent>
         </>}
         {!showFlow && <div className="import-page__grid">
           <div className="import-page__upload-column">
             <header className="input-section-title input-section-title--stat"><div><small>Bước 1/6 · File</small><h2>Thêm dữ liệu</h2><p>Thêm một hoặc nhiều file. Mỗi file vẫn giữ cấu trúc và ý nghĩa riêng.</p></div><aside className="input-stat"><strong>{files.length}</strong><span>file đã thêm</span></aside></header>
             <ImportUpload files={files} onFilesChange={workflow.setFiles} disabled={uploadLocked} uncertainFiles={state.retryOperation === 'upload'} />
+            {state.draft && <ImportUploadAdmission state={state} workflow={workflow} locked={uploadLocked}/> }
             {state.draft && <DebugContent><ImportBatchPanel state={state} workflow={workflow} continuationLocked={continuationLocked} onNewDraft={startNewDraft} /></DebugContent>}
           </div>
           <nav className="import-page__utilities" aria-label="Tiện ích nhập dữ liệu">
             <Link to="/imports/history">Lịch sử nhập</Link>
             <button type="button" disabled title="Chưa triển khai">File mẫu</button>
           </nav>
-          <div className="import-page__process">
+          <div className="import-page__process" hidden={!!state.preparation}>
             <span id="import-processing-help" className="sr-only">Chọn file và ngày dữ liệu trước khi phân tích.</span>
-            <button type="button" disabled={continuationLocked || busy || !!state.retryOperation || !dataDate || (!files.length && (!batch?.file_count || !batch.allowed_actions.includes('analyze')))} aria-describedby="import-processing-help" onClick={() => { void workflow.process() }}>{busy ? 'Đang xử lý…' : 'Phân tích dữ liệu'}</button>
+            <button type="button" disabled={continuationLocked || busy || !!state.retryOperation || !dataDate || (!files.length && (!batch?.file_count || !batch.allowed_actions.includes('analyze')))} aria-describedby="import-processing-help" onClick={() => { void workflow.prepareForAnalysis() }}>{busy ? 'Đang xử lý…' : 'Phân tích dữ liệu'}</button>
           </div>
           <div className="import-page__feedback">
             {state.error && <p className="import-page__error" role="alert">{importMessage('', state.error)}</p>}
             {locator && locatorMismatch && state.error && <button type="button" disabled={busy || !!state.retryOperation || flowState.busy || !!flowState.retryOperation} onClick={() => { void (state.draft?.import_id === locator ? workflow.refresh() : workflow.resume(locator)) }}>Đọc lại lô từ máy chủ</button>}
-            {state.retryOperation && <button type="button" disabled={busy} onClick={() => { void workflow.retry() }}>Thử lại đúng yêu cầu trước</button>}
+            {state.retryOperation && state.retryOperation!=='upload' && <button type="button" disabled={busy} onClick={() => { void workflow.retry() }}>Thử lại đúng yêu cầu trước</button>}
             <DebugValue label="Upload notice" value={state.notice} />
           </div>
         </div>}

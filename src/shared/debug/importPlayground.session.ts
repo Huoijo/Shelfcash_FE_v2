@@ -83,7 +83,7 @@ export async function createImportPlaygroundSession(request: PreviewRequest) {
   let cache: ImportSelection
   const listeners = new Set<()=>void>()
   const notify = () => { cache=selection();listeners.forEach(listener=>listener()) }
-  const userMethods = new Set(['setTab','setFiles','setDataDate','process','retry','refresh','startNewDraft','confirmMapping','resolveMapping','decideProfile','startPreview','confirmReview','commit','setReviewReason','acknowledgeReview','setCommitReason','acknowledgeCommit','setResolutions','setSupplierChanges'])
+  const userMethods = new Set(['prepareForAnalysis','analyze','acknowledgeRejected','cancelPreparation','retryRejectedFile','removeRejectedFile','checkUploadState','checkPendingState','selectSheet','setFilter','loadMoreMappings','setTab','setFiles','setDataDate','process','retry','refresh','startNewDraft','confirmMapping','resolveMapping','decideProfile','startPreview','confirmReview','commit','setReviewReason','acknowledgeReview','setCommitReason','acknowledgeCommit','setResolutions','setSupplierChanges'])
   // Bind all functions to their original world. No monkey patching of live instances.
   function actions<T extends object>(target:T):T {
     const bound = new Map<PropertyKey,unknown>()
@@ -137,7 +137,7 @@ export async function createImportPlaygroundSession(request: PreviewRequest) {
         // The descriptor is a synthetic QA issue, not an inferred runtime candidate.
         const original=state.queue?.items[0]
         if(original){
-          const issue:MappingIssue={...original,status:id==='resolve-ambiguous'?'ambiguous':'unmatched',target_field:null,
+          const issue:MappingIssue={...original,status:id==='resolve-ambiguous'?'ambiguous':'unmatched',target_field:scenario.editor==='identity'?'ingredient_id':null,
             issue_type:scenario.editor==='identity'?'identity':scenario.editor==='units'?'conversion':scenario.editor==='facts'?'schema_blocker':'column',
             code:scenario.editor==='facts'?'DECLARATION_REQUIRED':id==='resolve-ambiguous'?'IDENTITY_AMBIGUOUS':'VALUE_UNRESOLVED',
             source_header:scenario.editor==='units'?'ml':scenario.editor==='identity'?'Sữa tươi':'on_hand',samples:scenario.editor==='units'?['1000','l']:['Sữa tươi'],

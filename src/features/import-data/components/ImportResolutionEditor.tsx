@@ -1,10 +1,11 @@
 import { DebugValue } from '../../../shared/debug/DevelopmentTools'
 import { businessField } from '../importPresentation'
 import { useContext, useState } from 'react'
+import { ResolverFormBody, ResolverSubmit } from './ImportResolverForm'
 import { ImportResolutionView } from '../importResolutionView.context'
 import type { MappingIssue, MappingOptions, MappingResolution } from '../importFlow.types'
 
-type Props = { issue: MappingIssue; options?: MappingOptions; disabled: boolean; onResolve: (resolution: MappingResolution) => void }
+type Props = { newOnly?:boolean; includeShared?: boolean; issue: MappingIssue; options?: MappingOptions; disabled: boolean; onResolve: (resolution: MappingResolution) => void }
 type SourceContext = Extract<MappingResolution, { kind: 'source_context' }>
 type PeriodAmendment = { id: string; expected_version: string; effective_to: string; reason: string }
 
@@ -23,7 +24,7 @@ export function ImportResolutionEditor(props: Props) {
     {issue.issue_type === 'conversion' && <ConversionEditor {...props} />}
     {issue.issue_type === 'column' && <OptionalIgnoreEditor {...props} />}
     {issue.issue_type === 'schema_blocker' && <p className="import-flow__notice">Cần kiểm tra dữ liệu nguồn trước khi tiếp tục. Không tự thay dữ liệu thiếu thành 0.</p>}
-    {options?.schema && options.options.some((field) => field.support === 'supported' && field.input_sources?.includes('shared_value') && field.allowed_shared_scopes?.length) && <SharedValueEditor {...props} options={options} />}
+    {props.includeShared !== false && options?.schema && options.options.some((field) => field.support === 'supported' && field.input_sources?.includes('shared_value') && field.allowed_shared_scopes?.length) && <SharedValueEditor {...props} options={options} />}
   </>
 }
 
@@ -33,7 +34,9 @@ function ClassificationEditor({ options, disabled, onResolve }: Props) {
   const [acknowledged, setAcknowledged] = useState(false)
   const ignored = schema === 'IGNORE'
   const selected = options?.schemas.find((entry) => entry.schema_id === schema)
-  return <fieldset disabled={disabled} className="import-flow__form">
+  const valid=!disabled&&!!reason.trim()&&!!(selected||ignored)&&(!ignored||acknowledged)
+  const submit=()=>onResolve({kind:'sheet_type',sheet_type:ignored?null:selected!.schema_id,ignored,acknowledgment:ignored&&acknowledged,reason:reason.trim()})
+  return <ResolverFormBody valid={valid} onSubmit={submit}><fieldset disabled={disabled} className="import-flow__form">
     <legend>Chọn loại dữ liệu cho Sheet</legend>
     <label>Loại dữ liệu<select value={schema} onChange={(event) => { setSchema(event.target.value); setAcknowledged(false) }}>
       <option value="">Chọn loại dữ liệu…</option>
@@ -45,11 +48,11 @@ function ClassificationEditor({ options, disabled, onResolve }: Props) {
     <label>Lý do phân loại hoặc bỏ qua<textarea maxLength={1000} value={reason} onChange={(event) => setReason(event.target.value)} /></label>
     {ignored && <label className="import-flow__check"><input type="checkbox" checked={acknowledged} onChange={(event) => setAcknowledged(event.target.checked)} />Tôi xác nhận toàn bộ Sheet này không tham gia import. Thao tác làm mất hiệu lực Preview/review hiện tại.</label>}
 
-    <button type="button" disabled={disabled || !reason.trim() || (!selected && !ignored) || (ignored && !acknowledged)} onClick={() => onResolve({ kind: 'sheet_type', sheet_type: ignored ? null : selected!.schema_id, ignored, acknowledgment: ignored && acknowledged, reason: reason.trim() })}>Lưu loại dữ liệu</button>
-  </fieldset>
+    <ResolverSubmit disabled={!valid}>Lưu loại dữ liệu</ResolverSubmit>
+  </fieldset></ResolverFormBody>
 }
 
-function SourceContextEditor({ disabled, onResolve }: Props) {
+export function SourceContextEditor({ issue, disabled, onResolve }: Props) {
   const [source, setSource] = useState('')
   const [report, setReport] = useState('')
   const [evidence, setEvidence] = useState('')
@@ -74,10 +77,12 @@ function SourceContextEditor({ disabled, onResolve }: Props) {
     }
     onResolve(resolution)
   }
-  return <fieldset disabled={disabled} className="import-flow__form">
+  return <ResolverFormBody valid={!disabled&&valid} onSubmit={submit}><fieldset disabled={disabled} className="import-flow__form">
     <legend>Khai báo ngữ cảnh nguồn</legend>
+    <section className="input-context-evidence"><h3>Bằng chứng nhận diện</h3><span>{issue.source_header??'Chưa xác lập hệ thống nguồn'}</span><div className="input-samples">{issue.samples.map((sample,i)=><span key={i}>{sample}</span>)}</div><p>Tên file hoặc sheet chỉ là context; không được coi là bằng chứng nguồn. Khai báo này chỉ áp dụng cho lần nhập hiện tại.</p></section>
     <div className="import-flow__form-grid">
       <label>Hệ thống nguồn<input maxLength={128} value={source} onChange={(event) => setSource(event.target.value)} placeholder="Mã từ hệ thống xuất dữ liệu" /></label>
+      {source&&!namespace.test(source)&&<small role="alert">Mã hệ thống nguồn chỉ dùng chữ, số, dấu chấm, gạch ngang, gạch dưới hoặc dấu hai chấm.</small>}
       <label>Loại báo cáo<input maxLength={128} value={report} onChange={(event) => setReport(event.target.value)} /></label>
     </div>
     <p className="import-flow__muted">Dùng mã nguồn báo cáo đã được thống nhất với cửa hàng.</p>
@@ -94,13 +99,13 @@ function SourceContextEditor({ disabled, onResolve }: Props) {
       <label className="import-flow__check"><input type="checkbox" checked={expiry} onChange={(event) => setExpiry(event.target.checked)} />Khai báo expiry từ ngày nhận dự kiến + số ngày shelf-life đã được khai báo.</label>
       {expiry && <EvidenceInput label="Bằng chứng quy tắc expiry" value={expiryEvidence} onChange={setExpiryEvidence} />}
     </details>
-    <details><summary>Amendment kỳ hạn/fee (cần Owner review policy)</summary>
+    <details><summary>Điều chỉnh kỳ hạn cung cấp và phí</summary>
       <p className="import-flow__muted">Không tự động đóng kỳ lịch sử.</p>
       <PeriodAmendments label="Supplier term" items={terms} onChange={setTerms} />
       <PeriodAmendments label="Payable fee" items={fees} onChange={setFees} />
     </details>
-    <button type="button" disabled={disabled || !valid} onClick={submit}>Lưu ngữ cảnh nguồn</button>
-  </fieldset>
+    <ResolverSubmit disabled={disabled||!valid}>Lưu ngữ cảnh nguồn</ResolverSubmit>
+  </fieldset></ResolverFormBody>
 }
 
 function PeriodAmendments({ label, items, onChange }: { label: string; items: PeriodAmendment[]; onChange: (items: PeriodAmendment[]) => void }) {
@@ -118,9 +123,9 @@ function PeriodAmendments({ label, items, onChange }: { label: string; items: Pe
   </section>
 }
 
-function IdentityEditor({ disabled, onResolve }: Props) {
+export function IdentityEditor({ disabled, onResolve, newOnly=false }: Props) {
   const view=useContext(ImportResolutionView)
-  const [mode, setMode] = useState<'existing' | 'new'>(view.identityMode)
+  const [mode, setMode] = useState<'existing' | 'new'>(newOnly?'new':view.identityMode)
   const [canonicalId, setCanonicalId] = useState('')
   const [entity, setEntity] = useState<'product' | 'ingredient' | 'supplier'>('product')
   const [businessKey, setBusinessKey] = useState('')
@@ -138,9 +143,9 @@ function IdentityEditor({ disabled, onResolve }: Props) {
     else if (entity === 'ingredient') onResolve({ ...shared, entity, metadata: { name: name.trim(), base_unit: unit.trim(), sku: sku.trim() || null, expiry_tracking: expiry!, active: active! } })
     else onResolve({ ...shared, entity, metadata: { name: name.trim(), selling_unit: unit.trim(), sku: sku.trim() || null, price: price || null, active: active! } })
   }
-  return <fieldset disabled={disabled} className="import-flow__form">
+  return <ResolverFormBody valid={!disabled&&!!canPropose&&mode==='new'} onSubmit={submitNew}><fieldset disabled={disabled} className="import-flow__form">
     <legend>Xác nhận đối tượng</legend>
-    <label>Cách xử lý<select value={mode} onChange={(event) => setMode(event.target.value as typeof mode)}><option value="existing">Gắn đối tượng đã có trong cửa hàng</option><option value="new">Đề xuất tạo đối tượng mới</option></select></label>
+    {!newOnly&&<label>Cách xử lý<select value={mode} onChange={(event) => setMode(event.target.value as typeof mode)}><option value="existing">Gắn đối tượng đã có trong cửa hàng</option><option value="new">Đề xuất tạo đối tượng mới</option></select></label>}
     <p className="import-flow__muted">Chọn đúng đối tượng thuộc cửa hàng.</p>
     {mode === 'existing' ? <>
       <label>Mã đối tượng<input value={canonicalId} maxLength={36} onChange={(event) => setCanonicalId(event.target.value)} /></label>
@@ -157,28 +162,30 @@ function IdentityEditor({ disabled, onResolve }: Props) {
       </div>
       <EvidenceInput value={evidence} onChange={setEvidence} />
       <p className="import-flow__muted">Đề xuất đối tượng mới cần Owner duyệt.</p>
-      <button type="button" disabled={disabled || !canPropose} onClick={submitNew}>Lưu đề xuất đối tượng mới</button>
+      <ResolverSubmit disabled={disabled || !canPropose}>Lưu đề xuất đối tượng mới</ResolverSubmit>
     </>}
-  </fieldset>
+  </fieldset></ResolverFormBody>
 }
 
 function ConversionEditor({ issue, disabled, onResolve }: Props) {
   const [numerator, setNumerator] = useState('')
   const [denominator, setDenominator] = useState('')
   const [evidence, setEvidence] = useState('')
-  const from = issue.source_header
-  const to = issue.samples.at(-1)
-  return <fieldset disabled={disabled} className="import-flow__form">
+  const declared=issue.resolution?.resolution.kind==='declared_conversion'?issue.resolution.resolution:null
+  const [from,setFrom]=useState(declared?.from_unit??''),[to,setTo]=useState(declared?.to_unit??'')
+  const valid=!disabled&&!!from&&!!to&&from.length<=32&&to.length<=32&&positiveDecimal(numerator)&&positiveDecimal(denominator)&&!!evidence.trim()
+  const submit=()=>onResolve({kind:'declared_conversion',from_unit:from!,to_unit:to!,factor:{numerator,denominator},evidence_reference:evidence.trim()})
+  return <ResolverFormBody valid={valid} onSubmit={submit}><fieldset disabled={disabled} className="import-flow__form">
     <legend>Khai báo quy đổi chính xác</legend>
     <p>Đơn vị nguồn: <strong>{from ?? 'Chưa có'}</strong> → đơn vị đích: <strong>{to ?? 'Chưa có'}</strong></p>
-    <div className="import-flow__form-grid">
+    <div className="import-flow__form-grid"><label>Đơn vị nguồn<input value={from} maxLength={32} onChange={event=>setFrom(event.target.value)}/></label><label>Đơn vị đích<input value={to} maxLength={32} onChange={event=>setTo(event.target.value)}/></label>
       <label>Tử số (decimal text &gt; 0)<input maxLength={200} inputMode="decimal" value={numerator} onChange={(event) => setNumerator(event.target.value)} /></label>
       <label>Mẫu số (decimal text &gt; 0)<input maxLength={200} inputMode="decimal" value={denominator} onChange={(event) => setDenominator(event.target.value)} /></label>
     </div>
     <EvidenceInput value={evidence} onChange={setEvidence} />
     <p className="import-flow__muted">Tỉ lệ = tử số / mẫu số. Không tự làm tròn.</p>
-    <button type="button" disabled={disabled || !from || !to || from.length > 32 || to.length > 32 || !positiveDecimal(numerator) || !positiveDecimal(denominator) || !evidence.trim()} onClick={() => onResolve({ kind: 'declared_conversion', from_unit: from!, to_unit: to!, factor: { numerator, denominator }, evidence_reference: evidence.trim() })}>Lưu quy đổi</button>
-  </fieldset>
+    <ResolverSubmit disabled={!valid}>Lưu quy đổi</ResolverSubmit>
+  </fieldset></ResolverFormBody>
 }
 
 function OptionalIgnoreEditor({ disabled, onResolve }: Props) {
@@ -195,7 +202,7 @@ function OptionalIgnoreEditor({ disabled, onResolve }: Props) {
   </details>
 }
 
-function SharedValueEditor({ issue, options, disabled, onResolve }: Props & { options: MappingOptions }) {
+export function SharedValueEditor({ issue, options, disabled, onResolve }: Props & { options: MappingOptions }) {
   const view=useContext(ImportResolutionView)
   const [expanded,setExpanded]=useState(view.sharedValueExpanded)
   const [target, setTarget] = useState('')
@@ -205,20 +212,21 @@ function SharedValueEditor({ issue, options, disabled, onResolve }: Props & { op
   const [boolean, setBoolean] = useState<'true' | 'false' | ''>('')
   const [evidence, setEvidence] = useState('')
   const [replace, setReplace] = useState(false)
-  const [index, setIndex] = useState(issue.source_location.source_column_index === null || issue.source_location.source_column_index === undefined ? '' : String(issue.source_location.source_column_index))
+  const [replacementReason,setReplacementReason]=useState('')
+  const index = issue.source_location.source_column_index == null ? '' : String(issue.source_location.source_column_index)
   const [acknowledged, setAcknowledged] = useState(false)
   const fields = options.options.filter((field) => field.support === 'supported' && field.input_sources?.includes('shared_value') && field.allowed_shared_scopes?.length)
   const selected = fields.find((field) => field.key === target)
   const numeric = /^-?(0|[1-9][0-9]*)$/.test(text) ? Number(text) : NaN
   const validValue = kind === 'string' ? !!text.trim() && text.length <= 1000 : kind === 'boolean' ? boolean !== '' : kind === 'integer' ? Number.isInteger(numeric) && numeric >= -2147483648 && numeric <= 2147483647 : kind === 'null' ? selected?.nullable === true : false
-  const validReplace = !replace || (/^(0|[1-9][0-9]*)$/.test(index) && Number(index) <= 255 && acknowledged)
+  const validReplace = !replace || (/^(0|[1-9][0-9]*)$/.test(index) && Number(index) <= 255 && Number(index)===issue.source_location.source_column_index && acknowledged && !!replacementReason.trim())
   const valid = selected && scope && selected.allowed_shared_scopes?.includes(scope) && validValue && validReplace && evidence.trim()
   function submit() {
     const value = kind === 'null' ? null : kind === 'boolean' ? boolean === 'true' : kind === 'integer' ? numeric : text
-    if (scope) onResolve({ kind: 'shared_value', target_field: target, scope, value, evidence_reference: evidence.trim(), ...(replace ? { replace_source_column_index: Number(index), acknowledgment: acknowledged } : {}) })
+    if (scope) onResolve({ kind: 'shared_value', target_field: target, scope, value, evidence_reference: replace?`${evidence.trim()} · Lý do thay thế: ${replacementReason.trim()}`:evidence.trim(), ...(replace ? { replace_source_column_index: Number(index), acknowledgment: acknowledged } : {}) })
   }
   return <details open={expanded} onToggle={event=>setExpanded(event.currentTarget.open)}><summary>Khai báo giá trị dùng chung / giá trị riêng lần import</summary>
-    <fieldset disabled={disabled} className="import-flow__form">
+    <ResolverFormBody valid={!!valid&&!disabled} onSubmit={submit}><fieldset disabled={disabled} className="import-flow__form">
       <legend>Nguồn giá trị cho trường</legend>
       <label>Trường đích<select value={target} onChange={(event) => { setTarget(event.target.value); setScope(''); setKind(''); setText(''); setBoolean('') }}><option value="">Chọn trường dữ liệu…</option>{fields.map((field) => <option key={field.key} value={field.key}>{field.label || businessField(field.key)}</option>)}</select></label>
       {selected && <p className="import-flow__muted">{selected.nullable ? 'Cho phép null' : 'Không cho phép null'}{selected.unit_semantics ? ` · ${selected.unit_semantics}` : ''}. {selected.input_help || selected.description}</p>}
@@ -230,11 +238,12 @@ function SharedValueEditor({ issue, options, disabled, onResolve }: Props & { op
       </div>
       <p className="import-flow__muted">Không, 0 và chưa xác định là ba giá trị khác nhau.</p>
       <label className="import-flow__check"><input type="checkbox" checked={replace} onChange={(event) => { setReplace(event.target.checked); setAcknowledged(false) }} />Dùng giá trị khai báo thay cho cột nguồn</label>
+      {replace&&Number(index)!==issue.source_location.source_column_index&&<p role="alert">Cần mở đúng cột nguồn để kiểm tra giá trị gốc trước khi thay thế.</p>}
       {selected && !selected.available && <p className="import-flow__notice">Trường này đang lấy dữ liệu từ cột nguồn. Xác nhận chuyển nguồn nếu muốn dùng giá trị khai báo.</p>}
-      {replace && <><label>Source column index chính xác (zero-based 0–255)<input inputMode="numeric" value={index} maxLength={3} onChange={(event) => setIndex(event.target.value)} /></label><label className="import-flow__check"><input type="checkbox" checked={acknowledged} onChange={(event) => setAcknowledged(event.target.checked)} />Tôi xác nhận thay nguồn của đúng cột này; dữ liệu cột không còn là nguồn cho trường đích.</label></>}
+      {replace && <><section className="input-context-evidence"><h4>Giá trị từ file</h4><strong>{issue.source_header??'Cột nguồn'}</strong><div className="input-samples">{issue.samples.map((sample,i)=><span key={i}>{sample}</span>)}</div><h4>Giá trị dùng cho import</h4><strong>{kind==='null'?'Chưa xác định':kind==='boolean'?boolean==='false'?'Không':boolean==='true'?'Có':'Chưa chọn':text||'Chưa nhập'}</strong></section><label>Lý do thay thế<textarea value={replacementReason} maxLength={500} onChange={event=>setReplacementReason(event.target.value)}/></label><p>Cột nguồn sẽ thay thế: <strong>{index===''?'Chưa có cột nguồn để xác minh':`${issue.source_header??'Cột nguồn'} · Cột ${Number(index)+1}`}</strong></p><label className="import-flow__check"><input type="checkbox" checked={acknowledged} onChange={(event) => setAcknowledged(event.target.checked)} />Tôi xác nhận thay nguồn của đúng cột này; dữ liệu cột không còn là nguồn cho trường đích.</label></>}
       <EvidenceInput value={evidence} onChange={setEvidence} />
-      <button type="button" disabled={disabled || !valid} onClick={submit}>Lưu giá trị đã khai báo</button>
-    </fieldset>
+      <ResolverSubmit disabled={disabled||!valid}>Lưu giá trị đã khai báo</ResolverSubmit>
+    </fieldset></ResolverFormBody>
   </details>
 }
 

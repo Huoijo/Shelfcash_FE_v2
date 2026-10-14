@@ -140,3 +140,79 @@
 .input-progress-list small { color: #777; }
 
 .input-profile-badge { float: right; margin-left: 12px; }
+
+/* 015 parity pass: latest MagicPath geometry; data remain canonical, never demo counts. */
+.import-page__main { max-width:none; padding:24px 48px 40px; }
+.input-subtitle { margin:5px 0 16px; font-size:12px; color:#858585; }
+.input-source { grid-template-columns:1.25fr 1fr 1fr 1.2fr; }
+.input-source > div { padding:10px 14px; }
+.input-source > div:last-child { border-right:0; }
+.input-source dt { font-size:9px; margin-bottom:2px; }
+.input-source dd { font-size:11px; font-weight:600; }
+.input-stat { align-items:baseline; padding:8px 11px; border-radius:8px; }
+.input-stat strong { font-size:17px; }
+.input-section-title { margin-bottom:16px; }
+.input-readout { margin:14px 0; overflow:hidden; }
+.input-readout > div { padding:11px 13px; border-right:1px solid #eee; }
+.input-readout span { font-size:9px; }
+.input-readout strong { margin-top:2px; font-size:11px; }
+.sc-preview-explorer .input-readout strong { font-size:20px; }
+.input-progress-list { gap:0; margin:0 0 14px; border:1px solid #ddd; border-radius:10px; overflow:hidden; }
+.input-progress-list > div { padding:13px 15px; gap:10px; border:0; border-bottom:1px solid #eee; border-radius:0; }
+.input-progress-list > div:last-child { border:0; }
+.input-progress-list > div > span { color:#666; width:26px; }
+.input-progress-list strong { font-size:12px; }
+.input-progress-list small { font-size:10px; }
+.input-status-card { display:grid; grid-template-columns:38px minmax(0,1fr); gap:13px; align-items:center; margin:0 0 14px; padding:16px; border:1px solid #d9d9d9; border-radius:10px; background:#fafafa; }
+.input-status-card > span { display:flex; align-items:center; justify-content:center; width:34px; height:34px; border:1px solid #c4c4c4; border-radius:50%; background:#eee; }
+.input-status-card strong { font-size:13px; }
+.input-status-card p { margin:3px 0 0; color:#7f7f7f; font-size:11px; }
+.input-status-card.warn { border-style:dashed; }
+.input-status-card.error { border-color:#c9c9c9; background:#f3f3f3; }
+.import-page .import-upload__dropzone { min-height:210px; padding:24px; border-radius:12px; gap:8px; }
+.import-page .import-upload__title { font-size:22px; font-weight:500; }
+.import-page .import-upload__hint { font-size:12px; }
+.import-page .import-upload__files { min-height:125px; }
+.import-page .import-upload__files-heading { padding:10px 14px; }
+.import-page .import-upload__files-heading h2 { font-size:12px; }
+.import-page .import-upload__file-list li { padding:10px 14px; gap:10px; }
+.import-page .import-upload__file-icon { width:24px; height:28px; font-size:18px; border:0; background:transparent; }
+.import-page .import-upload__filename { font-size:11px; }
+.import-page .import-upload__file-size { font-size:9px; margin-top:1px!important; }
+.import-page .import-upload__empty { padding:42px; font-size:12px; }
+.import-page__process { border-top:1px solid #e2e2e2; padding-top:12px; }
+.import-page__process button { min-height:38px; min-width:0; padding:8px 13px; font-size:12px; border-radius:8px; }
+.import-page__process button:not(:disabled) { background:#2c2c2c; border-color:#2c2c2c; }
+.import-page .sc-preview-explorer table { font-size:10px; }
+.import-page .sc-preview-explorer th,.import-page .sc-preview-explorer td { padding:10px 12px; font-size:10px; }
+.import-page .sc-preview-explorer td:last-child { min-width:0; }
+.import-page .sc-preview-explorer td:last-child button { border:0; padding:0; min-height:28px; background:transparent; color:#666; font-size:10px; text-decoration:underline; }
+.import-page .sc-flow-tabs { margin:14px 0; }
+.import-page .sc-flow-tabs button { font-size:11px; padding:9px 12px; }
+.import-page .sc-preview-review-summary { gap:0; border:1px solid #ddd; border-radius:10px; overflow:hidden; margin:14px 0; }
+.import-page .sc-preview-review-summary > div { padding:12px 14px; border:0; border-right:1px solid #eee; border-radius:0; }
+.import-page .sc-preview-review-summary span { font-size:9px; }
+.import-page .sc-preview-review-summary strong { font-size:20px; }
+.import-page .sc-preview-review-summary small { color:#888; font-size:10px; }
+.import-page [aria-label='Owner duyệt mapping profile'] > .import-flow__card { border:0; padding:0; }
+.input-profile-grid > section > span { display:none!important; }
+.input-profile-grid > section { padding:14px; }
+.input-profile-grid h3 { font-size:13px; }
+@media(max-width:850px) { .import-page__main { padding-left:24px; padding-right:24px; } .input-source { grid-template-columns:1fr 1fr; } }
+.import-evidence { width:min(420px,100vw); }
+.import-evidence .sc-flow-dialog-header,.import-evidence .sc-flow-dialog-body { padding:18px; }
+.import-evidence .sc-flow-dialog-header small { display:block; color:#888; font-size:9px; }
+.import-evidence .sc-flow-dialog-header h2 { font-size:18px; }
+.import-evidence .sc-flow-section h3 { font-size:11px; }
+.import-evidence .sc-flow-section { padding:11px 0; margin:0; }
+.import-evidence .sc-flow-dialog-body { font-size:11px; }
+.import-result__summary h3 { display:flex; align-items:center; gap:10px; margin:0; font-size:18px; }
+.input-processing { display:flex; min-height:420px; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.input-processing h2 { margin:18px 0 8px; font-size:24px; }
+.input-processing > p { max-width:520px; color:#888; font-size:12px; }
+.input-processing-indicator,.input-processing-icon { width:34px; height:34px; border:1px solid #c4c4c4; border-radius:50%; }
+.input-processing-indicator { border-style:dashed; border-top-color:#555; }
+.input-processing-icon { display:grid; place-items:center; background:#eee; }
+.input-processing-list { display:grid; gap:8px; width:340px; max-width:100%; margin-top:22px; padding:16px; border:1px solid #ddd; border-radius:10px; text-align:left; font-size:11px; }
+.input-processing-list span { color:#888; }
+.input-processing-actions { display:flex; gap:8px; margin-top:18px; }
