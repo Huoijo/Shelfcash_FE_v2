@@ -1,0 +1,69 @@
+[
+  {
+    "operation_id": "A01",
+    "method": "POST",
+    "path": "/api/v1/auth/login",
+    "headers": {
+      "Origin": "https://localhost:5173",
+      "Content-Type": "application/json"
+    },
+    "fetch_credentials": "include",
+    "body_file": "a01-login-request.json",
+    "response_file": "a01-login-response.json",
+    "cookie": "Set by browser from Set-Cookie; never set Cookie manually in JS"
+  },
+  {
+    "operation_id": "A03",
+    "method": "GET",
+    "path": "/api/v1/auth/me",
+    "fetch_credentials": "include",
+    "body": null,
+    "response_file": "a03-me-response.json"
+  },
+  {
+    "operation_id": "T03",
+    "method": "POST",
+    "path": "/api/v1/stores",
+    "headers": {
+      "Origin": "https://localhost:5173",
+      "Content-Type": "application/json",
+      "X-CSRF-Token": "SYNTHETIC_CSRF_PLACEHOLDER",
+      "Idempotency-Key": "synthetic-store-create-001"
+    },
+    "fetch_credentials": "include",
+    "body_file": "t03-create-store-request.json",
+    "success_status": 201,
+    "response_file": "t03-create-store-response.json",
+    "retry": "same authenticated account, key and canonical body; replay rechecks current authority"
+  },
+  {
+    "operation_id": "C02",
+    "method": "POST",
+    "path": "/api/v1/stores/00000000-0000-0000-0000-000000000001/procurement-plans",
+    "headers": {
+      "Origin": "https://localhost:5173",
+      "Content-Type": "application/json",
+      "X-CSRF-Token": "SYNTHETIC_CSRF_PLACEHOLDER",
+      "Idempotency-Key": "00000000-0000-4000-8000-000000000010"
+    },
+    "fetch_credentials": "include",
+    "body_file": "c02-full-custom-zero-budget-request.json",
+    "success_status": 202,
+    "retry": "same UUID key and exact original presence/order; accepted receipt is not completion; new intent uses new key"
+  },
+  {
+    "operation_id": "NF03",
+    "method": "PATCH",
+    "path": "/api/v1/notifications/00000000-0000-0000-0000-000000000004",
+    "headers": {
+      "Origin": "https://localhost:5173",
+      "Content-Type": "application/json",
+      "X-CSRF-Token": "SYNTHETIC_CSRF_PLACEHOLDER",
+      "If-Match": "\"synthetic-notification-1\"",
+      "Idempotency-Key": "00000000-0000-4000-8000-000000000011"
+    },
+    "fetch_credentials": "include",
+    "body_file": "nf03-read-request.json",
+    "response_file": "nf03-read-response.json"
+  }
+]

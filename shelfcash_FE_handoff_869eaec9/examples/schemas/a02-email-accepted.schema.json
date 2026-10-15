@@ -1,0 +1,125 @@
+{
+  "$defs": {
+    "AcceptedDelivery": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "accepted",
+          "default": "accepted",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "title": "AcceptedDelivery",
+      "type": "object"
+    },
+    "Meta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "pagination": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pagination"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "request_id"
+      ],
+      "title": "Meta",
+      "type": "object"
+    },
+    "Pagination": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "total_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Count"
+        }
+      },
+      "required": [
+        "limit",
+        "next_cursor",
+        "total_count"
+      ],
+      "title": "Pagination",
+      "type": "object"
+    },
+    "PublicEmailAcceptance": {
+      "additionalProperties": false,
+      "properties": {
+        "next_action": {
+          "const": "check_email",
+          "default": "check_email",
+          "title": "Next Action",
+          "type": "string"
+        },
+        "delivery": {
+          "$ref": "#/$defs/AcceptedDelivery",
+          "default": {
+            "status": "accepted"
+          }
+        },
+        "retry_after_seconds": {
+          "const": 60,
+          "default": 60,
+          "title": "Retry After Seconds",
+          "type": "integer"
+        }
+      },
+      "title": "PublicEmailAcceptance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/PublicEmailAcceptance"
+    },
+    "meta": {
+      "$ref": "#/$defs/Meta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "Envelope[PublicEmailAcceptance]",
+  "type": "object"
+}

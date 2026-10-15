@@ -1,0 +1,137 @@
+{
+  "$defs": {
+    "Meta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "pagination": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pagination"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "request_id"
+      ],
+      "title": "Meta",
+      "type": "object"
+    },
+    "Pagination": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "total_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Count"
+        }
+      },
+      "required": [
+        "limit",
+        "next_cursor",
+        "total_count"
+      ],
+      "title": "Pagination",
+      "type": "object"
+    },
+    "StoreSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "store_id": {
+          "format": "uuid",
+          "title": "Store Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "timezone": {
+          "title": "Timezone",
+          "type": "string"
+        },
+        "currency": {
+          "title": "Currency",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "OWNER",
+            "STAFF"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "membership_id": {
+          "format": "uuid",
+          "title": "Membership Id",
+          "type": "string"
+        },
+        "authorization_version": {
+          "title": "Authorization Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "store_id",
+        "name",
+        "timezone",
+        "currency",
+        "role",
+        "membership_id",
+        "authorization_version"
+      ],
+      "title": "StoreSummary",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/StoreSummary"
+    },
+    "meta": {
+      "$ref": "#/$defs/Meta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "Envelope[StoreSummary]",
+  "type": "object"
+}

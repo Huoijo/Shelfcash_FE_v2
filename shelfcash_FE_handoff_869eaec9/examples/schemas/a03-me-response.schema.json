@@ -1,0 +1,178 @@
+{
+  "$defs": {
+    "AuthContext": {
+      "additionalProperties": false,
+      "properties": {
+        "user": {
+          "$ref": "#/$defs/UserSummary"
+        },
+        "session": {
+          "$ref": "#/$defs/SessionSummary"
+        },
+        "default_store_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Default Store Id"
+        },
+        "accessible_store_count": {
+          "title": "Accessible Store Count",
+          "type": "integer"
+        },
+        "authorization_version": {
+          "title": "Authorization Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "user",
+        "session",
+        "default_store_id",
+        "accessible_store_count",
+        "authorization_version"
+      ],
+      "title": "AuthContext",
+      "type": "object"
+    },
+    "Meta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "pagination": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pagination"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "request_id"
+      ],
+      "title": "Meta",
+      "type": "object"
+    },
+    "Pagination": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "total_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Count"
+        }
+      },
+      "required": [
+        "limit",
+        "next_cursor",
+        "total_count"
+      ],
+      "title": "Pagination",
+      "type": "object"
+    },
+    "SessionSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "expires_at": {
+          "format": "date-time",
+          "title": "Expires At",
+          "type": "string"
+        },
+        "absolute_expires_at": {
+          "format": "date-time",
+          "title": "Absolute Expires At",
+          "type": "string"
+        },
+        "csrf_token": {
+          "title": "Csrf Token",
+          "type": "string"
+        }
+      },
+      "required": [
+        "expires_at",
+        "absolute_expires_at",
+        "csrf_token"
+      ],
+      "title": "SessionSummary",
+      "type": "object"
+    },
+    "UserSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "user_id": {
+          "format": "uuid",
+          "title": "User Id",
+          "type": "string"
+        },
+        "email": {
+          "title": "Email",
+          "type": "string"
+        },
+        "display_name": {
+          "title": "Display Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_id",
+        "email",
+        "display_name"
+      ],
+      "title": "UserSummary",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/AuthContext"
+    },
+    "meta": {
+      "$ref": "#/$defs/Meta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "Envelope[AuthContext]",
+  "type": "object"
+}

@@ -1,0 +1,20 @@
+{
+  "data": {
+    "invitation_id": "00000000-0000-0000-0000-000000000001",
+    "invitation_version_at_acceptance": "invitation-1",
+    "store_id": "00000000-0000-0000-0000-000000000002",
+    "membership_id": "00000000-0000-0000-0000-000000000003",
+    "role": "STAFF",
+    "accepted_grants": [
+      "calendar.read"
+    ],
+    "authorization_version_at_acceptance": "auth-1",
+    "accepted_at": "2026-10-13T13:00:00Z",
+    "event_id": "00000000-0000-0000-0000-000000000004",
+    "next_action": "refresh_store_context"
+  },
+  "meta": {
+    "request_id": "synthetic-handoff-example"
+  },
+  "error": null
+}

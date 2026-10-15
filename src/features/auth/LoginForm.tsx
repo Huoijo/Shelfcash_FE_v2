@@ -26,7 +26,7 @@ function describeLoginError(error: unknown): string {
 }
 
 export function LoginForm() {
-  const { state, login } = useAuth()
+  const { state, login, refresh } = useAuth()
   const mockPreview = state.status === 'mock_preview'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -80,6 +80,10 @@ export function LoginForm() {
 
   return (
     <div className="auth-form">
+      {state.status === 'error' && <div className="auth-form__request-error">
+        <p role="alert">Chưa xác nhận được phiên đăng nhập. Bạn có thể đăng nhập lại hoặc thử kiểm tra phiên.</p>
+        <button className="auth-form__text-button" type="button" disabled={submitting} onClick={() => { void refresh() }}>Thử lại</button>
+      </div>}
       <div className="auth-form__tabs" role="tablist" aria-label="Tài khoản ShelfCash">
         <button id="auth-login-tab" type="button" role="tab" aria-selected="true" aria-controls="auth-login-panel">Đăng nhập</button>
         <button type="button" role="tab" aria-selected="false" disabled title="Liên hệ hỗ trợ ShelfCash để tạo tài khoản">Đăng ký</button>

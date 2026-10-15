@@ -1,0 +1,23 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "token": {
+      "maxLength": 512,
+      "minLength": 1,
+      "title": "Token",
+      "type": "string",
+      "writeOnly": true
+    },
+    "accept": {
+      "const": true,
+      "title": "Accept",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "token",
+    "accept"
+  ],
+  "title": "AcceptInvitation",
+  "type": "object"
+}

@@ -61,8 +61,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     pending.current = true
     bootstrap.current?.abort()
     const operation = ++epoch.current
+    let loginAccepted = false
     try {
       const result = await source.login(credentials)
+      loginAccepted = true
       if (operation !== epoch.current) throw new Error('Phiên đăng nhập đã thay đổi. Vui lòng thử lại.')
       // A01 can issue CSRF, but only a fresh A03 confirms cookie-backed session truth.
       csrf.current = result.session.csrf_token
@@ -71,7 +73,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       csrf.current = context.session.csrf_token
       setState({ status: 'authenticated', context })
     } catch (error) {
-      if (operation === epoch.current) { csrf.current = null; setState({ status: 'unauthenticated' }) }
+      if (operation === epoch.current) {
+        csrf.current = null
+        // A successful login followed by a failed session read is still unverified.
+        if (loginAccepted && !(error instanceof HttpError && error.status === 401)) {
+          setState({ status: 'error', message: error instanceof Error ? error.message : 'Chưa xác nhận được phiên đăng nhập.' })
+        } else setState({ status: 'unauthenticated' })
+      }
       throw error
     } finally { pending.current = false }
   }, [])

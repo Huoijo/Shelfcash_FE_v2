@@ -1,0 +1,676 @@
+{
+  "$defs": {
+    "ExactQuantity": {
+      "additionalProperties": false,
+      "properties": {
+        "numerator": {
+          "maxLength": 1000,
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "title": "Numerator",
+          "type": "string"
+        },
+        "denominator": {
+          "maxLength": 1000,
+          "pattern": "^[1-9][0-9]*$",
+          "title": "Denominator",
+          "type": "string"
+        },
+        "decimal_view": {
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Decimal View",
+          "type": "string"
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator",
+        "decimal_view"
+      ],
+      "title": "ExactQuantity",
+      "type": "object"
+    },
+    "ExcludedProduct": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "format": "uuid",
+          "title": "Product Id",
+          "type": "string"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        },
+        "affected_dates": {
+          "items": {
+            "format": "date",
+            "type": "string"
+          },
+          "title": "Affected Dates",
+          "type": "array"
+        }
+      },
+      "required": [
+        "product_id",
+        "reason_codes",
+        "affected_dates"
+      ],
+      "title": "ExcludedProduct",
+      "type": "object"
+    },
+    "Explanation": {
+      "additionalProperties": false,
+      "properties": {
+        "run_id": {
+          "format": "uuid",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "result_schema_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Result Schema Version"
+        },
+        "result_digest": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Result Digest"
+        },
+        "availability": {
+          "enum": [
+            "available",
+            "partial",
+            "unavailable"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "outcome": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Outcome"
+        },
+        "winner": {
+          "$ref": "#/$defs/ExplanationWinner"
+        },
+        "exclusions": {
+          "items": {
+            "$ref": "#/$defs/ExcludedProduct"
+          },
+          "title": "Exclusions",
+          "type": "array"
+        },
+        "blockers": {
+          "items": {
+            "$ref": "#/$defs/PlanningNotification"
+          },
+          "title": "Blockers",
+          "type": "array"
+        },
+        "warnings": {
+          "items": {
+            "$ref": "#/$defs/PlanningNotification"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/$defs/OptionReason"
+          },
+          "title": "Options",
+          "type": "array"
+        },
+        "evidence_availability": {
+          "enum": [
+            "known",
+            "unknown",
+            "not_evaluated"
+          ],
+          "title": "Evidence Availability",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "result_schema_version",
+        "result_digest",
+        "availability",
+        "outcome",
+        "winner",
+        "exclusions",
+        "blockers",
+        "warnings",
+        "options",
+        "evidence_availability"
+      ],
+      "title": "Explanation",
+      "type": "object"
+    },
+    "ExplanationMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id"
+      ],
+      "title": "ExplanationMeta",
+      "type": "object"
+    },
+    "ExplanationWinner": {
+      "additionalProperties": false,
+      "properties": {
+        "option_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Option Id"
+        },
+        "reason_code": {
+          "title": "Reason Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "option_id",
+        "reason_code"
+      ],
+      "title": "ExplanationWinner",
+      "type": "object"
+    },
+    "Gap": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "format": "uuid",
+          "title": "Product Id",
+          "type": "string"
+        },
+        "path": {
+          "enum": [
+            "LOW",
+            "BASE",
+            "HIGH"
+          ],
+          "title": "Path",
+          "type": "string"
+        },
+        "target_percent": {
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Target Percent",
+          "type": "string"
+        },
+        "shortfall": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "product_id",
+        "path",
+        "target_percent",
+        "shortfall",
+        "unit"
+      ],
+      "title": "Gap",
+      "type": "object"
+    },
+    "OptionReason": {
+      "additionalProperties": false,
+      "properties": {
+        "option_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Option Id",
+          "type": "string"
+        },
+        "eligible": {
+          "title": "Eligible",
+          "type": "boolean"
+        },
+        "rejection_reasons": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Rejection Reasons",
+          "type": "array"
+        },
+        "not_selected_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Not Selected Reason"
+        },
+        "source_strategies": {
+          "items": {
+            "enum": [
+              "lean",
+              "balanced",
+              "protected"
+            ],
+            "type": "string"
+          },
+          "title": "Source Strategies",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/StrategyResult"
+          },
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "option_id",
+        "eligible",
+        "rejection_reasons",
+        "not_selected_reason",
+        "source_strategies",
+        "evidence"
+      ],
+      "title": "OptionReason",
+      "type": "object"
+    },
+    "PlanningNotification": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "details": {
+          "$ref": "#/$defs/PlanningNotificationDetails"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "PlanningNotification",
+      "type": "object"
+    },
+    "PlanningNotificationDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Field"
+        },
+        "entity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "affected_dates": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "date",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Affected Dates"
+        },
+        "ingredient_ids": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ingredient Ids"
+        },
+        "default_updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Default Updated At"
+        },
+        "saved_updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Saved Updated At"
+        },
+        "classification": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Classification"
+        },
+        "proof_scope": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Proof Scope"
+        },
+        "suggested_action": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Suggested Action"
+        },
+        "source_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Reference"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "title": "PlanningNotificationDetails",
+      "type": "object"
+    },
+    "StrategyResult": {
+      "additionalProperties": false,
+      "properties": {
+        "strategy": {
+          "enum": [
+            "lean",
+            "balanced",
+            "protected"
+          ],
+          "title": "Strategy",
+          "type": "string"
+        },
+        "construction_path": {
+          "enum": [
+            "LOW",
+            "BASE",
+            "HIGH"
+          ],
+          "title": "Construction Path",
+          "type": "string"
+        },
+        "option_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Option Id"
+        },
+        "execution": {
+          "enum": [
+            "FINISHED",
+            "INCOMPLETE",
+            "ERROR",
+            "BLOCKED",
+            "NUMERIC_UNSUPPORTED"
+          ],
+          "title": "Execution",
+          "type": "string"
+        },
+        "termination": {
+          "title": "Termination",
+          "type": "string"
+        },
+        "customer_pass": {
+          "title": "Customer Pass",
+          "type": "boolean"
+        },
+        "construction_pass": {
+          "title": "Construction Pass",
+          "type": "boolean"
+        },
+        "selection_kind": {
+          "enum": [
+            "TARGET",
+            "CUSTOMER_PASS_FALLBACK",
+            "REFERENCE_NOT_RANKED",
+            "NONE"
+          ],
+          "title": "Selection Kind",
+          "type": "string"
+        },
+        "customer_feasibility": {
+          "enum": [
+            "PASS_EXISTS",
+            "NO_PASS_CERTIFIED",
+            "UNKNOWN"
+          ],
+          "title": "Customer Feasibility",
+          "type": "string"
+        },
+        "construction_feasibility": {
+          "enum": [
+            "PASS_EXISTS",
+            "NO_PASS_CERTIFIED",
+            "UNKNOWN"
+          ],
+          "title": "Construction Feasibility",
+          "type": "string"
+        },
+        "proof": {
+          "enum": [
+            "UNPROVEN",
+            "COMPLETE_EXACT_ENUMERATION"
+          ],
+          "title": "Proof",
+          "type": "string"
+        },
+        "proof_scope": {
+          "const": "CAPTURED_FINITE_DOMAIN_ONLY",
+          "title": "Proof Scope",
+          "type": "string"
+        },
+        "domain_size": {
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "title": "Domain Size",
+          "type": "string"
+        },
+        "search_complete": {
+          "title": "Search Complete",
+          "type": "boolean"
+        },
+        "customer_gaps": {
+          "items": {
+            "$ref": "#/$defs/Gap"
+          },
+          "title": "Customer Gaps",
+          "type": "array"
+        },
+        "construction_gaps": {
+          "items": {
+            "$ref": "#/$defs/Gap"
+          },
+          "title": "Construction Gaps",
+          "type": "array"
+        },
+        "diagnostic": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PlanningNotification"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "strategy",
+        "construction_path",
+        "option_id",
+        "execution",
+        "termination",
+        "customer_pass",
+        "construction_pass",
+        "selection_kind",
+        "customer_feasibility",
+        "construction_feasibility",
+        "proof",
+        "proof_scope",
+        "domain_size",
+        "search_complete",
+        "customer_gaps",
+        "construction_gaps",
+        "diagnostic"
+      ],
+      "title": "StrategyResult",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/Explanation"
+    },
+    "meta": {
+      "$ref": "#/$defs/ExplanationMeta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "ExplanationEnvelope",
+  "type": "object"
+}

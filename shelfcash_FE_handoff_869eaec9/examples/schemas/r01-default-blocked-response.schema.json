@@ -1,0 +1,756 @@
+{
+  "$defs": {
+    "ActionReadiness": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "import",
+            "menu",
+            "inventory",
+            "forecast",
+            "planning"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "availability": {
+          "enum": [
+            "ready",
+            "blocked",
+            "unknown"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "can_execute": {
+          "title": "Can Execute",
+          "type": "boolean"
+        },
+        "data_status": {
+          "enum": [
+            "valid",
+            "invalid",
+            "incomplete",
+            "unknown"
+          ],
+          "title": "Data Status",
+          "type": "string"
+        },
+        "execution_status": {
+          "enum": [
+            "available",
+            "unavailable",
+            "unknown"
+          ],
+          "title": "Execution Status",
+          "type": "string"
+        },
+        "blockers": {
+          "items": {
+            "$ref": "#/$defs/Issue"
+          },
+          "title": "Blockers",
+          "type": "array"
+        },
+        "warnings": {
+          "items": {
+            "$ref": "#/$defs/Issue"
+          },
+          "title": "Warnings",
+          "type": "array"
+        },
+        "result_assessment": {
+          "const": "NOT_ASSESSED",
+          "default": "NOT_ASSESSED",
+          "title": "Result Assessment",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "availability",
+        "can_execute",
+        "data_status",
+        "execution_status",
+        "blockers",
+        "warnings"
+      ],
+      "title": "ActionReadiness",
+      "type": "object"
+    },
+    "Exclusion": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "format": "uuid",
+          "title": "Product Id",
+          "type": "string"
+        },
+        "reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        },
+        "affected_dates": {
+          "items": {
+            "format": "date",
+            "type": "string"
+          },
+          "title": "Affected Dates",
+          "type": "array"
+        }
+      },
+      "required": [
+        "product_id",
+        "reason_codes",
+        "affected_dates"
+      ],
+      "title": "Exclusion",
+      "type": "object"
+    },
+    "ForecastAssessment": {
+      "additionalProperties": false,
+      "properties": {
+        "requested_mode": {
+          "enum": [
+            "BASELINE",
+            "TRAINED"
+          ],
+          "title": "Requested Mode",
+          "type": "string"
+        },
+        "actual_model_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actual Model Type"
+        },
+        "actual_model_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actual Model Version"
+        },
+        "selection_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Selection Reason"
+        },
+        "quality_status": {
+          "const": "not_evaluated",
+          "default": "not_evaluated",
+          "title": "Quality Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "requested_mode",
+        "actual_model_type",
+        "actual_model_version",
+        "selection_reason"
+      ],
+      "title": "ForecastAssessment",
+      "type": "object"
+    },
+    "Issue": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "authorization",
+            "catalog",
+            "recipe",
+            "sales",
+            "inventory",
+            "supplier",
+            "fees",
+            "constraints",
+            "forecast",
+            "configuration",
+            "runtime"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "scope": {
+          "enum": [
+            "STORE",
+            "PRODUCT",
+            "INGREDIENT"
+          ],
+          "title": "Scope",
+          "type": "string"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Entity Id"
+        },
+        "affected_dates": {
+          "items": {
+            "format": "date",
+            "type": "string"
+          },
+          "title": "Affected Dates",
+          "type": "array"
+        },
+        "details": {
+          "$ref": "#/$defs/ReadinessIssueDetails"
+        }
+      },
+      "required": [
+        "code",
+        "source",
+        "scope",
+        "entity_id",
+        "affected_dates",
+        "details"
+      ],
+      "title": "Issue",
+      "type": "object"
+    },
+    "Meta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "pagination": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pagination"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "request_id"
+      ],
+      "title": "Meta",
+      "type": "object"
+    },
+    "Pagination": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "total_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Count"
+        }
+      },
+      "required": [
+        "limit",
+        "next_cursor",
+        "total_count"
+      ],
+      "title": "Pagination",
+      "type": "object"
+    },
+    "PlanningAssessment": {
+      "additionalProperties": false,
+      "properties": {
+        "semantics_version": {
+          "const": "planning_readiness/1",
+          "default": "planning_readiness/1",
+          "title": "Semantics Version",
+          "type": "string"
+        },
+        "input_scope": {
+          "enum": [
+            "DEFAULT_CONFIGURATION",
+            "SUPPLIED_REQUEST"
+          ],
+          "title": "Input Scope",
+          "type": "string"
+        },
+        "requirements_mode": {
+          "enum": [
+            "default",
+            "custom",
+            "saved"
+          ],
+          "title": "Requirements Mode",
+          "type": "string"
+        },
+        "configuration_status": {
+          "enum": [
+            "RESOLVED",
+            "INVALID",
+            "UNKNOWN"
+          ],
+          "title": "Configuration Status",
+          "type": "string"
+        },
+        "blockers": {
+          "items": {
+            "$ref": "#/$defs/Issue"
+          },
+          "title": "Blockers",
+          "type": "array"
+        },
+        "warnings": {
+          "items": {
+            "$ref": "#/$defs/Issue"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "input_scope",
+        "requirements_mode",
+        "configuration_status",
+        "blockers",
+        "warnings"
+      ],
+      "title": "PlanningAssessment",
+      "type": "object"
+    },
+    "Readiness": {
+      "additionalProperties": false,
+      "properties": {
+        "store_id": {
+          "format": "uuid",
+          "title": "Store Id",
+          "type": "string"
+        },
+        "as_of_date": {
+          "format": "date",
+          "title": "As Of Date",
+          "type": "string"
+        },
+        "evaluated_at": {
+          "format": "date-time",
+          "title": "Evaluated At",
+          "type": "string"
+        },
+        "data_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Data Version",
+          "type": "string"
+        },
+        "evaluated_forecast_start_date": {
+          "format": "date",
+          "title": "Evaluated Forecast Start Date",
+          "type": "string"
+        },
+        "cutoff_date": {
+          "format": "date",
+          "title": "Cutoff Date",
+          "type": "string"
+        },
+        "actions": {
+          "items": {
+            "$ref": "#/$defs/ActionReadiness"
+          },
+          "title": "Actions",
+          "type": "array"
+        },
+        "source_versions": {
+          "$ref": "#/$defs/SourceVersions"
+        },
+        "scope_estimate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScopeEstimate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "history_watermark": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "History Watermark"
+        },
+        "planning_assessment": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PlanningAssessment"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "forecast_assessment": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ForecastAssessment"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "store_id",
+        "as_of_date",
+        "evaluated_at",
+        "data_version",
+        "evaluated_forecast_start_date",
+        "cutoff_date",
+        "actions",
+        "source_versions",
+        "scope_estimate",
+        "history_watermark"
+      ],
+      "title": "Readiness",
+      "type": "object"
+    },
+    "ReadinessIssueDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Field"
+        },
+        "impact": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Impact"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reference"
+        },
+        "version": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Version"
+        },
+        "classification": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Classification"
+        },
+        "proof_scope": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Proof Scope"
+        },
+        "suggested_action": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Suggested Action"
+        }
+      },
+      "title": "ReadinessIssueDetails",
+      "type": "object"
+    },
+    "ScopeEstimate": {
+      "additionalProperties": false,
+      "properties": {
+        "menu_product_count": {
+          "title": "Menu Product Count",
+          "type": "integer"
+        },
+        "estimated_computable_product_count": {
+          "title": "Estimated Computable Product Count",
+          "type": "integer"
+        },
+        "excluded_products": {
+          "items": {
+            "$ref": "#/$defs/Exclusion"
+          },
+          "title": "Excluded Products",
+          "type": "array"
+        }
+      },
+      "required": [
+        "menu_product_count",
+        "estimated_computable_product_count",
+        "excluded_products"
+      ],
+      "title": "ScopeEstimate",
+      "type": "object"
+    },
+    "SourceVersions": {
+      "additionalProperties": false,
+      "properties": {
+        "catalog": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Catalog"
+        },
+        "recipes": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Recipes"
+        },
+        "inventory": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Inventory"
+        },
+        "sales": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Sales"
+        },
+        "suppliers": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Suppliers"
+        },
+        "fees": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fees"
+        },
+        "declarations": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Declarations"
+        },
+        "planning_config": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Planning Config"
+        },
+        "model_config": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model Config"
+        }
+      },
+      "required": [
+        "catalog",
+        "recipes",
+        "inventory",
+        "sales",
+        "suppliers",
+        "fees",
+        "declarations",
+        "planning_config",
+        "model_config"
+      ],
+      "title": "SourceVersions",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/Readiness"
+    },
+    "meta": {
+      "$ref": "#/$defs/Meta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "Envelope[Readiness]",
+  "type": "object"
+}

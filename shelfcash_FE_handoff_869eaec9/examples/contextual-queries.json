@@ -1,0 +1,21 @@
+[
+  {
+    "operation_id": "C01",
+    "method": "GET",
+    "url": "/api/v1/stores/00000000-0000-0000-0000-000000000001/planning-context?planning_request=%7B%22requirements_mode%22%3A%22custom%22%2C%22forecast_start_date%22%3A%222026-10-15%22%2C%22requirements%22%3A%7B%22paths%22%3A%5B%7B%22path%22%3A%22BASE%22%2C%22min_fill_rate_percent%22%3A%2290%22%2C%22product_overrides%22%3A%5B%5D%7D%5D%2C%22budget_limit%22%3A%220%22%7D%7D",
+    "decoded_query": {
+      "planning_request": "{\"requirements_mode\":\"custom\",\"forecast_start_date\":\"2026-10-15\",\"requirements\":{\"paths\":[{\"path\":\"BASE\",\"min_fill_rate_percent\":\"90\",\"product_overrides\":[]}],\"budget_limit\":\"0\"}}"
+    },
+    "request_body": null
+  },
+  {
+    "operation_id": "R01",
+    "method": "GET",
+    "url": "/api/v1/stores/00000000-0000-0000-0000-000000000001/readiness?planning_request=%7B%22requirements_mode%22%3A%22custom%22%2C%22forecast_start_date%22%3A%222026-10-15%22%2C%22requirements%22%3A%7B%22paths%22%3A%5B%7B%22path%22%3A%22BASE%22%2C%22min_fill_rate_percent%22%3A%2290%22%2C%22product_overrides%22%3A%5B%5D%7D%5D%2C%22budget_limit%22%3A%220%22%7D%7D&actions=planning",
+    "decoded_query": {
+      "planning_request": "{\"requirements_mode\":\"custom\",\"forecast_start_date\":\"2026-10-15\",\"requirements\":{\"paths\":[{\"path\":\"BASE\",\"min_fill_rate_percent\":\"90\",\"product_overrides\":[]}],\"budget_limit\":\"0\"}}",
+      "actions": "planning"
+    },
+    "request_body": null
+  }
+]

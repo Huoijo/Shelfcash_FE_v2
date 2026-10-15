@@ -1,0 +1,30 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "email": {
+      "maxLength": 320,
+      "minLength": 1,
+      "title": "Email",
+      "type": "string"
+    },
+    "password": {
+      "format": "password",
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Password",
+      "type": "string",
+      "writeOnly": true
+    },
+    "remember_me": {
+      "default": false,
+      "title": "Remember Me",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "email",
+    "password"
+  ],
+  "title": "LoginRequest",
+  "type": "object"
+}

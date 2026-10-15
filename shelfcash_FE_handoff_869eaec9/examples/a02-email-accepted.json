@@ -1,0 +1,13 @@
+{
+  "data": {
+    "next_action": "check_email",
+    "delivery": {
+      "status": "accepted"
+    },
+    "retry_after_seconds": 60
+  },
+  "meta": {
+    "request_id": "synthetic-handoff"
+  },
+  "error": null
+}

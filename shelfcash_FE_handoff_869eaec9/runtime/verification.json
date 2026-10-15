@@ -1,0 +1,57 @@
+{
+  "checked_at_utc": "2026-10-15T13:04:58.663215+00:00",
+  "manifest_source_sha": "869eaec914aa6905d6b935889afebe7d973004ae",
+  "manifest_source_root": "D:\\hocc_bk\\ai\\proj\\projectMLAI\\backend",
+  "pid": 26496,
+  "process_state": "ALIVE",
+  "birth_matches": true,
+  "manifest_matches_main": true,
+  "worker_run_id_matches": true,
+  "worker_observation_age_seconds": 1477.54,
+  "launcher_status": "Worker observation stale (read-only status command)",
+  "source_sha_verification_limit": "Owned-process launch manifest + OS incarnation; no executable attestation or runtime SHA endpoint",
+  "side_effects": "Only TLS-verified unauthenticated GET health/OpenAPI and CORS OPTIONS; no session/login/business GET or DB write",
+  "openapi_http_status": 200,
+  "live_openapi_raw_sha256": "bf9e184c69309a4caac63667ca7840f66330b59b3ec90a314bc9a16062d41723",
+  "openapi_semantically_matches_main": true,
+  "live_counts": {
+    "operations": 73,
+    "paths": 66
+  },
+  "openapi_structural_differences": [],
+  "health": {
+    "status": 200,
+    "body": {
+      "status": "ok",
+      "service": "shelfcash-backend"
+    }
+  },
+  "cors_smoke": [
+    {
+      "origin": "https://localhost:5173",
+      "requested_headers": "content-type",
+      "status": 200,
+      "body": "OK"
+    },
+    {
+      "origin": "http://localhost:5173",
+      "requested_headers": "content-type",
+      "status": 400,
+      "body": "Disallowed CORS origin"
+    },
+    {
+      "origin": "https://localhost:5173",
+      "requested_headers": "content-type,authorization",
+      "status": 400,
+      "body": "Disallowed CORS headers"
+    }
+  ],
+  "listener_ownership": {
+    "listening_pid": 32892,
+    "parent_pid": 26496,
+    "parent_matches_manifest": true,
+    "commands_match_owned_run_id": true,
+    "method": "Read-only Win32_Process + Get-NetTCPConnection; verified during this audit"
+  },
+  "disk_configuration_matches_launch_manifest": true
+}

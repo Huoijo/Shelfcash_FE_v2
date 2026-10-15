@@ -1,0 +1,11 @@
+{
+  "data": null,
+  "meta": {
+    "request_id": "synthetic-handoff"
+  },
+  "error": {
+    "code": "UNAUTHENTICATED",
+    "message": "Cần đăng nhập.",
+    "details": {}
+  }
+}

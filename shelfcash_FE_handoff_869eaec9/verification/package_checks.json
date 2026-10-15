@@ -1,0 +1,25 @@
+{
+  "source_sha": "869eaec914aa6905d6b935889afebe7d973004ae",
+  "json_files_checked_before_this_record": 114,
+  "local_markdown_links_checked": 290,
+  "local_link_errors": 0,
+  "json_internal_refs": "All source/live/baseline OpenAPI and standalone example schema refs resolve",
+  "utf8": "Strict UTF-8, no BOM/replacement character across all package files",
+  "secret_scan": "No actual configured SecretStr/DB passwords/SMTP username or private-key PEM found; allowlisted source contracts/examples reviewed as synthetic, no customer/runtime response data",
+  "excluded": "No .env, credentials, database dumps, workbook, model artifacts, private runtime manifests/logs/certificates, repo source/tests, lengthy runbooks or sibling WIP source",
+  "scope": "No pytest, DB integration or browser E2E run; package/schema checks only",
+  "git_status_at_generation": "clean",
+  "git_status_at_packaging": [
+    "M docs/CURRENT_STATE.md",
+    " M docs/ROADMAP.md",
+    " M docs/runbooks/FULL_TEST_FLOW.md",
+    "?? scripts/seed_local_owner.py",
+    "?? scripts/seed_local_staff.py",
+    "?? tests/integration/test_seed_local_owner.py",
+    "?? tests/integration/test_seed_local_staff.py",
+    "?? tests/unit/test_seed_local_owner.py"
+  ],
+  "concurrent_wip_preserved": true,
+  "runtime_restarted": false,
+  "database_migrated": false
+}

@@ -1,0 +1,83 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "source_value": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Value"
+    },
+    "origin": {
+      "enum": [
+        "SOURCE_EXPLICIT",
+        "DETERMINISTIC_DERIVED",
+        "SYSTEM_ASSIGNED",
+        "UNKNOWN",
+        "AMBIGUOUS"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "applied_rule_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Applied Rule Ids",
+      "type": "array"
+    },
+    "value_source": {
+      "default": "SOURCE_COLUMN",
+      "enum": [
+        "SOURCE_COLUMN",
+        "PROFILE_CONSTANT",
+        "IMPORT_VALUE",
+        "IDENTITY_BINDING"
+      ],
+      "title": "Value Source",
+      "type": "string"
+    },
+    "source_column_index": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Column Index"
+    },
+    "declaration_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Declaration Id"
+    }
+  },
+  "required": [
+    "origin",
+    "applied_rule_ids"
+  ],
+  "title": "ProvenanceValue",
+  "type": "object"
+}

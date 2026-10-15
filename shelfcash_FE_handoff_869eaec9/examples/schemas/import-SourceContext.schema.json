@@ -1,0 +1,296 @@
+{
+  "$defs": {
+    "FeePeriodAmendment": {
+      "additionalProperties": false,
+      "properties": {
+        "fee_id": {
+          "format": "uuid",
+          "title": "Fee Id",
+          "type": "string"
+        },
+        "expected_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Expected Version",
+          "type": "string"
+        },
+        "effective_to": {
+          "format": "date",
+          "title": "Effective To",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fee_id",
+        "expected_version",
+        "effective_to",
+        "reason"
+      ],
+      "title": "FeePeriodAmendment",
+      "type": "object"
+    },
+    "PlannedArrivalExpiryRule": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "const": "ARRIVAL_PLUS_DECLARED_SHELF_LIFE_DAYS",
+          "title": "Basis",
+          "type": "string"
+        },
+        "evidence_reference": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Evidence Reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "basis",
+        "evidence_reference"
+      ],
+      "title": "PlannedArrivalExpiryRule",
+      "type": "object"
+    },
+    "StockoutAlias": {
+      "additionalProperties": false,
+      "properties": {
+        "token": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Token",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "token",
+        "value"
+      ],
+      "title": "StockoutAlias",
+      "type": "object"
+    },
+    "TermPeriodAmendment": {
+      "additionalProperties": false,
+      "properties": {
+        "supplier_term_id": {
+          "format": "uuid",
+          "title": "Supplier Term Id",
+          "type": "string"
+        },
+        "expected_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Expected Version",
+          "type": "string"
+        },
+        "effective_to": {
+          "format": "date",
+          "title": "Effective To",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "supplier_term_id",
+        "expected_version",
+        "effective_to",
+        "reason"
+      ],
+      "title": "TermPeriodAmendment",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "const": "source_context",
+      "title": "Kind",
+      "type": "string"
+    },
+    "source_system_key": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+      "title": "Source System Key",
+      "type": "string"
+    },
+    "report_type": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+      "title": "Report Type",
+      "type": "string"
+    },
+    "evidence_reference": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Evidence Reference",
+      "type": "string"
+    },
+    "missing_stockout": {
+      "anyOf": [
+        {
+          "enum": [
+            "quantity_only",
+            "not_provided"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Missing Stockout"
+    },
+    "stockout_aliases": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/StockoutAlias"
+      },
+      "maxItems": 32,
+      "title": "Stockout Aliases",
+      "type": "array"
+    },
+    "sales_semantics": {
+      "anyOf": [
+        {
+          "enum": [
+            "daily_total",
+            "disjoint_contribution"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Sales Semantics"
+    },
+    "inventory_semantics": {
+      "anyOf": [
+        {
+          "enum": [
+            "lot_stock_count",
+            "actual_receipt"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Inventory Semantics"
+    },
+    "decimal_locale": {
+      "anyOf": [
+        {
+          "enum": [
+            "dot",
+            "comma"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Decimal Locale"
+    },
+    "date_format": {
+      "anyOf": [
+        {
+          "enum": [
+            "ISO",
+            "DMY_SLASH",
+            "MDY_SLASH",
+            "EXCEL_SERIAL"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Date Format"
+    },
+    "pack_cost_basis": {
+      "anyOf": [
+        {
+          "enum": [
+            "PER_PACK",
+            "PER_SOURCE_UNIT"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "deprecated": true,
+      "description": "Historical readability only; new proposals require supplier price_basis/price_quantity/price_unit declarations.",
+      "title": "Pack Cost Basis"
+    },
+    "planned_arrival_expiry_rule": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PlannedArrivalExpiryRule"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "term_period_amendments": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/TermPeriodAmendment"
+      },
+      "title": "Term Period Amendments",
+      "type": "array"
+    },
+    "fee_period_amendments": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/FeePeriodAmendment"
+      },
+      "title": "Fee Period Amendments",
+      "type": "array"
+    }
+  },
+  "required": [
+    "kind",
+    "source_system_key",
+    "report_type",
+    "evidence_reference"
+  ],
+  "title": "SourceContext",
+  "type": "object"
+}

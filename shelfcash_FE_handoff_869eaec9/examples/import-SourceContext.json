@@ -1,0 +1,21 @@
+{
+  "kind": "source_context",
+  "source_system_key": "POS_FIXTURE",
+  "report_type": "daily_sales",
+  "evidence_reference": "Synthetic reviewed source",
+  "missing_stockout": "not_provided",
+  "stockout_aliases": [
+    {
+      "token": "OUT",
+      "value": true
+    }
+  ],
+  "sales_semantics": "daily_total",
+  "inventory_semantics": null,
+  "decimal_locale": null,
+  "date_format": null,
+  "pack_cost_basis": null,
+  "planned_arrival_expiry_rule": null,
+  "term_period_amendments": [],
+  "fee_period_amendments": []
+}

@@ -1,0 +1,12 @@
+{
+  "validated_examples": 47,
+  "all_passed": true,
+  "query_encoding_roundtrips": 2,
+  "method": "Pydantic JSON validation using exact main route request/response models; standalone JSON Schema files exported from same types",
+  "source": "D:\\hocc_bk\\ai\\proj\\projectMLAI\\backend",
+  "notes": [
+    "No HTTP examples sent",
+    "No engine/business computation; designed examples are UI contract illustrations, not persistence/feasibility evidence",
+    "Committed fixture content is synthetic according to canonical fixture README; newly designed examples explicitly labeled"
+  ]
+}

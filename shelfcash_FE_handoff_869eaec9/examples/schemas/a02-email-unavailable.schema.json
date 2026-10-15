@@ -1,0 +1,149 @@
+{
+  "$defs": {
+    "EmailDeliveryErrorDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "reason_codes": {
+          "default": [
+            "EMAIL_DELIVERY_UNAVAILABLE"
+          ],
+          "items": {
+            "const": "EMAIL_DELIVERY_UNAVAILABLE",
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        }
+      },
+      "title": "EmailDeliveryErrorDetails",
+      "type": "object"
+    },
+    "ErrorDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "approval_request_allowed": {
+          "const": false,
+          "default": false,
+          "title": "Approval Request Allowed",
+          "type": "boolean"
+        }
+      },
+      "title": "ErrorDetails",
+      "type": "object"
+    },
+    "Meta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "pagination": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pagination"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "request_id"
+      ],
+      "title": "Meta",
+      "type": "object"
+    },
+    "Pagination": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "total_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Count"
+        }
+      },
+      "required": [
+        "limit",
+        "next_cursor",
+        "total_count"
+      ],
+      "title": "Pagination",
+      "type": "object"
+    },
+    "PublicEmailErrorInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "details": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ErrorDetails"
+            },
+            {
+              "$ref": "#/$defs/EmailDeliveryErrorDetails"
+            }
+          ],
+          "title": "Details"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "details"
+      ],
+      "title": "PublicEmailErrorInfo",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "title": "Data",
+      "type": "null"
+    },
+    "meta": {
+      "$ref": "#/$defs/Meta"
+    },
+    "error": {
+      "$ref": "#/$defs/PublicEmailErrorInfo"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "PublicEmailErrorEnvelope",
+  "type": "object"
+}

@@ -1,0 +1,15 @@
+{
+  "data": {
+    "store_id": "00000000-0000-0000-0000-000000000001",
+    "name": "Explicit synthetic shop",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "currency": "VND",
+    "role": "OWNER",
+    "membership_id": "00000000-0000-0000-0000-000000000002",
+    "authorization_version": "opaque-synthetic-version"
+  },
+  "meta": {
+    "request_id": "synthetic-handoff"
+  },
+  "error": null
+}

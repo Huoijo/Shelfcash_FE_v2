@@ -1,0 +1,14 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "read": {
+      "title": "Read",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "read"
+  ],
+  "title": "ReadRequest",
+  "type": "object"
+}

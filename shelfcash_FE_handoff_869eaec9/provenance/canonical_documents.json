@@ -1,0 +1,156 @@
+[
+  {
+    "original_path": "docs/API_CONTRACT.md",
+    "original_sha256": "bda85e2399d8dd7e796a50d573e1c0932f0ec7d746a07a91011411cd230d780f",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/API_CONTRACT.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/AUTHORIZATION_CONTRACT_VI.md",
+    "original_sha256": "23fb1e9110960bb47fb2a9bc58fd99e9ea4ae2373eb924d729c18e858290878e",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/AUTHORIZATION_CONTRACT_VI.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_sha256": "45ee0651801bf466b88d5143109adfde756a213a600a2bf2bc7db76f4c41e49c",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/PROCUREMENT_API_CONTRACT_VI.md",
+    "original_sha256": "59ddd49d352142114dae177aa4e309b8b509e19f0b5138592f7ecf6fe78ceba7",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/PROCUREMENT_API_CONTRACT_VI.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/NOTIFICATION_API_CONTRACT_VI.md",
+    "original_sha256": "83c98cfe906f45f4f3c54bd1139eb5c750ef105f95be3b11313c6f5059027721",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/NOTIFICATION_API_CONTRACT_VI.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/CONTRACT_COMPATIBILITY_CHANGELOG_VI.md",
+    "original_sha256": "9b56806394b59116bd3baeab7a2a26cca42e43855bded6ca13380bf7dce06360",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/CONTRACT_COMPATIBILITY_CHANGELOG_VI.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/features/DATA_READINESS_POLICY.md",
+    "original_sha256": "2c61f4e41e45fe6b425dd7fec8a49bef22dbda7ae1f60d3a07b9691d68e2568c",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/features/AUTH_SESSION.md",
+    "original_sha256": "c16e03b21ab77a088980f0a1b36d5ad11309825eb269cefc8ad214495e326001",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/features/AUTH_SESSION.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "original_sha256": "56638aedd98db44d615f7a66a2cdf716893e3e467b40e0b6da900f84a531f820",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/features/PUBLIC_PLANNING.md",
+    "original_sha256": "358f4a85b14ee54989a12e457c7717c8fffc07d7f5b986d6665872d2957d5d83",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/features/PUBLIC_PLANNING.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/DECISIONS.md",
+    "original_sha256": "4f59ea0a829226e3b206987fd1af51d68fee2f53445604320aa2e4f5df7c6a02",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/DECISIONS.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/adr/ADR-001-backend-business-authority.md",
+    "original_sha256": "acdcdc108fef42c596fdaadacce7ef5c8618a0d3c5526fd321efabfc86565681",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/adr/ADR-001-backend-business-authority.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/adr/ADR-004-bounded-llm.md",
+    "original_sha256": "51db2e107fd8f7e8d3d0cf1692f03086c2856b3471536982d63dd20e918367dc",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/adr/ADR-004-bounded-llm.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/adr/ADR-007-postgresql-persistence-baseline.md",
+    "original_sha256": "d5432375cb465506bd2e00a04b2d4e184e3de191e6d74f43c738e9b8d39fe7fd",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/adr/ADR-007-postgresql-persistence-baseline.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/adr/ADR-010-data-completeness-and-missing-business-facts.md",
+    "original_sha256": "ea26045bea597403e424652f367c7d33e311cdbdef9e04af2a9974f229584748",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/adr/ADR-010-data-completeness-and-missing-business-facts.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/adr/ADR-012-observed-sales-forecast-execution-contract.md",
+    "original_sha256": "e035b80b873dd1a058cf071d7905b1750903c9c16512cb2dff36d2cdce295cd9",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/adr/ADR-012-observed-sales-forecast-execution-contract.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/adr/ADR-013-future-store-mapping-approval-direction.md",
+    "original_sha256": "26190dc63268a0bacf7dd0b547439a6d024cef7f14a28c89111f96a501824fea",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/adr/ADR-013-future-store-mapping-approval-direction.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/adr/ADR-015-trained-observed-sales-forecast.md",
+    "original_sha256": "f8b8b4aa025c5767f810731036121b6a12408438ae1d7396c04bfc810e8ff06b",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/adr/ADR-015-trained-observed-sales-forecast.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/adr/ADR-020-product-requirements-procurement-selector.md",
+    "original_sha256": "8fe1d9f150999446b12d9def17c097d5b815c1389a4743eaea8cf0394d2ac8e9",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/adr/ADR-020-product-requirements-procurement-selector.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/adr/ADR-021-operational-decision-v2-temporal-scope.md",
+    "original_sha256": "747f46ac19cf6f1bb43abaa1212cb89051cf59112f5292817260d82d068b5e8f",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/adr/ADR-021-operational-decision-v2-temporal-scope.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/adr/ADR-022-internal-durable-planning.md",
+    "original_sha256": "791a924e205a9db3285ea59649971e1c39379b69fd32fe52219bfcc60fa037f6",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/adr/ADR-022-internal-durable-planning.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  },
+  {
+    "original_path": "docs/adr/ADR-A1-observed-stockout-demand-policy.md",
+    "original_sha256": "590f304e30c8085f31d0c777177ae00eb588aa1198b76bec779fcb9ef3bb1544",
+    "original_git_ref": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "package_path": "contracts/docs/adr/ADR-A1-observed-stockout-demand-policy.md",
+    "transformation": "Markdown local-link navigation only; prose content unchanged. See navigation_rewrites.json."
+  }
+]

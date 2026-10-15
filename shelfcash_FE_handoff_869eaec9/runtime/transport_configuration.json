@@ -1,0 +1,17 @@
+{
+  "configured_on_disk_not_runtime_attestation": true,
+  "auth_allowed_origins": [
+    "https://localhost:5173"
+  ],
+  "auth_dev_cookie": false,
+  "auth_email_delivery_enabled": true,
+  "auth_frontend_url": "https://localhost:5173/credentials/complete",
+  "auth_invitation_frontend_url": "https://localhost:5173/invitations/{invitation_id}",
+  "auth_verification_frontend_url": "",
+  "auth_password_reset_frontend_url": "https://localhost:5173/credentials/complete",
+  "capabilities_from_disk_settings_without_sending": {
+    "verification": false,
+    "reset": true,
+    "invitation": true
+  }
+}

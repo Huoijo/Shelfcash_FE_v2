@@ -1,0 +1,70 @@
+{
+  "source_sha": "869eaec914aa6905d6b935889afebe7d973004ae",
+  "branch": "main",
+  "working_tree": "clean",
+  "generated_at_utc": "2026-10-15T13:05:03.630699+00:00",
+  "openapi_info": {
+    "title": "shelfcash-backend",
+    "version": "1.0.0"
+  },
+  "openapi_version": "3.1.0",
+  "operations": 73,
+  "paths": 66,
+  "baseline": {
+    "path": "D:\\hocc_bk\\ai\\proj\\projectMLAI\\Shelfcash_FE_v2\\contracts\\011\\openapi.main.json",
+    "sha256": "d45b25e6423c52a854bae39efc7896df5c44a22f15549fa7f7259b565e2d837d",
+    "counts": {
+      "operations": 54,
+      "paths": 50
+    },
+    "fe_head_at_audit": "61e2774608de8cd578ae5aea62263c11f82916da",
+    "baseline_last_commit": "0e2036682ef50d2d3e58720e01b90788c7582993",
+    "baseline_git_blob": "3292705307f8919eadda328484744221a99b5c85",
+    "baseline_worktree_matches_git": true,
+    "reported_be_source_at_capture": "b1ede89a3919230ce9526337537d7a19ca182f15",
+    "receipt": "Shelfcash_FE_v2/docs/011_Implementation_Receipt.md",
+    "pin_guard": "Shelfcash_FE_v2/scripts/wire-source.mjs",
+    "selection": "Latest integration target found in FE contract/receipt/generator metadata; no claim every FE adapter matches it"
+  },
+  "generation": "app.main.create_app(Settings(_env_file=None)).openapi(); .env/process settings disabled; socket connect and SQLAlchemy Engine connect/raw_connection forbidden; no lifespan, workers, inference, provider or solver",
+  "source_hash_manifest": "source_hashes.json",
+  "scope": "Main only. Other worktrees were listed, never read or modified. FE source implementation not audited.",
+  "commands": [
+    "git status --short",
+    "git branch --show-current",
+    "git rev-parse HEAD",
+    "git rev-parse main",
+    "git worktree list",
+    ".venv/Scripts/python.exe -m scripts.local_runtime status",
+    ".venv/Scripts/python.exe runtime/fe_handoff_audit.py"
+  ],
+  "legacy_fe54_comparison": {
+    "path": "D:\\hocc_bk\\ai\\proj\\projectMLAI\\Shelfcash_FE_v2\\api-contract-v2\\generated\\openapi.json",
+    "expected_previous_handoff_sha256": "6336bc0cdbe5f260389838934ba946cd51887af1b551c763b5beb4437e5e7e1f",
+    "exists": true,
+    "scope": "Latest FE baseline identified by existing main handoff provenance; FE implementation usage not audited",
+    "sha256": "6336bc0cdbe5f260389838934ba946cd51887af1b551c763b5beb4437e5e7e1f",
+    "matches_recorded_provenance": true,
+    "counts": {
+      "operations": 54,
+      "paths": 50
+    }
+  },
+  "baseline_discovery": "FE contracts/011 pinned snapshot found after initial legacy FE54 check; primary diff corrected. FE source implementation was not reviewed.",
+  "working_tree_at_start": "clean, before OpenAPI generation",
+  "working_tree_at_packaging": [
+    "M docs/CURRENT_STATE.md",
+    " M docs/ROADMAP.md",
+    " M docs/runbooks/FULL_TEST_FLOW.md",
+    "?? scripts/seed_local_owner.py",
+    "?? scripts/seed_local_staff.py",
+    "?? tests/integration/test_seed_local_owner.py",
+    "?? tests/integration/test_seed_local_staff.py",
+    "?? tests/unit/test_seed_local_owner.py"
+  ],
+  "concurrent_wip_policy": "Seed Owner/Staff scripts/tests and CURRENT_STATE/ROADMAP/FULL_TEST_FLOW edits appeared during audit; preserved and excluded. Every app Python source hash checked against pinned Git blob. Canonical docs copied from pinned Git blobs, never WIP.",
+  "verification_commands": [
+    ".venv/Scripts/python.exe runtime/fe_handoff_examples.py",
+    ".venv/Scripts/python.exe runtime/fe_handoff_finish.py"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "source_record_key": "event-fixture",
+  "evidence_reference": "Synthetic declaration",
+  "domain": "calendar_events",
+  "event_name": "Declared closure",
+  "effective_from": "2026-10-13",
+  "effective_to": "2026-10-13",
+  "declared_at": "2026-10-13T13:00:00Z",
+  "is_closed": true,
+  "is_holiday": null
+}

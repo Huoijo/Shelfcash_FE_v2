@@ -1,0 +1,17 @@
+{
+  "source_record_key": "purchase-fixture",
+  "evidence_reference": "Synthetic history",
+  "domain": "purchase_history",
+  "ingredient_id": "00000000-0000-0000-0000-000000000001",
+  "supplier_id": null,
+  "quantity": "2",
+  "unit": "kg",
+  "order_date": null,
+  "received_date": null,
+  "report_date": "2026-10-13",
+  "price": null,
+  "price_basis": "UNKNOWN",
+  "price_quantity": null,
+  "price_unit": null,
+  "currency": "VND"
+}

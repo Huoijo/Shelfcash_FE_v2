@@ -1,0 +1,156 @@
+{
+  "$defs": {
+    "AcceptanceReceipt": {
+      "additionalProperties": false,
+      "properties": {
+        "invitation_id": {
+          "format": "uuid",
+          "title": "Invitation Id",
+          "type": "string"
+        },
+        "invitation_version_at_acceptance": {
+          "title": "Invitation Version At Acceptance",
+          "type": "string"
+        },
+        "store_id": {
+          "format": "uuid",
+          "title": "Store Id",
+          "type": "string"
+        },
+        "membership_id": {
+          "format": "uuid",
+          "title": "Membership Id",
+          "type": "string"
+        },
+        "role": {
+          "const": "STAFF",
+          "default": "STAFF",
+          "title": "Role",
+          "type": "string"
+        },
+        "accepted_grants": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Accepted Grants",
+          "type": "array"
+        },
+        "authorization_version_at_acceptance": {
+          "title": "Authorization Version At Acceptance",
+          "type": "string"
+        },
+        "accepted_at": {
+          "format": "date-time",
+          "title": "Accepted At",
+          "type": "string"
+        },
+        "event_id": {
+          "format": "uuid",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "next_action": {
+          "const": "refresh_store_context",
+          "default": "refresh_store_context",
+          "title": "Next Action",
+          "type": "string"
+        }
+      },
+      "required": [
+        "invitation_id",
+        "invitation_version_at_acceptance",
+        "store_id",
+        "membership_id",
+        "accepted_grants",
+        "authorization_version_at_acceptance",
+        "accepted_at",
+        "event_id"
+      ],
+      "title": "AcceptanceReceipt",
+      "type": "object"
+    },
+    "Meta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "pagination": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pagination"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "request_id"
+      ],
+      "title": "Meta",
+      "type": "object"
+    },
+    "Pagination": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "total_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Count"
+        }
+      },
+      "required": [
+        "limit",
+        "next_cursor",
+        "total_count"
+      ],
+      "title": "Pagination",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/AcceptanceReceipt"
+    },
+    "meta": {
+      "$ref": "#/$defs/Meta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "Envelope[AcceptanceReceipt]",
+  "type": "object"
+}

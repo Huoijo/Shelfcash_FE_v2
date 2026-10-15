@@ -1,0 +1,12 @@
+{
+  "requirements_mode": "custom",
+  "forecast_start_date": "2026-10-15",
+  "default_requirements_version": "default-1",
+  "requirements": {
+    "paths": [
+      {
+        "path": "BASE"
+      }
+    ]
+  }
+}

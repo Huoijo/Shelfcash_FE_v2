@@ -1,0 +1,152 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "source_record_key": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Source Record Key",
+      "type": "string"
+    },
+    "evidence_reference": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Evidence Reference",
+      "type": "string"
+    },
+    "domain": {
+      "const": "purchase_history",
+      "default": "purchase_history",
+      "title": "Domain",
+      "type": "string"
+    },
+    "ingredient_id": {
+      "format": "uuid",
+      "title": "Ingredient Id",
+      "type": "string"
+    },
+    "supplier_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Supplier Id"
+    },
+    "quantity": {
+      "maxLength": 200,
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+      "title": "Quantity",
+      "type": "string"
+    },
+    "unit": {
+      "maxLength": 32,
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Unit",
+      "type": "string"
+    },
+    "order_date": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Order Date"
+    },
+    "received_date": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Received Date"
+    },
+    "report_date": {
+      "format": "date",
+      "title": "Report Date",
+      "type": "string"
+    },
+    "price": {
+      "anyOf": [
+        {
+          "description": "New money obeys 18 integer/18 fractional digits; retained pre-alignment import evidence may preserve wider exact decimal text. Never an input bypass.",
+          "maxLength": 200,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Price"
+    },
+    "price_basis": {
+      "enum": [
+        "PER_QUANTITY",
+        "LINE_TOTAL",
+        "UNKNOWN"
+      ],
+      "title": "Price Basis",
+      "type": "string"
+    },
+    "price_quantity": {
+      "anyOf": [
+        {
+          "maxLength": 200,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Price Quantity"
+    },
+    "price_unit": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Price Unit"
+    },
+    "currency": {
+      "pattern": "^[A-Z]{3}$",
+      "title": "Currency",
+      "type": "string"
+    }
+  },
+  "required": [
+    "source_record_key",
+    "evidence_reference",
+    "ingredient_id",
+    "supplier_id",
+    "quantity",
+    "unit",
+    "order_date",
+    "received_date",
+    "report_date",
+    "price",
+    "price_basis",
+    "price_quantity",
+    "price_unit",
+    "currency"
+  ],
+  "title": "PurchaseHistorySource",
+  "type": "object"
+}

@@ -1,0 +1,24 @@
+# Audit docs ↔ source main ↔ runtime
+
+CURRENT FACT — source `869eaec914aa6905d6b935889afebe7d973004ae`; audit ngày 15/10/2026. Đây là ghi nhận drift và giới hạn kiểm chứng, không thay accepted intent. Canonical files trong repository không bị sửa.
+
+| Nguồn prose/artifact | Điều chưa đồng bộ | Evidence và cách FE dùng |
+| --- | --- | --- |
+| `docs/AUTHORIZATION_CONTRACT_VI.md`, đoạn assisted onboarding khoảng dòng 264 và self-service Đợt 2 khoảng dòng 628 | Prose cũ còn nói Store opening qua assisted hoặc “Không mở Store creation”. | Section đầu `self-service-stores` có quyết định được duyệt 14/10/2026 và T03 đã registered trong `app/api/auth.py`; DTO `StoreCreateRequest`, persistence receipt có main. Dùng section mới + OpenAPI; signup/verify vẫn không tự tạo Store. |
+| `docs/AUTHORIZATION_CONTRACT_VI.md`, ví dụ callback/demo khoảng dòng 715 | Ví dụ `/verify-email`, `/setup-password`, `/reset-password` và port8102 là cấu hình demo lịch sử; không phải callback của local8103 hiện tại. | Disk config audit: verification URL trống, RESET/SETUP `/credentials/complete`, invitation `/invitations/{invitation_id}`, FE HTTPS5173. Không suy callback deployed từ prose. Xem transport configuration; không gửi mail thật. |
+| `docs/PROCUREMENT_API_CONTRACT_VI.md`, các đoạn đầu D2/D3 | Còn mô tả nhánh data-readiness, method/warning projection là D4 proposal hoặc contextual can_generate chưa đổi. | Main đã merge D1–D5; `app/api/readiness.py`, contracts `readiness.py`/`planning_context.py` có planning_request + assessment/forecast, retained source fields trong `planning_public.py`. Section C01 và policy D4 hiện hành mô tả extension; không coi đoạn checkpoint cũ là giới hạn source mới. |
+| `docs/NOTIFICATION_API_CONTRACT_VI.md`, đầu tài liệu | Ghi C1 branch chưa merge/push. | Main composition đăng ký NF01/NF02/NF03 và PR/MQ; OpenAPI source/live có routes. Prose branch checkpoint không mô tả membership của main hiện tại. Không suy đã push/deploy từ việc source có route. |
+| `docs/CURRENT_STATE.md`, đầu tài liệu | Ghi runtime8103 còn source052cddee, không restart trong lượt merge trước. | HISTORICAL checkpoint: lần audit hiện tại manifest/process khớp source869eaec và live OpenAPI khớp source. Không sửa tài liệu để biến smoke mới thành lịch sử deployment. Worker observation hiện vẫn stale. |
+| `docs/CONTRACT_COMPATIBILITY_CHANGELOG_VI.md`, provenance original10/10 | Đoạn “Baseline32; current54” vẫn nằm trong phần original baseline. | Đó là delta lịch sử; source/live hiện73/66. Fixture32 không phải baseline FE mới nhất. Baseline chính FE011 được xác minh riêng bằng bytes, FE receipt và generator hash pin. |
+| `docs/handoff/010_BE_CAPABILITY_RESPONSE_VI.md`, baseline FE54 | Ghi hash6336bc… của baseline từng đọc; FE receipt011 pin hashd45b25… và ghi provenance khác. | Cả hai bytes hiện vẫn có trong FE checkout. Không gọi chúng là cùng snapshot; gói này dùng FE011 mới hơn làm diff chính, giữ diff6336bc… có label lịch sử. |
+| `docs/handoff/examples.json`, `c5_read_discovery.requests.exports` | URL minh họa có thêm `/stores/{store_id}` trước `/procurement-plans/{plan_id}/exports`. | EX01 thực tế là `GET /api/v1/procurement-plans/{plan_id}/exports`; xem routes/OpenAPI. Không copy URL sai vào quickstart. |
+| `docs/features/examples/s410/n9_response.json` | Fixture cũ thiếu required `captured_budget`, `meta.timezone`, `meta.applied_filters` của N9 hiện tại. | Gói xuất example N9 mới có các fields này, DTO-validated và ghi rõ thiết kế synthetic; không giả fixture cũ là response main mới. |
+| Canonical markdown links tới task notes/source/tests hoặc anchor không có | Một số links lịch sử không có trong gói/checkout hoặc anchor đã đổi. | Bản sao trong ZIP chỉ đổi links sang canonical index. `provenance/navigation_rewrites.json` giữ từng original target; không âm thầm sửa prose hay giả nguồn thiếu đang tồn tại. |
+
+**CURRENT FACT — wire:** OpenAPI được sinh không đọc `.env`, chặn socket/database connect, không lifespan/worker. Live OpenAPI TLS-verified khớp toàn bộ JSON source. Schema presence chứng minh cấu trúc công khai, không chứng minh nghiệp vụ đã chạy thành công.
+
+**CURRENT FACT — runtime limit:** `/health` 200 chỉ là liveness. `local_runtime status` báo `Worker observation stale`; không khẳng định planning/import/email/notification workers hiện khỏe. Không đăng nhập, gửi email, ghi business data, restart hoặc migrate trong audit.
+
+**TECHNICAL DEBT:** prose checkpoint cũ và old fixtures cần canonical maintenance trong task có scope rõ; handoff này chỉ đóng gói/audit. Main wire không đổi. **PROPOSAL/WIP:** Decision Assistant/challenger/what-if/order workflow không được đưa vào contract main.
+
+Đọc [FE_START_HERE](../FE_START_HERE_VI.md) để tích hợp; [canonical index](../contracts/INDEX.md) để đối chiếu workflow. Không có kết quả browser E2E trong gói này.

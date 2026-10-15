@@ -1,0 +1,15 @@
+{
+  "code": "OFFER_OMITTED",
+  "message": "Offer bị loại khỏi miền xét do chưa có finite bound.",
+  "details": {
+    "entity_id": "00000000-0000-0000-0000-000000000004",
+    "ingredient_ids": [
+      "00000000-0000-0000-0000-000000000003"
+    ],
+    "classification": "OFFER_BOUND_UNKNOWN",
+    "proof_scope": "CAPTURED_ELIGIBLE_OFFERS_ONLY",
+    "suggested_action": "Bổ sung finite bound có nguồn nếu muốn xét offer này.",
+    "source_reference": "synthetic-reviewed-source",
+    "source_version": 1
+  }
+}

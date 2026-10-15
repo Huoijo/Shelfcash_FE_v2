@@ -1,0 +1,296 @@
+{
+  "added_required_fields": [
+    {
+      "schema": "DecisionResult",
+      "added_required": [
+        "notification_delivery",
+        "submission"
+      ]
+    },
+    {
+      "schema": "Invitation",
+      "added_required": [
+        "declined_at"
+      ]
+    },
+    {
+      "schema": "InvitationOffer",
+      "added_required": [
+        "declined_at"
+      ]
+    },
+    {
+      "schema": "OfferRead",
+      "added_required": [
+        "can_decline"
+      ]
+    },
+    {
+      "schema": "PermissionEvent",
+      "added_required": [
+        "decision_id",
+        "permission_request_id"
+      ]
+    },
+    {
+      "schema": "PreviewPage",
+      "added_required": [
+        "mapping_revision",
+        "read_set_digest",
+        "source_evidence_digest"
+      ]
+    },
+    {
+      "schema": "RunHistoryMeta",
+      "added_required": [
+        "applied_filters",
+        "timezone"
+      ]
+    },
+    {
+      "schema": "RunSummary",
+      "added_required": [
+        "captured_budget"
+      ]
+    }
+  ],
+  "enum_const_changes": [
+    {
+      "pointer": "/components/schemas/AcceptInvitation/properties/accept/const",
+      "change": "added",
+      "after": true
+    },
+    {
+      "pointer": "/components/schemas/CommitRowReference/properties/canonical_domain/enum",
+      "change": "changed",
+      "before": [
+        "sales",
+        "recipes",
+        "inventory_count",
+        "opening_stock",
+        "products",
+        "ingredients",
+        "suppliers",
+        "supplier_terms",
+        "payable_fees",
+        "scope_declarations"
+      ],
+      "after": [
+        "sales",
+        "recipes",
+        "inventory_count",
+        "opening_stock",
+        "inventory_receipts",
+        "products",
+        "ingredients",
+        "suppliers",
+        "supplier_terms",
+        "payable_fees",
+        "scope_declarations",
+        "calendar_events",
+        "promotion_observations",
+        "usage_history",
+        "purchase_history"
+      ]
+    },
+    {
+      "pointer": "/components/schemas/Invitation/properties/status/enum",
+      "change": "changed",
+      "before": [
+        "pending",
+        "accepted",
+        "revoked",
+        "expired"
+      ],
+      "after": [
+        "pending",
+        "accepted",
+        "revoked",
+        "expired",
+        "declined"
+      ]
+    },
+    {
+      "pointer": "/components/schemas/InvitationEvent/properties/kind/enum",
+      "change": "changed",
+      "before": [
+        "CREATED",
+        "REISSUED",
+        "REVOKED",
+        "ACCEPTED",
+        "DELIVERY_FAILED",
+        "DELIVERY_SUCCEEDED"
+      ],
+      "after": [
+        "CREATED",
+        "REISSUED",
+        "REVOKED",
+        "ACCEPTED",
+        "DECLINED",
+        "DELIVERY_FAILED",
+        "DELIVERY_SUCCEEDED"
+      ]
+    },
+    {
+      "pointer": "/components/schemas/InvitationOffer/properties/status/enum",
+      "change": "changed",
+      "before": [
+        "pending",
+        "accepted",
+        "revoked",
+        "expired"
+      ],
+      "after": [
+        "pending",
+        "accepted",
+        "revoked",
+        "expired",
+        "declined"
+      ]
+    },
+    {
+      "pointer": "/components/schemas/MembershipList/properties/permission_catalog_version/const",
+      "change": "changed",
+      "before": "permissions-v2",
+      "after": "permissions-v3"
+    },
+    {
+      "pointer": "/components/schemas/Normalization/properties/kind/enum",
+      "change": "changed",
+      "before": [
+        "decimal_locale",
+        "date_format",
+        "unit_label_alias",
+        "exact_scale"
+      ],
+      "after": [
+        "decimal_locale",
+        "date_format",
+        "unit_label_alias",
+        "exact_scale",
+        "stockout_alias"
+      ]
+    },
+    {
+      "pointer": "/components/schemas/PermissionEvent/properties/source/enum",
+      "change": "changed",
+      "before": [
+        "ASSISTED_PROVISIONING",
+        "OWNER_CHANGE",
+        "INVITATION_ACCEPTANCE"
+      ],
+      "after": [
+        "ASSISTED_PROVISIONING",
+        "OWNER_CHANGE",
+        "INVITATION_ACCEPTANCE",
+        "PERMISSION_REQUEST_APPROVAL"
+      ]
+    },
+    {
+      "pointer": "/components/schemas/PreviewGroup/properties/canonical_domain/enum",
+      "change": "changed",
+      "before": [
+        "sales",
+        "recipes",
+        "inventory_count",
+        "opening_stock",
+        "products",
+        "ingredients",
+        "suppliers",
+        "supplier_terms",
+        "payable_fees",
+        "scope_declarations"
+      ],
+      "after": [
+        "sales",
+        "recipes",
+        "inventory_count",
+        "opening_stock",
+        "inventory_receipts",
+        "products",
+        "ingredients",
+        "suppliers",
+        "supplier_terms",
+        "payable_fees",
+        "scope_declarations",
+        "calendar_events",
+        "promotion_observations",
+        "usage_history",
+        "purchase_history"
+      ]
+    },
+    {
+      "pointer": "/components/schemas/ProfileSpec/properties/schema/enum",
+      "change": "changed",
+      "before": [
+        "sales",
+        "recipes",
+        "inventory_count",
+        "opening_stock",
+        "products",
+        "ingredients",
+        "suppliers",
+        "supplier_terms",
+        "payable_fees",
+        "scope_declarations"
+      ],
+      "after": [
+        "sales",
+        "recipes",
+        "inventory_count",
+        "opening_stock",
+        "inventory_receipts",
+        "products",
+        "ingredients",
+        "suppliers",
+        "supplier_terms",
+        "payable_fees",
+        "scope_declarations",
+        "calendar_events",
+        "promotion_observations",
+        "usage_history",
+        "purchase_history"
+      ]
+    },
+    {
+      "pointer": "/components/schemas/SchemaDescriptor/properties/schema_id/enum",
+      "change": "changed",
+      "before": [
+        "sales",
+        "recipes",
+        "inventory_count",
+        "opening_stock",
+        "products",
+        "ingredients",
+        "suppliers",
+        "supplier_terms",
+        "payable_fees",
+        "scope_declarations"
+      ],
+      "after": [
+        "sales",
+        "recipes",
+        "inventory_count",
+        "opening_stock",
+        "inventory_receipts",
+        "products",
+        "ingredients",
+        "suppliers",
+        "supplier_terms",
+        "payable_fees",
+        "scope_declarations",
+        "calendar_events",
+        "promotion_observations",
+        "usage_history",
+        "purchase_history"
+      ]
+    },
+    {
+      "pointer": "/components/schemas/StoreContext/properties/permission_catalog_version/const",
+      "change": "changed",
+      "before": "permissions-v2",
+      "after": "permissions-v3"
+    }
+  ],
+  "scope": "Compatibility-affecting for generated types, old strict validators, exhaustive switches or mocks; not proof of observed FE failure. Response additions are not universally breaking HTTP behavior."
+}

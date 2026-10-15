@@ -1,0 +1,11 @@
+{
+  "data": {
+    "notification_id": "00000000-0000-0000-0000-000000000004",
+    "read_at": "2026-10-15T02:00:00Z",
+    "version": "synthetic-notification-2"
+  },
+  "meta": {
+    "request_id": "synthetic-handoff"
+  },
+  "error": null
+}

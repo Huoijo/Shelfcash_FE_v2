@@ -1,0 +1,78 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "source_record_key": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Source Record Key",
+      "type": "string"
+    },
+    "evidence_reference": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Evidence Reference",
+      "type": "string"
+    },
+    "domain": {
+      "const": "calendar_events",
+      "default": "calendar_events",
+      "title": "Domain",
+      "type": "string"
+    },
+    "event_name": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Event Name",
+      "type": "string"
+    },
+    "effective_from": {
+      "format": "date",
+      "title": "Effective From",
+      "type": "string"
+    },
+    "effective_to": {
+      "format": "date",
+      "title": "Effective To",
+      "type": "string"
+    },
+    "declared_at": {
+      "format": "date-time",
+      "title": "Declared At",
+      "type": "string"
+    },
+    "is_closed": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Is Closed"
+    },
+    "is_holiday": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Is Holiday"
+    }
+  },
+  "required": [
+    "source_record_key",
+    "evidence_reference",
+    "event_name",
+    "effective_from",
+    "effective_to",
+    "declared_at",
+    "is_closed",
+    "is_holiday"
+  ],
+  "title": "CalendarEventSource",
+  "type": "object"
+}

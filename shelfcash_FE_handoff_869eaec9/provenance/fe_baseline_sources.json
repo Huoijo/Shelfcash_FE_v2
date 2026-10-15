@@ -1,0 +1,22 @@
+[
+  {
+    "path": "Shelfcash_FE_v2/docs/011_Implementation_Receipt.md",
+    "sha256": "c3a78a1a62fc698964476d188d702a62726702b989f23513571557f97c20ece5",
+    "scope": "Baseline selection evidence only; FE implementation claims inherited, not reverified"
+  },
+  {
+    "path": "Shelfcash_FE_v2/scripts/wire-source.mjs",
+    "sha256": "ec8b57db16757d2c017c390199ad84ac2da76130b83f3b3d0f797438daa26a0e",
+    "scope": "Baseline selection evidence only; FE implementation claims inherited, not reverified"
+  },
+  {
+    "path": "Shelfcash_FE_v2/FE_ask/011_FE_to_BE_Followup.md",
+    "sha256": "9c557b69b79f32440f4e0dbf0fb5287bd99953b549810ea37ee23547c3b599c4",
+    "scope": "Baseline selection evidence only; FE implementation claims inherited, not reverified"
+  },
+  {
+    "path": "Shelfcash_FE_v2/docs/015_Import_State_Audit.md",
+    "sha256": "cd65046af3ec309aeba3a80e4a6ec007b0857fbf4c0a44987b8683a1cda9cd5b",
+    "scope": "Baseline selection evidence only; FE implementation claims inherited, not reverified"
+  }
+]

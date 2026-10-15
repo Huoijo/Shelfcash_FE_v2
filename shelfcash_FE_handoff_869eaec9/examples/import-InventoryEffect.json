@@ -1,0 +1,10 @@
+{
+  "origin": "OPENING_STOCK",
+  "lot_id": "00000000-0000-0000-0000-000000000001",
+  "before_quantity": null,
+  "after_quantity": "5",
+  "quantity_delta": "5",
+  "movement_type": "COUNT_CORRECTION",
+  "unit": "g",
+  "observed_at": "2026-10-13T13:00:00Z"
+}

@@ -1,0 +1,592 @@
+{
+  "baseline": {
+    "git_ref": "052cddee075e165af2c0cea42ebc2e616c396760",
+    "git_path": "docs/handoff/openapi.json",
+    "sha256": "9cf5b8f4abf3ffc7d776290a159658356f7cad5c72b26678d08d98e02f34c696",
+    "scope": "Historical BE artifact, not FE usage baseline"
+  },
+  "baseline_counts": {
+    "operations": 73,
+    "paths": 66
+  },
+  "current_counts": {
+    "operations": 73,
+    "paths": 66
+  },
+  "added_operations": {},
+  "removed_operations": [],
+  "changed_operation_definitions": [
+    "C01",
+    "R01"
+  ],
+  "structural_changes": [
+    {
+      "pointer": "/components/schemas/ActionReadiness/properties/blockers/items/$ref",
+      "change": "changed",
+      "before": "#/components/schemas/CompletionReadinessIssue",
+      "after": "#/components/schemas/Issue"
+    },
+    {
+      "pointer": "/components/schemas/ActionReadiness/properties/warnings/items/$ref",
+      "change": "changed",
+      "before": "#/components/schemas/CompletionReadinessIssue",
+      "after": "#/components/schemas/Issue"
+    },
+    {
+      "pointer": "/components/schemas/ForecastAssessment",
+      "change": "added",
+      "after": {
+        "properties": {
+          "requested_mode": {
+            "type": "string",
+            "enum": [
+              "BASELINE",
+              "TRAINED"
+            ],
+            "title": "Requested Mode"
+          },
+          "actual_model_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Actual Model Type"
+          },
+          "actual_model_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Actual Model Version"
+          },
+          "selection_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Selection Reason"
+          },
+          "quality_status": {
+            "type": "string",
+            "const": "not_evaluated",
+            "title": "Quality Status",
+            "default": "not_evaluated"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "requested_mode",
+          "actual_model_type",
+          "actual_model_version",
+          "selection_reason"
+        ],
+        "title": "ForecastAssessment"
+      }
+    },
+    {
+      "pointer": "/components/schemas/Issue",
+      "change": "added",
+      "after": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "authorization",
+              "catalog",
+              "recipe",
+              "sales",
+              "inventory",
+              "supplier",
+              "fees",
+              "constraints",
+              "forecast",
+              "configuration",
+              "runtime"
+            ],
+            "title": "Source"
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "STORE",
+              "PRODUCT",
+              "INGREDIENT"
+            ],
+            "title": "Scope"
+          },
+          "entity_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Entity Id"
+          },
+          "affected_dates": {
+            "items": {
+              "type": "string",
+              "format": "date"
+            },
+            "type": "array",
+            "title": "Affected Dates"
+          },
+          "details": {
+            "$ref": "#/components/schemas/ReadinessIssueDetails"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "source",
+          "scope",
+          "entity_id",
+          "affected_dates",
+          "details"
+        ],
+        "title": "Issue"
+      }
+    },
+    {
+      "pointer": "/components/schemas/PlanningAssessment",
+      "change": "added",
+      "after": {
+        "properties": {
+          "semantics_version": {
+            "type": "string",
+            "const": "planning_readiness/1",
+            "title": "Semantics Version",
+            "default": "planning_readiness/1"
+          },
+          "input_scope": {
+            "type": "string",
+            "enum": [
+              "DEFAULT_CONFIGURATION",
+              "SUPPLIED_REQUEST"
+            ],
+            "title": "Input Scope"
+          },
+          "requirements_mode": {
+            "type": "string",
+            "enum": [
+              "default",
+              "custom",
+              "saved"
+            ],
+            "title": "Requirements Mode"
+          },
+          "configuration_status": {
+            "type": "string",
+            "enum": [
+              "RESOLVED",
+              "INVALID",
+              "UNKNOWN"
+            ],
+            "title": "Configuration Status"
+          },
+          "blockers": {
+            "items": {
+              "$ref": "#/components/schemas/Issue"
+            },
+            "type": "array",
+            "title": "Blockers"
+          },
+          "warnings": {
+            "items": {
+              "$ref": "#/components/schemas/Issue"
+            },
+            "type": "array",
+            "title": "Warnings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "input_scope",
+          "requirements_mode",
+          "configuration_status",
+          "blockers",
+          "warnings"
+        ],
+        "title": "PlanningAssessment"
+      }
+    },
+    {
+      "pointer": "/components/schemas/PlanningNotificationDetails/properties/source_reference",
+      "change": "added",
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Source Reference"
+      }
+    },
+    {
+      "pointer": "/components/schemas/PlanningNotificationDetails/properties/source_version",
+      "change": "added",
+      "after": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "title": "Source Version"
+      }
+    },
+    {
+      "pointer": "/components/schemas/PlanningReadiness/properties/assessment",
+      "change": "added",
+      "after": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/PlanningAssessment"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    {
+      "pointer": "/components/schemas/PlanningReadiness/properties/forecast",
+      "change": "added",
+      "after": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ForecastAssessment"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    {
+      "pointer": "/components/schemas/Readiness/properties/forecast_assessment",
+      "change": "added",
+      "after": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ForecastAssessment"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    {
+      "pointer": "/components/schemas/Readiness/properties/planning_assessment",
+      "change": "added",
+      "after": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/PlanningAssessment"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    {
+      "pointer": "/components/schemas/ReadinessIssueDetails",
+      "change": "added",
+      "after": {
+        "properties": {
+          "field": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Field"
+          },
+          "impact": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Impact"
+          },
+          "entity_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Entity Id"
+          },
+          "reference": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference"
+          },
+          "version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Version"
+          },
+          "classification": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Classification"
+          },
+          "proof_scope": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Proof Scope"
+          },
+          "suggested_action": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Suggested Action"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ReadinessIssueDetails"
+      }
+    },
+    {
+      "pointer": "/paths/~1api~1v1~1stores~1{store_id}~1planning-context/get/parameters",
+      "change": "changed",
+      "before": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        }
+      ],
+      "after": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "planning_request",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 65536
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Planning Request"
+          }
+        }
+      ]
+    },
+    {
+      "pointer": "/paths/~1api~1v1~1stores~1{store_id}~1readiness/get/parameters",
+      "change": "changed",
+      "before": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "actions",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "maxLength": 128,
+            "default": "import,menu,inventory",
+            "title": "Actions"
+          }
+        },
+        {
+          "name": "forecast_start_date",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forecast Start Date"
+          }
+        }
+      ],
+      "after": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "actions",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "maxLength": 128,
+            "default": "import,menu,inventory",
+            "title": "Actions"
+          }
+        },
+        {
+          "name": "forecast_start_date",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forecast Start Date"
+          }
+        },
+        {
+          "name": "planning_request",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 65536
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Planning Request"
+          }
+        }
+      ]
+    },
+    {
+      "pointer": "/x-shelfcash-provenance",
+      "change": "removed",
+      "before": {
+        "source_checkpoint": "86fcc6795957baea9b2d7f343a8079bed44c1559",
+        "source_manifest_sha256": "ae3fe492de11d9bd940e5a6b167ed8f45d89713ba55bc7cb2d538298ea4740dc",
+        "manifest_algorithm": "sorted path NUL SHA256(LF-normalized app/alembic Python bytes)",
+        "migration_head": "0027_self_service_stores",
+        "generated_at": "2026-10-14T10:38:53.111295+00:00",
+        "source_working_tree": false,
+        "source_only": true,
+        "database_access": false,
+        "workers": false,
+        "operations": 73,
+        "paths": 66,
+        "previous_be_artifact": {
+          "git_ref": "8ed5a80a3655a1637218d44e9c91d2386bca6198",
+          "path": "docs/handoff/openapi.json",
+          "sha256": "57d032f2bae09d15846279a5232f302f36735c342742f86d86eadcd95db346eb",
+          "operations": 72,
+          "paths": 66
+        }
+      }
+    }
+  ]
+}

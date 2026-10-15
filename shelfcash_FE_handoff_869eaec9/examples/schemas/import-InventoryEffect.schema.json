@@ -1,0 +1,76 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "origin": {
+      "enum": [
+        "OPENING_STOCK",
+        "IMPORT_COUNT"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "lot_id": {
+      "format": "uuid",
+      "title": "Lot Id",
+      "type": "string"
+    },
+    "before_quantity": {
+      "anyOf": [
+        {
+          "maxLength": 200,
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Before Quantity"
+    },
+    "after_quantity": {
+      "maxLength": 200,
+      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+      "title": "After Quantity",
+      "type": "string"
+    },
+    "quantity_delta": {
+      "maxLength": 201,
+      "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+      "title": "Quantity Delta",
+      "type": "string"
+    },
+    "movement_type": {
+      "anyOf": [
+        {
+          "const": "COUNT_CORRECTION",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Movement Type"
+    },
+    "unit": {
+      "title": "Unit",
+      "type": "string"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "title": "Observed At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "origin",
+    "lot_id",
+    "before_quantity",
+    "after_quantity",
+    "quantity_delta",
+    "movement_type",
+    "unit",
+    "observed_at"
+  ],
+  "title": "InventoryEffect",
+  "type": "object"
+}

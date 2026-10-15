@@ -1,0 +1,8 @@
+{
+  "source_value": "100",
+  "origin": "DETERMINISTIC_DERIVED",
+  "applied_rule_ids": [],
+  "value_source": "SOURCE_COLUMN",
+  "source_column_index": 2,
+  "declaration_id": null
+}

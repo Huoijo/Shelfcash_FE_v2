@@ -1,0 +1,652 @@
+[
+  {
+    "package_document": "contracts/docs/API_CONTRACT.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/API_CONTRACT.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md#read-discovery-c4",
+    "replacement": "../INDEX.md#source-73dd96633d6a"
+  },
+  {
+    "package_document": "contracts/docs/API_CONTRACT.md",
+    "original_link": "features/APPLICATION_CONTRACTS.md",
+    "replacement": "../INDEX.md#source-d83e0a48bd37"
+  },
+  {
+    "package_document": "contracts/docs/API_CONTRACT.md",
+    "original_link": "adr/ADR-011-historical-run-immutability-snapshot-policy.md",
+    "replacement": "../INDEX.md#source-e42ac0675ba9"
+  },
+  {
+    "package_document": "contracts/docs/API_CONTRACT.md",
+    "original_link": "features/RECIPE_SCHEDULE.md",
+    "replacement": "../INDEX.md#source-130aff0d743b"
+  },
+  {
+    "package_document": "contracts/docs/API_CONTRACT.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/API_CONTRACT.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/AUTHORIZATION_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md#customer-self-service",
+    "replacement": "../INDEX.md#source-508e5584d5de"
+  },
+  {
+    "package_document": "contracts/docs/AUTHORIZATION_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md#collaboration-c2",
+    "replacement": "../INDEX.md#source-6c6ec76a9667"
+  },
+  {
+    "package_document": "contracts/docs/AUTHORIZATION_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_link": "features/IMPORT_FIELD_VALUE_BINDINGS.md",
+    "replacement": "../INDEX.md#source-d75c8b99efa0"
+  },
+  {
+    "package_document": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_link": "features/IMPORT_STAGING_PREVIEW.md",
+    "replacement": "../INDEX.md#source-07f662895c1a"
+  },
+  {
+    "package_document": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_link": "features/IMPORT_STAGING_PREVIEW.md",
+    "replacement": "../INDEX.md#source-07f662895c1a"
+  },
+  {
+    "package_document": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_link": "../IMPORT_SCHEMA_LEGACY_HANDOFF_VI.md#4-liên-kết-nhiều-file-và-setup-store",
+    "replacement": "../INDEX.md#source-2174205b6106"
+  },
+  {
+    "package_document": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md#data-readiness-d2",
+    "replacement": "../INDEX.md#source-74621df32c03"
+  },
+  {
+    "package_document": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md#collaboration-c2",
+    "replacement": "../INDEX.md#source-6c6ec76a9667"
+  },
+  {
+    "package_document": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md#excel-actual-receipt-c3",
+    "replacement": "../INDEX.md#source-cb8acecb4726"
+  },
+  {
+    "package_document": "contracts/docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md#read-discovery-c4",
+    "replacement": "../INDEX.md#source-73dd96633d6a"
+  },
+  {
+    "package_document": "contracts/docs/PROCUREMENT_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md#data-readiness-d3",
+    "replacement": "../INDEX.md#source-65612cf5b151"
+  },
+  {
+    "package_document": "contracts/docs/PROCUREMENT_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md#data-readiness-d2",
+    "replacement": "../INDEX.md#source-74621df32c03"
+  },
+  {
+    "package_document": "contracts/docs/PROCUREMENT_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/PROCUREMENT_API_CONTRACT_VI.md",
+    "original_link": "ROADMAP.md",
+    "replacement": "../INDEX.md#source-0d96796e2b2a"
+  },
+  {
+    "package_document": "contracts/docs/PROCUREMENT_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md#read-discovery-c4",
+    "replacement": "../INDEX.md#source-73dd96633d6a"
+  },
+  {
+    "package_document": "contracts/docs/NOTIFICATION_API_CONTRACT_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md#notifications-c1",
+    "replacement": "../INDEX.md#source-5d6f45c9df67"
+  },
+  {
+    "package_document": "contracts/docs/CONTRACT_COMPATIBILITY_CHANGELOG_VI.md",
+    "original_link": "handoff/openapi.json",
+    "replacement": "../INDEX.md#source-9e1e590ccc6f"
+  },
+  {
+    "package_document": "contracts/docs/CONTRACT_COMPATIBILITY_CHANGELOG_VI.md",
+    "original_link": "handoff/openapi_diff_fe54.json",
+    "replacement": "../INDEX.md#source-d3bf9725104b"
+  },
+  {
+    "package_document": "contracts/docs/CONTRACT_COMPATIBILITY_CHANGELOG_VI.md",
+    "original_link": "../tests/fixtures/openapi_20261010.json",
+    "replacement": "../INDEX.md#source-5b2e1e9fdd4a"
+  },
+  {
+    "package_document": "contracts/docs/CONTRACT_COMPATIBILITY_CHANGELOG_VI.md",
+    "original_link": "features/examples/s410/README.md",
+    "replacement": "../INDEX.md#source-eee7461410f4"
+  },
+  {
+    "package_document": "contracts/docs/CONTRACT_COMPATIBILITY_CHANGELOG_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/CONTRACT_COMPATIBILITY_CHANGELOG_VI.md",
+    "original_link": "runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/forecast_preparation.py",
+    "replacement": "../../INDEX.md#source-3b2a018ba378"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/domain/forecasting/validation.py",
+    "replacement": "../../INDEX.md#source-1d995ae40bb5"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/domain/forecasting/baseline.py",
+    "replacement": "../../INDEX.md#source-55bf457ce7a9"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/use_cases/forecast_baseline.py",
+    "replacement": "../../INDEX.md#source-d7f422fc1fc7"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/unit/test_forecast_baseline.py",
+    "replacement": "../../INDEX.md#source-dfc22dcc094e"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/unit/test_forecast_execution.py",
+    "replacement": "../../INDEX.md#source-5abbf4b711ba"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/domain/forecasting/stockout.py",
+    "replacement": "../../INDEX.md#source-c1c54483e5db"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/forecast_demand.py",
+    "replacement": "../../INDEX.md#source-e87aa431fb9b"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/use_cases/forecast_trained_execution.py",
+    "replacement": "../../INDEX.md#source-d43430494a5b"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/infrastructure/forecast_model.py",
+    "replacement": "../../INDEX.md#source-f4f14f0406e4"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/unit/test_stockout_readiness.py",
+    "replacement": "../../INDEX.md#source-781790f63551"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_forecast_trained_execution.py",
+    "replacement": "../../INDEX.md#source-162e16da8193"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_forecast_stockout_a1.py",
+    "replacement": "../../INDEX.md#source-35d97d2d4705"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/use_cases/forecast_serving.py",
+    "replacement": "../../INDEX.md#source-5bb1594cd32f"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/infrastructure/storage/forecast_artifacts.py",
+    "replacement": "../../INDEX.md#source-e562db6197dc"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/use_cases/model_serving.py",
+    "replacement": "../../INDEX.md#source-2be36e86ccd1"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_forecast_serving.py",
+    "replacement": "../../INDEX.md#source-92d095ddbbb9"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/unit/test_forecast_artifacts.py",
+    "replacement": "../../INDEX.md#source-0a84052705d7"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/readiness_evaluation.py",
+    "replacement": "../../INDEX.md#source-3e70b96406be"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/use_cases/readiness.py",
+    "replacement": "../../INDEX.md#source-ba71729760a1"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/planning_context_projection.py",
+    "replacement": "../../INDEX.md#source-e28042e05547"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/contracts/readiness.py",
+    "replacement": "../../INDEX.md#source-3ef2b281031b"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_readiness_context.py",
+    "replacement": "../../INDEX.md#source-08b2920eb46c"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_import_readiness_snapshot.py",
+    "replacement": "../../INDEX.md#source-87dd3599ea44"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/decision_capture_v2_validation.py",
+    "replacement": "../../INDEX.md#source-82100e79bdc6"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/infrastructure/database/planning_capture.py",
+    "replacement": "../../INDEX.md#source-e48bed295c6f"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/use_cases/bom.py",
+    "replacement": "../../INDEX.md#source-f19419b8b789"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/domain/demand/bom.py",
+    "replacement": "../../INDEX.md#source-c527b14e891b"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/unit/test_bom.py",
+    "replacement": "../../INDEX.md#source-7bbf7e602141"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_decision_operational_v2.py",
+    "replacement": "../../INDEX.md#source-6b0df0d916d6"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_planning_public_sources.py",
+    "replacement": "../../INDEX.md#source-de35bc90828c"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/use_cases/planning_setup.py",
+    "replacement": "../../INDEX.md#source-955989268101"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/use_cases/planning_public.py",
+    "replacement": "../../INDEX.md#source-784891f6c72b"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/planning_public_projection.py",
+    "replacement": "../../INDEX.md#source-4ca3b59a3add"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/contracts/procurement_v2.py",
+    "replacement": "../../INDEX.md#source-a87423b8684c"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/procurement_v2_validation.py",
+    "replacement": "../../INDEX.md#source-e1299aa68278"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_planning_configuration_resolution.py",
+    "replacement": "../../INDEX.md#source-fb42b2ff7347"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/unit/test_procurement_v2.py",
+    "replacement": "../../INDEX.md#source-fad90b67d1ce"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/import_preview.py",
+    "replacement": "../../INDEX.md#source-6d89cf8b7cc3"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/import_configuration_preview.py",
+    "replacement": "../../INDEX.md#source-79c5dc021191"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/use_cases/import_staging.py",
+    "replacement": "../../INDEX.md#source-cbc9f42063f3"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/contracts/import_mapping.py",
+    "replacement": "../../INDEX.md#source-c641af8cea3d"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/operational_import_facts.py",
+    "replacement": "../../INDEX.md#source-a9cb5347c52a"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/unit/test_import_preview.py",
+    "replacement": "../../INDEX.md#source-0a1e185597d3"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/unit/test_import_inventory_completeness.py",
+    "replacement": "../../INDEX.md#source-c5ee81354848"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/contracts/forecast_eligibility.py",
+    "replacement": "../../INDEX.md#source-9140f471159e"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md#data-readiness-d2",
+    "replacement": "../../INDEX.md#source-74621df32c03"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../app/application/contracts/offer_admission.py",
+    "replacement": "../../INDEX.md#source-432478caa7d3"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/unit/test_offer_admission.py",
+    "replacement": "../../INDEX.md#source-45a6c0b47446"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_planning_offer_admission.py",
+    "replacement": "../../INDEX.md#source-aae3f1f022ea"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_import_supplier_basis.py",
+    "replacement": "../../INDEX.md#source-40dc4386c5c2"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md#data-readiness-d3",
+    "replacement": "../../INDEX.md#source-65612cf5b151"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md#data-readiness-d4",
+    "replacement": "../../INDEX.md#source-0f18d38983c5"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md#data-readiness-d5",
+    "replacement": "../../INDEX.md#source-d8d4f638a81f"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_data_readiness_acceptance.py",
+    "replacement": "../../INDEX.md#source-a03f42169423"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/unit/test_forecast_eligibility.py",
+    "replacement": "../../INDEX.md#source-c188a624adcb"
+  },
+  {
+    "package_document": "contracts/docs/features/DATA_READINESS_POLICY.md",
+    "original_link": "../../tests/integration/test_forecast_readiness.py",
+    "replacement": "../../INDEX.md#source-c7d6604da7b3"
+  },
+  {
+    "package_document": "contracts/docs/features/AUTH_SESSION.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md#customer-self-service",
+    "replacement": "../../INDEX.md#source-508e5584d5de"
+  },
+  {
+    "package_document": "contracts/docs/features/AUTH_SESSION.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md#collaboration-c2",
+    "replacement": "../../INDEX.md#source-6c6ec76a9667"
+  },
+  {
+    "package_document": "contracts/docs/features/AUTH_SESSION.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md#b4-authstaff-acceptance-without-fe-or-smtp",
+    "replacement": "../../INDEX.md#source-08daed4bf84d"
+  },
+  {
+    "package_document": "contracts/docs/features/AUTH_SESSION.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/features/AUTH_SESSION.md",
+    "original_link": "STAFF_PERMISSIONS_INVITATIONS.md",
+    "replacement": "../../INDEX.md#source-c3d8dd00f914"
+  },
+  {
+    "package_document": "contracts/docs/features/AUTH_SESSION.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md#integrated-demo-runtime",
+    "replacement": "../../INDEX.md#source-817fa29d6396"
+  },
+  {
+    "package_document": "contracts/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "original_link": "../../IMPORT_SCHEMA_LEGACY_HANDOFF_VI.md",
+    "replacement": "../../INDEX.md#source-e88a27e78a41"
+  },
+  {
+    "package_document": "contracts/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "original_link": "IMPORT_FIELD_VALUE_BINDINGS.md",
+    "replacement": "../../INDEX.md#source-d75c8b99efa0"
+  },
+  {
+    "package_document": "contracts/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "original_link": "../../IMPORT_SCHEMA_LEGACY_HANDOFF_VI.md",
+    "replacement": "../../INDEX.md#source-e88a27e78a41"
+  },
+  {
+    "package_document": "contracts/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "original_link": "IMPORT_INVENTORY_SUPPLIER.md",
+    "replacement": "../../INDEX.md#source-097f3156af5b"
+  },
+  {
+    "package_document": "contracts/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "original_link": "IMPORT_INVENTORY_SUPPLIER.md",
+    "replacement": "../../INDEX.md#source-097f3156af5b"
+  },
+  {
+    "package_document": "contracts/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "original_link": "IMPORT_INVENTORY_SUPPLIER.md",
+    "replacement": "../../INDEX.md#source-097f3156af5b"
+  },
+  {
+    "package_document": "contracts/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "original_link": "IMPORT_INVENTORY_SUPPLIER.md",
+    "replacement": "../../INDEX.md#source-097f3156af5b"
+  },
+  {
+    "package_document": "contracts/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "original_link": "IMPORT_INVENTORY_SUPPLIER.md",
+    "replacement": "../../INDEX.md#source-097f3156af5b"
+  },
+  {
+    "package_document": "contracts/docs/features/IMPORT_SCHEMA_INVENTORY.md",
+    "original_link": "../../IMPORT_SCHEMA_LEGACY_HANDOFF_VI.md",
+    "replacement": "../../INDEX.md#source-e88a27e78a41"
+  },
+  {
+    "package_document": "contracts/docs/features/PUBLIC_PLANNING.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/features/PUBLIC_PLANNING.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/features/PUBLIC_PLANNING.md",
+    "original_link": "examples/planning_public/README.md",
+    "replacement": "../../INDEX.md#source-55a8b95a0bb0"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-018-procurement-optimization-review.md",
+    "replacement": "../INDEX.md#source-a277b790a218"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-017-serving-fefo-provisional-direction.md",
+    "replacement": "../INDEX.md#source-7f2e38a584d5"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-016-decision-contracts-provisional-demo-policy.md",
+    "replacement": "../INDEX.md#source-57c5efb0dbf6"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-002-modular-monolith.md",
+    "replacement": "../INDEX.md#source-36c7600f81eb"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-003-sqlite-persistence.md",
+    "replacement": "../INDEX.md#source-e9e0a97b2156"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-005-decision-run-snapshot.md",
+    "replacement": "../INDEX.md#source-89a0444e968f"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-006-hypothetical-what-if.md",
+    "replacement": "../INDEX.md#source-63857e02cf2a"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-008-import-idempotency-correction-policy.md",
+    "replacement": "../INDEX.md#source-5649790d9e66"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-009-inventory-mutation-audit-policy.md",
+    "replacement": "../INDEX.md#source-a6b787bfb745"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-011-historical-run-immutability-snapshot-policy.md",
+    "replacement": "../INDEX.md#source-e42ac0675ba9"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-014-retained-baseline-execution.md",
+    "replacement": "../INDEX.md#source-10d13c6b3e12"
+  },
+  {
+    "package_document": "contracts/docs/DECISIONS.md",
+    "original_link": "adr/ADR-019-internal-procurement-engine.md",
+    "replacement": "../INDEX.md#source-6255764fd530"
+  },
+  {
+    "package_document": "contracts/docs/adr/ADR-007-postgresql-persistence-baseline.md",
+    "original_link": "ADR-003-sqlite-persistence.md",
+    "replacement": "../../INDEX.md#source-e9e0a97b2156"
+  },
+  {
+    "package_document": "contracts/docs/adr/ADR-013-future-store-mapping-approval-direction.md",
+    "original_link": "../CURRENT_STATE.md",
+    "replacement": "../../INDEX.md#source-5952391df085"
+  },
+  {
+    "package_document": "contracts/docs/adr/ADR-020-product-requirements-procurement-selector.md",
+    "original_link": "../features/PROCUREMENT_V2.md",
+    "replacement": "../../INDEX.md#source-ea604a353a02"
+  },
+  {
+    "package_document": "contracts/docs/adr/ADR-020-product-requirements-procurement-selector.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../../INDEX.md#source-a3598c2ee77d"
+  },
+  {
+    "package_document": "contracts/docs/adr/ADR-020-product-requirements-procurement-selector.md",
+    "original_link": "ADR-019-internal-procurement-engine.md",
+    "replacement": "../../INDEX.md#source-6255764fd530"
+  },
+  {
+    "package_document": "contracts/docs/adr/ADR-020-product-requirements-procurement-selector.md",
+    "original_link": "ADR-017-serving-fefo-provisional-direction.md",
+    "replacement": "../../INDEX.md#source-7f2e38a584d5"
+  },
+  {
+    "package_document": "contracts/docs/adr/ADR-021-operational-decision-v2-temporal-scope.md",
+    "original_link": "../features/PROCUREMENT_V2.md",
+    "replacement": "../../INDEX.md#source-ea604a353a02"
+  },
+  {
+    "package_document": "contracts/docs/adr/ADR-021-operational-decision-v2-temporal-scope.md",
+    "original_link": "../features/DECISION_OPERATIONAL_V2.md",
+    "replacement": "../../INDEX.md#source-b8b9b6c444f0"
+  },
+  {
+    "package_document": "contracts/docs/adr/ADR-021-operational-decision-v2-temporal-scope.md",
+    "original_link": "../runbooks/FULL_TEST_FLOW.md",
+    "replacement": "../../INDEX.md#source-a3598c2ee77d"
+  }
+]

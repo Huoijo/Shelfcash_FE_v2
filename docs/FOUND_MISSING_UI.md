@@ -652,6 +652,10 @@ Extend the Unit resolver with explicit rational factor/evidence and error/permis
 
 ImportResolutionEditor.tsx / ConversionEditor, ImportResolveDrawers.tsx.
 
+## Shared authentication recovery audit — 15/10/2026
+
+Read-only audit of current MagicPath OWNER `softly-door-9234` (24 revisions, updated 14/10), STAFF `wildly-shade-4015` (23 revisions, updated 14/10), and login `gentle-forest-2488` (1 revision). The Input designs do not define a separate authentication-recovery screen. This fix reuses the existing login form, inline feedback/text-button and protected-session feedback patterns: a failed session read keeps Import protected, offers login with the return destination, and permits session retry from login. Successful login still requires a fresh A03 read before entering Import. No new FM entry: this is shared authentication recovery using existing patterns, not a new Import product state or visual closure claim. Backend session failures remain an independent runtime issue.
+
 ## Canonical Input Flow implementation status
 
 OWNER: PARTIAL — shared operational flow and two-phase Review/Commit implemented; first/existing Profile review uses real N5. Immediate entity creation, broad source context and domain-decision persistence do not have complete runtime parity.

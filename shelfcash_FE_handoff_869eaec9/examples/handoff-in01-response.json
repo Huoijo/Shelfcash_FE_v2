@@ -1,0 +1,15 @@
+{
+  "data": {
+    "invitation_id": "00000000-0000-0000-0000-000000000005",
+    "store_id": "00000000-0000-0000-0000-000000000002",
+    "status": "declined",
+    "declined_at": "2026-10-13T13:00:00Z",
+    "version": "invitation-2",
+    "event_id": "00000000-0000-0000-0000-000000000004",
+    "next_action": "return_to_stores"
+  },
+  "meta": {
+    "request_id": "synthetic-handoff-example"
+  },
+  "error": null
+}

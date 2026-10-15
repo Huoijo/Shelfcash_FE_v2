@@ -1,0 +1,15 @@
+{
+  "data": null,
+  "meta": {
+    "request_id": "synthetic-handoff"
+  },
+  "error": {
+    "code": "EMAIL_DELIVERY_UNAVAILABLE",
+    "message": "Tạm thời chưa thể gửi email; thử lại sau hoặc liên hệ hỗ trợ.",
+    "details": {
+      "reason_codes": [
+        "EMAIL_DELIVERY_UNAVAILABLE"
+      ]
+    }
+  }
+}

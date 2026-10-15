@@ -1,0 +1,522 @@
+{
+  "$defs": {
+    "ExactQuantity": {
+      "additionalProperties": false,
+      "properties": {
+        "numerator": {
+          "maxLength": 1000,
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "title": "Numerator",
+          "type": "string"
+        },
+        "denominator": {
+          "maxLength": 1000,
+          "pattern": "^[1-9][0-9]*$",
+          "title": "Denominator",
+          "type": "string"
+        },
+        "decimal_view": {
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Decimal View",
+          "type": "string"
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator",
+        "decimal_view"
+      ],
+      "title": "ExactQuantity",
+      "type": "object"
+    },
+    "IngredientBalance": {
+      "additionalProperties": false,
+      "properties": {
+        "ingredient_id": {
+          "format": "uuid",
+          "title": "Ingredient Id",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "path": {
+          "enum": [
+            "LOW",
+            "BASE",
+            "HIGH"
+          ],
+          "title": "Path",
+          "type": "string"
+        },
+        "consumed": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "expired": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "ending_usable": {
+          "$ref": "#/$defs/ExactQuantity"
+        }
+      },
+      "required": [
+        "ingredient_id",
+        "unit",
+        "path",
+        "consumed",
+        "expired",
+        "ending_usable"
+      ],
+      "title": "IngredientBalance",
+      "type": "object"
+    },
+    "IngredientNavigator": {
+      "additionalProperties": false,
+      "properties": {
+        "run_id": {
+          "format": "uuid",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "result_digest": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Result Digest"
+        },
+        "selected_option_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Selected Option Id"
+        },
+        "selection_status": {
+          "enum": [
+            "winner",
+            "explicit",
+            "not_selected"
+          ],
+          "title": "Selection Status",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/IngredientResultRow"
+          },
+          "title": "Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "run_id",
+        "result_digest",
+        "selected_option_id",
+        "selection_status",
+        "items"
+      ],
+      "title": "IngredientNavigator",
+      "type": "object"
+    },
+    "IngredientResultRow": {
+      "additionalProperties": false,
+      "properties": {
+        "ingredient_id": {
+          "format": "uuid",
+          "title": "Ingredient Id",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "display_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Display Name"
+        },
+        "name_availability": {
+          "enum": [
+            "captured",
+            "not_captured"
+          ],
+          "title": "Name Availability",
+          "type": "string"
+        },
+        "purchase_quantity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactQuantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "purchase_line_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Purchase Line Count"
+        },
+        "path_balances": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/IngredientBalance"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Path Balances"
+        },
+        "issues": {
+          "items": {
+            "$ref": "#/$defs/PlanningNotification"
+          },
+          "title": "Issues",
+          "type": "array"
+        },
+        "detail_available": {
+          "title": "Detail Available",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "ingredient_id",
+        "unit",
+        "display_name",
+        "name_availability",
+        "purchase_quantity",
+        "purchase_line_count",
+        "path_balances",
+        "issues",
+        "detail_available"
+      ],
+      "title": "IngredientResultRow",
+      "type": "object"
+    },
+    "InspectionMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "run_id": {
+          "format": "uuid",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "result_digest": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Result Digest"
+        },
+        "response_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Response Version",
+          "type": "string"
+        },
+        "pagination": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pagination"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "request_id",
+        "run_id",
+        "result_digest",
+        "response_version"
+      ],
+      "title": "InspectionMeta",
+      "type": "object"
+    },
+    "Pagination": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "total_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Count"
+        }
+      },
+      "required": [
+        "limit",
+        "next_cursor",
+        "total_count"
+      ],
+      "title": "Pagination",
+      "type": "object"
+    },
+    "PlanningNotification": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "details": {
+          "$ref": "#/$defs/PlanningNotificationDetails"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "PlanningNotification",
+      "type": "object"
+    },
+    "PlanningNotificationDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Field"
+        },
+        "entity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "affected_dates": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "date",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Affected Dates"
+        },
+        "ingredient_ids": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ingredient Ids"
+        },
+        "default_updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Default Updated At"
+        },
+        "saved_updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Saved Updated At"
+        },
+        "classification": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Classification"
+        },
+        "proof_scope": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Proof Scope"
+        },
+        "suggested_action": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Suggested Action"
+        },
+        "source_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Reference"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "title": "PlanningNotificationDetails",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/IngredientNavigator"
+    },
+    "meta": {
+      "$ref": "#/$defs/InspectionMeta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "InspectionEnvelope[IngredientNavigator]",
+  "type": "object"
+}

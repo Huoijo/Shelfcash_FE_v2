@@ -1,0 +1,852 @@
+{
+  "$defs": {
+    "CapturedLot": {
+      "additionalProperties": false,
+      "properties": {
+        "lot_id": {
+          "format": "uuid",
+          "title": "Lot Id",
+          "type": "string"
+        },
+        "quantity": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "received_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Received Date"
+        },
+        "expiry_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expiry Date"
+        },
+        "supplier_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Supplier Id"
+        },
+        "unit_cost": {
+          "anyOf": [
+            {
+              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unit Cost"
+        },
+        "cost_availability": {
+          "enum": [
+            "known",
+            "unknown"
+          ],
+          "title": "Cost Availability",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lot_id",
+        "quantity",
+        "unit",
+        "received_date",
+        "expiry_date",
+        "supplier_id",
+        "unit_cost",
+        "cost_availability"
+      ],
+      "title": "CapturedLot",
+      "type": "object"
+    },
+    "CapturedStock": {
+      "additionalProperties": false,
+      "properties": {
+        "captured_at": {
+          "format": "date-time",
+          "title": "Captured At",
+          "type": "string"
+        },
+        "lots": {
+          "items": {
+            "$ref": "#/$defs/CapturedLot"
+          },
+          "title": "Lots",
+          "type": "array"
+        },
+        "scope_declaration": {
+          "enum": [
+            "COMPLETE_CURRENT_LOTS",
+            "CONFIRMED_EMPTY",
+            "UNKNOWN"
+          ],
+          "title": "Scope Declaration",
+          "type": "string"
+        },
+        "provenance": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Provenance"
+        }
+      },
+      "required": [
+        "captured_at",
+        "lots",
+        "scope_declaration",
+        "provenance"
+      ],
+      "title": "CapturedStock",
+      "type": "object"
+    },
+    "ExactQuantity": {
+      "additionalProperties": false,
+      "properties": {
+        "numerator": {
+          "maxLength": 1000,
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "title": "Numerator",
+          "type": "string"
+        },
+        "denominator": {
+          "maxLength": 1000,
+          "pattern": "^[1-9][0-9]*$",
+          "title": "Denominator",
+          "type": "string"
+        },
+        "decimal_view": {
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+          "title": "Decimal View",
+          "type": "string"
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator",
+        "decimal_view"
+      ],
+      "title": "ExactQuantity",
+      "type": "object"
+    },
+    "FulfilledContribution": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "enum": [
+            "LOW",
+            "BASE",
+            "HIGH"
+          ],
+          "title": "Path",
+          "type": "string"
+        },
+        "day": {
+          "format": "date",
+          "title": "Day",
+          "type": "string"
+        },
+        "quantity": {
+          "$ref": "#/$defs/ExactQuantity"
+        }
+      },
+      "required": [
+        "path",
+        "day",
+        "quantity"
+      ],
+      "title": "FulfilledContribution",
+      "type": "object"
+    },
+    "IngredientDay": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "enum": [
+            "LOW",
+            "BASE",
+            "HIGH"
+          ],
+          "title": "Path",
+          "type": "string"
+        },
+        "day": {
+          "format": "date",
+          "title": "Day",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "requested": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "available": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "shortage": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "consumed": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "expired": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "other_waste": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "ending": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "incoming_quantity": {
+          "$ref": "#/$defs/ExactQuantity"
+        }
+      },
+      "required": [
+        "path",
+        "day",
+        "unit",
+        "requested",
+        "available",
+        "shortage",
+        "consumed",
+        "expired",
+        "other_waste",
+        "ending",
+        "incoming_quantity"
+      ],
+      "title": "IngredientDay",
+      "type": "object"
+    },
+    "IngredientDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "run_id": {
+          "format": "uuid",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "result_digest": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Result Digest"
+        },
+        "ingredient_id": {
+          "format": "uuid",
+          "title": "Ingredient Id",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "selected_option_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Selected Option Id"
+        },
+        "selection_status": {
+          "enum": [
+            "winner",
+            "explicit",
+            "not_selected"
+          ],
+          "title": "Selection Status",
+          "type": "string"
+        },
+        "display_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Display Name"
+        },
+        "name_availability": {
+          "enum": [
+            "captured",
+            "not_captured"
+          ],
+          "title": "Name Availability",
+          "type": "string"
+        },
+        "captured_stock": {
+          "$ref": "#/$defs/CapturedStock"
+        },
+        "purchases": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Purchase"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Purchases"
+        },
+        "daily_balances": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/IngredientDay"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Daily Balances"
+        },
+        "related_products": {
+          "items": {
+            "$ref": "#/$defs/ProductDependency"
+          },
+          "title": "Related Products",
+          "type": "array"
+        },
+        "issues": {
+          "items": {
+            "$ref": "#/$defs/PlanningNotification"
+          },
+          "title": "Issues",
+          "type": "array"
+        },
+        "evidence_availability": {
+          "enum": [
+            "known",
+            "partial",
+            "not_evaluated"
+          ],
+          "title": "Evidence Availability",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "result_digest",
+        "ingredient_id",
+        "unit",
+        "selected_option_id",
+        "selection_status",
+        "display_name",
+        "name_availability",
+        "captured_stock",
+        "purchases",
+        "daily_balances",
+        "related_products",
+        "issues",
+        "evidence_availability"
+      ],
+      "title": "IngredientDetail",
+      "type": "object"
+    },
+    "InspectionMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "run_id": {
+          "format": "uuid",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "result_digest": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Result Digest"
+        },
+        "response_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Response Version",
+          "type": "string"
+        },
+        "pagination": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Pagination"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "request_id",
+        "run_id",
+        "result_digest",
+        "response_version"
+      ],
+      "title": "InspectionMeta",
+      "type": "object"
+    },
+    "Pagination": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "total_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total Count"
+        }
+      },
+      "required": [
+        "limit",
+        "next_cursor",
+        "total_count"
+      ],
+      "title": "Pagination",
+      "type": "object"
+    },
+    "PlanningFeeComponent": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "enum": [
+            "OFFER",
+            "SUPPLIER_ORDER"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "entity_id": {
+          "format": "uuid",
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "amount": {
+          "$ref": "#/$defs/ExactQuantity"
+        }
+      },
+      "required": [
+        "basis",
+        "entity_id",
+        "amount"
+      ],
+      "title": "PlanningFeeComponent",
+      "type": "object"
+    },
+    "PlanningNotification": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "details": {
+          "$ref": "#/$defs/PlanningNotificationDetails"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "PlanningNotification",
+      "type": "object"
+    },
+    "PlanningNotificationDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Field"
+        },
+        "entity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entity Id"
+        },
+        "affected_dates": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "date",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Affected Dates"
+        },
+        "ingredient_ids": {
+          "anyOf": [
+            {
+              "items": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ingredient Ids"
+        },
+        "default_updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Default Updated At"
+        },
+        "saved_updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Saved Updated At"
+        },
+        "classification": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Classification"
+        },
+        "proof_scope": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Proof Scope"
+        },
+        "suggested_action": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Suggested Action"
+        },
+        "source_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Reference"
+        },
+        "source_version": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Version"
+        }
+      },
+      "title": "PlanningNotificationDetails",
+      "type": "object"
+    },
+    "ProductDependency": {
+      "additionalProperties": false,
+      "properties": {
+        "product_id": {
+          "format": "uuid",
+          "title": "Product Id",
+          "type": "string"
+        },
+        "selling_unit": {
+          "title": "Selling Unit",
+          "type": "string"
+        },
+        "ingredient_unit": {
+          "title": "Ingredient Unit",
+          "type": "string"
+        },
+        "recipe_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Recipe Ids",
+          "type": "array"
+        },
+        "affected_dates": {
+          "items": {
+            "format": "date",
+            "type": "string"
+          },
+          "title": "Affected Dates",
+          "type": "array"
+        },
+        "fulfilled_contributions": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/FulfilledContribution"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fulfilled Contributions"
+        }
+      },
+      "required": [
+        "product_id",
+        "selling_unit",
+        "ingredient_unit",
+        "recipe_ids",
+        "affected_dates",
+        "fulfilled_contributions"
+      ],
+      "title": "ProductDependency",
+      "type": "object"
+    },
+    "Purchase": {
+      "additionalProperties": false,
+      "properties": {
+        "supplier_term_id": {
+          "format": "uuid",
+          "title": "Supplier Term Id",
+          "type": "string"
+        },
+        "supplier_id": {
+          "format": "uuid",
+          "title": "Supplier Id",
+          "type": "string"
+        },
+        "ingredient_id": {
+          "format": "uuid",
+          "title": "Ingredient Id",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "packs": {
+          "minimum": 1,
+          "title": "Packs",
+          "type": "integer"
+        },
+        "quantity": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "arrival_date": {
+          "format": "date",
+          "title": "Arrival Date",
+          "type": "string"
+        },
+        "expiry_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expiry Date"
+        },
+        "purchase_outlay": {
+          "$ref": "#/$defs/ExactQuantity"
+        },
+        "payable_fee_components": {
+          "items": {
+            "$ref": "#/$defs/PlanningFeeComponent"
+          },
+          "title": "Payable Fee Components",
+          "type": "array"
+        }
+      },
+      "required": [
+        "supplier_term_id",
+        "supplier_id",
+        "ingredient_id",
+        "unit",
+        "packs",
+        "quantity",
+        "arrival_date",
+        "expiry_date",
+        "purchase_outlay",
+        "payable_fee_components"
+      ],
+      "title": "Purchase",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "$ref": "#/$defs/IngredientDetail"
+    },
+    "meta": {
+      "$ref": "#/$defs/InspectionMeta"
+    },
+    "error": {
+      "title": "Error",
+      "type": "null"
+    }
+  },
+  "required": [
+    "data",
+    "meta",
+    "error"
+  ],
+  "title": "InspectionEnvelope[IngredientDetail]",
+  "type": "object"
+}
