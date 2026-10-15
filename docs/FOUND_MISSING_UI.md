@@ -658,9 +658,11 @@ Read-only audit of current MagicPath OWNER `softly-door-9234` (24 revisions, upd
 
 ## Canonical Input Flow implementation status
 
+Capability reconciliation, 16/10/2026: the statements below describe the FE scope pinned to snapshot 011. Newer BE source/handoff already provides SU01 supplier discovery, MQ submission/queue/detail, N5 request_changes and notifications, eligible RULE full-spec approval and 15 schemas; these are not proof of FE integration or live acceptance. Queue/notification continuation is now a **frontend integration dependency**, not an absent-backend claim. Strict wire and behavioral gaps are tracked in [015_Import_TechDebt.md](015_Import_TechDebt.md) and [Import guide §15](IMPORT_FLOW_OWNER_STAFF_GUIDE.md#15-đối-chiếu-be-main-và-fe--16102026). This documentation-only pass makes no new design audit or IMPLEMENTED claim; no new FM entry is created for API availability or implementation bugs.
+
 OWNER: PARTIAL — shared operational flow and two-phase Review/Commit implemented; first/existing Profile review uses real N5. Immediate entity creation, broad source context and domain-decision persistence do not have complete runtime parity.
 
-STAFF: PARTIAL — same geometry and current-import operational flow, permission-driven actions; reusable approval remains Owner-only. Queue/notification/outcome continuation remains the existing runtime dependency, not a new simulated production API.
+STAFF: PARTIAL — same geometry and current-import operational flow, permission-driven actions; reusable approval remains Owner-only. Queue/notification/outcome continuation remains to be integrated into FE from newer BE APIs; the current manual handoff and DEV simulation do not establish production parity.
 
 Remaining frontend UI gaps: finer descriptor-specific declaration controls, friendly immutable display projections and broad frozen-state visual coverage. No new FM IDs: the twelve original designs now exist.
 
