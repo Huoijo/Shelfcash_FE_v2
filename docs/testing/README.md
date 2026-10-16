@@ -11,6 +11,8 @@ The [English integration audit workspace](../integration-audit/README.md) contai
 
 ## Inventory và verification receipts
 
+- [021 Planning handoff verification](planning-021/VERIFICATION.json), [native controlled browser](planning-021/BROWSER_VERIFICATION.json) and [implementation receipt](../sprints/021/021_Planning_Handoff_Integration.md): expanded Summary/PDF contracts, Assistant application boundary, N10 durable production caller. HTTP fixtures/local state/native browser storage are controlled evidence; live BE/full app E2E NOT_RUN.
+
 - [MagicPath → FE visual convergence](visual-fidelity/MAGICPATH_FE_CONVERGENCE.md): current 13 source pins, copy provenance/removal ledger, typography candidates and controlled static component screenshots; PARTIAL, no live BE/E2E claim.
 - [Final copy provenance](visual-fidelity/COPY_PROVENANCE_FINAL.json), [closure report](visual-fidelity/MAGICPATH_FE_CONVERGENCE.md#copy-provenance-adjudication-closure) and [verification](visual-fidelity/COPY_VERIFICATION.json): 4,131 classified producer/value occurrences, 14 removals, one explicit marketing-asset review case; 370 controlled tests and 22 before/after captures. Live BE/E2E NOT RUN; typography/geometry/full-shell acceptance remain separate.
 - [Visual green design audit](VISUAL_GREEN_20261017_DESIGN_AUDIT.json) và [verification](PASS_020_VISUAL_GREEN_VERIFICATION.json): exact 13 canonical revisions, restrained palette, visual-only source checks and controlled regressions; FE browser/live acceptance NOT_RUN.

@@ -1,0 +1,146 @@
+{
+  "task": "021 Planning handoff integration",
+  "status": "PARTIAL_PRODUCT_INTEGRATION / SUPPORTED_BOUNDARIES_IMPLEMENTED",
+  "verified_at_utc": "2026-10-16T20:20:16.373428+00:00",
+  "frontend_base": "e84946d503a4a5ad6a5c8e569ff8b4925cb9a043",
+  "backend": {
+    "source_sha": "a17d153feccfa96de34002dd536bf9381c01f219",
+    "handoff_status": "SOURCE_READY / NOT_DEPLOYED",
+    "serving_runtime": "UNVERIFIED",
+    "manifest_entries_verified": 20,
+    "zip_crc": "NOT_APPLICABLE / DIRECTORY_SUPPLIED",
+    "openapi_sha256": "68204af15000f3c79da135ecd56435becf30b6ef069e7338bb93f87552869a5b",
+    "operations": 76,
+    "paths": 69,
+    "approved_version_properties": 4
+  },
+  "capabilities": {
+    "summary": "PARTIAL_PRODUCT / COMPLETE_APPLICATION_BOUNDARY",
+    "assistant": "PARTIAL_PRODUCT / COMPLETE_APPLICATION_BOUNDARY",
+    "clarification": "PARTIAL_PRODUCT / COMPLETE_APPLICATION_BOUNDARY",
+    "fallback": "PARTIAL_PRODUCT / COMPLETE_APPLICATION_BOUNDARY",
+    "pdf": "COMPLETE_SUPPORTED_EXISTING_FLOW",
+    "retained_export_discovery": "COMPLETE_SUPPORTED_EXISTING_SURFACE",
+    "intent_journal": "COMPLETE_SELECTED_N10_AS01_AS03_SCOPE",
+    "uncertain_recovery": "PARTIAL / AS03_METADATA_ONLY_AFTER_RELOAD",
+    "store_scope": "COMPLETE_NEW_BOUNDARIES",
+    "permission_handling": "COMPLETE_NEW_BOUNDARIES"
+  },
+  "design": {
+    "project_id": "458079658328604672",
+    "component_id": "458423352311304192",
+    "revision_id": "461899945612550144",
+    "audit": "READ_ONLY_SOURCE / CURRENT_LIST_VERIFIED",
+    "missing": [
+      "clarification candidate selection",
+      "stale context reset",
+      "metadata-only Chat lost-ACK recovery after reload",
+      "Summary generation/mode/language lifecycle"
+    ],
+    "register": "docs/status/FOUND_MISSING_UI_V1.md#pl-01--retained-planning-summary--assistant-interactions",
+    "assistant_product_caller": "NOT_IMPLEMENTED / DESIGN_GAPS"
+  },
+  "tests": {
+    "planning": {
+      "total": 119,
+      "passed": 119,
+      "failed": 0,
+      "verification": "CONTROLLED_NODE / FIXTURES_INTERCEPTED_FETCH_LOCAL_STATE"
+    },
+    "capabilities": {
+      "total": 83,
+      "passed": 83,
+      "failed": 0,
+      "verification": "CONTROLLED_NODE / FIXTURES_INTERCEPTED_FETCH_LOCAL_STATE"
+    },
+    "operations": {
+      "total": 30,
+      "passed": 30,
+      "failed": 0,
+      "verification": "CONTROLLED_NODE / FIXTURES_INTERCEPTED_FETCH_LOCAL_STATE"
+    },
+    "import": {
+      "total": 143,
+      "passed": 143,
+      "failed": 0,
+      "verification": "CONTROLLED_NODE / FIXTURES_INTERCEPTED_FETCH_LOCAL_STATE"
+    },
+    "store": {
+      "total": 118,
+      "passed": 118,
+      "failed": 0,
+      "verification": "CONTROLLED_NODE / FIXTURES_INTERCEPTED_FETCH_LOCAL_STATE"
+    },
+    "auth": {
+      "total": 26,
+      "passed": 26,
+      "failed": 0,
+      "verification": "CONTROLLED_NODE / FIXTURES_INTERCEPTED_FETCH_LOCAL_STATE"
+    }
+  },
+  "total_controlled_node_tests": 519,
+  "browser": {
+    "receipt": "docs/testing/planning-021/BROWSER_VERIFICATION.json",
+    "receipt_sha256": "4fd758360ae3680ee870e2834a39c102204bf45c9f752cbf4f20407b914c19dd",
+    "cases": 12,
+    "verification": "CONTROLLED_COMPONENT_BROWSER / ALL_HTTP_INTERCEPTED / NATIVE_INDEXEDDB",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "clean_restart": true,
+    "actual_process_crash": "NOT_RUN",
+    "unhandled_requests": 0,
+    "live_requests": 0
+  },
+  "gates": {
+    "build": "PASS / EXISTING_CHUNK_WARNING",
+    "lint": "PASS / TWO_EXISTING_EFFECT_WARNINGS",
+    "contracts": "PASS / 252_HISTORICAL_FILES_UNCHANGED",
+    "capabilities_wire": "PASS",
+    "recovery_policy": "PASS / 28_RULES",
+    "operations_wire": "PASS",
+    "planning_wire": "PASS",
+    "import_wire": "PASS",
+    "store_wire": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "live_api": "NOT_RUN",
+  "full_app_e2e": "NOT_RUN",
+  "provider": "NOT_RUN",
+  "backend_pdf_content_layout": "NOT_RUN / SYNTHETIC_TRANSPORT_FIXTURE_ONLY",
+  "regression": {
+    "protected_feature_sources_unchanged": true,
+    "historical_register_sha256": "3017bfd528eccd22988ff7851793bfec5babd69eb1aeb6a942a529967828fa9e",
+    "css_routing_ia_unchanged": true,
+    "dedicated_t03_unchanged": true
+  },
+  "source_sha256": {
+    "scripts/check-contracts.mjs": "e82c5a499363a73fd69c984ad49151ccc91dea2f139bc51c5f1a08c7d8ba6503",
+    "scripts/check-operations-wire.mjs": "0e283edeffd0caf9a9b972b5a7a7a5dc2d4e8a4dbaf3e15b1c20fb2d33e515d7",
+    "scripts/sync-capabilities-wire.mjs": "7a35a5e147abfeb47118ab049eda60874a592bf330520a829b6d8e7f57b2e4b0",
+    "scripts/verify-planning-021-browser.mjs": "8779b81c34aaded5d65439e0365f3bb0508eb83e0f935d17224c11fc8117c4d2",
+    "scripts/wire-source.mjs": "1e1d3620010caa676371967404ce1c8f0fe43adc3c4c9f1534ba8808bfb044a1",
+    "src/features/backend-capabilities/capabilities.data.ts": "cfca0fdf3080c800de270233875220503fe5e375fe3118aa94441404995c6519",
+    "src/features/backend-capabilities/capabilities.wire.ts": "44a5ccdeedcbced4b21935dba1db89d6055267fe455d439287e2daf8a9a4f83f",
+    "src/features/backend-capabilities/recovery.journal.ts": "3fa880ffbd20e446f2213683788938d2322c67a01064d89e8d555a4d62d90585",
+    "src/features/decision-planning/planning.assistant.ts": "31bfb22de150ffb81b1d9fbdc64db2aa5920b5da5b1e88b1ff35274d1b5d0349",
+    "src/features/decision-planning/planning.intent.ts": "3be6a1c5d1eee50a70a179dee1bb27cd4844b290e2575481e9e1d6e6d5a7369f",
+    "src/features/operations/PlanExport.tsx": "557a069e52bda5b74f8456038b2c6b90ae394109400f9267bcaef3ec3fc0f36a",
+    "src/features/operations/RetainedExports.tsx": "fbe5aeb4faf84dd89016ad076c6726692566a87b29d3ca611d4fd6279f18311d",
+    "src/features/operations/operations.wire.ts": "b860affd3f41ed512877ca043eca638d4e0c5b6a7d0f41557f2d899d99ce2385",
+    "src/features/operations/usePlanExportIntent.ts": "16c33a6c982c021673f547d8b9963a6ac226da620533bcebcff74c2f2130085d",
+    "src/pages/forecast/PlanningPage.tsx": "4f3d4f5327628de78a9f39d0c6b044dc839db91f2c6587191152bb263e6a0b27",
+    "tests/planning-assistant.test.mjs": "1fd9e11345e5f9e0e505be2428a895adce35131af4e8692369cd9a637ca9c248",
+    "tests/run-planning.mjs": "710288c0d3ae5d7384bdceeb901265be3480eff6bc19c3d2f3f3343af2b26972"
+  },
+  "screenshot_sha256": {
+    "docs/testing/planning-021/pdf-completed.png": "1f61801277c7e15bc3123081a6002edeca721fc78649a22271ccf1ee7a1f6a4b",
+    "docs/testing/planning-021/pdf-processing.png": "08a3afc8e78ab6b2003b92e54012c3b5749a14af01ab2f20824bfca79c3c3855",
+    "docs/testing/planning-021/pdf-uncertain.png": "e97558bdd68d68104442cf627604e321aa0c84a6b8f88ea98a1d5f43b3a35708",
+    "docs/testing/planning-021/retained-discovery.png": "b012caf7af62c2abbefe0e844cc38f81d223df88a7da92cc369361e9ffc7fe95"
+  },
+  "preserved_external_untracked": [
+    "BE_answer/17_10_earlymorning/",
+    ".agents/rules/SHELFCASH_TYPOGRAPHY.md"
+  ],
+  "commit_push": "NOT_PERFORMED"
+}

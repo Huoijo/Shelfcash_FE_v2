@@ -8,7 +8,7 @@ import { build } from 'vite'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const output = await mkdtemp(join(tmpdir(), 'shelfcash-planning-tests-'))
 try {
-  const available = ['planning-boundary', 'planning-workflow', 'planning-ui', 'planning-navigation']
+  const available = ['planning-boundary', 'planning-workflow', 'planning-ui', 'planning-navigation', 'planning-assistant']
   const suites = process.argv.length > 2 ? process.argv.slice(2) : available
   if (suites.some((suite) => !available.includes(suite))) throw new Error('Unknown Planning test suite')
   for (const suite of suites) await build({

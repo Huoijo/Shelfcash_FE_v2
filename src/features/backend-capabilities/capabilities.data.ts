@@ -36,6 +36,8 @@ export function captureCapabilityInput<K extends CapabilityOperation>(operation:
     if (typeof body?.expected_evidence_version !== 'string' || !body.expected_evidence_version.trim()) throw new CapabilityInputError(operation, 'Assistant requires retained C03 response_version.')
     if (isRecord(body.context) && (body.context.run_id !== (record.path as Record<string, unknown>).plan_id || body.context.evidence_version !== body.expected_evidence_version)) throw new CapabilityInputError(operation, 'Follow-up context belongs to a different run/evidence version.')
     if (operation === 'AS03' && typeof body.question === 'string' && !body.question.trim()) throw new CapabilityInputError(operation, 'Question must not be blank.')
+    if (operation === 'AS03' && Array.isArray(body.history) && body.history.reduce((total: number, message: { content: string }) => total + [...message.content].length, 0) > 4000) throw new CapabilityInputError(operation, 'Assistant history exceeds 4000 characters.')
+    if (new TextEncoder().encode(JSON.stringify(body)).length > 32768) throw new CapabilityInputError(operation, 'Assistant request exceeds 32 KiB.')
   }
   if (typeof record.revision === 'string') quotedRevision(operation, record.revision)
   if (operation === 'N4' && (typeof record.revision === 'string') === (record.ifNoneMatch === '*')) throw new CapabilityInputError(operation, 'Budget requires exactly one explicit create or update precondition.')
@@ -60,6 +62,7 @@ function validateResponse<K extends CapabilityOperation>(operation: K, input: Ca
   const data = result.data
   if (!isRecord(data)) return protocol(operation, 'Missing response data.')
   const args = input as { path?: Record<string, unknown>; query?: Record<string, unknown>; body?: Record<string, unknown> }
+  if (operation === 'N10' && args.body?.option_id != null && data.option_id !== args.body.option_id) return protocol(operation, 'Export receipt changed the explicitly selected option.')
   if (['AS01', 'AS02', 'AS03'].includes(operation)) {
     const answer = operation === 'AS03' ? data : data.result
     if (isRecord(answer)) {
@@ -67,10 +70,11 @@ function validateResponse<K extends CapabilityOperation>(operation: K, input: Ca
       const version = operation === 'AS03' ? answer.evidence_version : identity.aggregate_digest
       const expectedVersion = args.body?.expected_evidence_version ?? options.assistantPin?.evidence_version
       if (identity.run_id !== args.path?.plan_id || (expectedVersion !== undefined && version !== expectedVersion) || (options.assistantPin && operation !== 'AS03' && identity.store_id !== options.assistantPin.store_id)) return protocol(operation, 'Assistant evidence belongs to another run, Store or retained version.')
-      if (args.body && (answer.locale !== args.body.locale || (args.body.option_id != null && answer.option_id !== args.body.option_id))) return protocol(operation, 'Assistant presentation does not match the requested locale/option.')
+      if (args.body && (answer.locale !== args.body.locale || (operation !== 'AS03' && answer.detail_level !== args.body.detail_level) || (args.body.option_id != null && answer.option_id !== args.body.option_id))) return protocol(operation, 'Assistant presentation does not match the requested locale/option.')
       if (isRecord(answer.context) && (answer.context.run_id !== args.path?.plan_id || answer.context.evidence_version !== version)) return protocol(operation, 'Assistant follow-up context changed evidence.')
     }
     if (operation !== 'AS03' && ((data.status === 'completed') !== isRecord(data.result))) return protocol(operation, 'Summary status and retained result disagree.')
+    if (operation === 'AS03' && ((data.kind === 'clarification') !== isRecord(data.clarification))) return protocol(operation, 'Clarification kind and candidates disagree.')
   }
   const expected = { ...args.path }
   for (const key of ['store_id', 'import_id', 'file_id']) if (args.query?.[key] != null) expected[key] = args.query[key]

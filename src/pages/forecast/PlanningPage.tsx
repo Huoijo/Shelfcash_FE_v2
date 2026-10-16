@@ -1,7 +1,8 @@
 import { operationsSource } from '../../features/operations/operations.source'
 import { PlanExport } from '../../features/operations/PlanExport'
 import { mockPlanningSource } from '../../features/mock/mockSources'
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
+import { useCallback, useContext, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
+import { AuthContextValue } from '../../features/auth/auth.context'
 import { Link, useSearchParams } from 'react-router'
 import { config } from '../../app/config'
 import { useCurrentStore } from '../../features/store/store.context'
@@ -18,16 +19,20 @@ import './PlanningPage.css'
 const moneyRights = ['budget.read', 'procurement.cost.read']
 
 export function PlanningPage() {
+  const auth=useContext(AuthContextValue)
+  const identity=auth?.state.status==='authenticated'?`${auth.state.context.user.user_id}:${auth.state.context.session.absolute_expires_at}`:'preview'
   const { currentStoreId } = useCurrentStore()
   const { state } = useCurrentStore()
   const version = state.status === 'ready' || state.status === 'mock_preview' ? state.store.authorization_version : ''
-  return <ScopedPlanningPage key={`${currentStoreId}:${version}`} storeId={currentStoreId} />
+  return <ScopedPlanningPage key={`${identity}:${currentStoreId}:${version}`} storeId={currentStoreId} />
 }
 
 function ScopedPlanningPage({ storeId }: { storeId: string | null }) {
   const { state: store } = useCurrentStore()
   const permissions = useMemo(() => store.status === 'ready' || store.status === 'mock_preview' ? store.store.membership.effective_permissions : [], [store])
-  const canRead = ['planning.result.read', ...moneyRights].every((right) => permissions.includes(right))
+  const [accessDenied,setAccessDenied]=useState(false)
+  const onAccessDenied=useCallback(()=>setAccessDenied(true),[])
+  const canRead = !accessDenied && ['planning.result.read', ...moneyRights].every((right) => permissions.includes(right))
   const canViewContext = ['planning.context.read', ...moneyRights].every((right) => permissions.includes(right))
   const hasCreateRights = ['planning.context.read', 'planning.run', 'planning.result.read', ...moneyRights]
     .every((right) => permissions.includes(right))
@@ -126,7 +131,7 @@ function ScopedPlanningPage({ storeId }: { storeId: string | null }) {
       onCreate={(request) => { setSubmitted(structuredClone(request));void workflow.create(request) }} onAssessDate={workflow.assessDate}
       readiness={state.readiness} readinessDate={state.readinessDate} readinessRequestKey={state.readinessRequestKey} readinessBusy={state.readinessBusy} readinessError={state.readinessError} /></div>}
     {canRead && !mismatch && state.run && ['completed', 'failed'].includes(state.run.status) && <PlanningResults
-      key={state.run.run_id} historical={params.get('historical')==='1'} exportAction={<PlanExport run={state.run} optionId={state.selectedOptionId}/>} run={state.run} ingredients={state.ingredients ?? undefined} ingredient={state.ingredient ?? undefined}
+      key={state.run.run_id} historical={params.get('historical')==='1'} exportAction={<PlanExport run={state.run} optionId={state.selectedOptionId} onAccessDenied={onAccessDenied}/>} run={state.run} ingredients={state.ingredients ?? undefined} ingredient={state.ingredient ?? undefined}
       reasons={state.reasons ?? undefined} selectedOptionId={state.selectedOptionId} busy={state.busy} detailBusy={state.detailBusy}
       ingredientsError={state.inspectionArea==='ingredients'?state.inspectionError:undefined} detailError={state.inspectionArea==='ingredient'?state.inspectionError:undefined} reasonsError={state.inspectionArea==='reasons'?state.inspectionError:undefined} hasMoreIngredients={state.nextIngredientCursor !== null} ingredientsTotal={state.ingredientsTotal}
       onSelectOption={workflow.selectOption} onLoadIngredients={() => { void workflow.loadIngredients() }}

@@ -1,8 +1,8 @@
 {
-  "source": "contracts/020/openapi.main.json",
-  "sourceSha": "d5cfbfb59de7c45bc08eb47129b5ba3919e05473",
-  "sourceSha256": "18fb4eabe469c69c817fcf5f0c5b4764c3feb1a886adb71b382c19b347147f7a",
-  "evidence": "Typed callable service + controlled tests; no live acceptance; existing UI consumers/pins not migrated.",
+  "source": "contracts/021/openapi.main.json",
+  "sourceSha": "a17d153feccfa96de34002dd536bf9381c01f219",
+  "sourceSha256": "68204af15000f3c79da135ecd56435becf30b6ef069e7338bb93f87552869a5b",
+  "evidence": "021 typed service/application boundaries; N10 durable production caller; Assistant UI pending canonical states. SOURCE_READY / NOT_DEPLOYED; no live acceptance.",
   "operations": [
     {
       "operationId": "health_health_get",
@@ -700,8 +700,8 @@
       "path": "/api/v1/procurement-plans/{plan_id}/assistant/summary",
       "responseKind": "envelope",
       "service": "IMPLEMENTED",
-      "applicationState": "EXPLICIT_MUTATION",
-      "uiChange": "NONE",
+      "applicationState": "SCOPED_ASSISTANT_BOUNDARY",
+      "uiChange": "PENDING_DESIGN",
       "liveVerification": "NOT_RUN"
     },
     {
@@ -710,8 +710,8 @@
       "path": "/api/v1/procurement-plans/{plan_id}/assistant/summary/{generation_id}",
       "responseKind": "envelope",
       "service": "IMPLEMENTED",
-      "applicationState": "SCOPED_READ",
-      "uiChange": "NONE",
+      "applicationState": "SCOPED_ASSISTANT_BOUNDARY",
+      "uiChange": "PENDING_DESIGN",
       "liveVerification": "NOT_RUN"
     },
     {
@@ -720,8 +720,8 @@
       "path": "/api/v1/procurement-plans/{plan_id}/assistant/messages",
       "responseKind": "envelope",
       "service": "IMPLEMENTED",
-      "applicationState": "EXPLICIT_MUTATION",
-      "uiChange": "NONE",
+      "applicationState": "SCOPED_ASSISTANT_BOUNDARY",
+      "uiChange": "PENDING_DESIGN",
       "liveVerification": "NOT_RUN"
     },
     {
@@ -750,8 +750,8 @@
       "path": "/api/v1/procurement-plans/{plan_id}/exports",
       "responseKind": "envelope",
       "service": "IMPLEMENTED",
-      "applicationState": "EXPLICIT_MUTATION",
-      "uiChange": "NONE",
+      "applicationState": "DURABLE_PRODUCTION_CALLER",
+      "uiChange": "EXISTING_EXPORT_FLOW",
       "liveVerification": "NOT_RUN"
     },
     {

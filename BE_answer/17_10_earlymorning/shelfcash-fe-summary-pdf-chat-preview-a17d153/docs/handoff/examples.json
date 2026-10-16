@@ -1,0 +1,2852 @@
+{
+  "provenance": {
+    "source": "Historical rows retain original provenance; preview source a17d153; see package PROVENANCE.json",
+    "verification": "Historical HTTP/PostgreSQL rows unchanged. integration_sequences are ILLUSTRATIVE offline source-fixture projections, not new HTTP/live evidence.",
+    "providers": "Historical examples OFF; S1 row fake-provider; explicitly labelled S2 row real Gemini/Google synthetic; labelled S2.1 row real Gemini/Google synthetic",
+    "browser_acceptance": "NOT_RUN",
+    "secret_headers": "Intentionally omitted; idempotency keys here are synthetic non-secret intent IDs"
+  },
+  "examples": [
+    {
+      "operation_id": "AS01",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b59/assistant/summary",
+      "body": {
+        "expected_evidence_version": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple"
+      },
+      "headers": {
+        "Idempotency-Key": "e1248fa6-6ac1-4c4a-a43f-9f5330a1cab7"
+      },
+      "response": {
+        "data": {
+          "generation_id": "94ed59ac-4367-4042-a04d-1933be4e918c",
+          "run_id": "00000000-0000-0000-0000-000000001b59",
+          "status": "completed",
+          "created_at": "2026-10-10T02:00:00Z",
+          "finished_at": "2026-10-10T02:00:00Z",
+          "result": {
+            "schema_version": "plan_summary/1",
+            "identity": {
+              "run_id": "00000000-0000-0000-0000-000000001b59",
+              "store_id": "00000000-0000-0000-0000-000000000001",
+              "aggregate_digest": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+              "input_digest": "639b368c0d1794b7ba3017cf825115e1595d6104259c885d49af6b1e0c9df600",
+              "result_digest": "6582904decfe5a8f3eb803694bc75809540dd66d20af9f4bc3906ded2ebcac68",
+              "request_digest": "dc7495f9558ee209d6677f871a4377cdffda6076611de9900c5944985fd6beb9",
+              "storage_version": "planning_storage/1",
+              "package_schema_version": 1,
+              "result_schema_version": "operational_pipeline/2",
+              "capture_schema_version": "operational_capture/2",
+              "accepted_at": "2026-10-07T23:59:59Z",
+              "started_at": "2026-10-07T23:59:59Z",
+              "finished_at": "2026-10-08T00:00:01Z",
+              "captured_at": "2026-10-08T00:00:00Z"
+            },
+            "option_id": "cmp1_a2e8b7ea1408a160d7248f1bd8868fe3125897abeebd9e870890475b0b49e34f",
+            "locale": "vi",
+            "detail_level": "simple",
+            "source": "deterministic_fallback",
+            "presentation": {
+              "ordering": [
+                "outcome",
+                "cost",
+                "requirements",
+                "coverage",
+                "proof",
+                "limitations"
+              ],
+              "tone": "plain"
+            },
+            "answer": "Run có phương án được khuyến nghị.\n\nPhương án đang xem có tổng chi 0 VND, gồm tiền mua 0 và phí phải trả 0 VND. Giới hạn ngân sách đã lưu là 0 VND.\n\nCác đánh giá yêu cầu theo món và đường nhu cầu: 2 đạt, 0 chưa đạt, 0 chưa đánh giá.\n\nPhạm vi đã tính gồm 2/2 món; món bị loại không có nghĩa là nhu cầu bằng không.\n\nKhuyến nghị chỉ so sánh các phương án đã đánh giá, không chứng minh tối ưu toàn cục. Selector xét phương án đủ điều kiện theo chi phí, sau đó mức đáp ứng từng món và thứ tự kỹ thuật khi hòa. Chứng nhận duyệt hết chỉ áp dụng cho miền hữu hạn đã lưu.\n\nRun giữ 0 cảnh báo và 0 vấn đề chặn. Các đường nhu cầu không phải xác suất; kết quả mô phỏng không phải lượng nhận hoặc tiêu thụ thực tế. Chưa có bằng chứng nhân quả hay so sánh không mua trong summary này. Xem chi tiết trước khi quyết định; sửa dữ liệu thì tạo Run mới. Khuyến nghị không tự tạo đơn mua.",
+            "claims": [
+              {
+                "family": "outcome",
+                "text": "Run có phương án được khuyến nghị.",
+                "evidence_ids": [
+                  "ev-4cce14631b2061a83dce13db4dd79a48382a48bf4e15ed10ee792924eabe7a83",
+                  "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66"
+                ]
+              },
+              {
+                "family": "cost",
+                "text": "Phương án đang xem có tổng chi 0 VND, gồm tiền mua 0 và phí phải trả 0 VND. Giới hạn ngân sách đã lưu là 0 VND.",
+                "evidence_ids": [
+                  "ev-5e4809b84dd0f3a66558ef14e4b8cbffb432f75b303f27af15c579b827caf3e2",
+                  "ev-18a4d3e6d9364bb9fded5b70ab224ed008987641a71d5fa7d9d6e384349b3188"
+                ]
+              },
+              {
+                "family": "requirements",
+                "text": "Các đánh giá yêu cầu theo món và đường nhu cầu: 2 đạt, 0 chưa đạt, 0 chưa đánh giá.",
+                "evidence_ids": [
+                  "ev-49254c2ca5a41c100f0cfba5c826ee2ba2cb3020e01b34c2ae12496edc52d0c1"
+                ]
+              },
+              {
+                "family": "coverage",
+                "text": "Phạm vi đã tính gồm 2/2 món; món bị loại không có nghĩa là nhu cầu bằng không.",
+                "evidence_ids": [
+                  "ev-a4898d56dc9d8fdd5c623d2d2e75fd27aa0857acd6535c3306e67e43052b77bf"
+                ]
+              },
+              {
+                "family": "proof",
+                "text": "Khuyến nghị chỉ so sánh các phương án đã đánh giá, không chứng minh tối ưu toàn cục. Selector xét phương án đủ điều kiện theo chi phí, sau đó mức đáp ứng từng món và thứ tự kỹ thuật khi hòa. Chứng nhận duyệt hết chỉ áp dụng cho miền hữu hạn đã lưu.",
+                "evidence_ids": [
+                  "ev-4276f2443d577659923fd848f585d10ea1552405c08832a343a8ff1317c4cbdd",
+                  "ev-0dc27e6328024e4843f0a192a445007b3c663e7bc55db24a7fc929fcc4124184",
+                  "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66"
+                ]
+              },
+              {
+                "family": "limitations",
+                "text": "Run giữ 0 cảnh báo và 0 vấn đề chặn. Các đường nhu cầu không phải xác suất; kết quả mô phỏng không phải lượng nhận hoặc tiêu thụ thực tế. Chưa có bằng chứng nhân quả hay so sánh không mua trong summary này. Xem chi tiết trước khi quyết định; sửa dữ liệu thì tạo Run mới. Khuyến nghị không tự tạo đơn mua.",
+                "evidence_ids": [
+                  "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66",
+                  "ev-125e4d51b1569e5d12f3a19c35a06dbda9b902c0eebfc13d74f995436027dbf1",
+                  "ev-ce72a97f4f8f5f86298fdc305e2aa52385d1838e478ea451288f14c7d522d4a6",
+                  "ev-8184b923030a1f4679054ef3f92bd4a7c0a61c2b2e9b2f1c96b9220f5a1f262f"
+                ]
+              }
+            ],
+            "references": [
+              {
+                "evidence_id": "ev-4cce14631b2061a83dce13db4dd79a48382a48bf4e15ed10ee792924eabe7a83",
+                "pointer": "/overview/outcome",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-5e4809b84dd0f3a66558ef14e4b8cbffb432f75b303f27af15c579b827caf3e2",
+                "pointer": "/overview/configuration",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-8184b923030a1f4679054ef3f92bd4a7c0a61c2b2e9b2f1c96b9220f5a1f262f",
+                "pointer": "/overview/temporal_basis",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-a4898d56dc9d8fdd5c623d2d2e75fd27aa0857acd6535c3306e67e43052b77bf",
+                "pointer": "/overview/scope",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-0dc27e6328024e4843f0a192a445007b3c663e7bc55db24a7fc929fcc4124184",
+                "pointer": "/overview/strategies",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66",
+                "pointer": "/overview/explanation",
+                "source": "retained_C08"
+              },
+              {
+                "evidence_id": "ev-4276f2443d577659923fd848f585d10ea1552405c08832a343a8ff1317c4cbdd",
+                "pointer": "/overview/selection_proof",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-ce72a97f4f8f5f86298fdc305e2aa52385d1838e478ea451288f14c7d522d4a6",
+                "pointer": "/overview/assumptions",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-125e4d51b1569e5d12f3a19c35a06dbda9b902c0eebfc13d74f995436027dbf1",
+                "pointer": "/overview/omissions",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-18a4d3e6d9364bb9fded5b70ab224ed008987641a71d5fa7d9d6e384349b3188",
+                "pointer": "/option/costs",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-49254c2ca5a41c100f0cfba5c826ee2ba2cb3020e01b34c2ae12496edc52d0c1",
+                "pointer": "/option/requirements_assessment",
+                "source": "retained_C03"
+              }
+            ],
+            "diagnostics": {
+              "disposition": "FALLBACK",
+              "reason": "MODEL_DISABLED",
+              "prompt_version": "plan_summary_prompt/1",
+              "validator_version": "summary_presentation_guard/1",
+              "requested_model": null,
+              "resolved_model": null,
+              "resolved_provider": null,
+              "attempts": 0,
+              "input_tokens": null,
+              "output_tokens": null
+            },
+            "renderer_version": "plan_summary_renderer/1"
+          },
+          "error_code": null
+        },
+        "meta": {
+          "request_id": "b1c2fb04-2ac0-4dc8-a0d2-21c03af6765a"
+        },
+        "error": null
+      }
+    },
+    {
+      "operation_id": "AS02",
+      "method": "GET",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b59/assistant/summary/94ed59ac-4367-4042-a04d-1933be4e918c",
+      "response": {
+        "data": {
+          "generation_id": "94ed59ac-4367-4042-a04d-1933be4e918c",
+          "run_id": "00000000-0000-0000-0000-000000001b59",
+          "status": "completed",
+          "created_at": "2026-10-10T02:00:00Z",
+          "finished_at": "2026-10-10T02:00:00Z",
+          "result": {
+            "schema_version": "plan_summary/1",
+            "identity": {
+              "run_id": "00000000-0000-0000-0000-000000001b59",
+              "store_id": "00000000-0000-0000-0000-000000000001",
+              "aggregate_digest": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+              "input_digest": "639b368c0d1794b7ba3017cf825115e1595d6104259c885d49af6b1e0c9df600",
+              "result_digest": "6582904decfe5a8f3eb803694bc75809540dd66d20af9f4bc3906ded2ebcac68",
+              "request_digest": "dc7495f9558ee209d6677f871a4377cdffda6076611de9900c5944985fd6beb9",
+              "storage_version": "planning_storage/1",
+              "package_schema_version": 1,
+              "result_schema_version": "operational_pipeline/2",
+              "capture_schema_version": "operational_capture/2",
+              "accepted_at": "2026-10-07T23:59:59Z",
+              "started_at": "2026-10-07T23:59:59Z",
+              "finished_at": "2026-10-08T00:00:01Z",
+              "captured_at": "2026-10-08T00:00:00Z"
+            },
+            "option_id": "cmp1_a2e8b7ea1408a160d7248f1bd8868fe3125897abeebd9e870890475b0b49e34f",
+            "locale": "vi",
+            "detail_level": "simple",
+            "source": "deterministic_fallback",
+            "presentation": {
+              "ordering": [
+                "outcome",
+                "cost",
+                "requirements",
+                "coverage",
+                "proof",
+                "limitations"
+              ],
+              "tone": "plain"
+            },
+            "answer": "Run có phương án được khuyến nghị.\n\nPhương án đang xem có tổng chi 0 VND, gồm tiền mua 0 và phí phải trả 0 VND. Giới hạn ngân sách đã lưu là 0 VND.\n\nCác đánh giá yêu cầu theo món và đường nhu cầu: 2 đạt, 0 chưa đạt, 0 chưa đánh giá.\n\nPhạm vi đã tính gồm 2/2 món; món bị loại không có nghĩa là nhu cầu bằng không.\n\nKhuyến nghị chỉ so sánh các phương án đã đánh giá, không chứng minh tối ưu toàn cục. Selector xét phương án đủ điều kiện theo chi phí, sau đó mức đáp ứng từng món và thứ tự kỹ thuật khi hòa. Chứng nhận duyệt hết chỉ áp dụng cho miền hữu hạn đã lưu.\n\nRun giữ 0 cảnh báo và 0 vấn đề chặn. Các đường nhu cầu không phải xác suất; kết quả mô phỏng không phải lượng nhận hoặc tiêu thụ thực tế. Chưa có bằng chứng nhân quả hay so sánh không mua trong summary này. Xem chi tiết trước khi quyết định; sửa dữ liệu thì tạo Run mới. Khuyến nghị không tự tạo đơn mua.",
+            "claims": [
+              {
+                "family": "outcome",
+                "text": "Run có phương án được khuyến nghị.",
+                "evidence_ids": [
+                  "ev-4cce14631b2061a83dce13db4dd79a48382a48bf4e15ed10ee792924eabe7a83",
+                  "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66"
+                ]
+              },
+              {
+                "family": "cost",
+                "text": "Phương án đang xem có tổng chi 0 VND, gồm tiền mua 0 và phí phải trả 0 VND. Giới hạn ngân sách đã lưu là 0 VND.",
+                "evidence_ids": [
+                  "ev-5e4809b84dd0f3a66558ef14e4b8cbffb432f75b303f27af15c579b827caf3e2",
+                  "ev-18a4d3e6d9364bb9fded5b70ab224ed008987641a71d5fa7d9d6e384349b3188"
+                ]
+              },
+              {
+                "family": "requirements",
+                "text": "Các đánh giá yêu cầu theo món và đường nhu cầu: 2 đạt, 0 chưa đạt, 0 chưa đánh giá.",
+                "evidence_ids": [
+                  "ev-49254c2ca5a41c100f0cfba5c826ee2ba2cb3020e01b34c2ae12496edc52d0c1"
+                ]
+              },
+              {
+                "family": "coverage",
+                "text": "Phạm vi đã tính gồm 2/2 món; món bị loại không có nghĩa là nhu cầu bằng không.",
+                "evidence_ids": [
+                  "ev-a4898d56dc9d8fdd5c623d2d2e75fd27aa0857acd6535c3306e67e43052b77bf"
+                ]
+              },
+              {
+                "family": "proof",
+                "text": "Khuyến nghị chỉ so sánh các phương án đã đánh giá, không chứng minh tối ưu toàn cục. Selector xét phương án đủ điều kiện theo chi phí, sau đó mức đáp ứng từng món và thứ tự kỹ thuật khi hòa. Chứng nhận duyệt hết chỉ áp dụng cho miền hữu hạn đã lưu.",
+                "evidence_ids": [
+                  "ev-4276f2443d577659923fd848f585d10ea1552405c08832a343a8ff1317c4cbdd",
+                  "ev-0dc27e6328024e4843f0a192a445007b3c663e7bc55db24a7fc929fcc4124184",
+                  "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66"
+                ]
+              },
+              {
+                "family": "limitations",
+                "text": "Run giữ 0 cảnh báo và 0 vấn đề chặn. Các đường nhu cầu không phải xác suất; kết quả mô phỏng không phải lượng nhận hoặc tiêu thụ thực tế. Chưa có bằng chứng nhân quả hay so sánh không mua trong summary này. Xem chi tiết trước khi quyết định; sửa dữ liệu thì tạo Run mới. Khuyến nghị không tự tạo đơn mua.",
+                "evidence_ids": [
+                  "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66",
+                  "ev-125e4d51b1569e5d12f3a19c35a06dbda9b902c0eebfc13d74f995436027dbf1",
+                  "ev-ce72a97f4f8f5f86298fdc305e2aa52385d1838e478ea451288f14c7d522d4a6",
+                  "ev-8184b923030a1f4679054ef3f92bd4a7c0a61c2b2e9b2f1c96b9220f5a1f262f"
+                ]
+              }
+            ],
+            "references": [
+              {
+                "evidence_id": "ev-4cce14631b2061a83dce13db4dd79a48382a48bf4e15ed10ee792924eabe7a83",
+                "pointer": "/overview/outcome",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-5e4809b84dd0f3a66558ef14e4b8cbffb432f75b303f27af15c579b827caf3e2",
+                "pointer": "/overview/configuration",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-8184b923030a1f4679054ef3f92bd4a7c0a61c2b2e9b2f1c96b9220f5a1f262f",
+                "pointer": "/overview/temporal_basis",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-a4898d56dc9d8fdd5c623d2d2e75fd27aa0857acd6535c3306e67e43052b77bf",
+                "pointer": "/overview/scope",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-0dc27e6328024e4843f0a192a445007b3c663e7bc55db24a7fc929fcc4124184",
+                "pointer": "/overview/strategies",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66",
+                "pointer": "/overview/explanation",
+                "source": "retained_C08"
+              },
+              {
+                "evidence_id": "ev-4276f2443d577659923fd848f585d10ea1552405c08832a343a8ff1317c4cbdd",
+                "pointer": "/overview/selection_proof",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-ce72a97f4f8f5f86298fdc305e2aa52385d1838e478ea451288f14c7d522d4a6",
+                "pointer": "/overview/assumptions",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-125e4d51b1569e5d12f3a19c35a06dbda9b902c0eebfc13d74f995436027dbf1",
+                "pointer": "/overview/omissions",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-18a4d3e6d9364bb9fded5b70ab224ed008987641a71d5fa7d9d6e384349b3188",
+                "pointer": "/option/costs",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-49254c2ca5a41c100f0cfba5c826ee2ba2cb3020e01b34c2ae12496edc52d0c1",
+                "pointer": "/option/requirements_assessment",
+                "source": "retained_C03"
+              }
+            ],
+            "diagnostics": {
+              "disposition": "FALLBACK",
+              "reason": "MODEL_DISABLED",
+              "prompt_version": "plan_summary_prompt/1",
+              "validator_version": "summary_presentation_guard/1",
+              "requested_model": null,
+              "resolved_model": null,
+              "resolved_provider": null,
+              "attempts": 0,
+              "input_tokens": null,
+              "output_tokens": null
+            },
+            "renderer_version": "plan_summary_renderer/1"
+          },
+          "error_code": null
+        },
+        "meta": {
+          "request_id": "36358247-e442-4e86-9e33-169a50fc66f0"
+        },
+        "error": null
+      }
+    },
+    {
+      "operation_id": "AS03",
+      "example": "answer",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b59/assistant/messages",
+      "headers": {
+        "Idempotency-Key": "65250649-694a-4671-9b24-41a2b5b773e1"
+      },
+      "body": {
+        "expected_evidence_version": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple",
+        "question": "Chi phí và ngân sách?",
+        "ingredient_id": null,
+        "history": []
+      },
+      "response": {
+        "data": {
+          "schema_version": "decision_assistant/1",
+          "run_id": "00000000-0000-0000-0000-000000001b59",
+          "evidence_version": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+          "result_digest": "6582904decfe5a8f3eb803694bc75809540dd66d20af9f4bc3906ded2ebcac68",
+          "option_id": "cmp1_a2e8b7ea1408a160d7248f1bd8868fe3125897abeebd9e870890475b0b49e34f",
+          "ingredient_id": null,
+          "locale": "vi",
+          "kind": "answer",
+          "source": "deterministic_fallback",
+          "answer": "Tổng chi của phương án đang xem là 0 VND.\n\nTiền mua là 0 VND.\n\nPhí phải trả là 0 VND.\n\nNgân sách đã lưu là 0 VND.",
+          "claims": [
+            {
+              "text": "Tổng chi của phương án đang xem là 0 VND.",
+              "evidence_ids": [
+                "ev-18a4d3e6d9364bb9fded5b70ab224ed008987641a71d5fa7d9d6e384349b3188",
+                "ev-d61dc463d3f65d000dd9a5e8b0495c386cd2b81ecf0f6abcbaede9dc1de1b627",
+                "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66",
+                "ev-99b2b02f96a2f36cc907ae4563044b266083238b4dd85181fff54a6bc4fb227e"
+              ]
+            },
+            {
+              "text": "Tiền mua là 0 VND.",
+              "evidence_ids": [
+                "ev-18a4d3e6d9364bb9fded5b70ab224ed008987641a71d5fa7d9d6e384349b3188",
+                "ev-d61dc463d3f65d000dd9a5e8b0495c386cd2b81ecf0f6abcbaede9dc1de1b627",
+                "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66",
+                "ev-99b2b02f96a2f36cc907ae4563044b266083238b4dd85181fff54a6bc4fb227e"
+              ]
+            },
+            {
+              "text": "Phí phải trả là 0 VND.",
+              "evidence_ids": [
+                "ev-18a4d3e6d9364bb9fded5b70ab224ed008987641a71d5fa7d9d6e384349b3188",
+                "ev-d61dc463d3f65d000dd9a5e8b0495c386cd2b81ecf0f6abcbaede9dc1de1b627",
+                "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66",
+                "ev-99b2b02f96a2f36cc907ae4563044b266083238b4dd85181fff54a6bc4fb227e"
+              ]
+            },
+            {
+              "text": "Ngân sách đã lưu là 0 VND.",
+              "evidence_ids": [
+                "ev-5e4809b84dd0f3a66558ef14e4b8cbffb432f75b303f27af15c579b827caf3e2"
+              ]
+            }
+          ],
+          "references": [
+            {
+              "evidence_id": "ev-d61dc463d3f65d000dd9a5e8b0495c386cd2b81ecf0f6abcbaede9dc1de1b627",
+              "pointer": "/overview/recommendation_available",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-5e4809b84dd0f3a66558ef14e4b8cbffb432f75b303f27af15c579b827caf3e2",
+              "pointer": "/overview/configuration",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-f0bdb895475e35e7c62e3b4ca3b6f99468ad0203543ec2339b7b379ec4ab0d66",
+              "pointer": "/overview/explanation",
+              "source": "retained_C08"
+            },
+            {
+              "evidence_id": "ev-99b2b02f96a2f36cc907ae4563044b266083238b4dd85181fff54a6bc4fb227e",
+              "pointer": "/option/option_id",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-18a4d3e6d9364bb9fded5b70ab224ed008987641a71d5fa7d9d6e384349b3188",
+              "pointer": "/option/costs",
+              "source": "retained_C03"
+            }
+          ],
+          "clarification": null,
+          "diagnostics": {
+            "reason": "MODEL_DISABLED",
+            "prompt_version": null,
+            "validator_version": "decision_chat_renderer/4",
+            "model": null,
+            "resolved_model": null,
+            "provider": null,
+            "attempts": 0,
+            "input_tokens": null,
+            "output_tokens": null,
+            "cost_usd": null,
+            "latency_ms": null,
+            "finish_reason": null,
+            "disposition": "FALLBACK",
+            "prompt_hash": null,
+            "schema_hash": null,
+            "evidence_hash": null
+          },
+          "context": {
+            "run_id": "00000000-0000-0000-0000-000000001b59",
+            "evidence_version": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+            "option_id": "cmp1_a2e8b7ea1408a160d7248f1bd8868fe3125897abeebd9e870890475b0b49e34f",
+            "comparison_pair": null,
+            "ingredient_id": null,
+            "product_id": null,
+            "pending": null,
+            "topic": null
+          }
+        },
+        "meta": {
+          "request_id": "1c8a71db-7ceb-48fa-a50c-2f32a121cd9e"
+        },
+        "error": null
+      }
+    },
+    {
+      "operation_id": "AS03",
+      "example": "clarification",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b59/assistant/messages",
+      "headers": {
+        "Idempotency-Key": "94978212-fa37-4208-b4de-3a6071515caf"
+      },
+      "body": {
+        "expected_evidence_version": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple",
+        "question": "Tồn kho?",
+        "ingredient_id": null,
+        "history": []
+      },
+      "response": {
+        "data": {
+          "schema_version": "decision_assistant/1",
+          "run_id": "00000000-0000-0000-0000-000000001b59",
+          "evidence_version": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+          "result_digest": "6582904decfe5a8f3eb803694bc75809540dd66d20af9f4bc3906ded2ebcac68",
+          "option_id": "cmp1_a2e8b7ea1408a160d7248f1bd8868fe3125897abeebd9e870890475b0b49e34f",
+          "ingredient_id": null,
+          "locale": "vi",
+          "kind": "clarification",
+          "source": "deterministic_clarification",
+          "answer": "Run chưa lưu tên nguyên liệu; chỉ có các ID đã lưu.",
+          "claims": [],
+          "references": [],
+          "clarification": {
+            "code": "ENTITY_AMBIGUOUS",
+            "question": "Run chưa lưu tên nguyên liệu; chỉ có các ID đã lưu.",
+            "candidates": [],
+            "original_question": "Tồn kho?",
+            "option_candidates": []
+          },
+          "diagnostics": {
+            "reason": "EVIDENCE_INSUFFICIENT",
+            "prompt_version": null,
+            "validator_version": "decision_chat_renderer/4",
+            "model": null,
+            "resolved_model": null,
+            "provider": null,
+            "attempts": 0,
+            "input_tokens": null,
+            "output_tokens": null,
+            "cost_usd": null,
+            "latency_ms": null,
+            "finish_reason": null,
+            "disposition": "FALLBACK",
+            "prompt_hash": null,
+            "schema_hash": null,
+            "evidence_hash": null
+          },
+          "context": {
+            "run_id": "00000000-0000-0000-0000-000000001b59",
+            "evidence_version": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+            "option_id": "cmp1_a2e8b7ea1408a160d7248f1bd8868fe3125897abeebd9e870890475b0b49e34f",
+            "comparison_pair": null,
+            "ingredient_id": null,
+            "product_id": null,
+            "pending": {
+              "original_question": "Tồn kho?",
+              "candidate_ids": [
+                "00000000-0000-0000-0000-0000000000c8",
+                "00000000-0000-0000-0000-0000000000c9"
+              ]
+            },
+            "topic": "stock"
+          }
+        },
+        "meta": {
+          "request_id": "7733c3d3-8db5-4347-baca-5f78a1d6a7ff"
+        },
+        "error": null
+      }
+    },
+    {
+      "operation_id": "AS03",
+      "example": "context_continuation",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b59/assistant/messages",
+      "headers": {
+        "Idempotency-Key": "48842ec5-922e-45e1-b5b2-f2bd6cf274f6"
+      },
+      "body": {
+        "expected_evidence_version": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple",
+        "question": "Tồn kho?",
+        "ingredient_id": null,
+        "history": [],
+        "context": {
+          "run_id": "00000000-0000-0000-0000-000000001b59",
+          "evidence_version": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+          "option_id": "cmp1_a2e8b7ea1408a160d7248f1bd8868fe3125897abeebd9e870890475b0b49e34f",
+          "comparison_pair": null,
+          "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+          "product_id": null,
+          "pending": {
+            "original_question": "Tồn kho?",
+            "candidate_ids": [
+              "00000000-0000-0000-0000-0000000000c8",
+              "00000000-0000-0000-0000-0000000000c9"
+            ]
+          },
+          "topic": "stock"
+        }
+      },
+      "response": {
+        "data": {
+          "schema_version": "decision_assistant/1",
+          "run_id": "00000000-0000-0000-0000-000000001b59",
+          "evidence_version": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+          "result_digest": "6582904decfe5a8f3eb803694bc75809540dd66d20af9f4bc3906ded2ebcac68",
+          "option_id": "cmp1_a2e8b7ea1408a160d7248f1bd8868fe3125897abeebd9e870890475b0b49e34f",
+          "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+          "locale": "vi",
+          "kind": "answer",
+          "source": "deterministic_fallback",
+          "answer": "Tồn đã chụp của nguyên liệu đang xem, lô 00000000-0000-0000-0000-000000000190: 20 g.",
+          "claims": [
+            {
+              "text": "Tồn đã chụp của nguyên liệu đang xem, lô 00000000-0000-0000-0000-000000000190: 20 g.",
+              "evidence_ids": [
+                "ev-7963fa20554151aecb7a4768996d82b9f81fe82e2b8b3c0335c1857db30001e8"
+              ]
+            }
+          ],
+          "references": [
+            {
+              "evidence_id": "ev-7963fa20554151aecb7a4768996d82b9f81fe82e2b8b3c0335c1857db30001e8",
+              "pointer": "/ingredient/captured_stock",
+              "source": "retained_C05"
+            }
+          ],
+          "clarification": null,
+          "diagnostics": {
+            "reason": "MODEL_DISABLED",
+            "prompt_version": null,
+            "validator_version": "decision_chat_renderer/4",
+            "model": null,
+            "resolved_model": null,
+            "provider": null,
+            "attempts": 0,
+            "input_tokens": null,
+            "output_tokens": null,
+            "cost_usd": null,
+            "latency_ms": null,
+            "finish_reason": null,
+            "disposition": "FALLBACK",
+            "prompt_hash": null,
+            "schema_hash": null,
+            "evidence_hash": null
+          },
+          "context": {
+            "run_id": "00000000-0000-0000-0000-000000001b59",
+            "evidence_version": "0b09278b046784efec6a2b8fdf360d9cddc7c423e57e46676bf2d4e7c1167012",
+            "option_id": "cmp1_a2e8b7ea1408a160d7248f1bd8868fe3125897abeebd9e870890475b0b49e34f",
+            "comparison_pair": null,
+            "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+            "product_id": null,
+            "pending": null,
+            "topic": "stock"
+          }
+        },
+        "meta": {
+          "request_id": "5dcec3c8-790e-4c86-ac2a-ffa36128c026"
+        },
+        "error": null
+      }
+    },
+    {
+      "operation_id": "T03",
+      "method": "POST",
+      "path": "/api/v1/stores",
+      "headers": {
+        "Idempotency-Key": "862c6ab3-f293-4c69-af71-72aeeb3f3a78"
+      },
+      "body": {
+        "name": "Synthetic handoff Store",
+        "timezone": "UTC",
+        "currency": "VND"
+      },
+      "response": {
+        "data": {
+          "store_id": "42b91a77-c3ba-475a-a786-c64423975e08",
+          "name": "Synthetic handoff Store",
+          "timezone": "UTC",
+          "currency": "VND",
+          "role": "OWNER",
+          "membership_id": "f6ac7e0b-f22b-4ad8-8d9e-5c1c6e07ae31",
+          "authorization_version": "auth-8c54211739510ce734eb81298b4f1a4722213a1a477a17fb8e560e6ee4693b3d"
+        },
+        "meta": {
+          "request_id": "299a7ac9-7e4c-4583-a999-0011a5b03605"
+        },
+        "error": null
+      },
+      "recovery": {
+        "reader": "/api/v1/stores",
+        "exact_replay_equal": true,
+        "empty_before_dispatch_did_not_fence_creation": true
+      }
+    },
+    {
+      "operation_id": "I05",
+      "method": "POST",
+      "path": "/api/v1/imports/9da04151-1ecf-4978-89c4-6c2adb1dcb30/process",
+      "headers": {
+        "Idempotency-Key": "c6a6ed39-88d8-4cb2-9a89-5f4a7b7b1a1f",
+        "If-Match": "\"27b68302-f448-4f51-8c32-ee02f2c8956a\""
+      },
+      "body": {
+        "phase": "commit",
+        "preview_id": "5b8535e9-5075-4eee-8a90-cc6f44834c92",
+        "preview_digest": "sha256:4802e2c6274bfd5371687fdb198ae1a7cee3c3ee95c1221648a61dcf2ac521e2",
+        "confirm": true,
+        "resolutions": []
+      },
+      "response": {
+        "data": {
+          "import_id": "9da04151-1ecf-4978-89c4-6c2adb1dcb30",
+          "status": "committing",
+          "phase": "commit",
+          "job_id": "88e33018-df18-48e1-a0cb-1cd6616a62f1",
+          "job_status": "queued",
+          "commit_id": "13f96642-6a62-44df-9a66-2e90c4b18807",
+          "preview_id": "5b8535e9-5075-4eee-8a90-cc6f44834c92",
+          "effective_plan_digest": "sha256:f5fdcfd05bb80a13598b0d480c7d7e052e28e825c0631f90b719225849e7c212",
+          "import_revision": "26786de1-fe3b-4db0-b851-44cc613ec54f"
+        },
+        "meta": {
+          "request_id": "ebb9a9bb-a595-454e-a557-f83070e0ab13",
+          "warnings": [],
+          "poll_after_ms": 2000,
+          "pagination": null
+        },
+        "error": null
+      },
+      "completion": {
+        "import_id": "9da04151-1ecf-4978-89c4-6c2adb1dcb30",
+        "status": "completed_with_warnings",
+        "data_date": "2026-10-09",
+        "outcome": "committed",
+        "mode": "atomic",
+        "completed_at": "2026-10-10T02:00:00Z",
+        "commit_id": "13f96642-6a62-44df-9a66-2e90c4b18807",
+        "preview_id": "5b8535e9-5075-4eee-8a90-cc6f44834c92",
+        "effective_plan_digest": "sha256:f5fdcfd05bb80a13598b0d480c7d7e052e28e825c0631f90b719225849e7c212",
+        "mapping_bindings": [
+          {
+            "sheet_id": "d0fddbc1-2c5f-4bda-a76d-fd7be37070d0",
+            "profile_id": "03d5c29d-116c-4f22-bd64-fd0e43e93799",
+            "version": "a793219f-a113-4f7b-b730-3c6b048cdbd5",
+            "content_digest": "sha256:deb79daa5fced0fcdb21d7b6c133cd1d650c3c339c196f488fbb9288e021d190"
+          }
+        ],
+        "summary": {
+          "files": 1,
+          "sheets": 1,
+          "rows": 1,
+          "mapped_fields": 5,
+          "errors": 0,
+          "warnings": 1,
+          "counts": {
+            "NEW": 1,
+            "UNCHANGED": 0,
+            "CHANGED": 0,
+            "INVALID": 0,
+            "CONFLICT": 0
+          },
+          "inserted_record_count": 1,
+          "changed_record_count": 0,
+          "no_op_count": 0
+        },
+        "updated_resources": {
+          "inventory": {
+            "updated": false,
+            "affected_ingredient_count": null,
+            "changed_record_count": null
+          },
+          "menu": {
+            "updated": false,
+            "affected_product_count": null,
+            "changed_record_count": null
+          },
+          "sales": {
+            "updated": true,
+            "added_record_count": 1,
+            "changed_record_count": 0
+          },
+          "catalog": {
+            "created_product_count": 0,
+            "created_ingredient_count": 0
+          },
+          "suppliers": {
+            "updated": false,
+            "created_count": 0,
+            "changed_count": 0
+          },
+          "terms": {
+            "updated": false,
+            "created_count": 0,
+            "changed_count": 0
+          },
+          "fees": {
+            "updated": false,
+            "created_count": 0,
+            "changed_count": 0
+          },
+          "declarations": {
+            "updated": false,
+            "created_count": 0,
+            "changed_count": 0
+          }
+        },
+        "readiness": {
+          "evaluated_at": "2026-10-10T02:00:00Z",
+          "as_of_date": "2026-10-10",
+          "data_version": "sha256:7aedcb22d3012a0e715502b9cdbef10ae880069c43f6daba1fb92db5cd0804e0",
+          "actions": [
+            {
+              "action": "import",
+              "availability": "ready",
+              "can_execute": true,
+              "data_status": "valid",
+              "execution_status": "available",
+              "blockers": [],
+              "warnings": [],
+              "result_assessment": "NOT_ASSESSED"
+            },
+            {
+              "action": "menu",
+              "availability": "ready",
+              "can_execute": true,
+              "data_status": "valid",
+              "execution_status": "available",
+              "blockers": [],
+              "warnings": [],
+              "result_assessment": "NOT_ASSESSED"
+            },
+            {
+              "action": "inventory",
+              "availability": "ready",
+              "can_execute": true,
+              "data_status": "valid",
+              "execution_status": "available",
+              "blockers": [],
+              "warnings": [],
+              "result_assessment": "NOT_ASSESSED"
+            }
+          ],
+          "evaluated_actions": [
+            "import",
+            "menu",
+            "inventory"
+          ],
+          "omitted_actions": []
+        },
+        "audit_reference": "61e0fdbc-231f-44df-b178-3b874966c66b",
+        "canonical_references": [
+          {
+            "row_id": "dd3b2f8e-b015-4d4b-83ba-c11d5c79f43a",
+            "canonical_domain": "sales",
+            "canonical_id": "dd25bfc3-ea2c-488f-b648-ed92c7233233",
+            "source_location": {
+              "file_id": "b380bd6c-28c3-4e71-9db3-b2c44486d1a8",
+              "sheet_id": "d0fddbc1-2c5f-4bda-a76d-fd7be37070d0",
+              "row_number": 2,
+              "source_column_index": null,
+              "record_number": 2,
+              "line_start": 2,
+              "line_end": 2
+            },
+            "source_locations": [
+              {
+                "file_id": "b380bd6c-28c3-4e71-9db3-b2c44486d1a8",
+                "sheet_id": "d0fddbc1-2c5f-4bda-a76d-fd7be37070d0",
+                "row_number": 2,
+                "source_column_index": null,
+                "record_number": 2,
+                "line_start": 2,
+                "line_end": 2
+              }
+            ],
+            "line_provenance": [],
+            "nested_provenance": [],
+            "provenance": {
+              "unit": {
+                "source_value": "cup",
+                "origin": "SOURCE_EXPLICIT",
+                "applied_rule_ids": [],
+                "value_source": "SOURCE_COLUMN",
+                "source_column_index": 3,
+                "declaration_id": null
+              },
+              "quantity": {
+                "source_value": "105",
+                "origin": "SOURCE_EXPLICIT",
+                "applied_rule_ids": [],
+                "value_source": "SOURCE_COLUMN",
+                "source_column_index": 2,
+                "declaration_id": null
+              },
+              "product_id": {
+                "source_value": "51a67b06-dbc8-44be-9ac5-5dde32ff689b",
+                "origin": "SOURCE_EXPLICIT",
+                "applied_rule_ids": [],
+                "value_source": "SOURCE_COLUMN",
+                "source_column_index": 0,
+                "declaration_id": null
+              },
+              "sales_date": {
+                "source_value": "2026-10-09",
+                "origin": "SOURCE_EXPLICIT",
+                "applied_rule_ids": [],
+                "value_source": "SOURCE_COLUMN",
+                "source_column_index": 1,
+                "declaration_id": null
+              },
+              "is_stockout": {
+                "source_value": null,
+                "origin": "UNKNOWN",
+                "applied_rule_ids": [
+                  "stockout:new_unknown"
+                ],
+                "value_source": "SOURCE_COLUMN",
+                "source_column_index": null,
+                "declaration_id": null
+              },
+              "business_report_key": {
+                "source_value": "REPORT-1",
+                "origin": "SOURCE_EXPLICIT",
+                "applied_rule_ids": [],
+                "value_source": "SOURCE_COLUMN",
+                "source_column_index": 4,
+                "declaration_id": null
+              }
+            },
+            "canonical_version": null,
+            "movement_ids": [],
+            "nested_references": [],
+            "supplier_term_semantics": null,
+            "inventory_effect": null,
+            "sales_contributions": [
+              {
+                "source_system_key": "POS-A",
+                "report_type": "daily-sales",
+                "business_report_key": "REPORT-1",
+                "semantics": "daily_total",
+                "quantity": "105",
+                "is_stockout": null,
+                "stockout_update": null,
+                "source_locations": [
+                  {
+                    "file_id": "b380bd6c-28c3-4e71-9db3-b2c44486d1a8",
+                    "sheet_id": "d0fddbc1-2c5f-4bda-a76d-fd7be37070d0",
+                    "row_number": 2,
+                    "source_column_index": null,
+                    "record_number": 2,
+                    "line_start": 2,
+                    "line_end": 2
+                  }
+                ],
+                "provenance": [
+                  {
+                    "field": "product_id",
+                    "source_value": "51a67b06-dbc8-44be-9ac5-5dde32ff689b",
+                    "origin": "SOURCE_EXPLICIT",
+                    "applied_rule_ids": [],
+                    "value_source": "SOURCE_COLUMN",
+                    "source_column_index": 0,
+                    "declaration_id": null
+                  },
+                  {
+                    "field": "sales_date",
+                    "source_value": "2026-10-09",
+                    "origin": "SOURCE_EXPLICIT",
+                    "applied_rule_ids": [],
+                    "value_source": "SOURCE_COLUMN",
+                    "source_column_index": 1,
+                    "declaration_id": null
+                  },
+                  {
+                    "field": "quantity",
+                    "source_value": "105",
+                    "origin": "SOURCE_EXPLICIT",
+                    "applied_rule_ids": [],
+                    "value_source": "SOURCE_COLUMN",
+                    "source_column_index": 2,
+                    "declaration_id": null
+                  },
+                  {
+                    "field": "unit",
+                    "source_value": "cup",
+                    "origin": "SOURCE_EXPLICIT",
+                    "applied_rule_ids": [],
+                    "value_source": "SOURCE_COLUMN",
+                    "source_column_index": 3,
+                    "declaration_id": null
+                  },
+                  {
+                    "field": "business_report_key",
+                    "source_value": "REPORT-1",
+                    "origin": "SOURCE_EXPLICIT",
+                    "applied_rule_ids": [],
+                    "value_source": "SOURCE_COLUMN",
+                    "source_column_index": 4,
+                    "declaration_id": null
+                  },
+                  {
+                    "field": "is_stockout",
+                    "source_value": null,
+                    "origin": "UNKNOWN",
+                    "applied_rule_ids": [
+                      "stockout:new_unknown"
+                    ],
+                    "value_source": "SOURCE_COLUMN",
+                    "source_column_index": null,
+                    "declaration_id": null
+                  }
+                ]
+              }
+            ],
+            "history_record": null,
+            "receipt_effect": null,
+            "receipt_reference": null
+          }
+        ]
+      },
+      "recovery": {
+        "exact_replay_equal": true,
+        "reason_omitted_vs_null_equivalent": true,
+        "reader": "/api/v1/imports/9da04151-1ecf-4978-89c4-6c2adb1dcb30/completion"
+      }
+    },
+    {
+      "operation_id": "AS01",
+      "example": "summary_narrative_fake_provider",
+      "verification": "S1 synthetic fake-provider projection, not a live Gemini or browser response",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "body": {
+        "expected_evidence_version": "58e394d93bed777b25f698150678e30ce842c1c2ecac875a0bf8463915ccff32",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple"
+      },
+      "headers": {
+        "Idempotency-Key": "00000000-0000-0000-0000-000000000386"
+      },
+      "response": {
+        "data": {
+          "generation_id": "00000000-0000-0000-0000-000000000385",
+          "run_id": "00000000-0000-0000-0000-000000001b5a",
+          "status": "completed",
+          "created_at": "2026-10-08T00:00:01Z",
+          "finished_at": "2026-10-08T00:00:01Z",
+          "result": {
+            "schema_version": "plan_summary/1",
+            "identity": {
+              "run_id": "00000000-0000-0000-0000-000000001b5a",
+              "store_id": "00000000-0000-0000-0000-000000000001",
+              "aggregate_digest": "58e394d93bed777b25f698150678e30ce842c1c2ecac875a0bf8463915ccff32",
+              "input_digest": "e0d279ddc61f35cca259f737f917a35976b14b997ffd08ce17a62f67a2ad95b6",
+              "result_digest": "0cc0f2af5f1faa5b03d29af55ef4c25b873b18d78eb574afcd45ec5667be699a",
+              "request_digest": "dc7495f9558ee209d6677f871a4377cdffda6076611de9900c5944985fd6beb9",
+              "storage_version": "planning_storage/1",
+              "package_schema_version": 1,
+              "result_schema_version": "operational_pipeline/2",
+              "capture_schema_version": "operational_capture/2",
+              "accepted_at": "2026-10-07T23:59:59Z",
+              "started_at": "2026-10-07T23:59:59Z",
+              "finished_at": "2026-10-08T00:00:01Z",
+              "captured_at": "2026-10-08T00:00:00Z"
+            },
+            "option_id": "cmp1_aed8ebc43e1b6d7f617016c35fe21978c89e6ccaa4651e1bfa3e0ece107b11ed",
+            "locale": "vi",
+            "detail_level": "simple",
+            "source": "model_presentation",
+            "presentation": {
+              "ordering": [
+                "outcome",
+                "cost",
+                "requirements",
+                "coverage",
+                "proof",
+                "limitations"
+              ],
+              "tone": "plain"
+            },
+            "answer": "Phương án tinh gọn/cân bằng/bảo vệ được khuyến nghị cho kế hoạch này.\n\nPhương án đang xem cần tổng chi 10 VND: tiền mua 10 VND, phí phải trả 0 VND. Giới hạn ngân sách đã lưu là 10 VND.\n\nCó 2 đánh giá đạt, 0 chưa đạt, 0 chưa đánh giá theo từng món và đường nhu cầu.\n\nPhạm vi đã tính gồm 2 trong tổng số 2 món.\n\nKết quả tìm kiếm còn thiếu chứng nhận đầy đủ trong miền đã lưu. Việc so sánh chỉ bao gồm các phương án đã đánh giá, không chứng minh tối ưu toàn cục.\n\nKết quả mô phỏng chưa tạo đơn mua và không phản ánh tiêu thụ thực tế.",
+            "claims": [
+              {
+                "family": "outcome",
+                "text": "Phương án tinh gọn/cân bằng/bảo vệ được khuyến nghị cho kế hoạch này.",
+                "evidence_ids": [
+                  "ev-4cb0a45df1bd8478e35a03a2643ad881078618c723bc5b018b79056ad085a067",
+                  "ev-0b6dfa898f9b0966c2210f7b2b4498c48f60e5744105cc3f1310e29d63632eee",
+                  "ev-1c7354df442e285023f80c8e7f2c70baa3f4f0d8fb7c65173486b201e58a0300"
+                ]
+              },
+              {
+                "family": "cost",
+                "text": "Phương án đang xem cần tổng chi 10 VND: tiền mua 10 VND, phí phải trả 0 VND. Giới hạn ngân sách đã lưu là 10 VND.",
+                "evidence_ids": [
+                  "ev-df5b1c20ae1eeef70c4526ca7997c9ac63527712667d4e30cbc69b7f4575beed",
+                  "ev-e8cb8a24080982275c8072c263602bf236735b48ab15b592d0b24e8555e3231d",
+                  "ev-835e102d5e4672f937490c60cf4c72973af1e13acd7becc83a2474efc8285e82"
+                ]
+              },
+              {
+                "family": "requirements",
+                "text": "Có 2 đánh giá đạt, 0 chưa đạt, 0 chưa đánh giá theo từng món và đường nhu cầu.",
+                "evidence_ids": [
+                  "ev-ad03e5e8b59e11cfcd895f693b62c9f9fa5317d9926c5cdd32b4c7eacc490fd6"
+                ]
+              },
+              {
+                "family": "coverage",
+                "text": "Phạm vi đã tính gồm 2 trong tổng số 2 món.",
+                "evidence_ids": [
+                  "ev-28022f1c3f3d2c6fd4582f4f0505d7dbfa36bba5eda08f8b8076007198e48ea9"
+                ]
+              },
+              {
+                "family": "proof",
+                "text": "Kết quả tìm kiếm còn thiếu chứng nhận đầy đủ trong miền đã lưu. Việc so sánh chỉ bao gồm các phương án đã đánh giá, không chứng minh tối ưu toàn cục.",
+                "evidence_ids": [
+                  "ev-1ffb1de20a99aaab45891584c879efc01e1c900347a46f86b97ca4fed5e87702",
+                  "ev-2aee7b8202f445a9be51bcc758facc82cd4bb195f3453836492b0510a4b99bbd"
+                ]
+              },
+              {
+                "family": "limitations",
+                "text": "Kết quả mô phỏng chưa tạo đơn mua và không phản ánh tiêu thụ thực tế.",
+                "evidence_ids": [
+                  "ev-137bd9ce95e095bd629986f1db340847947bb901085329b36397268772716a19",
+                  "ev-58c176015eab78f85f6f5b33026a44146e45adfc70e4ef2a8d27ba7892b1304c"
+                ]
+              }
+            ],
+            "references": [
+              {
+                "evidence_id": "ev-4cb0a45df1bd8478e35a03a2643ad881078618c723bc5b018b79056ad085a067",
+                "pointer": "/overview/recommendation_available",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-835e102d5e4672f937490c60cf4c72973af1e13acd7becc83a2474efc8285e82",
+                "pointer": "/overview/configuration",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-28022f1c3f3d2c6fd4582f4f0505d7dbfa36bba5eda08f8b8076007198e48ea9",
+                "pointer": "/overview/scope",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-1ffb1de20a99aaab45891584c879efc01e1c900347a46f86b97ca4fed5e87702",
+                "pointer": "/overview/strategies",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-1c7354df442e285023f80c8e7f2c70baa3f4f0d8fb7c65173486b201e58a0300",
+                "pointer": "/overview/options",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-0b6dfa898f9b0966c2210f7b2b4498c48f60e5744105cc3f1310e29d63632eee",
+                "pointer": "/overview/explanation",
+                "source": "retained_C08"
+              },
+              {
+                "evidence_id": "ev-2aee7b8202f445a9be51bcc758facc82cd4bb195f3453836492b0510a4b99bbd",
+                "pointer": "/overview/selection_proof",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-137bd9ce95e095bd629986f1db340847947bb901085329b36397268772716a19",
+                "pointer": "/overview/assumptions",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-58c176015eab78f85f6f5b33026a44146e45adfc70e4ef2a8d27ba7892b1304c",
+                "pointer": "/overview/omissions",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-df5b1c20ae1eeef70c4526ca7997c9ac63527712667d4e30cbc69b7f4575beed",
+                "pointer": "/option/option_id",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-e8cb8a24080982275c8072c263602bf236735b48ab15b592d0b24e8555e3231d",
+                "pointer": "/option/costs",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-ad03e5e8b59e11cfcd895f693b62c9f9fa5317d9926c5cdd32b4c7eacc490fd6",
+                "pointer": "/option/requirements_assessment",
+                "source": "retained_C03"
+              }
+            ],
+            "diagnostics": {
+              "disposition": "ACCEPTED",
+              "reason": "NONE",
+              "prompt_version": "plan_summary_prompt/2",
+              "validator_version": "summary_narrative_guard/2",
+              "requested_model": "synthetic-summary",
+              "resolved_model": null,
+              "resolved_provider": null,
+              "attempts": 1,
+              "input_tokens": null,
+              "output_tokens": null
+            },
+            "renderer_version": "plan_summary_renderer/2"
+          },
+          "error_code": null
+        },
+        "meta": {
+          "request_id": "synthetic-narrative-example"
+        },
+        "error": null
+      }
+    },
+    {
+      "operation_id": "AS01",
+      "example": "summary_narrative_gemini_s2",
+      "verification": "S2 synthetic AS01 real Gemini/Google on final profile4 source; Codex grading only",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/db5ee8f7-f8b5-454c-9cd9-f9f4f0ad9f6c/assistant/summary",
+      "body": {
+        "expected_evidence_version": "646df0c693034c95bc12912118aeadd2695240a727445f701a7fcc5298f0f3c1",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple"
+      },
+      "headers": {
+        "Idempotency-Key": "5ffdf6e9-b3fd-4dcc-8293-fd3d5b613916"
+      },
+      "response": {
+        "data": {
+          "generation_id": "8491013e-edc1-4f30-b03d-3d346b44a6cb",
+          "run_id": "db5ee8f7-f8b5-454c-9cd9-f9f4f0ad9f6c",
+          "status": "completed",
+          "created_at": "2026-10-10T02:00:00Z",
+          "finished_at": "2026-10-10T02:00:00Z",
+          "result": {
+            "schema_version": "plan_summary/1",
+            "identity": {
+              "run_id": "db5ee8f7-f8b5-454c-9cd9-f9f4f0ad9f6c",
+              "store_id": "00000000-0000-0000-0000-000000000001",
+              "aggregate_digest": "646df0c693034c95bc12912118aeadd2695240a727445f701a7fcc5298f0f3c1",
+              "input_digest": "9995c851b4ac5628d9285dfd57d202a36d6459c7070c980223b7c0720166b989",
+              "result_digest": "f86c3bf855037452a3cdea1c7d54390fbe69fcfc2571c946d2e252ece4a3e549",
+              "request_digest": "dc7495f9558ee209d6677f871a4377cdffda6076611de9900c5944985fd6beb9",
+              "storage_version": "planning_storage/1",
+              "package_schema_version": 1,
+              "result_schema_version": "operational_pipeline/2",
+              "capture_schema_version": "operational_capture/2",
+              "accepted_at": "2026-10-08T00:00:00Z",
+              "started_at": "2026-10-08T00:00:00Z",
+              "finished_at": "2026-10-08T00:00:00Z",
+              "captured_at": "2026-10-08T00:00:00Z"
+            },
+            "option_id": "cmp1_946c480de804be643984aa3453d5b93a49e85758310e7bb9af6693e923fbad1d",
+            "locale": "vi",
+            "detail_level": "simple",
+            "source": "model_presentation",
+            "presentation": {
+              "ordering": [
+                "outcome",
+                "cost",
+                "requirements",
+                "coverage",
+                "proof",
+                "limitations"
+              ],
+              "tone": "plain"
+            },
+            "answer": "Phương án tinh gọn/cân bằng/bảo vệ được khuyến nghị cho kế hoạch này.\n\nPhương án đang xem cần tổng chi 6.75 VND: tiền mua 6 VND, phí phải trả 0.75 VND. Giới hạn ngân sách đã lưu là 10 VND.\n\nCó 2 đánh giá đạt, 0 chưa đạt, 0 chưa đánh giá theo từng món và đường nhu cầu.\n\nPhạm vi đã tính gồm 2 trong tổng số 2 món. Khoảng dự báo đã lưu từ 2026-10-08 đến 2026-10-14.\n\nKết quả tìm kiếm còn thiếu chứng nhận đầy đủ trong miền đã lưu. Việc so sánh chỉ bao gồm các phương án đã đánh giá, không chứng minh tối ưu toàn cục.\n\nPhí phải trả đã được lưu nhưng chưa xác định là phí giao hàng. Kết quả mô phỏng chưa tạo đơn mua và không phản ánh tiêu thụ thực tế.",
+            "claims": [
+              {
+                "family": "outcome",
+                "text": "Phương án tinh gọn/cân bằng/bảo vệ được khuyến nghị cho kế hoạch này.",
+                "evidence_ids": [
+                  "ev-1c29ccea2f490bc792d6fe50955ba6fdc5651c704f5b4cab1c7427f91677b605",
+                  "ev-c8beb2c6c1ff2844904dd0e17f532abd26b09e399ef0db5489b3bf2194d405ce",
+                  "ev-45f5987ed8ad09929e6982abde33430f9744e44e6954084f41ac982bca7515fb"
+                ]
+              },
+              {
+                "family": "cost",
+                "text": "Phương án đang xem cần tổng chi 6.75 VND: tiền mua 6 VND, phí phải trả 0.75 VND. Giới hạn ngân sách đã lưu là 10 VND.",
+                "evidence_ids": [
+                  "ev-22b343c40a60a8a07d3e823d9b03821b6d07018e53805ae899c91c9b19b436fd",
+                  "ev-70db952db00cd331b863c26105d8e519687bd387aaf5aff9aff5d775bd2fed8a",
+                  "ev-a48515a4c9ffeff9c8a07b81f47ad922060800fd7edf5012408a3d1d80378863"
+                ]
+              },
+              {
+                "family": "requirements",
+                "text": "Có 2 đánh giá đạt, 0 chưa đạt, 0 chưa đánh giá theo từng món và đường nhu cầu.",
+                "evidence_ids": [
+                  "ev-74aa994f8ce873d3b675f4ebc8df08ad4dc9196a3270abd63c5e7fda8877e867"
+                ]
+              },
+              {
+                "family": "coverage",
+                "text": "Phạm vi đã tính gồm 2 trong tổng số 2 món. Khoảng dự báo đã lưu từ 2026-10-08 đến 2026-10-14.",
+                "evidence_ids": [
+                  "ev-c9d1ec6e4f8f105e64f5bfa20f9bee7b3287f06371e7b47f57a586d5b35742f2",
+                  "ev-99fb556a723d709017100ac956a37bc050be7a6bd5f0b4b62e282913ff47a8ba"
+                ]
+              },
+              {
+                "family": "proof",
+                "text": "Kết quả tìm kiếm còn thiếu chứng nhận đầy đủ trong miền đã lưu. Việc so sánh chỉ bao gồm các phương án đã đánh giá, không chứng minh tối ưu toàn cục.",
+                "evidence_ids": [
+                  "ev-1c767c4d0442da031f549109f17975ef1fcb38d661a8e581c2473f97bbada4d8",
+                  "ev-6f86241269a9e7919876dfe79c710efca40c9e8fda26507efcc7ae5a631699cd"
+                ]
+              },
+              {
+                "family": "limitations",
+                "text": "Phí phải trả đã được lưu nhưng chưa xác định là phí giao hàng. Kết quả mô phỏng chưa tạo đơn mua và không phản ánh tiêu thụ thực tế.",
+                "evidence_ids": [
+                  "ev-70db952db00cd331b863c26105d8e519687bd387aaf5aff9aff5d775bd2fed8a",
+                  "ev-ccf376aaecca2f9b486591e1fbc0d812a645f0951ec361c84c5a229c7afe083d",
+                  "ev-7f410f73aac50bf760c7bf314e7745ea53988e78106865257327d67e47a64b24"
+                ]
+              }
+            ],
+            "references": [
+              {
+                "evidence_id": "ev-1c29ccea2f490bc792d6fe50955ba6fdc5651c704f5b4cab1c7427f91677b605",
+                "pointer": "/overview/recommendation_available",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-a48515a4c9ffeff9c8a07b81f47ad922060800fd7edf5012408a3d1d80378863",
+                "pointer": "/overview/configuration",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-c9d1ec6e4f8f105e64f5bfa20f9bee7b3287f06371e7b47f57a586d5b35742f2",
+                "pointer": "/overview/scope",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-99fb556a723d709017100ac956a37bc050be7a6bd5f0b4b62e282913ff47a8ba",
+                "pointer": "/overview/forecast",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-1c767c4d0442da031f549109f17975ef1fcb38d661a8e581c2473f97bbada4d8",
+                "pointer": "/overview/strategies",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-45f5987ed8ad09929e6982abde33430f9744e44e6954084f41ac982bca7515fb",
+                "pointer": "/overview/options",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-c8beb2c6c1ff2844904dd0e17f532abd26b09e399ef0db5489b3bf2194d405ce",
+                "pointer": "/overview/explanation",
+                "source": "retained_C08"
+              },
+              {
+                "evidence_id": "ev-6f86241269a9e7919876dfe79c710efca40c9e8fda26507efcc7ae5a631699cd",
+                "pointer": "/overview/selection_proof",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-ccf376aaecca2f9b486591e1fbc0d812a645f0951ec361c84c5a229c7afe083d",
+                "pointer": "/overview/assumptions",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-7f410f73aac50bf760c7bf314e7745ea53988e78106865257327d67e47a64b24",
+                "pointer": "/overview/omissions",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-22b343c40a60a8a07d3e823d9b03821b6d07018e53805ae899c91c9b19b436fd",
+                "pointer": "/option/option_id",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-70db952db00cd331b863c26105d8e519687bd387aaf5aff9aff5d775bd2fed8a",
+                "pointer": "/option/costs",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-74aa994f8ce873d3b675f4ebc8df08ad4dc9196a3270abd63c5e7fda8877e867",
+                "pointer": "/option/requirements_assessment",
+                "source": "retained_C03"
+              }
+            ],
+            "diagnostics": {
+              "disposition": "ACCEPTED",
+              "reason": "NONE",
+              "prompt_version": "plan_summary_prompt/3",
+              "validator_version": "summary_narrative_guard/2",
+              "requested_model": "google/gemini-2.5-flash",
+              "resolved_model": "google/gemini-2.5-flash",
+              "resolved_provider": "Google",
+              "attempts": 1,
+              "input_tokens": 650,
+              "output_tokens": 443
+            },
+            "renderer_version": "plan_summary_renderer/2"
+          },
+          "error_code": null
+        },
+        "meta": {
+          "request_id": "synthetic-s2-example"
+        },
+        "error": null
+      }
+    },
+    {
+      "operation_id": "AS01",
+      "example": "summary_owner_gemini_s21",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/db5ee8f7-f8b5-454c-9cd9-f9f4f0ad9f6c/assistant/summary",
+      "body": {
+        "expected_evidence_version": "646df0c693034c95bc12912118aeadd2695240a727445f701a7fcc5298f0f3c1",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple"
+      },
+      "headers": {
+        "Idempotency-Key": "d69fc5d8-a738-4f15-9260-131067a3a249"
+      },
+      "response": {
+        "data": {
+          "generation_id": "c6b951ee-0cbb-48b1-8257-2ac47113a9ef",
+          "run_id": "db5ee8f7-f8b5-454c-9cd9-f9f4f0ad9f6c",
+          "status": "completed",
+          "created_at": "2026-10-10T02:00:00Z",
+          "finished_at": "2026-10-10T02:00:00Z",
+          "result": {
+            "schema_version": "plan_summary/1",
+            "identity": {
+              "run_id": "db5ee8f7-f8b5-454c-9cd9-f9f4f0ad9f6c",
+              "store_id": "00000000-0000-0000-0000-000000000001",
+              "aggregate_digest": "646df0c693034c95bc12912118aeadd2695240a727445f701a7fcc5298f0f3c1",
+              "input_digest": "9995c851b4ac5628d9285dfd57d202a36d6459c7070c980223b7c0720166b989",
+              "result_digest": "f86c3bf855037452a3cdea1c7d54390fbe69fcfc2571c946d2e252ece4a3e549",
+              "request_digest": "dc7495f9558ee209d6677f871a4377cdffda6076611de9900c5944985fd6beb9",
+              "storage_version": "planning_storage/1",
+              "package_schema_version": 1,
+              "result_schema_version": "operational_pipeline/2",
+              "capture_schema_version": "operational_capture/2",
+              "accepted_at": "2026-10-08T00:00:00Z",
+              "started_at": "2026-10-08T00:00:00Z",
+              "finished_at": "2026-10-08T00:00:00Z",
+              "captured_at": "2026-10-08T00:00:00Z"
+            },
+            "option_id": "cmp1_946c480de804be643984aa3453d5b93a49e85758310e7bb9af6693e923fbad1d",
+            "locale": "vi",
+            "detail_level": "simple",
+            "source": "model_presentation",
+            "presentation": {
+              "ordering": [
+                "outcome",
+                "cost",
+                "requirements",
+                "coverage",
+                "proof",
+                "limitations"
+              ],
+              "tone": "plain"
+            },
+            "answer": "Có phương án mua hàng được đề xuất cho kế hoạch này. Tổng chi dự kiến cho phương án được đề xuất là 6.75 VND, gồm 6 VND tiền mua và 0.75 VND phí phải trả. Đề xuất mua 20 g “Sữa tươi”. Đề xuất mua 20 g “Sữa đặc”.\n\nPhương án đáp ứng các yêu cầu đã được đánh giá trong phạm vi này.\n\nPhạm vi kế hoạch gồm 2/2 món.\n\nĐề xuất dựa trên các phương án đã đánh giá; vẫn có thể còn phương án khác chưa được tìm thấy.",
+            "claims": [
+              {
+                "family": "outcome",
+                "text": "Có phương án mua hàng được đề xuất cho kế hoạch này.",
+                "evidence_ids": [
+                  "ev-1c29ccea2f490bc792d6fe50955ba6fdc5651c704f5b4cab1c7427f91677b605",
+                  "ev-c8beb2c6c1ff2844904dd0e17f532abd26b09e399ef0db5489b3bf2194d405ce"
+                ]
+              },
+              {
+                "family": "cost",
+                "text": "Tổng chi dự kiến cho phương án được đề xuất là 6.75 VND, gồm 6 VND tiền mua và 0.75 VND phí phải trả.",
+                "evidence_ids": [
+                  "ev-22b343c40a60a8a07d3e823d9b03821b6d07018e53805ae899c91c9b19b436fd",
+                  "ev-70db952db00cd331b863c26105d8e519687bd387aaf5aff9aff5d775bd2fed8a"
+                ]
+              },
+              {
+                "family": "cost",
+                "text": "Đề xuất mua 20 g “Sữa tươi”.",
+                "evidence_ids": [
+                  "ev-0537ce2f8c29587795c66fcaa5b98e36e96d3ad98eb11daa255a9024521119f9",
+                  "ev-58b033501937f145887bfb19a095893efec3676850dcf9b84a472ad30fff9677"
+                ]
+              },
+              {
+                "family": "cost",
+                "text": "Đề xuất mua 20 g “Sữa đặc”.",
+                "evidence_ids": [
+                  "ev-0537ce2f8c29587795c66fcaa5b98e36e96d3ad98eb11daa255a9024521119f9",
+                  "ev-58b033501937f145887bfb19a095893efec3676850dcf9b84a472ad30fff9677"
+                ]
+              },
+              {
+                "family": "requirements",
+                "text": "Phương án đáp ứng các yêu cầu đã được đánh giá trong phạm vi này.",
+                "evidence_ids": [
+                  "ev-74aa994f8ce873d3b675f4ebc8df08ad4dc9196a3270abd63c5e7fda8877e867"
+                ]
+              },
+              {
+                "family": "coverage",
+                "text": "Phạm vi kế hoạch gồm 2/2 món.",
+                "evidence_ids": [
+                  "ev-c9d1ec6e4f8f105e64f5bfa20f9bee7b3287f06371e7b47f57a586d5b35742f2"
+                ]
+              },
+              {
+                "family": "proof",
+                "text": "Đề xuất dựa trên các phương án đã đánh giá; vẫn có thể còn phương án khác chưa được tìm thấy.",
+                "evidence_ids": [
+                  "ev-1c767c4d0442da031f549109f17975ef1fcb38d661a8e581c2473f97bbada4d8",
+                  "ev-6f86241269a9e7919876dfe79c710efca40c9e8fda26507efcc7ae5a631699cd"
+                ]
+              }
+            ],
+            "references": [
+              {
+                "evidence_id": "ev-1c29ccea2f490bc792d6fe50955ba6fdc5651c704f5b4cab1c7427f91677b605",
+                "pointer": "/overview/recommendation_available",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-c9d1ec6e4f8f105e64f5bfa20f9bee7b3287f06371e7b47f57a586d5b35742f2",
+                "pointer": "/overview/scope",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-1c767c4d0442da031f549109f17975ef1fcb38d661a8e581c2473f97bbada4d8",
+                "pointer": "/overview/strategies",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-c8beb2c6c1ff2844904dd0e17f532abd26b09e399ef0db5489b3bf2194d405ce",
+                "pointer": "/overview/explanation",
+                "source": "retained_C08"
+              },
+              {
+                "evidence_id": "ev-6f86241269a9e7919876dfe79c710efca40c9e8fda26507efcc7ae5a631699cd",
+                "pointer": "/overview/selection_proof",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-58b033501937f145887bfb19a095893efec3676850dcf9b84a472ad30fff9677",
+                "pointer": "/overview/ingredients",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-22b343c40a60a8a07d3e823d9b03821b6d07018e53805ae899c91c9b19b436fd",
+                "pointer": "/option/option_id",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-70db952db00cd331b863c26105d8e519687bd387aaf5aff9aff5d775bd2fed8a",
+                "pointer": "/option/costs",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-0537ce2f8c29587795c66fcaa5b98e36e96d3ad98eb11daa255a9024521119f9",
+                "pointer": "/option/purchases",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-74aa994f8ce873d3b675f4ebc8df08ad4dc9196a3270abd63c5e7fda8877e867",
+                "pointer": "/option/requirements_assessment",
+                "source": "retained_C03"
+              }
+            ],
+            "diagnostics": {
+              "disposition": "ACCEPTED",
+              "reason": "NONE",
+              "prompt_version": "plan_summary_prompt/4",
+              "validator_version": "summary_owner_guard/3",
+              "requested_model": "google/gemini-2.5-flash",
+              "resolved_model": "google/gemini-2.5-flash",
+              "resolved_provider": "Google",
+              "attempts": 1,
+              "input_tokens": 1132,
+              "output_tokens": 302
+            },
+            "renderer_version": "plan_summary_renderer/3"
+          },
+          "error_code": null
+        },
+        "meta": {
+          "request_id": "synthetic-s21-review"
+        },
+        "error": null
+      },
+      "provenance": "Synthetic real Gemini/Google S2.1 A; Codex review, not human UX/production acceptance"
+    },
+    {
+      "operation_id": "AS01",
+      "example": "summary_owner_s3_warning_fake",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/4654be39-78fe-49f6-bd90-e462d0efe702/assistant/summary",
+      "body": {
+        "expected_evidence_version": "cce6ff9abd8b2ac13e2e7c9106d0c31695d172be776cdc3b5c372d86507d171e",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple"
+      },
+      "response": {
+        "data": {
+          "generation_id": "856d0f8d-b163-47fc-b8fc-d74ff67f15aa",
+          "run_id": "4654be39-78fe-49f6-bd90-e462d0efe702",
+          "status": "completed",
+          "created_at": "2026-10-10T02:00:00Z",
+          "finished_at": "2026-10-10T02:00:00Z",
+          "result": {
+            "schema_version": "plan_summary/1",
+            "identity": {
+              "run_id": "4654be39-78fe-49f6-bd90-e462d0efe702",
+              "store_id": "00000000-0000-0000-0000-000000000001",
+              "aggregate_digest": "cce6ff9abd8b2ac13e2e7c9106d0c31695d172be776cdc3b5c372d86507d171e",
+              "input_digest": "0afd21624bd5c5fe15b259380a48689ef39280b50092a1395bde1a8fdfc5edc0",
+              "result_digest": "a9f9ef49d4a893f80357f21f3162295859cc1d954e0a537386e1ffe3644ec65d",
+              "request_digest": "dc7495f9558ee209d6677f871a4377cdffda6076611de9900c5944985fd6beb9",
+              "storage_version": "planning_storage/1",
+              "package_schema_version": 1,
+              "result_schema_version": "operational_pipeline/2",
+              "capture_schema_version": "operational_capture/2",
+              "accepted_at": "2026-10-08T00:00:00Z",
+              "started_at": "2026-10-08T00:00:00Z",
+              "finished_at": "2026-10-08T00:00:00Z",
+              "captured_at": "2026-10-08T00:00:00Z"
+            },
+            "option_id": "cmp1_879a179ad57b8f2ca785adb8d915772c0d2028460f80d205865fd30569b19353",
+            "locale": "vi",
+            "detail_level": "simple",
+            "source": "model_presentation",
+            "presentation": {
+              "ordering": [
+                "outcome",
+                "cost",
+                "requirements",
+                "coverage",
+                "proof",
+                "limitations"
+              ],
+              "tone": "plain"
+            },
+            "answer": "Có phương án mua hàng được đề xuất cho kế hoạch này. Tổng chi dự kiến cho phương án được đề xuất là 10 VND. Các lượng mua đề xuất dưới đây thuộc từng dòng mua, không phải tổng lượng theo nguyên liệu. Dòng mua số 1: đề xuất 20 g “Sữa tươi”, dự kiến nhận ngày 2026-10-08. Dòng mua số 2: đề xuất 20 g “Sữa đặc”, dự kiến nhận ngày 2026-10-08.\n\nPhương án đáp ứng các yêu cầu đã được đánh giá trong phạm vi này.\n\nPhạm vi kế hoạch gồm 2/2 món.\n\nĐề xuất dựa trên các phương án đã đánh giá; vẫn có thể còn phương án khác chưa được tìm thấy.\n\nDự báo đã dùng phương pháp dự phòng; cần xem giới hạn dự báo trong chi tiết. Kế hoạch có thông tin lưu ý đã ghi nhận; cần xem chi tiết trước khi quyết định mua hàng.",
+            "claims": [
+              {
+                "family": "outcome",
+                "text": "Có phương án mua hàng được đề xuất cho kế hoạch này.",
+                "evidence_ids": [
+                  "ev-94b481622cd007193809cfe36dd396d6aac3c0fa45e2a13dd4053121d8ac4913",
+                  "ev-994d61f09186a05d8107cd8c43f380fa6bfc3272afebd3611df290a4c771904e"
+                ]
+              },
+              {
+                "family": "cost",
+                "text": "Tổng chi dự kiến cho phương án được đề xuất là 10 VND.",
+                "evidence_ids": [
+                  "ev-bedb279199e3bddcc6169c926401764e3b8313886234bc26b00c95eacab63978",
+                  "ev-58d6dd8e327bd19b4792ccf5a7def79b44521e86a45cac270fafde05c2ddd25b"
+                ]
+              },
+              {
+                "family": "cost",
+                "text": "Các lượng mua đề xuất dưới đây thuộc từng dòng mua, không phải tổng lượng theo nguyên liệu.",
+                "evidence_ids": [
+                  "ev-bc17f7eaa40c0dde88355d6704105d9586398299bcb1e39e855a7ceafb74b88a",
+                  "ev-99c98133a249797d129bf7b5f1fe78714c690bdd006407a6cddd21f9b82dbae3"
+                ]
+              },
+              {
+                "family": "cost",
+                "text": "Dòng mua số 1: đề xuất 20 g “Sữa tươi”, dự kiến nhận ngày 2026-10-08.",
+                "evidence_ids": [
+                  "ev-bc17f7eaa40c0dde88355d6704105d9586398299bcb1e39e855a7ceafb74b88a",
+                  "ev-99c98133a249797d129bf7b5f1fe78714c690bdd006407a6cddd21f9b82dbae3"
+                ]
+              },
+              {
+                "family": "cost",
+                "text": "Dòng mua số 2: đề xuất 20 g “Sữa đặc”, dự kiến nhận ngày 2026-10-08.",
+                "evidence_ids": [
+                  "ev-bc17f7eaa40c0dde88355d6704105d9586398299bcb1e39e855a7ceafb74b88a",
+                  "ev-99c98133a249797d129bf7b5f1fe78714c690bdd006407a6cddd21f9b82dbae3"
+                ]
+              },
+              {
+                "family": "requirements",
+                "text": "Phương án đáp ứng các yêu cầu đã được đánh giá trong phạm vi này.",
+                "evidence_ids": [
+                  "ev-a7b86b851d46fcdc222dd27cf3f2c406622b0a254238fde088fc55c676a38dcc"
+                ]
+              },
+              {
+                "family": "coverage",
+                "text": "Phạm vi kế hoạch gồm 2/2 món.",
+                "evidence_ids": [
+                  "ev-fcf0f38b467650146967535f60cbfd53c9658b981c556bb46209626c942d3e0f"
+                ]
+              },
+              {
+                "family": "proof",
+                "text": "Đề xuất dựa trên các phương án đã đánh giá; vẫn có thể còn phương án khác chưa được tìm thấy.",
+                "evidence_ids": [
+                  "ev-307549c4b209eb1c444211f478983b4db61eacc0dad11443328a43755cc54a8a",
+                  "ev-c30748aa83cfd4b2700acd61074f63ff3d4bd5c9244b2585b59c8d78fcca66b0"
+                ]
+              },
+              {
+                "family": "limitations",
+                "text": "Dự báo đã dùng phương pháp dự phòng; cần xem giới hạn dự báo trong chi tiết.",
+                "evidence_ids": [
+                  "ev-994d61f09186a05d8107cd8c43f380fa6bfc3272afebd3611df290a4c771904e",
+                  "ev-670fa0a47ff9a99133dc13232e4f42ad7b2fcfbffe74ca09fc5b2313eefe9ceb"
+                ]
+              },
+              {
+                "family": "limitations",
+                "text": "Kế hoạch có thông tin lưu ý đã ghi nhận; cần xem chi tiết trước khi quyết định mua hàng.",
+                "evidence_ids": [
+                  "ev-994d61f09186a05d8107cd8c43f380fa6bfc3272afebd3611df290a4c771904e",
+                  "ev-670fa0a47ff9a99133dc13232e4f42ad7b2fcfbffe74ca09fc5b2313eefe9ceb"
+                ]
+              }
+            ],
+            "references": [
+              {
+                "evidence_id": "ev-94b481622cd007193809cfe36dd396d6aac3c0fa45e2a13dd4053121d8ac4913",
+                "pointer": "/overview/recommendation_available",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-fcf0f38b467650146967535f60cbfd53c9658b981c556bb46209626c942d3e0f",
+                "pointer": "/overview/scope",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-670fa0a47ff9a99133dc13232e4f42ad7b2fcfbffe74ca09fc5b2313eefe9ceb",
+                "pointer": "/overview/forecast",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-307549c4b209eb1c444211f478983b4db61eacc0dad11443328a43755cc54a8a",
+                "pointer": "/overview/strategies",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-994d61f09186a05d8107cd8c43f380fa6bfc3272afebd3611df290a4c771904e",
+                "pointer": "/overview/explanation",
+                "source": "retained_C08"
+              },
+              {
+                "evidence_id": "ev-c30748aa83cfd4b2700acd61074f63ff3d4bd5c9244b2585b59c8d78fcca66b0",
+                "pointer": "/overview/selection_proof",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-99c98133a249797d129bf7b5f1fe78714c690bdd006407a6cddd21f9b82dbae3",
+                "pointer": "/overview/ingredients",
+                "source": "retained_capture"
+              },
+              {
+                "evidence_id": "ev-bedb279199e3bddcc6169c926401764e3b8313886234bc26b00c95eacab63978",
+                "pointer": "/option/option_id",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-58d6dd8e327bd19b4792ccf5a7def79b44521e86a45cac270fafde05c2ddd25b",
+                "pointer": "/option/costs",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-bc17f7eaa40c0dde88355d6704105d9586398299bcb1e39e855a7ceafb74b88a",
+                "pointer": "/option/purchases",
+                "source": "retained_C03"
+              },
+              {
+                "evidence_id": "ev-a7b86b851d46fcdc222dd27cf3f2c406622b0a254238fde088fc55c676a38dcc",
+                "pointer": "/option/requirements_assessment",
+                "source": "retained_C03"
+              }
+            ],
+            "diagnostics": {
+              "disposition": "ACCEPTED",
+              "reason": "NONE",
+              "prompt_version": "plan_summary_prompt/5",
+              "validator_version": "summary_owner_guard/4",
+              "requested_model": "S3-SYNTHETIC-d596d93b-9b6c-497a-b912-8a49e8e96087",
+              "resolved_model": null,
+              "resolved_provider": null,
+              "attempts": 1,
+              "input_tokens": null,
+              "output_tokens": null
+            },
+            "renderer_version": "plan_summary_renderer/4"
+          },
+          "error_code": null
+        },
+        "meta": {
+          "request_id": "synthetic-s3-offline"
+        },
+        "error": null
+      },
+      "provenance": "Synthetic S3 retained input → real HTTP/PostgreSQL → fake provider. NO live Gemini on profile/6."
+    }
+  ],
+  "integration_sequences": [
+    {
+      "step": 1,
+      "operation_id": "AS03",
+      "provenance": "ILLUSTRATIVE / OFFLINE_NO_PROVIDER: tests.unit.test_chat_l32.current -> chat_evidence/6 fallback; synthetic fixture, not live HTTP, persistence or quality evidence",
+      "note": "Clear retained Ingredient; fixture quantity is not a real purchase.",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "headers": {
+        "Idempotency-Key": "00000000-0000-0000-0000-000000002329"
+      },
+      "body": {
+        "expected_evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple",
+        "question": "Sữa tươi cần mua bao nhiêu?",
+        "ingredient_id": null,
+        "history": []
+      },
+      "response": {
+        "data": {
+          "schema_version": "decision_assistant/1",
+          "run_id": "00000000-0000-0000-0000-000000001bbd",
+          "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+          "result_digest": "42ab9fb6984a1cb2dad8e127c0ec8e23c37faf1b81ae6e38e89901ce385c5836",
+          "option_id": "cmp1_aed8ebc43e1b6d7f617016c35fe21978c89e6ccaa4651e1bfa3e0ece107b11ed",
+          "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+          "locale": "vi",
+          "kind": "answer",
+          "source": "deterministic_fallback",
+          "answer": "Lượng mua đề xuất cho nguyên liệu đang xem là 20 g.",
+          "claims": [
+            {
+              "text": "Lượng mua đề xuất cho nguyên liệu đang xem là 20 g.",
+              "evidence_ids": [
+                "ev-6042cb5a25740bba304db005bf1c02344bfb67dae6a0b118db405feb01a2dc47",
+                "ev-18493d069b3987020d49585f8a73aea959d3c19de2061945c39ec291928aaefe",
+                "ev-0daf77a9157c8c701acdc641ff922768cef89637387cbb5fce5f0f2444e499ea",
+                "ev-658d9f8ba827806139ca0c11441431fd4fd62106e2a07a1996e16554a982693d"
+              ]
+            }
+          ],
+          "references": [
+            {
+              "evidence_id": "ev-18493d069b3987020d49585f8a73aea959d3c19de2061945c39ec291928aaefe",
+              "pointer": "/overview/recommendation_available",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-0daf77a9157c8c701acdc641ff922768cef89637387cbb5fce5f0f2444e499ea",
+              "pointer": "/overview/explanation",
+              "source": "retained_C08"
+            },
+            {
+              "evidence_id": "ev-658d9f8ba827806139ca0c11441431fd4fd62106e2a07a1996e16554a982693d",
+              "pointer": "/option/option_id",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-6042cb5a25740bba304db005bf1c02344bfb67dae6a0b118db405feb01a2dc47",
+              "pointer": "/ingredient/purchases",
+              "source": "retained_C05"
+            }
+          ],
+          "clarification": null,
+          "diagnostics": {
+            "reason": "MODEL_DISABLED",
+            "prompt_version": null,
+            "validator_version": "decision_chat_renderer/7",
+            "model": null,
+            "resolved_model": null,
+            "provider": null,
+            "attempts": 0,
+            "input_tokens": null,
+            "output_tokens": null,
+            "cost_usd": null,
+            "latency_ms": null,
+            "finish_reason": null,
+            "disposition": "FALLBACK",
+            "prompt_hash": null,
+            "schema_hash": null,
+            "evidence_hash": null
+          },
+          "context": {
+            "run_id": "00000000-0000-0000-0000-000000001bbd",
+            "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+            "option_id": null,
+            "comparison_pair": null,
+            "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+            "product_id": null,
+            "pending": null,
+            "topic": "purchase"
+          }
+        },
+        "meta": {
+          "request_id": "illustrative-1"
+        },
+        "error": null
+      }
+    },
+    {
+      "step": 2,
+      "operation_id": "AS03",
+      "provenance": "ILLUSTRATIVE / OFFLINE_NO_PROVIDER: tests.unit.test_chat_l32.current -> chat_evidence/6 fallback; synthetic fixture, not live HTTP, persistence or quality evidence",
+      "note": "Two candidates; no arbitrary selection. Keep returned context.pending.",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "headers": {
+        "Idempotency-Key": "00000000-0000-0000-0000-00000000232a"
+      },
+      "body": {
+        "expected_evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple",
+        "question": "Sữa cần mua bao nhiêu?",
+        "ingredient_id": null,
+        "history": []
+      },
+      "response": {
+        "data": {
+          "schema_version": "decision_assistant/1",
+          "run_id": "00000000-0000-0000-0000-000000001bbd",
+          "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+          "result_digest": "42ab9fb6984a1cb2dad8e127c0ec8e23c37faf1b81ae6e38e89901ce385c5836",
+          "option_id": "cmp1_aed8ebc43e1b6d7f617016c35fe21978c89e6ccaa4651e1bfa3e0ece107b11ed",
+          "ingredient_id": null,
+          "locale": "vi",
+          "kind": "clarification",
+          "source": "deterministic_clarification",
+          "answer": "Bạn muốn hỏi nguyên liệu nào? Chọn một tên bên dưới.",
+          "claims": [],
+          "references": [],
+          "clarification": {
+            "code": "ENTITY_AMBIGUOUS",
+            "question": "Bạn muốn hỏi nguyên liệu nào? Chọn một tên bên dưới.",
+            "candidates": [
+              {
+                "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+                "name": "Sữa tươi"
+              },
+              {
+                "ingredient_id": "00000000-0000-0000-0000-0000000000c9",
+                "name": "Sữa đặc"
+              }
+            ],
+            "original_question": "Sữa cần mua bao nhiêu?",
+            "option_candidates": []
+          },
+          "diagnostics": {
+            "reason": "EVIDENCE_INSUFFICIENT",
+            "prompt_version": null,
+            "validator_version": "decision_chat_renderer/1",
+            "model": null,
+            "resolved_model": null,
+            "provider": null,
+            "attempts": 0,
+            "input_tokens": null,
+            "output_tokens": null,
+            "cost_usd": null,
+            "latency_ms": null,
+            "finish_reason": null,
+            "disposition": "FALLBACK",
+            "prompt_hash": null,
+            "schema_hash": null,
+            "evidence_hash": null
+          },
+          "context": {
+            "run_id": "00000000-0000-0000-0000-000000001bbd",
+            "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+            "option_id": null,
+            "comparison_pair": null,
+            "ingredient_id": null,
+            "product_id": null,
+            "pending": {
+              "original_question": "Sữa cần mua bao nhiêu?",
+              "candidate_ids": [
+                "00000000-0000-0000-0000-0000000000c8",
+                "00000000-0000-0000-0000-0000000000c9"
+              ]
+            },
+            "topic": null
+          }
+        },
+        "meta": {
+          "request_id": "illustrative-2"
+        },
+        "error": null
+      }
+    },
+    {
+      "step": 3,
+      "operation_id": "AS03",
+      "provenance": "ILLUSTRATIVE / OFFLINE_NO_PROVIDER: tests.unit.test_chat_l32.current -> chat_evidence/6 fallback; synthetic fixture, not live HTTP, persistence or quality evidence",
+      "note": "Confirmed new turn: new key, explicit selected Ingredient ID; original pending question resumes with step2 context.",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "headers": {
+        "Idempotency-Key": "00000000-0000-0000-0000-00000000232b"
+      },
+      "body": {
+        "expected_evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple",
+        "question": "Sữa tươi",
+        "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+        "history": [],
+        "context": {
+          "run_id": "00000000-0000-0000-0000-000000001bbd",
+          "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+          "option_id": null,
+          "comparison_pair": null,
+          "ingredient_id": null,
+          "product_id": null,
+          "pending": {
+            "original_question": "Sữa cần mua bao nhiêu?",
+            "candidate_ids": [
+              "00000000-0000-0000-0000-0000000000c8",
+              "00000000-0000-0000-0000-0000000000c9"
+            ]
+          },
+          "topic": null
+        }
+      },
+      "response": {
+        "data": {
+          "schema_version": "decision_assistant/1",
+          "run_id": "00000000-0000-0000-0000-000000001bbd",
+          "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+          "result_digest": "42ab9fb6984a1cb2dad8e127c0ec8e23c37faf1b81ae6e38e89901ce385c5836",
+          "option_id": "cmp1_aed8ebc43e1b6d7f617016c35fe21978c89e6ccaa4651e1bfa3e0ece107b11ed",
+          "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+          "locale": "vi",
+          "kind": "answer",
+          "source": "deterministic_fallback",
+          "answer": "Lượng mua đề xuất cho nguyên liệu đang xem là 20 g.",
+          "claims": [
+            {
+              "text": "Lượng mua đề xuất cho nguyên liệu đang xem là 20 g.",
+              "evidence_ids": [
+                "ev-6042cb5a25740bba304db005bf1c02344bfb67dae6a0b118db405feb01a2dc47",
+                "ev-18493d069b3987020d49585f8a73aea959d3c19de2061945c39ec291928aaefe",
+                "ev-0daf77a9157c8c701acdc641ff922768cef89637387cbb5fce5f0f2444e499ea",
+                "ev-658d9f8ba827806139ca0c11441431fd4fd62106e2a07a1996e16554a982693d"
+              ]
+            }
+          ],
+          "references": [
+            {
+              "evidence_id": "ev-18493d069b3987020d49585f8a73aea959d3c19de2061945c39ec291928aaefe",
+              "pointer": "/overview/recommendation_available",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-0daf77a9157c8c701acdc641ff922768cef89637387cbb5fce5f0f2444e499ea",
+              "pointer": "/overview/explanation",
+              "source": "retained_C08"
+            },
+            {
+              "evidence_id": "ev-658d9f8ba827806139ca0c11441431fd4fd62106e2a07a1996e16554a982693d",
+              "pointer": "/option/option_id",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-6042cb5a25740bba304db005bf1c02344bfb67dae6a0b118db405feb01a2dc47",
+              "pointer": "/ingredient/purchases",
+              "source": "retained_C05"
+            }
+          ],
+          "clarification": null,
+          "diagnostics": {
+            "reason": "MODEL_DISABLED",
+            "prompt_version": null,
+            "validator_version": "decision_chat_renderer/7",
+            "model": null,
+            "resolved_model": null,
+            "provider": null,
+            "attempts": 0,
+            "input_tokens": null,
+            "output_tokens": null,
+            "cost_usd": null,
+            "latency_ms": null,
+            "finish_reason": null,
+            "disposition": "FALLBACK",
+            "prompt_hash": null,
+            "schema_hash": null,
+            "evidence_hash": null
+          },
+          "context": {
+            "run_id": "00000000-0000-0000-0000-000000001bbd",
+            "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+            "option_id": null,
+            "comparison_pair": null,
+            "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+            "product_id": null,
+            "pending": null,
+            "topic": "purchase"
+          }
+        },
+        "meta": {
+          "request_id": "illustrative-3"
+        },
+        "error": null
+      }
+    },
+    {
+      "step": 4,
+      "operation_id": "AS03",
+      "provenance": "ILLUSTRATIVE / OFFLINE_NO_PROVIDER: tests.unit.test_chat_l32.current -> chat_evidence/6 fallback; synthetic fixture, not live HTTP, persistence or quality evidence",
+      "note": "Carry step3 context; missing exact causal evidence remains explicit.",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "headers": {
+        "Idempotency-Key": "00000000-0000-0000-0000-00000000232c"
+      },
+      "body": {
+        "expected_evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple",
+        "question": "Vì sao lượng đó?",
+        "ingredient_id": null,
+        "history": [],
+        "context": {
+          "run_id": "00000000-0000-0000-0000-000000001bbd",
+          "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+          "option_id": null,
+          "comparison_pair": null,
+          "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+          "product_id": null,
+          "pending": null,
+          "topic": "purchase"
+        }
+      },
+      "response": {
+        "data": {
+          "schema_version": "decision_assistant/1",
+          "run_id": "00000000-0000-0000-0000-000000001bbd",
+          "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+          "result_digest": "42ab9fb6984a1cb2dad8e127c0ec8e23c37faf1b81ae6e38e89901ce385c5836",
+          "option_id": "cmp1_aed8ebc43e1b6d7f617016c35fe21978c89e6ccaa4651e1bfa3e0ece107b11ed",
+          "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+          "locale": "vi",
+          "kind": "answer",
+          "source": "deterministic_fallback",
+          "answer": "Lượng mua đề xuất cho nguyên liệu đang xem là 20 g.\n\nMô phỏng Sữa tươi, LOW / 2026-10-08: yêu cầu 20 g; có sẵn 20 g; thiếu 0 g.\n\nEvidence đang dùng chưa có bằng chứng nhân quả hoặc so sánh không mua để giải thích lý do mua; lượng mua chỉ là đề xuất đã lưu.",
+          "claims": [
+            {
+              "text": "Lượng mua đề xuất cho nguyên liệu đang xem là 20 g.",
+              "evidence_ids": [
+                "ev-6042cb5a25740bba304db005bf1c02344bfb67dae6a0b118db405feb01a2dc47",
+                "ev-18493d069b3987020d49585f8a73aea959d3c19de2061945c39ec291928aaefe",
+                "ev-0daf77a9157c8c701acdc641ff922768cef89637387cbb5fce5f0f2444e499ea",
+                "ev-658d9f8ba827806139ca0c11441431fd4fd62106e2a07a1996e16554a982693d"
+              ]
+            },
+            {
+              "text": "Mô phỏng Sữa tươi, LOW / 2026-10-08: yêu cầu 20 g; có sẵn 20 g; thiếu 0 g.",
+              "evidence_ids": [
+                "ev-9b061c163bc1fd1a682eef95225806dbdef63eb9819bcdcf4af29bf253ea6f79"
+              ]
+            },
+            {
+              "text": "Evidence đang dùng chưa có bằng chứng nhân quả hoặc so sánh không mua để giải thích lý do mua; lượng mua chỉ là đề xuất đã lưu.",
+              "evidence_ids": [
+                "ev-635006da5ecb3163eba1606b5d7def480ea08999f6aafcb22546a4113a127bea"
+              ]
+            }
+          ],
+          "references": [
+            {
+              "evidence_id": "ev-18493d069b3987020d49585f8a73aea959d3c19de2061945c39ec291928aaefe",
+              "pointer": "/overview/recommendation_available",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-0daf77a9157c8c701acdc641ff922768cef89637387cbb5fce5f0f2444e499ea",
+              "pointer": "/overview/explanation",
+              "source": "retained_C08"
+            },
+            {
+              "evidence_id": "ev-635006da5ecb3163eba1606b5d7def480ea08999f6aafcb22546a4113a127bea",
+              "pointer": "/overview/omissions",
+              "source": "retained_capture"
+            },
+            {
+              "evidence_id": "ev-658d9f8ba827806139ca0c11441431fd4fd62106e2a07a1996e16554a982693d",
+              "pointer": "/option/option_id",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-6042cb5a25740bba304db005bf1c02344bfb67dae6a0b118db405feb01a2dc47",
+              "pointer": "/ingredient/purchases",
+              "source": "retained_C05"
+            },
+            {
+              "evidence_id": "ev-9b061c163bc1fd1a682eef95225806dbdef63eb9819bcdcf4af29bf253ea6f79",
+              "pointer": "/ingredient/daily_balances",
+              "source": "retained_C05"
+            }
+          ],
+          "clarification": null,
+          "diagnostics": {
+            "reason": "MODEL_DISABLED",
+            "prompt_version": null,
+            "validator_version": "decision_chat_renderer/7",
+            "model": null,
+            "resolved_model": null,
+            "provider": null,
+            "attempts": 0,
+            "input_tokens": null,
+            "output_tokens": null,
+            "cost_usd": null,
+            "latency_ms": null,
+            "finish_reason": null,
+            "disposition": "FALLBACK",
+            "prompt_hash": null,
+            "schema_hash": null,
+            "evidence_hash": null
+          },
+          "context": {
+            "run_id": "00000000-0000-0000-0000-000000001bbd",
+            "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+            "option_id": null,
+            "comparison_pair": null,
+            "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+            "product_id": null,
+            "pending": null,
+            "topic": "purchase_rationale"
+          }
+        },
+        "meta": {
+          "request_id": "illustrative-4"
+        },
+        "error": null
+      }
+    },
+    {
+      "step": 5,
+      "operation_id": "AS03",
+      "provenance": "ILLUSTRATIVE / OFFLINE_NO_PROVIDER: tests.unit.test_chat_l32.current -> chat_evidence/6 fallback; synthetic fixture, not live HTTP, persistence or quality evidence",
+      "note": "Carry step4 context; change entity and scoped references, keep rationale topic. This wording fixture has20g for both entities; engine-created L4.1 20g/35g acceptance is separate historical evidence.",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "headers": {
+        "Idempotency-Key": "00000000-0000-0000-0000-00000000232d"
+      },
+      "body": {
+        "expected_evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple",
+        "question": "Còn sữa đặc?",
+        "ingredient_id": null,
+        "history": [],
+        "context": {
+          "run_id": "00000000-0000-0000-0000-000000001bbd",
+          "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+          "option_id": null,
+          "comparison_pair": null,
+          "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+          "product_id": null,
+          "pending": null,
+          "topic": "purchase_rationale"
+        }
+      },
+      "response": {
+        "data": {
+          "schema_version": "decision_assistant/1",
+          "run_id": "00000000-0000-0000-0000-000000001bbd",
+          "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+          "result_digest": "42ab9fb6984a1cb2dad8e127c0ec8e23c37faf1b81ae6e38e89901ce385c5836",
+          "option_id": "cmp1_aed8ebc43e1b6d7f617016c35fe21978c89e6ccaa4651e1bfa3e0ece107b11ed",
+          "ingredient_id": "00000000-0000-0000-0000-0000000000c9",
+          "locale": "vi",
+          "kind": "answer",
+          "source": "deterministic_fallback",
+          "answer": "Lượng mua đề xuất cho nguyên liệu đang xem là 20 g.\n\nMô phỏng Sữa đặc, LOW / 2026-10-08: yêu cầu 20 g; có sẵn 20 g; thiếu 0 g.\n\nEvidence đang dùng chưa có bằng chứng nhân quả hoặc so sánh không mua để giải thích lý do mua; lượng mua chỉ là đề xuất đã lưu.",
+          "claims": [
+            {
+              "text": "Lượng mua đề xuất cho nguyên liệu đang xem là 20 g.",
+              "evidence_ids": [
+                "ev-4c72bf8f00c2f89000a7fc8485d800033019b1f70cda537ffa49453700576919",
+                "ev-08b3267301da731bb5d1f48687e882b29a919b78957722612ebd65b55e5a4981",
+                "ev-53f969bdb47d16291309b9517adac0ecefc7868635f00cc3e4f1cc6f40164cd3",
+                "ev-95e650c339d475f1fe16798c144c4df467e37fe86e82db87e7e9e0142cfac83a"
+              ]
+            },
+            {
+              "text": "Mô phỏng Sữa đặc, LOW / 2026-10-08: yêu cầu 20 g; có sẵn 20 g; thiếu 0 g.",
+              "evidence_ids": [
+                "ev-80ced41252a40f9783bf30b42b0c11aa1eb96acb08e29f2b793cb451104431e5"
+              ]
+            },
+            {
+              "text": "Evidence đang dùng chưa có bằng chứng nhân quả hoặc so sánh không mua để giải thích lý do mua; lượng mua chỉ là đề xuất đã lưu.",
+              "evidence_ids": [
+                "ev-80c4cf08aecf7793d70288eb70f0dda84c233351b214c893ba16a578a38cde16"
+              ]
+            }
+          ],
+          "references": [
+            {
+              "evidence_id": "ev-08b3267301da731bb5d1f48687e882b29a919b78957722612ebd65b55e5a4981",
+              "pointer": "/overview/recommendation_available",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-53f969bdb47d16291309b9517adac0ecefc7868635f00cc3e4f1cc6f40164cd3",
+              "pointer": "/overview/explanation",
+              "source": "retained_C08"
+            },
+            {
+              "evidence_id": "ev-80c4cf08aecf7793d70288eb70f0dda84c233351b214c893ba16a578a38cde16",
+              "pointer": "/overview/omissions",
+              "source": "retained_capture"
+            },
+            {
+              "evidence_id": "ev-95e650c339d475f1fe16798c144c4df467e37fe86e82db87e7e9e0142cfac83a",
+              "pointer": "/option/option_id",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-4c72bf8f00c2f89000a7fc8485d800033019b1f70cda537ffa49453700576919",
+              "pointer": "/ingredient/purchases",
+              "source": "retained_C05"
+            },
+            {
+              "evidence_id": "ev-80ced41252a40f9783bf30b42b0c11aa1eb96acb08e29f2b793cb451104431e5",
+              "pointer": "/ingredient/daily_balances",
+              "source": "retained_C05"
+            }
+          ],
+          "clarification": null,
+          "diagnostics": {
+            "reason": "MODEL_DISABLED",
+            "prompt_version": null,
+            "validator_version": "decision_chat_renderer/7",
+            "model": null,
+            "resolved_model": null,
+            "provider": null,
+            "attempts": 0,
+            "input_tokens": null,
+            "output_tokens": null,
+            "cost_usd": null,
+            "latency_ms": null,
+            "finish_reason": null,
+            "disposition": "FALLBACK",
+            "prompt_hash": null,
+            "schema_hash": null,
+            "evidence_hash": null
+          },
+          "context": {
+            "run_id": "00000000-0000-0000-0000-000000001bbd",
+            "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+            "option_id": null,
+            "comparison_pair": null,
+            "ingredient_id": "00000000-0000-0000-0000-0000000000c9",
+            "product_id": null,
+            "pending": null,
+            "topic": "purchase_rationale"
+          }
+        },
+        "meta": {
+          "request_id": "illustrative-5"
+        },
+        "error": null
+      }
+    },
+    {
+      "step": 6,
+      "operation_id": "AS03",
+      "provenance": "ILLUSTRATIVE / OFFLINE_NO_PROVIDER: tests.unit.test_chat_l32.current -> chat_evidence/6 fallback; synthetic fixture, not live HTTP, persistence or quality evidence",
+      "note": "Comparison preserves to-minus-from and Product/path/unit. Fixture differs from engine-created L4.1 mixed acceptance.",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "headers": {
+        "Idempotency-Key": "00000000-0000-0000-0000-00000000232e"
+      },
+      "body": {
+        "expected_evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple",
+        "question": "Phương án khác đắt hơn thì được lợi gì?",
+        "ingredient_id": null,
+        "history": []
+      },
+      "response": {
+        "data": {
+          "schema_version": "decision_assistant/1",
+          "run_id": "00000000-0000-0000-0000-000000001bbd",
+          "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+          "result_digest": "42ab9fb6984a1cb2dad8e127c0ec8e23c37faf1b81ae6e38e89901ce385c5836",
+          "option_id": "cmp1_aed8ebc43e1b6d7f617016c35fe21978c89e6ccaa4651e1bfa3e0ece107b11ed",
+          "ingredient_id": null,
+          "locale": "vi",
+          "kind": "answer",
+          "source": "deterministic_fallback",
+          "answer": "Chênh lệch tổng chi (balanced, protected trừ lean): 5 VND.\n\nMô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 0, đường BASE: 5 cup.\n\nMô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 1, đường BASE: 10 cup.\n\nMô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 0, đường HIGH: 5 cup.\n\nMô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 1, đường HIGH: 10 cup.\n\nMô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 0, đường LOW: 5 cup.\n\nMô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 1, đường LOW: 10 cup.\n\nChênh lệch theo chiều balanced, protected trừ lean; lượng phục vụ là mô phỏng.",
+          "claims": [
+            {
+              "text": "Chênh lệch tổng chi (balanced, protected trừ lean): 5 VND.",
+              "evidence_ids": [
+                "ev-77fd0b13d99ad71330306e7010d997cea164208955b81974a02cde860264032d"
+              ]
+            },
+            {
+              "text": "Mô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 0, đường BASE: 5 cup.",
+              "evidence_ids": [
+                "ev-77fd0b13d99ad71330306e7010d997cea164208955b81974a02cde860264032d"
+              ]
+            },
+            {
+              "text": "Mô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 1, đường BASE: 10 cup.",
+              "evidence_ids": [
+                "ev-77fd0b13d99ad71330306e7010d997cea164208955b81974a02cde860264032d"
+              ]
+            },
+            {
+              "text": "Mô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 0, đường HIGH: 5 cup.",
+              "evidence_ids": [
+                "ev-77fd0b13d99ad71330306e7010d997cea164208955b81974a02cde860264032d"
+              ]
+            },
+            {
+              "text": "Mô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 1, đường HIGH: 10 cup.",
+              "evidence_ids": [
+                "ev-77fd0b13d99ad71330306e7010d997cea164208955b81974a02cde860264032d"
+              ]
+            },
+            {
+              "text": "Mô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 0, đường LOW: 5 cup.",
+              "evidence_ids": [
+                "ev-77fd0b13d99ad71330306e7010d997cea164208955b81974a02cde860264032d"
+              ]
+            },
+            {
+              "text": "Mô phỏng, chênh lệch lượng phục vụ món SYNTHETIC 1, đường LOW: 10 cup.",
+              "evidence_ids": [
+                "ev-77fd0b13d99ad71330306e7010d997cea164208955b81974a02cde860264032d"
+              ]
+            },
+            {
+              "text": "Chênh lệch theo chiều balanced, protected trừ lean; lượng phục vụ là mô phỏng.",
+              "evidence_ids": [
+                "ev-77fd0b13d99ad71330306e7010d997cea164208955b81974a02cde860264032d"
+              ]
+            }
+          ],
+          "references": [
+            {
+              "evidence_id": "ev-77fd0b13d99ad71330306e7010d997cea164208955b81974a02cde860264032d",
+              "pointer": "/overview/comparisons",
+              "source": "retained_comparison"
+            }
+          ],
+          "clarification": null,
+          "diagnostics": {
+            "reason": "MODEL_DISABLED",
+            "prompt_version": null,
+            "validator_version": "decision_chat_renderer/7",
+            "model": null,
+            "resolved_model": null,
+            "provider": null,
+            "attempts": 0,
+            "input_tokens": null,
+            "output_tokens": null,
+            "cost_usd": null,
+            "latency_ms": null,
+            "finish_reason": null,
+            "disposition": "FALLBACK",
+            "prompt_hash": null,
+            "schema_hash": null,
+            "evidence_hash": null
+          },
+          "context": {
+            "run_id": "00000000-0000-0000-0000-000000001bbd",
+            "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+            "option_id": null,
+            "comparison_pair": [
+              "cmp1_468d18f3fbcf26a560efb193e08efe7c8462efb30f83b4ef11ec7f4af61d2ea6",
+              "cmp1_aed8ebc43e1b6d7f617016c35fe21978c89e6ccaa4651e1bfa3e0ece107b11ed"
+            ],
+            "ingredient_id": null,
+            "product_id": null,
+            "pending": null,
+            "topic": null
+          }
+        },
+        "meta": {
+          "request_id": "illustrative-6"
+        },
+        "error": null
+      }
+    },
+    {
+      "step": 7,
+      "operation_id": "AS03",
+      "provenance": "ILLUSTRATIVE / OFFLINE_NO_PROVIDER: tests.unit.test_chat_l32.current -> chat_evidence/6 fallback; synthetic fixture, not live HTTP, persistence or quality evidence",
+      "note": "Separate no-winner fixture: not a continuation of milk Run; no global infeasibility inference.",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5b/assistant/messages",
+      "headers": {
+        "Idempotency-Key": "00000000-0000-0000-0000-00000000232f"
+      },
+      "body": {
+        "expected_evidence_version": "5058f77c05c5025111af24afea36c52d9e4a77c96d3b7d91d136051e94d15778",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple",
+        "question": "Không có winner, vướng gì?",
+        "ingredient_id": null,
+        "history": []
+      },
+      "response": {
+        "data": {
+          "schema_version": "decision_assistant/1",
+          "run_id": "00000000-0000-0000-0000-000000001b5b",
+          "evidence_version": "5058f77c05c5025111af24afea36c52d9e4a77c96d3b7d91d136051e94d15778",
+          "result_digest": "c32f60547c840d38bdea3151a4718799dbc39d2131ccd52b96816ad45056bf9f",
+          "option_id": null,
+          "ingredient_id": null,
+          "locale": "vi",
+          "kind": "answer",
+          "source": "deterministic_fallback",
+          "answer": "Run này chưa có phương án đủ điều kiện được chọn.\n\nPhương án cmp1_de85df82e2615dc515afdf377c395624fd58c31859e972763fb95f6563f0a0a0: chưa đáp ứng yêu cầu khách hàng đã lưu.\n\nPhương án cmp1_de85df82e2615dc515afdf377c395624fd58c31859e972763fb95f6563f0a0a0, món SYNTHETIC 0, BASE: còn thiếu 9.5 cup để đáp ứng yêu cầu đã lưu.\n\nPhương án cmp1_de85df82e2615dc515afdf377c395624fd58c31859e972763fb95f6563f0a0a0, món SYNTHETIC 1, BASE: còn thiếu 19 cup để đáp ứng yêu cầu đã lưu.",
+          "claims": [
+            {
+              "text": "Run này chưa có phương án đủ điều kiện được chọn.",
+              "evidence_ids": [
+                "ev-8f708681506d83c2c0975f9599d0e94baf172f179eb632a68287d624916ccbfc",
+                "ev-d5f716a6b900a015b66e3fea8867790cb2f5ef5611f366f93e63c44beb0bf099",
+                "ev-23dec4b035c530b980a01096458bfedfbf393affbda41c6d18ae0de4f2b3c7fb"
+              ]
+            },
+            {
+              "text": "Phương án cmp1_de85df82e2615dc515afdf377c395624fd58c31859e972763fb95f6563f0a0a0: chưa đáp ứng yêu cầu khách hàng đã lưu.",
+              "evidence_ids": [
+                "ev-23dec4b035c530b980a01096458bfedfbf393affbda41c6d18ae0de4f2b3c7fb"
+              ]
+            },
+            {
+              "text": "Phương án cmp1_de85df82e2615dc515afdf377c395624fd58c31859e972763fb95f6563f0a0a0, món SYNTHETIC 0, BASE: còn thiếu 9.5 cup để đáp ứng yêu cầu đã lưu.",
+              "evidence_ids": [
+                "ev-23dec4b035c530b980a01096458bfedfbf393affbda41c6d18ae0de4f2b3c7fb"
+              ]
+            },
+            {
+              "text": "Phương án cmp1_de85df82e2615dc515afdf377c395624fd58c31859e972763fb95f6563f0a0a0, món SYNTHETIC 1, BASE: còn thiếu 19 cup để đáp ứng yêu cầu đã lưu.",
+              "evidence_ids": [
+                "ev-23dec4b035c530b980a01096458bfedfbf393affbda41c6d18ae0de4f2b3c7fb"
+              ]
+            }
+          ],
+          "references": [
+            {
+              "evidence_id": "ev-d5f716a6b900a015b66e3fea8867790cb2f5ef5611f366f93e63c44beb0bf099",
+              "pointer": "/overview/outcome",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-8f708681506d83c2c0975f9599d0e94baf172f179eb632a68287d624916ccbfc",
+              "pointer": "/overview/recommendation_available",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-23dec4b035c530b980a01096458bfedfbf393affbda41c6d18ae0de4f2b3c7fb",
+              "pointer": "/overview/explanation",
+              "source": "retained_C08"
+            }
+          ],
+          "clarification": null,
+          "diagnostics": {
+            "reason": "MODEL_DISABLED",
+            "prompt_version": null,
+            "validator_version": "decision_chat_renderer/7",
+            "model": null,
+            "resolved_model": null,
+            "provider": null,
+            "attempts": 0,
+            "input_tokens": null,
+            "output_tokens": null,
+            "cost_usd": null,
+            "latency_ms": null,
+            "finish_reason": null,
+            "disposition": "FALLBACK",
+            "prompt_hash": null,
+            "schema_hash": null,
+            "evidence_hash": null
+          },
+          "context": {
+            "run_id": "00000000-0000-0000-0000-000000001b5b",
+            "evidence_version": "5058f77c05c5025111af24afea36c52d9e4a77c96d3b7d91d136051e94d15778",
+            "option_id": null,
+            "comparison_pair": null,
+            "ingredient_id": null,
+            "product_id": null,
+            "pending": null,
+            "topic": null
+          }
+        },
+        "meta": {
+          "request_id": "illustrative-7"
+        },
+        "error": null
+      }
+    },
+    {
+      "step": 8,
+      "operation_id": "AS03",
+      "provenance": "ILLUSTRATIVE / OFFLINE_NO_PROVIDER: tests.unit.test_chat_l32.current -> chat_evidence/6 fallback; synthetic fixture, not live HTTP, persistence or quality evidence",
+      "note": "Additional failed-partial fixture; retained selector identity is diagnostic only.",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5c/assistant/messages",
+      "headers": {
+        "Idempotency-Key": "00000000-0000-0000-0000-000000002330"
+      },
+      "body": {
+        "expected_evidence_version": "55465693a7f9a2a6ba454ce2b5b3b1b75810733748937664931dda68d6752190",
+        "option_id": null,
+        "locale": "vi",
+        "detail_level": "simple",
+        "question": "Tóm tắt Run",
+        "ingredient_id": null,
+        "history": []
+      },
+      "response": {
+        "data": {
+          "schema_version": "decision_assistant/1",
+          "run_id": "00000000-0000-0000-0000-000000001b5c",
+          "evidence_version": "55465693a7f9a2a6ba454ce2b5b3b1b75810733748937664931dda68d6752190",
+          "result_digest": "af60e2bc23a8083091242624ce6d61c28278f634f41aaf1a4e829115cd0a6fbb",
+          "option_id": "cmp1_a2e8b7ea1408a160d7248f1bd8868fe3125897abeebd9e870890475b0b49e34f",
+          "ingredient_id": null,
+          "locale": "vi",
+          "kind": "answer",
+          "source": "deterministic_fallback",
+          "answer": "Run gặp lỗi thực thi; các phần dữ liệu đã lưu vẫn được giữ riêng.\n\nPhương án đang xem có tổng chi 0 VND, gồm tiền mua 0 và phí phải trả 0 VND. Giới hạn ngân sách đã lưu là 0 VND.\n\nCác đánh giá yêu cầu theo món và đường nhu cầu: 2 đạt, 0 chưa đạt, 0 chưa đánh giá.\n\nPhạm vi đã tính gồm 2/2 món; món bị loại không có nghĩa là nhu cầu bằng không.\n\nKhuyến nghị chỉ so sánh các phương án đã đánh giá, không chứng minh tối ưu toàn cục. Kết quả so sánh đã lưu không phải khuyến nghị khả dụng vì lần chạy gặp lỗi. Tìm kiếm chưa có chứng nhận đầy đủ trong miền giới hạn đã lưu.\n\nRun giữ 0 cảnh báo và 1 vấn đề chặn. Các đường nhu cầu không phải xác suất; kết quả mô phỏng không phải lượng nhận hoặc tiêu thụ thực tế. Chưa có bằng chứng nhân quả hay so sánh không mua trong summary này. Xem chi tiết trước khi quyết định; sửa dữ liệu thì tạo Run mới. Khuyến nghị không tự tạo đơn mua. Bằng chứng kết quả còn thiếu hoặc chỉ có một phần.",
+          "claims": [
+            {
+              "text": "Run gặp lỗi thực thi; các phần dữ liệu đã lưu vẫn được giữ riêng.",
+              "evidence_ids": [
+                "ev-9dd0b01d4200c8abd03643ce42645a4b2c51fb43307285578c7a895c896c3912",
+                "ev-3c3f9b045b4f8fb3c2e7a2f482dcbf4572e721b1295ec1668257c9ad3b0ac9d9"
+              ]
+            },
+            {
+              "text": "Phương án đang xem có tổng chi 0 VND, gồm tiền mua 0 và phí phải trả 0 VND. Giới hạn ngân sách đã lưu là 0 VND.",
+              "evidence_ids": [
+                "ev-d36f9a76d201a7ba0831d9e9ed57a3c0b6c01f3f7dc60e9c2feb7ea1c5d10da5",
+                "ev-ba4c13d0444cc5ad56b6d114b8e8094f608c673a1eaa06df7c4d93e0e833daa0"
+              ]
+            },
+            {
+              "text": "Các đánh giá yêu cầu theo món và đường nhu cầu: 2 đạt, 0 chưa đạt, 0 chưa đánh giá.",
+              "evidence_ids": [
+                "ev-6a5b2b1e6d3ed56014f2d2a1dd9ee2d2890b4d8a1545f9b8e6f3235a6a722682"
+              ]
+            },
+            {
+              "text": "Phạm vi đã tính gồm 2/2 món; món bị loại không có nghĩa là nhu cầu bằng không.",
+              "evidence_ids": [
+                "ev-66e56a6106b797266b6d118998c31ea5752fadc11a4180b1d5a814dbb8ea6ed8"
+              ]
+            },
+            {
+              "text": "Khuyến nghị chỉ so sánh các phương án đã đánh giá, không chứng minh tối ưu toàn cục. Kết quả so sánh đã lưu không phải khuyến nghị khả dụng vì lần chạy gặp lỗi. Tìm kiếm chưa có chứng nhận đầy đủ trong miền giới hạn đã lưu.",
+              "evidence_ids": [
+                "ev-264c686f16b987b2e6b28216d44c590045fe5cf411c5a1decbffed124be8d4c5",
+                "ev-8b13531e37d45e1c1b4a742d817540f38cdcaabc2fab57da38ae53d75d1d9ac9",
+                "ev-3c3f9b045b4f8fb3c2e7a2f482dcbf4572e721b1295ec1668257c9ad3b0ac9d9"
+              ]
+            },
+            {
+              "text": "Run giữ 0 cảnh báo và 1 vấn đề chặn. Các đường nhu cầu không phải xác suất; kết quả mô phỏng không phải lượng nhận hoặc tiêu thụ thực tế. Chưa có bằng chứng nhân quả hay so sánh không mua trong summary này. Xem chi tiết trước khi quyết định; sửa dữ liệu thì tạo Run mới. Khuyến nghị không tự tạo đơn mua. Bằng chứng kết quả còn thiếu hoặc chỉ có một phần.",
+              "evidence_ids": [
+                "ev-3c3f9b045b4f8fb3c2e7a2f482dcbf4572e721b1295ec1668257c9ad3b0ac9d9",
+                "ev-02ed250f81c6fdbb3df5de0b69587b48186a8c78ea0d07efd4aa305a847ec5bc",
+                "ev-5caf5ac3b3fcb5d0e7e2d73df560fdd976b13b58f88d51315565b627990efa21",
+                "ev-51f91dd6e7dbdb473c04b59babb9eff373201f88ab42f5470e64349d5901df02"
+              ]
+            }
+          ],
+          "references": [
+            {
+              "evidence_id": "ev-9dd0b01d4200c8abd03643ce42645a4b2c51fb43307285578c7a895c896c3912",
+              "pointer": "/overview/outcome",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-d36f9a76d201a7ba0831d9e9ed57a3c0b6c01f3f7dc60e9c2feb7ea1c5d10da5",
+              "pointer": "/overview/configuration",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-51f91dd6e7dbdb473c04b59babb9eff373201f88ab42f5470e64349d5901df02",
+              "pointer": "/overview/temporal_basis",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-66e56a6106b797266b6d118998c31ea5752fadc11a4180b1d5a814dbb8ea6ed8",
+              "pointer": "/overview/scope",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-8b13531e37d45e1c1b4a742d817540f38cdcaabc2fab57da38ae53d75d1d9ac9",
+              "pointer": "/overview/strategies",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-3c3f9b045b4f8fb3c2e7a2f482dcbf4572e721b1295ec1668257c9ad3b0ac9d9",
+              "pointer": "/overview/explanation",
+              "source": "retained_C08"
+            },
+            {
+              "evidence_id": "ev-264c686f16b987b2e6b28216d44c590045fe5cf411c5a1decbffed124be8d4c5",
+              "pointer": "/overview/selection_proof",
+              "source": "retained_capture"
+            },
+            {
+              "evidence_id": "ev-5caf5ac3b3fcb5d0e7e2d73df560fdd976b13b58f88d51315565b627990efa21",
+              "pointer": "/overview/assumptions",
+              "source": "retained_capture"
+            },
+            {
+              "evidence_id": "ev-02ed250f81c6fdbb3df5de0b69587b48186a8c78ea0d07efd4aa305a847ec5bc",
+              "pointer": "/overview/omissions",
+              "source": "retained_capture"
+            },
+            {
+              "evidence_id": "ev-ba4c13d0444cc5ad56b6d114b8e8094f608c673a1eaa06df7c4d93e0e833daa0",
+              "pointer": "/option/costs",
+              "source": "retained_C03"
+            },
+            {
+              "evidence_id": "ev-6a5b2b1e6d3ed56014f2d2a1dd9ee2d2890b4d8a1545f9b8e6f3235a6a722682",
+              "pointer": "/option/requirements_assessment",
+              "source": "retained_C03"
+            }
+          ],
+          "clarification": null,
+          "diagnostics": {
+            "reason": "MODEL_DISABLED",
+            "prompt_version": null,
+            "validator_version": "decision_chat_renderer/1",
+            "model": null,
+            "resolved_model": null,
+            "provider": null,
+            "attempts": 0,
+            "input_tokens": null,
+            "output_tokens": null,
+            "cost_usd": null,
+            "latency_ms": null,
+            "finish_reason": null,
+            "disposition": "FALLBACK",
+            "prompt_hash": null,
+            "schema_hash": null,
+            "evidence_hash": null
+          },
+          "context": {
+            "run_id": "00000000-0000-0000-0000-000000001b5c",
+            "evidence_version": "55465693a7f9a2a6ba454ce2b5b3b1b75810733748937664931dda68d6752190",
+            "option_id": null,
+            "comparison_pair": null,
+            "ingredient_id": null,
+            "product_id": null,
+            "pending": null,
+            "topic": null
+          }
+        },
+        "meta": {
+          "request_id": "illustrative-8"
+        },
+        "error": null
+      }
+    }
+  ],
+  "export_sequence": {
+    "provenance": "ILLUSTRATIVE / DTO_VALIDATED_ONLY; no job created/rendered",
+    "accept": {
+      "operation_id": "N10",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001f41/exports",
+      "headers": {
+        "Idempotency-Key": "00000000-0000-0000-0000-000000001f44"
+      },
+      "body": {
+        "format": "pdf",
+        "option_id": null,
+        "locale": "vi"
+      },
+      "response": {
+        "data": {
+          "export_id": "00000000-0000-0000-0000-000000001f42",
+          "run_id": "00000000-0000-0000-0000-000000001f41",
+          "option_id": "option-balanced",
+          "status": "queued",
+          "job_id": "00000000-0000-0000-0000-000000001f43",
+          "result_digest": "illustrative-result",
+          "render_version": "planning-pdf/3"
+        },
+        "meta": {
+          "request_id": "illustrative-export",
+          "poll_after_ms": 2000
+        },
+        "error": null
+      }
+    },
+    "status": {
+      "operation_id": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/00000000-0000-0000-0000-000000001f43",
+      "instruction": "No body/query/CAS; poll pending per meta.poll_after_ms; completed result.download_url is authoritative."
+    },
+    "discovery": {
+      "operation_id": "EX01",
+      "method": "GET",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001f41/exports",
+      "instruction": "Use source filters/cursor/snapshot and allowed_actions; empty is not no-effect proof."
+    },
+    "download": {
+      "operation_id": "N11",
+      "method": "GET",
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001f41/exports/00000000-0000-0000-0000-000000001f42",
+      "instruction": "Only after availability; binary application/pdf, not JSON success; never implicit render."
+    }
+  }
+}

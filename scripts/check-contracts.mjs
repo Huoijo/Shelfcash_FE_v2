@@ -23,12 +23,29 @@ for (const [name, digest] of Object.entries(latest.files)) {
   if (hash(readFileSync(new URL(`contracts/020/${name}`, root))) !== digest) failures.push(`020 pin drift: ${name}`)
 }
 // Verify additive compatibility ourselves; the supplied diff is evidence, not an exemption.
-const old = loadWireSource('import'), current = loadWireSource('capabilities')
+const old = loadWireSource('import'), current = JSON.parse(readFileSync(new URL('contracts/020/openapi.main.json', root), 'utf8'))
 for (const [path, verbs] of Object.entries(old.paths)) for (const [method, operation] of Object.entries(verbs)) {
   if (JSON.stringify(current.paths[path]?.[method]) !== JSON.stringify(operation)) failures.push(`Changed old operation: ${method} ${path}`)
 }
 for (const [name, schema] of Object.entries(old.components.schemas)) {
   if (JSON.stringify(current.components.schemas[name]) !== JSON.stringify(schema)) failures.push(`Changed old schema: ${name}`)
 }
+// 021 permits only the four explicitly supplied version-property expansions.
+const preview = loadWireSource('capabilities')
+const previewPin = JSON.parse(readFileSync(new URL('contracts/021/pin.json', root), 'utf8'))
+for (const [name, digest] of Object.entries(previewPin.files)) {
+  if (hash(readFileSync(new URL(`contracts/021/${name}`, root))) !== digest) failures.push(`021 pin drift: ${name}`)
+}
+if (JSON.stringify(current.paths) !== JSON.stringify(preview.paths)) failures.push('021 operation drift')
+const approved = { ExportAccepted: ['render_version'], SummaryAnswer: ['renderer_version'], SummaryDiagnostics: ['prompt_version', 'validator_version'] }
+for (const [name, schema] of Object.entries(current.components.schemas)) {
+  const before = structuredClone(schema), after = structuredClone(preview.components.schemas[name])
+  for (const field of approved[name] ?? []) {
+    if (JSON.stringify(after.properties[field]) !== JSON.stringify(previewPin.approved_properties[name][field])) failures.push(`021 unapproved version property: ${name}.${field}`)
+    after.properties[field] = before.properties[field]
+  }
+  if (JSON.stringify(before) !== JSON.stringify(after)) failures.push(`021 incompatible schema: ${name}`)
+}
+if (Object.keys(current.components.schemas).length !== Object.keys(preview.components.schemas).length) failures.push('021 schema inventory drift')
 if (failures.length) { console.error(failures.join('\n')); process.exitCode = 1 }
 else console.log(`Contract consolidation PASS: ${manifest.files.length} historical files preserved byte-for-byte; slice pins verified`)

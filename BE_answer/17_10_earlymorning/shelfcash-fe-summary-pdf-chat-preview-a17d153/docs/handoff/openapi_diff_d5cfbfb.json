@@ -1,0 +1,105 @@
+{
+  "baseline_source_sha": "d5cfbfb59de7c45bc08eb47129b5ba3919e05473",
+  "baseline_artifact": "git:d5cfbfb:docs/handoff/openapi.json",
+  "baseline_openapi_sha256": "18fb4eabe469c69c817fcf5f0c5b4764c3feb1a886adb71b382c19b347147f7a",
+  "source_sha": "a17d153feccfa96de34002dd536bf9381c01f219",
+  "current_openapi_sha256": "68204af15000f3c79da135ecd56435becf30b6ef069e7338bb93f87552869a5b",
+  "baseline_operations": 76,
+  "current_operations": 76,
+  "baseline_paths": 69,
+  "current_paths": 69,
+  "added_operations": [],
+  "removed_operations": [],
+  "changed_operations": [],
+  "added_schemas": [],
+  "removed_schemas": [],
+  "changed_schemas": [
+    "ExportAccepted",
+    "SummaryAnswer",
+    "SummaryDiagnostics"
+  ],
+  "changed_properties": {
+    "ExportAccepted": {
+      "render_version": {
+        "before": {
+          "type": "string",
+          "const": "planning-pdf/1",
+          "title": "Render Version",
+          "default": "planning-pdf/1"
+        },
+        "after": {
+          "type": "string",
+          "enum": [
+            "planning-pdf/1",
+            "planning-pdf/2",
+            "planning-pdf/3"
+          ],
+          "title": "Render Version",
+          "default": "planning-pdf/3"
+        }
+      }
+    },
+    "SummaryAnswer": {
+      "renderer_version": {
+        "before": {
+          "type": "string",
+          "const": "plan_summary_renderer/1",
+          "title": "Renderer Version",
+          "default": "plan_summary_renderer/1"
+        },
+        "after": {
+          "type": "string",
+          "enum": [
+            "plan_summary_renderer/1",
+            "plan_summary_renderer/2",
+            "plan_summary_renderer/3",
+            "plan_summary_renderer/4"
+          ],
+          "title": "Renderer Version",
+          "default": "plan_summary_renderer/1"
+        }
+      }
+    },
+    "SummaryDiagnostics": {
+      "prompt_version": {
+        "before": {
+          "type": "string",
+          "const": "plan_summary_prompt/1",
+          "title": "Prompt Version",
+          "default": "plan_summary_prompt/1"
+        },
+        "after": {
+          "type": "string",
+          "enum": [
+            "plan_summary_prompt/1",
+            "plan_summary_prompt/2",
+            "plan_summary_prompt/3",
+            "plan_summary_prompt/4",
+            "plan_summary_prompt/5"
+          ],
+          "title": "Prompt Version",
+          "default": "plan_summary_prompt/1"
+        }
+      },
+      "validator_version": {
+        "before": {
+          "type": "string",
+          "const": "summary_presentation_guard/1",
+          "title": "Validator Version",
+          "default": "summary_presentation_guard/1"
+        },
+        "after": {
+          "type": "string",
+          "enum": [
+            "summary_presentation_guard/1",
+            "summary_narrative_guard/2",
+            "summary_owner_guard/3",
+            "summary_owner_guard/4"
+          ],
+          "title": "Validator Version",
+          "default": "summary_presentation_guard/1"
+        }
+      }
+    }
+  }
+}

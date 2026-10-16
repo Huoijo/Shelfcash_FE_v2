@@ -13,12 +13,13 @@ export type RecoveryRecord = {
   resource_ids: Record<string, string>; idempotency_key: string
   original_cas: { revision?: string; ifNoneMatch?: '*' }
   created_at: string; payload_sha256: string; state: 'pending' | 'unknown' | 'confirmed' | 'rejected'
+  receipt_ids?: { export_id?: string; job_id?: string; generation_id?: string }
   // Entire captured replay input or nothing. Never persist a partially redacted request.
   replay_input?: CapabilityInput<CapabilityWriteOperation>
 }
 export interface RecoveryJournal {
   reserve(record: RecoveryRecord): Promise<void>
-  update(id: string, state: RecoveryRecord['state']): Promise<void>
+  update(id: string, state: RecoveryRecord['state'], receiptIds?: RecoveryRecord['receipt_ids']): Promise<void>
   list(actor: string, store: string | null): Promise<RecoveryRecord[]>
 }
 export class RecoveryJournalError extends Error {
@@ -101,7 +102,8 @@ export function createIndexedDbRecoveryJournal(factory: IDBFactory = indexedDB):
         store.add(structuredClone(record)); done(undefined)
       }
     }),
-    update: (id, state) => transaction<void>('readwrite', (store, done) => {
+    update: (id, state, receiptIds) => transaction<void>('readwrite', (store, done) => {
+      if (receiptIds && (Object.keys(receiptIds).some(k => !['export_id', 'job_id', 'generation_id'].includes(k)) || Object.values(receiptIds).some(v => !matchesCapabilitySchema({type:'string',format:'uuid'},v,{})))) throw new RecoveryJournalError('Only typed receipt identifiers may be persisted.')
       const request = store.get(id)
       request.onsuccess = () => {
         const record = request.result as RecoveryRecord | undefined
@@ -111,7 +113,7 @@ export function createIndexedDbRecoveryJournal(factory: IDBFactory = indexedDB):
           if (state === record.state || state === 'unknown') { done(undefined); return }
           store.transaction.abort(); return
         }
-        store.put({ ...record, state }); done(undefined)
+        store.put({ ...record, state, ...(receiptIds ? { receipt_ids: { ...receiptIds } } : {}) }); done(undefined)
       }
     }),
     list: (actor, storeId) => transaction<RecoveryRecord[]>('readonly', (store, done) => {

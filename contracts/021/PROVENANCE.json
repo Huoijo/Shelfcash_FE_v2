@@ -1,0 +1,283 @@
+{
+  "source_sha": "a17d153feccfa96de34002dd536bf9381c01f219",
+  "source_branch": "main",
+  "date": "2026-10-17",
+  "timezone": "Asia/Saigon",
+  "local_origin_main_ref": "d5cfbfb59de7c45bc08eb47129b5ba3919e05473",
+  "remote_server_verified": false,
+  "status": "SOURCE_READY / NOT_DEPLOYED",
+  "serving_runtime": "UNVERIFIED",
+  "release": "PREVIEW_PENDING_IMPORT_INTEGRATION",
+  "documents": "HEAD plus reviewed uncommitted contract overlays; unrelated seed WIP excluded",
+  "unrelated_wip_preserved": [
+    "docs/CURRENT_STATE.md",
+    "docs/ROADMAP.md",
+    "docs/runbooks/FULL_TEST_FLOW.md",
+    "scripts/seed_local_forecast.py",
+    "scripts/seed_local_planning.py",
+    "tests/integration/test_seed_local_forecast.py",
+    "tests/integration/test_seed_local_planning.py",
+    "tests/unit/test_seed_local_forecast.py",
+    "tests/unit/test_seed_local_planning.py"
+  ],
+  "package_only_changes": "Supplementary unbundled local links replaced by explicit repository references",
+  "repository_references": [
+    {
+      "document": "docs/PROCUREMENT_API_CONTRACT_VI.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f4"
+    },
+    {
+      "document": "docs/PROCUREMENT_API_CONTRACT_VI.md",
+      "source_reference": "docs/features/DATA_READINESS_POLICY.md"
+    },
+    {
+      "document": "docs/PROCUREMENT_API_CONTRACT_VI.md",
+      "source_reference": "docs/adr/ADR-A1-observed-stockout-demand-policy.md"
+    },
+    {
+      "document": "docs/PROCUREMENT_API_CONTRACT_VI.md",
+      "source_reference": "docs/features/DATA_READINESS_POLICY.md"
+    },
+    {
+      "document": "docs/API_CONTRACT.md",
+      "source_reference": "docs/CONTRACT_COMPATIBILITY_CHANGELOG_VI.md"
+    },
+    {
+      "document": "docs/API_CONTRACT.md",
+      "source_reference": "docs/features/APPLICATION_CONTRACTS.md"
+    },
+    {
+      "document": "docs/API_CONTRACT.md",
+      "source_reference": "docs/adr/ADR-011-historical-run-immutability-snapshot-policy.md"
+    },
+    {
+      "document": "docs/API_CONTRACT.md",
+      "source_reference": "docs/features/RECIPE_SCHEDULE.md"
+    },
+    {
+      "document": "docs/API_CONTRACT.md",
+      "source_reference": "docs/CONTRACT_COMPATIBILITY_CHANGELOG_VI.md"
+    },
+    {
+      "document": "docs/AUTHORIZATION_CONTRACT_VI.md",
+      "source_reference": "docs/features/AUTH_SESSION.md"
+    },
+    {
+      "document": "docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "source_reference": "docs/features/IMPORT_FIELD_VALUE_BINDINGS.md"
+    },
+    {
+      "document": "docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "source_reference": "docs/features/IMPORT_SCHEMA_INVENTORY.md"
+    },
+    {
+      "document": "docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "source_reference": "docs/features/IMPORT_SCHEMA_INVENTORY.md"
+    },
+    {
+      "document": "docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "source_reference": "docs/features/IMPORT_STAGING_PREVIEW.md"
+    },
+    {
+      "document": "docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "source_reference": "docs/adr/ADR-A1-observed-stockout-demand-policy.md"
+    },
+    {
+      "document": "docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "source_reference": "docs/features/IMPORT_STAGING_PREVIEW.md"
+    },
+    {
+      "document": "docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "source_reference": "docs/features/DATA_READINESS_POLICY.md"
+    },
+    {
+      "document": "docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "source_reference": "IMPORT_SCHEMA_LEGACY_HANDOFF_VI.md#4-liên-kết-nhiều-file-và-setup-store"
+    },
+    {
+      "document": "docs/IMPORT_MAPPING_API_CONTRACT_VI.md",
+      "source_reference": "docs/features/DATA_READINESS_POLICY.md"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f4-2"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f4"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#demo-abc-v3"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f2"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#demo-baseline-ab"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f3"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/DATA_READINESS_POLICY.md"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/IMPORT_SCHEMA_INVENTORY.md"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/adr/ADR-A1-observed-stockout-demand-policy.md"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/AUTH_SESSION.md#local-gmail-smokedemo-profile"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/AUTH_SESSION.md"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/IMPORT_STAGING_PREVIEW.md"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "IMPORT_SCHEMA_LEGACY_HANDOFF_VI.md"
+    },
+    {
+      "document": "docs/CURRENT_STATE.md",
+      "source_reference": "docs/features/IMPORT_SCHEMA_INVENTORY.md"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f4-2"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f4"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#demo-baseline-ab"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#demo-abc-v3"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f2"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f3"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/features/DATA_READINESS_POLICY.md"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/features/AUTH_SESSION.md#local-gmail-smokedemo-profile"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/features/IMPORT_SCHEMA_INVENTORY.md"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/adr/ADR-A1-observed-stockout-demand-policy.md"
+    },
+    {
+      "document": "docs/ROADMAP.md",
+      "source_reference": "docs/features/AUTH_SESSION.md"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f4"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f4"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f4"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f4-2"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f4"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f3"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#forecast-f2"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#demo-abc-v3"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/FORECAST_ENGINE_INTEGRATION.md#demo-baseline-ab"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/DATA_READINESS_POLICY.md"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/DATA_READINESS_POLICY.md#current-fact--d2-forecast-eligibility-và-linked-readiness"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "tests/fixtures/local_self_service/products.csv"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "tests/fixtures/local_self_service/ingredients.csv"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/IMPORT_SCHEMA_INVENTORY.md#inventory_receipts--hàng-thực-nhận-c3"
+    },
+    {
+      "document": "docs/runbooks/FULL_TEST_FLOW.md",
+      "source_reference": "docs/features/AUTH_SESSION.md"
+    }
+  ],
+  "package_credential_redactions": [
+    {
+      "document": "docs/AUTHORIZATION_CONTRACT_VI.md",
+      "illustrative_credential_fields_omitted": 3
+    }
+  ],
+  "checks": {
+    "contract_tests": "5 passed: tests/unit/test_fe_handoff.py tests/api/test_plan_summary_openapi.py tests/api/test_planning_inspection_exports_openapi.py",
+    "source_openapi": "76 operations / 69 paths; operations and fields unchanged against d5cfbfb; only approved version properties changed",
+    "examples": "Historical rows unchanged; 8 new offline ChatRequest/ChatEnvelope with source-resolvable claim refs; ExportRequest/ExportEnvelope DTO validation",
+    "limits": "No full suite, DB, provider, browser, serving-runtime or remote-server verification"
+  },
+  "prohibited_actions_performed": false
+}

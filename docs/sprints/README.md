@@ -101,3 +101,7 @@ Quy trình017 nằm tại [testing](../testing/017_Live_BE_FE_E2E_Protocol.md); 
 - [020_Backend_Handoff_Integration.md](020/020_Backend_Handoff_Integration.md).
 - [020_Closed_Design_Gap_Implementation.md](020/020_Closed_Design_Gap_Implementation.md).
 
+
+### 021
+
+- [021_Planning_Handoff_Integration.md](021/021_Planning_Handoff_Integration.md).
