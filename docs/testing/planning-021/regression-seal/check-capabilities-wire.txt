@@ -1,0 +1,5 @@
+
+> shelfcash-fe-v2@0.0.0 check:capabilities-wire
+> node scripts/sync-capabilities-wire.mjs --check
+
+Capabilities wire PASS: 76 operations, 489 schemas

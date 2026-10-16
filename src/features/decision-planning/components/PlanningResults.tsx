@@ -8,6 +8,8 @@ import { PlanningEngineReasons, PlanningIngredientPanel, PlanningNotifications, 
 import './Planning.css'
 
 export type PlanningResultsProps = {
+  assistantAction?: ReactNode
+  assistantWhy?: ReactNode
   exportAction?:ReactNode
   historical?:boolean
   run: PlanningRun
@@ -57,12 +59,12 @@ export function PlanningResults(props: PlanningResultsProps) {
 
   return <main className="sc-proc-content" aria-labelledby={`${prefix}-title`} aria-busy={busy || undefined}>
     <header className="sc-proc-page-header"><div><h1 id={`${prefix}-title`}>Kế hoạch nhập</h1><p className="sc-proc-page-subtitle">{formatPlanningDate(run.request.forecast_start_date)} · 7 ngày · kết quả đã lưu</p></div><div className="sc-proc-header-actions">
-      {props.exportAction}<UnderConstructionButton feature="Hỏi AI" className="sc-proc-secondary-action">Hỏi AI</UnderConstructionButton>
+      {props.assistantAction ?? <UnderConstructionButton feature="Hỏi AI" className="sc-proc-secondary-action">Hỏi AI</UnderConstructionButton>}{props.exportAction}
       <button type="button" className="sc-proc-text-action" disabled={busy} onClick={onNewPlan}>Thiết lập mới</button>
     </div></header>
     {props.historical&&<section className="sc-proc-retained-strip"><strong>Run lịch sử · chỉ đọc</strong><span>Kết quả lịch sử bất biến. Không tái dựng từ tồn kho, công thức hoặc ngân sách hiện tại.</span></section>}
-    {run.status === 'failed' && <section className="sc-proc-warning" role="alert"><strong>Chạy kế hoạch thất bại.</strong><span>Dữ liệu một phần bên dưới chỉ để kiểm tra, không phải khuyến nghị đã hoàn tất.</span>{winner && <span>Phương án một phần được máy chủ xác minh và giữ lại; không đổi trạng thái thất bại của lần chạy.</span>}</section>}
-    {run.status === 'completed' && !winner && <section className="sc-proc-warning" role="status"><strong>Đã hoàn tất — chưa có phương án đủ điều kiện.</strong><span>Kết quả: {run.outcome ?? 'Chưa đánh giá'}. Không tạo kế hoạch mua giả.</span></section>}
+    {run.status === 'failed' && <section className="sc-proc-warning" role="alert"><strong>Chạy kế hoạch thất bại.</strong><span>Dữ liệu một phần bên dưới chỉ để kiểm tra, không phải khuyến nghị đã hoàn tất.</span>{winner && <span>Phương án một phần được máy chủ xác minh và giữ lại; không đổi trạng thái thất bại của lần chạy.</span>}{props.assistantWhy}</section>}
+    {run.status === 'completed' && !winner && <section className="sc-proc-warning" role="status"><strong>Đã hoàn tất — chưa có phương án đủ điều kiện.</strong><span>Kết quả: {run.outcome ?? 'Chưa đánh giá'}. Không tạo kế hoạch mua giả.</span>{props.assistantWhy}</section>}
     {['queued', 'running'].includes(run.status) && <p role="status">Máy chủ đang tính kế hoạch. Chưa có khuyến nghị hoàn tất.</p>}
     {error && <p className="sc-proc-warning" role="alert">{error}</p>}
     <div className="sc-proc-tabs" role="tablist" aria-label="Kế hoạch nhập">
@@ -91,7 +93,7 @@ export function PlanningResults(props: PlanningResultsProps) {
             <PlanningPurchases option={winner} currency={run.configuration.budget.currency} nameFor={nameFor} onInspect={inspect} />
           </details>
         </section>
-        <PlanningNotifications title="Lỗi thực thi" items={run.errors} /><PlanningNotifications title="Cảnh báo của kết quả" items={result?.warnings ?? []} />
+        <PlanningNotifications title="Lỗi thực thi" items={run.errors} /><PlanningNotifications title="Cảnh báo của kết quả" items={result?.warnings ?? []} action={props.assistantWhy} />
         <PlanningNotifications title="Cảnh báo dự báo" items={run.forecast?.warnings ?? []} />
         {run.scope && <details className="sc-proc-disclosure"><summary>Phạm vi món và dữ liệu bị loại</summary><p>Đã tính {run.scope.computed_count} / {run.scope.menu_count} món · Phạm vi {run.scope.coverage_status}.</p>
           <ul className="sc-proc-short-bullets">{run.scope.excluded_products.map((product, index) => <li key={`${product.product_id}-${product.code}-${index}`}><span>{product.message}</span> <code>{product.code}</code><small> · {product.product_id} · {product.field} · {product.affected_dates.map(formatPlanningDate).join(', ')}</small>{product.suggested_action && <p>{product.suggested_action}</p>}</li>)}</ul>
@@ -101,7 +103,7 @@ export function PlanningResults(props: PlanningResultsProps) {
         <div className="sc-proc-overview-actions"><UnderConstructionButton feature="Draft PO" className="sc-proc-primary-cta">Tạo Draft PO</UnderConstructionButton>
           <button type="button" className="sc-proc-secondary-action" onClick={() => changeTab('strategies')}>Xem phương án khác</button>
           <button type="button" className="sc-proc-secondary-action" disabled={busy || detailBusy} onClick={()=>{setTab('reasons');onLoadReasons()}}>{detailBusy ? 'Đang đọc…' : 'Xem lý do từ engine'}</button></div>
-        <details className="sc-proc-disclosure"><summary>Thông tin lần lập kế hoạch</summary><p className="sc-planning-note planning-run-identity">Lần chạy {run.run_id} · {run.status} · Bắt đầu {formatPlanningDate(run.request.forecast_start_date)} · Ngân sách đã chụp {formatPlanningMoney(run.configuration.budget.limit, run.configuration.budget.currency)}</p><p className="sc-planning-note">Hỏi AI và kịch bản giả định chưa khả dụng.</p></details>
+        <details className="sc-proc-disclosure"><summary>Thông tin lần lập kế hoạch</summary><p className="sc-planning-note planning-run-identity">Lần chạy {run.run_id} · {run.status} · Bắt đầu {formatPlanningDate(run.request.forecast_start_date)} · Ngân sách đã chụp {formatPlanningMoney(run.configuration.budget.limit, run.configuration.budget.currency)}</p><p className="sc-planning-note">{props.assistantAction ? 'Kịch bản giả định chưa khả dụng.' : 'Hỏi AI và kịch bản giả định chưa khả dụng.'}</p></details>
         {props.reasonsError && <p role="alert">{props.reasonsError}</p>}
       </div>}
       {tab === 'ingredients' && <div className="sc-proc-ingredient-workspace">

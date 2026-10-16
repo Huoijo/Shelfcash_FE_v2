@@ -1,0 +1,233 @@
+{
+  "project": "458079658328604672",
+  "component": "458423352311304192",
+  "revision": "461952561365278720",
+  "canonicalFile": "src/components/generated/ShelfCashPlanningCopilot.tsx",
+  "elementReference": "Source function/state selector anchors; no stable per-state element IDs supplied by this revision. Prototype selectors are excluded from production.",
+  "mappings": [
+    {
+      "case": "P01",
+      "state": "NORMAL_FIRST_OPEN",
+      "sourceAnchor": "ShelfCashPlanningCopilot / empty",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P02",
+      "state": "NORMAL_ANSWER",
+      "sourceAnchor": "NormalAnswer / conversation",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P03",
+      "state": "LOADING",
+      "sourceAnchor": "LoadingState / loading",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P04",
+      "state": "PERMISSION_DENIED",
+      "sourceAnchor": "ShelfCashPlanningCopilot / permission",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P05",
+      "state": "UNAVAILABLE",
+      "sourceAnchor": "ShelfCashPlanningCopilot / error",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P06",
+      "state": "CLARIFICATION_INGREDIENT",
+      "sourceAnchor": "ClarificationState / clarify-ingredient",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P07",
+      "state": "CLARIFICATION_SIMILAR_INGREDIENTS",
+      "sourceAnchor": "ClarificationState / clarify-ingredient-similar",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P08",
+      "state": "CLARIFICATION_OPTION",
+      "sourceAnchor": "ClarificationState / clarify-option",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P09",
+      "state": "CLARIFICATION_PRODUCT",
+      "sourceAnchor": "ClarificationState / clarify-product",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P10",
+      "state": "QUERY_UNSUPPORTED",
+      "sourceAnchor": "UnsupportedState / clarify-unsupported",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P11",
+      "state": "CONTEXT_STALE",
+      "sourceAnchor": "StaleState / stale-detected",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P12",
+      "state": "CONTEXT_REFRESHING",
+      "sourceAnchor": "StaleState / stale-refreshing",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P13",
+      "state": "CONTEXT_RESTORED",
+      "sourceAnchor": "StaleState / stale-restored",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P14",
+      "state": "CONTEXT_RESTORED_UNRESOLVED",
+      "sourceAnchor": "StaleState / stale-restored-unresolved",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P15",
+      "state": "UNCERTAIN_AFTER_RELOAD",
+      "sourceAnchor": "UncertainReload / uncertain-reload",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P16",
+      "state": "UNCERTAIN_BLOCKED_CONTINUATION",
+      "sourceAnchor": "UncertainReload / uncertain-reload",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P17",
+      "state": "UNCERTAIN_NEW_QUESTION_BLOCKED",
+      "sourceAnchor": "UncertainReload / uncertain-reload (negative replacement case)",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P18",
+      "state": "NEW_QUESTION_AFTER_KNOWN_TERMINAL",
+      "sourceAnchor": "KnownTerminalNewQuestion / new-question-known-terminal",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P19",
+      "state": "SUMMARY_INITIAL",
+      "sourceAnchor": "SummaryConfigurator / summary-initial",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P20",
+      "state": "SUMMARY_RUNNING",
+      "sourceAnchor": "SummaryLifecycle / summary-running",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P21",
+      "state": "SUMMARY_COMPLETED",
+      "sourceAnchor": "SummaryCompleted / summary-completed",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P22",
+      "state": "SUMMARY_FAILED",
+      "sourceAnchor": "SummaryLifecycle / summary-failed",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P23",
+      "state": "SUMMARY_SAFE_RECOVERY",
+      "sourceAnchor": "SummaryLifecycle / summary-recover",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P24",
+      "state": "SUMMARY_NEW_GENERATION",
+      "sourceAnchor": "SummaryConfigurator / summary-new",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P25",
+      "state": "SUMMARY_VI_SIMPLE",
+      "sourceAnchor": "SummaryCompleted / summary-simple-vi",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P26",
+      "state": "SUMMARY_VI_TECHNICAL",
+      "sourceAnchor": "SummaryCompleted / summary-technical-vi",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P27",
+      "state": "SUMMARY_EN_SIMPLE",
+      "sourceAnchor": "SummaryCompleted / summary-simple-en",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P28",
+      "state": "SUMMARY_EN_TECHNICAL",
+      "sourceAnchor": "SummaryCompleted / summary-technical-en",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P29",
+      "state": "LOADING_RETAINED_ANSWER",
+      "sourceAnchor": "PriorAnswerLoading / loading-retained-answer",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P30",
+      "state": "PERMISSION_DENIED_UNCERTAIN",
+      "sourceAnchor": "PermissionUncertain / permission-uncertain",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P31",
+      "state": "SUMMARY_REQUEST_PENDING",
+      "sourceAnchor": "SummaryLifecycle / summary-request-pending",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    },
+    {
+      "case": "P32",
+      "state": "SUMMARY_RECOVERED_PREVIOUS_CONTEXT",
+      "sourceAnchor": "RecoveredPreviousContextSummary / summary-recovered-previous-context",
+      "production": "PlanningAssistantDrawer.tsx",
+      "status": "PASS"
+    }
+  ]
+}

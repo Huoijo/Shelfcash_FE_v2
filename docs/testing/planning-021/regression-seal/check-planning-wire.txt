@@ -1,0 +1,5 @@
+
+> shelfcash-fe-v2@0.0.0 check:planning-wire
+> node scripts/check-planning-wire.mjs --check
+
+Planning wire drift gate PASS: 84 schemas, 84 types; SHA256 8be08434fb0748a177089caa668d1b04fd19844b41376c67c9850ccc2cb52e8f

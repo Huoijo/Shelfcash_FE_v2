@@ -12,6 +12,7 @@ import { PlanningWorkflow } from '../../features/decision-planning/planning.work
 import type { PlanningRequest } from '../../features/decision-planning/planning.types'
 import { PlanningLifecycle } from '../../features/decision-planning/components/PlanningLifecycle'
 import { PlanningSetup } from '../../features/decision-planning/components/PlanningSetup'
+import { PlanningAssistantWorkspace } from '../../features/decision-planning/components/PlanningAssistantWorkspace'
 import { PlanningResults } from '../../features/decision-planning/components/PlanningResults'
 import { PlanningNotifications } from '../../features/decision-planning/components/PlanningEvidence'
 import './PlanningPage.css'
@@ -103,6 +104,7 @@ function ScopedPlanningPage({ storeId }: { storeId: string | null }) {
     await workflow.loadIngredient(id)
   }
 
+  const resultRun = state.run
   return <>
     <AppShellHeader><nav className="sc-planning-breadcrumb" aria-label="Vị trí trong ShelfCash">
       <Link to="/forecast/planning">Dự đoán</Link><span aria-hidden="true">/</span><span aria-current="page">Kế hoạch nhập</span>
@@ -130,12 +132,12 @@ function ScopedPlanningPage({ storeId }: { storeId: string | null }) {
       canCreateReason={!hasCreateRights ? 'Thiếu quyền lập/xem kế hoạch hoặc xem ngân sách/giá mua.' : undefined}
       onCreate={(request) => { setSubmitted(structuredClone(request));void workflow.create(request) }} onAssessDate={workflow.assessDate}
       readiness={state.readiness} readinessDate={state.readinessDate} readinessRequestKey={state.readinessRequestKey} readinessBusy={state.readinessBusy} readinessError={state.readinessError} /></div>}
-    {canRead && !mismatch && state.run && ['completed', 'failed'].includes(state.run.status) && <PlanningResults
-      key={state.run.run_id} historical={params.get('historical')==='1'} exportAction={<PlanExport run={state.run} optionId={state.selectedOptionId} onAccessDenied={onAccessDenied}/>} run={state.run} ingredients={state.ingredients ?? undefined} ingredient={state.ingredient ?? undefined}
+    {!mismatch && resultRun && ['completed', 'failed'].includes(resultRun.status) && <PlanningAssistantWorkspace onAccessDenied={onAccessDenied} run={resultRun} optionId={state.selectedOptionId} onRefreshContext={async () => { if (workflow.getSnapshot().busy) throw new Error('Current Planning read already pending.'); await workflow.refresh(); const fresh = workflow.getSnapshot(); if (!fresh.run || fresh.error) throw new Error('Current Planning read failed.'); return fresh.run }}>{(assistantAction, assistantWhy) => canRead ? <PlanningResults assistantAction={assistantAction} assistantWhy={assistantWhy}
+      key={resultRun.run_id} historical={params.get('historical')==='1'} exportAction={<PlanExport run={resultRun} optionId={state.selectedOptionId} onAccessDenied={onAccessDenied}/>} run={resultRun} ingredients={state.ingredients ?? undefined} ingredient={state.ingredient ?? undefined}
       reasons={state.reasons ?? undefined} selectedOptionId={state.selectedOptionId} busy={state.busy} detailBusy={state.detailBusy}
       ingredientsError={state.inspectionArea==='ingredients'?state.inspectionError:undefined} detailError={state.inspectionArea==='ingredient'?state.inspectionError:undefined} reasonsError={state.inspectionArea==='reasons'?state.inspectionError:undefined} hasMoreIngredients={state.nextIngredientCursor !== null} ingredientsTotal={state.ingredientsTotal}
       onSelectOption={workflow.selectOption} onLoadIngredients={() => { void workflow.loadIngredients() }}
       onMoreIngredients={() => { if (state.nextIngredientCursor) void workflow.loadIngredients(state.nextIngredientCursor) }}
-      onSelectIngredient={(id) => { void inspectIngredient(id) }} onLoadReasons={() => { void workflow.loadReasons() }} onNewPlan={newPlan} />}
+      onSelectIngredient={(id) => { void inspectIngredient(id) }} onLoadReasons={() => { void workflow.loadReasons() }} onNewPlan={newPlan} /> : null}</PlanningAssistantWorkspace>}
   </>
 }

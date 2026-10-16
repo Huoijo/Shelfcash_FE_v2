@@ -1,0 +1,5 @@
+
+> shelfcash-fe-v2@0.0.0 check:recovery-policy
+> node scripts/sync-recovery-policy.mjs --check
+
+Recovery policy PASS: 28 operation/phase rules

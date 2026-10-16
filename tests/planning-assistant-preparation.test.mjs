@@ -85,18 +85,38 @@ test('PL01 fresh denial still redacts facts for future browser assertions',async
  const x=owner();strictAssistantTransport(t,[post(responses.answer.data),{method:'POST',path:chatPath,status:403,response:{data:null,meta:{request_id:'qa-denied'},error:{code:'PERMISSION_DENIED',message:'QA denied',details:{}}}}])
  await x.flow.restore();await x.flow.ask('QA first');await assert.rejects(x.flow.ask('QA second'));assert.equal(x.flow.getSnapshot().phase,'permission');assertProtectedFactsCleared(x.flow.getSnapshot())
 })
-test('PL01 B01 characterization: presentation change after terminal Summary is currently blocked by retained locator',async t=>{
- const f=summaryFixture('completed'),x=owner(f),path=`/api/v1/procurement-plans/${x.run}/assistant/summary`,calls=strictAssistantTransport(t,[post(f.application.summary,path)])
- await x.flow.restore();await x.flow.generateSummary();x.flow.setPresentation({option_id:null,locale:'en',detail_level:'technical'})
- await assert.rejects(x.flow.generateSummary(),/Resolve the current generation/);assert.equal(calls.length,1)
- assert.equal(x.flow.summaryIntent.getSnapshot().status,'succeeded')
+for(const locale of ['vi','en'])for(const detail of ['simple','technical'])for(const terminal of ['completed','failed'])test(`PL01 B01 terminal ${terminal} → deliberate ${locale}/${detail} preserves receipt and uses new key`,async t=>{
+ const f=summaryFixture(terminal),next=summaryFixture('completed',locale,detail).application.summary
+ next.generation_id='00000000-0000-4000-8000-000000000088'
+ const x=owner(f),path=`/api/v1/procurement-plans/${x.run}/assistant/summary`,calls=strictAssistantTransport(t,[post(f.application.summary,path),post(next,path)])
+ await x.flow.restore();await x.flow.generateSummary();const old=structuredClone(x.flow.getSnapshot().summary)
+ x.flow.setPresentation({option_id:null,locale,detail_level:detail});assert.deepEqual(x.flow.getSnapshot().summary,old)
+ await x.flow.generateSummary();assert.equal(calls.length,2);assert.notEqual(calls[0].key,calls[1].key)
+ assert.equal(calls[1].body.locale,locale);assert.equal(calls[1].body.detail_level,detail)
+ const rows=[...x.j.rows.values()];assert.equal(rows.length,2);assert.ok(rows.every(r=>r.state==='confirmed'))
+ assert.equal(rows[0].receipt_ids.generation_id,old.generation_id)
 })
-test('PL01 B02 characterization: restored old-version Summary replay can publish old evidence in a fresh owner',async t=>{
+test('PL01 B02 restored old-version Summary remains valid but is fenced from current evidence',async t=>{
  const f=summaryFixture('recoverable'),record=await prepareRecoveryRecord('AS01',f.records[0].replay_input,f.authority.scope)
  f.harness.currentEvidenceVersion='qa-new-evidence-version'
  const x=owner(f,memoryPreparationJournal([record])),path=`/api/v1/procurement-plans/${x.run}/assistant/summary`
  strictAssistantTransport(t,[post(responses.summary.data,path)]);await x.flow.restore();await x.flow.replaySummary()
  assert.equal(x.flow.getSnapshot().phase,'answer');assert.notEqual(x.flow.getSnapshot().summary.result.identity.aggregate_digest,f.harness.currentEvidenceVersion)
  assert.throws(()=>assertSummaryMatchesCurrentEvidence(x.flow.getSnapshot().summary,f.harness.currentEvidenceVersion))
- // This records an existing integration hazard, not approval to bind old facts as current.
+ assert.equal(x.flow.getSnapshot().summaryContext,'previous')
+})
+
+test('PL01 retained running is distinct from pending request, then AS02 reads without a second POST',async t=>{
+ const f=summaryFixture('running'),x=owner(f),path=`/api/v1/procurement-plans/${x.run}/assistant/summary`
+ const calls=strictAssistantTransport(t,[post(f.application.summary,path),{method:'GET',path:path+'/'+f.application.summary.generation_id,response:envelope(summaryFixture('completed').application.summary)}])
+ await x.flow.restore();const pending=x.flow.generateSummary();assert.equal(x.flow.getSnapshot().requestPending,true);await pending
+ assert.equal(x.flow.getSnapshot().summary.status,'running');assert.equal(x.flow.getSnapshot().requestPending,false)
+ await x.flow.refreshSummary();assert.equal(x.flow.getSnapshot().summary.status,'completed');assert.equal(calls.filter(c=>c.method==='POST').length,1)
+})
+test('PL01 late answer cannot republish after evidence invalidation even when transport ignores AbortSignal',async()=>{
+ let resolve;const response=new Promise(r=>resolve=r),f=normalFixture()
+ const flow=new PlanningAssistant({...api,call:()=>response},memoryPreparationJournal(),qa.run,qa.version,f.authority.scope,()=>f.authority)
+ await flow.restore();const pending=flow.ask('QA old context');const rejected=assert.rejects(pending)
+ await new Promise(r=>setTimeout(r,0));flow.setEvidenceVersion('qa-next');resolve(responses.answer);await rejected
+ assert.equal(flow.getSnapshot().phase,'stale');assertProtectedFactsCleared(flow.getSnapshot())
 })

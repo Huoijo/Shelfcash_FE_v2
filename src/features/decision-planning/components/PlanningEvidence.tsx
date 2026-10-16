@@ -1,13 +1,14 @@
+import type { ReactNode } from 'react'
 import type { PlanningIngredient, PlanningNotification, PlanningOption, PlanningReasons, PlanningRun } from '../planning.types'
 import { formatPlanningDate, formatPlanningDecimal, formatPlanningMoney, formatPlanningQuantity, planningStrategyLabels } from '../planning.format'
 
-export function PlanningNotifications({ title, items }: { title: string; items: PlanningNotification[] }) {
+export function PlanningNotifications({ title, items, action }: { title: string; items: PlanningNotification[]; action?: ReactNode }) {
   if (items.length === 0) return null
   return <section className="sc-proc-notifications" aria-label={title}><h3>{title}</h3><ul className="sc-proc-short-bullets">
     {items.map((item, index) => <li key={`${item.code}-${index}`}><span>{item.message}</span> <code>{item.code}</code>
       {item.details?.entity_id && <small> · {item.details.entity_id}</small>}
     </li>)}
-  </ul></section>
+  </ul>{action}</section>
 }
 
 export function PlanningPurchases({ option, currency, nameFor, onInspect }: {

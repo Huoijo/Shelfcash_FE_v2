@@ -1,0 +1,5 @@
+
+> shelfcash-fe-v2@0.0.0 check:operations-wire
+> node scripts/check-operations-wire.mjs --check
+
+Operations wire PASS: 96 schemas

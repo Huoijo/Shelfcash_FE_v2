@@ -1,0 +1,42 @@
+
+> shelfcash-fe-v2@0.0.0 test:operations
+> node tests/run-operations.mjs
+
+✔ N7 uses public cookie transport without CSRF; preserves Unicode password (85.866375ms)
+✔ fragment proof scrubbed before use; survives internal login in memory; no open redirect (0.571334ms)
+✔ N18 proof is header only and wrong invitation response fails closed (2.775708ms)
+✔ N19 accepts true only with original CAS/idempotency and checks receipt locator (5.223542ms)
+✔ N14 and N16 events keep view/pagination and reject wrong Store (2.387375ms)
+✔ N9 uses supported filters, preserves signed cursor, rejects wrong Store/invalid dates (9.388291ms)
+✔ N1/N2/N3 wire preserve null, zero, [] and CAS; fresh read after write (5.203083ms)
+✔ N8 carries null clear vs zero and original threshold version (1.849417ms)
+✔ N20/N21/N22 carry both phase keys/CAS and verify retained scope (4.140958ms)
+✔ N21 blocked preview is not commit and invalid positive/loss constraints fail locally (1.737083ms)
+✔ N10/N11/J01 use retained export locator and PDF job context, never JSON download (20.5045ms)
+✔ PDF validates content type, bytes, receipt size/hash and cookie/no-referrer (13.617334ms)
+✔ protected read/download HTTP 401 stays API error without fallback (1.268417ms)
+✔ protected read/download HTTP 403 stays API error without fallback (0.716125ms)
+✔ protected read/download HTTP 409 stays API error without fallback (0.651375ms)
+✔ protected read/download HTTP 412 stays API error without fallback (0.559125ms)
+✔ protected read/download HTTP 422 stays API error without fallback (0.618791ms)
+✔ protected read/download HTTP 503 stays API error without fallback (0.615167ms)
+✔ PDF 401 invalidates current session and malformed successful JSON never succeeds (0.765667ms)
+✔ ambiguous mutation retries exact key/body/version; confirmed receipt then failed read does not replay write (2.980167ms)
+✔ known conflict ends original intent; uncertain then conflict preserves uncertainty (0.227833ms)
+✔ N16 cannot request events without invitation identity or accept another invitation payload (0.477083ms)
+✔ credential and invitation proofs remain independent in memory and scrub both fragments (0.125458ms)
+✔ mock receipt → new snapshot/detail/lots/movements, same identity/key replay does not double count; Store B isolated (2474.683792ms)
+✔ mock threshold clear differs from zero and stale CAS cannot overwrite (602.701542ms)
+✔ mock planning create → retained read → shared history; historical clone stays immutable (3.271375ms)
+✔ mock requirements save/read/replace/archive retain exact zero and version (0.518916ms)
+✔ mock recipe preview does not write; commit → timeline and retained change; old timeline immutable (1.27225ms)
+✔ mock overlapping calendar returns blocked preview, not successful receipt (0.343875ms)
+✔ shared saved requirements discovery, exact cap capture and immutable saved Run basis (2.107292ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3325.87975

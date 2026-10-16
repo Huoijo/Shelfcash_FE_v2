@@ -1,0 +1,134 @@
+{
+  "verdict": "PL-01 FRONTEND IMPLEMENTED \u2014 CONTROLLED VERIFIED",
+  "canonical": {
+    "project": "458079658328604672",
+    "component": "458423352311304192",
+    "revision": "461952561365278720"
+  },
+  "checks": {
+    "build": {
+      "status": "PASS",
+      "warning": "Existing >500kB chunk warning"
+    },
+    "lint": {
+      "status": "PASS",
+      "warnings": [
+        "Existing OnboardingPages.tsx set-state-in-effect",
+        "Existing RecipeSchedulePage.tsx set-state-in-effect"
+      ]
+    },
+    "planning": {
+      "status": "PASS",
+      "count": 178
+    },
+    "capabilities": {
+      "status": "PASS",
+      "count": 83
+    },
+    "operations": {
+      "status": "PASS",
+      "count": 30
+    },
+    "contracts": "PASS",
+    "capabilitiesWire": "PASS",
+    "recoveryPolicy": "PASS",
+    "planningWire": "PASS",
+    "assistantBrowser": {
+      "status": "PASS",
+      "count": 62
+    },
+    "exportBrowser": {
+      "status": "PASS",
+      "count": 12
+    }
+  },
+  "nodeTests": 291,
+  "controlledBrowserCases": 74,
+  "assistantScreenshots": 23,
+  "exportScreenshots": 4,
+  "unchangedEvidence": [
+    {
+      "path": "docs/FOUND_MISSING_UI.md",
+      "sha256": "3017bfd528eccd22988ff7851793bfec5babd69eb1aeb6a942a529967828fa9e",
+      "unchangedFromTaskStartHEAD": true
+    },
+    {
+      "path": "docs/testing/planning-021/ASSISTANT_PREPARATION_VERIFICATION.json",
+      "sha256": "adcdf4f7019997bc0293bf5311b26e4404a65d105959ead1bf7f1b321aa9dcb5",
+      "unchangedFromTaskStartHEAD": true
+    },
+    {
+      "path": "docs/testing/planning-021/BROWSER_VERIFICATION.json",
+      "sha256": "4fd758360ae3680ee870e2834a39c102204bf45c9f752cbf4f20407b914c19dd",
+      "unchangedFromTaskStartHEAD": true
+    },
+    {
+      "path": "docs/testing/planning-021/VERIFICATION.json",
+      "sha256": "73b22d33cadd3f495d461805f52ecf8982731983ae14f87aed6051ee798ac34f",
+      "unchangedFromTaskStartHEAD": true
+    },
+    {
+      "path": "contracts/021/openapi.main.json",
+      "sha256": "68204af15000f3c79da135ecd56435becf30b6ef069e7338bb93f87552869a5b",
+      "unchangedFromTaskStartHEAD": true
+    },
+    {
+      "path": "package.json",
+      "sha256": "b5d2849d15e7ad21d4aad01ba729cec828e23422a21962914ab725eea8837bf0",
+      "unchangedFromTaskStartHEAD": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "5a3ce7fe453937b8465990cb1737c9cf8390d142b83534f8dc13c32695e75be7",
+      "unchangedFromTaskStartHEAD": true
+    }
+  ],
+  "historicalPreparationFindingsPreserved": true,
+  "dependenciesChanged": false,
+  "contractsChanged": false,
+  "remoteMagicPathModified": false,
+  "liveBE": "NOT RUN",
+  "provider": "NOT RUN",
+  "realAccountMutations": 0,
+  "realBusinessMutations": 0,
+  "browserUnexpectedRequests": 0,
+  "browserPageErrors": 0,
+  "productionSourceHashes": [
+    {
+      "path": "src/features/decision-planning/components/PlanningAssistant.css",
+      "sha256": "a0fff046c50d1f7b017d346dfc3af009f4444d758c8ab3a99f34a980e3098c19"
+    },
+    {
+      "path": "src/features/decision-planning/components/PlanningAssistantDrawer.tsx",
+      "sha256": "6f63dc861e2c44c47e90468156114a3da591a0b3ce28b65cb7a4678d55809551"
+    },
+    {
+      "path": "src/features/decision-planning/components/PlanningAssistantWorkspace.tsx",
+      "sha256": "4f16fe856afa0faa3d7b461a9e942b17e48a15365fbf19578cd81e1132e4d4ff"
+    },
+    {
+      "path": "src/features/decision-planning/components/PlanningEvidence.tsx",
+      "sha256": "5e8dc1e0a1d64cbd40ba5979717fc6a3a84a7be4b15e597f69ec18c530827f13"
+    },
+    {
+      "path": "src/features/decision-planning/components/PlanningResults.tsx",
+      "sha256": "008e952d0f932728372bea6442bd4f6ea79695dff0895e21ee35841ba5f249d6"
+    },
+    {
+      "path": "src/features/decision-planning/planning.assistant.ts",
+      "sha256": "0594f6e97d2efbac7b281f231d9177d67feff8158e330b4eea42591e284c7d7d"
+    },
+    {
+      "path": "src/features/decision-planning/planning.intent.ts",
+      "sha256": "07a39f3f245f76f3047b997e455f297115327c39a392b9928650caeeba09c59a"
+    },
+    {
+      "path": "src/features/decision-planning/planning.workflow.ts",
+      "sha256": "5c9f1a19f545588b8e93e63b60aec1caf088e798ca5b4faa8f6f90ad2e5204bb"
+    },
+    {
+      "path": "src/pages/forecast/PlanningPage.tsx",
+      "sha256": "c707e06afba7943d0247887565a2449830318f5aab63cd286e5e3e53ec93d04d"
+    }
+  ]
+}

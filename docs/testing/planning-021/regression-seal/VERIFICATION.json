@@ -1,0 +1,255 @@
+{
+  "verdict": "PL-01 CLOSED \u2014 CONTROLLED REGRESSION SEALED",
+  "verifiedAtUtc": "2026-10-16T21:54:47.211796+00:00",
+  "baselineScope": "Six pre-existing controlled Node suite entrypoints documented in UI_REFACTOR_TOOLCHAIN.md (519 before PL-01; 578 now); plus explicitly requested PL-01/PDF controlled browser runners.",
+  "nodeSuites": [
+    {
+      "suite": "planning",
+      "tests": 178,
+      "pass": 178,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "test-planning.txt"
+    },
+    {
+      "suite": "capabilities",
+      "tests": 83,
+      "pass": 83,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "test-capabilities.txt"
+    },
+    {
+      "suite": "operations",
+      "tests": 30,
+      "pass": 30,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "test-operations.txt"
+    },
+    {
+      "suite": "import",
+      "tests": 143,
+      "pass": 143,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "test-import.txt"
+    },
+    {
+      "suite": "store",
+      "tests": 118,
+      "pass": 118,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "test-store.txt"
+    },
+    {
+      "suite": "auth",
+      "tests": 26,
+      "pass": 26,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "test-auth.txt"
+    }
+  ],
+  "nodeTotal": 578,
+  "nodeFailures": 0,
+  "browser": {
+    "assistant": {
+      "status": "PASS",
+      "cases": 62,
+      "receipt": "assistant/BROWSER_VERIFICATION.json"
+    },
+    "export": {
+      "status": "PASS",
+      "cases": 12,
+      "receipt": "export/BROWSER_VERIFICATION.json"
+    },
+    "total": 74
+  },
+  "commands": [
+    {
+      "command": "npm run test:planning",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:capabilities",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:operations",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:import",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:store",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:auth",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run check:contracts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run check:capabilities-wire",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run check:recovery-policy",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run check:planning-wire",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run check:operations-wire",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run check:import-wire",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run check:store-wire",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/verify-planning-assistant-browser.mjs docs/testing/planning-021/regression-seal/assistant",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/verify-planning-021-browser.mjs docs/testing/planning-021/regression-seal/export",
+      "exitCode": 0
+    }
+  ],
+  "build": "PASS",
+  "lint": {
+    "status": "PASS",
+    "existingWarnings": [
+      "OnboardingPages.tsx:48 set-state-in-effect",
+      "RecipeSchedulePage.tsx:40 set-state-in-effect"
+    ],
+    "newWarnings": 0
+  },
+  "buildWarnings": [
+    "Existing chunk >500kB warning"
+  ],
+  "labelRename": {
+    "case": "P17",
+    "legacyLabel": "NEW_QUESTION_AFTER_UNCERTAIN",
+    "currentLabel": "UNCERTAIN_NEW_QUESTION_BLOCKED",
+    "semantics": "NEGATIVE: unknown prior AS03 outcome blocks a new same-scope question; no replacement dispatch; no reset/TTL/clear to unlock.",
+    "behaviorChanged": false
+  },
+  "productCodeChangedThisTask": false,
+  "unchangedSourceProof": "UNCHANGED_SOURCE_PROOF.json",
+  "dependenciesChanged": false,
+  "liveBE": "NOT RUN",
+  "provider": "NOT RUN",
+  "realAccountMutations": 0,
+  "realBusinessMutations": 0,
+  "fullAppE2E": "NOT RUN; not part of the documented six-suite baseline; no live/full-app acceptance claim",
+  "historicalReceiptsPreserved": [
+    "../ASSISTANT_PREPARATION_VERIFICATION.json",
+    "../assistant-implementation/BROWSER_VERIFICATION.json",
+    "../assistant-implementation/VERIFICATION.json"
+  ],
+  "commitPush": "NOT RUN",
+  "transcriptFiles": [
+    {
+      "path": "assistant-browser.txt",
+      "sha256": "cbf65291f790a824d3b1343b6b7132b2862fa5bb4ff83be319a97651d18f15e4"
+    },
+    {
+      "path": "build.txt",
+      "sha256": "7dcaa7dd423d20ac9db3db2bd102dcfe236d835a11a3b5365310cd11472ab49d"
+    },
+    {
+      "path": "check-capabilities-wire.txt",
+      "sha256": "2800cc4d8ad2daf94def0c4836a69351eca65ec9d0dbb95d8d12682d4064edca"
+    },
+    {
+      "path": "check-contracts.txt",
+      "sha256": "c86bbeaacb2d21b3198cefed03f82296a923d129c2b5978388b7d1d1e84ba7f9"
+    },
+    {
+      "path": "check-import-wire.txt",
+      "sha256": "cdd111e483e5d244e7f93f439d282b5c68c4e0c4ec9b79853c278c7d7c1fd53a"
+    },
+    {
+      "path": "check-operations-wire.txt",
+      "sha256": "87df4370fa10e0bed6256a5359355127317f778b0e14255bb4f73b3d08451d71"
+    },
+    {
+      "path": "check-planning-wire.txt",
+      "sha256": "549df5a38c94b779aea4fdd40429742828a4a2bc9a67a7d4f4a3e94b9a98dddf"
+    },
+    {
+      "path": "check-recovery-policy.txt",
+      "sha256": "294739ff64ea91694b7bfba956418c48e9dc53a4f78c04334c3c11db0e3d2771"
+    },
+    {
+      "path": "check-store-wire.txt",
+      "sha256": "8183287a72e0ce1076af20f865c62d37fb0c65188f487a3859495334d229f315"
+    },
+    {
+      "path": "export-browser.txt",
+      "sha256": "1061221d44e2aeade18c179f87e014ffb0cf1528a3b7c1034c070f583e8e1a88"
+    },
+    {
+      "path": "lint.txt",
+      "sha256": "6c7f4a44564bdb2b81c1a011c14891d3aad4923af693213da3d2e38a14e7fdc4"
+    },
+    {
+      "path": "test-auth.txt",
+      "sha256": "ad331d1d59379c4e5dc127e11ade99d1d9f3bf6bf7bbf858bf4da39d3d8f0a19"
+    },
+    {
+      "path": "test-capabilities.txt",
+      "sha256": "12ffda8939c3c02cea7e6a9771326123ebfe9fcf97d5ce032a25001c3110c724"
+    },
+    {
+      "path": "test-import.txt",
+      "sha256": "0588b65fdf399738fa82b4bf46650d3842c191154c6cc22bd251d4f77dfc7d51"
+    },
+    {
+      "path": "test-operations.txt",
+      "sha256": "cd274d6f481e4f3f6db50a72ce66a0a87eda760c045637d1bee8976f61f797a2"
+    },
+    {
+      "path": "test-planning.txt",
+      "sha256": "9a087697646d2eee118d9fb62693967817fa911043394cdb364934183927ae5a"
+    },
+    {
+      "path": "test-store.txt",
+      "sha256": "1c7acf715657910169116355457d53f5035ab2200895f1f0e6dafc27c1b6ca7b"
+    }
+  ]
+}

@@ -64,7 +64,7 @@ export function metadataOnlyChatRecord(state: RecoveryRecord['state']='unknown')
 export function uncertainReloadFixture(kind: 'metadata-only' | 'blocked-continuation' | 'new-question-blocked' | 'known-terminal-new-question') {
   const f=empty(`uncertain-${kind}`),terminal=kind==='known-terminal-new-question'
   f.records=[metadataOnlyChatRecord(terminal?'rejected':'unknown')]
-  f.application.phase=terminal?'idle':'uncertain';f.chatIntent=terminal?{status:'idle'}:{status:'unknown',recoveryId:f.records[0].id}
+  f.application.phase=terminal?'idle':'uncertain';f.chatIntent=terminal?{status:'failed'}:{status:'unknown',recoveryId:f.records[0].id}
   f.harness.unresolvedOutcome=!terminal
   // The terminal variant is an independently seeded, authoritative prior terminal outcome.
   // It is NEVER a UI transition from a metadata-only unresolved record.
@@ -93,7 +93,7 @@ export const fixtureCatalog: Record<string,PreparedAssistantFixture>={
   NORMAL_FIRST_OPEN:normalFixture(),NORMAL_ANSWER:normalFixture('answer'),LOADING:normalFixture('loading'),PERMISSION_DENIED:normalFixture('permission'),UNAVAILABLE:normalFixture('unavailable'),
   CLARIFICATION_INGREDIENT:clarificationFixture('ingredient'),CLARIFICATION_SIMILAR_INGREDIENTS:clarificationFixture('similar-ingredients'),CLARIFICATION_OPTION:clarificationFixture('option'),CLARIFICATION_PRODUCT:clarificationFixture('product'),QUERY_UNSUPPORTED:clarificationFixture('unsupported'),
   CONTEXT_STALE:staleFixture('detected'),CONTEXT_REFRESHING:staleFixture('refreshing'),CONTEXT_RESTORED:staleFixture('restored'),CONTEXT_RESTORED_UNRESOLVED:staleFixture('restored',true),
-  UNCERTAIN_AFTER_RELOAD:uncertainReloadFixture('metadata-only'),UNCERTAIN_BLOCKED_CONTINUATION:uncertainReloadFixture('blocked-continuation'),NEW_QUESTION_AFTER_UNCERTAIN:uncertainReloadFixture('new-question-blocked'),NEW_QUESTION_AFTER_KNOWN_TERMINAL:uncertainReloadFixture('known-terminal-new-question'),
+  UNCERTAIN_AFTER_RELOAD:uncertainReloadFixture('metadata-only'),UNCERTAIN_BLOCKED_CONTINUATION:uncertainReloadFixture('blocked-continuation'),UNCERTAIN_NEW_QUESTION_BLOCKED:uncertainReloadFixture('new-question-blocked'),NEW_QUESTION_AFTER_KNOWN_TERMINAL:uncertainReloadFixture('known-terminal-new-question'),
   SUMMARY_INITIAL:summaryFixture('initial'),SUMMARY_RUNNING:summaryFixture('running'),SUMMARY_COMPLETED:summaryFixture('completed'),SUMMARY_FAILED:summaryFixture('failed'),SUMMARY_SAFE_RECOVERY:summaryFixture('recoverable'),SUMMARY_NEW_GENERATION:summaryFixture('new-generation'),
   LOADING_RETAINED_ANSWER:{...normalFixture('answer'),id:'loading-retained-answer',application:{...normalFixture('answer').application,phase:'sending'},chatIntent:{status:'pending'}},
   PERMISSION_DENIED_UNCERTAIN:{...uncertainReloadFixture('metadata-only'),id:'permission-denied-uncertain',application:{...uncertainReloadFixture('metadata-only').application,phase:'permission'},authority:{...qaAuthority(),permissions:[]}},

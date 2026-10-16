@@ -7,7 +7,7 @@ import assert from 'node:assert/strict'
 import {createHash} from 'node:crypto'
 import {build} from 'vite'
 import {chromium} from 'playwright'
-const root=process.cwd(),output=path.join(root,'docs/testing/planning-021'),temp=await fs.mkdtemp(path.join(os.tmpdir(),'shelfcash-021-browser-'))
+const root=process.cwd(),output=path.resolve(root,process.argv[2]??'docs/testing/planning-021'),temp=await fs.mkdtemp(path.join(os.tmpdir(),'shelfcash-021-browser-'))
 const origin='https://planning-021.invalid',ids={actor:'00000000-0000-4000-8000-000000000001',export:'00000000-0000-4000-8000-000000000004',job:'00000000-0000-4000-8000-000000000005',run:'d0900000-0000-4000-8000-000000000001',store:'f17e0000-0000-4000-8000-000000000000',option:'synthetic-basket/1'}
 const at='2026-10-17T01:00:00Z',pdf=Buffer.from('%PDF-1.4\n% SYNTHETIC TRANSPORT FIXTURE ONLY\n%%EOF\n'),sha=createHash('sha256').update(pdf).digest('hex')
 const env=(data,meta={})=>({data,meta:{request_id:'controlled-021',...meta},error:null})

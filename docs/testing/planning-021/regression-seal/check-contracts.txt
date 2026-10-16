@@ -1,0 +1,8 @@
+
+> shelfcash-fe-v2@0.0.0 check:contracts
+> node scripts/check-contracts.mjs
+
+baseline: 54 operations / 50 paths
+import: 73 operations / 66 paths
+capabilities: 76 operations / 69 paths
+Contract consolidation PASS: 252 historical files preserved byte-for-byte; slice pins verified

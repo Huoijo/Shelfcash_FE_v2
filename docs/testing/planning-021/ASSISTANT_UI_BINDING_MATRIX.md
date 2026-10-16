@@ -1,12 +1,12 @@
 # PL-01 Assistant state → UI binding matrix
 
-Status: PREPARATION ONLY; no product binding or current-design acceptance. Source authority: [021 handoff receipt](../../sprints/021/021_Planning_Handoff_Integration.md), [design gaps](../../../FE_ask/021_Planning_Assistant_Design_States.md), [PlanningAssistant](../../../src/features/decision-planning/planning.assistant.ts), [intent controller](../../../src/features/decision-planning/planning.intent.ts), [recovery journal](../../../src/features/backend-capabilities/recovery.journal.ts), pinned contracts/021. Existing foundations are reused unchanged.
+Status: IMPLEMENTED — CONTROLLED VERIFIED. Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`. [Implementation receipt](ASSISTANT_IMPLEMENTATION_RECEIPT.md). Historical preparation findings below remain unchanged. Source authority: [021 handoff receipt](../../sprints/021/021_Planning_Handoff_Integration.md), [design gaps](../../../FE_ask/021_Planning_Assistant_Design_States.md), [PlanningAssistant](../../../src/features/decision-planning/planning.assistant.ts), [intent controller](../../../src/features/decision-planning/planning.intent.ts), [recovery journal](../../../src/features/backend-capabilities/recovery.journal.ts), pinned contracts/021. Existing foundations are reused with the authorized B01/B02 fixes, explicit requestPending state and late-response guards.
 
-Preparation includes test-only fixtures/helpers and safe validation explicitly requested by this task. It is not live integration discovery or UI implementation. MagicPath is not accessed here; revision `461899945612550144` is historical context from 021, not attestation of the parallel worker's final design. Every final canonical state reference remains PENDING.
+The earlier preparation is preserved in ASSISTANT_PREPARATION_VERIFICATION.json and the historical findings below. This implementation read the exact approved revision and its stored preview through read-only MagicPath tools; no remote design or live BE was modified.
 
 ## Binding inputs and exact state names
 
-`AssistantState.phase`: idle / sending / answer / clarification / stale / permission / error / uncertain. `summary`, `chat`, `history`, `error`, `summaryPolls` are separate inputs. Each controller has restoring / idle / pending / succeeded / failed / unknown / blocked, plus result/recoveryId/receiptIds. **Main phase alone is not an authorization or action-availability selector.** In particular, restore may leave main phase idle while a controller is blocked. `busy`, active task, and presentation are private; the eventual caller must track its awaited action and selected presentation without confusing retained running status with a network request. No new production selector/state is added here.
+`AssistantState.phase`: idle / sending / answer / clarification / stale / permission / error / uncertain. `summary`, `chat`, `history`, `error`, `summaryPolls`, `requestPending` and `summaryContext` are separate inputs. Each controller has restoring / idle / pending / succeeded / failed / unknown / blocked, plus result/recoveryId/receiptIds. **Main phase alone is not an authorization or action-availability selector.** In particular, restore may leave main phase idle while a controller is blocked. The private busy latch now publishes actual `requestPending`; the production caller holds explicit selected presentation. Retained running remains distinct from a pending request.
 
 All cases require the current actor/session/Store/Run/evidence and all three grants `planning.result.read`, `budget.read`, `procurement.cost.read`. OWNER/STAFF role does not replace grants. A read-only Staff with only menu/ingredient/inventory grants cannot access these states' protected facts. Fresh denial wins over cache. Intent restoration requires the same actor/Store and current session authority; it does not cancel or migrate prior work.
 
@@ -23,7 +23,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Send before restore; infer permissions from OWNER; expose operational commands.
 - **Recovery semantics:** Restore is journal-only; inspect both controllers even when main phase is idle.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Current Run context, no fabricated prior conversation.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Current Run context, no fabricated prior conversation.
 
 ## NORMAL_ANSWER
 
@@ -36,7 +36,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Replace valid fallback with a failure; calculate recommendation or causal claims.
 - **Recovery semantics:** Known receipt permits a distinct intentional turn with a new key; do not replay just to ask follow-up.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Returned answer remains usable for deterministic_fallback; not a Planning failure.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Returned answer remains usable for deterministic_fallback; not a Planning failure.
 
 ## LOADING
 
@@ -49,7 +49,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Competing write; automatic POST retries; infer that sending always means an in-flight request.
 - **Recovery semantics:** Summary running also uses phase=sending after a request has returned; bind DTO status and caller promise separately.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Progress for the actual operation; no invented answer.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Progress for the actual operation; no invented answer.
 
 ## PERMISSION_DENIED
 
@@ -62,7 +62,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Render old facts; infer denied replay rolled back prior work; reset unknown intent.
 - **Recovery semantics:** Denial does not establish no-effect; phase=permission and chatIntent=unknown can coexist.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Protected facts hidden; recovery outcome not misrepresented.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Protected facts hidden; recovery outcome not misrepresented.
 
 ## UNAVAILABLE
 
@@ -75,7 +75,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Blind generic retry; treat all error phases as settled failure.
 - **Recovery semantics:** Transport/protocol errors after dispatch remain unknown; blocked restore cannot be treated as ready.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Request unavailable is distinct from valid fallback and Planning failure.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Request unavailable is distinct from valid fallback and Planning failure.
 
 ## CLARIFICATION_INGREDIENT
 
@@ -88,7 +88,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Select first/similar-name match automatically; replay old key with changed body; retry because diagnostics say FALLBACK.
 - **Recovery semantics:** Continuation uses clarification.original_question; new turn key after known 200. Ingredient/option bind their request IDs; Product binds context.product_id. History/context are hints, not business authority.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Question and distinct returned identities; selection is a user decision, not an error retry.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Question and distinct returned identities; selection is a user decision, not an error retry.
 
 ## CLARIFICATION_SIMILAR_INGREDIENTS
 
@@ -101,7 +101,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Select first/similar-name match automatically; replay old key with changed body; retry because diagnostics say FALLBACK.
 - **Recovery semantics:** Continuation uses clarification.original_question; new turn key after known 200. Ingredient/option bind their request IDs; Product binds context.product_id. History/context are hints, not business authority.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Question and distinct returned identities; selection is a user decision, not an error retry.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Question and distinct returned identities; selection is a user decision, not an error retry.
 
 ## CLARIFICATION_OPTION
 
@@ -114,7 +114,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Select first/similar-name match automatically; replay old key with changed body; retry because diagnostics say FALLBACK.
 - **Recovery semantics:** Continuation uses clarification.original_question; new turn key after known 200. Ingredient/option bind their request IDs; Product binds context.product_id. History/context are hints, not business authority.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Question and distinct returned identities; selection is a user decision, not an error retry.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Question and distinct returned identities; selection is a user decision, not an error retry.
 
 ## CLARIFICATION_PRODUCT
 
@@ -127,7 +127,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Select first/similar-name match automatically; replay old key with changed body; retry because diagnostics say FALLBACK.
 - **Recovery semantics:** Continuation uses clarification.original_question; new turn key after known 200. Ingredient/option bind their request IDs; Product binds context.product_id. History/context are hints, not business authority.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Question and distinct returned identities; selection is a user decision, not an error retry.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Question and distinct returned identities; selection is a user decision, not an error retry.
 
 ## QUERY_UNSUPPORTED
 
@@ -140,7 +140,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Auto-retry original question; display fake selectable entity; generic error toast.
 - **Recovery semantics:** Successful handled clarification, not uncertain delivery; no valid selectCandidate exists.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Unsupported question is a handled conversational branch.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Unsupported question is a handled conversational branch.
 
 ## CONTEXT_STALE
 
@@ -153,7 +153,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Reuse old owner via setPresentation; automatic replay; treat old receipt as current.
 - **Recovery semantics:** Owner invalidates epoch and aborts read. It does not update its private evidenceVersion or implement C03 refresh.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Old facts visibly fenced; change of evidence not presented as a provider failure.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Old facts visibly fenced; change of evidence not presented as a provider failure.
 
 ## CONTEXT_REFRESHING
 
@@ -166,7 +166,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Invent phase=context_refreshing in PlanningAssistant; enable ask before validated current read.
 - **Recovery semantics:** This is an orchestration state, not an implemented Assistant method; keep old owner fenced.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Refresh progress without republishing stale conversation.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Refresh progress without republishing stale conversation.
 
 ## CONTEXT_RESTORED
 
@@ -179,7 +179,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Claim C03 settled a prior unknown mutation; auto-send original or new turn.
 - **Recovery semantics:** Fresh owner is required; restore may instead reveal unknown/blocked. Old Summary receipt must be compared against the current pin (B02).
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Current evidence context; no fabricated old conversation.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Current evidence context; no fabricated old conversation.
 
 ## CONTEXT_RESTORED_UNRESOLVED
 
@@ -192,7 +192,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Unlock a new same-scope question just because C03 refreshed.
 - **Recovery semantics:** Fresh C03 does not reconcile AS03; restored owner remains uncertain.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Current Planning can be read while unresolved Chat remains blocked.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Current Planning can be read while unresolved Chat remains blocked.
 
 ## UNCERTAIN_AFTER_RELOAD
 
@@ -205,7 +205,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Exact retry from hash; reconstruct text; submit replacement/new key; discard or expire record to unlock.
 - **Recovery semantics:** replayChat rejects missing body before network; ask rejects while controller unknown. A deliberate new same-scope question is NOT supported in this after-reload state.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Unknown remains unknown; no artificial retry or new-question affordance.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Unknown remains unknown; no artificial retry or new-question affordance.
 
 ## UNCERTAIN_BLOCKED_CONTINUATION
 
@@ -218,11 +218,13 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Exact retry from hash; reconstruct text; submit replacement/new key; discard or expire record to unlock.
 - **Recovery semantics:** replayChat rejects missing body before network; ask rejects while controller unknown. A deliberate new same-scope question is NOT supported in this after-reload state.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Unknown remains unknown; no artificial retry or new-question affordance.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Unknown remains unknown; no artificial retry or new-question affordance.
 
-## NEW_QUESTION_AFTER_UNCERTAIN
+## UNCERTAIN_NEW_QUESTION_BLOCKED
 
-- **UI state:** conceptual `NEW_QUESTION_AFTER_UNCERTAIN`; fixture `fixtureCatalog.NEW_QUESTION_AFTER_UNCERTAIN`.
+Historical receipt alias: `NEW_QUESTION_AFTER_UNCERTAIN`. This is the negative blocked-new-question case; only its label changed. Prior immutable JSON evidence keeps the old spelling.
+
+- **UI state:** conceptual `UNCERTAIN_NEW_QUESTION_BLOCKED`; fixture `fixtureCatalog.UNCERTAIN_NEW_QUESTION_BLOCKED`.
 - **Application owner / source:** chatIntent.restore/replay/send + metadata-only journal.
 - **Trigger condition:** Restored AS03 pending/unknown record; state.phase=uncertain; original memory body absent.
 - **Data available:** Operation/actor/Store/Run/path/key/hash/time/state; recoveryId.
@@ -231,7 +233,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Exact retry from hash; reconstruct text; submit replacement/new key; discard or expire record to unlock.
 - **Recovery semantics:** replayChat rejects missing body before network; ask rejects while controller unknown. A deliberate new same-scope question is NOT supported in this after-reload state.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Unknown remains unknown; no artificial retry or new-question affordance.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Unknown remains unknown; no artificial retry or new-question affordance.
 
 ## NEW_QUESTION_AFTER_KNOWN_TERMINAL
 
@@ -244,7 +246,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Convert timeout/reload/denial into terminal evidence; label a new question as recovery.
 - **Recovery semantics:** Test positive path is in-memory lost ACK -> exact replay -> GENERATION_FAILED -> new turn. Seeded rejected record is a separate known-terminal fixture, not a transition out of unresolved metadata.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: New work is distinct from recovery of the original turn.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: New work is distinct from recovery of the original turn.
 
 ## SUMMARY_INITIAL
 
@@ -257,7 +259,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Infer Summary availability means winner; send generation before restore.
 - **Recovery semantics:** Null option is passed to BE; FE does not select a winner.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: No Summary until a validated result exists.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: No Summary until a validated result exists.
 
 ## SUMMARY_RUNNING
 
@@ -270,7 +272,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** POST merely to poll; competing generation; imply GET performs recovery.
 - **Recovery semantics:** Reads use original generation ID; running DTO is not itself an in-flight HTTP promise.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Retained generation in progress, distinct from UI request spinner.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Retained generation in progress, distinct from UI request spinner.
 
 ## SUMMARY_COMPLETED
 
@@ -283,7 +285,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Mark fallback as Planning failed; replace unavailable quantities with zero.
 - **Recovery semantics:** Completed source and generation status are independent. Compare identity to current C03 before labeling current (B02).
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: BE wording and scope retained; fallback is usable.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: BE wording and scope retained; fallback is usable.
 
 ## SUMMARY_FAILED
 
@@ -296,7 +298,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Treat failed as deterministic fallback or unknown delivery; resurrect same failed generation.
 - **Recovery semantics:** Same key retains original terminal result; new key is explicit new work.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Summary failed, independently of Planning execution outcome.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Summary failed, independently of Planning execution outcome.
 
 ## SUMMARY_SAFE_RECOVERY
 
@@ -309,7 +311,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** New key/body as retry; rewrite original expected_evidence_version; paid-call loops.
 - **Recovery semantics:** Full-body records revalidate original hash; confirmed safe locators survive reload. Old-version replay must not be published as current (B02).
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Safe original-generation recovery, distinct from start-new.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Safe original-generation recovery, distinct from start-new.
 
 ## SUMMARY_NEW_GENERATION
 
@@ -320,9 +322,9 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Data intentionally unavailable:** Cancellation/regeneration of old receipt; automatic new generation on selector change.
 - **Allowed actions:** Intentional AS01 with a new key, after known outcome.
 - **Forbidden actions:** Start while running/unknown; conflate replay with new generation.
-- **Recovery semantics:** Same-presentation path exists. Changing presentation after terminal currently hits B01 and is not supported end-to-end.
+- **Recovery semantics:** Terminal Summary is preserved while selecting presentation; deliberate new generation is verified for all four combinations (B01 fixed).
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: New generation is deliberate independent work; mode/language change remains blocked until B01 addressed.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: New generation is deliberate independent work; B01 is fixed for all four mode/language pairs after known terminal outcome.
 
 ## SUMMARY_VI_SIMPLE
 
@@ -331,11 +333,11 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Trigger condition:** Fresh owner selects locale=vi, detail_level=simple before generation.
 - **Data available:** Exact requested presentation; backend result.locale/detail_level/text; synthetic fixture variant.
 - **Data intentionally unavailable:** FE translation, internal provider prompts, quality proof.
-- **Allowed actions:** Initial generation with these exact enums; render returned text unchanged.
-- **Forbidden actions:** Assume terminal-generation presentation switch works (B01); interpret fixture metadata variants as live language-quality acceptance.
-- **Recovery semantics:** All four fresh-owner combinations are controlled API-state tested; cross-generation selector transition is separately blocked.
+- **Allowed actions:** Initial or deliberately configured new generation after terminal outcome with these exact enums; render returned text unchanged.
+- **Forbidden actions:** Infer live language/provider quality from controlled mode metadata.
+- **Recovery semantics:** All four initial and terminal-to-new combinations pass controlled API-state tests; browser R05 verifies deliberate new-key generations. Previous receipts remain intact.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Presentation selection and returned metadata agree; copy comes from the returned result.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Presentation selection and returned metadata agree; copy comes from the returned result.
 
 ## SUMMARY_VI_TECHNICAL
 
@@ -344,11 +346,11 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Trigger condition:** Fresh owner selects locale=vi, detail_level=technical before generation.
 - **Data available:** Exact requested presentation; backend result.locale/detail_level/text; synthetic fixture variant.
 - **Data intentionally unavailable:** FE translation, internal provider prompts, quality proof.
-- **Allowed actions:** Initial generation with these exact enums; render returned text unchanged.
-- **Forbidden actions:** Assume terminal-generation presentation switch works (B01); interpret fixture metadata variants as live language-quality acceptance.
-- **Recovery semantics:** All four fresh-owner combinations are controlled API-state tested; cross-generation selector transition is separately blocked.
+- **Allowed actions:** Initial or deliberately configured new generation after terminal outcome with these exact enums; render returned text unchanged.
+- **Forbidden actions:** Infer live language/provider quality from controlled mode metadata.
+- **Recovery semantics:** All four initial and terminal-to-new combinations pass controlled API-state tests; browser R05 verifies deliberate new-key generations. Previous receipts remain intact.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Presentation selection and returned metadata agree; copy comes from the returned result.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Presentation selection and returned metadata agree; copy comes from the returned result.
 
 ## SUMMARY_EN_SIMPLE
 
@@ -357,11 +359,11 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Trigger condition:** Fresh owner selects locale=en, detail_level=simple before generation.
 - **Data available:** Exact requested presentation; backend result.locale/detail_level/text; synthetic fixture variant.
 - **Data intentionally unavailable:** FE translation, internal provider prompts, quality proof.
-- **Allowed actions:** Initial generation with these exact enums; render returned text unchanged.
-- **Forbidden actions:** Assume terminal-generation presentation switch works (B01); interpret fixture metadata variants as live language-quality acceptance.
-- **Recovery semantics:** All four fresh-owner combinations are controlled API-state tested; cross-generation selector transition is separately blocked.
+- **Allowed actions:** Initial or deliberately configured new generation after terminal outcome with these exact enums; render returned text unchanged.
+- **Forbidden actions:** Infer live language/provider quality from controlled mode metadata.
+- **Recovery semantics:** All four initial and terminal-to-new combinations pass controlled API-state tests; browser R05 verifies deliberate new-key generations. Previous receipts remain intact.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Presentation selection and returned metadata agree; copy comes from the returned result.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Presentation selection and returned metadata agree; copy comes from the returned result.
 
 ## SUMMARY_EN_TECHNICAL
 
@@ -370,11 +372,11 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Trigger condition:** Fresh owner selects locale=en, detail_level=technical before generation.
 - **Data available:** Exact requested presentation; backend result.locale/detail_level/text; synthetic fixture variant.
 - **Data intentionally unavailable:** FE translation, internal provider prompts, quality proof.
-- **Allowed actions:** Initial generation with these exact enums; render returned text unchanged.
-- **Forbidden actions:** Assume terminal-generation presentation switch works (B01); interpret fixture metadata variants as live language-quality acceptance.
-- **Recovery semantics:** All four fresh-owner combinations are controlled API-state tested; cross-generation selector transition is separately blocked.
+- **Allowed actions:** Initial or deliberately configured new generation after terminal outcome with these exact enums; render returned text unchanged.
+- **Forbidden actions:** Infer live language/provider quality from controlled mode metadata.
+- **Recovery semantics:** All four initial and terminal-to-new combinations pass controlled API-state tests; browser R05 verifies deliberate new-key generations. Previous receipts remain intact.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Presentation selection and returned metadata agree; copy comes from the returned result.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Presentation selection and returned metadata agree; copy comes from the returned result.
 
 ## LOADING_RETAINED_ANSWER
 
@@ -387,7 +389,7 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Present previous text as the response to the new question; silently retry.
 - **Recovery semantics:** Do not derive active task solely from the shared phase; caller tracks which promise is active.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Prior answer and pending turn remain distinguishable.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Prior answer and pending turn remain distinguishable.
 
 ## PERMISSION_DENIED_UNCERTAIN
 
@@ -400,7 +402,39 @@ Fixtures: [portable builders](../../../tests/fixtures/planning-assistant-prepara
 - **Forbidden actions:** Treat permission denial as rollback; enable replacement; leak cached facts.
 - **Recovery semantics:** Denial redacts content but does not settle uncertain mutation.
 - **Permission considerations:** current actor/session/Store/Run + all three grants above; fresh denial redacts protected facts while retaining unknown outcomes.
-- **Expected canonical MagicPath state:** **PENDING** — final PL-01 revision/state/element IDs must be supplied and audited; expected semantics: Permission state and unknown outcome both remain truthful.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; exact source function mapping in [canonical bindings](assistant-implementation/CANONICAL_STATE_MAPPING.json); expected semantics: Permission state and unknown outcome both remain truthful.
+
+## Additional implemented lifecycle signals
+
+The mounted Workspace subscribes to the application owner **and both intent controllers**. `requestPending` is the actual awaited operation; retained `summary.status=running` is independent. On C03 reconciliation the existing Planning caller verifies the read, creates a fresh scoped owner and restores journals before writes. Scope includes actor/session/Store/Run/version/explicit option. Fresh C03 denial removes the retained Planning facts and inspector pages.
+
+## SUMMARY_REQUEST_PENDING
+
+- **UI state:** `SUMMARY_REQUEST_PENDING`; browser P31.
+- **Application owner / source:** `requestPending=true`, summaryIntent pending, before AS01 ACK.
+- **Trigger condition:** Actual AS01 create/replay promise is awaiting a response.
+- **Data available:** Request presentation; no new retained locator yet.
+- **Data intentionally unavailable:** New result/status/generation locator before ACK.
+- **Allowed actions:** Inspect/close; no second write.
+- **Forbidden actions:** Poll a fabricated locator or POST again to check progress.
+- **Recovery semantics:** Failed delivery becomes original-generation safe recovery, never replacement.
+- **Permission considerations:** Three current grants and full identity fence; denial redacts.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; `SummaryLifecycle` → `summary-request-pending`.
+
+## SUMMARY_RECOVERED_PREVIOUS_CONTEXT
+
+- **UI state:** `SUMMARY_RECOVERED_PREVIOUS_CONTEXT`; browser P32/R07/R08.
+- **Application owner / source:** `summaryContext=previous` from returned identity versus verified C03; explicit option mismatch is also fenced by the render boundary.
+- **Trigger condition:** Exact AS01 recovery or AS02 retained read returns a valid older immutable context.
+- **Data available:** Original retained answer/claims/references/identity and separately verified current Planning context.
+- **Data intentionally unavailable:** Any assertion that prior facts describe the current context.
+- **Allowed actions:** Inspect retained/current evidence; deliberate new generation only after known terminal outcome.
+- **Forbidden actions:** Relabel recovery as current, discard valid retained evidence, replace unknown work.
+- **Recovery semantics:** Original key/body/version for replay; original locator/CAS for reads. New work uses new key/current verified version after terminal.
+- **Permission considerations:** Current actor/Store/session + grants; no stale protected DOM after denial.
+- **Expected canonical MagicPath state:** Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`; `RecoveredPreviousContextSummary` → `summary-recovered-previous-context`.
+
+## Historical preparation findings — preserved verbatim
 
 ## Integration findings — foundations unchanged
 

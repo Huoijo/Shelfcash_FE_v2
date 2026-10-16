@@ -1,0 +1,19 @@
+{
+  "project": "458079658328604672",
+  "component": "458423352311304192",
+  "revision": "461952561365278720",
+  "sourceFiles": [
+    {
+      "path": "src/components/generated/ShelfCashPlanningCopilot.css",
+      "sha256": "13fa6e52ce8aa5fa95163cb644128b6a10a52c0a37820ff2b6c6c7070308d7a2",
+      "bytes": 14812
+    },
+    {
+      "path": "src/components/generated/ShelfCashPlanningCopilot.tsx",
+      "sha256": "f728d54fcfa8eea92612f31496efbb2c84c7459d1515ddcf768ce95676fd74b1",
+      "bytes": 34069
+    }
+  ],
+  "remoteModified": false,
+  "preview": "Exact revision stored preview inspected; closed drawer. Open-state hierarchy audited from exact source and controlled FE renders."
+}

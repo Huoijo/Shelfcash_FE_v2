@@ -191,8 +191,15 @@ export class PlanningWorkflow {
   })
   refresh = () => this.core(this.state.phase, async (signal, epoch) => {
     if (!this.targetId) throw new Error('Chưa có định danh kế hoạch đã nhận để đọc lại.')
-    const response = await this.source.read(this.authorize('planning.result.read'), this.targetId, signal)
-    if (epoch === this.epoch && !signal.aborted) this.publish(response)
+    try {
+      const response = await this.source.read(this.authorize('planning.result.read'), this.targetId, signal)
+      if (epoch === this.epoch && !signal.aborted) this.publish(response)
+    } catch (error) {
+      // A fresh C03 denial must remove retained facts, including when Assistant asks to refresh.
+      if (epoch === this.epoch && !signal.aborted && error instanceof HttpError && [401, 403, 404].includes(error.status ?? 0))
+        this.update({ run: null, context: null, accepted: null, warnings: [], ...this.clearInspection() })
+      throw error
+    }
   })
   poll = async () => {
     if (this.state.busy || this.state.pollAfterMs === null || !this.state.run || !isPending(this.state.run.status)) return

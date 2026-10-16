@@ -450,3 +450,15 @@ test('same-date readiness for one full request cannot authorize a changed budget
   await workflow.create(custom('0'))
   assert.equal(workflow.getSnapshot().accepted.status, 'queued')
 })
+
+for (const status of [401, 403, 404]) test(`Assistant C03 refresh ${status} removes retained protected facts and inspector pages`, async () => {
+  let denied = false
+  const { workflow } = await retained({ read: async () => { if (denied) throw failure(status); return envelope(planningRunFixture()) } })
+  await workflow.loadIngredients(); await workflow.loadIngredient(ids.ingredient); await workflow.loadReasons()
+  assert.ok(workflow.getSnapshot().run)
+  denied = true; await workflow.refresh()
+  const state = workflow.getSnapshot()
+  assert.equal(state.phase, 'error'); assert.ok(state.error)
+  for (const key of ['run', 'context', 'accepted', 'ingredients', 'ingredient', 'reasons']) assert.equal(state[key], null)
+  assert.deepEqual(state.warnings, [])
+})

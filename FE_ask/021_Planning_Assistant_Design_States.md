@@ -1,5 +1,7 @@
 # 021 — Planning Assistant: missing canonical interactions
 
+Current status: **APPROVED / IMPLEMENTED — CONTROLLED VERIFIED** at revision `461952561365278720`. See the closure below and [implementation receipt](../docs/testing/planning-021/ASSISTANT_IMPLEMENTATION_RECEIPT.md). The original design request/preparation findings below are preserved as history.
+
 Scope reopened by the 17/10 handoff task: explanation over one retained Planning Run only. Global AI, What-if, budget proposal application, Draft PO and operational commands remain outside scope.
 
 MagicPath project 458079658328604672, Results component 458423352311304192, current revision 461899945612550144, read-only source audited on 17/10. `ShelfCashPlanningCopilot.tsx` defines first-open, suggestions, composer, answer/evidence, loading, permission and unavailable states. Its ResultSummary/business values and proposal actions are prototype fixtures, not authoritative backend output. No remote design was modified.
@@ -27,3 +29,7 @@ See the [binding matrix](../docs/testing/planning-021/ASSISTANT_UI_BINDING_MATRI
 - C03 refresh is external orchestration plus fresh owner construction; the current owner has no implemented context-refresh action. Journal uncertainty survives C03 refresh.
 
 No UI action/copy should imply unsupported continuation. B01 needs a separate scoped implementation fix; B02 needs explicit tested current-versus-retained gating before final enablement. The final MagicPath revision/state IDs remain pending and must be recorded after the parallel design pass.
+
+## Approved PL-01 implementation — 17/10/2026
+
+Project `458079658328604672` · Component `458423352311304192` · Revision `461952561365278720`. The user approved the contract-aligned states; this closes the design request for the supported retained Planning Assistant. B01/B02 are fixed and controlled browser verified. See [implementation receipt](../docs/testing/planning-021/ASSISTANT_IMPLEMENTATION_RECEIPT.md). Prior findings above are historical; live/provider acceptance remains NOT RUN. No global AI/What-if/Draft PO expansion.

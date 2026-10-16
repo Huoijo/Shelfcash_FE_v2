@@ -40,6 +40,12 @@ export class PlanningIntentController<K extends PlanningMutation> {
     if (this.state.status !== 'unknown' || !this.record?.replay_input) return undefined
     try { return captureCapabilityInput(this.operation, this.record.replay_input as CapabilityInput<K>) } catch { return undefined }
   }
+  /** Only the retained CAS pin; never expose persisted Chat text. */
+  retainedEvidenceVersion = (): string | undefined => {
+    if (this.operation !== 'AS01') return undefined
+    const input = this.record?.replay_input as CapabilityInput<'AS01'> | undefined
+    return input?.body.expected_evidence_version
+  }
   subscribe = (fn: () => void) => { this.listeners.add(fn); return () => { this.listeners.delete(fn) } }
   private publish(state: PlanningIntentState<K>) { this.state = state; this.listeners.forEach(fn => fn()) }
   private authorize() {
@@ -59,7 +65,9 @@ export class PlanningIntentController<K extends PlanningMutation> {
       if (epoch !== this.epoch) return
       this.record = pending[0]
       const accepted = rows.filter(r => r.operation_id === this.operation && r.resource_ids.plan_id === this.runId && r.state === 'confirmed' && r.receipt_ids).sort((a,b) => b.created_at.localeCompare(a.created_at))[0]
-      this.publish(this.record ? { status: 'unknown', recoveryId: this.record.id } : accepted ? { status: 'succeeded', receiptIds: accepted.receipt_ids } : { status: 'idle' })
+      const terminal = rows.filter(r => r.operation_id === this.operation && r.resource_ids.plan_id === this.runId).sort((a,b) => b.created_at.localeCompare(a.created_at))[0]?.state === 'rejected'
+      if (!this.record && accepted) this.record = accepted
+      this.publish(pending[0] ? { status: 'unknown', recoveryId: this.record.id } : accepted ? { status: 'succeeded', receiptIds: accepted.receipt_ids } : { status: terminal ? 'failed' : 'idle' })
     } catch (error) { if (epoch === this.epoch) this.publish({ status: 'blocked', error }) }
   }
   send = async (input: CapabilityInput<K>, options?: CapabilityCallOptions) => {
