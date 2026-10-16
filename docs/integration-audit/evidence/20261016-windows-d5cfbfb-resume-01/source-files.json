@@ -1,0 +1,11 @@
+{
+  "fe_head": "78d338c0616792e23f56af8411cfaf82d06ff749",
+  "files": {
+    "src/features/store/storeCreate.journal.ts": "ce998c78f6a1b5a30ef3d4a5bc059b39286de18d823be9f59de5186daded58f7",
+    "src/features/store/storeCreate.react.ts": "7f34b5a7bb94ca5a7a5f6ca77d197ccba90342a956cbd00dbd952500827baecf",
+    "src/features/store/StoreBootstrap.tsx": "02b977d6e6449bda89b28084653c25672b7971036da3abc02c79cb74d74b0ea6",
+    "tests/e2e/store-journal.api.spec.ts": "52b40b76b20a83ce1387291da3e5e600d8eec39dd6756e45e8bcbc9dfe77e12b",
+    "tests/e2e/design-states.api.spec.ts": "968a84fba6a2097f0e63d14a3b5ba2cebf66ad296ec6156625ac39c3c2d8b100",
+    "tests/e2e/history-contract.api.spec.ts": "dca8d4958f0e94bda19f3a4f9b18f434e2650928c6589335c62e99f2abb93be0"
+  }
+}

@@ -170,9 +170,9 @@ Immediate work: [dependency-ordered tasks](#immediate-work-and-dependency-order)
 **Design:** NOT_REQUIRED · **Frontend:** PARTIAL · **Backend:** PARTIAL · **Live verification:** CONTROLLED_ONLY
 **Owner:** FE + BE · **Blocker category:** RECOVERY_LIMIT, BACKEND_CAPABILITY
 
-- **Current state:** Exact request/key/CAS/actor/Store/resource retained trong active memory/internal navigation.
-- **Remaining gap:** Reload/logout/session loss có thể mất intent; không generic authoritative negative reader.
-- **Next action:** BE durable status contract; FE reconnect bằng non-secret reference sau contract.
+- **Current state:** T03 now has an allowlisted actor-scoped IndexedDB1 pre-dispatch journal, exact key/body restore, strict transaction/Web Locks fencing, fresh A03/CSRF replay, storage failure and account/tab isolation. Eight focused controlled browser cases pass; no actual extra Store created. Other mutation families retain exact intent in active memory/internal navigation only.
+- **Remaining gap:** Durable recovery for non-T03 mutations remains unimplemented; no generic authoritative negative reader. T03 shared-device/XSS/manual storage clearing/eviction and broader retention policy remain limits; clearing local data does not cancel accepted server work.
+- **Next action:** Extend only separately reviewed operation allowlists under explicit scope; existing BE receipt/replay semantics remain authority, with current actor/session checks. See [current recovery acceptance](../integration-audit/REPORT.md).
 - **Safe current behavior:** Không auto-retry/infer rollback/replacement sau lost evidence; operation-specific recovery only.
 - **Evidence:** [State](../../src/features/backend-capabilities/capabilities.state.ts), [retention](../../src/features/backend-capabilities/capabilities.react.ts), Import/Planning workflows; [019 recovery request](../../FE_ask/019_Freeze_Integration_Gaps.md#p1--mutation-proof-after-unknown-outcome).
 

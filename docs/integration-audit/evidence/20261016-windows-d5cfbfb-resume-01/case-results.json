@@ -1,0 +1,2818 @@
+{
+  "run": "20261016-windows-d5cfbfb-resume-01",
+  "counts": {
+    "PASS": 269,
+    "FAIL": 2,
+    "BLOCKED": 4,
+    "NOT_APPLICABLE": 4
+  },
+  "modes": {
+    "CONTROLLED": {
+      "PASS": 244
+    },
+    "STATIC_ONLY": {
+      "PASS": 2,
+      "NOT_APPLICABLE": 4
+    },
+    "LIVE_UI": {
+      "PASS": 20,
+      "FAIL": 2,
+      "BLOCKED": 4
+    },
+    "API_ONLY": {
+      "PASS": 3
+    }
+  },
+  "cases": [
+    {
+      "id": "CTL-001",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "design-states.api.spec.ts:10",
+      "action": "wrong-account invitation reveals only current account and supports logout before login",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-002",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "design-states.api.spec.ts:26",
+      "action": "invitation expired is terminal without acceptance writes",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-003",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "design-states.api.spec.ts:26",
+      "action": "invitation revoked is terminal without acceptance writes",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-004",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "design-states.api.spec.ts:35",
+      "action": "acceptance lost ACK preserves intent and opens freshly verified invited Store",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-005",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "design-states.api.spec.ts:57",
+      "action": "credential UI retains 12-character contract, hides token and never auto-logins",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-006",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "design-states.api.spec.ts:79",
+      "action": "confirmed receipt with failed readback retries reads without another receipt write",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-007",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "design-states.api.spec.ts:99",
+      "action": "PDF captures chosen alternative and download failure retries artifact only",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-008",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "design-states.api.spec.ts:120",
+      "action": "History paginates same snapshot and empty filters never manufacture budget or results",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Latest focused result",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-009",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "frozen-lifecycle.api.spec.ts:10",
+      "action": "registration sends only A02 fields, then verification-required; it creates no session or Store",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-010",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "frozen-lifecycle.api.spec.ts:17",
+      "action": "verification scrubs proof, waits for explicit password and preserves invitation without accepting it",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-011",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "frozen-lifecycle.api.spec.ts:27",
+      "action": "zero-Store T03 uncertainty cannot be disproved by empty T01 and exact replay preserves original key/body",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-012",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "frozen-lifecycle.api.spec.ts:35",
+      "action": "notification opening causes no business write; failed read acknowledgment retains unread state and handoff pins destination",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-013",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "frozen-lifecycle.api.spec.ts:42",
+      "action": "Owner request changes requires real Staff submission; own=false",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-014",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "frozen-lifecycle.api.spec.ts:42",
+      "action": "Owner request changes requires real Staff submission; own=true",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-015",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "frozen-lifecycle.api.spec.ts:50",
+      "action": "Today unknown inventory remains unknown and does not claim calm, zero stock or pending decision",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-016",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "frozen-lifecycle.api.spec.ts:55",
+      "action": "unknown read acknowledgment survives internal navigation and only exact replay releases the writer",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-017",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:8",
+      "action": "decline success: separate confirmation and N18-first recovery",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-018",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:8",
+      "action": "decline failure: separate confirmation and N18-first recovery",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-019",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:8",
+      "action": "decline lost-declined: separate confirmation and N18-first recovery",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-020",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:8",
+      "action": "decline lost-pending: separate confirmation and N18-first recovery",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-021",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:21",
+      "action": "Owner permission approve: current grant fence and explicit subset",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-022",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:21",
+      "action": "Owner permission reject: current grant fence and explicit subset",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-023",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:21",
+      "action": "Owner permission stale: current grant fence and explicit subset",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-024",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:21",
+      "action": "Owner permission unknown: current grant fence and explicit subset",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-025",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:29",
+      "action": "retained discovery availability=true: GET-only download without create",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-026",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:29",
+      "action": "retained discovery availability=false: GET-only download without create",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-027",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:34",
+      "action": "N9 distinct creator/Store creation/forecast filters preserve URL state and paging",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-028",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:41",
+      "action": "Staff submits catalog-backed request, observes pending and can cancel with fresh request CAS",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-029",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:54",
+      "action": "retained exports empty/error can reread without ever creating a new export",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-030",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "pass020.api.spec.ts:61",
+      "action": "N9 creator selection and load-more retain Store-local date and forecast filters together",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-031",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store-journal.api.spec.ts:25",
+      "action": "T03 unknown -> reload restores exact intent; empty readback stays locked; explicit replay uses fresh CSRF",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Latest focused result",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-032",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store-journal.api.spec.ts:34",
+      "action": "T03 unavailable durable storage prevents any initial dispatch",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Latest focused result",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-033",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store-journal.api.spec.ts:38",
+      "action": "T03 write transaction failure prevents dispatch even when storage reads succeed",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Latest focused result",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-034",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store-journal.api.spec.ts:42",
+      "action": "T03 switching account hides another actor intent and restores it only for matching actor",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Latest focused result",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-035",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store-journal.api.spec.ts:47",
+      "action": "T03 wrong current cookie account blocks replay before POST",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Latest focused result",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-036",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store-journal.api.spec.ts:51",
+      "action": "T03 two tabs share one intent and cannot dispatch concurrently; replay keeps original key",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Latest focused result",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-037",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store-journal.api.spec.ts:58",
+      "action": "T03 late original success after reload is reconciled only with original key",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Latest focused result",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-038",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "history-contract.api.spec.ts:4",
+      "action": "Independent current-contract N9 history paginates, preserves filter, and reloads",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Latest focused result",
+      "blocker": ""
+    },
+    {
+      "id": "CTL-039",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store-journal.api.spec.ts:64",
+      "action": "T03 denied replay keeps original uncertainty across reload and never unlocks a replacement",
+      "oracle": "Named controlled assertion, current typed fixtures; synthetic BE effects only",
+      "observation": "Latest focused result",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-001",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "A01 posts canonical credentials without session CSRF or token fabrication",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-002",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "invalid credentials stay a public A01 error; protected 401 policy does not run",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-003",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "invalid login input fails locally and does not send credentials",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-004",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "A03 authoritative session read uses included cookies, no query or mutation CSRF",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-005",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "protected 401 invalidates current session even if response body is malformed",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-006",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "late protected 401 cannot invalidate a newer CSRF session",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-007",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "late protected 401 cannot invalidate replacement session hooks",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-008",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "aborted protected request does not invalidate canonical session",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-009",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "session-owned current CSRF is injected into JSON and multipart mutations",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-010",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "missing CSRF refuses protected writes; caller header cannot bypass session source",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-011",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "CSRF/Origin denial has no fabricated token refresh or automatic retry",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-012",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "A04 accepts only204, sends no body/JSON content type and uses central CSRF",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-013",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "logout failure stays an error; no automatic local-success translation",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-014",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "HTTP errors preserve safe request references and validate nested canonical errors",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-015",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "session context validates default Store/count, UUIDs, token and true UTC instants",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-016",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "malformed Auth envelope, backend503 and network errors remain distinct",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-017",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "T01 omits default limit, preserves opaque cursor and validates pagination",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-018",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "T02 consumes exact Store UUID, timezone/current-date and membership permissions",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-019",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "Store schema rejects unavailable membership, wrong role/version/timezone and malformed permissions",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-020",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "Owner permissions remain exact server-provided catalogue entries, not inferred actions",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-021",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "Store reads propagate403/404 and do not silently choose a fixture or default Store",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-022",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "cleaning stale hook registration cannot remove the current session source",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-023",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "all Inventory/Menu/History reads use current Store scope and ignore poisoned development Store",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-024",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "missing or invalid current Store blocks every business read before fetch without development fallback",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-025",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "business GET401 uses central session invalidation without requiring or sending CSRF",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-AUTH-026",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "auth",
+      "action": "Inventory timestamps use actual Store timezone while date-only facts and explicit UTC fallback stay unchanged",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-001",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "request changes requires verified current Staff origin and never an Owner self-proposal",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-002",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "notifications navigate only resource-matching registered paths with Store and submission version intact",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-003",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "commit reason optional only for full pure insert/NO_OP preview; updates, consequential actions and incomplete evidence require reason",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-004",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "Staff submission gate reads the complete batch queue and refuses duplicate/repeating pages",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-005",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "history corrections join the global gate: missing, duplicate, stale and extra confirmations cannot bypass Review",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-006",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "all published operations have callable typed services with exact method/path/status inventories",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-007",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "client construction and state construction perform no requests",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-008",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "A02/A06/A07 public mail acceptance carries no session CSRF and never auto-logs in or creates Store",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-009",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "A05 and N7 remain distinct public token purposes; password preserved exactly, no automatic retry",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-010",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "T03 accepts documented non-UUID ASCII key, explicit fields and only returns a Store receipt",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-011",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "IN01 decline uses current session, proof in body and exact invitation CAS without acceptance side effects",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-012",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "MQ01 submits exactly one pinned profile and withdrawal uses submission fence; no approval/commit",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-013",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "MQ02 preserves scoped filters, counters and cursor; rejects cross-Store rows and repeating cursor",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-014",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "MQ03 keeps captured spec/evidence and rejects changed submission pins or non-advancing evidence pages",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-015",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "N5 request_changes carries lifecycle CAS plus explicit submission ID/version and remains separate from commit",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-016",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "NF01/NF02 bind snapshots and current count scope; NF03 accepts read/unread CAS without navigation",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-017",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "PR01/02/03/04 preserve permission catalog/grants/request CAS and do not update session grants",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-018",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "EX01 retains explicit filters/snapshot and never downloads an arbitrary server URL",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-019",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "D01 is an explicit section reader, preserves unavailable/null sections and enables no Today UI",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-020",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "retained export download verifies bytes/hash and ignores untrusted download_url",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-021",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "JSON, raw health, 204 logout and PDF modes validate the documented success status and payload",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-022",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "I02 uploads named bytes and one explicit client ID per file without JSON/boundary rewriting",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-023",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "N4 explicit create/update preconditions cannot be omitted or combined",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-024",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "supplied planning helpers preserve exact custom request and known zero without changing default scope",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-025",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "preflight rejects unknown properties, bad enum/UUID/cursor and unsafe revision before network",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-026",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "reads cannot clear a newer session on stale 401; protected writes require current CSRF",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-027",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "mutation state locks lost ACK and replays immutable original key/body/CAS only by explicit request",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-028",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "public email unknown and upload unknown cannot replay; dispose forgets intent without claiming rollback",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-029",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "mutation state keeps uncertain 5xx/protocol outcomes and distinguishes certain rejection without auto retry",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-030",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "scoped read state ignores out-of-order responses and clears data on scope teardown",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-031",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/a01-login-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-032",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/a03-me-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-033",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/t03-create-store-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-034",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/a02-email-accepted.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-035",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c02-accepted-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-036",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c03-queued-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-037",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c03-running-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-038",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c03-failed-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-039",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c03-completed-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-040",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c03-completed-no-winner-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-041",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c03-failed-partial-unknown-proof-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-042",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c04-retained-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-043",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c04-unknown-null-digest-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-044",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c05-retained-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-045",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c05-unknown-null-digest-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-046",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c08-retained-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-047",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c08-retained-source-reference-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-048",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c01-default-blocked-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-049",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/c01-contextual-custom-ready-warning-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-050",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/r01-default-blocked-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-051",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/r01-contextual-ready-warning-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-052",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/nf03-read-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-053",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/handoff-a05-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-054",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/handoff-n19-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-055",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/handoff-in01-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-056",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/n9-history-captured-zero-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-057",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/h01-import-history-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-058",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "published main fixture survives strict service boundary: examples/h02-import-history-response.json",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-059",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "a denied exact replay preserves original unknown outcome and original mutation fence",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-060",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "documented email delivery configuration failure is retryable only as an explicit new request",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-CAPABILITIES-061",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "capabilities",
+      "action": "decline unknown requires matching N18 read before exact replay and terminal readback retires the writer",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-001",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "one canonical default Store bootstraps T01 then T02, never role-derived grants",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-002",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "multiple Stores with null default require explicit selection, never items[0]",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-003",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "no accessible Store is a valid empty state without T02 or fabricated Store",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-004",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "missing default from a newer T01 does not choose the first available item",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-005",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "A to B clears old context immediately until current T02 resolves",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-006",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "late A response cannot overwrite B even when transport ignores abort",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-007",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "new AuthContext invalidates accessible list, context and stale old-owner T02",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-008",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "T01 failure is retryable, never interpreted as no Store or API-to-mock fallback",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-009",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "T02 denial clears prior context and retains exact request reference",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-010",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "T02 Store mismatch is a protocol failure, not a scope switch",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-011",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "refresh reads latest T02 grants/version without freezing the login or T01 version",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-012",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "dirty change guard prevents Store switching; cleanup permits explicit switch",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-013",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "late guard confirmation from prior owner cannot start a Store read",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-014",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "choosing the current Store cancels an older asynchronous switch confirmation",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-015",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "opaque cursor bounds reject locally without issuing a request",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-016",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "StrictMode setup-cleanup-setup aborts old request and leaves no busy lock",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-017",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "T01 pagination appends explicit accessible Stores without selecting a first item",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-018",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "duplicate or stalled T01 pagination is rejected without duplicate/foreign rows",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-019",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "late paginated list from an old owner cannot enter the new owner list",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-020",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "DEV preview has deterministic two-Store discovery and never calls auth or fetch",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-021",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "DEV fixtures pass the same T01/T02 boundary validation",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-022",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "T01 adapter encodes cursor; T02 GET uses cookie session without mutation or session Store write",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-023",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Login return accepts exact Store route with query and hash",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-024",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Store return rejects foreign origin and prefix lookalikes",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-025",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Sidebar exposes real URL-active Store link without fake href",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-026",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Store route is protected but outside StoreGate so no/multi Store can resolve",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-027",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Today does not fabricate inventory or readiness before D01 is read",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-028",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Homepage is a public destination and sends account entry to the real login route",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-029",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Completion links to planning setup without inventing planning readiness or aggregate counts",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-030",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Shared shell keys all business outlets by Store and current authorization/catalog",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-031",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "API Store workspace renders canonical identity and no DEV fixture notice",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-032",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Authenticated no-Store and multi-Store selection are not login failures",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-033",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Business StoreGate routes unselected user to Store without mounting children",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-034",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "current Store Workspace fixtures conform to frozen canonical schemas",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-035",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "N12 preserves inactive Staff, independent grants and canonical optional defaults",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-036",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "N12 rejects fake Owner roster, duplicates, missing pagination and unknown grant keys",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-037",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "full replacement grants are sorted unique and never silently add prerequisites",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-038",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "nondelegable catalogue keys cannot be granted even if known",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-039",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "N13 no-op receipt cannot fabricate a change event or a different submitted grant set",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-040",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "invitation requests reject role, user/account creation, arbitrary lifecycle and Owner token fields",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-041",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "invitation creation queued delivery is distinct from membership and accepted state",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-042",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "N15 receipt pins canonical recipient and original pending/queued state, not later lifecycle",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-043",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "N16 rejects cross-Store response, inconsistent lifecycle and duplicate invitation rows",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-044",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "N17 reissue and revoke receipts retain precise action-specific lifecycle",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-045",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "budget preserves exact zero and huge decimal text, rejecting unlimited/null and runtime knobs",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-046",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "CAS and idempotency header validation accepts opaque keys, never wildcard/weak/multiple CAS",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-047",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "API GETs use Store scope, explicit filters, include cookies and never send mutation CSRF",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-048",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "N13 writes exact body, original key/CAS and shared session CSRF without editing role or active",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-049",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "N15/N17 do not call account, recipient acceptance or token endpoints",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-050",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "N4 sends exactly one conditional header for create versus replace, preserving zero text",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-051",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "unsupported body/precondition/query/ID inputs are rejected before a network call",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-052",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "mutation needs current session CSRF and never falls back to fixtures",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-053",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "transport uncertainty never automatically retries a write or fabricates success",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-054",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "canonical 403/409/412/428/429 errors retain server codes/request IDs without reinterpretation",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-055",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "an aborted N12 response cannot populate the catalogue for a later mutation",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-056",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "API mutation snapshots the original body before asynchronous catalogue loading",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-057",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "mock permission changes are exact, CAS protected, no-op aware and receipt replay safe",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-058",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "mock invitation creation and lifecycle never creates Staff membership or delivers mail",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-059",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "mock budget writes independent of planning readiness and isolate Store state",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-060",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "mock paginated snapshots reject a changed list instead of mixing pages",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-061",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "overview preserves MagicPath profile, hours and status cards without inventing API profile data or save",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-062",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "illustrative fields exist only with explicit mockPreview and are labelled noncanonical",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-063",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "tabs preserve designed names and expose linked roving-focus tab semantics",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-064",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Store header uses only canonical current identity and restricted-state guidance",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-065",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "member names are real keyboard buttons and Staff roster is distinct from Owner self and invitations",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-066",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "restricted Staff never sees cached Owner roster or invitations even if parent has old rows",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-067",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "permission drawer labels canonical grants and requires reason before save",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-068",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Owner identity drawer and inactive Staff are read-only, without ownership or activation mutation affordances",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-069",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "busy or uncertain permission intents lock the draft, and revoking edit authority never permits a new save",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-070",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "unknown and nondelegable grants are not mapped, not dropped, not editable, and are escaped",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-071",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "required_with produces guidance only, never adds permissions or uses prototype groups as grant keys",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-072",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "invitation form fixes Staff role, no preselected grants and no token or account-existence disclosure",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-073",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "invitation receipt reports canonical delivery status rather than fake membership success",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-074",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "accepted invitation is terminal and offered grants never substitute current membership grants",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-075",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "operating defaults preserve design cards but budget writer is only canonical ceiling",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-076",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "budget unavailable and true zero remain distinct; no rights, loading or uncertain intent locks editing",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-077",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "exact budget formatting and parsing never coerce large monetary values to Number",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-078",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "email normalization and reason Unicode bounds preserve canonical write intent",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-079",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "dialog focus trap index wraps only at boundaries and no-Store state never creates fake Store",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-080",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "static responsive contracts include desktop density, narrow drawers and scroll-contained tables, not browser QA",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-081",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Staff cannot load Owner roster/invitations or mutate grants/invitations even with copied action strings",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-082",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Owner role alone does not authorize budget read/update without exact current grants",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-083",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "Staff with all exact budget grants may update budget independently of Owner-only roster",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-084",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "known budget cap accepts exact zero and preserves original CAS without changing requirements",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-085",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "authorized null ceiling creates initial cap with create-only condition and preserves exact zero",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-086",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "money input keeps up to 18 fractional digits without Number coercion; invalid input never writes",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-087",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "permission lost ACK preserves stable key, original CAS and defensive-cloned body on explicit retry",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-088",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "later definitive denial cannot erase earlier lost-ACK uncertainty or replace original intent",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-089",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "budget lost ACK retries exact amount/key/original budget version, without refetching a new CAS",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-090",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "known permission receipt plus failed follow-up GET never replays the mutation",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-091",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "known budget receipt plus failed C01 reread stays a read failure and cannot replay N4",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-092",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "definitive CAS conflict invalidates draft revision, rereads, and requires a new explicit intent",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-093",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "budget CAS conflict rereads current ceiling without silently resubmitting against new version",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-094",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "no-op permission receipt remains successful without claiming a permission event was created",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-095",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "inactive membership cannot be edited or submitted despite being in roster",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-096",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "unknown grant fails before write; full replacement permits explicit empty grants",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-097",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "dispose aborts pending read and ignores late data; controller can be used after Strict replay",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-098",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "dispose while writing ignores a late receipt and never begins its follow-up GET",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-099",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "superseded member read cannot overwrite the newest request response",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-100",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "C01 Store/currency/timezone mismatch clears context and blocks budget write",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-101",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "valid member pagination preserves server catalogue and exact total",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-102",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "member pagination rejects duplicate membership, clears stale catalogue/rows and increments draft revision",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-103",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "member pagination rejects changed catalogue, clears stale catalogue/rows and increments draft revision",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-104",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "member pagination rejects changed exact total, clears stale catalogue/rows and increments draft revision",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-105",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "member pagination rejects stalled cursor, clears stale catalogue/rows and increments draft revision",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-106",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "invitation creation only confirms pending invitation/delivery, never a new member",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-107",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "accepted invitation is terminal; expired cannot revoke but may explicitly reissue",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-108",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "duplicate invitation pagination clears old rows instead of merging duplicates",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-109",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "lost invitation-create ACK replays one original intent and does not send a second independent invitation",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-110",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "member pagination rejects a longer cursor cycle even without duplicate IDs or known total",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-111",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "invitation pagination rejects a longer cursor cycle, not just immediate repetition",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-112",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "definitive 403 mutation rejection invalidates sensitive caches and blocks cached authority until T02 refresh",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-113",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "definitive 404 mutation rejection invalidates sensitive caches and blocks cached authority until T02 refresh",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-114",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "403 from a workspace read clears previously loaded unrelated sensitive resources",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-115",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "late successful read cannot restore caches after a concurrent authorization rejection",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-116",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "N17 receipt for a different target email stays uncertain and cannot silently retarget the action",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-117",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "initial budget lost ACK replays original create-only key/body and fresh reads cap zero",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "UNIT-STORE-118",
+      "mode": "CONTROLLED",
+      "status": "PASS",
+      "scope": "store",
+      "action": "initial budget race rereads competing cap without converting create to replace",
+      "oracle": "Exact checked-in unit/SSR controlled assertions; no live DB",
+      "observation": "Passed",
+      "blocker": ""
+    },
+    {
+      "id": "BUILD-TYPES",
+      "mode": "STATIC_ONLY",
+      "status": "PASS",
+      "scope": "final changed FE files",
+      "action": "node node_modules/typescript/bin/tsc -b --pretty false",
+      "oracle": "No TypeScript errors",
+      "observation": "Exit0 on final source",
+      "blocker": ""
+    },
+    {
+      "id": "LINT-CHANGED",
+      "mode": "STATIC_ONLY",
+      "status": "PASS",
+      "scope": "StoreBootstrap/storeCreate.react/storeCreate.journal",
+      "action": "targeted oxlint",
+      "oracle": "No errors/warnings",
+      "observation": "Exit0 after derived restored fields and layout actor fence",
+      "blocker": ""
+    },
+    {
+      "id": "TLS-FE",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "HTTPS5173",
+      "action": "Inspect served chain, import exact public leaf into CurrentUser Root, fresh Edge login",
+      "oracle": "Served DER matches exported public file; hostname/validity/trust normal",
+      "observation": "Browser pages/auth load with default TLS validation; no ignoreHTTPSErrors",
+      "blocker": ""
+    },
+    {
+      "id": "TLS-COMPARE",
+      "mode": "API_ONLY",
+      "status": "PASS",
+      "scope": "HTTPS8103 vs5173",
+      "action": "Compare verified TLS chains",
+      "oracle": "Distinct self-signed localhost leaves; exact configured public files",
+      "observation": "FE2067a4... differs from BEeba003...; no BE import/substitution",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-OWNER",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Owner login/context",
+      "action": "A01 UI -> A03/T01/T02 -> imports rendering",
+      "oracle": "Exact Local Test Store/43 permissions; independent browser context",
+      "observation": "Verified; no credentials stored",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-STAFF",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Staff login/context",
+      "action": "A01 UI -> A03/T01/T02",
+      "oracle": "Exact Store/STAFF/menu.read only; separate cookie context",
+      "observation": "Verified",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-ADMISSION",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Owner import file",
+      "action": "Choose synthetic CSV/date -> I01/I02 -> accepted-source confirmation",
+      "oracle": "One141-byte file/digest, source set/quota via I04; no canonical writes",
+      "observation": "One batch/file admitted; no replacement batch",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-ANALYZE",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Owner Analyze",
+      "action": "Explicit exact accepted set -> one I03 -> J01 -> Step2 source screen",
+      "oracle": "One job running/parsing -> completed; fresh Session sealed batch",
+      "observation": "6beec166-21c8-4190-a89e-0c645122bc0c completed",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-SOURCE",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Source declaration",
+      "action": "Fill author-owned synthetic source/report/evidence -> M04 -> Step3",
+      "oracle": "Persist integration_audit_r2/products_master/evidence, no filename inference",
+      "observation": "Scoped source context saved; no stock/date semantics invented",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-METADATA",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "New Product proposal",
+      "action": "Identity new-entity form -> M04 -> retained proposal",
+      "oracle": "Exact CSV row2 metadata; reservation is not canonical creation",
+      "observation": "Typed proposed Product saved, no guessing/binding another entity",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-APPROVAL",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Owner full-spec approval",
+      "action": "Review all six RULE bindings + source/entity evidence -> N5",
+      "oracle": "Owner may self-approve; eligible full spec/missing_fields[]",
+      "observation": "Version b5af21bb-f365-4614-b9e4-7676b05279c1 active; no per-RULE busywork",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-PROFILE-COPY",
+      "mode": "LIVE_UI",
+      "status": "FAIL",
+      "scope": "Approved profile display",
+      "action": "Inspect Step4 immediately after N5 receipt, without editing",
+      "oracle": "Approved state must not demand a new approval only because owner_reviewed changed",
+      "observation": "BUG-002: says new version/1 changed rule/needs Owner decision beside approved state",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-PREVIEW",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Owner Preview",
+      "action": "Tạo Preview -> I05/J01 -> full single preview row",
+      "oracle": "ExactlyNEW1,0changes/invalid/conflict, exact known product values",
+      "observation": "Preview job c6b8c149-5a77-461a-b4c1-d100f32a77a3 completed",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-REVIEW",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Owner persisted Review",
+      "action": "Reason/ack -> confirm_review -> I04",
+      "oracle": "Distinct durable confirmation with matching preview/source/mapping/read-set pins",
+      "observation": "Confirmation d3ab309a-3031-45cb-9532-1a79ea6a0033 usable",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-COMMIT",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Owner atomic Commit",
+      "action": "Explicit ack with optional reason empty -> one commit/J01/I06",
+      "oracle": "Exactlyone inserted Product;0changed/no-op; no stock/sales/supplier writes",
+      "observation": "Commit c74915b0-5961-4808-a126-5c8fadbf39af; job91b8b020 completed; I06 committed",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-PERSISTENCE",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Fresh database session",
+      "action": "Read-only guarded SQLAlchemy Session after HTTP job and receipt",
+      "oracle": "Exactlyone SKU/name/unit/price/active tuple in correct Store; completed jobs",
+      "observation": "Independent fresh-session assertion passed; repeated final read unchanged",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-COMPLETION-RELOAD",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Retained completion",
+      "action": "Direct /imports?import_id then reload",
+      "oracle": "Same committed receipt/counts; no new write/replay",
+      "observation": "Completion restored and no extra I01/I03/commit",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-SOURCE-COPY",
+      "mode": "LIVE_UI",
+      "status": "FAIL",
+      "scope": "Completion source label",
+      "action": "Reload completed batch and inspect source summary; compare M01",
+      "oracle": "Approved source must not be called unconfirmed just because summary not loaded",
+      "observation": "BUG-003: label Chưa xác nhận while M01 approved_contexts contains source",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-MENU-OWNER",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Owner menu readback",
+      "action": "Menu deep link/reload -> P01",
+      "oracle": "1 Product/12345VND/active/no recipe, exact canonical ID",
+      "observation": "Matches fresh DB and I06; UI12.345VND, Chưa có công thức",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-MENU-STAFF",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Staff permitted read",
+      "action": "Menu before and after Owner commit -> reload/P01",
+      "oracle": "menu.read permits Product, no recipe/ingredient detail leakage",
+      "observation": "Count0 ->1 after reload; UI Không có quyền xem for recipe",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-STAFF-INVENTORY",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Staff forbidden inventory",
+      "action": "Direct inventory URL + independent V01 GET",
+      "oracle": "403PERMISSION_DENIED/data=null, visible safe error",
+      "observation": "Denied as expected; no Owner session borrowed",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-STAFF-IMPORT",
+      "mode": "API_ONLY",
+      "status": "PASS",
+      "scope": "Staff forbidden I01",
+      "action": "One direct API-only POST, current Staff CSRF and unique intent",
+      "oracle": "403PERMISSION_DENIED and no Staff batch row",
+      "observation": "Denied; negative request key retained, no retry",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-STAFF-COMPLETION",
+      "mode": "API_ONLY",
+      "status": "PASS",
+      "scope": "Staff forbidden retained Import",
+      "action": "Direct I06 read of assigned test batch",
+      "oracle": "Missing import.read ->403/data=null",
+      "observation": "Denied as expected",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-STAFF-PLANNING",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Staff Planning UI",
+      "action": "Direct /forecast/planning",
+      "oracle": "Deny missing planning/budget/cost reads, no cached result",
+      "observation": "Permission guidance shown; no plan created",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-READINESS",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Owner current readiness",
+      "action": "C01 + valid R01 actions=planning/date query",
+      "oracle": "Known missing facts remain unknown/blocked; no fabricated defaults",
+      "observation": "can_execute=false, exact config/history/recipe blockers; completion stays committed",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-PLANNING",
+      "mode": "LIVE_UI",
+      "status": "BLOCKED",
+      "scope": "Planning creation/computation",
+      "action": "Inspect default setup and disabled create",
+      "oracle": "Needs authorized computable source/recipe/history/config facts",
+      "observation": "No history/recipe/default requirements/budget/model/constraints/inbound completeness",
+      "blocker": "DATA-PLANNING"
+    },
+    {
+      "id": "LIVE-PDF",
+      "mode": "LIVE_UI",
+      "status": "BLOCKED",
+      "scope": "Retained plan/PDF",
+      "action": "No authorized retained Run exists",
+      "oracle": "No fabricated Run/option/export",
+      "observation": "No C02/C03/C04/C05/C08/N10/J01/N11 PDF execution",
+      "blocker": "DATA-PLANNING"
+    },
+    {
+      "id": "LIVE-HISTORY",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Owner N9 history",
+      "action": "Initial UI503 -> independent200 -> fresh navigation/reload",
+      "oracle": "Empty history with current metadata, safe transient-error recovery",
+      "observation": "One transient SERVICE_UNAVAILABLE; subsequent200empty/UI Chưa có kế hoạch nào",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-NOTIFICATIONS",
+      "mode": "LIVE_UI",
+      "status": "PASS",
+      "scope": "Owner inbox",
+      "action": "/notifications -> NF01/NF02 -> reload",
+      "oracle": "Empty inbox/unread0 coherent; no implicit business action",
+      "observation": "Normal empty state; no notification write needed",
+      "blocker": ""
+    },
+    {
+      "id": "LIVE-NOTIFICATION-WRITE",
+      "mode": "LIVE_UI",
+      "status": "BLOCKED",
+      "scope": "NF03 and handoff",
+      "action": "No actual inbox items",
+      "oracle": "Do not fabricate notifications or unrelated invitation/grant events",
+      "observation": "Live read-state/handoff untested; controlled coverage historical only",
+      "blocker": "DATA-NOTIFICATIONS"
+    },
+    {
+      "id": "LIVE-ISOLATION",
+      "mode": "LIVE_UI",
+      "status": "BLOCKED",
+      "scope": "Multi/foreign Store and revocation",
+      "action": "No additional authorized fixtures or grant edits",
+      "oracle": "Do not create/modify users/Stores/grants",
+      "observation": "Not tested live",
+      "blocker": "SCOPE-FIXTURES"
+    },
+    {
+      "id": "OUT-1",
+      "mode": "STATIC_ONLY",
+      "status": "NOT_APPLICABLE",
+      "scope": "real email delivery",
+      "action": "Not invoked",
+      "oracle": "Explicit user exclusions; keep flags/config unchanged",
+      "observation": "Out of scope",
+      "blocker": "EXCLUDED"
+    },
+    {
+      "id": "OUT-2",
+      "mode": "STATIC_ONLY",
+      "status": "NOT_APPLICABLE",
+      "scope": "Import Qwen/paid provider",
+      "action": "Not invoked",
+      "oracle": "Explicit user exclusions; keep flags/config unchanged",
+      "observation": "Out of scope",
+      "blocker": "EXCLUDED"
+    },
+    {
+      "id": "OUT-3",
+      "mode": "STATIC_ONLY",
+      "status": "NOT_APPLICABLE",
+      "scope": "Summary/Chat live model",
+      "action": "Not invoked",
+      "oracle": "Explicit user exclusions; keep flags/config unchanged",
+      "observation": "Out of scope",
+      "blocker": "EXCLUDED"
+    },
+    {
+      "id": "OUT-4",
+      "mode": "STATIC_ONLY",
+      "status": "NOT_APPLICABLE",
+      "scope": "parked What-if/Draft PO",
+      "action": "Not invoked",
+      "oracle": "Explicit user exclusions; keep flags/config unchanged",
+      "observation": "Out of scope",
+      "blocker": "EXCLUDED"
+    }
+  ]
+}

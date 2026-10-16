@@ -1,5 +1,5 @@
 import {test,expect,type Page} from '@playwright/test'
-import {backend,env,paging,s,member,user,at} from './helpers/api'
+import {backend,env,paging,s,member,user,errorResponse} from './helpers/api'
 
 const body={name:'Journal controlled Store',timezone:'Asia/Ho_Chi_Minh',currency:'VND'}
 const summary={store_id:s,...body,role:'OWNER',membership_id:member,authorization_version:'member/1'}
@@ -60,4 +60,9 @@ test('T03 late original success after reload is reconciled only with original ke
  await setup(page,writes,{reply:async n=>{if(n===1){await pending;effects=1}return {httpStatus:201,body:env(summary)}}})
  await page.goto('/store');await create(page);await expect.poll(()=>writes.length).toBe(1);await page.reload();await unknown(page);release();await expect.poll(()=>effects).toBe(1)
  await page.getByRole('button',{name:'Kiểm tra đúng yêu cầu trước',exact:true}).click();await expect(page.getByRole('heading',{name:'Cửa hàng đã được tạo'})).toBeVisible();expect(writes).toHaveLength(2);expect(writes[1].key).toBe(writes[0].key);expect(effects).toBe(1)
+})
+test('T03 denied replay keeps original uncertainty across reload and never unlocks a replacement',async({page})=>{
+ const writes:Write[]=[];await setup(page,writes,{reply:n=>n===1?'ABORT':errorResponse(403,'PERMISSION_DENIED')});await page.goto('/store');await create(page);await unknown(page)
+ await page.getByRole('button',{name:'Kiểm tra đúng yêu cầu trước',exact:true}).click();await unknown(page);await expect(page.getByLabel('Tên cửa hàng')).toBeDisabled();expect(writes).toHaveLength(2);expect(writes[1].key).toBe(writes[0].key)
+ await page.reload();await unknown(page);await expect(page.getByLabel('Tên cửa hàng')).toHaveValue(body.name);await expect(page.getByRole('button',{name:'Tạo cửa hàng',exact:true})).toBeDisabled();expect(writes).toHaveLength(2)
 })

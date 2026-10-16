@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useAuth } from '../auth/auth.context'
 import { createAuthDataSource } from '../auth/auth.data'
 import { useCurrentStore } from './store.context'
@@ -16,7 +16,8 @@ const source = createAuthDataSource(config.apiBaseUrl)
 export function useStoreCreationMutation() {
   const auth = useAuth(), { registerChangeGuard } = useCurrentStore()
   const actor = auth.state.status === 'authenticated' ? auth.state.context.user.user_id : null
-  const currentActor = useRef(actor); currentActor.current = actor
+  const currentActor = useRef(actor)
+  useLayoutEffect(() => { currentActor.current = actor; return () => { currentActor.current = null } }, [actor])
   const [snapshot, setSnapshot] = useState<{ actor: string | null; state: State }>({ actor: null, state: { status: 'loading' } })
   const working = useRef(false), channel = useRef<BroadcastChannel | null>(null)
   const state: State = snapshot.actor === actor ? snapshot.state : { status: 'loading' }
