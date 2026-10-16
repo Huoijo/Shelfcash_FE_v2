@@ -1,5 +1,7 @@
 import { Link,useSearchParams } from 'react-router'
 import { RequestedStore } from '../../features/store/RequestedStore'
+import { StoreBootstrap } from '../../features/store/StoreBootstrap'
+import { PermissionRequests, PermissionRequestDetail } from '../../features/store-workspace/components/PermissionRequests'
 import { isPlanningUuid } from '../../features/decision-planning/planning.validation'
 import { mockWorkspaceSource } from '../../features/mock/mockSources'
 import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from 'react'
@@ -10,7 +12,7 @@ import type { StoreContext } from '../../features/store/store.types'
 import { createStoreWorkspaceDataSource } from '../../features/store-workspace/storeWorkspace.data'
 import { StoreWorkspaceWorkflow } from '../../features/store-workspace/storeWorkspace.workflow'
 import {
-  InvitationActionDrawer, MemberPermissionDrawer, StaffInviteDrawer, StoreMembers, StoreNoAccess,
+  InvitationActionDrawer, MemberPermissionDrawer, StaffInviteDrawer, StoreMembers,
   StoreOperatingDefaults, StoreOverview, StoreWorkspaceFeedback, StoreWorkspaceHeader,
   StoreWorkspaceLoading, StoreWorkspaceTabs,
 } from '../../features/store-workspace/components'
@@ -45,7 +47,7 @@ export function StorePage() {
   return <><AppShellHeader><span className="store-page-breadcrumb">Cửa hàng</span></AppShellHeader>
     {config.mockPreview && <p className="store-page-preview" role="note">DEV/QA minh họa — dữ liệu và thay đổi chỉ ở bộ nhớ; không ghi Backend hoặc gửi email thật.</p>}
     <main className="store-page">
-      {requested&&store?.store_id!==requested?(isPlanningUuid(requested)?<RequestedStore key={requested} storeId={requested} onCancel={clearRequested}/>:<><p role="alert">Liên kết cửa hàng không hợp lệ.</p><button onClick={clearRequested}>Chọn cửa hàng</button></>):store ? <ScopedStoreWorkspace store={store} /> : state.status === 'empty' ? <StoreNoAccess />
+      {requested&&store?.store_id!==requested?(isPlanningUuid(requested)?<RequestedStore key={requested} storeId={requested} onCancel={clearRequested}/>:<><p role="alert">Liên kết cửa hàng không hợp lệ.</p><button onClick={clearRequested}>Chọn cửa hàng</button></>):store ? <ScopedStoreWorkspace store={store} /> : state.status === 'empty' ? <StoreBootstrap />
         : state.status === 'loading' ? <StoreWorkspaceLoading />
           : state.status === 'selecting' ? <><h1>Cửa hàng</h1><p>{state.message}</p><StoreSelector /></>
             : <><StoreWorkspaceFeedback title="Chưa mở được cửa hàng" message={state.status === 'error' || state.status === 'unavailable' ? state.message : 'Chưa có cửa hàng hiện hành.'} onRetry={retry} /><StoreSelector /></>}
@@ -53,6 +55,9 @@ export function StorePage() {
 }
 
 function ScopedStoreWorkspace({ store }: { store: StoreContext }) {
+  const [params, setParams] = useSearchParams()
+  const permissionRequest = params.get('permission_request_id')
+  const closePermissionRequest = () => { const next = new URLSearchParams(params); next.delete('permission_request_id'); setParams(next, { replace: true }) }
   const { state: auth } = useAuth()
   const { registerChangeGuard, refresh } = useCurrentStore()
   const workflow = useMemo(() => new StoreWorkspaceWorkflow(createStoreWorkspaceDataSource({
@@ -60,6 +65,7 @@ function ScopedStoreWorkspace({ store }: { store: StoreContext }) {
     ...(previewSource ? { mockSource: previewSource } : {}),
   }), store), [store])
   const state = useSyncExternalStore(workflow.subscribe, workflow.getSnapshot, workflow.getSnapshot)
+  const [requestsOpen,setRequestsOpen] = useState(false)
   const [tab, setTab] = useState<StoreWorkspaceTab>('overview')
   const [drawer, setDrawer] = useState<{ kind: 'member' | 'invitation'; id: string } | { kind: 'invite'; openedAt: number } | { kind: 'self' } | null>(null)
   const dirty = useRef(false)
@@ -75,9 +81,9 @@ function ScopedStoreWorkspace({ store }: { store: StoreContext }) {
     }
   }, [state.receiptKind, state.receiptSerial, refresh])
   useEffect(() => {
-    if (tab === 'members' && workflow.canManage) { void workflow.loadMembers(); void workflow.loadInvitations() }
+    if (tab === 'members' && !requestsOpen && workflow.canManage) { void workflow.loadMembers(); void workflow.loadInvitations() }
     if (tab === 'operations') void workflow.loadBudget()
-  }, [tab, workflow])
+  }, [tab, requestsOpen, workflow])
   const member = drawer?.kind === 'member' ? state.members.items.find((item) => item.membership_id === drawer.id) : undefined
   const invitation = drawer?.kind === 'invitation' ? state.invitations.items.find((item) => item.invitation_id === drawer.id) : undefined
   const identity: StoreWorkspaceIdentity = { name: auth.status === 'authenticated' ? auth.context.user.display_name : 'Tài khoản · DEV/QA',
@@ -88,14 +94,16 @@ function ScopedStoreWorkspace({ store }: { store: StoreContext }) {
   const feedback = { busy: state.busy, error: state.error, notice: state.notice, locked: state.uncertain, onDirtyChange: dirtyChange,
     onRetry: () => { void workflow.retry() } }
   return <>
+    {permissionRequest && isPlanningUuid(permissionRequest) && <PermissionRequestDetail key={permissionRequest} store={store} requestId={permissionRequest} onClose={closePermissionRequest}/>}
     <StoreWorkspaceHeader store={store} selector={<StoreSelector locked={locked || isDirty} />} restricted={!workflow.canManage} />
-    <StoreWorkspaceTabs tab={tab} id={id} onTab={(next) => { if (!locked && !dirty.current) { close(); setTab(next) } }} />
+    <StoreWorkspaceTabs tab={tab} id={id} onTab={(next) => { if (!locked && !dirty.current) { close(); setRequestsOpen(false); setTab(next) } }} />
     <div className="store-page-status" aria-live="polite">
       {state.error && <p role="alert">{state.error}</p>}{state.notice && <p role="status">{state.notice}</p>}
       {state.authorizationInvalidated && state.uncertain && <p>Quyền truy cập chưa được xác minh lại nên thao tác thử lại đang bị khóa. Kết quả lần gửi đầu vẫn chưa biết; cần đối chiếu với hỗ trợ, không suy ra yêu cầu chưa được nhận.</p>}
       {state.uncertain && <><p>Chưa biết kết quả yêu cầu trước. Thử lại giữ nguyên nội dung, key và version gốc. Refresh, rời màn hình hoặc đăng xuất sẽ mất intent ở bộ nhớ; không tạo yêu cầu mới khi chưa đối chiếu.</p><button type="button" className="sc-store-secondary" disabled={state.busy || state.authorizationInvalidated} onClick={() => { void workflow.retry() }}>Thử lại đúng yêu cầu trước</button></>}
     </div>
-    <section role="tabpanel" id={`${id}-panel-${tab}`} aria-labelledby={`${id}-tab-${tab}`}>
+    <nav className="sc-flow-tabs" aria-label="Quyền và thành viên"><button aria-selected={!requestsOpen} onClick={()=>{if(!locked&&!dirty.current){setTab('members');setRequestsOpen(false)}}}>Thành viên</button><button aria-selected={requestsOpen} onClick={()=>{if(!locked&&!dirty.current){setTab('members');setRequestsOpen(true)}}}>Yêu cầu quyền</button></nav>
+    {requestsOpen?<PermissionRequests store={store}/>:<section role="tabpanel" id={`${id}-panel-${tab}`} aria-labelledby={`${id}-tab-${tab}`}>
       {tab === 'overview' && <StoreOverview store={store} mockPreview={config.mockPreview} />}
       {tab === 'members' && <StoreMembers members={state.members.items} invitations={state.invitations.items} currentIdentity={state.authorizationInvalidated ? null : identity}
         canManage={workflow.canManage} busy={locked || readsBusy} error={state.members.error || state.invitations.error} membersTotal={state.members.total} invitationsTotal={state.invitations.total}
@@ -107,7 +115,7 @@ function ScopedStoreWorkspace({ store }: { store: StoreContext }) {
       {tab === 'operations' && <StoreOperatingDefaults key={`${state.context?.context_version ?? 'unread'}:${state.context?.budget_ceiling?.version ?? 'unknown'}:${state.revision}`}
         store={store} planningContext={state.context} loading={state.contextBusy} error={state.contextError || (!workflow.canReadBudget ? 'Cần đủ quyền planning.context.read, budget.read và procurement.cost.read để đọc C01; không suy quyền từ vai trò.' : null)}
         canUpdateBudget={workflow.canUpdateBudget && !!state.context} busy={state.busy} locked={state.uncertain} onSaveBudget={(amount) => { void workflow.saveBudget(amount) }} onRetry={() => { if (!isDirty && !locked) void workflow.loadBudget() }} onDirtyChange={dirtyChange} />}
-    </section>
+    </section>}
     <div className="store-page-refresh"><button type="button" className="sc-store-secondary" disabled={locked || isDirty || readsBusy} onClick={() => { void refresh() }}>Đọc lại cửa hàng và quyền hiện hành</button></div>
     {!state.authorizationInvalidated && (drawer?.kind === 'self' || member) && <MemberPermissionDrawer key={`${member?.membership_id ?? 'self'}:${member?.version ?? store.membership.authorization_version}:${state.catalogVersion}:${state.revision}`}
       member={member} identity={drawer?.kind === 'self' ? identity : null} catalog={state.catalog} canEdit={workflow.canManage && !!state.catalogVersion && !readsBusy} {...feedback}

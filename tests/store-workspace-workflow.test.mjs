@@ -14,7 +14,7 @@ const ids = STORE_WORKSPACE_FIXTURE_IDS
 const clone = (value) => structuredClone(value)
 const envelope = (data, pagination) => ({ data, meta: { request_id: 'workflow-controlled', ...(pagination ? { pagination } : {}) }, error: null })
 const grantsRequest = () => ({ grants: ['menu.read'], reason: 'Đổi quyền cho ca làm việc' })
-const inviteRequest = () => ({ email: 'new-staff@example.invalid', grants: ['menu.read'], permission_catalog_version: 'permissions-v2', reason: 'Mời nhân viên ca sáng' })
+const inviteRequest = () => ({ email: 'new-staff@example.invalid', grants: ['menu.read'], permission_catalog_version: 'permissions-v3', reason: 'Mời nhân viên ca sáng' })
 const denial = (status = 403) => new HttpError('contract', 'Máy chủ từ chối yêu cầu', status, { code: 'PERMISSION_DENIED', message: 'Máy chủ từ chối yêu cầu', details: {} }, 'controlled-denial')
 const conflict = () => new HttpError('contract', 'Phiên bản đã thay đổi', 412, { code: 'PRECONDITION_FAILED', message: 'Phiên bản đã thay đổi', details: {} }, 'controlled-conflict')
 const lost = () => new HttpError('transport', 'Mất phản hồi sau khi gửi')
@@ -24,7 +24,7 @@ const ownerFlow = (overrides = {}, store = mockStoreContext()) => {
   return { source, flow: new StoreWorkspaceWorkflow(source, store) }
 }
 const memberPage = (items, cursor = null, total = null, catalog = storeWorkspaceMembershipsFixture().data.permission_catalog) => envelope({
-  items, permission_catalog_version: 'permissions-v2', permission_catalog: catalog,
+  items, permission_catalog_version: 'permissions-v3', permission_catalog: catalog,
 }, { limit: 50, next_cursor: cursor, total_count: total })
 const invitationPage = (items, cursor = null, total = null) => envelope({ items }, { limit: 50, next_cursor: cursor, total_count: total })
 const permissionReceipt = (request, version = 'controlled-member/2') => envelope({
@@ -381,7 +381,7 @@ test('accepted invitation is terminal; expired cannot revoke but may explicitly 
   await flow.actOnInvitation(accepted.invitation_id, { action: 'revoke', reason: 'Must not revoke accepted' })
   await flow.actOnInvitation(expired.invitation_id, { action: 'revoke', reason: 'Must not revoke expired' })
   assert.equal(writes, 0)
-  await flow.actOnInvitation(expired.invitation_id, { action: 'reissue', grants: ['menu.read'], permission_catalog_version: 'permissions-v2', reason: 'Gửi lại lời mời hết hạn' })
+  await flow.actOnInvitation(expired.invitation_id, { action: 'reissue', grants: ['menu.read'], permission_catalog_version: 'permissions-v3', reason: 'Gửi lại lời mời hết hạn' })
   assert.equal(writes, 1)
 })
 

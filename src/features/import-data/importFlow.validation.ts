@@ -74,7 +74,7 @@ export function validateMappingQueue(value: unknown): MappingQueue {
     !page(meta.pagination, data.items.length)) return invalid('M02', value)
   const wire = data as { items: Omit<MappingQueue['items'][number], 'unsupportedFields'>[]; counts: MappingProgress }
   if (!unique(wire.items.map((item) => item.mapping_id)) || wire.items.some((item) => item.source_location.sheet_id !== item.sheet_id)) return invalid('M02', value)
-  return { items: wire.items.map((item) => ({ ...item, samples: item.samples ?? [], unsupportedFields: [] })), counts: wire.counts, pagination: meta.pagination, unsupportedFields: [] }
+  return { ...data, items: wire.items.map((item) => ({ ...item, samples: item.samples ?? [], unsupportedFields: [] })), counts: wire.counts, pagination: meta.pagination, unsupportedFields: [] }
 }
 
 export function validateMappingOptions(value: unknown): MappingOptions {
@@ -124,6 +124,9 @@ export function validatePreviewBundle(value: unknown, importId: string, previewI
     batch.preview.summary.source_set_version !== batch.file_set_version || !Array.isArray(batch.preview.rows) ||
     !page(batch.preview.rows_page, batch.preview.rows.length)) return invalid('I04 preview', value)
   const preview = batch.preview as unknown as PreviewBundle['preview']
+  if (!text(preview.mapping_revision) || !text(preview.read_set_digest) ||
+    preview.source_evidence_digest !== null && !text(preview.source_evidence_digest) ||
+    preview.aggregates && (preview.aggregates.preview_id !== preview.summary.preview_id || preview.aggregates.preview_digest !== preview.summary.digest)) return invalid('I04 preview pins', value)
   if (Object.values(preview.summary.counts).some((value) => !count(value)) || preview.summary.groups.some((group) =>
     ![group.row_count, group.planned_insert_count, group.planned_update_count, group.no_op_count, group.blocked_count].every(count))) return invalid('I04 preview', value)
   if (!unique(preview.rows.map((row) => row.row_id)) || !unique(preview.summary.required_actions) ||

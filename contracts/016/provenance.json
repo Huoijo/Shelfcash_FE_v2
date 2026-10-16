@@ -1,0 +1,22 @@
+{
+  "source_sha": "869eaec914aa6905d6b935889afebe7d973004ae",
+  "source_package": "shelfcash_FE_handoff_869eaec9",
+  "source_path": "shelfcash_FE_handoff_869eaec9/openapi.json",
+  "sha256": "790443d80350cc597c7c06179309e43303ba558de34017ea1dd4113de71fc1ee",
+  "pinned_at": "2026-10-16",
+  "paths": 66,
+  "operations": 73,
+  "consumers": [
+    "Import wire",
+    "SU01 Import identity search",
+    "R01 Import completion readiness"
+  ],
+  "unchanged_baseline_consumers": [
+    "Auth",
+    "Store",
+    "Planning",
+    "Operations"
+  ],
+  "verification": "Offline source/schema and controlled FE tests; not live business acceptance",
+  "reported_later_sha": "b0db90c (not independently available; not the SHA of this snapshot)"
+}

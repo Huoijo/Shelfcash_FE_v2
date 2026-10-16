@@ -1,6 +1,6 @@
 # 011 — FE → BE follow-up sau night handoff
 
-Ngày tạo lập: 13/10/2026. General Context: đã nhận `010_BE_FE_handoff_20261013`, kiểm đủ 80 file manifest và pin main T SHA256 `d45b25e6423c52a854bae39efc7896df5c44a22f15549fa7f7259b565e2d837d` cho FE. Chi tiết [receipt](../docs/011_Implementation_Receipt.md), [debt](../docs/011_TechDebt.md).
+Ngày tạo lập: 13/10/2026. General Context: đã nhận `010_BE_FE_handoff_20261013`, kiểm đủ 80 file manifest và pin main T SHA256 `d45b25e6423c52a854bae39efc7896df5c44a22f15549fa7f7259b565e2d837d` cho FE. Chi tiết [receipt](../docs/sprints/011/011_Implementation_Receipt.md), [debt](../docs/sprints/011/011_TechDebt.md).
 
 ## Đã tiếp nhận — không yêu cầu BE gửi lại hoặc duyệt lại
 

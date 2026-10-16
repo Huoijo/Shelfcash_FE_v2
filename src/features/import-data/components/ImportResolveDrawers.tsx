@@ -69,17 +69,17 @@ export function ImportResolveDrawer(props:Props) {
 function MappingEditor({issue,options,summary,disabled,onConfirm,onResolve,onProposal}:{onProposal:(value:boolean)=>void;issue:MappingIssue;options?:MappingOptions;summary:MappingSummary;disabled:boolean;onConfirm:(target:string)=>void;onResolve:(resolution:MappingResolution)=>void}) {
   const [draft,setDraft]=useState<string|null>(null),[reason,setReason]=useState(''),[ack,setAck]=useState(false)
   const suggested=issue.target_field??issue.suggested_target_field??''
-  const target=draft??(options?.options.some(o=>o.key===suggested&&o.available&&o.support==='supported')?suggested:'')
+  const target=draft??(options?.options.some(o=>o.key===suggested&&o.available&&o.support!=='unsupported')?suggested:'')
   const option=options?.options.find(o=>o.key===target)
   const ignore=target==='IGNORE'
   useEffect(()=>onProposal(target!==issue.target_field),[target,issue.target_field,onProposal])
   const requiredIgnore=ignore&&options?.options.find(o=>o.key===suggested)?.requiredness==='required'
   const binding=sheetSpec(summary,issue.sheet_id)?.field_bindings??[]
   const duplicate=!ignore&&binding.some(b=>!b.ignored&&b.target_field===target&&(issue.source_location.source_column_index!=null?b.source_column_index!==issue.source_location.source_column_index:b.source_header!==issue.source_header))
-  const valid=!disabled&&!!options&&!options.unsupportedFields.length&&!issue.unsupportedFields.length&&!duplicate&&!requiredIgnore&&(ignore?!!reason.trim()&&ack:!!option?.available&&option.support==='supported'&&!option.unsupportedFields.length&&(unresolvedIssue(issue)||target!==issue.target_field))
+  const valid=!disabled&&!!options&&!options.unsupportedFields.length&&!issue.unsupportedFields.length&&!duplicate&&!requiredIgnore&&(ignore?!!reason.trim()&&ack:!!option?.available&&option.support!=='unsupported'&&!option.unsupportedFields.length&&(unresolvedIssue(issue)||target!==issue.target_field))
   return <ResolverFormBody valid={valid} onSubmit={()=>{if(ignore)onResolve({kind:'ignored_optional_field',evidence_reference:reason.trim()});else onConfirm(target)}}>
     <section className="input-resolver-section"><header><h3>Cần xác nhận</h3><span>{issue.status==='ambiguous'?'Có nhiều trường phù hợp':'Cột nguồn'}</span></header><div className="input-resolver-edit"><strong>{issue.source_header??'Cột nguồn'}</strong><div className="input-samples">{issue.samples.map((sample,i)=><span key={i}>{sample||'“”'}</span>)}</div>
-      <label>ShelfCash hiểu là<select value={target} disabled={disabled||!options} onChange={event=>setDraft(event.target.value)}><option value="">Chọn trường…</option>{options?.options.map(field=><option key={field.key} value={field.key} disabled={!field.available||field.support!=='supported'}>{field.label||businessField(field.key)}</option>)}<option value="IGNORE">Bỏ qua</option></select></label>
+      <label>ShelfCash hiểu là<select value={target} disabled={disabled||!options} onChange={event=>setDraft(event.target.value)}><option value="">Chọn trường…</option>{options?.options.map(field=><option key={field.key} value={field.key} disabled={!field.available||field.support==='unsupported'}>{field.label||businessField(field.key)}</option>)}<option value="IGNORE">Bỏ qua</option></select></label>
       {duplicate&&<p className="input-status" role="alert">Target này đã được sử dụng. Chọn trường khác trước khi lưu.</p>}
       {requiredIgnore&&<p className="input-status" role="alert">Không thể bỏ qua dữ kiện bắt buộc.</p>}
       {ignore&&<div className="input-status"><strong>Cột này sẽ không được dùng trong lần nhập.</strong><label>Lý do<textarea value={reason} maxLength={1000} onChange={event=>setReason(event.target.value)}/></label><label className="import-flow__check"><input type="checkbox" checked={ack} onChange={event=>setAck(event.target.checked)}/>Tôi xác nhận cột này không chứa dữ kiện bắt buộc cần nhập.</label></div>}

@@ -4,11 +4,13 @@ import type {
   WireApprove, WireBindingRef, WireCompletionActionReadiness, WireCompletionReadinessIssue,
   WireConfirmationResult, WireConfigurations, WireDecisionResult, WireFieldOption, WireFileView,
   WireImportCompletion, WireInspectedProfile, WireJobContext, WireJobView,
-  WireMappingIssue, WireMappingSummary, WireMappingUpdated, WireNotice,
+  WireMappingIssue, WireMappingList, WireMappingSummary, WireMappingUpdated, WireNotice, WirePreviewPage, WireSourceEffectRow,
   WirePreviewRow, WirePreviewSummary, WireProfileProposal, WireProfileSpec,
   WireProgress, WireReject, WireResolveRequest_Input, WireRetire, WireReviewConfirmation,
   WireSchemaDescriptor, WireSheetInfo, WireSourceSet,
 } from './importFlow.wire'
+
+export type HistoryCorrection = { row_id: string; expected_version: string; reason: string }
 
 export type JsonValue = null | boolean | number | string | JsonValue[] | { [key: string]: JsonValue }
 export type FlowDiagnostic = WireNotice
@@ -36,7 +38,7 @@ export type MappingQueueQuery = {
   limit?: number
   cursor?: string
 }
-export type MappingQueue = {
+export type MappingQueue = Pick<WireMappingList, 'mapping_revision' | 'counters' | 'counter_scope'> & {
   items: MappingIssue[]
   counts: MappingProgress
   pagination: Pagination
@@ -93,6 +95,7 @@ export type CommitIntent = {
   reason: string | null
   resolutions: SalesResolution[]
   supplierChanges?: SupplierConfirmation[]
+  historyCorrections?: HistoryCorrection[]
 }
 export type ProcessReceipt = {
   import_id: string
@@ -111,7 +114,7 @@ export type PreviewClassification = WirePreviewRow['classification']
 export type PreviewAction = string
 export type PreviewSummary = Omit<WirePreviewSummary, 'confirmed_resolutions_version'> & { confirmed_resolutions_version: string | null }
 export type PreviewDomainValue = NonNullable<WirePreviewRow['after']>
-export type PreviewRow = Omit<WirePreviewRow, 'changes' | 'blockers' | 'warnings' | 'confirmation_required'> & {
+export type PreviewRow = Omit<WirePreviewRow, 'changes' | 'blockers' | 'warnings' | 'confirmation_required'> & Partial<Pick<WireSourceEffectRow, 'source_cells' | 'planned_effect' | 'source_evidence_availability' | 'source_cells_truncated'>> & {
   changes: NonNullable<WirePreviewRow['changes']>
   blockers: FlowDiagnostic[]
   warnings: FlowDiagnostic[]
@@ -131,7 +134,7 @@ export type PreviewBundle = {
   review_confirmation: ReviewConfirmation | null
   confirmation_usable: boolean
   configurations?: WireConfigurations | null
-  preview: { summary: PreviewSummary; rows: PreviewRow[]; rows_page: Pagination; stale: boolean }
+  preview: Pick<WirePreviewPage, 'mapping_revision' | 'read_set_digest' | 'source_evidence_digest' | 'aggregates'> & { summary: PreviewSummary; rows: PreviewRow[]; rows_page: Pagination; stale: boolean }
   unsupportedFields: string[]
 }
 export type ImportJob = Omit<WireJobView, 'operation' | 'stage' | 'context' | 'result'> & {

@@ -9,8 +9,10 @@ import { createPlanningDataSource } from '../../decision-planning/planning.data'
 import { createMockPlanningDataSource } from '../../decision-planning/planning.fixtures'
 import type { PlanningReadiness } from '../../decision-planning/planning.types'
 import { shiftPlanningDate } from '../../decision-planning/planning.validation'
+import {readImportReadiness} from '../importReadiness.data'
+import type {WireReadiness} from '../importFlow.wire'
 
-type Assessment = { status: 'idle' } | { status: 'loading' } | { status: 'error'; message: string; permission: boolean } | { status: 'loaded'; value: PlanningReadiness }
+type Assessment = { status: 'idle' } | { status: 'loading' } | { status: 'error'; message: string; permission: boolean } | { status: 'loaded'; value: PlanningReadiness | WireReadiness }
 
 /** R01 is action/date scoped. Never interpret I06's retained import/menu/inventory checks as planning readiness. */
 export function ImportReadiness({preview}:{preview?:PlanningReadiness} = {}) {
@@ -22,7 +24,7 @@ export function ImportReadiness({preview}:{preview?:PlanningReadiness} = {}) {
   const abort = useRef<AbortController | null>(null)
   const source = useMemo(() => createPlanningDataSource({ dataSource: config.dataSource, apiBaseUrl: config.apiBaseUrl,
     ...(config.mockPreview ? { mockSource: createMockPlanningDataSource() } : {}) }), [])
-  const canRead = !!preview || store?.membership.effective_permissions.includes('planning.context.read') === true
+  const canRead = !!preview || ['planning.context.read', 'budget.read', 'procurement.cost.read'].every(permission => store?.membership.effective_permissions.includes(permission) === true)
   const authorization = store?.membership.authorization_version
   const assessmentKey = `${currentStoreId}:${date}:${authorization}`
   const assessment: Assessment = record?.key === assessmentKey ? record.assessment : preview ? {status:'loaded',value:preview} : { status: 'idle' }
@@ -33,8 +35,8 @@ export function ImportReadiness({preview}:{preview?:PlanningReadiness} = {}) {
     if(preview){setAssessment({status:'loaded',value:{...preview,evaluated_forecast_start_date:date}});return}
     const controller = new AbortController(); abort.current?.abort(); abort.current = controller
     setAssessment({ status: 'loading' })
-    try { const response = await source.readiness(currentStoreId, date, controller.signal)
-      if (!controller.signal.aborted) setAssessment({ status: 'loaded', value: response.data })
+    try { const value = config.mockPreview ? (await source.readiness(currentStoreId, date, controller.signal)).data : await readImportReadiness(config.apiBaseUrl,currentStoreId,date,controller.signal)
+      if (!controller.signal.aborted) setAssessment({ status: 'loaded', value })
     } catch (error) { if (!controller.signal.aborted) setAssessment({ status: 'error', message: error instanceof Error ? error.message : 'Không đọc được Readiness.',permission:error instanceof HttpError&&error.status===403 }) }
   }
   const action = assessment.status === 'loaded' ? assessment.value.actions.find(a => a.action === 'planning') : null

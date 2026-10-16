@@ -1,0 +1,703 @@
+{
+  "run": "import-smoke-2026-10-16T08-29-02-943Z",
+  "started_at": "2026-10-16T08:29:02.946Z",
+  "mode": "LIVE_API_ONLY",
+  "base_url": "https://localhost:8103",
+  "origin": "https://localhost:5173",
+  "backend_deployed_sha": "UNKNOWN",
+  "scope": "One small synthetic CSV, draft/upload/read/analyze/job/mapping only; no mapping decisions, profile approval or canonical Commit.",
+  "preflight": [
+    {
+      "origin": "http://localhost:5173",
+      "status": 400,
+      "allow_origin": null
+    },
+    {
+      "origin": "https://localhost:5173",
+      "status": 200,
+      "allow_origin": "https://localhost:5173"
+    }
+  ],
+  "steps": [
+    {
+      "operation": "OpenAPI",
+      "method": "GET",
+      "path": "/openapi.json",
+      "status": 200,
+      "request_id": null,
+      "error_code": null
+    },
+    {
+      "operation": "Owner A01",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "request_id": "9f0f3d1f-f8c4-4dc7-aff3-a98bb2e41b6d",
+      "error_code": null
+    },
+    {
+      "operation": "Owner A03",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200,
+      "request_id": "4dff79d1-8a4d-43e4-ac2b-4402e26c75a6",
+      "error_code": null
+    },
+    {
+      "operation": "Owner T01",
+      "method": "GET",
+      "path": "/api/v1/stores",
+      "status": 200,
+      "request_id": "b77c1991-ad51-4c65-89f8-77db2e003d2b",
+      "error_code": null
+    },
+    {
+      "operation": "Owner T02",
+      "method": "GET",
+      "path": "/api/v1/stores/09b5f027-1652-49f5-a8af-3ffbf544062f",
+      "status": 200,
+      "request_id": "002ce663-b0b3-4c01-868c-c2b502db45ba",
+      "error_code": null
+    },
+    {
+      "operation": "Staff A01",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "request_id": "4e46d625-f320-4b8a-8ee8-d4cacc023632",
+      "error_code": null
+    },
+    {
+      "operation": "Staff A03",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "status": 200,
+      "request_id": "b3a2c37a-0e86-46cc-b335-f677245ef047",
+      "error_code": null
+    },
+    {
+      "operation": "Staff T01",
+      "method": "GET",
+      "path": "/api/v1/stores",
+      "status": 200,
+      "request_id": "1efcdce5-2fae-4174-968f-e96acd45199d",
+      "error_code": null
+    },
+    {
+      "operation": "Staff T02",
+      "method": "GET",
+      "path": "/api/v1/stores/09b5f027-1652-49f5-a8af-3ffbf544062f",
+      "status": 200,
+      "request_id": "26f1f846-3092-4dbc-88eb-c90599c5fc0a",
+      "error_code": null
+    },
+    {
+      "operation": "I01",
+      "method": "POST",
+      "path": "/api/v1/stores/09b5f027-1652-49f5-a8af-3ffbf544062f/imports",
+      "status": 201,
+      "request_id": "c93f0001-9668-4608-9f06-8cbeefaeddc6",
+      "error_code": null
+    },
+    {
+      "operation": "I02",
+      "method": "POST",
+      "path": "/api/v1/imports/7bb43402-4792-41e9-8651-fe9b8ccbb083/files",
+      "status": 200,
+      "request_id": "b0cb119a-9a71-4ed6-b3fe-9a4569bc81ba",
+      "error_code": null
+    },
+    {
+      "operation": "I04 after upload",
+      "method": "GET",
+      "path": "/api/v1/imports/7bb43402-4792-41e9-8651-fe9b8ccbb083",
+      "status": 200,
+      "request_id": "1d0abf6e-c883-496b-a054-a56df0fb12ff",
+      "error_code": null
+    },
+    {
+      "operation": "I03",
+      "method": "POST",
+      "path": "/api/v1/imports/7bb43402-4792-41e9-8651-fe9b8ccbb083/analyze",
+      "status": 202,
+      "request_id": "ebe4f7d6-67e8-4ee2-92aa-f097a9e1eb4a",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "19e2f2bc-3475-4710-96e2-34315ba5bb2c",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "6226f441-c437-4d97-ac20-a84ab3a8e00f",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "99b2ec2f-0bf6-46e0-8d4d-3bdadb1e6b82",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "0ef52830-4346-4277-864d-dc59813db5c6",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "75e5aed2-4530-42b2-b968-559f70c19929",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "e7ea179d-d4aa-43cc-a00c-e4106fea7444",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "338e5936-1fcd-42ac-9b23-923bddaf59ef",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "d93d6652-8077-4ad6-b022-502bdbcf961b",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "3384651d-c62b-43b5-aeab-1dd29379d09f",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "3b882db7-a8f4-4184-83cc-847ce232187a",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "78b7c767-6c93-4db1-9f8e-4b07cb7c7dca",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "15b3de28-d80b-451c-9926-7fba300c557c",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "22515155-2972-4749-a138-c2a892235009",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "cb2e0c15-78f5-468d-aaec-b5d8f284f389",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "4ea21601-8263-4ed6-86a5-2ea1aa66e9d5",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "907b5c13-a7c0-4d26-a620-b29785cddff2",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "2ac50a01-2678-48bb-8212-5316ca555a9f",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "ec8e8dc1-8b5f-481e-82a3-2539175579c3",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "4417546a-c8c7-46e1-8374-b56c9ff09338",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "adcf2679-2b63-4b80-acee-92a9064557db",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "f0ea3895-ec87-4017-bd03-8ed52b2615c4",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "d1b76a01-8c2e-42a3-9bb2-d02c17d123a6",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "6e1db525-687a-46c0-9b8a-a898c0bf6d7b",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "c95a36f2-61cd-4c15-b40b-b43a9e2c8205",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "fc1cd639-6f1f-43b5-9e74-dd7a4fba26d2",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "86ea7808-dd41-453d-9ae5-853097e2f615",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "fb6bcef5-e83b-4e9e-bd79-66086d79a885",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "cc338571-6410-4b36-ba89-932c7a3a0c06",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "f2f98f68-9c24-4740-84ae-06eb319d4b28",
+      "error_code": null
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "85fa1d60-2477-4c8b-a7a3-0405924154d1",
+      "error_code": null
+    },
+    {
+      "operation": "I04 after Analyze",
+      "method": "GET",
+      "path": "/api/v1/imports/7bb43402-4792-41e9-8651-fe9b8ccbb083",
+      "status": 200,
+      "request_id": "efe0a62d-ea55-4002-93ae-14ba438d162c",
+      "error_code": null
+    },
+    {
+      "operation": "J01 final readback",
+      "method": "GET",
+      "path": "/api/v1/jobs/b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+      "status": 200,
+      "request_id": "64bded44-3fd2-40b5-9dcc-01b77f38aeac",
+      "error_code": null
+    },
+    {
+      "operation": "I04 final readback",
+      "method": "GET",
+      "path": "/api/v1/imports/7bb43402-4792-41e9-8651-fe9b8ccbb083",
+      "status": 200,
+      "request_id": "7621f683-11b4-4541-9b69-7ce0272ffc48",
+      "error_code": null
+    }
+  ],
+  "mutations": [
+    {
+      "operation": "I01",
+      "key": "c2484e9a-dd76-4328-a865-876d012a93c0",
+      "body": {
+        "data_date": "2026-10-16"
+      }
+    },
+    {
+      "operation": "I02",
+      "key": "d58f3836-54d7-42ff-b593-1fcc53967815",
+      "client_file_id": "e2aa1769-73cd-477b-bbdd-7ba01bf7488c",
+      "filename": "import-smoke-2026-10-16T08-29-02-943Z.csv",
+      "input_sha256": "bdb88b2e535c88b392ed6a90645f0c9a19c5babacbf8282634c4d34ec6716817"
+    },
+    {
+      "operation": "I03",
+      "key": "c0bb7941-ccd5-434f-88de-38c2ff57d843",
+      "revision": "9f0422dc-ba9b-42bd-8208-158a7c5eb9cd",
+      "body": {
+        "file_set_version": "551ae8c7-9b02-4fb7-9693-f3f2191f1286",
+        "accepted_file_ids": [
+          "982f42ae-b25a-4bb9-893a-f9358b99b8b0"
+        ],
+        "acknowledged_rejected_client_file_ids": []
+      }
+    }
+  ],
+  "commit_sent": false,
+  "contract": {
+    "local_file_sha256": "790443d80350cc597c7c06179309e43303ba558de34017ea1dd4113de71fc1ee",
+    "normalized_live_sha256": "e1c96f3f21668c9963d3169f938de45bc4dcec2f3b52041c309c950a1b32e041",
+    "normalized_local_sha256": "bb6d96e61b1f3c730738b2894ee7cc3531a81e776cb8dfb407da747765f2a0c8",
+    "normalized_equal": false,
+    "changed_operations": [
+      "A02",
+      "A06",
+      "A05",
+      "A07",
+      "A01",
+      "A03",
+      "A04",
+      "N7",
+      "T01",
+      "T03",
+      "T02",
+      "N12",
+      "N13",
+      "N14",
+      "N15",
+      "N16",
+      "N17",
+      "N18",
+      "N19",
+      "IN01",
+      "NF01",
+      "NF02",
+      "NF03",
+      "PR01",
+      "PR02",
+      "PR03",
+      "PR04",
+      "MQ01",
+      "MQ02",
+      "MQ03",
+      "P01",
+      "P02",
+      "V01",
+      "V02",
+      "V03",
+      "V04",
+      "D01",
+      "SU01",
+      "N6",
+      "N8",
+      "N20",
+      "N21",
+      "N22",
+      "I01",
+      "H02",
+      "I02",
+      "I03",
+      "I04",
+      "M01",
+      "M02",
+      "M03",
+      "M04",
+      "N5",
+      "I05",
+      "I06",
+      "J01",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "R01",
+      "C01",
+      "C02",
+      "N9",
+      "C03",
+      "C04",
+      "C05",
+      "C08",
+      "H01",
+      "EX01",
+      "N10",
+      "N11"
+    ],
+    "changed_schema_names": [
+      "ActionReadiness",
+      "ForecastAssessment",
+      "Issue",
+      "PlanningAssessment",
+      "PlanningNotificationDetails",
+      "PlanningReadiness",
+      "Readiness",
+      "ReadinessIssueDetails"
+    ],
+    "operation_diffs_excluding_descriptions": [
+      "R01",
+      "C01"
+    ],
+    "smoke_request_receipt_schemas_equal": true
+  },
+  "owner": {
+    "store_id": "09b5f027-1652-49f5-a8af-3ffbf544062f",
+    "role": "OWNER",
+    "effective_permissions": [
+      "budget.read",
+      "budget.update",
+      "calendar.read",
+      "calendar.write",
+      "import.analyze",
+      "import.commit",
+      "import.create",
+      "import.preview",
+      "import.read",
+      "import.upload",
+      "ingredient.create",
+      "ingredient.read",
+      "inventory.count.correct",
+      "inventory.read",
+      "inventory.receive",
+      "mapping.propose",
+      "mapping.read",
+      "menu.read",
+      "planning.context.read",
+      "planning.export",
+      "planning.requirements.create",
+      "planning.requirements.manage",
+      "planning.requirements.read",
+      "planning.result.read",
+      "planning.run",
+      "procurement.cost.read",
+      "product.create",
+      "purchase.history.read",
+      "purchase.history.write",
+      "recipe.create_version",
+      "recipe.manage_effectivity",
+      "recipe.read",
+      "sales.correct",
+      "sales.merge",
+      "sales.read",
+      "sales.record",
+      "supplier.create",
+      "supplier.fees.manage",
+      "supplier.read",
+      "supplier.terms.correct",
+      "supplier.terms.create",
+      "usage.history.read",
+      "usage.history.write"
+    ]
+  },
+  "store": {
+    "id": "09b5f027-1652-49f5-a8af-3ffbf544062f",
+    "name": "ShelfCash Local Demo",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "data_date": "2026-10-16"
+  },
+  "staff": {
+    "store_id": "09b5f027-1652-49f5-a8af-3ffbf544062f",
+    "role": "STAFF",
+    "effective_permissions": [
+      "ingredient.read",
+      "inventory.read",
+      "menu.read"
+    ]
+  },
+  "input": {
+    "filename": "import-smoke-2026-10-16T08-29-02-943Z.csv",
+    "sha256": "bdb88b2e535c88b392ed6a90645f0c9a19c5babacbf8282634c4d34ec6716817",
+    "size_bytes": 250,
+    "files": 1,
+    "sheets": 1,
+    "data_rows": 1,
+    "semantics": "Synthetic ingredient declaration: base unit g; expiry_tracking=false; active=true. Staging only."
+  },
+  "import_id": "7bb43402-4792-41e9-8651-fe9b8ccbb083",
+  "display_number": "IMP-7bb43402-4792-41e9-8651-fe9b8ccbb083",
+  "upload": {
+    "items": [
+      {
+        "client_file_id": "e2aa1769-73cd-477b-bbdd-7ba01bf7488c",
+        "file_id": "982f42ae-b25a-4bb9-893a-f9358b99b8b0",
+        "filename": "import-smoke-2026-10-16T08-29-02-943Z.csv",
+        "type": "csv",
+        "size_bytes": 250,
+        "content_digest": "sha256:bdb88b2e535c88b392ed6a90645f0c9a19c5babacbf8282634c4d34ec6716817",
+        "upload_status": "uploaded",
+        "error": null
+      }
+    ],
+    "import_revision": "9f0422dc-ba9b-42bd-8208-158a7c5eb9cd",
+    "file_set_version": "551ae8c7-9b02-4fb7-9693-f3f2191f1286"
+  },
+  "after_upload": {
+    "status": "uploaded",
+    "file_count": 1,
+    "source_set": {
+      "version": "551ae8c7-9b02-4fb7-9693-f3f2191f1286",
+      "sealed": false,
+      "accepted_file_ids": [
+        "982f42ae-b25a-4bb9-893a-f9358b99b8b0"
+      ],
+      "digest": "sha256:2f28b6c6c05aa6c01c100cf480cc17c41a4bc3742173a3cc083809a54554046e"
+    },
+    "quota": {
+      "accepted_file_count": 1,
+      "accepted_total_bytes": 250,
+      "remaining_file_slots": 19,
+      "remaining_bytes": 104857350
+    }
+  },
+  "analysis": {
+    "import_id": "7bb43402-4792-41e9-8651-fe9b8ccbb083",
+    "analysis_id": "0e26a20c-089e-4464-9d88-24e04f98b647",
+    "job_id": "b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+    "status": "analyzing",
+    "import_revision": "5ab6b483-a80b-4a27-af96-80264493adea"
+  },
+  "job": {
+    "status": "queued",
+    "stage": "queued",
+    "progress": null,
+    "error": null,
+    "result": null
+  },
+  "final_batch": {
+    "status": "analyzing",
+    "active_job_id": "b84fd1a3-ed63-4ccb-bbe0-a84c10cd81ee",
+    "source_set": {
+      "version": "551ae8c7-9b02-4fb7-9693-f3f2191f1286",
+      "sealed": true,
+      "accepted_file_ids": [
+        "982f42ae-b25a-4bb9-893a-f9358b99b8b0"
+      ],
+      "digest": "sha256:2f28b6c6c05aa6c01c100cf480cc17c41a4bc3742173a3cc083809a54554046e"
+    },
+    "files": [
+      {
+        "client_file_id": "e2aa1769-73cd-477b-bbdd-7ba01bf7488c",
+        "file_id": "982f42ae-b25a-4bb9-893a-f9358b99b8b0",
+        "filename": "import-smoke-2026-10-16T08-29-02-943Z.csv",
+        "type": "csv",
+        "size_bytes": 250,
+        "content_digest": "sha256:bdb88b2e535c88b392ed6a90645f0c9a19c5babacbf8282634c4d34ec6716817",
+        "upload_status": "uploaded",
+        "error": null,
+        "parse_status": "not_started"
+      }
+    ],
+    "completion_available": false,
+    "allowed_actions": []
+  },
+  "verdict": "BLOCKED_ANALYZE_TIMEOUT",
+  "finished_at": "2026-10-16T08:29:50.003Z",
+  "worker_observation": {},
+  "last_job_readback": {
+    "observed_at": "2026-10-16T08:33:10.853Z",
+    "status": "queued",
+    "stage": "queued",
+    "error": null
+  },
+  "last_batch_readback": {
+    "observed_at": "2026-10-16T08:33:10.922Z",
+    "status": "analyzing",
+    "parse_status": [
+      "not_started"
+    ],
+    "completion_available": false
+  },
+  "findings": [
+    {
+      "id": "SMOKE-01",
+      "classification": "BLOCKED_ENV",
+      "observation": "FE serves HTTP localhost:5173 while BE allows only HTTPS localhost:5173. HTTP-origin preflight returns 400 without ACAO.",
+      "scope": "Browser FE-BE integration; API smoke uses configured HTTPS Origin."
+    },
+    {
+      "id": "SMOKE-02",
+      "classification": "BLOCKED_ANALYZE",
+      "observation": "Analyze accepted, but job remained queued and file not_started throughout the 45-second bounded poll and later readback.",
+      "root_cause": "UNCONFIRMED: worker enabled in local .env, but actual worker health/execution and server startup configuration not attested. No restart or DB/queue mutation performed."
+    },
+    {
+      "id": "SMOKE-03",
+      "classification": "CONTRACT_DRIFT_OUTSIDE_SMOKE",
+      "observation": "Live OpenAPI differs from pinned main016. Operation differences beyond descriptions are R01/C01, with 8 changed component schemas. Draft/upload/analyze/job schemas checked for this smoke match."
+    }
+  ],
+  "tls": "Local self-signed TLS certificate verification bypassed only in isolated API test contexts.",
+  "safe_stop": "Kept the same staged batch/job; no retry/new Analyze, mapping choice, Profile decision, Review, Commit, cleanup/delete or role/grant mutation."
+}

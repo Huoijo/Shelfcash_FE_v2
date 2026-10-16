@@ -1,5 +1,7 @@
+import type { HistoryCorrection } from './importFlow.types'
 import { importFault, previewCanContinue, type ImportFault } from './importExperience'
 import { importDomainBlockers } from './importDomainReview'
+import { commitReasonRequired } from './importCommitReason'
 import { HttpError } from '../../shared/http/httpClient'
 import type { ImportBatch } from './importData.types'
 import { describeImportError } from './importData.workflow'
@@ -50,6 +52,7 @@ export type ImportFlowState = {
   commitReason: string
   resolutions: SalesResolution[]
   supplierChanges: SupplierConfirmation[]
+  historyCorrections: HistoryCorrection[]
   pollAfterMs: number | null
   commitBlockers: string[]
   canCommit: boolean
@@ -62,7 +65,7 @@ const initial = (): ImportFlowState => ({
   notice: '', retryOperation: null, reviewAcknowledged: false, reviewReason: '',
   reviewBlockers: ['Chưa có bản xem trước từ máy chủ.'], canConfirmReview: false,
   commitAcknowledged: false, commitReason: '',
-  resolutions: [], supplierChanges: [], pollAfterMs: null, commitBlockers: ['Chưa có bản xem trước từ máy chủ.'], canCommit: false,
+  resolutions: [], supplierChanges: [], historyCorrections: [], pollAfterMs: null, commitBlockers: ['Chưa có bản xem trước từ máy chủ.'], canCommit: false,
 })
 
 function previewBlockers(state: ImportFlowState, mappingRevision: string | null, pending: Pending | null): string[] {
@@ -78,13 +81,13 @@ function previewBlockers(state: ImportFlowState, mappingRevision: string | null,
   if (preview.unsupportedFields.length || preview.preview.rows.some((row) => row.unsupportedFields.length)) blockers.push('Bản xem trước chứa kiểu dữ liệu chưa được hỗ trợ an toàn.')
   if (preview.preview.rows_page.next_cursor) blockers.push('Cần đọc hết các trang của cùng bản xem trước.')
   if (preview.preview.rows_page.total_count !== null && preview.preview.rows.length !== preview.preview.rows_page.total_count) blockers.push('Số dòng đã đọc chưa khớp tổng của bản xem trước từ máy chủ.')
-  if (preview.preview.rows.some((row) => row.confirmation_required && !['REPLACE_DAILY_TOTAL', 'MERGE_DISJOINT_SALES', 'COUNT_CORRECTION'].includes(row.proposed_action) &&
+  if (preview.preview.rows.some((row) => row.confirmation_required && !['REPLACE_DAILY_TOTAL', 'MERGE_DISJOINT_SALES', 'COUNT_CORRECTION', 'CORRECT_HISTORY_RECORD'].includes(row.proposed_action) &&
     !['supplier_terms', 'payable_fees'].includes(row.canonical_domain ?? row.after?.domain ?? row.before?.domain ?? ''))) blockers.push('Có thao tác cần xác nhận riêng chưa được hỗ trợ; không tự tạo confirmation thay người dùng.')
   return blockers
 }
 
 function reviewBlockers(state: ImportFlowState, mappingRevision: string | null, pending: Pending | null, currentReviewRights: boolean): string[] {
-  const blockers = [...previewBlockers(state, mappingRevision, pending), ...importDomainBlockers(state.preview, state.resolutions, state.supplierChanges)]
+  const blockers = [...previewBlockers(state, mappingRevision, pending), ...importDomainBlockers(state.preview, state.resolutions, state.supplierChanges, state.historyCorrections)]
   // can_commit is false before server confirmation, and allowed_actions has no
   // documented confirm_review literal. Use current T02 grants for this phase;
   // the server still reauthorizes the complete action set on the POST.
@@ -95,11 +98,12 @@ function reviewBlockers(state: ImportFlowState, mappingRevision: string | null, 
 }
 
 function commitBlockers(state: ImportFlowState, mappingRevision: string | null, pending: Pending | null): string[] {
-  const blockers = [...previewBlockers(state, mappingRevision, pending), ...importDomainBlockers(state.preview, state.resolutions, state.supplierChanges)]
+  const blockers = [...previewBlockers(state, mappingRevision, pending), ...importDomainBlockers(state.preview, state.resolutions, state.supplierChanges, state.historyCorrections)]
   const { batch, preview, summary } = state
   if (!batch || !preview || !summary) return blockers
   const confirmation = preview.review_confirmation
   if (!preview.confirmation_usable || !confirmation || confirmation.import_id !== batch.import_id ||
+    confirmation.read_set_digest !== preview.preview.read_set_digest ||
     confirmation.preview_id !== preview.preview.summary.preview_id || confirmation.preview_digest !== preview.preview.summary.digest ||
     confirmation.mapping_revision !== summary.mapping_revision || confirmation.file_set_version !== batch.file_set_version ||
     confirmation.source_digest !== batch.source_set.digest) blockers.push('Cần xác nhận review hợp lệ trên máy chủ cho đúng preview và nguồn hiện tại.')
@@ -113,8 +117,7 @@ function commitBlockers(state: ImportFlowState, mappingRevision: string | null, 
     ['supplier_terms', 'payable_fees'].includes(row.canonical_domain ?? row.after?.domain ?? row.before?.domain ?? ''))
   if (state.supplierChanges.length !== supplierRows.length || new Set(state.supplierChanges.map((item) => item.action_id)).size !== state.supplierChanges.length ||
     state.supplierChanges.some((item) => !supplierRows.some((row) => row.row_id === item.action_id) || !item.reason.trim())) blockers.push('Cần xác nhận đúng từng thay đổi điều khoản/phí nhà cung cấp.')
-  if (preview.preview.rows.some((row) => ['COUNT_CORRECTION', 'REPLACE_DAILY_TOTAL', 'MERGE_DISJOINT_SALES', 'AMEND_TERM_PERIOD', 'AMEND_FEE_PERIOD'].includes(row.proposed_action)) && !state.commitReason.trim()) blockers.push('Cần nhập lý do đối chiếu kiểm kê hoặc thay đổi dữ liệu.')
-  if (!state.commitReason.trim()) blockers.push('Cần lý do nhập dữ liệu riêng với lý do Review.')
+  if (commitReasonRequired(preview) && !state.commitReason.trim()) blockers.push('Cần nhập lý do đối chiếu kiểm kê hoặc thay đổi dữ liệu.')
   if (!state.commitAcknowledged) blockers.push('Cần xác nhận rõ ràng trước khi ghi nguyên tử toàn bộ lô.')
   return blockers
 }
@@ -253,6 +256,9 @@ export class ImportFlowWorkflow {
   setCommitReason = (value: string) => {
     if (!this.state.busy && !this.pending) this.update({ commitReason: value, commitAcknowledged: false })
   }
+  setHistoryCorrections = (values: HistoryCorrection[]) => {
+    if (!this.state.busy && !this.pending) this.update({ historyCorrections: structuredClone(values), reviewAcknowledged: false, commitAcknowledged: false })
+  }
   setResolutions = (resolutions: SalesResolution[]) => {
     if (!this.state.busy && !this.pending) this.update({ resolutions: structuredClone(resolutions), reviewAcknowledged: false, commitAcknowledged: false })
   }
@@ -299,9 +305,10 @@ export class ImportFlowWorkflow {
     const sheetOptions = selected ? await this.source.options(importId, selected, undefined, signal) : null
     const after = await this.source.summary(importId, signal)
     if (!this.current(epoch, importId)) return
-    // M02 has no mapping_revision. Bracket queue/options with M01 reads;
-    // never synthesize a revision from counters or a single filtered page.
+    // M02 revision metadata is optional; coherent M01 reads remain the fence.
+    // Never synthesize a revision from counters or a single filtered page.
     if (after.import_id !== importId || after.mapping_revision !== summary.mapping_revision ||
+      (queue.mapping_revision && queue.mapping_revision !== summary.mapping_revision) ||
       (sheetOptions && (sheetOptions.mapping_revision !== summary.mapping_revision || sheetOptions.schema_context_id !== selected)) ||
       (selected && queue.items.some((item) => item.sheet_id !== selected))) {
       this.update({ summary: null, queue: null, mappingOptions: {}, options: null, previewStale: !!this.state.preview, commitAcknowledged: false })
@@ -356,6 +363,7 @@ export class ImportFlowWorkflow {
       const after = await this.source.summary(id, signal)
       if (!this.current(epoch, id)) return
       if (after.mapping_revision !== this.state.summary?.mapping_revision ||
+        (next.mapping_revision && next.mapping_revision !== after.mapping_revision) ||
         JSON.stringify(next.counts) !== JSON.stringify(old.counts) ||
         (this.state.selectedSheetId && next.items.some((item) => item.sheet_id !== this.state.selectedSheetId)) ||
         next.pagination.total_count !== old.pagination.total_count ||
@@ -419,7 +427,7 @@ export class ImportFlowWorkflow {
     const options = this.state.mappingOptions[mappingId] ?? (this.state.optionsMappingId === mappingId ? this.state.options : null)
     const option = options?.options.find((item) => item.key === targetField)
     if (!issue || issue.issue_type !== 'column' ||
-      issue.unsupportedFields.length || !option?.available || option.support !== 'supported' || option.unsupportedFields.length ||
+      issue.unsupportedFields.length || !option?.available || option.support === 'unsupported' || option.unsupportedFields.length ||
       !options || options.unsupportedFields.length || options.schema_context_id !== issue.sheet_id ||
       !this.state.summary || options.mapping_revision !== this.state.summary.mapping_revision ||
       !this.canPropose()) {
@@ -535,13 +543,13 @@ export class ImportFlowWorkflow {
         !resolution.report_business_key.trim() || !resolution.evidence_reference.trim() || !resolution.reason.trim())) {
       throw new Error('Cần xác nhận đúng toàn bộ phạm vi thay thế/gộp doanh số; không được tự đổi số lượng.')
     }
-    if (rows.some((row) => ['COUNT_CORRECTION', 'REPLACE_DAILY_TOTAL', 'MERGE_DISJOINT_SALES', 'AMEND_TERM_PERIOD', 'AMEND_FEE_PERIOD'].includes(row.proposed_action)) && !commitReason.trim()) {
+    if (rows.some((row) => ['COUNT_CORRECTION', 'CORRECT_HISTORY_RECORD', 'REPLACE_DAILY_TOTAL', 'MERGE_DISJOINT_SALES', 'AMEND_TERM_PERIOD', 'AMEND_FEE_PERIOD'].includes(row.proposed_action)) && !commitReason.trim()) {
       throw new Error('Cần lý do đối chiếu cho kiểm kê, thay thế hoặc gộp dữ liệu.')
     }
     this.pending = { operation: 'commit', intent: {
       key: crypto.randomUUID(), importRevision: batch.import_revision,
       previewId: preview.preview.summary.preview_id, previewDigest: preview.preview.summary.digest,
-      reason: commitReason.trim() || null, resolutions: structuredClone(resolutions), supplierChanges: structuredClone(this.state.supplierChanges),
+      reason: commitReason.trim() || null, resolutions: structuredClone(resolutions), supplierChanges: structuredClone(this.state.supplierChanges), historyCorrections: structuredClone(this.state.historyCorrections),
     } }
     await this.sendPending(id, epoch, signal)
   }, 'commit')
@@ -722,9 +730,17 @@ export class ImportFlowWorkflow {
     if (preview.import_id !== id || preview.store_id !== this.state.batch?.store_id || (expectedId && preview.preview.summary.preview_id !== expectedId) ||
       preview.import_revision !== this.state.batch.import_revision) throw new HttpError('protocol', 'Bản xem trước không khớp lô hoặc phiên bản đã đọc.')
     this.expectedPreviewId = preview.preview.summary.preview_id
-    if (!this.previewMappingRevision) this.previewMappingRevision = this.state.summary?.mapping_revision ?? preview.review_confirmation?.mapping_revision ?? null
+    if (preview.preview.mapping_revision !== this.state.summary?.mapping_revision) {
+      this.update({ previewStale: true, commitAcknowledged: false, reviewAcknowledged: false })
+      throw new HttpError('protocol', 'Preview không cùng phiên bản mapping hiện tại.')
+    }
+    if (!this.previewMappingRevision) this.previewMappingRevision = preview.preview.mapping_revision
     const old = this.state.preview
     if (preserveReview && old && old.preview.summary.preview_id === preview.preview.summary.preview_id && old.preview.summary.digest === preview.preview.summary.digest) {
+      if (old.preview.mapping_revision !== preview.preview.mapping_revision || old.preview.read_set_digest !== preview.preview.read_set_digest || old.preview.source_evidence_digest !== preview.preview.source_evidence_digest) {
+        this.update({ previewStale: true, reviewAcknowledged: false, commitAcknowledged: false })
+        throw new HttpError('protocol', 'Preview pin thay đổi dù ID/digest không đổi; cần đọc lại toàn bộ.')
+      }
       if (preview.preview.rows.some((row) => !old.preview.rows.some((previous) => previous.row_id === row.row_id && JSON.stringify(previous) === JSON.stringify(row)))) {
         this.update({ previewStale: true, reviewAcknowledged: false, commitAcknowledged: false })
         throw new HttpError('protocol', 'Nội dung trang đã đọc thay đổi dù preview digest không đổi; cần đọc lại toàn bộ.')
@@ -732,7 +748,7 @@ export class ImportFlowWorkflow {
       this.update({ preview: { ...preview, configurations: mergeConfigurations(old.configurations, preview.configurations), preview: { ...preview.preview, rows: old.preview.rows, rows_page: old.preview.rows_page } },
         previewStale: preview.preview.stale || preview.preview.summary.source_set_version !== this.state.batch.source_set.version || this.previewMappingRevision !== this.state.summary?.mapping_revision })
     } else this.update({ preview, previewStale: preview.preview.stale || preview.preview.summary.source_set_version !== this.state.batch.source_set.version,
-      commitAcknowledged: false, reviewAcknowledged: false, commitReason: '', reviewReason: '', resolutions: [], supplierChanges: [] })
+      commitAcknowledged: false, reviewAcknowledged: false, commitReason: '', reviewReason: '', resolutions: [], supplierChanges: [], historyCorrections: [] })
   }
 
   loadMorePreview = () => this.run('Đọc trang xem trước', async (id, epoch, signal) => {
@@ -743,7 +759,8 @@ export class ImportFlowWorkflow {
       if (!this.current(epoch, id)) return
       if (next.import_id !== id || next.store_id !== previous.store_id || next.store_id !== this.state.batch?.store_id ||
         next.import_revision !== previous.import_revision || next.preview.summary.preview_id !== previous.preview.summary.preview_id ||
-        next.preview.summary.digest !== previous.preview.summary.digest ||
+        next.preview.summary.digest !== previous.preview.summary.digest || next.preview.mapping_revision !== previous.preview.mapping_revision ||
+        next.preview.read_set_digest !== previous.preview.read_set_digest || next.preview.source_evidence_digest !== previous.preview.source_evidence_digest ||
         JSON.stringify(next.preview.summary) !== JSON.stringify(previous.preview.summary) || next.preview.stale ||
         next.preview.rows_page.total_count !== previous.preview.rows_page.total_count ||
         next.preview.rows.some((row) => previous.preview.rows.some((old) => old.row_id === row.row_id))) {

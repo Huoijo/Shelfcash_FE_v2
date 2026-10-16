@@ -36,7 +36,7 @@ export function LoginRoute() {
   if (state.status === 'bootstrapping') return <BootstrapState />
   if (state.status === 'authenticated') {
     const from: unknown = location.state?.from
-    const target = authenticatedReturnPath(from)
+    const target = state.context.accessible_store_count === 0 && !(typeof from === 'string' && /^\/invitations\//.test(from)) ? '/store' : authenticatedReturnPath(from)
     return <Navigate to={target} replace />
   }
   return <LoginPage />

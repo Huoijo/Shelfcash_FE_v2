@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-16",
+  "environment": "controlled local HTTP and mock; no live backend acceptance",
+  "git_head": "2d43d9d0fbf02b06b73a04d37e231c93ba1e7b1b",
+  "working_tree": "dirty; existing user changes preserved; no commit/push",
+  "source_file_count": 210,
+  "source_fingerprint_sha256": "b8275c7a64712d504533f9426270e90139b23f812f65449c0ac05c70b1acf05a",
+  "contract_sha256": "790443d80350cc597c7c06179309e43303ba558de34017ea1dd4113de71fc1ee",
+  "unit_suites": [
+    {
+      "suite": "auth",
+      "pass": 26,
+      "fail": 0
+    },
+    {
+      "suite": "store",
+      "pass": 118,
+      "fail": 0
+    },
+    {
+      "suite": "planning",
+      "pass": 79,
+      "fail": 0
+    },
+    {
+      "suite": "operations",
+      "pass": 30,
+      "fail": 0
+    },
+    {
+      "suite": "import",
+      "pass": 133,
+      "fail": 0
+    },
+    {
+      "suite": "capabilities_and_freeze_policy",
+      "pass": 59,
+      "fail": 0
+    }
+  ],
+  "unit_total": 445,
+  "browser": {
+    "unique_cases": 41,
+    "mock": 10,
+    "production_parity": 1,
+    "controlled_api": 30,
+    "full_regression_initial": {
+      "pass": 39,
+      "fail": 2
+    },
+    "defect": "StrictMode duplicate mutation controller lost retained unknown state; corrected by reusing idle controller during effect rehearsal.",
+    "fixture_correction": "Waiting Staff intentionally has no Preview button; assertion corrected to absence and locked resolver.",
+    "targeted_rerun": {
+      "cases": [
+        "unknown read acknowledgment survives internal navigation",
+        "Staff submits, waits and resumes after separate Owner approval"
+      ],
+      "pass": 2,
+      "fail": 0
+    },
+    "latest_frozen_lifecycle_suite": {
+      "pass": 8,
+      "fail": 0
+    },
+    "disposition": "All 41 selected cases have passing evidence across regression and targeted reruns; not one all-green full-suite invocation and not exhaustive frozen-state acceptance."
+  },
+  "checks": {
+    "build": "PASS",
+    "lint": "PASS with two pre-existing warnings in OnboardingPages/RecipeSchedulePage",
+    "wire_drift": "PASS Import181, Planning84, Store25, Operations96, capabilities73/467",
+    "historical_contracts": "252 originals preserved byte-for-byte",
+    "diff_whitespace": "PASS"
+  },
+  "live": {
+    "status": "NOT_RUN",
+    "reason": "No deployed build/mail/Owner-Staff authoritative live execution was performed."
+  },
+  "screenshots": [
+    {
+      "file": "evidence/019/auth-continuation.png",
+      "sha256": "3315016b3ec92fbf28f0fdfffac4e63bdad665f38b163e9ab4ac666f2d6371e8",
+      "kind": "controlled development runtime; Debug is developer-only, not production"
+    },
+    {
+      "file": "evidence/019/verification-complete.png",
+      "sha256": "b5fbe8b585884c896e4b7ffe1de379c12c9bbb0ddccf0a1f2832c778faba31a9",
+      "kind": "controlled development runtime; Debug is developer-only, not production"
+    },
+    {
+      "file": "evidence/019/store-created.png",
+      "sha256": "0ee061cd64b2dc996e056aa0aa3d32cb005389467302e42a82d09c54a3e415fd",
+      "kind": "controlled development runtime; Debug is developer-only, not production"
+    },
+    {
+      "file": "evidence/019/notification-ack-failure.png",
+      "sha256": "4455172b683f70a2cf4565001c569b6f62c8461f28b265c94ca8c4a2f8979669",
+      "kind": "controlled development runtime; Debug is developer-only, not production"
+    },
+    {
+      "file": "evidence/019/owner-request-changes.png",
+      "sha256": "16fcfd112121d1067edc50be7de65d54743409753daa5788d953013338a2e2cb",
+      "kind": "controlled development runtime; Debug is developer-only, not production"
+    }
+  ]
+}

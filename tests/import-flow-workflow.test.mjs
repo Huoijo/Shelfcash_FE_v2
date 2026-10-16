@@ -795,3 +795,40 @@ test('frozen v1 actual mutation lifecycle distinguishes saving from uncertain ou
   assert.equal(work.controller.getSnapshot().savingOperation,null)
   assert.equal(work.controller.getSnapshot().retryOperation,'mapping')
 })
+
+test('016 M04 accepts available source_only using the exact target and retains mapping CAS', async () => {
+  let confirmed = null
+  const work = await workspace({ ownerRequired: true }, source => ({ ...source,
+    options: async (...args) => { const value = await source.options(...args); return { ...value, options: value.options.map(option => ({ ...option, support: 'source_only' })) } },
+    confirm: async (id, mapping, intent, signal) => { confirmed = structuredClone(intent); return source.confirm(id, mapping, intent, signal) },
+  }))
+  const state = work.controller.getSnapshot(), issue = state.queue.items[0]
+  await work.controller.loadOptions(issue.mapping_id)
+  await work.controller.confirmMapping(issue.mapping_id, 'on_hand')
+  assert.equal(work.controller.getSnapshot().error, null)
+  assert.equal(confirmed.targetField, 'on_hand')
+  assert.equal(confirmed.mappingRevision, state.summary.mapping_revision)
+})
+
+test('016 Preview read-set rollover on a subsequent page locks confirmation without replaying a write', async () => {
+  const work = await workspace({}, source => ({ ...source,
+    readPreview: async (id, query, signal) => { const value = await source.readPreview(id, query, signal); return query.rowsCursor ? { ...value, preview: { ...value.preview, read_set_digest: 'changed-read-set' } } : value },
+  }))
+  await work.controller.startPreview(); await work.controller.pollJob(); await work.controller.pollJob()
+  await work.controller.loadMorePreview()
+  assert.equal(work.controller.getSnapshot().previewStale, true)
+  assert.equal(work.controller.getSnapshot().canConfirmReview, false)
+  assert.equal(work.controller.getSnapshot().canCommit, false)
+})
+
+test('history global gate survives closing review and unknown commit freezes exact multi-row correction intent',async()=>{
+ let writes=[],reviews=0,entered,loseAck
+ const started=new Promise(resolve=>{entered=resolve}),held=new Promise((_,reject)=>{loseAck=()=>reject(new HttpError('transport','Lost commit ACK'))})
+ const work=await workspace({},source=>({...source,readPreview:async(...args)=>{const value=await source.readPreview(...args);value.preview.rows=value.preview.rows.map(row=>({...row,proposed_action:'CORRECT_HISTORY_RECORD',confirmation_required:true,expected_version:'history/1'}));return value},confirmReview:async(...args)=>{reviews++;return source.confirmReview(...args)},commit:async(_id,intent)=>{writes.push(structuredClone(intent));entered();await held}}))
+ await prepared(work);work.controller.setTab('review');await work.controller.confirmReview();await work.controller.commit();assert.equal(reviews,0);assert.equal(writes.length,0)
+ const values=work.controller.getSnapshot().preview.preview.rows.map(row=>({row_id:row.row_id,expected_version:'history/1',reason:'Compared source evidence'}))
+ work.controller.setHistoryCorrections(values);work.controller.setReviewReason('Reviewed every historical correction');work.controller.acknowledgeReview(true);await work.controller.confirmReview();assert.equal(reviews,1)
+ work.controller.setCommitReason('Correct historical source');work.controller.acknowledgeCommit(true);const sending=work.controller.commit();await started;assert.equal(work.controller.getSnapshot().busy,true);assert.equal(work.controller.getSnapshot().canConfirmReview,false);work.controller.setHistoryCorrections([]);assert.deepEqual(work.controller.getSnapshot().historyCorrections,values);loseAck();await sending;assert.equal(writes.length,1);assert.equal(work.controller.getSnapshot().canConfirmReview,false);assert.equal(work.controller.getSnapshot().retryOperation,'commit');assert.equal(work.controller.getSnapshot().canCommit,false)
+ work.controller.setHistoryCorrections([]);assert.deepEqual(work.controller.getSnapshot().historyCorrections,values)
+ await work.controller.retry();assert.equal(writes.length,1);assert.equal(work.controller.getSnapshot().retryOperation,'commit');assert.deepEqual(writes[0].historyCorrections,values);assert.deepEqual(work.controller.getSnapshot().historyCorrections,values)
+})

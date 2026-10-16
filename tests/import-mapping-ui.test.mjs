@@ -4,7 +4,11 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { ImportMapping, ImportProfileReview } from '../src/features/import-data/components/ImportMapping'
 import { ImportResolutionEditor } from '../src/features/import-data/components/ImportResolutionEditor'
+import { ImportDomainReview } from '../src/features/import-data/components/ImportDomainReview'
 import { ImportPreview } from '../src/features/import-data/components/ImportPreview'
+import { ImportFlow } from '../src/features/import-data/components/ImportFlow'
+import { ImportFlowWorkflow } from '../src/features/import-data/importFlow.workflow'
+import { MemoryRouter } from 'react-router'
 
 const id = (number) => `00000000-0000-4000-8000-${String(number).padStart(12, '0')}`
 const noop = () => {}
@@ -80,7 +84,7 @@ test('classification offers only returned schema catalogue and explicit whole-sh
 
 test('source context exposes typed optional semantics and explicit period amendments', () => {
   const html = renderToStaticMarkup(createElement(ImportResolutionEditor, { issue: issue('source_context'), options, disabled: false, onResolve: noop }))
-  for (const text of ['Hệ thống nguồn', 'Loại báo cáo', 'daily_total', 'disjoint_contribution', 'lot_stock_count', 'DMY_SLASH', 'EXCEL_SERIAL', 'Giá và MOQ', 'Supplier term', 'Payable fee']) assert.ok(html.includes(text), text)
+  for (const text of ['Hệ thống nguồn', 'Loại báo cáo', 'daily_total', 'disjoint_contribution', 'lot_stock_count', 'DMY_SLASH', 'EXCEL_SERIAL', 'Giá và MOQ', 'PER_PACK', 'PER_SOURCE_UNIT', 'quantity_only', 'not_provided', 'Thêm alias hết hàng', 'cần quyết định Profile', 'Supplier term', 'Payable fee']) assert.ok(html.includes(text), text)
   assert.match(html, /Không tự động đóng kỳ lịch sử/)
   assert.match(html, /disabled=""[^>]*>Lưu ngữ cảnh nguồn/)
 })
@@ -186,4 +190,38 @@ test('source/recipe scope guards explain recovery without enabling whole-batch c
   assert.match(html,/chưa hỗ trợ ghép các phần qua nhiều file\/Sheet/)
   assert.match(html,/Lỗi chặn toàn lô/)
   assert.match(html,/disabled=""[^>]*>Xác nhận và nhập dữ liệu/)
+})
+
+test('016 available source_only target remains selectable while unsupported target stays disabled', () => {
+  const props = { summary: summary(), queue: { items: [issue()], pagination: { limit: 20, next_cursor: null, total_count: 1 } }, selectedSheetId: id(3), filter: 'all', reviewOnly: true,
+    options: { [id(4)]: { ...options, options: [{ ...field, support: 'source_only' }, { ...field, key: 'blocked', label: 'Unsupported target', support: 'unsupported' }] } },
+    busy: false, locked: false, canPropose: true, onSelectSheet: noop, onFilter: noop, onLoadOptions: noop, onConfirm: noop, onResolve: noop, onLoadMore: noop }
+  const html = renderToStaticMarkup(createElement(ImportMapping, props))
+  assert.match(html, /<option value="sales.unit"[^>]*>Đơn vị từ máy chủ/)
+  assert.doesNotMatch(html, /<option value="sales.unit"[^>]*disabled/)
+  assert.match(html, /<option value="blocked"[^>]*disabled/)
+})
+
+test('016 complete proposal can reach Owner review and Staff handoff with pending RULE candidates; missing spec stays locked', () => {
+  const render = (role, valid) => {
+    const controller = new ImportFlowWorkflow({}, {})
+    const base = summary()
+    base.profile_proposals = [{ ...proposal(), missing_fields: valid ? [] : ['source proof'] }]
+    base.can_preview = false
+    const state = { ...controller.getSnapshot(), summary: base, queue: null }
+    return renderToStaticMarkup(createElement(MemoryRouter, {}, createElement(ImportFlow, { state, workflow: controller, parentBusy: false, parentStale: false, canDecideProfile: role === 'OWNER', canProposeMapping: true, role })))
+  }
+  for (const [role, label] of [['OWNER', 'Xem profile sẽ được lưu'], ['STAFF', 'Bàn giao cho Owner']]) {
+    assert.doesNotMatch(render(role, true), new RegExp(`disabled=""[^>]*>${label}`))
+    assert.match(render(role, true), new RegExp(`>${label}</button>`))
+    assert.match(render(role, false), new RegExp(`disabled=""[^>]*>${label}`))
+  }
+})
+
+
+test('mixed domain review reflects confirmed History together with Sales instead of a permanent pending badge',()=>{
+ const sales={row_id:id(90),proposed_action:'REPLACE_DAILY_TOTAL',confirmation_required:true,source_location:{row_number:2}},history={row_id:id(91),proposed_action:'CORRECT_HISTORY_RECORD',confirmation_required:true,expected_version:'history/1',source_location:{row_number:3}}
+ const props={bundle:{preview:{rows:[sales,history]}},resolutions:[{row_id:sales.row_id,action:'replace_daily_total',disjoint_assertion:false,report_business_key:'report',evidence_reference:'source',reason:'Reviewed'}],supplierChanges:[],disabled:false,onResolutions:noop,onSupplierChanges:noop}
+ const pending=renderToStaticMarkup(createElement(ImportDomainReview,props));assert.match(pending,/Còn quyết định cần xác nhận/)
+ const done=renderToStaticMarkup(createElement(ImportDomainReview,{...props,historyCorrections:[{row_id:history.row_id,expected_version:'history/1',reason:'Reviewed history'}]}));assert.doesNotMatch(done,/Còn quyết định cần xác nhận/);assert.match(done,/Đã xác nhận cho lần nhập này/)
 })

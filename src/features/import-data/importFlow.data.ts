@@ -59,6 +59,8 @@ function validateCommit(importId: string, intent: CommitIntent): void {
     throw new Error('Commit cần preview ID/digest bất biến và danh sách xác nhận tường minh.')
   }
   intent.resolutions.forEach(salesResolution)
+  const history = intent.historyCorrections ?? []
+  if (!Array.isArray(history) || new Set(history.map(item=>item.row_id)).size!==history.length || history.some(item=>!isImportUuid(item.row_id)||!nonempty(item.expected_version)||item.expected_version.length>128||!nonempty(item.reason)||item.reason.length>1000)) throw new Error('Xác nhận correction phải khớp row, phiên bản và lý do từng bản sửa.')
   const supplierChanges = intent.supplierChanges ?? []
   if (!Array.isArray(supplierChanges) || new Set(supplierChanges.map((item) => item.action_id)).size !== supplierChanges.length ||
     supplierChanges.some((item) => !isImportUuid(item.action_id) || !nonempty(item.reason) || item.reason.length > 1000)) throw new Error('Xác nhận nhà cung cấp phải dùng đúng row_id và lý do của từng action.')
@@ -195,7 +197,7 @@ export function createImportFlowDataSource(options: ImportFlowDataSourceOptions)
     },
     async commit(importId, intent) {
       validateCommit(importId, intent)
-      const body = { phase: 'commit', preview_id: intent.previewId, preview_digest: intent.previewDigest, confirm: true, reason: intent.reason, resolutions: intent.resolutions, supplier_changes: intent.supplierChanges ?? [] }
+      const body = { phase: 'commit', preview_id: intent.previewId, preview_digest: intent.previewDigest, confirm: true, reason: intent.reason, resolutions: intent.resolutions, supplier_changes: intent.supplierChanges ?? [], history_corrections: intent.historyCorrections ?? [] }
       if (!matchesImportWire('app__application__contracts__import_mapping__CommitRequest', body)) throw new Error('Commit không đúng exact DTO hiện hành.')
       bodyLimit(body)
       const response = await requestJson<unknown>(options.apiBaseUrl, `${path(importId)}/process`, {

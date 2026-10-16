@@ -8,7 +8,7 @@ import { createHash } from 'node:crypto'
 // Business guards in importFlow.validation/data are intentionally not generated.
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const wire = readFileSync(resolve(root, 'src/features/import-data/importFlow.wire.ts'), 'utf8')
-const current = loadWireSource().components.schemas
+const current = loadWireSource('import').components.schemas
 const frozen = Object.fromEntries([...wire.matchAll(/^  ("[^"]+"): (\{.*\}),$/gm)].map((match) => [JSON.parse(match[1]), JSON.parse(match[2])]))
 const identifier = (name) => `Wire${name.replace(/[^A-Za-z0-9_]/g, '_')}`
 
@@ -40,6 +40,7 @@ function type(schema) {
 const failures = []
 const roots = ['MappingSummary', 'MappingList', 'FieldOptions', 'MappingUpdated', 'ResolveRequest-Input', 'DecisionResult', 'Approve', 'Reject', 'Retire', 'PreviewAccepted', 'CommitAccepted', 'ConfirmationResult', 'ConfirmReviewRequest', 'PreviewSummary', 'PreviewRow', 'PreviewPage', 'ImportCompletion', 'JobView', 'ImportMeta', 'ReviewConfirmation', 'ImportRead', 'TargetRequest', 'app__application__contracts__import_mapping__CommitRequest']
 for (const name of roots) if (!Object.hasOwn(frozen, name)) failures.push(`Missing required root: ${name}`)
+for (const name of ['SupplierPickerEnvelope', 'Envelope_Readiness_']) if (!Object.hasOwn(frozen, name)) failures.push(`Missing integration root: ${name}`)
 for (const [name, schema] of Object.entries(frozen)) {
   if (!current[name] || JSON.stringify(schema) !== JSON.stringify(project(current[name]))) failures.push(`Schema drift: ${name}`)
   const refs = JSON.stringify(schema).matchAll(/"\$ref":"#\/components\/schemas\/([^"]+)"/g)

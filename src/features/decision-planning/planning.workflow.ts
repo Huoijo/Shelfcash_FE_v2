@@ -19,6 +19,7 @@ export type PlanningState = {
   pollStopped: boolean
   readiness: PlanningReadiness | null
   readinessDate: string | null
+  readinessRequestKey: string | null
   readinessBusy: boolean
   readinessError: string | null
   selectedOptionId: string | null
@@ -33,7 +34,7 @@ export type PlanningState = {
 }
 const initial = (): PlanningState => ({
   phase: 'setup', context: null, run: null, accepted: null, warnings: [], busy: false, error: null,
-  uncertain: false, pollAfterMs: null, pollStopped: false, readiness: null, readinessDate: null,
+  uncertain: false, pollAfterMs: null, pollStopped: false, readiness: null, readinessDate: null, readinessRequestKey: null,
   readinessBusy: false, readinessError: null, selectedOptionId: null, ingredients: null,
   ingredient: null, reasons: null, nextIngredientCursor: null, ingredientsTotal: null,
   detailBusy: false, inspectionArea: null, inspectionError: null,
@@ -127,16 +128,17 @@ export class PlanningWorkflow {
         pollAfterMs: this.state.run && isPending(this.state.run.status) && !this.state.pollStopped ? pollAfterMs : null })
     })
   }
-  assessDate = async (start: string) => {
+  assessDate = async (start: string, request?: PlanningRequest) => {
     const epoch = ++this.readinessEpoch
     this.readinessController?.abort()
     const controller = new AbortController()
     this.readinessController = controller
-    this.update({ readiness: null, readinessDate: null, readinessBusy: true, readinessError: null })
+    this.update({ readiness: null, readinessDate: null, readinessRequestKey: null, readinessBusy: true, readinessError: null })
     try {
-      const response = await this.source.readiness(this.authorize('planning.context.read'), start, controller.signal)
+      const captured = request ? structuredClone(validatePlanningRequest(request)) : undefined
+      const response = await this.source.readiness(this.authorize('planning.context.read'), start, controller.signal, captured)
       if (epoch === this.readinessEpoch && !controller.signal.aborted)
-        this.update({ readiness: response.data, readinessDate: start })
+        this.update({ readiness: response.data, readinessDate: start, readinessRequestKey: captured ? JSON.stringify(captured) : null })
     } catch (error) {
       if (epoch === this.readinessEpoch && !controller.signal.aborted) this.update({ readinessError: describePlanningError(error) })
     } finally {
@@ -150,6 +152,7 @@ export class PlanningWorkflow {
     validatePlanningRequest(request)
     const context = this.state.context
     const readiness = this.state.readiness?.actions.find((action) => action.action === 'planning')
+    if (this.state.readinessRequestKey !== null ? this.state.readinessRequestKey !== JSON.stringify(request) : (request.requirements_mode !== 'default' || request.requirements !== undefined)) throw new Error('Cần kiểm tra readiness cho đúng toàn bộ yêu cầu Planning hiện tại.')
     if (!context || !context.budget_ceiling || !context.capabilities.winner_selection ||
       !context.requirements_modes.some((mode) => mode.mode === request.requirements_mode && mode.availability === 'available') ||
       this.state.readinessDate !== request.forecast_start_date || !readiness?.can_execute ||

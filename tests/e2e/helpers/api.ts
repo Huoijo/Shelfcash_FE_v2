@@ -9,13 +9,15 @@ export const errorResponse=(status:number,code:string)=>({httpStatus:status,body
 export async function backend(page:Page,handler:(path:string,method:string,body:any,headers:Record<string,string>,url:URL)=>Promise<unknown>|unknown){
   await page.route('http://127.0.0.1:18001/**',async route=>{
     const req=route.request(),url=new URL(req.url()),path=url.pathname
-    const headers={'Access-Control-Allow-Origin':req.headers().origin??'http://127.0.0.1:4174','Access-Control-Allow-Credentials':'true','Access-Control-Allow-Headers':'content-type,x-csrf-token,idempotency-key,if-match,if-none-match,x-invitation-token','Access-Control-Allow-Methods':'GET,POST,PUT,OPTIONS'}
+    const headers={'Access-Control-Allow-Origin':req.headers().origin??'http://127.0.0.1:4174','Access-Control-Allow-Credentials':'true','Access-Control-Allow-Headers':'content-type,x-csrf-token,idempotency-key,if-match,if-none-match,x-invitation-token','Access-Control-Allow-Methods':'GET,POST,PUT,PATCH,OPTIONS'}
     if(req.method()==='OPTIONS'){await route.fulfill({status:204,headers});return}
     let data:any=await handler(path,req.method(),req.postDataJSON(),req.headers(),url)
     if(data===undefined){
-      if(path==='/api/v1/auth/me')data=env({user:{user_id:user,email:'controlled@example.invalid',display_name:'QA'},session:{expires_at:'2027-01-01T00:00:00Z',absolute_expires_at:'2027-01-02T00:00:00Z',csrf_token:'controlled-csrf'},default_store_id:s,accessible_store_count:1,authorization_version:'controlled-auth/1'})
+      if(path==='/api/v1/notifications/unread-count')data=env({unread_count:0,scope:'accessible',store_id:null}, {snapshot_id:'notifications/1',observed_at:at})
+      else if(path.match(/\/stores\/[^/]+\/mapping-submissions$/))data=env({items:[]}, {...paging(0),snapshot_id:'submissions/1',observed_at:at})
+      else if(path==='/api/v1/auth/me')data=env({user:{user_id:user,email:'controlled@example.invalid',display_name:'QA'},session:{expires_at:'2027-01-01T00:00:00Z',absolute_expires_at:'2027-01-02T00:00:00Z',csrf_token:'controlled-csrf'},default_store_id:s,accessible_store_count:1,authorization_version:'controlled-auth/1'})
       else if(path==='/api/v1/stores')data=env({items:[{store_id:s,name:'Controlled Store',timezone:'Asia/Ho_Chi_Minh',currency:'VND',role:'OWNER',membership_id:member,authorization_version:'controlled-member/1'}]},paging(1))
-      else if(path===`/api/v1/stores/${s}`)data=env({store_id:s,name:'Controlled Store',timezone:'Asia/Ho_Chi_Minh',currency:'VND',role:'OWNER',membership_id:member,authorization_version:'controlled-member/1',active:true,server_now:at,as_of_date:'2026-10-12',membership:{membership_id:member,role:'OWNER',authorization_version:'controlled-member/1',effective_permissions:permissions},permission_catalog_version:'permissions-v2'})
+      else if(path===`/api/v1/stores/${s}`)data=env({store_id:s,name:'Controlled Store',timezone:'Asia/Ho_Chi_Minh',currency:'VND',role:'OWNER',membership_id:member,authorization_version:'controlled-member/1',active:true,server_now:at,as_of_date:'2026-10-12',membership:{membership_id:member,role:'OWNER',authorization_version:'controlled-member/1',effective_permissions:permissions},permission_catalog_version:'permissions-v3'})
     }
     if(data==='ABORT'){await route.abort('failed');return}
     if(data instanceof Buffer){await route.fulfill({status:200,headers:{...headers,'content-type':'application/pdf'},body:data});return}

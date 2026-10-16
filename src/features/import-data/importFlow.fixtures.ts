@@ -219,7 +219,8 @@ export function createMockImportFlowDataSource(
       update(record, { import_revision: revision(), allowed_actions: ['mapping.read', 'mapping.propose', ...(approved ? ['preview'] : [])] })
       const result = { profile_id: profileId, approved_version: approved ? 'mock-approved/1' : null,
         active_version: approved ? 'mock-approved/1' : null, lifecycle_revision: record.lifecycleRevision,
-        decision_id: id(), decided_at: timestamp, audit_id: id(), unsupportedFields: [] }
+        decision_id: id(), decided_at: timestamp, audit_id: id(), submission: null,
+        notification_delivery: { status: 'not_required' as const, event_id: null }, unsupportedFields: [] }
       retain(scope, intent, result)
       return result
     },
@@ -251,7 +252,7 @@ export function createMockImportFlowDataSource(
       const rows = current.preview.rows.filter((row) => !query.classification || row.classification === query.classification)
       return { ...structuredClone(current), import_revision: record.batch.import_revision,
         allowed_actions: record.batch.allowed_actions, review_confirmation: record.batch.review_confirmation as ReviewConfirmation | null,
-        confirmation_usable: record.batch.confirmation_usable, preview: {
+        confirmation_usable: record.batch.confirmation_usable, preview: { ...current.preview,
           summary: { ...structuredClone(current.preview.summary), can_commit: record.batch.allowed_actions.includes('commit') },
           stale: false, rows: structuredClone(rows.slice(offset, offset + pageSize)),
           rows_page: { limit: pageSize, next_cursor: offset + pageSize < rows.length ? `${prefix}${offset + pageSize}` : null, total_count: rows.length },
@@ -286,6 +287,8 @@ export function createMockImportFlowDataSource(
       if (intent.importRevision !== record.batch.import_revision) fail(412, 'IMPORT_REVISION_CONFLICT')
       if (!record.preview || intent.previewId !== record.preview.preview.summary.preview_id || intent.previewDigest !== record.preview.preview.summary.digest) fail(409, 'PREVIEW_STALE')
       if (!record.batch.confirmation_usable) fail(409, 'PREVIEW_BLOCKED')
+      const requiredHistory=record.preview.preview.rows.filter(r=>r.proposed_action==='CORRECT_HISTORY_RECORD'),history=intent.historyCorrections??[]
+      if(history.length!==requiredHistory.length||new Set(history.map(h=>h.row_id)).size!==history.length||requiredHistory.some(r=>!history.some(h=>h.row_id===r.row_id&&h.expected_version===r.expected_version&&h.reason.trim()))) fail(409,'HISTORY_CORRECTION_UNRESOLVED')
       if (!intent.reason?.trim() || intent.resolutions.length || intent.supplierChanges?.length) fail(422, 'INVALID_IMPORT_CONFIGURATION')
       if (!record.batch.allowed_actions.includes('commit')) fail(409, 'IMPORT_STATE_CONFLICT')
       const receipt = accept(record, 'commit')
@@ -319,7 +322,8 @@ export function createMockImportFlowDataSource(
           file_set_version: record.batch.file_set_version, source_set: record.batch.source_set,
           status: 'preview_ready', allowed_actions: record.batch.allowed_actions, completion_available: false,
           review_confirmation: null, confirmation_usable: false,
-          preview: { summary: { preview_id: previewId, digest, created_at: timestamp, source_set_version: record.batch.source_set.version,
+          preview: { mapping_revision: record.mappingRevision, read_set_digest: digest, source_evidence_digest: digest,
+            summary: { preview_id: previewId, digest, created_at: timestamp, source_set_version: record.batch.source_set.version,
             mapping_bindings: summary(record).binding_refs, policy_version: 'import_mapping_policy/1', mode: 'atomic',
             validation_status: 'confirmation_required', can_commit: false, required_actions: ['inventory.count.correct'],
             groups: [{ canonical_domain: 'inventory_count', required_write_action: 'inventory.count.correct', row_count: 2,

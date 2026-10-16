@@ -37,6 +37,8 @@ export function configureHttpSession(hooks: HttpSessionHooks): () => void {
 export type HttpRequestOptions = Omit<RequestInit, 'body' | 'credentials'> & {
   timeoutMs?: number
   auth?: 'public' | 'protected'
+  // Opt-in contract status gate for additive typed clients; existing callers are unchanged.
+  expectedStatuses?: readonly number[]
   // Explicit dependency injection for boundary tests; product features use sessionHooks.
   getCsrfToken?: () => string | null | undefined | Promise<string | null | undefined>
 }
@@ -78,6 +80,11 @@ export async function requestNoContent(
   await requestResponse(baseUrl, path, options, undefined, true)
 }
 
+/** Non-envelope JSON is reserved for explicitly documented routes such as health. */
+export async function requestDocument(baseUrl: string, path: string, options: HttpRequestOptions = {}): Promise<unknown> {
+  return requestResponse(baseUrl, path, options, undefined, 'json')
+}
+
 /** Authenticated downloads share cookie, timeout and session-expiry handling with JSON reads. */
 export async function requestPdf(baseUrl: string, path: string, options: HttpRequestOptions = {}): Promise<Blob> {
   return await requestResponse(baseUrl, path, options, undefined, 'pdf') as Blob
@@ -90,9 +97,9 @@ async function requestEnvelope<T, M>(
 }
 
 async function requestResponse(
-  baseUrl: string, path: string, options: HttpRequestOptions, body: BodyInit | undefined, noContent: boolean | 'pdf',
+  baseUrl: string, path: string, options: HttpRequestOptions, body: BodyInit | undefined, noContent: boolean | 'pdf' | 'json',
 ): Promise<unknown> {
-  const { signal, timeoutMs = 15_000, auth = 'protected', getCsrfToken, ...init } = options
+  const { signal, timeoutMs = 15_000, auth = 'protected', getCsrfToken, expectedStatuses, ...init } = options
   signal?.throwIfAborted()
   const headers = new Headers(options.headers)
   headers.set('Accept', noContent === 'pdf' ? 'application/pdf' : 'application/json')
@@ -124,6 +131,7 @@ async function requestResponse(
     if (response.status === 401 && auth === 'protected' && capturedHooks &&
       sessionHooks === capturedHooks && !signal?.aborted && !timeout.aborted &&
       capturedHooks.getCsrfToken() === capturedToken) capturedHooks.onUnauthenticated()
+    if (response.ok && expectedStatuses && !expectedStatuses.includes(response.status)) throw new HttpError('protocol', 'HTTP success status không đúng contract của operation.', response.status, undefined, requestId)
     if (noContent === true && response.status === 204) return
     if (noContent === 'pdf' && response.ok) {
       if (response.headers.get('Content-Type')?.split(';')[0].trim().toLowerCase() !== 'application/pdf') {
@@ -161,6 +169,7 @@ async function requestResponse(
   if (!response.ok) {
     throw new HttpError('http', `Yêu cầu không thành công (HTTP ${response.status}).`, response.status, undefined, requestId)
   }
+  if (noContent === 'json') return payload
   if (noContent) throw new HttpError('protocol', 'Đăng xuất cần phản hồi HTTP 204 không có nội dung.', response.status, undefined, requestId)
   if (!isRecord(payload) || payload.error !== null || !isRecord(payload.meta) ||
     !('data' in payload) || payload.data === null) {

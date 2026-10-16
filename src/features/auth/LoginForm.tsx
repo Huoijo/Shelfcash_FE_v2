@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import type { FormEvent } from 'react'
-import { Link } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import { HttpError } from '../../shared/http/httpClient'
 import { useAuth } from './auth.context'
 import './LoginForm.css'
@@ -26,6 +26,7 @@ function describeLoginError(error: unknown): string {
 }
 
 export function LoginForm() {
+  const location = useLocation(), navigate = useNavigate()
   const { state, login, refresh } = useAuth()
   const mockPreview = state.status === 'mock_preview'
   const [email, setEmail] = useState('')
@@ -70,6 +71,9 @@ export function LoginForm() {
       await login({ email: normalizedEmail, password, remember_me: rememberLogin })
       setNotice('Đã xác nhận phiên đăng nhập.')
     } catch (error) {
+      if (error instanceof HttpError && error.problem?.code === 'ACCOUNT_EMAIL_NOT_VERIFIED') {
+        navigate('/email-verification', { state: { email: normalizedEmail, from: location.state?.from } })
+      }
       setNotice('')
       setRequestError(describeLoginError(error))
     } finally {
@@ -86,7 +90,7 @@ export function LoginForm() {
       </div>}
       <div className="auth-form__tabs" role="tablist" aria-label="Tài khoản ShelfCash">
         <button id="auth-login-tab" type="button" role="tab" aria-selected="true" aria-controls="auth-login-panel">Đăng nhập</button>
-        <button type="button" role="tab" aria-selected="false" disabled title="Liên hệ hỗ trợ ShelfCash để tạo tài khoản">Đăng ký</button>
+        <Link role="tab" aria-selected="false" to="/register" state={{ from: location.state?.from }}>Đăng ký</Link>
       </div>
       <div id="auth-login-panel" role="tabpanel" aria-labelledby="auth-login-tab">
       <form onSubmit={(event) => { void handleSubmit(event) }} noValidate aria-busy={submitting}>
@@ -121,7 +125,7 @@ export function LoginForm() {
               onChange={(event) => setRememberLogin(event.target.checked)} />
             <span>Ghi nhớ đăng nhập</span>
           </label>
-          <button className="auth-form__text-button" type="button" onClick={() => setNotice('Liên hệ hỗ trợ ShelfCash để được đặt lại mật khẩu.')}>Quên mật khẩu?</button>
+          <Link className="auth-form__text-button" to="/password-reset">Quên mật khẩu?</Link>
         </div>
         <button className="auth-form__primary-button" type="submit" disabled={submitting || mockPreview}>{submitting ? 'Đang đăng nhập…' : 'Đăng nhập'}</button>
       </form>
@@ -134,7 +138,7 @@ export function LoginForm() {
           {' '}<Link to="/imports">Mở giao diện minh họa</Link>
         </p>
       )}
-      <p className="auth-form__support">Liên hệ hỗ trợ ShelfCash nếu cần thiết lập tài khoản hoặc đặt lại mật khẩu.</p>
+      <p className="auth-form__support"><Link to="/email-verification" state={{ email: email.trim().toLowerCase(), from: location.state?.from }}>Gửi lại email xác minh</Link></p>
     </div>
   )
 }

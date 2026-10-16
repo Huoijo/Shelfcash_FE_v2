@@ -24,7 +24,7 @@ export function ImportResolutionEditor(props: Props) {
     {issue.issue_type === 'conversion' && <ConversionEditor {...props} />}
     {issue.issue_type === 'column' && <OptionalIgnoreEditor {...props} />}
     {issue.issue_type === 'schema_blocker' && <p className="import-flow__notice">Cần kiểm tra dữ liệu nguồn trước khi tiếp tục. Không tự thay dữ liệu thiếu thành 0.</p>}
-    {props.includeShared !== false && options?.schema && options.options.some((field) => field.support === 'supported' && field.input_sources?.includes('shared_value') && field.allowed_shared_scopes?.length) && <SharedValueEditor {...props} options={options} />}
+    {props.includeShared !== false && options?.schema && options.options.some((field) => field.support !== 'unsupported' && field.input_sources?.includes('shared_value') && field.allowed_shared_scopes?.length) && <SharedValueEditor {...props} options={options} />}
   </>
 }
 
@@ -60,15 +60,20 @@ export function SourceContextEditor({ issue, disabled, onResolve }: Props) {
   const [inventory, setInventory] = useState<NonNullable<SourceContext['inventory_semantics']> | ''>('')
   const [decimal, setDecimal] = useState<NonNullable<SourceContext['decimal_locale']> | ''>('')
   const [date, setDate] = useState<NonNullable<SourceContext['date_format']> | ''>('')
+  const [missing,setMissing] = useState<NonNullable<SourceContext['missing_stockout']>|''>('')
+  const [basis,setBasis] = useState<NonNullable<SourceContext['pack_cost_basis']>|''>('')
+  const [aliases,setAliases] = useState<{token:string;value:boolean|null}[]>([])
+  const [reusable,setReusable] = useState(false)
   const [expiry, setExpiry] = useState(false)
   const [expiryEvidence, setExpiryEvidence] = useState('')
   const [terms, setTerms] = useState<PeriodAmendment[]>([])
   const [fees, setFees] = useState<PeriodAmendment[]>([])
   const validAmendments = (items: PeriodAmendment[]) => items.every((item) => uuid.test(item.id) && item.expected_version.trim() && item.expected_version.length <= 128 && /^\d{4}-\d{2}-\d{2}$/.test(item.effective_to) && item.reason.trim()) && new Set(items.map((item) => item.id)).size === items.length
-  const valid = namespace.test(source) && namespace.test(report) && !!evidence.trim() && (!expiry || !!expiryEvidence.trim()) && validAmendments(terms) && validAmendments(fees)
+  const valid = reusable && aliases.every(a=>a.token.trim()) && new Set(aliases.map(a=>a.token.trim())).size===aliases.length && namespace.test(source) && namespace.test(report) && !!evidence.trim() && (!expiry || !!expiryEvidence.trim()) && validAmendments(terms) && validAmendments(fees)
   function submit() {
     const resolution: SourceContext = {
       kind: 'source_context', source_system_key: source, report_type: report, evidence_reference: evidence.trim(),
+      ...(missing?{missing_stockout:missing}:{}), ...(basis?{pack_cost_basis:basis}:{}), ...(aliases.length?{stockout_aliases:aliases.map(a=>({...a,token:a.token.trim()}))}:{}),
       ...(sales ? { sales_semantics: sales } : {}), ...(inventory ? { inventory_semantics: inventory } : {}),
       ...(decimal ? { decimal_locale: decimal } : {}), ...(date ? { date_format: date } : {}),
       ...(expiry ? { planned_arrival_expiry_rule: { basis: 'ARRIVAL_PLUS_DECLARED_SHELF_LIFE_DAYS', evidence_reference: expiryEvidence.trim() } } : {}),
@@ -79,7 +84,7 @@ export function SourceContextEditor({ issue, disabled, onResolve }: Props) {
   }
   return <ResolverFormBody valid={!disabled&&valid} onSubmit={submit}><fieldset disabled={disabled} className="import-flow__form">
     <legend>Khai báo ngữ cảnh nguồn</legend>
-    <section className="input-context-evidence"><h3>Bằng chứng nhận diện</h3><span>{issue.source_header??'Chưa xác lập hệ thống nguồn'}</span><div className="input-samples">{issue.samples.map((sample,i)=><span key={i}>{sample}</span>)}</div><p>Tên file hoặc sheet chỉ là context; không được coi là bằng chứng nguồn. Khai báo này chỉ áp dụng cho lần nhập hiện tại.</p></section>
+    <section className="input-context-evidence"><h3>Bằng chứng nhận diện</h3><span>{issue.source_header??'Chưa xác lập hệ thống nguồn'}</span><div className="input-samples">{issue.samples.map((sample,i)=><span key={i}>{sample}</span>)}</div><p>Tên file hoặc sheet chỉ là context; không được coi là bằng chứng nguồn. Khai báo semantics này đề xuất thay đổi cách hiểu nguồn dùng lại; cần qua quyết định Profile. Giá trị chỉ cho lô này được khai báo tại phần thông tin còn thiếu.</p></section>
     <div className="import-flow__form-grid">
       <label>Hệ thống nguồn<input maxLength={128} value={source} onChange={(event) => setSource(event.target.value)} placeholder="Mã từ hệ thống xuất dữ liệu" /></label>
       {source&&!namespace.test(source)&&<small role="alert">Mã hệ thống nguồn chỉ dùng chữ, số, dấu chấm, gạch ngang, gạch dưới hoặc dấu hai chấm.</small>}
@@ -95,6 +100,9 @@ export function SourceContextEditor({ issue, disabled, onResolve }: Props) {
         <label>Ngày nguồn<select value={date} onChange={(event) => setDate(event.target.value as typeof date)}><option value="">Không khai báo</option><option value="ISO">ISO · YYYY-MM-DD</option><option value="DMY_SLASH">DD/MM/YYYY</option><option value="MDY_SLASH">MM/DD/YYYY</option><option value="EXCEL_SERIAL">Ngày dạng số Excel</option></select></label>
 
       </div>
+      <label>Thiếu thông tin hết hàng<select aria-label="Thiếu thông tin hết hàng" value={missing} onChange={e=>setMissing(e.target.value as typeof missing)}><option value="">Không khai báo</option><option value="quantity_only">Chỉ có số lượng bán</option><option value="not_provided">Nguồn không cung cấp</option></select></label>
+      <label>Cơ sở tính giá<select aria-label="Cơ sở tính giá" value={basis} onChange={e=>setBasis(e.target.value as typeof basis)}><option value="">Không khai báo</option><option value="PER_PACK">Theo pack</option><option value="PER_SOURCE_UNIT">Theo đơn vị nguồn</option></select></label>
+      <h4>Alias hết hàng từ nguồn</h4>{aliases.map((a,i)=><div className="import-flow__form-grid" key={i}><label>Giá trị nguồn<input value={a.token} onChange={e=>setAliases(v=>v.map((a,j)=>j===i?{...a,token:e.target.value}:a))}/></label><label>ShelfCash hiểu là<select aria-label="ShelfCash hiểu là" value={a.value===null?'unknown':String(a.value)} onChange={e=>setAliases(v=>v.map((a,j)=>j===i?{...a,value:e.target.value==='unknown'?null:e.target.value==='true'}:a))}><option value="unknown">Chưa biết</option><option value="true">Có hết hàng</option><option value="false">Không hết hàng</option></select></label><button type="button" onClick={()=>setAliases(v=>v.filter((_,j)=>i!==j))}>Bỏ alias</button></div>)}<button type="button" onClick={()=>setAliases(v=>[...v,{token:'',value:null}])}>Thêm alias hết hàng</button>
       <p className="import-flow__muted">Giá và MOQ cần có cơ sở tính rõ ràng.</p>
       <label className="import-flow__check"><input type="checkbox" checked={expiry} onChange={(event) => setExpiry(event.target.checked)} />Khai báo expiry từ ngày nhận dự kiến + số ngày shelf-life đã được khai báo.</label>
       {expiry && <EvidenceInput label="Bằng chứng quy tắc expiry" value={expiryEvidence} onChange={setExpiryEvidence} />}
@@ -104,6 +112,7 @@ export function SourceContextEditor({ issue, disabled, onResolve }: Props) {
       <PeriodAmendments label="Supplier term" items={terms} onChange={setTerms} />
       <PeriodAmendments label="Payable fee" items={fees} onChange={setFees} />
     </details>
+    <label className="import-flow__check"><input type="checkbox" checked={reusable} onChange={e=>setReusable(e.target.checked)}/>Tôi xác nhận đây là đề xuất cách hiểu nguồn dùng lại, cần quyết định Profile.</label>
     <ResolverSubmit disabled={disabled||!valid}>Lưu ngữ cảnh nguồn</ResolverSubmit>
   </fieldset></ResolverFormBody>
 }
@@ -215,7 +224,7 @@ export function SharedValueEditor({ issue, options, disabled, onResolve }: Props
   const [replacementReason,setReplacementReason]=useState('')
   const index = issue.source_location.source_column_index == null ? '' : String(issue.source_location.source_column_index)
   const [acknowledged, setAcknowledged] = useState(false)
-  const fields = options.options.filter((field) => field.support === 'supported' && field.input_sources?.includes('shared_value') && field.allowed_shared_scopes?.length)
+  const fields = options.options.filter((field) => field.support !== 'unsupported' && field.input_sources?.includes('shared_value') && field.allowed_shared_scopes?.length)
   const selected = fields.find((field) => field.key === target)
   const numeric = /^-?(0|[1-9][0-9]*)$/.test(text) ? Number(text) : NaN
   const validValue = kind === 'string' ? !!text.trim() && text.length <= 1000 : kind === 'boolean' ? boolean !== '' : kind === 'integer' ? Number.isInteger(numeric) && numeric >= -2147483648 && numeric <= 2147483647 : kind === 'null' ? selected?.nullable === true : false

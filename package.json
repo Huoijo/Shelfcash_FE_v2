@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "check:contracts": "node scripts/check-contracts.mjs",
+    "check:capabilities-wire": "node scripts/sync-capabilities-wire.mjs --check",
+    "test:capabilities": "node tests/run-backend-capabilities.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",

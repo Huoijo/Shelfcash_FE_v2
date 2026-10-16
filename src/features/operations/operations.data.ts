@@ -7,7 +7,7 @@ import type * as W from './operations.wire'
 export type Intent<T> = { key: string; request: T; version?: string }
 export type RecipePreviewRequest = W.Wireapp__application__contracts__recipe_schedule__PreviewRequest
 export type RecipeCommitRequest = W.Wireapp__application__contracts__recipe_schedule__CommitRequest
-export type HistoryQuery = { cursor?: string; status?: 'queued' | 'running' | 'completed' | 'failed'; forecast_start_from?: string; forecast_start_to?: string }
+export type HistoryQuery = { cursor?: string; created_by_user_id?: string; created_date_from?: string; created_date_to?: string; status?: 'queued' | 'running' | 'completed' | 'failed'; forecast_start_from?: string; forecast_start_to?: string }
 export function protocol(message = 'Phản hồi không khớp tài nguyên hoặc phiên bản đã yêu cầu.'): never { throw new HttpError('protocol', message) }
 export function checked<T>(schema: string, value: unknown): T {
   if (!matchesOperationsWire(schema, value) || (typeof value === 'object' && value !== null && 'meta' in value && !(value as {meta:{request_id:string}}).meta.request_id.trim())) return protocol(`Phản hồi không đúng contract ${schema}. Chưa xác nhận kết quả.`)
@@ -82,10 +82,13 @@ export function createOperationsApi(baseUrl: string) {
     async history(s: string, query: HistoryQuery = {}, signal?: AbortSignal) {
       const p = cursorParams(query.cursor); p.set('sort', '-accepted_at')
       if (query.status) { if (!['queued','running','completed','failed'].includes(query.status)) throw new Error('Trạng thái không hợp lệ.'); p.set('status',query.status) }
-      for (const k of ['forecast_start_from','forecast_start_to'] as const) if(query[k] !== undefined) { if (!isPlanningDate(query[k])) throw new Error('Ngày không hợp lệ.'); p.set(k,query[k]) }
+      for (const k of ['forecast_start_from','forecast_start_to','created_date_from','created_date_to'] as const) if(query[k] !== undefined) { if (!isPlanningDate(query[k])) throw new Error('Ngày không hợp lệ.'); p.set(k,query[k]) }
       if(query.forecast_start_from && query.forecast_start_to && query.forecast_start_from > query.forecast_start_to) throw new Error('Khoảng ngày không hợp lệ.')
+      if(query.created_by_user_id) p.set('created_by_user_id',uuid(query.created_by_user_id))
+      if(query.created_date_from && query.created_date_to && query.created_date_from > query.created_date_to) throw new Error('Khoảng ngày tạo không hợp lệ.')
       const r = await get<W.WireRunHistoryEnvelope>('RunHistoryEnvelope', `${store(s)}/procurement-plans?${p}`, signal)
-      page(r); if (r.data.items.some(i=>i.store_id !== s)) protocol(); return r
+      page(r); if (r.data.items.some(i=>i.store_id !== s)) protocol();
+      for(const k of ['created_by_user_id','created_date_from','created_date_to'] as const) if(r.meta.applied_filters[k] !== (query[k]??null)) protocol('Bộ lọc lịch sử không khớp phản hồi máy chủ.'); return r
     },
     async exportPlan(run: string, intent: Intent<W.WireExportRequest>, signal?: AbortSignal) {
       uuid(intent.key); request('ExportRequest', intent.request)

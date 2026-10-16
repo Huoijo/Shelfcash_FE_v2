@@ -2,6 +2,8 @@ import { useState } from 'react'
 import type { ReactNode } from 'react'
 import { Outlet } from 'react-router'
 import { Sidebar } from './Sidebar'
+import { NotificationProvider, NotificationBell } from '../../features/notifications/NotificationProvider'
+import '../../features/notifications/NotificationsPage.css'
 import { useCurrentStore } from '../../features/store/store.context'
 import './AppShell.css'
 
@@ -13,13 +15,13 @@ export function AppShell() {
   const scope = `${currentStoreId ?? 'unselected'}:${store?.membership.authorization_version ?? ''}:${store?.permission_catalog_version ?? ''}`
 
   return (
-    <div className={`app-shell${collapsed ? ' app-shell--collapsed' : ''}`} lang="vi">
+    <NotificationProvider><div className={`app-shell${collapsed ? ' app-shell--collapsed' : ''}`} lang="vi">
       <a className="app-shell__skip-link" href="#app-content">Đi tới nội dung</a>
       <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((value) => !value)} />
       <div className="app-shell__workspace" id="app-content" tabIndex={-1}>
         <Outlet key={scope} />
       </div>
-    </div>
+    </div></NotificationProvider>
   )
 }
 
@@ -29,6 +31,7 @@ export function AppShellHeader({ children }: { children: ReactNode }) {
     <header className="app-shell__header">
       {children}
       <span className="app-shell__wordmark">ShelfCash</span>
+      <NotificationBell />
     </header>
   )
 }

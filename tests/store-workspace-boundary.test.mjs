@@ -16,7 +16,7 @@ const membershipList = () => storeWorkspaceMembershipsFixture()
 const invitationList = () => ({ ...envelope({ items: [storeWorkspaceInvitationFixture()] }),
   meta: { request_id: 'qa-invitations', pagination: { limit: 50, total_count: 1, next_cursor: null } } })
 const permissions = (changed = false) => envelope({ membership: storeWorkspaceStaffFixture(), changed, event_id: changed ? ids.event : null })
-const createRequest = () => ({ email: 'invite-qa@example.invalid', grants: ['menu.read'], permission_catalog_version: 'permissions-v2', reason: 'Mời Staff kiểm thử' })
+const createRequest = () => ({ email: 'invite-qa@example.invalid', grants: ['menu.read'], permission_catalog_version: 'permissions-v3', reason: 'Mời Staff kiểm thử' })
 const created = () => envelope({ invitation: storeWorkspaceInvitationFixture(), delivery: { status: 'queued', attempt_id: ids.attempt } })
 const budget = (amount = '0') => envelope({ store_id: ids.store, budget_ceiling: storeWorkspaceBudgetFixture({ amount }) })
 const source = () => createStoreWorkspaceDataSource({ dataSource: 'api', apiBaseUrl: 'https://workspace-qa.invalid' })
@@ -29,13 +29,13 @@ test('current Store Workspace fixtures conform to frozen canonical schemas', () 
     ['Envelope_InvitationList_', invitationList()], ['Envelope_InvitationCreation_', created()], ['Envelope_BudgetResult_', budget()],
     ['GrantsRequest', { grants: [], reason: 'Thu quyền' }], ['CreateInvitation', createRequest()]])
     assert.equal(matchesStoreWire(schema, value), true, schema)
-  assert.equal(storeWorkspaceCatalogueFixture().length, 37)
+  assert.equal(storeWorkspaceCatalogueFixture().length, 43)
 })
 
 test('N12 preserves inactive Staff, independent grants and canonical optional defaults', () => {
   const input = membershipList(); delete input.data.permission_catalog_version; delete input.data.items[0].role
   const result = validateWorkspaceMemberships(input)
-  assert.equal(result.data.permission_catalog_version, 'permissions-v2')
+  assert.equal(result.data.permission_catalog_version, 'permissions-v3')
   assert.equal(result.data.items[0].role, 'STAFF')
   assert.equal(result.data.items[1].active, false)
   assert.deepEqual(result.data.items[1].grants, [])
@@ -119,7 +119,7 @@ test('N17 reissue and revoke receipts retain precise action-specific lifecycle',
   const revoke = envelope({ invitation: storeWorkspaceInvitationFixture({ status: 'revoked', revoked_at: '2026-10-11T01:00:00Z' }), delivery: null, event_id: null })
   assert.equal(validateWorkspaceInvitationActionResult(revoke, ids.store, ids.invitation, { action: 'revoke', reason: 'Đã thu hồi' }).data.event_id, null)
   const reissue = envelope({ ...created().data, event_id: ids.event })
-  const request = { action: 'reissue', grants: ['menu.read'], permission_catalog_version: 'permissions-v2', reason: 'Gửi lại' }
+  const request = { action: 'reissue', grants: ['menu.read'], permission_catalog_version: 'permissions-v3', reason: 'Gửi lại' }
   assert.equal(validateWorkspaceInvitationActionResult(reissue, ids.store, ids.invitation, request).data.invitation.status, 'pending')
   reissue.data.delivery = null
   assert.throws(() => validateWorkspaceInvitationActionResult(reissue, ids.store, ids.invitation, request), HttpError)
@@ -183,7 +183,7 @@ test('N15/N17 do not call account, recipient acceptance or token endpoints', asy
   const api = source()
   await api.createInvitation(ids.store, { key, request: createRequest() })
   await api.invitationAction(ids.store, ids.invitation, { key: 'reissue-key', version: 'synthetic-invitation/1',
-    request: { action: 'reissue', grants: ['menu.read'], permission_catalog_version: 'permissions-v2', reason: 'Gửi lại' } })
+    request: { action: 'reissue', grants: ['menu.read'], permission_catalog_version: 'permissions-v3', reason: 'Gửi lại' } })
   assert.equal(calls.length, 3)
   for (const [url, init] of calls) { assert.equal(url.includes('/accept'), false); assert.equal(init.headers.has('X-Invitation-Token'), false); assert.equal(new URL(url).searchParams.has('token'), false) }
 })
@@ -283,7 +283,7 @@ test('mock invitation creation and lifecycle never creates Staff membership or d
   const revoked = await mock.invitationAction(ids.store, result.data.invitation.invitation_id, { key: 'revoke-key', version: result.data.invitation.version, request: { action: 'revoke', reason: 'Thu hồi' } })
   validateWorkspaceInvitationActionResult(revoked, ids.store, result.data.invitation.invitation_id, { action: 'revoke', reason: 'Thu hồi' })
   const reissued = await mock.invitationAction(ids.store, result.data.invitation.invitation_id, { key: 'reissue-key', version: revoked.data.invitation.version,
-    request: { action: 'reissue', grants: [], permission_catalog_version: 'permissions-v2', reason: 'Gửi lại không quyền tính năng' } })
+    request: { action: 'reissue', grants: [], permission_catalog_version: 'permissions-v3', reason: 'Gửi lại không quyền tính năng' } })
   assert.equal(reissued.data.invitation.status, 'pending'); assert.deepEqual(reissued.data.invitation.offered_grants, [])
 })
 

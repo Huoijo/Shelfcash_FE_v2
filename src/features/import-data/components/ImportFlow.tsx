@@ -1,5 +1,7 @@
 import { DebugContent, DebugValue } from '../../../shared/debug/DevelopmentTools'
 import { ImportBusinessFacts } from './ImportBusinessFacts'
+import { config } from '../../../app/config'
+import { ImportSubmissionLifecycle } from './ImportSubmissionLifecycle'
 import { importMessage } from '../importPresentation'
 import { Link } from 'react-router'
 import { FlowDialog } from '../../../shared/flow/FlowDialog'
@@ -18,8 +20,14 @@ import { ImportPreview } from './ImportPreview'
 import { ImportResult } from './ImportResult'
 import './ImportFlow.css'
 
-export function ImportFlow({ initialEditor, initialSubmit, readinessPreview, onBackToAnalyze, state, workflow, parentBusy, parentStale, canDecideProfile, canProposeMapping, role, devOwnerReview }: { onBackToAnalyze?:()=>void; initialEditor?: ResolutionGroup; initialSubmit?: boolean; readinessPreview?: import('../../decision-planning/planning.types').PlanningReadiness; role: ImportRole; devOwnerReview?: DevOwnerReviewGateway; state: ImportFlowState; workflow: ImportFlowWorkflow; parentBusy: boolean; parentStale: boolean; canDecideProfile: boolean; canProposeMapping: boolean }) {
+export function ImportFlow({ initialSheetId, initialEditor, initialSubmit, readinessPreview, onBackToAnalyze, state, workflow, parentBusy, parentStale, canDecideProfile, canProposeMapping, role, devOwnerReview }: { onBackToAnalyze?:()=>void; initialSheetId?: string; initialEditor?: ResolutionGroup; initialSubmit?: boolean; readinessPreview?: import('../../decision-planning/planning.types').PlanningReadiness; role: ImportRole; devOwnerReview?: DevOwnerReviewGateway; state: ImportFlowState; workflow: ImportFlowWorkflow; parentBusy: boolean; parentStale: boolean; canDecideProfile: boolean; canProposeMapping: boolean }) {
   const heading = useRef<HTMLHeadingElement>(null)
+  const scopedSheet = useRef<string | null>(null)
+  useEffect(() => {
+    if (!initialSheetId || !state.summary || state.busy || scopedSheet.current === initialSheetId || !state.summary.sheets.some(sheet => sheet.sheet_id === initialSheetId)) return
+    scopedSheet.current = initialSheetId
+    if (state.selectedSheetId !== initialSheetId) void workflow.selectSheet(initialSheetId)
+  }, [initialSheetId, state.summary, state.busy, state.selectedSheetId, workflow])
   const flowRef = useContentReveal<HTMLElement>(state.tab)
   const lastTab = useRef(state.tab)
   const previousRetry=useRef(state.retryOperation)
@@ -34,7 +42,12 @@ export function ImportFlow({ initialEditor, initialSubmit, readinessPreview, onB
   const [submitOpen, setSubmitOpen] = useState(initialSubmit ?? false)
   const [approvalError, setApprovalError] = useState<string | null>(null)
   const [approvalBusy, setApprovalBusy] = useState(false)
-  const locked = parentBusy || parentStale || !!state.retryOperation || approval.status === 'waiting' || approvalBusy
+  const [submissionGate, setSubmissionGate] = useState<{ importId: string; locked: boolean } | null>(null)
+  const onSubmissionLock = useCallback((importId: string, locked: boolean) => setSubmissionGate(previous => previous?.importId === importId && previous.locked === locked ? previous : { importId, locked }), [])
+  const refreshSubmission = useCallback(async () => { await workflow.refresh() }, [workflow])
+  const apiSubmission = role === 'STAFF' && !config.mockPreview && !devOwnerReview
+  const submissionLocked = apiSubmission && state.tab === 'mapping' && (submissionGate?.importId !== state.batch?.import_id || submissionGate?.locked)
+  const locked = parentBusy || parentStale || !!state.retryOperation || approval.status === 'waiting' || approvalBusy || !!submissionLocked
   const approvalImportId = state.batch?.import_id
   useEffect(() => {
     if (!devOwnerReview || role !== 'STAFF' || !approvalImportId) return
@@ -63,6 +76,8 @@ export function ImportFlow({ initialEditor, initialSubmit, readinessPreview, onB
   }, [approval, approvalBusy, approvalError, refreshApproval])
   useEffect(()=>{if(previousRetry.current&& !state.retryOperation && !state.error && state.notice.startsWith('Đã xác nhận cách hiểu')){setLastSaved(category);setCategory(null)}previousRetry.current=state.retryOperation},[state.retryOperation,state.error,state.notice,category])
   const busy = state.busy || parentBusy
+  // A complete spec may include deterministic RULE candidates awaiting grouped approval.
+  const hasReviewableProfile = state.summary?.profile_proposals.some(proposal => !!proposal.spec && !proposal.missing_fields.length)
   const previewBlocked = state.preview?.preview.summary.validation_status === 'blocked' || !!state.preview?.preview.summary.blockers.length
   const previewInvalid = state.previewStale || !!state.preview?.preview.stale || previewBlocked
   useEffect(() => {
@@ -71,7 +86,7 @@ export function ImportFlow({ initialEditor, initialSubmit, readinessPreview, onB
   const options = { ...state.mappingOptions, ...(state.options && (state.optionsMappingId || state.selectedSheetId) ? { [state.optionsMappingId ?? state.selectedSheetId!]: state.options } : {}) }
   const tabs: { key: ImportFlowTab; label: string; available: boolean }[] = [
     { key: 'mapping', label: '3. Kiểm tra cách hiểu', available: !!state.summary },
-    ...(role === 'OWNER' ? [{ key: 'profile' as const, label: '4. Duyệt reusable profile', available: !!state.summary && !state.summary.progress.unresolved }] : []),
+    ...(role === 'OWNER' ? [{ key: 'profile' as const, label: '4. Duyệt reusable profile', available: !!state.summary && (!!hasReviewableProfile || !state.summary.progress.unresolved) }] : []),
     { key: 'preview', label: `${role === 'OWNER' ? 5 : 4}. Xem trước dữ liệu`, available: !!state.summary?.can_preview || !!state.preview || !!state.job && state.job.operation !== 'import_analyze' },
     { key: 'review', label: '5. Kiểm tra + xác nhận ghi', available: previewCanContinue(state) },
     { key: 'result', label: '6. Hoàn tất', available: !!state.completion },
@@ -108,15 +123,16 @@ export function ImportFlow({ initialEditor, initialSubmit, readinessPreview, onB
       {role === 'STAFF' && approval.status === 'approved' && <section className="input-status"><strong>Cách đọc đã được Owner duyệt</strong><p>Bạn có thể tiếp tục kiểm tra dữ liệu. Approval không có nghĩa dữ liệu đã được import.</p></section>}
       {approvalError && !submitOpen && <p className="input-status" role="alert"><span>{approvalError}</span><button disabled={approvalBusy} onClick={() => { void refreshApproval() }}>Thử đọc lại quyết định</button></p>}
       {!!state.summary.blockers.filter(issue => issue.code !== 'OWNER_MAPPING_APPROVAL_REQUIRED').length && <section className="input-status" role="alert">{state.summary.blockers.filter(issue => issue.code !== 'OWNER_MAPPING_APPROVAL_REQUIRED').map((issue,i) => <p key={issue.code+i}>{importMessage(issue.code,issue.message)}</p>)}</section>}
+      {apiSubmission && state.batch && <ImportSubmissionLifecycle key={state.batch.import_id} batch={state.batch} summary={state.summary} disabled={busy || parentStale || !!state.retryOperation} canPropose={canProposeMapping} onLock={onSubmissionLock} onRefresh={refreshSubmission} />}
       <ImportResolveOverview summary={state.summary} queue={state.queue} busy={busy||locked} lastSaved={lastSaved} onOpen={group=>{setCategory(group);void workflow.setFilter('all',false)}}/>
       {category&&<ImportResolveDrawer group={category} role={role} summary={state.summary} queue={state.queue} options={options} sheetId={state.selectedSheetId} storeId={state.batch?.store_id??''} busy={busy} locked={locked} canPropose={canProposeMapping&&!state.batch?.active_job_id} error={state.error} saving={busy&&['mapping','resolution'].includes(state.savingOperation??'')} pending={!!state.retryOperation} onRetry={()=>{void workflow.checkPendingState()}} onReload={()=>{void workflow.refresh()}} reviewOnly={state.reviewOnly} onFilter={unresolved=>{void workflow.setFilter('all',unresolved)}}
         onClose={()=>{if(!busy&&!locked)setCategory(null)}} onSheet={id=>{void workflow.selectSheet(id)}} onLoadMore={()=>{void workflow.loadMoreMappings()}}
         onConfirm={async(id,target)=>{await workflow.confirmMapping(id,target);const next=workflow.getSnapshot();const saved=!next.error&&!next.retryOperation;if(saved)setLastSaved(category);return saved}}
         onResolve={async(id,resolution)=>{await workflow.resolveMapping(id,resolution);const next=workflow.getSnapshot();const saved=!next.error&&!next.retryOperation;if(saved)setLastSaved(category);return saved}}/>}
-      <ImportActionBar back={onBackToAnalyze} note={state.summary.progress.unresolved?'Giải quyết vấn đề còn lại trước khi tiếp tục.':undefined}>
-        {role === 'OWNER' ? <button className="input-primary" disabled={busy || locked || !!state.summary.progress.unresolved} onClick={() => { if(state.summary?.can_preview && !state.summary.profile_proposals.length) void workflow.startPreview(); else workflow.setTab('profile') }}>{state.summary.can_preview && !state.summary.profile_proposals.length ? 'Tạo Preview' : 'Xem profile sẽ được lưu'}</button> : state.summary.can_preview ? <button className="input-primary" disabled={busy || locked} onClick={() => { void workflow.startPreview() }}>Tạo Preview</button> : !!state.summary.profile_proposals.length && <button className="input-primary" disabled={busy || locked || !!state.summary.progress.unresolved || state.summary.profile_proposals.some(p => !p.spec || !!p.missing_fields.length)} onClick={() => setSubmitOpen(true)}>{devOwnerReview ? 'Gửi Owner duyệt' : 'Bàn giao cho Owner'}</button>}
+      <ImportActionBar back={onBackToAnalyze} note={state.summary.progress.unresolved&&!hasReviewableProfile?'Giải quyết vấn đề còn lại trước khi tiếp tục.':undefined}>
+        {role === 'OWNER' ? <button className="input-primary" disabled={busy || locked || (!hasReviewableProfile && !!state.summary.progress.unresolved)} onClick={() => { if(state.summary?.can_preview && !state.summary.profile_proposals.length) void workflow.startPreview(); else workflow.setTab('profile') }}>{state.summary.can_preview && !state.summary.profile_proposals.length ? 'Tạo Preview' : 'Xem profile sẽ được lưu'}</button> : state.summary.can_preview ? <button className="input-primary" disabled={busy || locked} onClick={() => { void workflow.startPreview() }}>Tạo Preview</button> : (devOwnerReview || config.mockPreview) && !!state.summary.profile_proposals.length && <button className="input-primary" disabled={busy || locked || state.summary.profile_proposals.some(p => !p.spec || !!p.missing_fields.length)} onClick={() => setSubmitOpen(true)}>{devOwnerReview ? 'Gửi Owner duyệt' : 'Bàn giao cho Owner'}</button>}
       </ImportActionBar>
-      {submitOpen && <FlowDialog title={devOwnerReview ? 'Gửi thay đổi để Owner duyệt?' : 'Bàn giao cách đọc cho Owner'} center onClose={() => { if (!approvalBusy) setSubmitOpen(false) }} closeDisabled={approvalBusy} footer={<><button disabled={approvalBusy} onClick={() => setSubmitOpen(false)}>Hủy</button>{devOwnerReview ? <button className="sc-flow-primary" disabled={approvalBusy || busy} onClick={async () => {
+      {submitOpen && (devOwnerReview || config.mockPreview) && <FlowDialog title={devOwnerReview ? 'Gửi thay đổi để Owner duyệt?' : 'Bàn giao cách đọc cho Owner'} center onClose={() => { if (!approvalBusy) setSubmitOpen(false) }} closeDisabled={approvalBusy} footer={<><button disabled={approvalBusy} onClick={() => setSubmitOpen(false)}>Hủy</button>{devOwnerReview ? <button className="sc-flow-primary" disabled={approvalBusy || busy} onClick={async () => {
         if (!state.batch || !state.summary) return
         setApprovalBusy(true)
         try { const next = await devOwnerReview.submit(state.batch.import_id, state.summary.profile_proposals[0].proposal_revision); setApproval(next); setSubmitOpen(false); setApprovalError(null) }
@@ -144,7 +160,7 @@ export function ImportFlow({ initialEditor, initialSubmit, readinessPreview, onB
     {state.batch?.status !== 'committing' && state.retryOperation !== 'commit' && !previewInvalid && !commitFailed && ['preview','review'].includes(state.tab) && (state.preview ? <ImportPreview onBack={()=>workflow.setTab('preview')} showStaleNotice={false} key={state.preview.preview.summary.preview_id} mapping={state.summary} stage={state.tab === 'review' ? 'review' : 'preview'} bundle={state.preview} busy={busy} locked={locked || state.tab === 'review' && (!previewCanContinue(state)||!!state.error&&state.fault?.kind!=='system')} blockers={state.commitBlockers} reason={state.commitReason} acknowledged={state.commitAcknowledged}
       reviewReason={state.reviewReason} reviewAcknowledged={state.reviewAcknowledged} reviewBlockers={state.reviewBlockers}
       onReviewReason={workflow.setReviewReason} onReviewAcknowledge={workflow.acknowledgeReview} onConfirmReview={() => { void workflow.confirmReview() }}
-      resolutions={state.resolutions} supplierChanges={state.supplierChanges} onResolutions={workflow.setResolutions} onSupplierChanges={workflow.setSupplierChanges}
+      historyCorrections={state.historyCorrections} onHistoryCorrections={workflow.setHistoryCorrections} resolutions={state.resolutions} supplierChanges={state.supplierChanges} onResolutions={workflow.setResolutions} onSupplierChanges={workflow.setSupplierChanges}
       onReason={workflow.setCommitReason} onAcknowledge={workflow.acknowledgeCommit} onLoadMore={() => { void workflow.loadMorePreview() }} onCommit={() => { void workflow.commit() }} /> : <section className="import-flow__card"><p>Chưa có dữ liệu nào được ghi vào ShelfCash.</p><button type="button" disabled={busy || locked || !state.summary?.can_preview} onClick={() => { void workflow.startPreview() }}>Tạo bản xem trước</button></section>)}
     {state.tab === 'preview' && state.preview && !previewInvalid && !commitFailed && state.retryOperation !== 'commit' && state.batch?.status !== 'committing' && <ImportActionBar back={()=>workflow.setTab('mapping')}><button type="button" className="input-primary" disabled={busy || locked || !previewCanContinue(state)} onClick={() => workflow.setTab('review')}>Tiếp tục xác nhận</button></ImportActionBar>}
     {state.completion && state.tab !== 'result' && <p><button type="button" className="import-flow__primary" disabled={busy} onClick={() => workflow.setTab('result')}>Xem biên nhận hoàn tất</button></p>}

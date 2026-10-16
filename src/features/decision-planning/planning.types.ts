@@ -35,7 +35,7 @@ export type PlanningReasonsResponse = WireExplanationEnvelope
 /** Retained projection endpoints only. Store IDs are guards, never read filters. */
 export type PlanningDataSource = {
   context(storeId: string, signal?: AbortSignal): Promise<PlanningContextResponse>
-  readiness(storeId: string, forecastStartDate: string, signal?: AbortSignal): Promise<PlanningReadinessResponse>
+  readiness(storeId: string, forecastStartDate: string, signal?: AbortSignal, request?: PlanningRequest): Promise<PlanningReadinessResponse>
   create(storeId: string, intent: PlanningIntent, signal?: AbortSignal): Promise<PlanningAcceptedResponse>
   read(storeId: string, runId: string, signal?: AbortSignal): Promise<PlanningRunResponse>
   ingredients(storeId: string, runId: string, query: { optionId?: string; cursor?: string }, signal?: AbortSignal): Promise<PlanningIngredientsResponse>

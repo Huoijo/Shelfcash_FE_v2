@@ -14,14 +14,14 @@ const render = (component, props = {}) => renderToStaticMarkup(createElement(com
 const at = '2026-10-11T01:00:00Z'
 const store = { store_id: PLANNING_FIXTURE_IDS.store, name: 'Quán QA — Store A', timezone: 'Asia/Ho_Chi_Minh', currency: 'VND', role: 'OWNER',
   membership_id: 'd1000000-0000-4000-8000-000000000001', authorization_version: 'auth/1', active: true, server_now: at, as_of_date: '2026-10-11',
-  membership: { membership_id: 'd1000000-0000-4000-8000-000000000001', role: 'OWNER', authorization_version: 'auth/1', effective_permissions: ['menu.read'] }, permission_catalog_version: 'permissions-v2' }
+  membership: { membership_id: 'd1000000-0000-4000-8000-000000000001', role: 'OWNER', authorization_version: 'auth/1', effective_permissions: ['menu.read'] }, permission_catalog_version: 'permissions-v3' }
 const member = { membership_id: 'd1000000-0000-4000-8000-000000000002', user: { user_id: 'd1000000-0000-4000-8000-000000000003', display_name: 'Nhân viên QA', email: 'staff@example.com' },
   role: 'STAFF', active: true, grants: ['menu.read'], version: 'membership/1', updated_at: at }
 const catalog = [
   { key: 'menu.read', group: 'catalog', label_vi: 'Server Menu label', description_vi: 'Xem Menu và giá bán.', grantable_to_staff: true, required_with: [], exposure: 'ordinary' },
   { key: 'planning.run', group: 'planning', label_vi: 'Server run label', description_vi: 'Chạy kế hoạch.', grantable_to_staff: true, required_with: ['planning.context.read', 'procurement.cost.read'], exposure: 'cost' },
 ]
-const invitation = { invitation_id: 'd1000000-0000-4000-8000-000000000004', store_id: store.store_id, target_email: 'invited@example.com', role: 'STAFF', offered_grants: ['menu.read'], permission_catalog_version: 'permissions-v2',
+const invitation = { invitation_id: 'd1000000-0000-4000-8000-000000000004', store_id: store.store_id, target_email: 'invited@example.com', role: 'STAFF', offered_grants: ['menu.read'], permission_catalog_version: 'permissions-v3',
   version: 'invite/1', status: 'pending', issuer_user_id: 'd1000000-0000-4000-8000-000000000005', created_at: at, issued_at: at, expires_at: '2026-10-18T01:00:00Z', accepted_at: null, revoked_at: null,
   reason: 'Mời nhân viên QA', delivery_status: 'queued' }
 const permissionProps = { member, catalog, canEdit: true, busy: false, onSave: noop, onClose: noop }
@@ -150,7 +150,7 @@ test('required_with produces guidance only, never adds permissions or uses proto
 })
 
 test('invitation form fixes Staff role, no preselected grants and no token or account-existence disclosure', () => {
-  const html = render(StaffInviteDrawer, { catalog, catalogVersion: 'permissions-v2', canInvite: true, busy: false, onSend: noop, onClose: noop })
+  const html = render(StaffInviteDrawer, { catalog, catalogVersion: 'permissions-v3', canInvite: true, busy: false, onSend: noop, onClose: noop })
   for (const label of ['Mời nhân viên', 'Email', 'Vai trò', 'Quyền ban đầu', 'Lý do mời', 'Gửi lời mời']) assert.ok(html.includes(label), label)
   assert.match(html, /<select[^>]*disabled=""[^>]*><option value="STAFF" selected="">Staff/)
   assert.doesNotMatch(html, /type="checkbox"[^>]*checked=""|value="OWNER"|account_exists|invitation.token|localStorage/)
@@ -159,7 +159,7 @@ test('invitation form fixes Staff role, no preselected grants and no token or ac
 })
 
 test('invitation receipt reports canonical delivery status rather than fake membership success', () => {
-  const html = render(StaffInviteDrawer, { catalog, catalogVersion: 'permissions-v2', canInvite: true, busy: false, sent: invitation, onSend: noop, onClose: noop })
+  const html = render(StaffInviteDrawer, { catalog, catalogVersion: 'permissions-v3', canInvite: true, busy: false, sent: invitation, onSend: noop, onClose: noop })
   assert.match(html, /Đã tạo lời mời/)
   assert.match(html, /Đang chờ gửi email/)
   assert.match(html, /Gửi email chưa có nghĩa đã cấp quyền/)
@@ -167,7 +167,7 @@ test('invitation receipt reports canonical delivery status rather than fake memb
 })
 
 test('accepted invitation is terminal and offered grants never substitute current membership grants', () => {
-  const props = { invitation: { ...invitation, status: 'accepted', accepted_at: at }, catalog, catalogVersion: 'permissions-v2', canManage: true, busy: false, onAction: noop, onClose: noop }
+  const props = { invitation: { ...invitation, status: 'accepted', accepted_at: at }, catalog, catalogVersion: 'permissions-v3', canManage: true, busy: false, onAction: noop, onClose: noop }
   const html = render(InvitationActionDrawer, props)
   assert.match(html, /Đã chấp nhận/)
   assert.match(html, /không thể gửi lại hoặc thu hồi/)

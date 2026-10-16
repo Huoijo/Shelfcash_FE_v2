@@ -2,6 +2,9 @@ import { StoreActivityPage } from '../features/operations/StoreActivityPage'
 import { RecipeSchedulePage } from '../features/operations/RecipeSchedulePage'
 import { PlanningHistoryPage } from '../features/operations/PlanningHistoryPage'
 import { CredentialsPage, InvitationPage } from '../features/auth/OnboardingPages'
+import { RegistrationPage, VerificationPage, PasswordResetPage } from '../features/auth/AccountLifecycle'
+import { NotificationsPage } from '../features/notifications/NotificationsPage'
+import { MappingSubmissionsPage } from '../features/import-data/components/MappingSubmissionsPage'
 import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router'
 import { lazy, Suspense } from 'react'
 import { AppShell } from '../layouts/app-shell/AppShell'
@@ -13,7 +16,7 @@ import { ImportWorkspace } from '../pages/imports/ImportWorkspace'
 import { InventoryPage } from '../pages/inventory/InventoryPage'
 import { MenuPage } from '../pages/menu/MenuPage'
 import { HomePage } from '../pages/home/HomePage'
-import { UnderConstructionPage } from '../shared/UnderConstruction'
+import { TodayPage } from '../pages/today/TodayPage'
 
 const PlanningPage = lazy(() => import('../pages/forecast/PlanningPage').then((module) => ({ default: module.PlanningPage })))
 const StorePage = lazy(() => import('../pages/store/StorePage').then((module) => ({ default: module.StorePage })))
@@ -32,14 +35,18 @@ export function AppRouter() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginRoute />} />
+      <Route path="/register" element={<RegistrationPage />} />
+      <Route path="/email-verification" element={<VerificationPage />} />
+      <Route path="/password-reset" element={<PasswordResetPage />} />
       <Route path="/credentials/complete" element={<CredentialsPage />} />
       <Route path="/invitations/:invitationId" element={<InvitationPage />} />
       <Route element={<AuthGuard />}>
         <Route element={<StoreProvider><AppShell /></StoreProvider>}>
           <Route path="/store" element={<Suspense fallback={<p role="status">Đang tải Cửa hàng…</p>}><StorePage /></Suspense>} />
+          <Route path="/notifications" element={<NotificationsPage />} />
           <Route element={<StoreGate><Outlet /></StoreGate>}>
           <Route path="/store/activity" element={<StoreActivityPage />} />
-          <Route path="/today" element={<UnderConstructionPage feature="Hôm nay" />} />
+          <Route path="/today" element={<TodayPage />} />
           <Route path="/inventory" element={<InventoryPage />} />
           <Route path="/menu/recipe" element={<RecipeSchedulePage />} />
           <Route path="/menu" element={<MenuPage />} />
@@ -50,6 +57,7 @@ export function AppRouter() {
           <Route path="/imports" element={<ImportWorkspace />}>
             <Route index element={<ImportPage />} />
             <Route path="history" element={<ImportHistoryPage />} />
+            <Route path="approvals" element={<MappingSubmissionsPage />} />
           </Route>
           </Route>
         </Route>

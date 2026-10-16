@@ -125,9 +125,11 @@ export function validatePlanningAccepted(value: unknown): PlanningAcceptedRespon
   return response
 }
 
-export function validatePlanningReadiness(value: unknown, storeId: string, forecastStartDate: string): PlanningReadinessResponse {
+export function validatePlanningReadiness(value: unknown, storeId: string, forecastStartDate: string, request?: PlanningRequest): PlanningReadinessResponse {
   const response = envelope<PlanningReadinessResponse>('Envelope_Readiness_', value, 'R01 planning')
   const { data } = response
+  if (request && (data.planning_assessment?.input_scope !== "SUPPLIED_REQUEST" || data.planning_assessment.requirements_mode !== request.requirements_mode)) return invalid("R01 supplied request assessment", value)
+  if (!request && data.planning_assessment && data.planning_assessment.input_scope !== "DEFAULT_CONFIGURATION") return invalid("R01 default assessment", value)
   if (data.store_id !== storeId || data.evaluated_forecast_start_date !== forecastStartDate || data.cutoff_date !== shiftPlanningDate(forecastStartDate, -1) ||
     data.actions.length !== 1 || data.actions[0].action !== 'planning' || data.actions.some((action) => action.can_execute !== (action.availability === 'ready') ||
       (action.can_execute && (action.data_status !== 'valid' || action.execution_status !== 'available' || action.blockers.length > 0)))) return invalid('R01 planning scope/date', value)

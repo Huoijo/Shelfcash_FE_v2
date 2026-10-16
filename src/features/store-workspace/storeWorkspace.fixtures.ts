@@ -28,9 +28,10 @@ const at = '2026-10-11T01:00:00Z'
 const clone = <T,>(value: T): T => structuredClone(value)
 const envelope = <T,>(data: T) => ({ data: clone(data), meta: { request_id: 'synthetic-store-workspace' }, error: null })
 
-/** Catalogue key set matches permissions-v2; wording is explicitly synthetic QA copy. */
+/** Catalogue key set matches permissions-v3; wording is explicitly synthetic QA copy. */
 export function storeWorkspaceCatalogueFixture(): PermissionDescriptor[] {
   const groups: Record<string, string[]> = {
+    'Lịch sử nghiệp vụ': ['calendar.read', 'calendar.write', 'usage.history.read', 'usage.history.write', 'purchase.history.read', 'purchase.history.write'],
     'Menu': ['ingredient.read', 'ingredient.create', 'menu.read', 'product.create', 'recipe.read', 'recipe.create_version', 'recipe.manage_effectivity'],
     'Kho': ['inventory.read', 'inventory.receive', 'inventory.count.correct', 'procurement.cost.read'],
     'Bán hàng': ['sales.read', 'sales.record', 'sales.correct', 'sales.merge'],
@@ -61,14 +62,14 @@ export function storeWorkspaceStaffFixture(overrides: Partial<StaffMembership> =
 export function storeWorkspaceMembershipsFixture(): MembershipsResponse {
   return { data: { items: [storeWorkspaceStaffFixture(), storeWorkspaceStaffFixture({ membership_id: ids.inactiveStaff,
     user: { user_id: ids.inactiveUser, email: 'inactive-qa@example.invalid', display_name: 'Nhân viên ngừng hoạt động · DEV/QA' },
-    active: false, grants: [], version: 'synthetic-inactive/1' })], permission_catalog_version: 'permissions-v2', permission_catalog: storeWorkspaceCatalogueFixture() },
+    active: false, grants: [], version: 'synthetic-inactive/1' })], permission_catalog_version: 'permissions-v3', permission_catalog: storeWorkspaceCatalogueFixture() },
     meta: { request_id: 'synthetic-n12', pagination: { limit: 50, next_cursor: null, total_count: 2 } }, error: null }
 }
 export function storeWorkspaceInvitationFixture(overrides: Partial<Invitation> = {}): Invitation {
   return clone({ invitation_id: ids.invitation, store_id: ids.store, target_email: 'invite-qa@example.invalid', role: 'STAFF',
-    offered_grants: ['menu.read'], permission_catalog_version: 'permissions-v2', version: 'synthetic-invitation/1', status: 'pending',
+    offered_grants: ['menu.read'], permission_catalog_version: 'permissions-v3', version: 'synthetic-invitation/1', status: 'pending',
     issuer_user_id: ids.issuer, created_at: at, issued_at: at, expires_at: '2026-10-18T01:00:00Z', accepted_at: null,
-    revoked_at: null, reason: 'Lời mời minh họa DEV/QA', delivery_status: 'queued', ...overrides })
+    revoked_at: null, declined_at: null, reason: 'Lời mời minh họa DEV/QA', delivery_status: 'queued', ...overrides })
 }
 export function storeWorkspaceBudgetFixture(overrides: Partial<StoreBudget> = {}): StoreBudget {
   return { amount: '1000000', currency: 'VND', version: 'synthetic-cap/1', updated_at: at, ...overrides }
@@ -120,7 +121,7 @@ export function createMockStoreWorkspaceDataSource(): StoreWorkspaceDataSource {
     async memberships(storeId, query = {}, signal) {
       const current = state(storeId, signal), filter = query.active ?? 'all'
       const response = page(current.members.filter((item) => filter === 'all' || item.active === (filter === 'true')), query, `${storeId}:members:${filter}`, current.revision)
-      return { ...response, data: { ...response.data, permission_catalog_version: 'permissions-v2', permission_catalog: storeWorkspaceCatalogueFixture() } }
+      return { ...response, data: { ...response.data, permission_catalog_version: 'permissions-v3', permission_catalog: storeWorkspaceCatalogueFixture() } }
     },
     async replacePermissions(storeId, membershipId, intent, signal) {
       const current = state(storeId, signal)

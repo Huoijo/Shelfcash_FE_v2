@@ -128,7 +128,7 @@ function MappingCard({ issue, options, busy, readBusy, onLoadOptions, onConfirm,
   const [target, setTarget] = useState<string | null>(null)
   const reducedMotion = useReducedMotion()
   const suggested = issue.suggested_target_field ?? issue.target_field ?? ''
-  const value = target ?? (options?.options.some((option) => option.key === suggested && option.available && option.support === 'supported') ? suggested : '')
+  const value = target ?? (options?.options.some((option) => option.key === suggested && option.available && option.support !== 'unsupported') ? suggested : '')
   const selected = options?.options.find((option) => option.key === value)
   const id = `mapping-${issue.mapping_id}`
   return <motion.article className="import-flow__issue" aria-labelledby={`${id}-title`}
@@ -147,8 +147,8 @@ function MappingCard({ issue, options, busy, readBusy, onLoadOptions, onConfirm,
       <label htmlFor={`${id}-target`}>Ghép với trường ShelfCash
         <select id={`${id}-target`} value={value} disabled={busy || !options} onFocus={() => { if (!options && !readBusy) onLoadOptions() }} onChange={(event) => setTarget(event.target.value)}>
           <option value="">{options ? 'Chọn trường ShelfCash' : 'Đang tải danh sách trường…'}</option>
-          {options?.options.map((option) => <option key={option.key} value={option.key} disabled={!option.available || option.support !== 'supported'}>
-            {option.label || businessField(option.key)}{option.key === issue.suggested_target_field ? ' · Đề xuất' : ''}{!option.available || option.support !== 'supported' ? ' · Không khả dụng' : ''}
+          {options?.options.map((option) => <option key={option.key} value={option.key} disabled={!option.available || option.support === 'unsupported'}>
+            {option.label || businessField(option.key)}{option.key === issue.suggested_target_field ? ' · Đề xuất' : ''}{!option.available || option.support === 'unsupported' ? ' · Không khả dụng' : ''}
           </option>)}
         </select>
       </label>
@@ -159,7 +159,7 @@ function MappingCard({ issue, options, busy, readBusy, onLoadOptions, onConfirm,
         {issue.issue_type === 'column' && <ImportResolutionEditor issue={issue} options={options} disabled={busy} onResolve={onResolve} />}
         <Evidence value={{ issue_type: issueLabels[issue.issue_type], code: issue.code, resolution_origin: issue.resolution_origin, mapping_id: issue.mapping_id, sheet_id: issue.sheet_id, source_location: issue.source_location, profile_ref: issue.profile_ref, resolution: issue.resolution, resolved_by: issue.resolved_by }} label="Chi tiết ghép dữ liệu" />
       </details>
-      {issue.issue_type === 'column' && <button className="import-flow__primary" type="button" disabled={busy || !selected?.available || selected.support !== 'supported'} onClick={() => onConfirm(value)}>Xác nhận</button>}
+      {issue.issue_type === 'column' && <button className="import-flow__primary" type="button" disabled={busy || !selected?.available || selected.support === 'unsupported'} onClick={() => onConfirm(value)}>Xác nhận</button>}
     </div>
     {issue.issue_type !== 'column' && <>
       {!options && <button type="button" disabled={readBusy} onClick={onLoadOptions}>Tải lựa chọn xử lý</button>}

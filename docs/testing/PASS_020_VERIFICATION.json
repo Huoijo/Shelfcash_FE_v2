@@ -1,0 +1,1506 @@
+{
+  "date": "2026-10-16",
+  "head": "2d43d9d0fbf02b06b73a04d37e231c93ba1e7b1b",
+  "workspace": "Existing dirty user checkout retained; no commit/push. This receipt fingerprints current src, not attribution of the entire dirty diff.",
+  "sourceFingerprintAlgorithm": "SHA256 of compact sort_keys JSON array [{path,sha256}] for every sorted file under src.",
+  "sourceFingerprint": "bb80015c703a17a24ab7e23436a110c26d4a8e71a3f23dd00aac43aa395ac149",
+  "sourceFiles": [
+    {
+      "path": "src/app/App.tsx",
+      "sha256": "f68fec711a0f540b6a614120e688f199f683e27cdf374297b8cce3030ac82ae2"
+    },
+    {
+      "path": "src/app/AppRouter.tsx",
+      "sha256": "955b7655f7b9641484f685f53cbb84c02fa42df0aba368fd878f5c1b0e77761a"
+    },
+    {
+      "path": "src/app/config.ts",
+      "sha256": "e7a4650560161e9e28f67ab04d0a620fc9f61c4ca7a9a90453dc7acdbe76734c"
+    },
+    {
+      "path": "src/features/auth/AccountLifecycle.tsx",
+      "sha256": "6a86506e1d7b5bb71e6a3f68eb1365284810174abe66c0bef3748520cc3d53b6"
+    },
+    {
+      "path": "src/features/auth/AuthGuard.tsx",
+      "sha256": "e229b0d908c36209d5d7486a0efe74c015717dad2eb3005d4b48e22501c63ac2"
+    },
+    {
+      "path": "src/features/auth/AuthProvider.tsx",
+      "sha256": "b3e345d95679e41dc473a0e468eb493b69747e35ae292e32a29997a29d79aa5b"
+    },
+    {
+      "path": "src/features/auth/InvitationDecline.tsx",
+      "sha256": "c97f2dc5acdd5f56c838fdeb9df9d828723418364417734d03912e8b59cc234a"
+    },
+    {
+      "path": "src/features/auth/LoginForm.css",
+      "sha256": "e0a6d166356b2955a66d8a45c59acf6808f48e383d0dffb890c717dbf0601ee0"
+    },
+    {
+      "path": "src/features/auth/LoginForm.tsx",
+      "sha256": "b5d81f69be675cc8d41dca82d88b92fc01da367b77de7209ac7af67044921338"
+    },
+    {
+      "path": "src/features/auth/OnboardingPages.css",
+      "sha256": "ac2da35c82a1f5f112a7ea484637d0043703e8534f533c6b936f592da6e3025f"
+    },
+    {
+      "path": "src/features/auth/OnboardingPages.tsx",
+      "sha256": "09568afb0bdbb8b53e98bbf01cb2000444e53de258dad4ef60dd37f404008a5b"
+    },
+    {
+      "path": "src/features/auth/SessionActions.tsx",
+      "sha256": "327efddc10bb91500327ff576050e865bc111b7ac21e62ebe9cb10daac0d8a9c"
+    },
+    {
+      "path": "src/features/auth/SessionFeedback.css",
+      "sha256": "d6671791e12711f0f10d744bfc99692ad231032acf3a4ac5d53bc2a99e2f2bde"
+    },
+    {
+      "path": "src/features/auth/auth.context.ts",
+      "sha256": "896c0933b9be0397726b3e2c763befce341780980ee24593667d984e36adbefb"
+    },
+    {
+      "path": "src/features/auth/auth.data.ts",
+      "sha256": "d9c4a2d2ebeaa188cec0852f6b28eaede73233755c0eb9c3f0e3bf83c5eb9f55"
+    },
+    {
+      "path": "src/features/auth/auth.navigation.ts",
+      "sha256": "0f2af2afddb29585ab375e0ebaebb0133589fc9eb86a1262c70325422c378578"
+    },
+    {
+      "path": "src/features/auth/auth.types.ts",
+      "sha256": "f613acb771f9f5ae472a771ec2c89d71ecac3e0861c1ca51fd6e0ad56d419b75"
+    },
+    {
+      "path": "src/features/auth/auth.validation.ts",
+      "sha256": "20ebde2092c1f1c4f24adb4dc49106473515946c51f2b1a06604f0404c3fdb3f"
+    },
+    {
+      "path": "src/features/auth/invitationProof.ts",
+      "sha256": "f03d27d07b3d1717ae57de86195bea454158a8a1b06d5f49a41d1c7daae3e17c"
+    },
+    {
+      "path": "src/features/backend-capabilities/capabilities.data.ts",
+      "sha256": "4b9088bd74d0a27c5e66264aaa22e3f6244e485de86f7003cbf9a4ab49b7ad28"
+    },
+    {
+      "path": "src/features/backend-capabilities/capabilities.react.ts",
+      "sha256": "fb5b7c42bad1db47661cf231e29c14880a90e5e39e799dfe899614a4f5a526e4"
+    },
+    {
+      "path": "src/features/backend-capabilities/capabilities.state.ts",
+      "sha256": "e301c86f63724ce4f2b56749e3842db3dd66f95cdbcaeaac30d136540b7d759a"
+    },
+    {
+      "path": "src/features/backend-capabilities/capabilities.validation.ts",
+      "sha256": "dc7580b4cace5f925b1131744066bb60d2248a44d0349124f67844ea81748eaf"
+    },
+    {
+      "path": "src/features/backend-capabilities/capabilities.wire.ts",
+      "sha256": "9f3aa254fccc8c0c03f0f504e220c2b92b5ca7f6d0ac4007285353045c3e1657"
+    },
+    {
+      "path": "src/features/backend-capabilities/index.ts",
+      "sha256": "83f84c153427eb788bbaf1f8500b0ee34669ff27acc33d9437ad92e0fad326be"
+    },
+    {
+      "path": "src/features/decision-planning/components/Planning.css",
+      "sha256": "fcf451a0d08cdf8dff42e3412b36935f4fd77a8a0e56c0502cf568e3916b3892"
+    },
+    {
+      "path": "src/features/decision-planning/components/PlanningEvidence.tsx",
+      "sha256": "60094319b35b78b992ea9544d0884a21a97a3954f41db78bee2d6047695a0ed7"
+    },
+    {
+      "path": "src/features/decision-planning/components/PlanningLifecycle.tsx",
+      "sha256": "c1e3ed0a1e7478e75b04f6f59e378d16c929f18bd69c9b236309cf316c12a87a"
+    },
+    {
+      "path": "src/features/decision-planning/components/PlanningResults.tsx",
+      "sha256": "9c3e8bcc443081bfd121c9e4ecb07c8063f6caa3a283edf875ffea7c5be80560"
+    },
+    {
+      "path": "src/features/decision-planning/components/PlanningSetup.tsx",
+      "sha256": "4a2e90dff84493ab77596e581e08ed0710c10688b83eff8acb20c09dfe2105f2"
+    },
+    {
+      "path": "src/features/decision-planning/planning.data.ts",
+      "sha256": "27b3e647f05a11647ab904d6c47056fdbde56c8292cd1cd065c981072157c9c2"
+    },
+    {
+      "path": "src/features/decision-planning/planning.fixtures.ts",
+      "sha256": "4fc4d93427da24667feb335ad4804b213219c0af65c251f708f7c27786fc2013"
+    },
+    {
+      "path": "src/features/decision-planning/planning.format.ts",
+      "sha256": "225773c5f86a488180a1d7c3306f356b5ed7a853221db08a78961996ceee53f4"
+    },
+    {
+      "path": "src/features/decision-planning/planning.types.ts",
+      "sha256": "5f6c182ff3e320668bfa6a2e97d0954c62bb431d3d46d55a885023f8ec04b5bf"
+    },
+    {
+      "path": "src/features/decision-planning/planning.validation.ts",
+      "sha256": "9504bf31dc275c1624575407af8b9e9b63d1fd735e65b7d17a76c577bd97e3fb"
+    },
+    {
+      "path": "src/features/decision-planning/planning.wire.ts",
+      "sha256": "9bd7ad8f3cb805c49d69e58692278a249abbfd3b93dd772ad5bf281bcf60fd94"
+    },
+    {
+      "path": "src/features/decision-planning/planning.workflow.ts",
+      "sha256": "1fcde1fd92fce04a625f27062aaa22c221a648d8b1a923ce5140d7a6c1018f10"
+    },
+    {
+      "path": "src/features/import-data/components/ImportActionBar.tsx",
+      "sha256": "3a11e18516b761700a4bd2849be9a43264947186e5b8893801b0b768bcdfd6db"
+    },
+    {
+      "path": "src/features/import-data/components/ImportBatchPanel.css",
+      "sha256": "c61709f38fb3366bd06fb289144bc7a7224308e65b6a63cf02cd3fec9b465e81"
+    },
+    {
+      "path": "src/features/import-data/components/ImportBatchPanel.tsx",
+      "sha256": "fecca5ac721550b6b88273cb8503b134b7941156d3bac9321777ad6dab0bce27"
+    },
+    {
+      "path": "src/features/import-data/components/ImportBusinessFacts.tsx",
+      "sha256": "546b8bcc889c28e3efc11a04f8ee0759f36328d03e34de1b1c73fab65bef8da6"
+    },
+    {
+      "path": "src/features/import-data/components/ImportDomainReview.tsx",
+      "sha256": "2dd9cfb3841c8c2d9c83b3f27ccd46e5800dabc7f3fcb4ebad060a60310db173"
+    },
+    {
+      "path": "src/features/import-data/components/ImportExperience.tsx",
+      "sha256": "bf0684795624efdac6622090e1f4e01eefb9e4bdf3cb0d0bce8327167f6a88fa"
+    },
+    {
+      "path": "src/features/import-data/components/ImportFlow.css",
+      "sha256": "168e2ff619c6bdfa3bd8148783aeea369471dda6aa7f8edfa030371386349a7a"
+    },
+    {
+      "path": "src/features/import-data/components/ImportFlow.tsx",
+      "sha256": "fca1e815f692e2ebdade1b216af93b203678f219193bb7593a56b120ed66383d"
+    },
+    {
+      "path": "src/features/import-data/components/ImportGuardHelp.tsx",
+      "sha256": "c27e4a7114ba9b7d2e2107327121dd1daabc3674b714074af3cc99cf5f58973f"
+    },
+    {
+      "path": "src/features/import-data/components/ImportHelp.css",
+      "sha256": "b5c1e1a00492c02f79902994a46012cdab62ab473edf05a42866f9d94a2d5c51"
+    },
+    {
+      "path": "src/features/import-data/components/ImportHelp.tsx",
+      "sha256": "e59fd4cf26dcf12f00cbaf06f6cb3ad8c43c518d4660bf841c5fd3ec52204439"
+    },
+    {
+      "path": "src/features/import-data/components/ImportHistoryCorrections.tsx",
+      "sha256": "bdf8d24d21bce72cccdede045e7ae08cee42b4ce74727821dfd04fe5eec553e7"
+    },
+    {
+      "path": "src/features/import-data/components/ImportIdentityResolver.tsx",
+      "sha256": "da1cc730834e0e438b89de90ecb944f5f3091685914b144c3a7becb94a3a95e4"
+    },
+    {
+      "path": "src/features/import-data/components/ImportMapping.tsx",
+      "sha256": "8c77494a36d50ad58a0f1be928cf6a0db17e37ef1e1e6d36d94c140491fa1ceb"
+    },
+    {
+      "path": "src/features/import-data/components/ImportMutationStatus.tsx",
+      "sha256": "ed06cfe712103d6808a809538c41b6d5ba533c71fba0eccbee3d9dff564152f1"
+    },
+    {
+      "path": "src/features/import-data/components/ImportPreview.tsx",
+      "sha256": "7324f49e0ea379823d4b03b337cb9ca845c3ff101d90a1992315fd15c6315f11"
+    },
+    {
+      "path": "src/features/import-data/components/ImportPreviewExplorer.css",
+      "sha256": "5138f35f94f38fc445f59b092f35f52ae137d7b1349dc9e5aa5704053328d5c2"
+    },
+    {
+      "path": "src/features/import-data/components/ImportPreviewExplorer.tsx",
+      "sha256": "f3b670de49d2c10d7fd4ff12af5434311a232d2a0ae2d119901312ce244dbe5b"
+    },
+    {
+      "path": "src/features/import-data/components/ImportProcessing.tsx",
+      "sha256": "a4410f5714180a6ee8a49b584ce2710a6501114c6dc771890babe5ffc205cca2"
+    },
+    {
+      "path": "src/features/import-data/components/ImportProfileSpecification.tsx",
+      "sha256": "9b1f974fb54455f0a3d66fc9b33d0a470ee4afb51cee9af03bff3c293d9666cf"
+    },
+    {
+      "path": "src/features/import-data/components/ImportReadiness.tsx",
+      "sha256": "3a3eff09b849220e084a20a3d47aef0df82efd355335024d66f521357eacbe8c"
+    },
+    {
+      "path": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "sha256": "64b06900e8004e6461c0016077adb42db735db8dece15ce42f4af427020bcab0"
+    },
+    {
+      "path": "src/features/import-data/components/ImportResolve.css",
+      "sha256": "7508254efe161143c30fbc486a33f4c8c194717bf0b3d258edc497b3e2f7da41"
+    },
+    {
+      "path": "src/features/import-data/components/ImportResolveDrawers.tsx",
+      "sha256": "71261bffc03b1f31e160b99c5fddb53ae262a405119858b00e8e2d9235399446"
+    },
+    {
+      "path": "src/features/import-data/components/ImportResolveOverview.tsx",
+      "sha256": "fe34cbab4264b5d4746a0621aae62fe685979fbf57cc0670da3da41219a7a8bb"
+    },
+    {
+      "path": "src/features/import-data/components/ImportResolverForm.tsx",
+      "sha256": "354d17eaed61eaedb568cd11711875ce18395e85c9a789421f2baf3b0c75d8f3"
+    },
+    {
+      "path": "src/features/import-data/components/ImportResult.tsx",
+      "sha256": "6dcfd8f7470e411415ee45b0af894fabcb92891fd8becc450aec768def71df75"
+    },
+    {
+      "path": "src/features/import-data/components/ImportSourceContext.tsx",
+      "sha256": "6d9ea44eb8e10b69bb87608d2578d1cc9071c68f091a830a637dd152b5126732"
+    },
+    {
+      "path": "src/features/import-data/components/ImportStatus.tsx",
+      "sha256": "d558a0ffbc272653fddfe77d138dcaf173808944804c7392b959b37f232536c2"
+    },
+    {
+      "path": "src/features/import-data/components/ImportSubmissionLifecycle.tsx",
+      "sha256": "bb88bf9e2ceb6fa46185c323c4ba014935f1a8b5fb1c40020f75d00592cb5d1e"
+    },
+    {
+      "path": "src/features/import-data/components/ImportUpload.css",
+      "sha256": "c1235c001a5c59d4746a880697a453a930b3ba980c783a9e1a17b88aab9d834b"
+    },
+    {
+      "path": "src/features/import-data/components/ImportUpload.tsx",
+      "sha256": "236c2527fa5199ca66bb6032973fd510d72f81564334689ee2e714ab677bec70"
+    },
+    {
+      "path": "src/features/import-data/components/ImportUploadAdmission.tsx",
+      "sha256": "82c67c214b59808a7736024e42d8f3824839b131c88abb3d44a91329a5435f97"
+    },
+    {
+      "path": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "sha256": "155d37f821af497090293ebdceae3d0bee333c89a5bf7be4a32aab57786aa62c"
+    },
+    {
+      "path": "src/features/import-data/components/preview.labels.ts",
+      "sha256": "0ca92afbffab05e708a552ee644db97b76c5e04d0fc810ff849cdd032d8cf90f"
+    },
+    {
+      "path": "src/features/import-data/importCommitReason.ts",
+      "sha256": "3647016926d3793bca78683b342a3a2fa45fc1c12c412840787cf7f290aaa5cc"
+    },
+    {
+      "path": "src/features/import-data/importData.data.ts",
+      "sha256": "31b809f3011e99c0e8db8633c10b97da6a2f40f4de4e7a42d788a21e3a2bb2dd"
+    },
+    {
+      "path": "src/features/import-data/importData.files.ts",
+      "sha256": "808474846448a6750b0c6b9b4d2cdcc12fb4fa1df063224972aa65823f9dad8d"
+    },
+    {
+      "path": "src/features/import-data/importData.fixtures.ts",
+      "sha256": "7b5aa93f54e75fe19b36cc510f2953c3ee947fbeee141632d4ed92b52d7452f6"
+    },
+    {
+      "path": "src/features/import-data/importData.types.ts",
+      "sha256": "708e2baf72028b7c11938b799145d943ad32992a38b113a5269bbd9b9093859f"
+    },
+    {
+      "path": "src/features/import-data/importData.validation.ts",
+      "sha256": "1ef0fa66242e368111c53e744807d5519197c90d48c9a9c610c7ec663e6da1e2"
+    },
+    {
+      "path": "src/features/import-data/importData.workflow.ts",
+      "sha256": "136769178c23fbb25cda6482af70c55f71e730ffe8867fd55a9faff48f76f657"
+    },
+    {
+      "path": "src/features/import-data/importDomainReview.ts",
+      "sha256": "fa98514b06a42a739ee46296b3ae22b5c8ef4cfdf9b5cdcfde289903051063f2"
+    },
+    {
+      "path": "src/features/import-data/importEntitySearch.context.ts",
+      "sha256": "e6b5a30051e11a1bf2c77c3b25e1aa08639f5ee22c7dfd601af9cb6522bd1d07"
+    },
+    {
+      "path": "src/features/import-data/importEntitySearch.data.ts",
+      "sha256": "2a845779c92f30dae22b3951ac627c0d7a176f80564f6a267183d34e901d9b0b"
+    },
+    {
+      "path": "src/features/import-data/importExperience.ts",
+      "sha256": "4fab1ce7b42bc29404249a2cc5ff379c249538225fa26f205ea2a143a7b288cb"
+    },
+    {
+      "path": "src/features/import-data/importFlow.data.ts",
+      "sha256": "80e8efc395ceff27383939bf868dc552f37294090a837a749320f56257b50902"
+    },
+    {
+      "path": "src/features/import-data/importFlow.fixtures.ts",
+      "sha256": "e521830d5d7bcf7f139723de1f21345437ed15036e1fc2a21019234087bc39e4"
+    },
+    {
+      "path": "src/features/import-data/importFlow.locator.ts",
+      "sha256": "b416704af5852ceaaf291fe5b0d55112dd36b22e37e39bc0593f7a49be55d4c5"
+    },
+    {
+      "path": "src/features/import-data/importFlow.stage.ts",
+      "sha256": "2498be7db32aca046199a07ed72177fa7c5e64169c68f326f6f97f8410aea4b1"
+    },
+    {
+      "path": "src/features/import-data/importFlow.types.ts",
+      "sha256": "378e39f8daff671cd7b5556b09dba9a1f1de508219d12014ed02d1008947aa0c"
+    },
+    {
+      "path": "src/features/import-data/importFlow.validation.ts",
+      "sha256": "a68ba2ceaa300bcf6c7f42606a1b697b765327326bbc7f8858797d5b8897ab15"
+    },
+    {
+      "path": "src/features/import-data/importFlow.wire.ts",
+      "sha256": "132625cc482df37190eb465b2febef5c6bb808e3c8c53f92ccd55ab40f6779d1"
+    },
+    {
+      "path": "src/features/import-data/importFlow.workflow.ts",
+      "sha256": "8666162b093ab8727fbde3ec0b013aefdeb142a5167c17dddb2d8fb3d820f9b1"
+    },
+    {
+      "path": "src/features/import-data/importPresentation.ts",
+      "sha256": "c2b5b9a7cb6612c4434607a49646380b92558a98a25ab2b3b9e91b1604a819ad"
+    },
+    {
+      "path": "src/features/import-data/importReadiness.data.ts",
+      "sha256": "ec8ccec918fe6e3fc9331bad52c82d909e5765a3560ecbab0592f16bcc9ecde3"
+    },
+    {
+      "path": "src/features/import-data/importResolutionView.context.ts",
+      "sha256": "cf66058d7f7d40cd22422d22f1ad152ef182a1b23945c504c436141d8140e2c1"
+    },
+    {
+      "path": "src/features/import-data/importResolve.presentation.ts",
+      "sha256": "78487f0709dcd9cd5edcd62ae8b7bf01d97614920ad6981850ae954e6702f295"
+    },
+    {
+      "path": "src/features/import-data/importResolverForm.context.ts",
+      "sha256": "b7aa78634ec50b72774da17574b6f00e5b261c8052260982e38d17028d5ed812"
+    },
+    {
+      "path": "src/features/import-data/importSubmission.data.ts",
+      "sha256": "508d8c8fcfcbf639763b9860d6a925369fca230bd2eda679feb3a111261a6993"
+    },
+    {
+      "path": "src/features/import-data/importSubmission.policy.ts",
+      "sha256": "ec35c2d92fba3f5e34429f7f7e808eff70275c355b5cd43541a868088502879c"
+    },
+    {
+      "path": "src/features/import-history/components/ImportCalendar.tsx",
+      "sha256": "3b40de3193caa5b2c205a0cfdd7542fe7a10a040040b751557c492fd55bb6f25"
+    },
+    {
+      "path": "src/features/import-history/components/ImportHistoryList.tsx",
+      "sha256": "cf2e7a5bc088a2f264aea029a8f8e5adeb38dc8e410ab4a60d5909c51993b3e7"
+    },
+    {
+      "path": "src/features/import-history/importHistory.data.ts",
+      "sha256": "9c9e53a734826f51cb07f873a26249f662e63bcc3396abf3d12c861f0d40e9a9"
+    },
+    {
+      "path": "src/features/import-history/importHistory.fixtures.ts",
+      "sha256": "d48aeeed30905fd5b0b4a30cd546f46acb5ac83d4c1886fc7601fe3d0ae7fbb7"
+    },
+    {
+      "path": "src/features/import-history/importHistory.format.ts",
+      "sha256": "36d16fa7ff8970878e56a428a9d37158610ebe05b5e19de9f68616fa2b083510"
+    },
+    {
+      "path": "src/features/import-history/importHistory.types.ts",
+      "sha256": "345baa75e648ed2dcd7df98e23af4febf3a9421b4c81babebc60994430566925"
+    },
+    {
+      "path": "src/features/import-history/importHistory.validation.ts",
+      "sha256": "3e5cc2daacefb7d3669116b9effdfdb93fdfff08adecf158f7bf55404a232bac"
+    },
+    {
+      "path": "src/features/inventory/components/InventoryDetail.tsx",
+      "sha256": "f41265aa1316a392b205b2541378e1de954d193acd8d1c053a1daa6016713bdc"
+    },
+    {
+      "path": "src/features/inventory/components/InventoryTable.tsx",
+      "sha256": "29a968b95e8d3e8609a6db8c6cd72eca9db44922f639600a76ba70d7df53a1a6"
+    },
+    {
+      "path": "src/features/inventory/inventory.data.ts",
+      "sha256": "0adeb941a177405a686b5a3cf0160adf8e92c90f6d5eb515bf07e151461204d6"
+    },
+    {
+      "path": "src/features/inventory/inventory.fixtures.ts",
+      "sha256": "35eaf312158998fd57bbe5146835557e49b9c9e22c813166645e05f4c1b4d277"
+    },
+    {
+      "path": "src/features/inventory/inventory.format.ts",
+      "sha256": "de1733744d5ea210fd994c7cda0202f97c297b9f8640815efd4332b39d3cdf0c"
+    },
+    {
+      "path": "src/features/inventory/inventory.types.ts",
+      "sha256": "b4118002200cea6e2a2d404b59c24a5f75e0168b33e1fdd4994292ba608bc04f"
+    },
+    {
+      "path": "src/features/inventory/inventory.validation.ts",
+      "sha256": "b6a6489e34db37a854e76893877cf3e104d041e2043650c8175cf6a4ecba48e0"
+    },
+    {
+      "path": "src/features/menu/components/MenuDetail.tsx",
+      "sha256": "0537b70cd8d85429af3a34aed25b8a3a104ec67c467047318370648cfbb43995"
+    },
+    {
+      "path": "src/features/menu/components/MenuTable.tsx",
+      "sha256": "b557fa04ec396482a4b9961c4e437f307c3c5d0d4ea934df52f5a245d210a4cb"
+    },
+    {
+      "path": "src/features/menu/menu.data.ts",
+      "sha256": "4c922ae8b9d6a31bd3ae23825c4a68738b138959b81f2ad3708b575364afcd08"
+    },
+    {
+      "path": "src/features/menu/menu.fixtures.ts",
+      "sha256": "d628571ea8ad531b49753e3d0777120d131b29418098aff56e6fcfb9201750e5"
+    },
+    {
+      "path": "src/features/menu/menu.format.ts",
+      "sha256": "1391d75929a04020584b20249a78b89de838b176206cfee42e39f329fa2dbb8a"
+    },
+    {
+      "path": "src/features/menu/menu.types.ts",
+      "sha256": "8bccf9b42edabd1d9b0889820aa300d75eec897f21cdec2087f0d1aea94d307d"
+    },
+    {
+      "path": "src/features/menu/menu.validation.ts",
+      "sha256": "45f06a75e07db7d14c9fae65dc1b22232a18d96bebbb164b54cc2c913d0e3400"
+    },
+    {
+      "path": "src/features/mock/MockScenarioPicker.tsx",
+      "sha256": "4cc5c62636ab25324e49477e84d24e287c3854e2996b9634150443e82865ba40"
+    },
+    {
+      "path": "src/features/mock/mockRepository.ts",
+      "sha256": "0893dd89c028bf5b688d5c2084c504b67533d4ff31967385fdc07a0bea005b7f"
+    },
+    {
+      "path": "src/features/mock/mockSources.ts",
+      "sha256": "c8ceb89ea30280cd0795041e5d881874387f545f14e26dd7ce85afb6ecf68f39"
+    },
+    {
+      "path": "src/features/mock/scenarios.ts",
+      "sha256": "5d31dbb700dbcae0d2d57f4141624a76eb43af819f5e64cc3e9c6f57165a7c7c"
+    },
+    {
+      "path": "src/features/notifications/NotificationProvider.tsx",
+      "sha256": "bf9f6c1f2b6dee42bf5f77aab2ba112ccbb1986c3a75796bdebcfcdf7914af5c"
+    },
+    {
+      "path": "src/features/notifications/NotificationsPage.css",
+      "sha256": "6e46e58043aa34edbe952c316479f663beea2ca00d55d780f85b51cc6e81be9a"
+    },
+    {
+      "path": "src/features/notifications/NotificationsPage.tsx",
+      "sha256": "2246930dfb639626be9db674b195f5febfbee6a909506edb891c4884473e7c05"
+    },
+    {
+      "path": "src/features/notifications/notifications.context.ts",
+      "sha256": "5ea25bbcfe9368f0df27c0193f3b91d1ba9471e097f03b79dc67c0c798fd4b4b"
+    },
+    {
+      "path": "src/features/notifications/notifications.navigation.ts",
+      "sha256": "0c609adf934a7db26645cbe5a4b21d84e701a5abe25c657f2b9c89891ec43c98"
+    },
+    {
+      "path": "src/features/operations/IngredientPicker.css",
+      "sha256": "51b9f9d2ba1fff6b14f9e53a2413e75aae69779badc99aeb46c93548e99fca1a"
+    },
+    {
+      "path": "src/features/operations/IngredientPicker.tsx",
+      "sha256": "a5d17e11a51409e597b69070f74b9c54b838d9731a60bacddbd2c3c82bf2a8e5"
+    },
+    {
+      "path": "src/features/operations/InventoryActions.tsx",
+      "sha256": "decec429d673c505aea52f3f76d04887a00e354f168bbba93a6f73e4399b42d5"
+    },
+    {
+      "path": "src/features/operations/Operations.css",
+      "sha256": "1faabaeefd1daaffc5c94212afa170ff0dc8a962e1739bb2ac1d5e160559d022"
+    },
+    {
+      "path": "src/features/operations/PlanExport.tsx",
+      "sha256": "5c0d3a6129a036e66d965bbc5238b5f384e332ebac372853ab86798ede562bcd"
+    },
+    {
+      "path": "src/features/operations/PlanningHistoryPage.tsx",
+      "sha256": "4b3d12dfb99a2a401d186585e1e34f0063360e756c419b70c46c9ff8de197618"
+    },
+    {
+      "path": "src/features/operations/RecipeSchedulePage.tsx",
+      "sha256": "9f1ae1fb3374b9f9974358a436c4778e8da19c6b4d8d04c95c1f4f3c38499da4"
+    },
+    {
+      "path": "src/features/operations/RequirementsControls.tsx",
+      "sha256": "97c0a08b3c9055974ed3609c6f06ed1abaccbc9ec8b48cfd070853f5f0cc25b3"
+    },
+    {
+      "path": "src/features/operations/RetainedExports.tsx",
+      "sha256": "766058fb899be69869fd704802c94311589df4b1729058c93268c026ad737d11"
+    },
+    {
+      "path": "src/features/operations/StoreActivityPage.tsx",
+      "sha256": "603e31fec0c2ad69647ae8672c800554b8ad3bdf347b61e8baa99b58d19244ec"
+    },
+    {
+      "path": "src/features/operations/mutation.ts",
+      "sha256": "c820409479fb11ca7a95926f5a45cc6abd43e91aa714dbfdf3b3fd7fcba779f2"
+    },
+    {
+      "path": "src/features/operations/operations.data.ts",
+      "sha256": "a30668a6fcd44c625b7e728eeb026939ea3e013a31014673c33f88cb18c64598"
+    },
+    {
+      "path": "src/features/operations/operations.fixtures.ts",
+      "sha256": "b1d44ecc81ce1a32a7ebfa4739a4b898fa44f435fd68b88938160ce45e5bdf0e"
+    },
+    {
+      "path": "src/features/operations/operations.source.ts",
+      "sha256": "198e11f2dd4fd8021720c2695406af2f7e918675104cfd47e20b299528226dc2"
+    },
+    {
+      "path": "src/features/operations/operations.wire.ts",
+      "sha256": "97476afd39c7fda448ddfa51f548dc8070de9c801ecc0c1ba572b9cfb0827e68"
+    },
+    {
+      "path": "src/features/operations/useOperation.ts",
+      "sha256": "1ca2f035d16fa6699ac33ec802d670045639bb241ba6406c76454b80578dbdcc"
+    },
+    {
+      "path": "src/features/store/RequestedStore.tsx",
+      "sha256": "9d0696203a767b8ca0ff33bbae93aa96727c6baee95d8134d6f511ab50a866bb"
+    },
+    {
+      "path": "src/features/store/StoreBootstrap.css",
+      "sha256": "697557b9b4be190fc82d356dd78fd3cac0252cfd6db52c896b0e218372737009"
+    },
+    {
+      "path": "src/features/store/StoreBootstrap.tsx",
+      "sha256": "ff65d0011cb9b3220d55a64e079185c3fedb51b68b999001612e6dfb96a4fb05"
+    },
+    {
+      "path": "src/features/store/StoreProvider.tsx",
+      "sha256": "6f8e7fc8bf7dbc9c92afc52dbfaf6cbbba00b1db237ecec462ce38d25c1c4e04"
+    },
+    {
+      "path": "src/features/store/store.context.ts",
+      "sha256": "5aa4e3ec665278a5f533a53880c0f8e6219b128ce0c15f6e6f1b3db22d4d6d9a"
+    },
+    {
+      "path": "src/features/store/store.data.ts",
+      "sha256": "92aa4a81cb2ec21f50981690060bd829e33d17ed51cb2aa106288a60c4428bb6"
+    },
+    {
+      "path": "src/features/store/store.fixtures.ts",
+      "sha256": "6ae74d76af29dfc0575156e6615eb3d258d1a029bc4ad481de96ca0ad14a839a"
+    },
+    {
+      "path": "src/features/store/store.types.ts",
+      "sha256": "17188e407ba6f10419e1df5211c385d3348d94be4b41ba65c604d1695a1eda52"
+    },
+    {
+      "path": "src/features/store/store.validation.ts",
+      "sha256": "55852b10ebdabc83dee4e3840e22834af60db3223d8af4e06ef3b99ff9498b93"
+    },
+    {
+      "path": "src/features/store/store.workflow.ts",
+      "sha256": "f7e600abcffab530dd9b8236d80ea5162b5c8371e549485c0fd8c16f28bda127"
+    },
+    {
+      "path": "src/features/store-workspace/components/PermissionRequestNotice.tsx",
+      "sha256": "5a1737b713d650d6596c3b1e038f58c6ebb2ed4a6de1cd656796a9500bbc58f9"
+    },
+    {
+      "path": "src/features/store-workspace/components/PermissionRequests.tsx",
+      "sha256": "f466b28e0333a0a4543e780d779c684436f6580c0d08ae7c51fa5d8a54509066"
+    },
+    {
+      "path": "src/features/store-workspace/components/StoreMembers.tsx",
+      "sha256": "5972be81700e22bbf9b7e692100c71083fa540181dddf6df9df598b2a0bfe22d"
+    },
+    {
+      "path": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "sha256": "37337054b40c7fed0fe9db12c25be046992d16b38491d2e6ed5a6c1a04678a69"
+    },
+    {
+      "path": "src/features/store-workspace/components/StoreOverview.tsx",
+      "sha256": "d227cc165bda45216c63e8b57c142dea5f3d1239c2894311df7c6f51cc730134"
+    },
+    {
+      "path": "src/features/store-workspace/components/StoreWorkspace.css",
+      "sha256": "096fb7c0d368057a7edeb61a1ce7b094ef42040e43e3a64d5f7918bd06637948"
+    },
+    {
+      "path": "src/features/store-workspace/components/StoreWorkspaceChrome.tsx",
+      "sha256": "1b247b5945ace45f1535fe31cad28dd98d5cb08692c4c41d7af46c0c3bbbfbff"
+    },
+    {
+      "path": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "sha256": "1e17b11b3ec788cd326269f95b533c88e2149e0ddaf6f8be2af60f84a54f19b3"
+    },
+    {
+      "path": "src/features/store-workspace/components/index.ts",
+      "sha256": "a54a205867daa1d7883a315e5b1720c5c1321e0a3edb7053d00cb544e1af1df5"
+    },
+    {
+      "path": "src/features/store-workspace/storeWorkspace.data.ts",
+      "sha256": "8c6ca7210671b503391888b17013c68eee34e1b066e733752a94517a202a9cb3"
+    },
+    {
+      "path": "src/features/store-workspace/storeWorkspace.fixtures.ts",
+      "sha256": "9709dcd891601987a931d44b903a9ab00c9e3eaaba28855269dd298f2a0430d2"
+    },
+    {
+      "path": "src/features/store-workspace/storeWorkspace.format.ts",
+      "sha256": "609a2a837b52580832673a517ed207285b4b11b02918a90c036c8740783a3fe0"
+    },
+    {
+      "path": "src/features/store-workspace/storeWorkspace.types.ts",
+      "sha256": "84e2d97eb468ea63bdfaa1bab85bb12f4c183d022a75ba1788e4dc7d85042784"
+    },
+    {
+      "path": "src/features/store-workspace/storeWorkspace.validation.ts",
+      "sha256": "1fe18daae4f3e793da1cd2a11e05af6e1373044f2d4584aebbb2c22ac5cdcb7b"
+    },
+    {
+      "path": "src/features/store-workspace/storeWorkspace.wire.ts",
+      "sha256": "4e1891c59e4ab30b19f7ed73de969070798935f671c8cb1b95ad96b9a7adc42c"
+    },
+    {
+      "path": "src/features/store-workspace/storeWorkspace.workflow.ts",
+      "sha256": "3416d5211f8836641a0e3c233f4f766c0a1752d829e141d680948ff1200ac86f"
+    },
+    {
+      "path": "src/index.css",
+      "sha256": "23deed9881d352b2cd0ee0666baac20a3de988acfb8278e9b534cf48b95fb036"
+    },
+    {
+      "path": "src/layouts/app-shell/AppShell.css",
+      "sha256": "4789c121a62cca051e091092469eee77e99671e6f0a4290694bcd1a4690e5af9"
+    },
+    {
+      "path": "src/layouts/app-shell/AppShell.tsx",
+      "sha256": "f592df707556a5b96d1cb0294092f672ca323798bca36b90c1808dce895e7bde"
+    },
+    {
+      "path": "src/layouts/app-shell/Sidebar.tsx",
+      "sha256": "285e5dc56c2252b4106d5d33e14c2c69aaf07dd8793899f3b8968b49b4cb91e3"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "c08fd49e5b5b8f4880f2440407591ad436e716e72e0dc6ec5c0c3fe11f353a2f"
+    },
+    {
+      "path": "src/pages/forecast/PlanningPage.css",
+      "sha256": "f612f49352f994b8735bedb3977e2d19c95f0574ffdd098838ae0b9e44cb9db5"
+    },
+    {
+      "path": "src/pages/forecast/PlanningPage.tsx",
+      "sha256": "f2edcc9c1bc3d2fd2ec52162761e8532ee5a0203a3ee791387048563844b0988"
+    },
+    {
+      "path": "src/pages/home/HomePage.css",
+      "sha256": "a5d5897208af60880a2eaa80da8a560655df54b54092e3e7583d05db0e8b82ac"
+    },
+    {
+      "path": "src/pages/home/HomePage.tsx",
+      "sha256": "dfe02ffe76a2add80eb652447a31e312e3e1984eca06ac51f831e68e0b7c14a5"
+    },
+    {
+      "path": "src/pages/import-history/ImportHistoryPage.css",
+      "sha256": "26646ef8d92e9ff1294bcee87e59bd93131b4d0d2f13acfafc9e38b4b22d7f9b"
+    },
+    {
+      "path": "src/pages/import-history/ImportHistoryPage.tsx",
+      "sha256": "b5ee55f20a18e3515eaf8f6b9c7ece4f9aec6482d05d802d57b9f99fd0c1b50c"
+    },
+    {
+      "path": "src/pages/imports/ImportPage.css",
+      "sha256": "c6b6688a21c94f63da7785d740df390fc452583518fe69dbeb8c698c65433d25"
+    },
+    {
+      "path": "src/pages/imports/ImportPage.tsx",
+      "sha256": "6f99b8c8d2dbb8e44e14203359deec24951ab5e1eb8da48da1c47b4fcd355422"
+    },
+    {
+      "path": "src/pages/imports/ImportWorkspace.tsx",
+      "sha256": "e2973813a1b4a12a2316126e0175023f042f4609bd1e39e31fc582aab8039856"
+    },
+    {
+      "path": "src/pages/inventory/InventoryPage.css",
+      "sha256": "f3e9f2d43207c54a058d677720af461b771f741792c8e70c05500bc5bbd8c282"
+    },
+    {
+      "path": "src/pages/inventory/InventoryPage.tsx",
+      "sha256": "3b9bc8278e3f600b7878af4c099d2572a88aec15f3dd744c03c6bc70091ae76f"
+    },
+    {
+      "path": "src/pages/login/LoginPage.css",
+      "sha256": "6541f3e545c517dc991bf0c88af72231288be7ad1aa242982b3e6e6fa6c69fa1"
+    },
+    {
+      "path": "src/pages/login/LoginPage.tsx",
+      "sha256": "5fe16df156d4fc39cdbf0525673de89ed362c15d103a082aa521607de73fa6c6"
+    },
+    {
+      "path": "src/pages/menu/MenuPage.css",
+      "sha256": "7020c0d4011b092302ba62907b2d3380b4d5f58b33f48808dc79df20f2df1825"
+    },
+    {
+      "path": "src/pages/menu/MenuPage.tsx",
+      "sha256": "120e951dffd882c19c319234468fc188f5b90786c2d0124c1ca96717a24eafb4"
+    },
+    {
+      "path": "src/pages/store/StorePage.css",
+      "sha256": "116c6796e044447d77a1750af4ada30d13c1e1ebf5f4875a5c55a8fe9077b9d6"
+    },
+    {
+      "path": "src/pages/store/StorePage.tsx",
+      "sha256": "6b198bee452c795a45890c6b033ac04a6b01b95bda6721dceb04158ef914564d"
+    },
+    {
+      "path": "src/pages/today/TodayPage.css",
+      "sha256": "5f6e4bfe8062636d5a686ae50bd93f239ea396ef086191ab1351a9a6ff32abd6"
+    },
+    {
+      "path": "src/pages/today/TodayPage.tsx",
+      "sha256": "df58b19ecb686f627ce6a041c9814d1c565e3f0ae97d073004124802b3dffc8d"
+    },
+    {
+      "path": "src/shared/UnderConstruction.tsx",
+      "sha256": "f253e20786b271747607d1cf3ba402cbfc8b0edca658511e1f7e01918decdf27"
+    },
+    {
+      "path": "src/shared/debug/DevelopmentTools.css",
+      "sha256": "fc0fc73153e613595aa89ec1e2196f2e018c26005435f64d22d17a61fdb7a3d6"
+    },
+    {
+      "path": "src/shared/debug/DevelopmentTools.tsx",
+      "sha256": "e81e04dda63909587d29184ac21e377d9bc6170f2d8700773616795c2f1714ff"
+    },
+    {
+      "path": "src/shared/debug/ImportPlaygroundBoundary.tsx",
+      "sha256": "1642858dfd47ce618a169231ac0f9fd9c5b5ab771a5558d01760cd9e97a3ce59"
+    },
+    {
+      "path": "src/shared/debug/ImportPlaygroundControls.tsx",
+      "sha256": "082248c38d7dc13310d5959f8c2d8acfdc4625274b57ef11c6143cea8501f527"
+    },
+    {
+      "path": "src/shared/debug/debugVisibility.context.ts",
+      "sha256": "8b92dd12dba2ba57f3129d30493fda7ed12f5f03d0be0ba927954a4ca47b308a"
+    },
+    {
+      "path": "src/shared/debug/importPlayground.catalog.ts",
+      "sha256": "66d508ca773a91912f478924a90173161a05d37e98297d98b0cad342830589ea"
+    },
+    {
+      "path": "src/shared/debug/importPlayground.session.ts",
+      "sha256": "a9fb2a0eab48db43f964e6ee4224081ec5ecee7a3de4bc415ae4e34cade69511"
+    },
+    {
+      "path": "src/shared/debug/importPlayground.store.ts",
+      "sha256": "c49b5e777b23089ac96095c74a4a4f01def5c83d6c265de27ee84f950e4cc325"
+    },
+    {
+      "path": "src/shared/flow/FlowDialog.css",
+      "sha256": "f2b20122f4a0754a7bc5aa10194a53c01829e8b3a18ff2150bd203835b454afd"
+    },
+    {
+      "path": "src/shared/flow/FlowDialog.tsx",
+      "sha256": "f80eca23567b224c0005c0c529507fff8161ca9a33387a2d8eded84c39321166"
+    },
+    {
+      "path": "src/shared/flow/RecordFacts.tsx",
+      "sha256": "7b0f5caa9f4bb8e704e10e2cb77080d234619a74ac5de6d4d44e22d490ccfddb"
+    },
+    {
+      "path": "src/shared/flow/fieldLabels.ts",
+      "sha256": "64e3744b36cf769cf49e070ca8217f4fe81ba7c5f9a1f90a6ad6418a30c82702"
+    },
+    {
+      "path": "src/shared/http/http.types.ts",
+      "sha256": "2e0bf0a18979f868d8a67a1669167a3d6fc3211e1e24071008ab95cc6b99a97a"
+    },
+    {
+      "path": "src/shared/http/httpClient.ts",
+      "sha256": "e341e285b7689ccdce85493bd5227b590a88f558d7aefeffcb314655e4261570"
+    },
+    {
+      "path": "src/shared/motion/ActiveIndicator.tsx",
+      "sha256": "fe21045e2f26155e8db921e75fea6be0a870a76f0dbc93b223bf35d214c15065"
+    },
+    {
+      "path": "src/shared/motion/Motion.css",
+      "sha256": "9cbc3f5617f1f89ac46ed0ef024daa4be7177b17a7d6f21b2cfbd01df8fed433"
+    },
+    {
+      "path": "src/shared/motion/motion.ts",
+      "sha256": "fcca6ad36604888d0b5e45b9db12afd6f60f21239f18d54f82c8e04ca3a5750c"
+    },
+    {
+      "path": "src/shared/motion/useContentReveal.ts",
+      "sha256": "9240313cb02e57d687326857b07bc4da852213b97bc536373230c9eeef400159"
+    },
+    {
+      "path": "src/shared/motion/usePanelMotion.ts",
+      "sha256": "6033957555ebd026b5e1ca869b30589ee0e383008e2ceb1d703e2daad9d7b5e0"
+    }
+  ],
+  "backend": {
+    "source": "contracts/016/openapi.main.json",
+    "sha256": "790443d80350cc597c7c06179309e43303ba558de34017ea1dd4113de71fc1ee",
+    "suppliedSha": "869eaec914aa6905d6b935889afebe7d973004ae",
+    "operations": 73,
+    "paths": 66,
+    "deployedShaVerified": false
+  },
+  "designs": [
+    {
+      "family": "Store",
+      "componentId": "459953227023159296",
+      "revisionId": "461722261150400512",
+      "sourceRead": true,
+      "renderedPreviewRead": true,
+      "files": [
+        {
+          "path": "src/App.tsx",
+          "sha256": "6e13468d55efc11d1ea4c17d26c2d504d27f21b9c5bf24f34f63c4540e379814"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPermissionAdminWorkspace.tsx",
+          "sha256": "8ddc48e6571bc14724110e407b62f1573aa1f02c1ca7e6324856e91e0366ce35"
+        },
+        {
+          "path": "src/components/generated/ShelfCashStoreBootstrap.tsx",
+          "sha256": "5f944b0b3ae176b643d280a6e2e951896fbab6dc502204f8fea77eea2681e9c6"
+        },
+        {
+          "path": "src/components/generated/ShelfCashStoreConvergence.css",
+          "sha256": "0da483e838ecf7f4e2ec4c9f313fa682225ad6d62f5020e4ddb8484807993d1a"
+        },
+        {
+          "path": "src/index.css",
+          "sha256": "d67173ca162718cb31e455771f4daefe686a6be1a104a97073f377fae6cf90b0"
+        }
+      ]
+    },
+    {
+      "family": "Invitation",
+      "componentId": "460368412145782784",
+      "revisionId": "461725062467305472",
+      "sourceRead": true,
+      "renderedPreviewRead": true,
+      "files": [
+        {
+          "path": "src/App.tsx",
+          "sha256": "7449c9852d6460685f81186bf7831bfc5a5f55b601da4a740c25c550c932b966"
+        },
+        {
+          "path": "src/components/generated/ShelfCashEmployeeInvitationAcceptance.css",
+          "sha256": "8c8d5d826da177d57740455455c978b0b54c77d689bdf681f907cbe9e4aa5599"
+        },
+        {
+          "path": "src/components/generated/ShelfCashEmployeeInvitationAcceptance.tsx",
+          "sha256": "78680aa4b524c3ef0e183c59f7c5c1400638eb6df3e0c784b29075cfd01f896c"
+        },
+        {
+          "path": "src/index.css",
+          "sha256": "d67173ca162718cb31e455771f4daefe686a6be1a104a97073f377fae6cf90b0"
+        }
+      ]
+    },
+    {
+      "family": "Owner",
+      "componentId": "460747146686242816",
+      "revisionId": "461726308171411456",
+      "sourceRead": true,
+      "renderedPreviewRead": true,
+      "files": [
+        {
+          "path": "src/App.tsx",
+          "sha256": "7633087d3cde23bacec168e63b4768d8e6a903d85114dd164a79b485104518d3"
+        },
+        {
+          "path": "src/components/generated/ShelfCashAdvancedImportSurface.tsx",
+          "sha256": "1b50bc0b0bb4b0f334e1df4d78c849478c9f8ca5f3dd8aca7353ebfef58af375"
+        },
+        {
+          "path": "src/components/generated/ShelfCashClosureExtensions.css",
+          "sha256": "cddf41c3c36ac8a8904acbc06e4a8a34ab2a2ca9bf58e31484e33ad8f1afcdc2"
+        },
+        {
+          "path": "src/components/generated/ShelfCashContextPrimitives.css",
+          "sha256": "a797c197aa21076dd61a7a4f3dcc849464e838c7cf92c0ab12963f668207ee0d"
+        },
+        {
+          "path": "src/components/generated/ShelfCashContextPrimitives.tsx",
+          "sha256": "adaae6bfbf2f3b3b76238d2239947ba051b23f8a1f3d21dbe0c32d7bacf966a4"
+        },
+        {
+          "path": "src/components/generated/ShelfCashDeclarationContextEditor.tsx",
+          "sha256": "f75636345945408b2c21c9d9f0af3aa7656ddf8b6a0c221e99f4ad44e7035aef"
+        },
+        {
+          "path": "src/components/generated/ShelfCashDomainReviewSurface.css",
+          "sha256": "30c5be1824fe15313491ecc827a058d52f2d9bea786f1dcac2576effe72454d0"
+        },
+        {
+          "path": "src/components/generated/ShelfCashDomainReviewSurface.tsx",
+          "sha256": "b1768ba56fb02f8fcb6c8b0d32d934cf2d24a47eadd6b068cf65ba6ff30a591a"
+        },
+        {
+          "path": "src/components/generated/ShelfCashHistoryCorrectionSurface.tsx",
+          "sha256": "862a32c86e4724c2e48b7024db35d0730c946e7d58ebc5838fea9166e52ff924"
+        },
+        {
+          "path": "src/components/generated/ShelfCashInputFlowController.tsx",
+          "sha256": "3dff3856213f2ebf450950208efc5bc9513a803a40b891f8597176e6abe63b29"
+        },
+        {
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.css",
+          "sha256": "6c950aa59599aa97c3523e0238774cd9230ee297184aa726981884fea0eb7e9a"
+        },
+        {
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx",
+          "sha256": "730a3999a92b28d3a7503b0ebfc4b18ab63fff53b2d0fe3b4fb8c8227b4cf416"
+        },
+        {
+          "path": "src/components/generated/ShelfCashInputFlowOWNERStep3.css",
+          "sha256": "8f5c439211060456aa2b3dc293378e17364633a74d35de065b76310474c5af76"
+        },
+        {
+          "path": "src/components/generated/ShelfCashLatestAuditFixes.css",
+          "sha256": "17fd6aa9af8a79be0155ebcdf8919d7c6f6b064ea370d90eabcdc551b3770c64"
+        },
+        {
+          "path": "src/components/generated/ShelfCashMutationRecovery.css",
+          "sha256": "cee479c23acb3bbb06133895c15ff199f6aed8ae62891c6772d457762946edce"
+        },
+        {
+          "path": "src/components/generated/ShelfCashMutationRecovery.tsx",
+          "sha256": "ac8758f62d015a9110b9b67c5f976e4ab860bae711cdba9888be8b40df1cc41f"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPrototypeCatalog.ts",
+          "sha256": "1be80ecc57608a54ff371c00b9ab806415e659cfa1f0fa8c247d89293638b4a2"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPrototypeStatePlayground.css",
+          "sha256": "c75862aace598e7a50bc88a860f1a256a12e8fcb3868043ce6a030e8841624c0"
+        },
+        {
+          "path": "src/components/generated/ShelfCashResolverMutationRecovery.tsx",
+          "sha256": "20cfaef98a9ece5dee32146e0c7c858a8dc5823cc9fa8a5fc52fd1a8d5cfc9a9"
+        },
+        {
+          "path": "src/components/generated/ShelfCashResolverScopeSurface.tsx",
+          "sha256": "cb7dbe32e7a649e59b2012d912c65d5df4d6114957d4fcfd88e77b634012dce1"
+        },
+        {
+          "path": "src/components/generated/ShelfCashResolverWave1.css",
+          "sha256": "dd0e7f10a7410b5dac0744720b34f85757f80e6ffaaa53cedc08d0d092fa4668"
+        },
+        {
+          "path": "src/components/generated/ShelfCashReviewCommitSurface.css",
+          "sha256": "593a634dee14f8eb2e6acb7cccf5183ae7b5941ad3819178061cb8131a66f8d5"
+        },
+        {
+          "path": "src/components/generated/ShelfCashReviewCommitSurface.tsx",
+          "sha256": "cf0bd0c524444c87d6e01da30fa2056dad70d62d7b4a0e5150a969a443935eca"
+        },
+        {
+          "path": "src/components/generated/ShelfCashSourceContextSurface.css",
+          "sha256": "5b2c8b833b6c16ab096e22046a5974210d6648e0208272693f5dd76dfd68d328"
+        },
+        {
+          "path": "src/components/generated/ShelfCashSourceContextSurface.tsx",
+          "sha256": "9ec60ba8004b4ae384a423db86f2b52773381e3c2c45d285b62eeccc21b43767"
+        },
+        {
+          "path": "src/components/generated/ShelfCashWave2.css",
+          "sha256": "e43fbc426691f91b1f9dd60c1f8d224eb2e220455dfa2de3fc0c87c86c529077"
+        },
+        {
+          "path": "src/components/generated/ShelfCashWave7ProfileDecision.css",
+          "sha256": "0c54ef7d421d66a2638b162eec92bf8aa6e8997b23afcf9a1f53e3dd6dd56702"
+        },
+        {
+          "path": "src/components/generated/ShelfCashWave7ProfileDecision.tsx",
+          "sha256": "e6e1a17168d84ae42ea7a9e58351b7b69fba61854ab073da1ad41dc6110280ff"
+        },
+        {
+          "path": "src/index.css",
+          "sha256": "e6541e864c5bb563496d709c712b6d52242a9f80dcd8c385e9746c6e6bc0a0d2"
+        }
+      ]
+    },
+    {
+      "family": "Staff",
+      "componentId": "460747115572916224",
+      "revisionId": "461725038614315008",
+      "sourceRead": true,
+      "renderedPreviewRead": true,
+      "files": [
+        {
+          "path": "src/App.tsx",
+          "sha256": "d271dcae732b2d32630f56fae4f7e4ccfd59565c803d08ae303dd556044d5848"
+        },
+        {
+          "path": "src/components/generated/ShelfCashAdvancedImportSurface.tsx",
+          "sha256": "1b50bc0b0bb4b0f334e1df4d78c849478c9f8ca5f3dd8aca7353ebfef58af375"
+        },
+        {
+          "path": "src/components/generated/ShelfCashClosureExtensions.css",
+          "sha256": "cddf41c3c36ac8a8904acbc06e4a8a34ab2a2ca9bf58e31484e33ad8f1afcdc2"
+        },
+        {
+          "path": "src/components/generated/ShelfCashContextPrimitives.css",
+          "sha256": "a797c197aa21076dd61a7a4f3dcc849464e838c7cf92c0ab12963f668207ee0d"
+        },
+        {
+          "path": "src/components/generated/ShelfCashContextPrimitives.tsx",
+          "sha256": "a815cf349a316fa818c615cc61beb0e7491f3f5b975654ee5f023a094570c89a"
+        },
+        {
+          "path": "src/components/generated/ShelfCashDeclarationContextEditor.tsx",
+          "sha256": "a58dd87a28fb0c8cdfa07c097563ffc90a2a6a8682133088c2a3e091b195a89c"
+        },
+        {
+          "path": "src/components/generated/ShelfCashDomainReviewSurface.css",
+          "sha256": "30c5be1824fe15313491ecc827a058d52f2d9bea786f1dcac2576effe72454d0"
+        },
+        {
+          "path": "src/components/generated/ShelfCashDomainReviewSurface.tsx",
+          "sha256": "9ac1b9df1a199dbbb3e8b1cf0f9a4ea82d97a667171fd107a4037111c9cc4b73"
+        },
+        {
+          "path": "src/components/generated/ShelfCashHistoryCorrectionSurface.tsx",
+          "sha256": "862a32c86e4724c2e48b7024db35d0730c946e7d58ebc5838fea9166e52ff924"
+        },
+        {
+          "path": "src/components/generated/ShelfCashInputFlowController.tsx",
+          "sha256": "9980ac656883bffa329678e8b38398cd4e608787701af74e97c367a250a7441e"
+        },
+        {
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.css",
+          "sha256": "f77c1781651546e1e1f4e6cea06db88a7eb8113b58db4446269999454bb8062a"
+        },
+        {
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx",
+          "sha256": "e7a6e8ae92c2c76d90df3e5eb42d6f6c1c731d66788931e387ee0167648be1ce"
+        },
+        {
+          "path": "src/components/generated/ShelfCashMutationRecovery.css",
+          "sha256": "8a2198de68a014c307032e05fbecd8096238b92f315a2ab6ec82aacbc343e49a"
+        },
+        {
+          "path": "src/components/generated/ShelfCashMutationRecovery.tsx",
+          "sha256": "3ca15e78403ea122dfe7fde526c5e214ae6bbfba32452c1498ba2eeb4c307c0a"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPrototypeCatalog.ts",
+          "sha256": "1be80ecc57608a54ff371c00b9ab806415e659cfa1f0fa8c247d89293638b4a2"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPrototypeStatePlayground.css",
+          "sha256": "c75862aace598e7a50bc88a860f1a256a12e8fcb3868043ce6a030e8841624c0"
+        },
+        {
+          "path": "src/components/generated/ShelfCashResolverMutationRecovery.tsx",
+          "sha256": "20cfaef98a9ece5dee32146e0c7c858a8dc5823cc9fa8a5fc52fd1a8d5cfc9a9"
+        },
+        {
+          "path": "src/components/generated/ShelfCashResolverScopeSurface.tsx",
+          "sha256": "d58217e6e505c6686b210901da92a4ea228f307a035ab183bfc46b7466075bf5"
+        },
+        {
+          "path": "src/components/generated/ShelfCashResolverWave1.css",
+          "sha256": "dd0e7f10a7410b5dac0744720b34f85757f80e6ffaaa53cedc08d0d092fa4668"
+        },
+        {
+          "path": "src/components/generated/ShelfCashReviewCommitSurface.css",
+          "sha256": "593a634dee14f8eb2e6acb7cccf5183ae7b5941ad3819178061cb8131a66f8d5"
+        },
+        {
+          "path": "src/components/generated/ShelfCashReviewCommitSurface.tsx",
+          "sha256": "cf0bd0c524444c87d6e01da30fa2056dad70d62d7b4a0e5150a969a443935eca"
+        },
+        {
+          "path": "src/components/generated/ShelfCashSourceContextSurface.css",
+          "sha256": "5b2c8b833b6c16ab096e22046a5974210d6648e0208272693f5dd76dfd68d328"
+        },
+        {
+          "path": "src/components/generated/ShelfCashSourceContextSurface.tsx",
+          "sha256": "9ec60ba8004b4ae384a423db86f2b52773381e3c2c45d285b62eeccc21b43767"
+        },
+        {
+          "path": "src/components/generated/ShelfCashStaffConvergence.css",
+          "sha256": "d0bb829085cdd659172bba2bec2260a7c5456d02ab5b5f815bb9a4fde71b0886"
+        },
+        {
+          "path": "src/components/generated/ShelfCashWave2.css",
+          "sha256": "e43fbc426691f91b1f9dd60c1f8d224eb2e220455dfa2de3fc0c87c86c529077"
+        },
+        {
+          "path": "src/components/generated/ShelfCashWave7ProfileDecision.css",
+          "sha256": "0c54ef7d421d66a2638b162eec92bf8aa6e8997b23afcf9a1f53e3dd6dd56702"
+        },
+        {
+          "path": "src/components/generated/ShelfCashWave7ProfileDecision.tsx",
+          "sha256": "e6e1a17168d84ae42ea7a9e58351b7b69fba61854ab073da1ad41dc6110280ff"
+        },
+        {
+          "path": "src/index.css",
+          "sha256": "0f5c8d3eb128e56442185f22da3aa258dda0808a9e1972830b11a527baf7690e"
+        }
+      ]
+    },
+    {
+      "family": "PlanningSetup",
+      "componentId": "458414835571515392",
+      "revisionId": "461721652229738496",
+      "sourceRead": true,
+      "renderedPreviewRead": true,
+      "files": [
+        {
+          "path": "src/App.tsx",
+          "sha256": "dd509ddd670c734376b12e024784c2b649abb264b6ee5e23717317a2362ef5b6"
+        },
+        {
+          "path": "src/components/generated/ShelfCashAppShell.tsx",
+          "sha256": "cb7e0b455300dd8990f569fe0fa884211a03d4c557ad35fd58c0ba50e50ea7ed"
+        },
+        {
+          "path": "src/components/generated/ShelfCashKHoChNhPThiTLP.tsx",
+          "sha256": "26b78697364b01a0fac91facb61ae5f4cdb201f1fc133236766905339d82991b"
+        },
+        {
+          "path": "src/components/generated/ShelfCashNhPDLiU.css",
+          "sha256": "7689c4df1208f1188f099c67f342e3e895637de9ca2a1e8812e2e5a9dd222b01"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPlanHistory.css",
+          "sha256": "bbd1c2a8e096fde93520da962e8357a3e4cd35a9b34e85ca11586ad7aaf12091"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPlanHistory.tsx",
+          "sha256": "26fef4c06923ed708b06d8063bb8d2cf244938a409572a2159b093f7456d01f3"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPlanHistoryClosure.css",
+          "sha256": "f5a4696309e2c5534e6e02454f80a88c918845788eb1c4e46ff1988b9d4e8d0d"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPlanningData.ts",
+          "sha256": "eee0a64f001bb1655ecea5f2b931aaec1c34488467717186484596d1ec1633a8"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPlanningScreen.css",
+          "sha256": "84db805aa89ba8f0906903d03a5cceee721aa4f36d6ff17cd55216e140dff626"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPlanningScreen.tsx",
+          "sha256": "34ae7c84b6e9f7c40d8b70592666b6a74832e9d699cf3ecabbd1b4dd02cf5564"
+        },
+        {
+          "path": "src/index.css",
+          "sha256": "d67173ca162718cb31e455771f4daefe686a6be1a104a97073f377fae6cf90b0"
+        }
+      ]
+    },
+    {
+      "family": "PlanningResults",
+      "componentId": "458423352311304192",
+      "revisionId": "461720833971347456",
+      "sourceRead": true,
+      "renderedPreviewRead": true,
+      "files": [
+        {
+          "path": "src/App.tsx",
+          "sha256": "cdccf87736860cbd4cd43258f4bbdabe6f3493bb15561f393d9325ccca2b79c0"
+        },
+        {
+          "path": "src/components/generated/ShelfCashAlternativeStrategies.tsx",
+          "sha256": "b4e5d3c8d9d75ba12bd381ab12e6501d1f9086e18ca8be38fd51428b3df2fa60"
+        },
+        {
+          "path": "src/components/generated/ShelfCashAppShell.tsx",
+          "sha256": "f395bd2d480ae9e177de24a07a2b03f0370b3d1c0abcb07bbd6295d8527ec6be"
+        },
+        {
+          "path": "src/components/generated/ShelfCashForecastChartPanel.tsx",
+          "sha256": "259613585b925165e952e5d8597b061d9d080604b49c876c4e4a31fbd9fc2b5b"
+        },
+        {
+          "path": "src/components/generated/ShelfCashIngredientWorkspace.tsx",
+          "sha256": "0172833470dab78fb053538523700eee87b1a50e8c2f47125f79f783d3f542c3"
+        },
+        {
+          "path": "src/components/generated/ShelfCashKHoChNhPKTQu.tsx",
+          "sha256": "04fc7db6047d47f7ecae58df379cacee5ed7827b9fc76606970f798dfcc4d739"
+        },
+        {
+          "path": "src/components/generated/ShelfCashNhPDLiU.css",
+          "sha256": "6e848ea69450b4653bd27309274b3211183f186e6c0f5a8332e4ffd283545afa"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPlanExportDiscovery.css",
+          "sha256": "7d9a8d985f232558c8274055e8eeab96cef1aaefac98a0368c53a8c11f8f6928"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPlanExportOverlay.css",
+          "sha256": "408253cffec41399a524aa5d50bec323d64c78059040ae066bb4d3ab26d715b2"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPlanExportOverlay.tsx",
+          "sha256": "a2f8dcb5d3604f58e49313674d7bd2620c7f88121c4d6066993bfa66d2abfb83"
+        },
+        {
+          "path": "src/components/generated/ShelfCashPlanningData.ts",
+          "sha256": "a5646d36fc51963e8c0a39cb0de0bfeef0b351277fd96f7caacd22dbf2902535"
+        },
+        {
+          "path": "src/components/generated/ShelfCashProcurementComponents.tsx",
+          "sha256": "59821ec001a45bc239dd8e17990b0abadbd6fc41626d0e756aa2cf29629e3b25"
+        },
+        {
+          "path": "src/components/generated/ShelfCashProcurementData.ts",
+          "sha256": "85b14db7aa31ed5eabcbf01cc698f50af0bf394d9ef819a37e64cc0e23d3cf8c"
+        },
+        {
+          "path": "src/components/generated/ShelfCashProcurementScreen.css",
+          "sha256": "1281b321a15aef4748f1bdbd75335881869e5d67212f93640414184f6ee4f63e"
+        },
+        {
+          "path": "src/components/generated/ShelfCashProcurementScreen.tsx",
+          "sha256": "057996371ad0d3c55f7e256cf0d290fc21e8b093f387e69bc8ed2ea9b458ebd0"
+        },
+        {
+          "path": "src/index.css",
+          "sha256": "d67173ca162718cb31e455771f4daefe686a6be1a104a97073f377fae6cf90b0"
+        }
+      ]
+    }
+  ],
+  "unitSuites": [
+    {
+      "command": "npm run test:auth",
+      "tests": 26,
+      "passed": 26,
+      "failed": 0,
+      "logSha256": "25d74dbe0bba2af1a184242956a4215e1e6b58ddba3c0ff2e6c3ecb52b36677a"
+    },
+    {
+      "command": "npm run test:store",
+      "tests": 118,
+      "passed": 118,
+      "failed": 0,
+      "logSha256": "9dbb85178207fa5573022772cc70b9ec1955753fe2be792cbfe08d2c93214b91"
+    },
+    {
+      "command": "npm run test:planning",
+      "tests": 79,
+      "passed": 79,
+      "failed": 0,
+      "logSha256": "04398b40220388b7c8f8bd3770432990775ae05edca48ebf15f243ef6f01a1ea"
+    },
+    {
+      "command": "npm run test:operations",
+      "tests": 30,
+      "passed": 30,
+      "failed": 0,
+      "logSha256": "cce3af013b320279e390e6b5a3e6dee93d90162ae8d6451de9b0c74c2cb5a1fc"
+    },
+    {
+      "command": "npm run test:import",
+      "tests": 135,
+      "passed": 135,
+      "failed": 0,
+      "logSha256": "3becb8fc05e3888c7f885dd78af118ab7dda3db5b4ab899f461a83748c6f8374"
+    },
+    {
+      "command": "npm run test:capabilities",
+      "tests": 61,
+      "passed": 61,
+      "failed": 0,
+      "logSha256": "b27d5726d0d3c9e0e479c42e3b10cfe6b5423b3c0f1a12fd1f25a2f5a51f3967"
+    }
+  ],
+  "unitTotal": 449,
+  "focusedHistoryPendingUnknownRefinement": {
+    "command": "npm run test:import -- import-flow-workflow",
+    "tests": 43,
+    "passed": 43,
+    "includedInFinalFullImportSuite": true
+  },
+  "browser": {
+    "command": "npx playwright test --project=controlled-api tests/e2e/pass020.api.spec.ts tests/e2e/import-experience.api.spec.ts tests/e2e/design-states.api.spec.ts --grep '020 multiple|Analyze source context|decline|Owner permission|Staff submits catalog|retained discovery|retained exports empty|N9 |wrong-account invitation|invitation expired|invitation revoked|acceptance lost' --timeout=25000",
+    "passed": 20,
+    "failed": 0,
+    "caseTitles": [
+      "wrong-account invitation reveals only current account and supports logout before login",
+      "invitation expired is terminal without acceptance writes",
+      "invitation revoked is terminal without acceptance writes",
+      "acceptance lost ACK preserves intent and opens freshly verified invited Store",
+      "frozen v1 Analyze source context uses actual evidence and validates custom identifiers without guessing a provider",
+      "020 multiple history corrections gate every Review entry; closing evidence leaves pending and commit loss freezes confirmed rows",
+      "decline success: separate confirmation and N18-first recovery",
+      "decline failure: separate confirmation and N18-first recovery",
+      "decline lost-declined: separate confirmation and N18-first recovery",
+      "decline lost-pending: separate confirmation and N18-first recovery",
+      "Owner permission approve: current grant fence and explicit subset",
+      "Owner permission reject: current grant fence and explicit subset",
+      "Owner permission stale: current grant fence and explicit subset",
+      "Owner permission unknown: current grant fence and explicit subset",
+      "retained discovery availability=true: GET-only download without create",
+      "retained discovery availability=false: GET-only download without create",
+      "N9 distinct creator/Store creation/forecast filters preserve URL state and paging",
+      "Staff submits catalog-backed request, observes pending and can cancel with fresh request CAS",
+      "retained exports empty/error can reread without ever creating a new export",
+      "N9 creator selection and load-more retain Store-local date and forecast filters together"
+    ],
+    "logSha256": "63f93efb034564a121dc7687618950e7946915770611f59e178656b274faf7bf",
+    "type": "Controlled HTTP interception; no live backend mutation or persistence proof."
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "result": "PASS",
+      "logSha256": "a1fa1e240d85eca9c09855d637f74b2a445c10f6cc54d74563aa9026afa26044",
+      "warnings": [
+        "existing bundle-size warning"
+      ]
+    },
+    {
+      "command": "npm run lint",
+      "result": "PASS",
+      "logSha256": "6c7f4a44564bdb2b81c1a011c14891d3aad4923af693213da3d2e38a14e7fdc4",
+      "warnings": 2
+    },
+    {
+      "command": "npm run check:contracts",
+      "result": "PASS",
+      "logSha256": "20d7d98a00eb85669b286a11dd729e76eaf8c433fb67dbc91bbbcc70ae952c55",
+      "warnings": []
+    },
+    {
+      "command": "npm run check:capabilities-wire",
+      "result": "PASS",
+      "logSha256": "885b4a43081ad8487f110f94b27b681f786735820829fa6c6d5bcea586b25a20",
+      "warnings": []
+    },
+    {
+      "command": "npm run check:operations-wire",
+      "result": "PASS",
+      "logSha256": "87df4370fa10e0bed6256a5359355127317f778b0e14255bb4f73b3d08451d71",
+      "warnings": []
+    },
+    {
+      "command": "npm run check:import-wire",
+      "result": "PASS",
+      "logSha256": "cdd111e483e5d244e7f93f439d282b5c68c4e0c4ec9b79853c278c7d7c1fd53a",
+      "warnings": []
+    }
+  ],
+  "historicalRegister": {
+    "path": "docs/FOUND_MISSING_UI.md",
+    "sha256": "3017bfd528eccd22988ff7851793bfec5babd69eb1aeb6a942a529967828fa9e",
+    "unchanged": true
+  },
+  "historicalContracts": {
+    "preservedFiles": 252,
+    "result": "PASS"
+  },
+  "registerCounts": {
+    "design": {
+      "READY": 26,
+      "NOT_REQUIRED": 2,
+      "MISSING": 1
+    },
+    "frontend": {
+      "PARTIAL": 12,
+      "IMPLEMENTED": 16,
+      "NOT_IMPLEMENTED": 1
+    },
+    "backend": {
+      "PARTIAL": 13,
+      "SUPPORTED": 13,
+      "MISSING": 1,
+      "NOT_REQUIRED": 2
+    },
+    "live": {
+      "CONTROLLED_ONLY": 25,
+      "NOT_RUN": 4
+    }
+  },
+  "apiGaps": {
+    "API-01": {
+      "design": "READY",
+      "frontend": "IMPLEMENTED",
+      "verification": "CONTROLLED_ONLY",
+      "scope": "Published supported contract with explicit SC020-01/02/03 adaptations; not all prototype behavior."
+    },
+    "API-02": {
+      "design": "READY",
+      "frontend": "IMPLEMENTED",
+      "verification": "CONTROLLED_ONLY",
+      "scope": "Published supported contract with explicit SC020-01/02/03 adaptations; not all prototype behavior."
+    },
+    "API-03": {
+      "design": "READY",
+      "frontend": "IMPLEMENTED",
+      "verification": "CONTROLLED_ONLY",
+      "scope": "Published supported contract with explicit SC020-01/02/03 adaptations; not all prototype behavior."
+    },
+    "API-04": {
+      "design": "READY",
+      "frontend": "IMPLEMENTED",
+      "verification": "CONTROLLED_ONLY",
+      "scope": "Published supported contract with explicit SC020-01/02/03 adaptations; not all prototype behavior."
+    },
+    "API-05": {
+      "design": "READY",
+      "frontend": "IMPLEMENTED",
+      "verification": "CONTROLLED_ONLY",
+      "scope": "Published supported contract with explicit SC020-01/02/03 adaptations; not all prototype behavior."
+    },
+    "API-06": {
+      "design": "READY",
+      "frontend": "IMPLEMENTED",
+      "verification": "CONTROLLED_ONLY",
+      "scope": "Published supported contract with explicit SC020-01/02/03 adaptations; not all prototype behavior."
+    }
+  },
+  "activeMissingDesign": [],
+  "contractConflicts": [
+    "SC020-01 required decline reason",
+    "SC020-02 corrections staged locally until atomic commit",
+    "SC020-03 no batch-scoped SourceContext semantic flag DTO"
+  ],
+  "limitations": [
+    "Live Owner/Staff/worker/mail/persistence acceptance NOT_RUN.",
+    "CR-01 durable/negative outcome proof unresolved; memory-only retained intents.",
+    "RT-02 sealed analysis retry remains PARTIAL_UI with adequate design.",
+    "FM-009 descriptor ergonomics and TD-01 full visual/a11y coverage remain.",
+    "Creator choices come from observed N9 rows, not a full creator directory.",
+    "Batch-only semantic flags are unsupported; batch facts use existing IMPORT_VALUE separately.",
+    "SC-01 global expansion stays parked."
+  ],
+  "verdict": "READY FOR E2E VALIDATION of the supported six-gap scope; not live acceptance."
+}

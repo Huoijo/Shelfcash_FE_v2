@@ -68,11 +68,14 @@ export function createPlanningDataSource(options: PlanningDataSourceOptions): Pl
     async context(storeId, signal) {
       return validatePlanningContext(await get(`${storePath(storeId)}/planning-context`, signal), storeId)
     },
-    async readiness(storeId, forecastStartDate, signal) {
+    async readiness(storeId, forecastStartDate, signal, request) {
       const endpoint = storePath(storeId)
       if (!isPlanningDate(forecastStartDate) || shiftPlanningDate(forecastStartDate, -1) === null || shiftPlanningDate(forecastStartDate, 6) === null) throw new Error('Ngày bắt đầu hoặc khoảng kế hoạch không hợp lệ.')
       const query = new URLSearchParams({ actions: 'planning', forecast_start_date: forecastStartDate })
-      return validatePlanningReadiness(await get(`${endpoint}/readiness?${query}`, signal), storeId, forecastStartDate)
+      const captured = request ? validatePlanningRequest(request) : undefined
+      if (captured && captured.forecast_start_date !== forecastStartDate) throw new Error("Readiness date must match the Planning request.")
+      if (captured) query.set("planning_request", JSON.stringify(captured))
+      return validatePlanningReadiness(await get(`${endpoint}/readiness?${query}`, signal), storeId, forecastStartDate, captured)
     },
     async create(storeId, intent, signal) {
       const endpoint = storePath(storeId)

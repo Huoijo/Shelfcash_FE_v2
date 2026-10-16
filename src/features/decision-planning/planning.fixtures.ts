@@ -196,8 +196,8 @@ export function createMockPlanningDataSource(authority?:{context:PlanningDataSou
     async context(storeId, signal) { signal?.throwIfAborted(); checkStore(storeId)
       if(authority)return authority.context(storeId,signal)
       return { data: planningContextFixture(), meta: { request_id: 'synthetic-context' }, error: null } },
-    async readiness(storeId, forecastStartDate, signal) { signal?.throwIfAborted(); checkStore(storeId)
-      return { data: planningReadinessFixture(forecastStartDate), meta: { request_id: 'synthetic-readiness' }, error: null } },
+    async readiness(storeId, forecastStartDate, signal, request) { signal?.throwIfAborted(); checkStore(storeId)
+      return { data: { ...planningReadinessFixture(forecastStartDate), ...(request ? { planning_assessment: { input_scope: "SUPPLIED_REQUEST", requirements_mode: request.requirements_mode, configuration_status: "RESOLVED", blockers: [], warnings: [] } } : {}) }, meta: { request_id: 'synthetic-readiness' }, error: null } },
     async create(storeId, intent: PlanningIntent, signal) {
       signal?.throwIfAborted(); checkStore(storeId)
       validatePlanningRequest(intent.request)

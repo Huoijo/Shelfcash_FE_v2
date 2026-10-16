@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test'
-import { backend, env, paging, s, member, at, permissions, errorResponse } from './helpers/api'
+import { backend, env, paging, s, member, user, at, permissions, errorResponse } from './helpers/api'
 import { ImportBatchWorkflow } from '../../src/features/import-data/importData.workflow'
 import { createMockImportDataSource } from '../../src/features/import-data/importData.fixtures'
 import { createMockImportFlowDataSource } from '../../src/features/import-data/importFlow.fixtures'
@@ -28,7 +28,7 @@ async function api(page: Page, work: Awaited<ReturnType<typeof prepared>>, hook?
     const intercepted = await hook?.(path, method, body, headers, url)
     if (intercepted !== undefined) return intercepted
     if (path === '/api/v1/stores') return env({ items: [{ store_id: s, name: 'Controlled Store', timezone: 'Asia/Ho_Chi_Minh', currency: 'VND', role: 'STAFF', membership_id: member, authorization_version: 'controlled-member/1' }] }, paging(1))
-    if (path === `/api/v1/stores/${s}`) return env({ store_id: s, name: 'Controlled Store', timezone: 'Asia/Ho_Chi_Minh', currency: 'VND', role: 'STAFF', membership_id: member, authorization_version: 'controlled-member/1', active: true, server_now: at, as_of_date: '2026-10-12', membership: { membership_id: member, role: 'STAFF', authorization_version: 'controlled-member/1', effective_permissions: [...permissions, 'mapping.read', 'mapping.propose', 'import.preview', 'import.commit', 'inventory.count.correct'] }, permission_catalog_version: 'permissions-v2' })
+    if (path === `/api/v1/stores/${s}`) return env({ store_id: s, name: 'Controlled Store', timezone: 'Asia/Ho_Chi_Minh', currency: 'VND', role: 'STAFF', membership_id: member, authorization_version: 'controlled-member/1', active: true, server_now: at, as_of_date: '2026-10-12', membership: { membership_id: member, role: 'STAFF', authorization_version: 'controlled-member/1', effective_permissions: [...permissions, 'mapping.read', 'mapping.propose', 'import.preview', 'import.commit', 'inventory.count.correct'] }, permission_catalog_version: 'permissions-v3' })
     if (path === `/api/v1/imports/${work.id}`) {
       const batch = await work.batches.read(work.id)
       if (url.searchParams.has('include')) return importEnvelope({ ...batch, ...await work.source.readPreview(work.id, { previewId: url.searchParams.get('preview_id') ?? undefined, rowsCursor: url.searchParams.get('rows_cursor') ?? undefined }) })
@@ -66,22 +66,32 @@ async function review(page: Page) {
   await page.getByRole('button', { name: 'Xác nhận và nhập dữ liệu' }).click()
 }
 
-test('012 API Staff proposal uses exact batch handoff, no synthetic queue write, and resumes after external Owner decision', async ({ page }) => {
-  const work = await prepared(true), writes = await api(page, work)
+test('frozen Staff submits a persisted profile, waits, then resumes retained batch after separate Owner approval', async ({ page }) => {
+  const work = await prepared(true), summary = await work.source.summary(work.id), proposal = summary.profile_proposals[0]
+  let row: any = null
+  const writes = await api(page, work, (path, method, body) => {
+    if (path === `/api/v1/stores/${s}/mapping-submissions`) return env({ items: row ? [row] : [] }, { ...paging(row ? 1 : 0), snapshot_id: 'submissions/1', observed_at: at })
+    if (path === `/api/v1/imports/${work.id}/mapping-submissions` && method === 'POST') {
+      row = { submission_id: '00000000-0000-4000-8000-000000000043', store_id: s, profile_id: proposal.profile_id, import_id: work.id, sheet_id: summary.sheets[0].sheet_id, file_id: summary.files[0].file_id, submitted_by_user_id: user, submitted_at: at, reason: body.reason, version: 'submission/1', state: 'submitted', proposal_revision: proposal.proposal_revision, mapping_revision: summary.mapping_revision, import_revision: 'captured-import/1', file_set_version: 'files/1', lifecycle_revision_at_submission: proposal.lifecycle_revision, spec_digest: 'spec/1', expected_active_version: proposal.active_version, review_eligibility: { eligible: true, reason_codes: [] }, current_profile: { lifecycle_revision: proposal.lifecycle_revision, active_version: proposal.active_version, reviewed_version_retired: false }, decision: null, allowed_actions: ['withdraw'] }
+      return { httpStatus: 201, body: env(row) }
+    }
+  })
   await resolve(page, work.id)
-  await page.getByRole('button', { name: 'Bàn giao cho Owner', exact: true }).click()
-  await expect(page.getByLabel('Đường dẫn bàn giao lô')).toHaveValue(`http://127.0.0.1:4174/imports?import_id=${work.id}`)
-  await expect(page.getByRole('button', { name: /DEV/ })).toHaveCount(0)
-  await expect(page.getByRole('button', { name: 'Duyệt profile' })).toHaveCount(0)
-  const summary = await work.source.summary(work.id), proposal = summary.profile_proposals[0]
+  await page.getByRole('button', { name: 'Gửi Owner duyệt', exact: true }).click()
+  await page.getByLabel('Profile cần gửi').selectOption(proposal.profile_id)
+  await page.getByLabel('Lý do gửi đề xuất').fill('Staff checked source evidence')
+  await page.getByRole('dialog').getByRole('button', { name: 'Gửi Owner duyệt', exact: true }).click()
+  await expect(page.getByText('Đang chờ Owner', { exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Tạo Preview', exact: true })).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'Chỉnh mapping', exact: true })).toBeDisabled()
+  expect(writes).toHaveLength(1); expect(writes[0].body.action).toBe('submit'); expect(writes[0].body.proposal_revision).toBe(proposal.proposal_revision)
   await work.source.decideProfile(s, proposal.profile_id, { key: crypto.randomUUID(), lifecycleRevision: proposal.lifecycle_revision, decision: { decision: 'approve_activate', proposal_revision: proposal.proposal_revision, expected_active_version: proposal.active_version, reason: 'Separate Owner actor reviewed full spec' } })
-  await page.getByRole('button', { name: 'Đọc lại quyết định Owner' }).click()
+  row = { ...row, state: 'approved', version: 'submission/2', allowed_actions: [], decision: { decision_id: crypto.randomUUID(), decision: 'approve_activate', actor_user_id: member, reason: 'Separate Owner approved', decided_at: at } }
+  await page.getByRole('button', { name: 'Đọc lại quyết định', exact: true }).click()
   await expect(page.getByText('Đang dùng cách đọc đã duyệt', { exact: true })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Tạo Preview', exact: true })).toBeEnabled()
-  await page.reload()
-  await page.getByRole('button', { name: 'Kiểm tra cách hiểu', exact: true }).click()
-  expect(writes).toHaveLength(0)
-  expect(new URL(page.url()).searchParams.get('import_id')).toBe(work.id)
+  await page.reload(); await page.getByRole('button', { name: 'Kiểm tra cách hiểu', exact: true }).click()
+  expect(writes).toHaveLength(1); expect(new URL(page.url()).searchParams.get('import_id')).toBe(work.id)
 })
 
 test('012 API permission revoked at commit has its own state and retains batch/review without retrying a new write', async ({ page }) => {
@@ -190,7 +200,7 @@ test('frozen v1 Analyze source context uses actual evidence and validates custom
   const work=await prepared(),summary=work.source.summary,queue=work.source.queue
   work.source.summary=async(...args)=>({...await summary(...args),can_preview:false,progress:{total_fields:1,completed_fields:0,unresolved:1},blockers:[{code:'SOURCE_CONTEXT_REQUIRED',severity:'ERROR',message:'Source proof required'}]})
   work.source.queue=async(...args)=>{const value=await queue(args[0],{...args[1],review_only:false},args[2]);return {...value,counts:{total_fields:1,completed_fields:0,unresolved:1},items:value.items.map(row=>({...row,issue_type:'source_context',code:'SOURCE_CONTEXT_REQUIRED',status:'unmatched',target_field:null,suggested_target_field:null,resolution:null,source_header:'Report header evidence',samples:['Export source: POS nội bộ']}))}}
-  const writes=await api(page,work)
+  const writes=await api(page,work,(_path,method,body)=>method==='POST'&&body?.resolution?.kind==='source_context'?errorResponse(422,'SOURCE_EVIDENCE_REVIEW_REQUIRED'):undefined)
   await page.goto(`/imports?import_id=${work.id}`)
   await expect(page.getByRole('heading',{name:'Cần xác nhận nguồn dữ liệu',exact:true})).toBeVisible()
   const source=page.locator('.input-source-context')
@@ -202,7 +212,108 @@ test('frozen v1 Analyze source context uses actual evidence and validates custom
   await source.getByLabel('Bằng chứng / tham chiếu nguồn',{exact:true}).fill('Report header and export settings')
   await expect(save).toBeDisabled()
   await source.getByLabel('Hệ thống nguồn',{exact:true}).fill('custom.pos')
+  await expect(save).toBeDisabled()
+  await source.getByText('Semantics và định dạng nguồn (chỉ khai báo khi đã biết)',{exact:true}).click()
+  await source.getByLabel('Thiếu thông tin hết hàng',{exact:true}).selectOption('not_provided')
+  await source.getByLabel('Cơ sở tính giá',{exact:true}).selectOption('PER_SOURCE_UNIT')
+  await source.getByRole('button',{name:'Thêm alias hết hàng',exact:true}).click()
+  await source.getByLabel('Giá trị nguồn',{exact:true}).fill('HẾT HÀNG')
+  await source.getByLabel('ShelfCash hiểu là',{exact:true}).selectOption('true')
+  await source.getByRole('checkbox',{name:'Tôi xác nhận đây là đề xuất cách hiểu nguồn dùng lại, cần quyết định Profile.'}).check()
   await expect(save).toBeEnabled()
   await source.screenshot({path:'test-results/015-source-context.png'})
   expect(writes).toHaveLength(0)
+  await save.click();await expect(source.getByRole('alert')).toBeVisible()
+  const resolution=writes[0].body.resolution
+  expect(resolution).toMatchObject({kind:'source_context',source_system_key:'custom.pos',missing_stockout:'not_provided',pack_cost_basis:'PER_SOURCE_UNIT',stockout_aliases:[{token:'HẾT HÀNG',value:true}]})
+  expect(resolution).not.toHaveProperty('scope')
+})
+
+test('016 Supplier resolver uses SU01 snapshot paging and saves only the explicitly selected identity', async ({ page }) => {
+  const work = await prepared(), searches: URL[] = [], saves: any[] = []
+  let saved = false
+  await api(page, work, async (path, method, body, headers, url) => {
+    if (path === `/api/v1/stores/${s}`) return env({ store_id: s, name: 'Controlled Store', timezone: 'Asia/Ho_Chi_Minh', currency: 'VND', role: 'STAFF', membership_id: member, authorization_version: 'controlled-member/1', active: true, server_now: at, as_of_date: '2026-10-12', membership: { membership_id: member, role: 'STAFF', authorization_version: 'controlled-member/1', effective_permissions: [...permissions, 'supplier.read', 'mapping.propose'] }, permission_catalog_version: 'permissions-v3' })
+    if (path.endsWith('/mapping-summary')) {
+      const summary = await work.source.summary(work.id)
+      return importEnvelope({ ...summary, progress: { total_fields: 3, completed_fields: saved ? 3 : 2, unresolved: saved ? 0 : 1 } })
+    }
+    if (path.endsWith('/mappings') && method === 'GET') {
+      const queue = await work.source.queue(work.id, { review_only: false })
+      return importEnvelope({ items: queue.items.map(item => ({ ...item, issue_type: 'identity', status: saved ? 'resolved' : 'needs_confirmation', target_field: 'supplier_terms.supplier_id', suggested_target_field: 'supplier_terms.supplier_id' })), counts: { total_fields: 3, completed_fields: saved ? 3 : 2, unresolved: saved ? 0 : 1 } }, queue.pagination)
+    }
+    if (path === `/api/v1/stores/${s}/suppliers`) {
+      searches.push(url)
+      const second = url.searchParams.has('cursor')
+      return env({ items: [{ supplier_id: second ? '00000000-0000-4000-8000-000000000092' : '00000000-0000-4000-8000-000000000091', name: second ? 'Supplier selected' : 'Supplier inactive', active: second, version: 'supplier/1' }] }, { snapshot_id: 'supplier-snapshot/1', observed_at: at, pagination: { limit: 20, total_count: 2, next_cursor: second ? null : 'signed-supplier-cursor' } })
+    }
+    if (method === 'PATCH' && path.includes('/mappings/')) {
+      saves.push(body)
+      const result = await work.source.resolve(work.id, path.split('/').at(-1)!, { key: headers['idempotency-key'], mappingRevision: JSON.parse(headers['if-match']), resolution: body.resolution })
+      saved = true
+      return importEnvelope(result)
+    }
+  })
+  await resolve(page, work.id)
+  await page.getByRole('button', { name: 'Chọn entity', exact: true }).click()
+  const drawer = page.getByRole('dialog', { name: 'Identity', exact: true })
+  await drawer.getByLabel('Tìm nhà cung cấp').fill('Supplier')
+  await expect(drawer.getByRole('button', { name: /Supplier inactive/ })).toBeVisible()
+  expect(saves).toHaveLength(0)
+  await drawer.getByRole('button', { name: 'Xem thêm', exact: true }).click()
+  await drawer.getByRole('button', { name: /Supplier selected/ }).click()
+  await drawer.getByRole('button', { name: 'Lưu bindings', exact: true }).click()
+  await expect(drawer).toHaveCount(0)
+  expect(searches).toHaveLength(2)
+  expect(searches[1].searchParams.get('snapshot_id')).toBe('supplier-snapshot/1')
+  expect(searches[0].searchParams.has('active')).toBe(false)
+  expect(saves).toEqual([{ resolution: { kind: 'identity_binding', canonical_id: '00000000-0000-4000-8000-000000000092' } }])
+})
+
+test('016 Owner reaches complete full-spec review with pending RULE candidates without an M04 confirmation first', async ({ page }) => {
+  const work = await prepared(true)
+  const writes = await api(page, work, async path => {
+    if (path === '/api/v1/stores') return env({ items: [{ store_id: s, name: 'Controlled Store', timezone: 'Asia/Ho_Chi_Minh', currency: 'VND', role: 'OWNER', membership_id: member, authorization_version: 'controlled-member/1' }] }, paging(1))
+    if (path === `/api/v1/stores/${s}`) return env({ store_id: s, name: 'Controlled Store', timezone: 'Asia/Ho_Chi_Minh', currency: 'VND', role: 'OWNER', membership_id: member, authorization_version: 'controlled-member/1', active: true, server_now: at, as_of_date: '2026-10-12', membership: { membership_id: member, role: 'OWNER', authorization_version: 'controlled-member/1', effective_permissions: [...permissions, 'mapping.propose'] }, permission_catalog_version: 'permissions-v3' })
+    if (path.endsWith('/mapping-summary')) {
+      const summary = await work.source.summary(work.id)
+      return importEnvelope({ ...summary, progress: { total_fields: 3, completed_fields: 2, unresolved: 1 } })
+    }
+    if (path.endsWith('/mappings')) {
+      const queue = await work.source.queue(work.id, { review_only: false })
+      return importEnvelope({ items: queue.items.map(item => ({ ...item, status: 'needs_confirmation', suggestion_origin: 'RULE' })), counts: { total_fields: 3, completed_fields: 2, unresolved: 1 } }, queue.pagination)
+    }
+  })
+  await resolve(page, work.id)
+  await page.getByRole('button', { name: 'Xem profile sẽ được lưu' }).click()
+  await expect(page.getByRole('heading', { name: 'Duyệt cách đọc dữ liệu', exact: true })).toBeVisible()
+  await page.getByLabel('Lý do duyệt', { exact: true }).fill('Reviewed complete RULE specification')
+  await page.getByLabel('Tôi đã kiểm tra cách đọc đề xuất, bằng chứng và cách đọc đã duyệt (nếu có).').check()
+  await expect(page.getByRole('button', { name: 'Duyệt profile', exact: true })).toBeEnabled()
+  expect(writes).toHaveLength(0)
+})
+
+for (const missing of ['planning.context.read', 'budget.read', 'procurement.cost.read']) test(`016 completion keeps receipt but disables R01 when ${missing} is absent`, async ({ page }) => {
+  const work = await prepared()
+  let readinessReads = 0
+  await api(page, work, path => {
+    if (path.endsWith('/readiness')) readinessReads++
+    if (path === `/api/v1/stores/${s}`) return env({ store_id: s, name: 'Controlled Store', timezone: 'Asia/Ho_Chi_Minh', currency: 'VND', role: 'STAFF', membership_id: member, authorization_version: 'controlled-member/1', active: true, server_now: at, as_of_date: '2026-10-12', membership: { membership_id: member, role: 'STAFF', authorization_version: 'controlled-member/1', effective_permissions: [...permissions.filter(permission => permission !== missing), 'mapping.propose', 'import.commit', 'inventory.count.correct'] }, permission_catalog_version: 'permissions-v3' })
+  })
+  await resolve(page, work.id); await review(page)
+  await expect(page.getByRole('heading', { name: 'Import đã hoàn tất', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Kiểm tra Readiness', exact: true })).toBeDisabled()
+  expect(readinessReads).toBe(0)
+})
+
+test('020 multiple history corrections gate every Review entry; closing evidence leaves pending and commit loss freezes confirmed rows',async({page})=>{
+ const work=await prepared(),original=work.source.readPreview
+ work.source.readPreview=async(...args)=>{const value=await original(...args);return {...value,preview:{...value.preview,rows:value.preview.rows.map(row=>({...row,proposed_action:'CORRECT_HISTORY_RECORD',confirmation_required:true,expected_version:'history/1'}))}}}
+ const writes=await api(page,work,(_path,method,body)=>method==='POST'&&body?.phase==='commit'?'ABORT':undefined)
+ await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click();const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true});await expect(next).toBeDisabled()
+ await page.getByRole('button',{name:'Chi tiết bản sửa',exact:true}).first().click();let d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByRole('button',{name:'Đóng',exact:true}).click();await expect(next).toBeDisabled();expect(writes.filter(w=>w.body.phase==='commit')).toHaveLength(0)
+ const buttons=page.getByRole('button',{name:'Chi tiết bản sửa',exact:true});expect(await buttons.count()).toBe(2)
+ for(let i=0;i<2;i++){await buttons.nth(i).click();d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByLabel('Lý do correction').fill(`Evidence for history ${i+1}`);await d.getByRole('checkbox').check();await d.getByRole('button',{name:'Xác nhận cho lần nhập này',exact:true}).click();if(i===0)await expect(next).toBeDisabled()}
+ await expect(next).toBeEnabled();await next.click();await page.getByLabel('Lý do review (bắt buộc)').fill('Reviewed historical evidence');await page.getByLabel('Tôi đã đọc đủ dữ liệu, nguồn báo cáo, cách đọc và cảnh báo.').check();await page.getByRole('button',{name:'Xác nhận đã kiểm tra',exact:true}).click();await page.getByLabel('Lý do nhập dữ liệu (bắt buộc)').fill('Historical correction');await page.getByLabel('Tôi đã kiểm tra dữ liệu, cảnh báo và phạm vi nhập.').check();await page.getByRole('button',{name:'Xác nhận và nhập dữ liệu',exact:true}).click()
+ await expect(page.getByRole('button',{name:'Kiểm tra lại trạng thái',exact:true})).toBeVisible();const commits=writes.filter(w=>w.body.phase==='commit');expect(commits).toHaveLength(1);expect(commits[0].body.history_corrections).toHaveLength(2);expect(commits[0].body.history_corrections[0].expected_version).toBe('history/1');await page.getByRole('button',{name:'Kiểm tra lại trạng thái',exact:true}).click();expect(writes.filter(w=>w.body.phase==='commit')).toHaveLength(1);await expect(page.getByRole('button',{name:'Chi tiết bản sửa',exact:true})).toHaveCount(0)
 })

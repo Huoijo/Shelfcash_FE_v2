@@ -1,7 +1,7 @@
 import {readFileSync,writeFileSync} from 'node:fs'
 import {loadWireSource} from './wire-source.mjs'
 const path='src/features/import-data/importFlow.wire.ts'
-const wire=readFileSync(path,'utf8'),current=loadWireSource().components.schemas
+const wire=readFileSync(path,'utf8'),current=loadWireSource('import').components.schemas
 const identifier = (name) => `Wire${name.replace(/[^A-Za-z0-9_]/g, '_')}`
 
 function project(schema) {
@@ -31,6 +31,8 @@ function type(schema) {
 
 
 const names=new Set([...wire.matchAll(/^  ("[^"]+"): (\{.*\}),$/gm)].map(m=>JSON.parse(m[1])))
+names.add('SupplierPickerEnvelope')
+names.add('Envelope_Readiness_')
 function visit(name){
  if(!current[name])throw Error('Missing schema '+name)
  for(const [,ref] of JSON.stringify(current[name]).matchAll(/"\$ref":"#\/components\/schemas\/([^" ]+)"/g))if(!names.has(ref)){names.add(ref);visit(ref)}
@@ -40,6 +42,6 @@ const ordered=[...names].sort()
 const marker=wire.indexOf('export type ImportWireSchema')
 let result=wire.slice(0,wire.indexOf('export type Wire'))+ordered.map(n=>`export type ${identifier(n)} = ${type(current[n])}`).join('\n')+'\n\n'+wire.slice(marker)
 result=result.replace(/const schemas: Record<string, ImportWireSchema> = \{[\s\S]*?\n\}/, 'const schemas: Record<string, ImportWireSchema> = {\n'+ordered.map(n=>`  ${JSON.stringify(n)}: ${JSON.stringify(project(current[n]))},`).join('\n')+'\n}')
-result=result.replace('api-contract-v2/generated/openapi.json','contracts/011/openapi.main.json')
+result=result.replace(/contracts\/(?:011|history\/v2\/generated)\/openapi(?:\.main)?\.json/g,'contracts/016/openapi.main.json')
 writeFileSync(path,result)
 console.log('Import wire generated from pinned main snapshot:',ordered.length,'schemas')

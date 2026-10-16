@@ -2,6 +2,7 @@
 .auth-form__tabs button { min-height: 44px; padding: 10px 12px; border: 1px solid transparent; border-radius: 9px; background: transparent; color: #777; font-size: 14px; }
 .auth-form__tabs button[aria-selected="true"] { border-color: #d8d8d8; background: #fff; color: #262626; font-weight: 600; }
 .auth-form__tabs button:disabled { cursor: not-allowed; }
+.auth-form__tabs a { display:grid;place-items:center;color:#777;font-size:14px;text-decoration:none;min-height:44px; }
 .auth-form__text-button { flex: none; padding: 4px 0; border: 0; background: transparent; color: #737373; font-size: 13px !important; }
 .auth-form__text-button:hover { text-decoration: underline; text-underline-offset: 3px; }
 
@@ -205,3 +206,6 @@
     gap: 12px;
   }
 }
+
+.auth-form__support a{color:#737373;font-size:13px;text-underline-offset:3px}
+.auth-form>a{color:#737373;font-size:13px;text-underline-offset:3px}

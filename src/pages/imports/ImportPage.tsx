@@ -20,11 +20,11 @@ import './ImportPage.css'
 export function ImportPage({selection}:{selection?:ImportSelection} = {}) {
   const outlet = useOutletContext<ImportSelection>()
   const { state, workflow, flow, flowState, canDecideProfile, canProposeMapping, role, devOwnerReview, startNewDraft, preview } = selection ?? outlet
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const { state: storeState } = useCurrentStore()
   const storeName = storeState.status === 'ready' || storeState.status === 'mock_preview' ? displayStoreName(storeState.store.name) : 'Đang đọc cửa hàng'
   const [resolveImportId, setResolveImportId] = useState<string | null>(() => preview ? state.batch?.import_id ?? null : null)
-  const screen = preview?.screen ?? importScreen(state, flowState, resolveImportId)
+  const screen = preview?.screen ?? importScreen(state, flowState, searchParams.get('resolve') === '1' && searchParams.get('import_id') === state.batch?.import_id ? state.batch.import_id : resolveImportId)
   const analyzeVisible = screen === 'analyze'
   const locator = preview ? null : searchParams.get('import_id')
   const { files, dataDate, batch } = state
@@ -51,7 +51,7 @@ export function ImportPage({selection}:{selection?:ImportSelection} = {}) {
         <div className="import-page__heading"><div><h1 id="import-page-title">{title}</h1><span className="import-page__step">{role} FLOW</span></div>
           <DebugContent><button className="import-page__help" type="button" aria-haspopup="dialog" aria-controls={helpId} aria-expanded={helpOpen} onClick={() => setHelpOpen(true)}>HDSD</button></DebugContent></div>
         <p className="input-subtitle">{role === 'OWNER' ? 'Owner nhập dữ liệu, xác nhận cách hiểu và kiểm soát điều gì được tái sử dụng.' : 'Reuse khi an toàn, xử lý khi cần; chỉ gửi Owner duyệt khi cách đọc reusable thay đổi.'}</p>
-        <nav className="input-view-tabs" aria-label="Tiện ích nhập dữ liệu"><span aria-current="page">Nhập mới</span><Link to="/imports/history">Lịch sử</Link>{role === 'OWNER' && <><UnderConstructionButton feature="Duyệt mapping toàn cửa hàng">Phê duyệt Staff</UnderConstructionButton><UnderConstructionButton feature="Danh sách profile toàn cửa hàng">Profiles</UnderConstructionButton></>}</nav>
+        <nav className="input-view-tabs" aria-label="Tiện ích nhập dữ liệu"><span aria-current="page">Nhập mới</span><Link to="/imports/history">Lịch sử</Link>{role === 'OWNER' && <><Link to="/imports/approvals">Phê duyệt Staff</Link><UnderConstructionButton feature="Danh sách profile toàn cửa hàng">Profiles</UnderConstructionButton></>}</nav>
         <ImportStepper role={role} screen={screen} />
         {showFlow && <ImportSource state={state} flow={flowState} storeName={storeName} status={flowState.retryOperation === 'commit' ? 'Đang kiểm tra kết quả' : ({upload:'Chọn file',analyze: state.processing || state.batch?.active_job_id ? 'Đang phân tích' : analyzeAssessment(state, flowState) === 'complete' ? 'Phân tích hoàn tất' : 'Cần xử lý',resolve:flowState.summary?.progress.unresolved ? 'Cần xử lý' : 'Đã xử lý',profile:flowState.error ? 'Profile cần xử lý' : flowState.summary?.can_preview ? 'Profile đã duyệt' : 'Chưa ghi dữ liệu',preview:'Preview · Chưa ghi dữ liệu',review:'Chờ xác nhận',commit:'Đang ghi dữ liệu',complete:'Import hoàn tất'})[screen]} />}
         <DebugValue label="Import workspace" value={{ role, screen, batch: state.batch, flow: flowState }} />
@@ -63,7 +63,7 @@ export function ImportPage({selection}:{selection?:ImportSelection} = {}) {
           {!!rejectedFiles.length && <p className="import-page__error" role="alert">{rejectedFiles.length} file không được phân tích: {rejectedFiles.map((file) => file.filename).join(', ')}. Xem lý do trong “File đã nhập và thông tin lô”.</p>}
           {state.error && <p className="import-page__error" role="alert">{importMessage('', state.error)}</p>}
           {state.retryOperation && state.retryOperation!=='upload' && <button type="button" disabled={busy} onClick={() => { void workflow.retry() }}>Thử lại đúng yêu cầu trước</button>}
-          {analyzeVisible ? <ImportAnalyze canPropose={canProposeMapping&&!continuationLocked} role={role} state={state} flowState={flowState} workflow={workflow} flow={flow} onContinue={() => { setResolveImportId(batch?.import_id ?? null); flow.setTab('mapping') }} /> : <ImportFlow onBackToAnalyze={()=>{setResolveImportId(null);flow.setTab('mapping')}} initialEditor={preview?.editor} initialSubmit={preview?.submit} readinessPreview={preview?.readiness} key={batch?.import_id} role={role} devOwnerReview={devOwnerReview} state={flowState} workflow={flow} canDecideProfile={canDecideProfile} canProposeMapping={canProposeMapping} parentBusy={busy || !!state.retryOperation} parentStale={!state.fresh || locatorMismatch} />}
+          {analyzeVisible ? <ImportAnalyze canPropose={canProposeMapping&&!continuationLocked} role={role} state={state} flowState={flowState} workflow={workflow} flow={flow} onContinue={() => { setResolveImportId(batch?.import_id ?? null); flow.setTab('mapping') }} /> : <ImportFlow onBackToAnalyze={()=>{setResolveImportId(null);const next=new URLSearchParams(searchParams);next.delete('resolve');next.delete('sheet_id');setSearchParams(next,{replace:true});flow.setTab('mapping')}} initialSheetId={searchParams.get('sheet_id') ?? undefined} initialEditor={preview?.editor} initialSubmit={preview?.submit} readinessPreview={preview?.readiness} key={batch?.import_id} role={role} devOwnerReview={devOwnerReview} state={flowState} workflow={flow} canDecideProfile={canDecideProfile} canProposeMapping={canProposeMapping} parentBusy={busy || !!state.retryOperation} parentStale={!state.fresh || locatorMismatch} />}
           <DebugContent><ImportBatchPanel state={state} workflow={workflow} continuationLocked={continuationLocked} onNewDraft={startNewDraft} /></DebugContent>
         </>}
         {!showFlow && <div className="import-page__grid">

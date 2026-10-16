@@ -26,6 +26,13 @@ This register tracks required workflow states and reconciles their design, front
 Initial audit015 (historical), 14/10/2026: OWNER revision `461022434871619584`, STAFF revision `461022465448091648`.
 User confirmed that `(1).docx` has no behavioral changes: `docs/SHELFCASH_IMPORT_NAM_NGUYEN.docx` is the authoritative business document for this pass (13/10, SHA256 `492f5834625c1d3103eca97ea7c76927cd1511a7c2dfc04ee49cbff1339bd29d`). Current runtime contract still controls available DTOs.
 
+
+## Current freeze 019 reconciliation — 16/10/2026
+
+Primary revisions: OWNER `461576888779939840`, STAFF `461578635871158272`, Notifications `461576911768944640`, Auth `461578655542439936`, Store `461579602993750016`, Invitations `460601872768720896`. The historical audits below remain evidence, not current runtime claims. [019 implementation](019_Main_Frontend_Implementation.md), [remaining integration gaps](../FE_ask/019_Freeze_Integration_Gaps.md), [13-source / 347-scenario audit](testing/FREEZE_019_DESIGN_AUDIT.json).
+
+FM-013–016 now have frozen designs and partial production integration. Current counts: 3 IMPLEMENTED, 13 PARTIAL, 0 FOUND. This does not certify live acceptance or every visual state. No new FM ID was invented for existing gaps. Main016 supplies published APIs; it does not close unsupported behavior/design states.
+
 ## Missing UI
 
 ## FM-001 — Create entity metadata
@@ -84,6 +91,8 @@ ImportResolutionEditor.tsx, ImportResolveDrawers.tsx
 
 **Status:** PARTIAL
 
+**Freeze 019 current reconciliation:** Queue/detail now uses MQ02/MQ03 and real Staff origin for request_changes; Owner self-proposal approval remains allowed. Active baseline is fetched from M01 only on exact ID/version match. Missing baseline remains explicit. Review/decision comparisons and captured evidence stay read-only. Broader lifecycle visual/live coverage remains partial.
+
 **Blocking current implementation:** no — stated supported flow is usable; limitations remain explicit below
 
 **Design status:** DESIGN_READY — frozen v1 OWNER `461110616439017472` / STAFF `461109945690124288`.
@@ -134,7 +143,9 @@ ImportMapping.tsx / ImportProfileReview
 
 ## FM-003 — Persisted review confirmation
 
-**Status:** IMPLEMENTED
+**Status:** PARTIAL
+
+**Freeze 019 current reconciliation:** Conditional Commit reason is now implemented from the full Preview: pure insert/NO_OP optional, consequential/update/incomplete evidence required. Persisted Review remains independent, with its own reason/ack and global domain blockers. Existing server/domain persistence and frozen-state coverage limits below remain; API tests alone do not close this FM.
 
 **Blocking current implementation:** no — stated supported flow is usable; limitations remain explicit below
 
@@ -143,6 +154,8 @@ ImportMapping.tsx / ImportProfileReview
 **Current frontend / route:** `ImportPreview.tsx / ImportFlowWorkflow`; /imports → Review / Commit; BOTH.
 
 **Frozen v1 reconciliation:** Persisted confirm_review pins gate phase 2. Independent Review and Commit reasons/acks; domain guards at navigation, state and mutation; commit rechecks server snapshots and permissions. Uncertainty reads retained confirmation/result without replay. Verified on controlled responses, not live BE; separate persisted domain decisions remain FM-010/011.
+
+**016 extension, 16/10/2026:** Two-phase Review/Commit remains implemented. BE allows omitted/null commit reason for pure inserts/NO_OP; current frozen `ShelfCashReviewCommitSurface.tsx` uses required reason copy/controls. The conditional optional-reason variant lacks adequate interaction/copy design: **FOUND**, blocking current implementation **no** (existing stricter form remains a bounded fallback). Reconcile the existing form in MagicPath without removing Review/per-action justification or adding another modal. This fallback does not close the new variant; no duplicate FM ID is created.
 
 **Historical audit below:** findings from the earlier revisions are retained for traceability; they are superseded by the reconciliation above.
 
@@ -652,22 +665,130 @@ Extend the Unit resolver with explicit rational factor/evidence and error/permis
 
 ImportResolutionEditor.tsx / ConversionEditor, ImportResolveDrawers.tsx.
 
+## FM-013 — Self-service signup and email verification lifecycle
+
+**Status:** PARTIAL
+
+**Freeze 019 current reconciliation:** DESIGN_READY frozen Auth; /register, /email-verification and /password-reset now call A02/A05/A06/A07. A05 has no authenticated identity/session; explicit A01/A03 determines app/zero-Store/invitation continuation. Proof purposes remain distinct and invitation is never auto-accepted. Expired/used/invalid proof and unverified login cannot all be distinguished by current BE codes; delivery/callback and live behavior unverified. Historical FOUND/deferred statements below are superseded.
+
+**Blocking current implementation:** no — blocks deferred A02/A05/A06/A07 onboarding, not the implemented Import slice.
+
+**Current frontend / route:** `LoginForm.tsx`, `AppRouter.tsx`; `/login`; no email-verification route. **Role:** account holder before Owner/Staff Store membership.
+
+**Flow / Step:** Signup → mailbox proof/password → login.
+
+**Trigger:** user registers or opens EMAIL_VERIFY link, including failed delivery, resend, expired/consumed/invalid proof.
+
+**Why this state is required:** main Auth separates A02 signup (email/display_name), A05 email proof/password and A01 session. Generic accepted response does not prove email delivery; N7 SETUP/RESET is different.
+
+**What MagicPath currently covers:** login/register `458185906336202752` / `gentle-forest-2488`, one revision; local form validation and prototype notice. Register currently asks password/confirmation directly, not the server mailbox-proof sequence.
+
+**What is missing:** verification/password callback states, delivery unavailable, resend/rate-limit, expired/consumed/wrong-purpose proof and explicit return-to-login. No adequate current state family was found in the project audit.
+
+**Frontend impact / Temporary implementation:** keep registration disabled; existing login/N7/invitation routes remain. Do not send A05 tokens to N7 or fabricate success/email sent.
+
+**Design brief for MagicPath:** extend the auth design with the real A02→A05→A01 lifecycle, public generic responses, loading/error/recovery, token-hidden callback and accessibly named controls. No automatic Store creation or login from signup.
+
+**Found while working on:** sprint 016 handoff/API eligibility audit.
+
+## FM-014 — Explicit Store creation for an authenticated zero-Store account
+
+**Status:** PARTIAL
+
+**Freeze 019 current reconciliation:** DESIGN_READY frozen Store; conditional authenticated zero-Store bootstrap calls T03 with supported name/timezone/currency. Existing Store workspace remains default. Unknown result locks new intents and supports list readback/exact replay; empty T01 is not negative proof. Prototype type/address and universal confirmed-not-created remain unsupported. Historical absent-UI statements below are superseded.
+
+**Blocking current implementation:** no — blocks deferred T03 self-service creation; existing selected-Store flows remain.
+
+**Current frontend / route:** StoreGate/Store workspace; authenticated account with no Store. **Role:** account holder who becomes Owner only through successful T03 creation.
+
+**Flow / Step:** confirmed session → zero Store → explicit create → authorized readback/selection.
+
+**Trigger:** authenticated holder has no accessible Store and chooses to create one.
+
+**Why this state is required:** main T03 requires explicit name/timezone/currency and a durable receipt; signup/verification do not create membership or seed operational data.
+
+**What MagicPath currently covers:** `gentle-dawn-6293` Store permission/admin workspace for an existing Store, not initial creation.
+
+**What is missing:** creation form/validation/cancel, zero-Store entry, pending receipt/lost ACK/recovery and selected-Store transition without guessing defaults or provisioning stock/menu/budget.
+
+**Frontend impact / Temporary implementation:** no new create-Store form or T03 caller is introduced. Existing zero-Store/Store selection feedback remains, not final creation UX.
+
+**Design brief for MagicPath:** explicit minimal T03 form using established field/action patterns, current session, idempotent pending handling, readback and success navigation. No implicit timezone/currency product policy.
+
+**Found while working on:** sprint 016 Auth/Store handoff audit.
+
+## FM-015 — Account notification inbox and authorized deep-link recovery
+
+**Status:** PARTIAL
+
+**Freeze 019 current reconciliation:** DESIGN_READY frozen Notifications; header bell and /notifications wire NF01–03, filters, count, paging, read CAS/failure/recovery and registered destinations. Missing links use neutral unavailable copy unless BE identifies cause. Only three published object families exist; no fabricated Import/invitation notification. Permission request PR03 is read-only context; PR action/decline designs and full visual/live coverage remain partial.
+
+**Blocking current implementation:** no — notification integration is deferred; existing Import actions are independent.
+
+**Current frontend / route:** no NF inbox/read-state page. **Role:** Owner/Staff account with current source access.
+
+**Flow / Step:** submission/decision notification → inbox/unread/read → authorized pinned destination.
+
+**Trigger:** NF01/NF02 expose unread/submission/decision notification or an account opens a historical notification after grants/scope change.
+
+**Why this state is required:** BE has account-scoped notifications and NF03 versioned read state; notifications are navigation/history, never approval/commit authority.
+
+**What MagicPath currently covers:** Owner queue and Staff waiting/outcome surfaces in Input flow, not an account inbox/unread/read-state lifecycle.
+
+**What is missing:** inbox/unread/empty/error/paging, read mutation/recovery/CAS, revoked destination and pinned deep-link/current Store handling.
+
+**Frontend impact / Temporary implementation:** no synthetic inbox, badge counts or NF writers. Manual handoff is retained and does not resolve this gap.
+
+**Design brief for MagicPath:** account inbox and existing shell entry, versioned read action, navigation to authorized pinned MQ detail, missing/revoked source feedback and recovery. Reading must not decide a profile or commit a batch.
+
+**Found while working on:** sprint 016 NF01–03/MQ integration eligibility audit.
+
+## FM-016 — Mapping submission lifecycle extensions to existing handoff/queue
+
+**Status:** PARTIAL
+
+**Freeze 019 current reconciliation:** DESIGN_READY frozen Owner/Staff; MQ01 submit/resubmit/withdraw, MQ02 queue, MQ03 pinned detail/evidence, N5 approve/reject/request_changes now wired. Request changes requires verified active Staff origin and distinct current Owner; no own-proposal request_changes. Withdraw reads current I04 CAS. Feedback returns retained batch Step 3 and captured sheet; exact affected resolver/issue is not published. Unknown intents remain locked/replayable. Historical manual-only handoff is superseded.
+
+**Blocking current implementation:** no — precise MQ lifecycle integration deferred; current direct N5/manual handoff remains bounded.
+
+**Current frontend / route:** `ImportFlow.tsx` handoff dialog/Owner profile review; `/imports`. **Role:** Staff submitter, Owner reviewer; Owner self-submit/self-review allowed by BE.
+
+**Flow / Step:** explicit one-profile submit → pinned queue/detail/evidence → approve/reject/request_changes or withdraw → resubmit/recovery.
+
+**Trigger:** preparing MQ01 required reason/profile pins, withdrawing a submitted revision, Owner requesting changes or reviewing stale/paginated captured evidence.
+
+**Why this state is required:** BE MQ01–03/N5 own exact import/lifecycle/submission CAS and evidence. Same-key replay, stale eligibility and notification state differ from automatic timers or latest-profile substitution.
+
+**What MagicPath currently covers:** OWNER `461110616439017472` includes queue/full-spec decision; STAFF `461109945690124288` includes submit/waiting/rejected/approved and mutation recovery. These existing designs are not being logged again as missing entire screens.
+
+**What is missing:** a sufficient explicit state/interaction mapping for required submission reason and per-profile scope, versioned withdraw, request_changes/resubmit, pinned evidence pagination/eligibility/CAS and linked notification/unknown-receipt recovery. Generic waiting/rejected states alone do not define these decisions.
+
+**Frontend impact / Temporary implementation:** keep manual link handoff and direct N5 supported decisions. No new MQ writer, request_changes button or guessed multi-profile submission behavior is introduced.
+
+**Design brief for MagicPath:** extend existing handoff/queue/full-spec surfaces with these exact states, sharing established geometry. Approval remains separate from Preview/Review/commit; stale/unknown blocks competing decisions and does not authorize resend by a new key.
+
+**Found while working on:** sprint 016 MQ/N5/notification contract audit.
+
 ## Shared authentication recovery audit — 15/10/2026
 
 Read-only audit of current MagicPath OWNER `softly-door-9234` (24 revisions, updated 14/10), STAFF `wildly-shade-4015` (23 revisions, updated 14/10), and login `gentle-forest-2488` (1 revision). The Input designs do not define a separate authentication-recovery screen. This fix reuses the existing login form, inline feedback/text-button and protected-session feedback patterns: a failed session read keeps Import protected, offers login with the return destination, and permits session retry from login. Successful login still requires a fresh A03 read before entering Import. No new FM entry: this is shared authentication recovery using existing patterns, not a new Import product state or visual closure claim. Backend session failures remain an independent runtime issue.
 
-## Canonical Input Flow implementation status
+## Historical pre-freeze Input Flow implementation status
 
-Capability reconciliation, 16/10/2026: the statements below describe the FE scope pinned to snapshot 011. Newer BE source/handoff already provides SU01 supplier discovery, MQ submission/queue/detail, N5 request_changes and notifications, eligible RULE full-spec approval and 15 schemas; these are not proof of FE integration or live acceptance. Queue/notification continuation is now a **frontend integration dependency**, not an absent-backend claim. Strict wire and behavioral gaps are tracked in [015_Import_TechDebt.md](015_Import_TechDebt.md) and [Import guide §15](IMPORT_FLOW_OWNER_STAFF_GUIDE.md#15-đối-chiếu-be-main-và-fe--16102026). This documentation-only pass makes no new design audit or IMPLEMENTED claim; no new FM entry is created for API availability or implementation bugs.
+API-first boundary update, 16/10/2026: [018 service preparation](018_Backend_Capabilities_Service_Boundary.md) provides typed MQ/N5 request_changes/NF/PR/onboarding/T03/IN01 and all other published operations independently of UI. No UI/interaction or new visual audit is delivered by this pass. FM-003 optional-reason variant and FM-013–016 remain at their existing statuses; data-layer completion does not resolve them. No placeholder production flow or new design gap is invented.
+
+E2E protocol planning, 16/10/2026: [017 live test protocol](017_Live_BE_FE_E2E_Protocol.md) và [inventory](testing/LIVE_E2E_DESIGN_INVENTORY.json) giữ mọi nhánh bị chặn bởi FM trong coverage, không tính fallback/manual handoff/API-only là full UI acceptance. Latest code-context catalogs xác nhận OWNER `461110616439017472` / STAFF `461109945690124288`; đây là catalog audit, không phải visual/live verification mới. Không phát hiện gap thiết kế mới trong pass lập quy trình; FM-001–016 giữ nguyên status, không tự đóng theo test hoặc theo API availability.
+
+Sprint 016 audit, 16/10/2026: OWNER `461110616439017472` and STAFF `461109945690124288` remain the current inspected revisions (source + previews). Import/SU01/Import R01 now consume the 016 handoff slice; unrelated generators retain 011. Supplier discovery, available source_only, RULE review entry and Readiness permission checks reuse existing designs. MQ/request_changes/NF and self-service onboarding remain deferred as documented in [016 sprint](016_Integration_Sprint.md). FM-013–016 record specific missing state families, not API TODOs. FM-003 retains implemented two-phase scope but has a newly identified conditional reason variant. No new speculative production screen is shipped.
 
 OWNER: PARTIAL — shared operational flow and two-phase Review/Commit implemented; first/existing Profile review uses real N5. Immediate entity creation, broad source context and domain-decision persistence do not have complete runtime parity.
 
 STAFF: PARTIAL — same geometry and current-import operational flow, permission-driven actions; reusable approval remains Owner-only. Queue/notification/outcome continuation remains to be integrated into FE from newer BE APIs; the current manual handoff and DEV simulation do not establish production parity.
 
-Remaining frontend UI gaps: finer descriptor-specific declaration controls, friendly immutable display projections and broad frozen-state visual coverage. No new FM IDs: the twelve original designs now exist.
+Historical pre-019 frontend UI gaps: finer descriptor-specific declaration controls, friendly immutable display projections, broad frozen-state visual coverage and newly recorded lifecycle variants. The twelve original base designs exist; optional commit reason requires reconciliation and FM-013–016 lack adequate designs.
 
 Remaining backend/API dependencies: see `015_Import_TechDebt.md` and `../FE_ask/015_Frozen_Input_Flow_Capability_Requests.md`. DESIGN_READY endpoints are not wired.
 
 Known non-blocking implementation debt: compact CSS overrides retained from the previous pass, conservative scope invalidation, array-index matching in Profile comparison and DEV catalog still smaller than frozen inventory. Full Profile is always inspectable; changed-only is a display aid, never approval authority.
 
-Status count: 4 IMPLEMENTED (FM-003/006/008/012), 8 PARTIAL (FM-001/002/004/005/007/009/010/011). All twelve are DESIGN_READY visually. IMPLEMENTED means the stated frontend scope, not live backend acceptance or pixel verification of every frozen scenario.
+Historical pre-019 status count: 3 IMPLEMENTED (FM-006/008/012), 9 PARTIAL (FM-001/002/003/004/005/007/009/010/011), 4 FOUND (FM-013–016). IMPLEMENTED means the stated frontend scope, not live backend acceptance or pixel verification of every frozen scenario. FM-003's original persisted Review scope remains implemented; its status now includes the unresolved conditional-reason design variant.

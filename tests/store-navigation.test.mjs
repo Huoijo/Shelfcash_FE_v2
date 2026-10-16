@@ -51,11 +51,11 @@ test('Store route is protected but outside StoreGate so no/multi Store can resol
   assert.ok(source.indexOf('<Route element={<StoreGate') < source.indexOf('path="/today"'))
 })
 
-test('Today keeps inventory facts unavailable without the current Store permission', () => {
+test('Today does not fabricate inventory or readiness before D01 is read', () => {
   const restricted = { ...store, membership: { ...store.membership, effective_permissions: [] } }
   const html = render(h(TodayPage), { status: 'ready', store: restricted })
-  assert.match(html, /Bạn chưa có quyền xem tồn kho/)
-  assert.match(html, /href="\/forecast\/planning"/)
+  assert.match(html, /Chưa được đánh giá/)
+  assert.match(html, /href="\/imports"/)
   assert.doesNotMatch(html, /Tổng quan tồn kho|8.338.000|Dự đoán sẵn sàng|Kế hoạch sẵn sàng/)
 })
 

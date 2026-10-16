@@ -2,7 +2,7 @@
 
 14/10/2026. **FE PROPOSAL TO BE — NOT RUNTIME API.** Current integration target remains `contracts/011/openapi.main.json`. This document requests product capabilities, not new endpoint paths or backend implementation. Approved design does not prove runtime support. Existing responses/metadata must remain authoritative.
 
-Frozen MagicPath v1: OWNER `461110616439017472`, STAFF `461109945690124288`, project `458079658328604672`. Business document: `docs/SHELFCASH_IMPORT_NAM_NGUYEN.docx`.
+Frozen MagicPath v1: OWNER `461110616439017472`, STAFF `461109945690124288`, project `458079658328604672`. Business document: `docs/references/SHELFCASH_IMPORT_NAM_NGUYEN.docx`.
 
 ## 1. Read outcome of a retained mutation intent
 

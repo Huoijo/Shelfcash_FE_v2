@@ -1,3 +1,4 @@
+import { ImportHistoryCorrections } from './ImportHistoryCorrections'
 import { DebugContent, DebugValue } from '../../../shared/debug/DevelopmentTools'
 import { importMessage } from '../importPresentation'
 import { ImportGuardHelp } from './ImportGuardHelp'
@@ -7,25 +8,28 @@ import { previewDomainLabels } from './preview.labels'
 import {ImportActionBar} from './ImportActionBar'
 import {ImportDomainReview} from './ImportDomainReview'
 import {importDomainBlockers} from '../importDomainReview'
+import { commitReasonRequired } from '../importCommitReason'
 import { Evidence } from './ImportMapping'
 
 export function ImportPreview({ mapping,stage = 'all', showStaleNotice=true, bundle, busy, locked, blockers, reason, acknowledged, reviewReason, reviewAcknowledged, reviewBlockers,
-  resolutions, supplierChanges, onReviewReason, onReviewAcknowledge, onConfirmReview, onResolutions, onSupplierChanges,
+  resolutions, supplierChanges, historyCorrections = [], onHistoryCorrections, onReviewReason, onReviewAcknowledge, onConfirmReview, onResolutions, onSupplierChanges,
   onReason, onAcknowledge, onLoadMore, onCommit, onBack }: {
   onBack?:()=>void; showStaleNotice?:boolean;mapping?:MappingSummary|null;stage?: 'all' | 'preview' | 'review'; bundle: PreviewBundle; busy: boolean; locked: boolean; blockers: string[]; reason: string; acknowledged: boolean
   reviewReason: string; reviewAcknowledged: boolean; reviewBlockers: string[]
-  resolutions: SalesResolution[]; supplierChanges: SupplierConfirmation[]
+  resolutions: SalesResolution[]; supplierChanges: SupplierConfirmation[]; historyCorrections?: import('../importFlow.types').HistoryCorrection[]; onHistoryCorrections?: (values: import('../importFlow.types').HistoryCorrection[]) => void
   onReviewReason: (reason: string) => void; onReviewAcknowledge: (value: boolean) => void; onConfirmReview: () => void
   onResolutions: (resolutions: SalesResolution[]) => void; onSupplierChanges: (changes: SupplierConfirmation[]) => void
   onReason: (reason: string) => void; onAcknowledge: (value: boolean) => void; onLoadMore: () => void; onCommit: () => void
 }) {
   const { summary, rows, rows_page: page } = bundle.preview
-  const domainBlocked=!!importDomainBlockers(bundle,resolutions,supplierChanges).length
+  const domainBlocked=!!importDomainBlockers(bundle,resolutions,supplierChanges,historyCorrections).length
   const commitLocked=busy||locked||!bundle.confirmation_usable||domainBlocked
+  const reasonRequired = commitReasonRequired(bundle)
   return <>
     {stage !== 'review' && <>
     <ImportPreviewExplorer showStaleNotice={showStaleNotice} key={summary.preview_id} bundle={bundle} mapping={mapping} busy={busy} locked={locked} onLoadMore={onLoadMore}/>
-    <ImportDomainReview bundle={bundle} resolutions={resolutions} supplierChanges={supplierChanges} disabled={busy||locked} onResolutions={onResolutions} onSupplierChanges={onSupplierChanges}/>
+    <ImportHistoryCorrections bundle={bundle} values={historyCorrections} onChange={onHistoryCorrections} disabled={busy||locked} />
+    <ImportDomainReview historyCorrections={historyCorrections} bundle={bundle} resolutions={resolutions} supplierChanges={supplierChanges} disabled={busy||locked} onResolutions={onResolutions} onSupplierChanges={onSupplierChanges}/>
     <DebugValue label="Preview response / configurations" value={bundle} />
     </>}
     {stage !== 'preview' && <>
@@ -46,12 +50,12 @@ export function ImportPreview({ mapping,stage = 'all', showStaleNotice=true, bun
       <header><h3 id="import-commit-title">2. Xác nhận ghi toàn bộ lô</h3><span>{bundle.confirmation_usable&&!locked?'Sẵn sàng':'Đang khóa'}</span></header>
       {!bundle.confirmation_usable&&<p className="input-status">Cần xác nhận Review được lưu thành công trước khi nhập dữ liệu.</p>}
       <p>Quyền nhập dữ liệu sẽ được kiểm tra lại trước khi ghi.</p>
-      <label htmlFor="import-commit-reason">Lý do nhập dữ liệu (bắt buộc)</label>
-      <textarea id="import-commit-reason" value={reason} disabled={commitLocked} maxLength={1000} onChange={(event) => onReason(event.target.value)} />
+      <label htmlFor="import-commit-reason">Lý do nhập dữ liệu ({reasonRequired ? 'bắt buộc' : 'không bắt buộc'})</label>
+      <textarea id="import-commit-reason" value={reason} required={reasonRequired} disabled={commitLocked} maxLength={1000} onChange={(event) => onReason(event.target.value)} />
       <label className="import-flow__check"><input type="checkbox" checked={acknowledged} disabled={commitLocked} onChange={(event) => onAcknowledge(event.target.checked)} /><span>Tôi đã kiểm tra dữ liệu, cảnh báo và phạm vi nhập.</span></label>
       {!!blockers.length && <DebugContent><div className="import-flow__notice" id="import-commit-blockers"><p>Chưa thể ghi dữ liệu:</p><ul>{blockers.map((blocker) => <li key={blocker}>{blocker}</li>)}</ul></div></DebugContent>}
     </section>
-    <ImportActionBar back={onBack} backLabel="Quay lại Preview"><button type="button" className="input-primary import-flow__primary" disabled={commitLocked||!!blockers.length||!acknowledged||!reason.trim()||bundle.preview.stale} onClick={onCommit}>Xác nhận và nhập dữ liệu</button></ImportActionBar>
+    <ImportActionBar back={onBack} backLabel="Quay lại Preview"><button type="button" className="input-primary import-flow__primary" disabled={commitLocked||!!blockers.length||!acknowledged||(reasonRequired&&!reason.trim())||bundle.preview.stale} onClick={onCommit}>Xác nhận và nhập dữ liệu</button></ImportActionBar>
     </>}
   </>
 }

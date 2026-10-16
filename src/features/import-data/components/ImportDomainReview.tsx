@@ -1,14 +1,14 @@
 import {useState} from 'react'
-import type {PreviewBundle,PreviewRow,SalesResolution,SupplierConfirmation} from '../importFlow.types'
+import type {PreviewBundle,PreviewRow,SalesResolution,SupplierConfirmation,HistoryCorrection} from '../importFlow.types'
 import {importDomainBlockers,salesDecisionRows,supplierDecisionRows,validSalesDecision} from '../importDomainReview'
 import {FlowDialog} from '../../../shared/flow/FlowDialog'
 import {ImportBusinessFacts} from './ImportBusinessFacts'
 
-type Props={bundle:PreviewBundle;resolutions:SalesResolution[];supplierChanges:SupplierConfirmation[];disabled:boolean;onResolutions:(values:SalesResolution[])=>void;onSupplierChanges:(values:SupplierConfirmation[])=>void}
+type Props={bundle:PreviewBundle;resolutions:SalesResolution[];supplierChanges:SupplierConfirmation[];historyCorrections?:HistoryCorrection[];disabled:boolean;onResolutions:(values:SalesResolution[])=>void;onSupplierChanges:(values:SupplierConfirmation[])=>void}
 export function ImportDomainReview(props:Props) {
   const [selected,setSelected]=useState<PreviewRow|null>(null)
   const sales=salesDecisionRows(props.bundle),suppliers=supplierDecisionRows(props.bundle)
-  const blockers=importDomainBlockers(props.bundle,props.resolutions,props.supplierChanges)
+  const blockers=importDomainBlockers(props.bundle,props.resolutions,props.supplierChanges,props.historyCorrections)
   if(!sales.length&&!suppliers.length)return null
   return <section className="input-domain-review"><header><div><small>Domain review</small><h3>Kiểm tra thay đổi cần chú ý</h3></div><span>{blockers.length?'Còn quyết định cần xác nhận':'Đã xác nhận cho lần nhập này'}</span></header><div className="input-domain-grid">{[{label:'Sales review',rows:sales,done:(row:PreviewRow)=>validSalesDecision(row,props.resolutions.find(v=>v.row_id===row.row_id))},{label:'Supplier terms',rows:suppliers,done:(row:PreviewRow)=>props.supplierChanges.some(v=>v.action_id===row.row_id&&!!v.reason.trim())}].map(group=><article key={group.label}><h4>{group.label}</h4><p>{group.rows.length} thay đổi · {group.rows.filter(row=>!group.done(row)).length} cần xác nhận</p>{group.rows.map(row=><button type="button" key={row.row_id} disabled={props.disabled} onClick={()=>setSelected(row)}>{'Sheet nguồn'} · dòng {row.source_location.row_number??'—'} · {group.done(row)?'Đã xác nhận':'Xem chi tiết →'}</button>)}</article>)}</div>{!!blockers.length&&<p role="status">Xác nhận các thay đổi này trước khi Review.</p>}
     {selected&&<DomainDecision key={selected.row_id} row={selected} props={props} onClose={()=>setSelected(null)}/>}

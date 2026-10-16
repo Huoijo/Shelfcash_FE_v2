@@ -8,7 +8,7 @@ import { createHash } from 'node:crypto'
 // Business guards in planning.validation/data are intentionally not generated.
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const wire = readFileSync(resolve(root, 'src/features/store-workspace/storeWorkspace.wire.ts'), 'utf8')
-const current = loadWireSource().components.schemas
+const current = loadWireSource('capabilities').components.schemas
 const frozen = Object.fromEntries([...wire.matchAll(/^  ("[^"]+"): (\{.*\}),$/gm)].map((match) => [JSON.parse(match[1]), JSON.parse(match[2])]))
 const identifier = (name) => `Wire${name.replace(/[^A-Za-z0-9_]/g, '_')}`
 

@@ -13,7 +13,7 @@ import { PLANNING_FIXTURE_IDS, planningContextFixture, planningFailedPartialFixt
 const noop = () => {}
 const render = (component, props) => renderToStaticMarkup(createElement(MemoryRouter, null,createElement(component, props)))
 const setup = (overrides = {}) => render(PlanningSetup, { context: planningContextFixture(), busy: false, canCreate: true,
-  onCreate: noop, onAssessDate: noop, readiness: planningReadinessFixture(), readinessDate: '2026-10-11', ...overrides })
+  onCreate: noop, onAssessDate: noop, readiness: planningReadinessFixture(), readinessDate: '2026-10-11', readinessRequestKey: JSON.stringify(buildPlanningSetupRequest(planningContextFixture(),'2026-10-10','')), ...overrides })
 const results = (overrides = {}) => render(PlanningResults, { run: planningRunFixture(), selectedOptionId: null, busy: false, detailBusy: false,
   onSelectOption: noop, onLoadIngredients: noop, onMoreIngredients: noop, onSelectIngredient: noop, onLoadReasons: noop, onNewPlan: noop, ...overrides })
 

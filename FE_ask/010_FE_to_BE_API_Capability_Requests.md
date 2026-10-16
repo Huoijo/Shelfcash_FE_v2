@@ -1,10 +1,10 @@
 # 010 — FE → BE: API / capability requests còn thiếu
 
-Ngày tạo lập: 13/10/2026. General Context: reconcile [TechDebt 009](../docs/009_TechDebt.md) với năm contract BE bàn giao chiều 13/10. Đây là tài liệu gửi BE review; không phải tuyên bố các API đề xuất đã có. Chi tiết trạng thái tại [TechDebt 010](../docs/010_TechDebt.md).
+Ngày tạo lập: 13/10/2026. General Context: reconcile [TechDebt 009](../docs/sprints/009/009_TechDebt.md) với năm contract BE bàn giao chiều 13/10. Đây là tài liệu gửi BE review; không phải tuyên bố các API đề xuất đã có. Chi tiết trạng thái tại [TechDebt 010](../docs/sprints/010/010_TechDebt.md).
 
 ## Ranh giới bàn giao
 
-FE hiện dùng `api-contract-v2/generated/openapi.json`, SHA256 `f160bf4a46453404f103a32431da5dc722382fb02494612e61e2000e57533961`: 54 operations/50 paths. Đợt 2 dự kiến 72 operations/66 paths trong prose **không phải runtime inventory FE được phép gọi**. Checkout FE không chứa source BE `app/...` để xác thực source references mới.
+FE hiện dùng `contracts/history/v2/generated/openapi.json`, SHA256 `f160bf4a46453404f103a32431da5dc722382fb02494612e61e2000e57533961`: 54 operations/50 paths. Đợt 2 dự kiến 72 operations/66 paths trong prose **không phải runtime inventory FE được phép gọi**. Checkout FE không chứa source BE `app/...` để xác thực source references mới.
 
 Ưu tiên authority: CURRENT FACT / IMPLEMENTED > DESIGN_READY / ACCEPTED DECISION > FE PROPOSAL TO BE. Với từng request, mong BE trả lời: đã implemented ở release nào / vẫn DESIGN_READY / partially resolved / cần Product decision; kèm artifact hoặc câu hỏi còn cần chốt. Không cần BE thiết kế infrastructure/DB implementation trong phản hồi này.
 

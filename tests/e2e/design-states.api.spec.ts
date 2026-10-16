@@ -5,7 +5,7 @@ import {planningRunFixture,planningOptionFixture,PLANNING_FIXTURE_IDS} from '../
 import {inventoryFixtureItems,inventoryFixtureMeta,inventoryFixtureSummary,inventoryFixtureLots,inventoryFixtureMovements} from '../../src/features/inventory/inventory.fixtures'
 const invite='00000000-0000-4000-8000-000000000061',exp='00000000-0000-4000-8000-000000000062',jobId='00000000-0000-4000-8000-000000000063'
 const proof='synthetic-invitation-proof'
-const offer=(status='pending')=>env({invitation:{invitation_id:invite,store:{store_id:s,name:'Invited Store'},target_email:'controlled@example.invalid',role:'STAFF',offered_grants:['inventory.read'],permission_catalog_version:'permissions-v2',permission_descriptors:[{key:'inventory.read',group:'Kho',label_vi:'Xem tồn kho',description_vi:'Đọc kho',grantable_to_staff:true,required_with:[],exposure:'ordinary'}],version:'invite/1',status,issued_at:at,expires_at:'2026-10-19T00:00:00Z'},can_accept:status==='pending',reason_codes:[]})
+const offer=(status='pending')=>env({invitation:{invitation_id:invite,store:{store_id:s,name:'Invited Store'},target_email:'controlled@example.invalid',role:'STAFF',offered_grants:['inventory.read'],permission_catalog_version:'permissions-v3',permission_descriptors:[{key:'inventory.read',group:'Kho',label_vi:'Xem tồn kho',description_vi:'Đọc kho',grantable_to_staff:true,required_with:[],exposure:'ordinary'}],version:'invite/1',status,declined_at:status==='declined'?at:null,issued_at:at,expires_at:'2026-10-19T00:00:00Z'},can_accept:status==='pending',can_decline:status==='pending',reason_codes:[]})
 
 test('wrong-account invitation reveals only current account and supports logout before login',async({page})=>{
   let writes=0
@@ -39,7 +39,7 @@ test('acceptance lost ACK preserves intent and opens freshly verified invited St
     if(path===`/api/v1/staff-invitations/${invite}`)return offer(accepted?'accepted':'pending')
     if(path.endsWith('/accept')){writes.push({body,headers});accepted=true;if(writes.length===1)return 'ABORT';return env({invitation_id:invite,invitation_version_at_acceptance:'invite/1',store_id:s,membership_id:member,role:'STAFF',accepted_grants:['inventory.read'],authorization_version_at_acceptance:'staff/2',accepted_at:at,event_id:exp,next_action:'refresh_store_context'})}
     if(path==='/api/v1/stores')return env({items:[{store_id:s,name:'Invited Store',timezone:'Asia/Ho_Chi_Minh',currency:'VND',role:'STAFF',membership_id:member,authorization_version:'staff/2'}]},paging(1))
-    if(path===`/api/v1/stores/${s}`){storeReads++;return env({store_id:s,name:'Invited Store',timezone:'Asia/Ho_Chi_Minh',currency:'VND',role:'STAFF',membership_id:member,authorization_version:'staff/2',active:true,server_now:at,as_of_date:'2026-10-12',membership:{membership_id:member,role:'STAFF',authorization_version:'staff/2',effective_permissions:['inventory.read','ingredient.read']},permission_catalog_version:'permissions-v2'})}
+    if(path===`/api/v1/stores/${s}`){storeReads++;return env({store_id:s,name:'Invited Store',timezone:'Asia/Ho_Chi_Minh',currency:'VND',role:'STAFF',membership_id:member,authorization_version:'staff/2',active:true,server_now:at,as_of_date:'2026-10-12',membership:{membership_id:member,role:'STAFF',authorization_version:'staff/2',effective_permissions:['inventory.read','ingredient.read']},permission_catalog_version:'permissions-v3'})}
   })
   await page.goto(`/invitations/${invite}#token=${proof}`)
   await page.getByRole('button',{name:'Chấp nhận lời mời',exact:true}).click()

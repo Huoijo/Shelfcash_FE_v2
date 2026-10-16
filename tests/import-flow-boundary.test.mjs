@@ -62,7 +62,7 @@ const previewRead = () => ({ import_id: IMPORT, display_number: 'IMP-QA', store_
   source_set: { version: 'source-set', sealed: true, accepted_file_ids: [FILE], digest }, allowed_actions: ['preview'],
   completion_available: false, configurations: null, review_confirmation: null, confirmation_usable: false,
   quota: { accepted_file_count: 1, accepted_total_bytes: 8, remaining_file_slots: 19, remaining_bytes: 100 * 1024 ** 2 - 8 },
-  preview: { summary: previewSummary(), rows: [previewRow()], rows_page: { ...pagination, total_count: 1 }, stale: false } })
+  preview: { mapping_revision: 'opaque mapping revision', read_set_digest: digest, source_evidence_digest: digest, summary: previewSummary(), rows: [previewRow()], rows_page: { ...pagination, total_count: 1 }, stale: false } })
 const completion = () => ({ import_id: IMPORT, data_date: '2026-10-11', status: 'completed', outcome: 'no_changes', mode: 'atomic', completed_at: at,
   commit_id: id(13), preview_id: PREVIEW, effective_plan_digest: digest, mapping_bindings: [],
   summary: { files: 1, sheets: 1, rows: 1, mapped_fields: 1, errors: 0, warnings: 0,
@@ -152,7 +152,7 @@ test('M04 target writes use only target_field and quoted mapping CAS, never impo
 test('M04 typed resolutions preserve false/zero/null and classification IGNORE acknowledgment', async (t) => {
   session(t)
   const payloads = [
-    { kind: 'source_context', source_system_key: 'pos.synthetic', report_type: 'daily', evidence_reference: 'input review' },
+    { kind: 'source_context', source_system_key: 'pos.synthetic', report_type: 'daily', evidence_reference: 'input review',missing_stockout:'not_provided',stockout_aliases:[{token:'HẾT HÀNG',value:true},{token:'?',value:null}],pack_cost_basis:'PER_PACK' },
     { kind: 'identity_binding', canonical_id: id(18) },
     { kind: 'declared_conversion', from_unit: 'g', to_unit: 'kg', factor: { numerator: '1', denominator: '1000' }, evidence_reference: 'declared' },
     { kind: 'ignored_optional_field', evidence_reference: 'unused optional column' },
@@ -197,7 +197,7 @@ test('N5 activation uses lifecycle CAS and explicit expected active version null
     assert.equal(init.headers.get('If-Match'), '"lifecycle-v1"')
     assert.deepEqual(JSON.parse(init.body), decision)
     return respond(envelope({ profile_id: PROFILE, approved_version: 'active-v1', active_version: 'active-v1',
-      lifecycle_revision: 'lifecycle-v2', decision_id: id(20), decided_at: at, audit_id: id(21) }))
+      lifecycle_revision: 'lifecycle-v2', decision_id: id(20), decided_at: at, audit_id: id(21), submission: null, notification_delivery: { status: 'not_required', event_id: null } }))
   })
   assert.equal((await source().decideProfile(STORE, PROFILE, { key: KEY, lifecycleRevision: 'lifecycle-v1', decision })).active_version, 'active-v1')
 })
@@ -228,7 +228,7 @@ test('I05 preview, synchronous confirm_review and commit have distinct bodies an
     }
     if (phase === 'commit') {
       assert.deepEqual(body, { phase: 'commit', preview_id: PREVIEW, preview_digest: digest, confirm: true,
-        reason: 'Đã kiểm tra', resolutions: [], supplier_changes: [{ action_id: id(22), reason: 'Term reviewed' }] })
+        reason: 'Đã kiểm tra', resolutions: [], history_corrections: [{row_id:id(23),expected_version:'history/1',reason:'History evidence'}], supplier_changes: [{ action_id: id(22), reason: 'Term reviewed' }] })
       assert.equal(init.headers.get('If-Match'), '"reviewed import revision"')
     }
     return respond(envelope(process(phase), { poll_after_ms: 2000 }), 202)
@@ -240,7 +240,7 @@ test('I05 preview, synchronous confirm_review and commit have distinct bodies an
   assert.equal(review.phase, 'confirm_review'); assert.equal(review.confirmation.preview_id, PREVIEW)
   phase = 'commit'
   const accepted = await source().commit(IMPORT, { key: KEY, importRevision: review.import_revision, previewId: PREVIEW,
-    previewDigest: digest, reason: 'Đã kiểm tra', resolutions: [], supplierChanges: [{ action_id: id(22), reason: 'Term reviewed' }] })
+    previewDigest: digest, reason: 'Đã kiểm tra', resolutions: [], historyCorrections:[{row_id:id(23),expected_version:'history/1',reason:'History evidence'}], supplierChanges: [{ action_id: id(22), reason: 'Term reviewed' }] })
   assert.equal(accepted.commit_id, id(13)); assert.equal(accepted.status, 'committing')
   const missing = process('commit'); delete missing.commit_id
   assert.throws(() => validateProcessReceipt(envelope(missing), IMPORT, 'commit'), HttpError)

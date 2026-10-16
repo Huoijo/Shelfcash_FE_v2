@@ -20,7 +20,7 @@ test('receipt writes shared stock and later detail/lots/movements reads; reset i
   await expect(dialog.getByText(/Đã thấy biến động/)).toBeVisible()
   await dialog.getByRole('button',{name:'Đóng',exact:true}).click()
   await page.getByRole('link',{name:'Hôm nay',exact:true}).click()
-  await expect(page.getByRole('heading',{name:'Hôm nay đang được xây dựng'})).toBeVisible()
+  await expect(page.getByRole('heading',{name:'Hôm nay',exact:true})).toBeVisible()
 
 })
 test('planning run retained across navigation appears in shared History',async({page})=>{
@@ -79,9 +79,9 @@ test('Import step navigation is Preview before review/commit',async({page})=>{
 })
 test('parked features show construction notices and close accessibly',async({page})=>{
   await page.goto('/imports')
-  await page.getByRole('button',{name:'Phê duyệt Staff'}).click()
-  await expect(page.getByRole('dialog')).toContainText('đang được xây dựng')
-  await page.keyboard.press('Escape');await expect(page.getByRole('dialog')).toHaveCount(0)
+  await page.getByRole('link',{name:'Phê duyệt Staff'}).click()
+  await expect(page).toHaveURL(/imports\/approvals/)
+  await expect(page.getByRole('heading',{name:'Phê duyệt Staff',exact:true})).toBeVisible()
   await page.goto('/forecast/planning')
   await page.getByRole('button',{name:'Tạo kế hoạch nhập hàng'}).click()
   for(const name of ['Hỏi AI','Kịch bản giả định','Tạo Draft PO']){

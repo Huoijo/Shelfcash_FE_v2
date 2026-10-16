@@ -124,7 +124,7 @@ function ScopedPlanningPage({ storeId }: { storeId: string | null }) {
       canCreate={hasCreateRights && !state.uncertain}
       canCreateReason={!hasCreateRights ? 'Thiếu quyền lập/xem kế hoạch hoặc xem ngân sách/giá mua.' : undefined}
       onCreate={(request) => { setSubmitted(structuredClone(request));void workflow.create(request) }} onAssessDate={workflow.assessDate}
-      readiness={state.readiness} readinessDate={state.readinessDate} readinessBusy={state.readinessBusy} readinessError={state.readinessError} /></div>}
+      readiness={state.readiness} readinessDate={state.readinessDate} readinessRequestKey={state.readinessRequestKey} readinessBusy={state.readinessBusy} readinessError={state.readinessError} /></div>}
     {canRead && !mismatch && state.run && ['completed', 'failed'].includes(state.run.status) && <PlanningResults
       key={state.run.run_id} historical={params.get('historical')==='1'} exportAction={<PlanExport run={state.run} optionId={state.selectedOptionId}/>} run={state.run} ingredients={state.ingredients ?? undefined} ingredient={state.ingredient ?? undefined}
       reasons={state.reasons ?? undefined} selectedOptionId={state.selectedOptionId} busy={state.busy} detailBusy={state.detailBusy}

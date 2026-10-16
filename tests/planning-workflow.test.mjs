@@ -52,7 +52,7 @@ test('setup/context/readiness create → canonical running → terminal retained
 
 test('zero budget is sent unchanged and renders completed no-winner as business result, not request failure', async () => {
   const { workflow } = await setup()
-  await workflow.create(custom('0')); await workflow.poll()
+  await workflow.assessDate('2026-10-11',custom('0')); await workflow.create(custom('0')); await workflow.poll()
   const state = workflow.getSnapshot()
   assert.equal(state.phase, 'result'); assert.equal(state.error, null)
   assert.equal(state.run.configuration.budget.limit, '0')
@@ -68,7 +68,7 @@ test('network-lost acknowledgment freezes original intent/key and refuses a new 
     return response
   } })
   const intent = custom('100000')
-  await workflow.create(intent); intent.requirements.budget_limit = '999999'
+  await workflow.assessDate('2026-10-11',intent); await workflow.create(intent); intent.requirements.budget_limit = '999999'
   assert.equal(workflow.getSnapshot().uncertain, true); assert.equal(workflow.getSnapshot().accepted, null)
   assert.equal(workflow.reset(), false)
   await workflow.create(custom('200000'))
@@ -99,7 +99,7 @@ test('a later definite retry denial cannot disprove original lost-ACK acceptance
       if (attempt === 2) throw failure(status, status === 403 ? 'PERMISSION_DENIED' : 'INVALID_PLANNING_CONFIGURATION')
       return underlying.create(...args)
     } })
-    await workflow.create(custom('100000')); assert.equal(workflow.getSnapshot().uncertain, true)
+    await workflow.assessDate('2026-10-11',custom('100000')); await workflow.create(custom('100000')); assert.equal(workflow.getSnapshot().uncertain, true)
     await workflow.retryCreate()
     assert.equal(workflow.getSnapshot().uncertain, true, `retry${status} cannot prove original nonacceptance`)
     assert.equal(workflow.reset(), false)
@@ -437,4 +437,16 @@ test('transient reasons failure preserves previously validated ingredient eviden
   assert.deepEqual(workflow.getSnapshot().ingredients,before.ingredients)
   assert.deepEqual(workflow.getSnapshot().ingredient,before.ingredient)
   failRead=false;await workflow.loadReasons();assert.equal(workflow.getSnapshot().inspectionError,null);assert.ok(workflow.getSnapshot().reasons)
+})
+
+test('same-date readiness for one full request cannot authorize a changed budget or requirements mode', async () => {
+  const { workflow } = await setup()
+  await workflow.assessDate('2026-10-11', custom('0'))
+  await workflow.create(custom('1'))
+  assert.equal(workflow.getSnapshot().accepted, null)
+  assert.match(workflow.getSnapshot().error, /toàn bộ yêu cầu/)
+  await workflow.create(request())
+  assert.equal(workflow.getSnapshot().accepted, null)
+  await workflow.create(custom('0'))
+  assert.equal(workflow.getSnapshot().accepted.status, 'queued')
 })

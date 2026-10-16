@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "date": "2026-10-16",
+  "purpose": "Canonical documentation locations. Historical prose/status/evidence is not reinterpreted by relocation.",
+  "moves": {
+    "docs/001-architecture-foundation.md": "docs/architecture/001-architecture-foundation.md",
+    "docs/002-technical-debt-and-integration-todo.md": "docs/sprints/002/002-technical-debt-and-integration-todo.md",
+    "docs/003-import-flow-integration.md": "docs/sprints/003/003-import-flow-integration.md",
+    "docs/004-import-flow-be-clarification.md": "docs/sprints/004/004-import-flow-be-clarification.md",
+    "docs/005-import-input-schema-mapping.md": "docs/sprints/005/005-import-input-schema-mapping.md",
+    "docs/006-decision-planning-e2e-integration.md": "docs/sprints/006/006-decision-planning-e2e-integration.md",
+    "docs/007-store-workspace-e2e-integration.md": "docs/sprints/007/007-store-workspace-e2e-integration.md",
+    "docs/008-magicpath-e2e-milestones.md": "docs/sprints/008/008-magicpath-e2e-milestones.md",
+    "docs/008_Implementation_Receipt.md": "docs/sprints/008/008_Implementation_Receipt.md",
+    "docs/008_TechDebt.md": "docs/sprints/008/008_TechDebt.md",
+    "docs/009_Implementation_Receipt.md": "docs/sprints/009/009_Implementation_Receipt.md",
+    "docs/009_TechDebt.md": "docs/sprints/009/009_TechDebt.md",
+    "docs/010_Implementation_Receipt.md": "docs/sprints/010/010_Implementation_Receipt.md",
+    "docs/010_TechDebt.md": "docs/sprints/010/010_TechDebt.md",
+    "docs/011_Implementation_Receipt.md": "docs/sprints/011/011_Implementation_Receipt.md",
+    "docs/011_TechDebt.md": "docs/sprints/011/011_TechDebt.md",
+    "docs/012_Implementation_Receipt.md": "docs/sprints/012/012_Implementation_Receipt.md",
+    "docs/012_Import_State_Mapping.md": "docs/sprints/012/012_Import_State_Mapping.md",
+    "docs/012_Import_TechDebt.md": "docs/sprints/012/012_Import_TechDebt.md",
+    "docs/013_Implementation_Receipt.md": "docs/sprints/013/013_Implementation_Receipt.md",
+    "docs/013_Import_Content_Parity.md": "docs/sprints/013/013_Import_Content_Parity.md",
+    "docs/013_Import_TechDebt.md": "docs/sprints/013/013_Import_TechDebt.md",
+    "docs/014_Implementation_Receipt.md": "docs/sprints/014/014_Implementation_Receipt.md",
+    "docs/014_UI_State_Playground.md": "docs/sprints/014/014_UI_State_Playground.md",
+    "docs/015_Implementation_Receipt.md": "docs/sprints/015/015_Implementation_Receipt.md",
+    "docs/015_Import_State_Audit.md": "docs/sprints/015/015_Import_State_Audit.md",
+    "docs/015_Import_TechDebt.md": "docs/sprints/015/015_Import_TechDebt.md",
+    "docs/016_Integration_Sprint.md": "docs/sprints/016/016_Integration_Sprint.md",
+    "docs/017_Live_BE_FE_E2E_Protocol.md": "docs/testing/017_Live_BE_FE_E2E_Protocol.md",
+    "docs/018_Backend_Capabilities_Service_Boundary.md": "docs/sprints/018/018_Backend_Capabilities_Service_Boundary.md",
+    "docs/019_Main_Frontend_Implementation.md": "docs/sprints/019/019_Main_Frontend_Implementation.md",
+    "docs/020_Closed_Design_Gap_Implementation.md": "docs/sprints/020/020_Closed_Design_Gap_Implementation.md",
+    "docs/FOUND_MISSING_UI_V1.md": "docs/status/FOUND_MISSING_UI_V1.md",
+    "docs/IMPORT_FLOW_OWNER_STAFF_GUIDE.md": "docs/guides/IMPORT_FLOW_OWNER_STAFF_GUIDE.md",
+    "docs/SHELFCASH_FE_BO_SUNG_API.md": "docs/archive/SHELFCASH_FE_BO_SUNG_API.md",
+    "docs/SHELFCASH_FLOW_NAM_NGUYEN.docx": "docs/references/SHELFCASH_FLOW_NAM_NGUYEN.docx",
+    "docs/SHELFCASH_IMPORT_NAM_NGUYEN.docx": "docs/references/SHELFCASH_IMPORT_NAM_NGUYEN.docx",
+    "docs/Underconstruction_by_BE.md": "docs/status/Underconstruction_by_BE.md"
+  },
+  "compatibilityPages": {
+    "docs/016_Integration_Sprint.md": "docs/sprints/016/016_Integration_Sprint.md",
+    "docs/017_Live_BE_FE_E2E_Protocol.md": "docs/testing/017_Live_BE_FE_E2E_Protocol.md",
+    "docs/018_Backend_Capabilities_Service_Boundary.md": "docs/sprints/018/018_Backend_Capabilities_Service_Boundary.md",
+    "docs/019_Main_Frontend_Implementation.md": "docs/sprints/019/019_Main_Frontend_Implementation.md",
+    "docs/020_Closed_Design_Gap_Implementation.md": "docs/sprints/020/020_Closed_Design_Gap_Implementation.md"
+  },
+  "frozenArtifacts": [
+    {
+      "originalPath": "docs/FOUND_MISSING_UI.md",
+      "path": "docs/FOUND_MISSING_UI.md",
+      "sha256": "3017bfd528eccd22988ff7851793bfec5babd69eb1aeb6a942a529967828fa9e"
+    },
+    {
+      "originalPath": "docs/testing/PASS_020_VERIFICATION.json",
+      "path": "docs/testing/PASS_020_VERIFICATION.json",
+      "sha256": "6378fd425a123fcea09bad906457a274468ef9bf4080c2a0d9403b6e7efdc8eb"
+    },
+    {
+      "originalPath": "docs/testing/BACKEND_CAPABILITY_COVERAGE.json",
+      "path": "docs/testing/BACKEND_CAPABILITY_COVERAGE.json",
+      "sha256": "f758b42ffd0d0e1d8ad5d3d73478c22b72287fc8ae352589e68fac0756995353"
+    },
+    {
+      "originalPath": "docs/testing/PASS_020_CAPABILITY_AUDIT.json",
+      "path": "docs/testing/PASS_020_CAPABILITY_AUDIT.json",
+      "sha256": "07ae30eb26e786b0c5a677bf12e1ce7d511d231e10710f9a2eb4f21ec92d94f6"
+    },
+    {
+      "originalPath": "docs/testing/LIVE_E2E_DESIGN_INVENTORY.json",
+      "path": "docs/testing/LIVE_E2E_DESIGN_INVENTORY.json",
+      "sha256": "e56af8c705ba7a8b3466d3994ad243d47d1b71d02534ec4ec3fbffbdd8dd3c84"
+    },
+    {
+      "originalPath": "docs/testing/FREEZE_019_DESIGN_AUDIT.json",
+      "path": "docs/testing/FREEZE_019_DESIGN_AUDIT.json",
+      "sha256": "e41f009f9781ce923be4600d47d0720d7570972352320e94149d27541b430e80"
+    },
+    {
+      "originalPath": "docs/testing/FREEZE_019_VERIFICATION.json",
+      "path": "docs/testing/FREEZE_019_VERIFICATION.json",
+      "sha256": "9d36b3bf45db4dca6926639ccc7089a8fb77d25cb5d61318d3dccfdec95de4e1"
+    },
+    {
+      "originalPath": "docs/SHELFCASH_FLOW_NAM_NGUYEN.docx",
+      "path": "docs/references/SHELFCASH_FLOW_NAM_NGUYEN.docx",
+      "sha256": "821ccb1f9866a35e5ba87a92d69372ad23a5364dfc0cdfd2a314540501deca96"
+    },
+    {
+      "originalPath": "docs/SHELFCASH_IMPORT_NAM_NGUYEN.docx",
+      "path": "docs/references/SHELFCASH_IMPORT_NAM_NGUYEN.docx",
+      "sha256": "492f5834625c1d3103eca97ea7c76927cd1511a7c2dfc04ee49cbff1339bd29d"
+    }
+  ]
+}

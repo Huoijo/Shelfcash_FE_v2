@@ -20,7 +20,7 @@ function envelope<T>(schema: string, value: unknown, label: string): T {
   return value as T
 }
 function grantsValid(grants: string[]): boolean {
-  return grants.length <= 37 && grants.every(nonblank) && unique(grants) && grants.every((key, index) => index === 0 || grants[index - 1] < key)
+  return grants.length <= 43 && grants.every(nonblank) && unique(grants) && grants.every((key, index) => index === 0 || grants[index - 1] < key)
 }
 function validPage(response: { data: { items: unknown[] }; meta: { pagination?: { limit: number; next_cursor: string | null; total_count: number | null } | null } }): boolean {
   const page = response.meta.pagination
@@ -34,9 +34,10 @@ function validCatalogue(catalogue: PermissionDescriptor[]): boolean {
 }
 function validInvitation(item: InvitationsResponse['data']['items'][number], storeId: string): boolean {
   return item.store_id === storeId && grantsValid(item.offered_grants) && nonblank(item.version) && nonblank(item.target_email) &&
-    item.permission_catalog_version === 'permissions-v2' &&
+    item.permission_catalog_version === 'permissions-v3' &&
     (item.status === 'accepted' ? item.accepted_at !== null && item.revoked_at === null : item.accepted_at === null) &&
-    (item.status === 'revoked' ? item.revoked_at !== null : item.revoked_at === null)
+    (item.status === 'revoked' ? item.revoked_at !== null : item.revoked_at === null) &&
+    (item.status === 'declined' ? item.declined_at !== null : item.declined_at === null)
 }
 
 export function validateWorkspaceKey(value: string): string {
@@ -62,7 +63,7 @@ export function validateWorkspaceInvitationCreate(value: unknown, catalogue?: Pe
   if (!matchesStoreWire('CreateInvitation', value)) throw new Error('Lời mời chỉ nhận email, quyền, phiên bản catalogue và lý do.')
   const request = value as StaffInvitationCreateRequest
   validateWorkspaceGrants({ grants: request.grants, reason: request.reason }, catalogue)
-  if (request.permission_catalog_version !== 'permissions-v2' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(request.email) || /[\r\n]/.test(request.email)) throw new Error('Cần email hợp lệ và phiên bản catalogue đã được xem lại.')
+  if (request.permission_catalog_version !== 'permissions-v3' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(request.email) || /[\r\n]/.test(request.email)) throw new Error('Cần email hợp lệ và phiên bản catalogue đã được xem lại.')
   return request
 }
 export function validateWorkspaceInvitationAction(value: unknown, catalogue?: PermissionDescriptor[]): StaffInvitationActionRequest {
@@ -74,7 +75,7 @@ export function validateWorkspaceInvitationAction(value: unknown, catalogue?: Pe
   if (!matchesStoreWire('ReissueInvitation', value)) throw new Error('Thao tác lời mời phải là gửi lại hoặc thu hồi theo contract.')
   const request = value as Extract<StaffInvitationActionRequest, { action: 'reissue' }>
   validateWorkspaceGrants({ grants: request.grants, reason: request.reason }, catalogue)
-  if (request.permission_catalog_version !== 'permissions-v2') throw new Error('Đọc lại catalogue trước khi gửi lại lời mời.')
+  if (request.permission_catalog_version !== 'permissions-v3') throw new Error('Đọc lại catalogue trước khi gửi lại lời mời.')
   return request
 }
 export function validateWorkspaceBudgetRequest(value: unknown): StoreBudgetRequest {
@@ -86,7 +87,7 @@ export function validateWorkspaceMemberships(value: unknown): MembershipsRespons
   const response = envelope<MembershipsResponse>('Envelope_MembershipList_', value, 'N12')
   if (!validPage(response) || !validCatalogue(response.data.permission_catalog) || !unique(response.data.items.map((item) => item.membership_id)) ||
     response.data.items.some((item) => !nonblank(item.version) || !grantsValid(item.grants) || item.grants.some((key) => !response.data.permission_catalog.some((permission) => permission.key === key && permission.grantable_to_staff)))) return invalid('N12 catalogue/membership/page', value)
-  return { ...response, data: { ...response.data, permission_catalog_version: response.data.permission_catalog_version ?? 'permissions-v2',
+  return { ...response, data: { ...response.data, permission_catalog_version: response.data.permission_catalog_version ?? 'permissions-v3',
     items: response.data.items.map((item) => ({ ...item, role: item.role ?? 'STAFF' })) } }
 }
 export function validateWorkspacePermissions(value: unknown, membershipId: string, request?: PermissionMutationRequest): PermissionsResponse {

@@ -1,69 +1,38 @@
-# ShelfCash FE v2 - Thư viện Báo cáo & Tài liệu Kiến trúc (Docs Library)
+# ShelfCash — Thư viện tài liệu frontend
 
-Thư mục này đóng vai trò như một **thư viện tài liệu (living documentation library)** của dự án ShelfCash Frontend v2. Mục đích nhằm ghi nhận lịch sử ra quyết định, kiến trúc hệ thống và giúp bất kỳ lập trình viên nào mới tham gia dự án cũng có thể truy cập và nắm bắt bối cảnh (context) nhanh chóng.
+Tài liệu được nhóm theo mục đích sử dụng; các báo cáo triển khai giữ nguyên ID và tên file để truy vết. Việc chuyển thư mục không thay đổi kết luận nghiệp vụ, trạng thái API hoặc kết quả kiểm thử đã ghi nhận.
 
----
+## Bắt đầu từ đâu
 
-## Quy ước Mỗi Báo cáo (Document Standards)
+1. [Register hiện hành](status/FOUND_MISSING_UI_V1.md): trạng thái Design / FE / BE / verification, owner và bước tiếp theo. Đây là nơi cập nhật backlog hiện tại.
+2. [Implementation 020](sprints/020/020_Closed_Design_Gap_Implementation.md): sáu design gaps vừa tích hợp, giới hạn contract và kết quả đối chiếu hiện tại.
+3. [Kiến trúc nền tảng](architecture/001-architecture-foundation.md) và [service/application-state boundary 018](sprints/018/018_Backend_Capabilities_Service_Boundary.md): kiến trúc và bối cảnh các lớp tích hợp; đọc cùng code và receipt mới hơn.
+4. [Hướng dẫn Import cho Owner/Staff](guides/IMPORT_FLOW_OWNER_STAFF_GUIDE.md): thao tác, API và lỗi theo từng bước; các phần ghi historical phải được đối chiếu với register/receipt mới nhất.
+5. [Quy trình E2E với BE live](testing/017_Live_BE_FE_E2E_Protocol.md): scope, quyền, dữ liệu, readback, recovery và tiêu chí nghiệm thu. Controlled checks không thay thế live acceptance.
 
-Mỗi bản báo cáo trong thư viện bắt buộc phải bao gồm các metadata chuẩn sau ở phần mở đầu:
-1. **Số thứ tự (ID)**: Ví dụ `#001`, `#002`, ...
-2. **Tiêu đề (Title)**: Rõ ràng, mô tả đúng nội dung/phạm vi kỹ thuật.
-3. **General Context**: Bối cảnh ra đời, động lực kỹ thuật và mục tiêu của lần thay đổi.
-4. **Ngày tạo lập (Creation Date)**: Định dạng `DD/MM/YYYY`.
+## Cấu trúc
 
----
+- [architecture/](architecture/README.md): nền tảng kiến trúc và quy ước kỹ thuật.
+- [status/](status/README.md): register hiện hành và phạm vi đang parked/underconstruction.
+- [guides/](guides/README.md): hướng dẫn sử dụng theo vai trò/nghiệp vụ.
+- [sprints/](sprints/README.md): báo cáo triển khai, audit, state mapping và tech debt theo ID từng lượt; đọc kết luận tại đúng thời điểm của báo cáo.
+- [testing/](testing/README.md): quy trình kiểm thử và các inventory/verification receipts bằng JSON.
+- [references/](references/README.md): tài liệu nghiệp vụ nguồn do người dùng cung cấp, giữ nguyên bytes.
+- [archive/](archive/README.md): tài liệu đối chiếu đã có nguồn hiện hành thay thế; giữ để tra cứu lịch sử.
 
-## Danh mục Báo cáo Kiến trúc (Architecture Reports Catalog)
+API contracts nằm tại [contracts/](../contracts/README.md), quy trình authority/pinning tại [contracts/WORKFLOW.md](../contracts/WORKFLOW.md). Trao đổi gửi BE/design giữ trong [FE_ask/](../FE_ask/); phản hồi và handoff BE giữ tại các thư mục nguồn hiện có, không trộn với báo cáo FE.
 
-| STT | Tiêu đề Báo cáo | Bối cảnh Tổng quan (General Context) | Ngày tạo lập | Tài liệu chi tiết |
-| :---: | :--- | :--- | :---: | :---: |
-| `#001` | **Thiết lập Nền tảng Dự án & Định hướng Kiến trúc** | Tái khởi tạo ShelfCash từ đầu (React 19 + TypeScript + Vite), loại bỏ boilerplate thừa, thiết lập layout tối giản (Header với ShelfCash & Đăng nhập) và định hướng kiến trúc phân tầng 4 lớp (`app`, `pages`, `features`, `shared`). | 05/10/2026 | [001-architecture-foundation.md](./001-architecture-foundation.md) |
-| `#002` | **Technical Debt & Integration TODO** | Theo dõi công việc đã có evidence cần hoàn tất trước staging/production và tích hợp BE; không thay đổi hành vi ứng dụng. | 10/10/2026 | [002-technical-debt-and-integration-todo.md](./002-technical-debt-and-integration-todo.md) |
-| `#006` | **Decision / Planning E2E integration** | Canonical C01/R01/C02/C03/C04/C05/C08, MagicPath mapping, controlled checks và live blocker; không chứng nhận live completion. | 11/10/2026 | [006-decision-planning-e2e-integration.md](./006-decision-planning-e2e-integration.md) |
-| `#007` | **Store Workspace E2E integration** | Multi-Store context, Owner Staff grants/invitations, known budget ceiling, complete field/default audits; controlled verification, không claim live. | 11/10/2026 | [007-store-workspace-e2e-integration.md](./007-store-workspace-e2e-integration.md) |
-| `#008` | **Audit MagicPath và checklist milestone E2E** | Đối chiếu 12 design mới với FE và OpenAPI V2; lộ trình mock E2E, BE-ready, kiểm thử và các gap contract. | 12/10/2026 | [008-magicpath-e2e-milestones.md](./008-magicpath-e2e-milestones.md) |
-| `#008-I` | **Implementation Receipt MP-M00–MP-M15** | Các operation FE mới, evidence mock/controlled/live, remaining FE work và milestone matrix. | 12/10/2026 | [008_Implementation_Receipt.md](./008_Implementation_Receipt.md) |
-| `#008-TD` | **Backend / Product TechDebt** | 13 dependency contract/Product có evidence và acceptance; không thay FE TODO list. | 12/10/2026 | [008_TechDebt.md](./008_TechDebt.md) |
+## Tài liệu hiện hành và bằng chứng lịch sử
 
----
+- Cập nhật trạng thái hiện tại tại một register duy nhất: [FOUND_MISSING_UI_V1](status/FOUND_MISSING_UI_V1.md). Một thiết kế hoặc service đã có không tự chứng minh runtime/live acceptance.
+- [FOUND_MISSING_UI.md](FOUND_MISSING_UI.md) là historical register đóng băng, giữ nguyên vị trí và bytes. Không dùng trạng thái cũ trong đó để ghi đè V1.
+- Các trang `016`–`020` ở root chỉ dẫn tới tài liệu chuẩn trong thư mục mới. Chúng giữ các liên kết từ historical register và frozen JSON hoạt động, không phải bản sao nội dung hay tracker mới.
+- [PATHS.json](PATHS.json) ghi đường dẫn cũ → mới, các compatibility pages và checksum của những artifact bất biến. Những path được trích trong frozen evidence vẫn mô tả vị trí tại thời điểm ghi nhận; dùng manifest khi tra cứu.
+- JSON verification/inventory và tài liệu `.docx` nguồn được giữ nguyên bytes; các receipt Markdown chỉ được cập nhật đường dẫn khi chuyển thư mục.
 
-## Hướng dẫn Bổ sung Báo cáo Mới
+## Khi bổ sung tài liệu
 
-Báo cáo bổ sung `#003` — [Import Flow Integration: evidence and handoff](./003-import-flow-integration.md), 11/10/2026: phạm vi FE continuation đã làm, kiểm thử controlled, bằng chứng backend và các ranh giới contract/live còn bị chặn. Không chứng nhận toàn bộ luồng Import thật đã hoàn tất.
-
-Báo cáo `#004` — [BE clarification sau rà soát contracts](./004-import-flow-be-clarification.md), 11/10/2026; response BE tại [004_IMPORT_FLOW_BE_RESPONSE_VI.md](../api-contract-v1/004_IMPORT_FLOW_BE_RESPONSE_VI.md).
-
-Báo cáo `#005` — [Import input và schema mapping](./005-import-input-schema-mapping.md), 11/10/2026: cập nhật FE theo response BE, typed resolutions/Owner approval, server review, resume locator và verification hiện tại. Không thay thế evidence lịch sử bằng live acceptance.
-
-Báo cáo `#006` — [Decision / Planning E2E integration](./006-decision-planning-e2e-integration.md), 11/10/2026: status PARTIAL, API topology hiện hành, mapping hai màn hình MagicPath, lifecycle/retry, concerns, test evidence và exact M09 file manifest. First live blocker là connection refused trước A03; không gọi mock/SSR là live.
-
-Khi có thay đổi lớn về kiến trúc hoặc hoàn thành một cột mốc kỹ thuật (milestone):
-1. Tạo file mới theo định dạng: `docs/NNN-<ten-ngan-gon-bang-tieng-anh-hoac-viet>.md` (ví dụ: `docs/002-routing-and-auth-setup.md`).
-2. Điền đầy đủ metadata: Số thứ tự, Tiêu đề, Ngày tạo lập, General Context.
-3. Cập nhật bản ghi mới vào bảng Danh mục phía trên trong file `docs/README.md`.
-
-### Prompt 009 — phản hồi BE và cập nhật thiết kế MagicPath
-
-- [009 Implementation Receipt](009_Implementation_Receipt.md): triển khai bảy flow theo MagicPath mới, giữ contract BE; 350 unit/component/workflow tests và 22 browser tests đạt.
-- [009 TechDebt cần resolve](009_TechDebt.md): dependencies BE/Product, live verification và FE/QA còn lại; không bao gồm phạm vi Underconstruction.
-- [Underconstruction_by_BE](Underconstruction_by_BE.md): M04/M10/M12/M13/M14 tạm dừng theo chủ dự án; entry FE thông báo đang xây dựng.
-
-### Prompt 010 — reconcile Technical Debt với BE chiều 13/10
-
-- [010 Implementation Receipt](010_Implementation_Receipt.md): nguồn đã đọc, reconcile baseline 009, authority và runtime parity; audit tài liệu, không wire APIs mới.
-- [010 TechDebt](010_TechDebt.md): các phần resolved, design-ready/not-runtime, partial và blocked; không gồm phạm vi Underconstruction.
-- [010 FE → BE API / capability requests](../FE_ask/010_FE_to_BE_API_Capability_Requests.md): một file gửi BE review, phân biệt thiết kế BE đã chốt với FE PROPOSAL TO BE.
-
-### Sprint 011 — BE night handoff và triển khai current-contract
-
-- [011 Implementation Receipt](011_Implementation_Receipt.md): pin main OpenAPI, cập nhật Import evidence/basis/opening, PDF reference/recovery và kiểm chứng sprint.
-- [011 TechDebt](011_TechDebt.md): local parity đã resolve, các WIP/design-ready và integration/live/FE-QA còn mở; không gồm Underconstruction.
-- [011 FE → BE follow-up](../FE_ask/011_FE_to_BE_Followup.md): dependencies còn thiếu sau khi nhận đủ snapshots; R05/R09 đã accepted, không hỏi lại Product.
-
-### Sprint 015 — canonical Input Flow / frozen Design Contract v1
-
-- [015 Implementation Receipt](015_Implementation_Receipt.md): changes, verified flows, exact paths and runtime boundaries.
-- [015 Design/State Audit](015_Import_State_Audit.md): pinned OWNER/STAFF revisions and frozen catalog inventory.
-- [Found Missing UI](FOUND_MISSING_UI.md): per-FM historical and current reconciliation.
-- [015 Import TechDebt](015_Import_TechDebt.md) and [FE → BE capability requests](../FE_ask/015_Frozen_Input_Flow_Capability_Requests.md).
+- Chọn thư mục theo mục đích; báo cáo cho ID `NNN` đặt tại `sprints/NNN/`, giữ ID/tên file nhất quán với tài liệu và FE_ask liên quan.
+- Báo cáo mới ghi rõ ID, tiêu đề, ngày, bối cảnh, nguồn authority, phạm vi triển khai, kiểm chứng và giới hạn.
+- Cập nhật index của nhóm và register nếu trạng thái hiện tại thay đổi. Không tạo thêm tracker cạnh tranh hoặc sửa frozen evidence để phản ánh kết quả mới.
+- Dùng liên kết tương đối từ vị trí file. Khi di chuyển, cập nhật cả link nội bộ lẫn tham chiếu từ README, AGENTS/rules/skills và FE_ask.

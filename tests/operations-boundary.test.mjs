@@ -8,7 +8,7 @@ import {captureProof,forgetProof} from '../src/features/auth/invitationProof'
 import {authenticatedReturnPath} from '../src/features/auth/auth.navigation'
 const BASE='https://controlled.invalid',s='f17e0000-0000-4000-8000-000000000000',p='00000000-0000-0000-0000-000000000011',id='00000000-0000-4000-8000-000000000023',key='00000000-0000-4000-8000-000000000024',at='2026-10-12T01:00:00Z'
 const api=createOperationsApi(BASE),env=data=>({data,meta:{request_id:'controlled'},error:null}),response=data=>new Response(JSON.stringify(data),{status:200})
-const schemaFixture=name=>JSON.parse(readFileSync(`api-contract-v2/docs/features/examples/s410/${name}.json`,'utf8'))
+const schemaFixture=name=>JSON.parse(readFileSync(`contracts/history/v2/docs/features/examples/s410/${name}.json`,'utf8'))
 function stub(t,handler){t.mock.method(globalThis,'fetch',handler);const release=configureHttpSession({getCsrfToken:()=>'controlled-csrf',onUnauthenticated:()=>{}});t.after(release)}
 const saved=()=>({saved_requirement_id:id,store_id:s,name:'Bộ đã lưu',version:'req/2',state:'active',created_at:at,updated_at:at,created_by_user_id:id,updated_by_user_id:id,requirements:{budget_limit:null,paths:[{path:'BASE',min_fill_rate_percent:'95',product_overrides:[]}]},default_reference:null,validation:{status:'valid',reason_codes:[]},warnings:[]})
 const timeline=()=>({store_id:s,product_id:p,as_of_date:'2026-10-12',schedule_version:'schedule/1',catalog_version:'catalog/1',items:[],minimum_change_date:'2026-10-13'})
@@ -27,7 +27,7 @@ test('fragment proof scrubbed before use; survives internal login in memory; no 
  assert.equal(authenticatedReturnPath('/invitations/'+id),'/invitations/'+id);assert.equal(authenticatedReturnPath('//evil.invalid'),'/imports');assert.equal(authenticatedReturnPath('/invitations/'+id+'#token=secret'),'/imports')
 })
 test('N18 proof is header only and wrong invitation response fails closed',async t=>{
- const offer={invitation:{invitation_id:id,store:{store_id:s,name:'QA'},target_email:'qa@example.invalid',offered_grants:[],permission_catalog_version:'permissions-v2',permission_descriptors:[],version:'offer/1',status:'pending',issued_at:at,expires_at:'2026-10-19T01:00:00Z'},can_accept:true,reason_codes:[]}
+ const offer={invitation:{invitation_id:id,store:{store_id:s,name:'QA'},target_email:'qa@example.invalid',offered_grants:[],permission_catalog_version:'permissions-v3',permission_descriptors:[],version:'offer/1',status:'pending',declined_at:null,issued_at:at,expires_at:'2026-10-19T01:00:00Z'},can_accept:true,can_decline:true,reason_codes:[]}
  let sent;stub(t,async(u,o)=>{sent={u,o};return response(env(offer))});await api.offer(id,'synthetic-proof');assert.equal(sent.o.headers.get('X-Invitation-Token'),'synthetic-proof');assert.equal(sent.u.includes('synthetic-proof'),false)
  offer.invitation.invitation_id=p;await assert.rejects(api.offer(id,'synthetic-proof'),e=>e.kind==='protocol')
 })
@@ -43,9 +43,13 @@ test('N14 and N16 events keep view/pagination and reject wrong Store',async t=>{
  await api.invitationEvents(s,id);assert.equal(new URL(url).searchParams.get('invitation_id'),id);assert.equal(new URL(url).searchParams.get('view'),'events');assert.equal(url.includes('permission-events'),false)
 })
 test('N9 uses supported filters, preserves signed cursor, rejects wrong Store/invalid dates',async t=>{
- const payload=schemaFixture('n9_response');let url;stub(t,async(u)=>{url=u;return response(payload)})
+ const payload=schemaFixture('n9_response'); payload.meta.timezone='Asia/Ho_Chi_Minh'; payload.meta.applied_filters={created_by_user_id:null,created_date_from:null,created_date_to:null}; for(const row of payload.data.items) row.captured_budget={availability:'unavailable',limit:null,currency:null}; let url;stub(t,async(u)=>{url=u;return response(payload)})
  const store=payload.data.items[0].store_id;const r=await api.history(store,{status:'queued',forecast_start_from:'2026-10-10',cursor:'signed/opaque+'});assert.equal(r.meta.pagination.total_count,3);assert.equal(new URL(url).searchParams.get('cursor'),'signed/opaque+');assert.equal(new URL(url).searchParams.get('sort'),'-accepted_at')
- await assert.rejects(api.history(s),e=>e.kind==='protocol');await assert.rejects(api.history(store,{forecast_start_from:'2026-02-30'}))
+ payload.meta.applied_filters={created_by_user_id:id,created_date_from:'2026-10-10',created_date_to:'2026-10-12'}
+ await api.history(store,{created_by_user_id:id,created_date_from:'2026-10-10',created_date_to:'2026-10-12',forecast_start_from:'2026-10-15'})
+ assert.equal(new URL(url).searchParams.get('created_date_from'),'2026-10-10');assert.equal(new URL(url).searchParams.get('forecast_start_from'),'2026-10-15');assert.equal(new URL(url).searchParams.get('created_by_user_id'),id)
+ await assert.rejects(api.history(store,{created_by_user_id:id}),e=>e.kind==='protocol')
+ await assert.rejects(api.history(s),e=>e.kind==='protocol');await assert.rejects(api.history(store,{forecast_start_from:'2026-02-30'}));await assert.rejects(api.history(store,{created_date_from:'2026-10-12',created_date_to:'2026-10-10'}))
 })
 test('N1/N2/N3 wire preserve null, zero, [] and CAS; fresh read after write',async t=>{
  const data=saved(),sent=[];stub(t,async(u,o)=>{sent.push({u,o});return response(env(data))})

@@ -156,3 +156,5 @@
 .import-flow__navigator .import-mapping-file { margin: 0; padding: 12px 10px; }
 .import-mapping-file > summary { padding: 6px 8px; color: #505050; font-size: 13px; font-weight: 500; overflow-wrap: anywhere; }
 .import-mapping-file ul { padding-left: 16px; margin-top: 6px; }
+
+.sc-flow-dialog .input-decision-ack{display:flex;flex-direction:row;align-items:flex-start;gap:8px;margin-top:16px}.input-decision-ack input{flex:none;margin-top:4px}

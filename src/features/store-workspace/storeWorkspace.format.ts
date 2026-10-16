@@ -3,6 +3,12 @@ import type { Invitation, PermissionDescriptor } from './storeWorkspace.types'
 
 // Reviewed action keys, never the six illustrative grouped permissions in the prototype.
 export const storePermissionLabels: Record<string, { label: string; group: string }> = {
+  'calendar.read': { label: 'Xem lịch nghiệp vụ', group: 'Lịch sử nghiệp vụ' },
+  'calendar.write': { label: 'Ghi lịch nghiệp vụ', group: 'Lịch sử nghiệp vụ' },
+  'usage.history.read': { label: 'Xem lịch sử sử dụng', group: 'Lịch sử nghiệp vụ' },
+  'usage.history.write': { label: 'Ghi lịch sử sử dụng', group: 'Lịch sử nghiệp vụ' },
+  'purchase.history.read': { label: 'Xem lịch sử mua', group: 'Lịch sử nghiệp vụ' },
+  'purchase.history.write': { label: 'Ghi lịch sử mua', group: 'Lịch sử nghiệp vụ' },
   'ingredient.read': { label: 'Xem nguyên liệu', group: 'Menu & nguyên liệu' },
   'ingredient.create': { label: 'Tạo nguyên liệu', group: 'Menu & nguyên liệu' },
   'menu.read': { label: 'Xem Menu', group: 'Menu & nguyên liệu' },
@@ -86,7 +92,7 @@ export function validStoreReason(reason: string): boolean {
 }
 
 export function storeInvitationStatus(status: Invitation['status']): string {
-  return { pending: 'Đang chờ chấp nhận', accepted: 'Đã chấp nhận', revoked: 'Đã thu hồi', expired: 'Đã hết hạn' }[status]
+  return { pending: 'Đang chờ chấp nhận', accepted: 'Đã chấp nhận', revoked: 'Đã thu hồi', expired: 'Đã hết hạn', declined: 'Đã từ chối' }[status]
 }
 
 export function storeDeliveryStatus(status: Invitation['delivery_status']): string {

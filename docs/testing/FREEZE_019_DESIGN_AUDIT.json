@@ -1,0 +1,3617 @@
+{
+  "project": "458079658328604672",
+  "audited_at": "2026-10-16",
+  "legacy_component_excluded": "458395069779681280",
+  "sources": [
+    {
+      "component_id": "460747146686242816",
+      "revision": "461576888779939840",
+      "file_count": 27,
+      "source_manifest_sha256": "ddb331e46ece84be3def72a498518b0cba2d9e2acb99d3988bf5a470ca0b8a66"
+    },
+    {
+      "component_id": "460747115572916224",
+      "revision": "461578635871158272",
+      "file_count": 26,
+      "source_manifest_sha256": "c19f5c0746156fb34392598ed7f8df340579f3c505947c56cb0ab83ff0820374"
+    },
+    {
+      "component_id": "461565920406556672",
+      "revision": "461576911768944640",
+      "file_count": 3,
+      "source_manifest_sha256": "8cea523b4a5b10301f1fd25d8aa1f8b160ae6073bf86f32e3a0bcce49884601e"
+    },
+    {
+      "component_id": "458185906336202752",
+      "revision": "461578655542439936",
+      "file_count": 5,
+      "source_manifest_sha256": "e8f930c3de9778b86b40b7f501a6543f2f5fee809a78b0e77e6ba86d7cab542e"
+    },
+    {
+      "component_id": "459953227023159296",
+      "revision": "461579602993750016",
+      "file_count": 5,
+      "source_manifest_sha256": "5314e00d2b1356dd099049f07303d87bcfd2d08971190c48a8ef8a7d5e16d80c"
+    },
+    {
+      "component_id": "460368412145782784",
+      "revision": "460601872768720896",
+      "file_count": 4,
+      "source_manifest_sha256": "04a377fcb2bfc78779fea150afbc79fa916fdd0c004e8c3bb8d005989735134f"
+    },
+    {
+      "component_id": "458614109248847872",
+      "revision": "460607009654472704",
+      "file_count": 15,
+      "source_manifest_sha256": "943d29ac763bb1529b7c10ea1346ff2d2166976e8f3f7acc8744d87bf6546976"
+    },
+    {
+      "component_id": "458083907045322752",
+      "revision": "458087405988220928",
+      "file_count": 4,
+      "source_manifest_sha256": "a7c3a51e1a523183727e160ec0e9319fe1dddbef41b3ded8e1ded186c5cb911c"
+    },
+    {
+      "component_id": "458255053002780672",
+      "revision": "458402037797892096",
+      "file_count": 14,
+      "source_manifest_sha256": "713ebca771cec6b0bbe438ddf5f935b150a0043623e5cb3f3df2b041efac05b5"
+    },
+    {
+      "component_id": "458590758262427648",
+      "revision": "460395468028002304",
+      "file_count": 16,
+      "source_manifest_sha256": "30e6ccb884c056b6c6ed281f328b82cc5f7a8a0260aa23fc91d305ca720ba279"
+    },
+    {
+      "component_id": "458414835571515392",
+      "revision": "460610508773548032",
+      "file_count": 10,
+      "source_manifest_sha256": "0c9cd0bd685b37e76e58014c7dd010ed321f520083c34b25ee69085e97e87a02"
+    },
+    {
+      "component_id": "458423352311304192",
+      "revision": "460610545930895360",
+      "file_count": 15,
+      "source_manifest_sha256": "bbe1a1a039bc91111403751a7b2e8cdf08b4b4a2e552628ff49a3ad58d4ab528"
+    },
+    {
+      "component_id": "458632053018234880",
+      "revision": "458637450923900928",
+      "file_count": 16,
+      "source_manifest_sha256": "3e1c4b312e1d4055c2c3017d7a38874ce35edac2f4d1c47622af3820265e3700"
+    }
+  ],
+  "catalogue_source_revision": "461576888779939840",
+  "entries": [
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "empty",
+      "label": "Empty",
+      "driver": "base",
+      "state": "01-empty",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "ready",
+      "label": "Ready",
+      "driver": "base",
+      "state": "01-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "upload-failed",
+      "label": "Upload failed",
+      "driver": "base",
+      "state": "01-upload-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "unsupported",
+      "label": "Unsupported",
+      "driver": "base",
+      "state": "01-unsupported",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "duplicate",
+      "label": "Duplicate",
+      "driver": "base",
+      "state": "01-duplicate",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "partial",
+      "label": "Partial accepted",
+      "driver": "advanced",
+      "state": "01-partial",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "partial-can",
+      "label": "Partial accepted · Can continue",
+      "driver": "advanced",
+      "state": "01-partial-can",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "partial-must",
+      "label": "Partial accepted · Must resolve",
+      "driver": "advanced",
+      "state": "01-partial-must",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "retrying",
+      "label": "Retrying one file",
+      "driver": "advanced",
+      "state": "01-retrying",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "ack-checking",
+      "label": "Upload acknowledgment · Checking",
+      "driver": "advanced",
+      "state": "01-ack-checking",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "ack-confirmed",
+      "label": "Upload acknowledgment · Confirmed",
+      "driver": "advanced",
+      "state": "01-ack-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "ack-unknown",
+      "label": "Upload acknowledgment · Unknown",
+      "driver": "advanced",
+      "state": "01-ack-unknown",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "file",
+      "id": "confirm-set",
+      "label": "Confirm accepted file set",
+      "driver": "advanced",
+      "state": "01-confirm-set",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "running",
+      "label": "Running",
+      "driver": "base",
+      "state": "02-running",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "complete",
+      "label": "Complete",
+      "driver": "base",
+      "state": "02-complete",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "failed",
+      "label": "Failed",
+      "driver": "base",
+      "state": "02-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "source",
+      "label": "Source required",
+      "driver": "source",
+      "state": "02-source",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "source-evidence",
+      "label": "Source evidence",
+      "driver": "source",
+      "state": "02-source-evidence",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "source-custom",
+      "label": "Custom source",
+      "driver": "source",
+      "state": "02-source-custom",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "source-locale",
+      "label": "Locale required",
+      "driver": "source",
+      "state": "02-source-locale",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "source-period",
+      "label": "Period required",
+      "driver": "source",
+      "state": "02-source-period",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "source-amendment",
+      "label": "Amendment context",
+      "driver": "source",
+      "state": "02-source-amendment",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "source-validation",
+      "label": "Source validation error",
+      "driver": "source",
+      "state": "02-source-validation",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "source-confirmed",
+      "label": "Source confirmed",
+      "driver": "source",
+      "state": "02-source-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "ambiguous",
+      "label": "Profile ambiguous",
+      "driver": "base",
+      "state": "02-ambiguous",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "no-profile",
+      "label": "No profile",
+      "driver": "base",
+      "state": "02-no-profile",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "drift",
+      "label": "Profile drift",
+      "driver": "base",
+      "state": "02-drift",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "analyze",
+      "id": "retired",
+      "label": "Profile retired",
+      "driver": "base",
+      "state": "02-retired",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "resolve",
+      "id": "resolved",
+      "label": "Resolved",
+      "driver": "base",
+      "state": "03-resolved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "resolve",
+      "id": "unresolved",
+      "label": "1 unresolved",
+      "driver": "base",
+      "state": "03-overview-unresolved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "resolve",
+      "id": "sales-correction",
+      "label": "Sales correction detected",
+      "driver": "domain",
+      "state": "03-sales-correction",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "resolve",
+      "id": "correction-conflict",
+      "label": "Correction conflict",
+      "driver": "domain",
+      "state": "03-correction-conflict",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "view",
+      "label": "View",
+      "driver": "resolver",
+      "state": "03a-view",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "editing",
+      "label": "Editing",
+      "driver": "resolver",
+      "state": "03a-editing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "manual",
+      "label": "Manual required / unresolved",
+      "driver": "resolver",
+      "state": "03a-unresolved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "duplicate",
+      "label": "Duplicate target",
+      "driver": "resolver",
+      "state": "03a-duplicate",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "ignore",
+      "label": "Explicit ignore",
+      "driver": "resolver",
+      "state": "03a-ignore",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "failed",
+      "label": "Legacy save failed",
+      "driver": "resolver",
+      "state": "03a-error",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "saved",
+      "label": "Saved",
+      "driver": "resolver",
+      "state": "03a-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "mutation-saving",
+      "label": "Saving",
+      "driver": "resolver",
+      "state": "03a-mutation-saving",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "mutation-failed",
+      "label": "Save failed",
+      "driver": "resolver",
+      "state": "03a-mutation-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "mutation-uncertain",
+      "label": "Save outcome uncertain",
+      "driver": "resolver",
+      "state": "03a-mutation-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "mutation-checking",
+      "label": "Checking saved state",
+      "driver": "resolver",
+      "state": "03a-mutation-checking",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "mutation-saved",
+      "label": "Saved after readback",
+      "driver": "resolver",
+      "state": "03a-mutation-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "mutation-unknown",
+      "label": "Still unknown",
+      "driver": "resolver",
+      "state": "03a-mutation-unknown",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "mapping",
+      "id": "mutation-not-saved",
+      "label": "Confirmed not saved",
+      "driver": "resolver",
+      "state": "03a-mutation-not-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "resolved",
+      "label": "Resolved",
+      "driver": "resolver",
+      "state": "03b-resolved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "unresolved",
+      "label": "Unresolved",
+      "driver": "resolver",
+      "state": "03b-unresolved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "search",
+      "label": "Search",
+      "driver": "resolver",
+      "state": "03b-search",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "ambiguous",
+      "label": "Ambiguous",
+      "driver": "resolver",
+      "state": "03b-ambiguous",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "selected",
+      "label": "Selected",
+      "driver": "resolver",
+      "state": "03b-selected",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "binding-permission",
+      "label": "Binding permission blocked",
+      "driver": "resolver",
+      "state": "03b-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "no-match",
+      "label": "No match",
+      "driver": "resolver",
+      "state": "03b-create-no-match",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "create",
+      "label": "Create entity",
+      "driver": "resolver",
+      "state": "03b-create-form",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "validation",
+      "label": "Create validation",
+      "driver": "resolver",
+      "state": "03b-create-validation",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "possible-duplicate",
+      "label": "Possible duplicate",
+      "driver": "resolver",
+      "state": "03b-create-duplicate",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "permission",
+      "label": "Create permission blocked",
+      "driver": "resolver",
+      "state": "03b-create-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "creating",
+      "label": "Creating",
+      "driver": "resolver",
+      "state": "03b-create-creating",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "failed",
+      "label": "Create failed",
+      "driver": "resolver",
+      "state": "03b-create-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "created",
+      "label": "Created + bound",
+      "driver": "resolver",
+      "state": "03b-create-created",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "identity",
+      "id": "created-reusable",
+      "label": "Created + reusable change",
+      "driver": "resolver",
+      "state": "03b-create-created-reusable",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "view",
+      "label": "View",
+      "driver": "resolver",
+      "state": "03c-view",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "missing",
+      "label": "Missing",
+      "driver": "resolver",
+      "state": "03c-missing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "editing",
+      "label": "Editing",
+      "driver": "resolver",
+      "state": "03c-editing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "validation",
+      "label": "Validation error",
+      "driver": "resolver",
+      "state": "03c-validation",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "batch-only",
+      "label": "Batch-only",
+      "driver": "resolver",
+      "state": "03c-batch-only",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "reusable",
+      "label": "Reusable proposal",
+      "driver": "resolver",
+      "state": "03c-reusable-editing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "source-value",
+      "label": "Source value present",
+      "driver": "resolver",
+      "state": "03c-source-value",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "replacing",
+      "label": "Replacing source value",
+      "driver": "resolver",
+      "state": "03c-editing-replacement",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "replacement-validation",
+      "label": "Replacement validation",
+      "driver": "resolver",
+      "state": "03c-validation-replacement",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "permission",
+      "label": "Permission blocked",
+      "driver": "resolver",
+      "state": "03c-error-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "save-failed",
+      "label": "Save failed",
+      "driver": "resolver",
+      "state": "03c-error-save",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "declarations",
+      "id": "saved",
+      "label": "Saved",
+      "driver": "resolver",
+      "state": "03c-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "compatible",
+      "label": "Compatible",
+      "driver": "resolver",
+      "state": "03d-compatible",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "known-exact",
+      "label": "Exact conversion",
+      "driver": "resolver",
+      "state": "03d-conversion",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "needs-resolution",
+      "label": "Needs resolution",
+      "driver": "resolver",
+      "state": "03d-needs",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "unsupported",
+      "label": "Unsupported",
+      "driver": "resolver",
+      "state": "03d-unsupported",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "saved",
+      "label": "Saved",
+      "driver": "resolver",
+      "state": "03d-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "needs-exact",
+      "label": "Needs exact conversion",
+      "driver": "resolver",
+      "state": "03d-exact-needs",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "editing-exact",
+      "label": "Editing conversion",
+      "driver": "resolver",
+      "state": "03d-exact-editing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "invalid",
+      "label": "Invalid conversion",
+      "driver": "resolver",
+      "state": "03d-exact-invalid",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "evidence",
+      "label": "Evidence required",
+      "driver": "resolver",
+      "state": "03d-exact-evidence",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "permission",
+      "label": "Permission blocked",
+      "driver": "resolver",
+      "state": "03d-exact-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "failed",
+      "label": "Save failed",
+      "driver": "resolver",
+      "state": "03d-exact-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "units",
+      "id": "saved-exact",
+      "label": "Exact conversion saved",
+      "driver": "resolver",
+      "state": "03d-exact-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "review-changed",
+      "label": "Review · Changed only",
+      "driver": "profile",
+      "state": "04-review",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "review-full",
+      "label": "Review · Full Profile",
+      "driver": "profile",
+      "state": "04-review-full",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "review-first",
+      "label": "Review · First Profile",
+      "driver": "profile",
+      "state": "04-review-first",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "review-staff",
+      "label": "Review · Staff proposal",
+      "driver": "profile",
+      "state": "04-review-staff",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "review-no-change",
+      "label": "Review · No reusable change",
+      "driver": "profile",
+      "state": "04-review-no-change",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "approve-ready",
+      "label": "Approve · Ready",
+      "driver": "profile",
+      "state": "04-approve-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "approve-saving",
+      "label": "Approve · Saving",
+      "driver": "profile",
+      "state": "04-approve-decision-saving",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "approve-failed",
+      "label": "Approve · Failed",
+      "driver": "profile",
+      "state": "04-approve-decision-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "approve-uncertain",
+      "label": "Approve · Outcome uncertain",
+      "driver": "profile",
+      "state": "04-approve-decision-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "approve-checking",
+      "label": "Approve · Checking saved state",
+      "driver": "profile",
+      "state": "04-approve-decision-checking",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "approve-unknown",
+      "label": "Approve · Still unknown",
+      "driver": "profile",
+      "state": "04-approve-decision-unknown",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "approve-not-saved",
+      "label": "Approve · Confirmed not saved",
+      "driver": "profile",
+      "state": "04-approve-decision-not-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "approved",
+      "label": "Approve · Confirmed",
+      "driver": "profile",
+      "state": "04-approved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "request-changes",
+      "label": "Request changes · Decision",
+      "driver": "profile",
+      "state": "04-request-changes",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "request-changes-saving",
+      "label": "Request changes · Saving",
+      "driver": "profile",
+      "state": "04-request-changes-decision-saving",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "request-changes-failed",
+      "label": "Request changes · Failed",
+      "driver": "profile",
+      "state": "04-request-changes-decision-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "request-changes-uncertain",
+      "label": "Request changes · Outcome uncertain",
+      "driver": "profile",
+      "state": "04-request-changes-decision-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "request-changes-checking",
+      "label": "Request changes · Checking",
+      "driver": "profile",
+      "state": "04-request-changes-decision-checking",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "request-changes-unknown",
+      "label": "Request changes · Still unknown",
+      "driver": "profile",
+      "state": "04-request-changes-decision-unknown",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "request-changes-not-saved",
+      "label": "Request changes · Confirmed not saved",
+      "driver": "profile",
+      "state": "04-request-changes-decision-not-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "request-changes-confirmed",
+      "label": "Request changes · Confirmed",
+      "driver": "profile",
+      "state": "04-request-changes-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "reject",
+      "label": "Reject · Decision",
+      "driver": "profile",
+      "state": "04-reject",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "reject-saving",
+      "label": "Reject · Saving",
+      "driver": "profile",
+      "state": "04-reject-decision-saving",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "reject-failed",
+      "label": "Reject · Failed",
+      "driver": "profile",
+      "state": "04-reject-decision-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "reject-uncertain",
+      "label": "Reject · Outcome uncertain",
+      "driver": "profile",
+      "state": "04-reject-decision-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "reject-checking",
+      "label": "Reject · Checking",
+      "driver": "profile",
+      "state": "04-reject-decision-checking",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "reject-unknown",
+      "label": "Reject · Still unknown",
+      "driver": "profile",
+      "state": "04-reject-decision-unknown",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "reject-not-saved",
+      "label": "Reject · Confirmed not saved",
+      "driver": "profile",
+      "state": "04-reject-decision-not-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "rejected",
+      "label": "Reject · Confirmed",
+      "driver": "profile",
+      "state": "04-rejected",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "changed",
+      "label": "Changed during review",
+      "driver": "profile",
+      "state": "04-changed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "handled",
+      "label": "Already handled",
+      "driver": "profile",
+      "state": "04-handled",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "permission",
+      "label": "Permission changed",
+      "driver": "profile",
+      "state": "04-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "profile",
+      "id": "retired",
+      "label": "Profile retired",
+      "driver": "profile",
+      "state": "04-retired",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "clean",
+      "label": "Clean",
+      "driver": "base",
+      "state": "05-preview",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "warnings",
+      "label": "Warnings",
+      "driver": "base",
+      "state": "05-warning",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "blocked",
+      "label": "Blocked",
+      "driver": "base",
+      "state": "05-blocked",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "stale",
+      "label": "Stale",
+      "driver": "base",
+      "state": "05-stale",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "sales-preview",
+      "label": "Sales correction · Preview rows",
+      "driver": "domain",
+      "state": "05-sales-correction-preview",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "sales-detail",
+      "label": "Sales correction · Detail",
+      "driver": "domain",
+      "state": "05-sales-correction-detail",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "sales-confirmed",
+      "label": "Sales correction · Confirmed replacement",
+      "driver": "domain",
+      "state": "05-sales-correction-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "sales-disjoint",
+      "label": "Sales correction · Keep separate",
+      "driver": "domain",
+      "state": "05-sales-correction-disjoint",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "sales-conflict",
+      "label": "Sales correction · Relationship unresolved",
+      "driver": "domain",
+      "state": "05-sales-correction-conflict",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "sales-permission",
+      "label": "Sales correction · Permission blocked",
+      "driver": "domain",
+      "state": "05-sales-correction-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "sales-failed",
+      "label": "Sales correction · Save failed",
+      "driver": "domain",
+      "state": "05-sales-correction-save-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "supplier-preview",
+      "label": "Supplier terms · Preview",
+      "driver": "domain",
+      "state": "05-supplier-preview",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "supplier-changed",
+      "label": "Supplier term · Changed",
+      "driver": "domain",
+      "state": "05-supplier-changed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "supplier-missing",
+      "label": "Supplier term · Missing effective date",
+      "driver": "domain",
+      "state": "05-supplier-missing-effective",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "supplier-fee",
+      "label": "Supplier term · Fee changed",
+      "driver": "domain",
+      "state": "05-supplier-fee",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "supplier-conflict",
+      "label": "Supplier term · Effectivity conflict",
+      "driver": "domain",
+      "state": "05-supplier-conflict",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "supplier-permission",
+      "label": "Supplier term · Permission blocked",
+      "driver": "domain",
+      "state": "05-supplier-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "supplier-confirmed",
+      "label": "Supplier term · Confirmed",
+      "driver": "domain",
+      "state": "05-supplier-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "preview",
+      "id": "supplier-failed",
+      "label": "Supplier term · Save failed",
+      "driver": "domain",
+      "state": "05-supplier-save-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "domain-summary",
+      "label": "Review · Domain review summary",
+      "driver": "review",
+      "state": "05-review-domain-summary",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "domain-blocked",
+      "label": "Review · Domain blocker unresolved",
+      "driver": "review",
+      "state": "05-review-domain-blocked",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "review-not-confirmed",
+      "label": "Review · Not confirmed",
+      "driver": "review",
+      "state": "05-review-not-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "review-confirming",
+      "label": "Review · Confirming",
+      "driver": "review",
+      "state": "05-review-confirming",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "review-failed",
+      "label": "Review · Confirm failed",
+      "driver": "review",
+      "state": "05-review-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "review-uncertain",
+      "label": "Review · Confirmation uncertain",
+      "driver": "review",
+      "state": "05-review-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "review-confirmed",
+      "label": "Review · Confirmed",
+      "driver": "review",
+      "state": "05-review-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "review-expired",
+      "label": "Review · Expired / stale",
+      "driver": "review",
+      "state": "05-review-expired",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "review-permission",
+      "label": "Review · Permission blocked",
+      "driver": "review",
+      "state": "05-review-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "commit-ready",
+      "label": "Commit · Ready · reason required",
+      "driver": "review",
+      "state": "05-commit-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "commit-ready-required",
+      "label": "Commit · Consequential · reason required",
+      "driver": "review",
+      "state": "05-commit-ready-required",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "commit-ready-optional",
+      "label": "Commit · Pure insert / NO_OP · reason optional",
+      "driver": "review",
+      "state": "05-commit-ready-optional",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "commit-permission",
+      "label": "Commit · Permission blocked",
+      "driver": "review",
+      "state": "05-commit-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "commit-profile-retired",
+      "label": "Commit · Profile retired",
+      "driver": "review",
+      "state": "05-commit-profile-retired",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "commit-preview-stale",
+      "label": "Commit · Preview stale",
+      "driver": "review",
+      "state": "05-commit-preview-stale",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "commit-processing",
+      "label": "Commit · Processing",
+      "driver": "review",
+      "state": "05-processing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "commit-failed",
+      "label": "Commit · Failed",
+      "driver": "review",
+      "state": "05-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "commit",
+      "id": "commit-uncertain",
+      "label": "Commit · Result uncertain",
+      "driver": "review",
+      "state": "05-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "completed-ready",
+      "label": "Completed + Ready",
+      "driver": "advanced",
+      "state": "06-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "completed-not-ready",
+      "label": "Completed + Not ready",
+      "driver": "advanced",
+      "state": "06-not-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "not-assessed",
+      "label": "Readiness not assessed",
+      "driver": "advanced",
+      "state": "06-not-assessed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "selecting",
+      "label": "Selecting date / scope",
+      "driver": "advanced",
+      "state": "06-selecting",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "loading",
+      "label": "Loading",
+      "driver": "advanced",
+      "state": "06-loading",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "ready",
+      "label": "Ready",
+      "driver": "advanced",
+      "state": "06-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "not-ready",
+      "label": "Not ready",
+      "driver": "advanced",
+      "state": "06-not-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "unknown",
+      "label": "Unknown",
+      "driver": "advanced",
+      "state": "06-unknown",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "unavailable",
+      "label": "Unavailable",
+      "driver": "advanced",
+      "state": "06-unavailable",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "permission",
+      "label": "Permission blocked",
+      "driver": "advanced",
+      "state": "06-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "warning-ready",
+      "label": "Completed with warnings · Ready",
+      "driver": "advanced",
+      "state": "06-warning-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "completion",
+      "id": "warning-not-ready",
+      "label": "Completed with warnings · Not ready",
+      "driver": "advanced",
+      "state": "06-warning-not-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "queue",
+      "id": "default",
+      "label": "Queue · pending submissions",
+      "driver": "base",
+      "state": "queue",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "active-profiles",
+      "id": "default",
+      "label": "Active profiles",
+      "driver": "base",
+      "state": "profiles-active",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "active-profiles",
+      "id": "retire-decision",
+      "label": "Retire · Decision",
+      "driver": "retirement",
+      "state": "profiles-retire-decision",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "active-profiles",
+      "id": "retire-saving",
+      "label": "Retire · Saving",
+      "driver": "retirement",
+      "state": "profiles-retire-decision-saving",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "active-profiles",
+      "id": "retire-uncertain",
+      "label": "Retire · Uncertain",
+      "driver": "retirement",
+      "state": "profiles-retire-decision-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "active-profiles",
+      "id": "retire-confirmed",
+      "label": "Retire · Confirmed",
+      "driver": "retirement",
+      "state": "profiles-retire-decision-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "retired-profiles",
+      "id": "default",
+      "label": "Retired profiles",
+      "driver": "base",
+      "state": "profiles-retired",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "OWNER",
+      "surface": "history",
+      "id": "default",
+      "label": "Import history",
+      "driver": "base",
+      "state": "history",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "empty",
+      "label": "Empty",
+      "driver": "base",
+      "state": "01-empty",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "ready",
+      "label": "Ready",
+      "driver": "base",
+      "state": "01-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "upload-failed",
+      "label": "Upload failed",
+      "driver": "base",
+      "state": "01-upload-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "unsupported",
+      "label": "Unsupported",
+      "driver": "base",
+      "state": "01-unsupported",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "duplicate",
+      "label": "Duplicate",
+      "driver": "base",
+      "state": "01-duplicate",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "partial",
+      "label": "Partial accepted",
+      "driver": "advanced",
+      "state": "01-partial",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "partial-can",
+      "label": "Partial accepted · Can continue",
+      "driver": "advanced",
+      "state": "01-partial-can",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "partial-must",
+      "label": "Partial accepted · Must resolve",
+      "driver": "advanced",
+      "state": "01-partial-must",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "retrying",
+      "label": "Retrying one file",
+      "driver": "advanced",
+      "state": "01-retrying",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "ack-checking",
+      "label": "Upload acknowledgment · Checking",
+      "driver": "advanced",
+      "state": "01-ack-checking",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "ack-confirmed",
+      "label": "Upload acknowledgment · Confirmed",
+      "driver": "advanced",
+      "state": "01-ack-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "ack-unknown",
+      "label": "Upload acknowledgment · Unknown",
+      "driver": "advanced",
+      "state": "01-ack-unknown",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "confirm-set",
+      "label": "Confirm accepted file set",
+      "driver": "advanced",
+      "state": "01-confirm-set",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "file",
+      "id": "conflict",
+      "label": "Conflict",
+      "driver": "base",
+      "state": "01-conflict",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "running",
+      "label": "Running",
+      "driver": "base",
+      "state": "02-running",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "complete",
+      "label": "Complete",
+      "driver": "base",
+      "state": "02-complete",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "failed",
+      "label": "Failed",
+      "driver": "base",
+      "state": "02-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "source",
+      "label": "Source required",
+      "driver": "source",
+      "state": "02-source",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "source-evidence",
+      "label": "Source evidence",
+      "driver": "source",
+      "state": "02-source-evidence",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "source-custom",
+      "label": "Custom source",
+      "driver": "source",
+      "state": "02-source-custom",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "source-locale",
+      "label": "Locale required",
+      "driver": "source",
+      "state": "02-source-locale",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "source-period",
+      "label": "Period required",
+      "driver": "source",
+      "state": "02-source-period",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "source-amendment",
+      "label": "Amendment context",
+      "driver": "source",
+      "state": "02-source-amendment",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "source-validation",
+      "label": "Source validation error",
+      "driver": "source",
+      "state": "02-source-validation",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "source-confirmed",
+      "label": "Source confirmed",
+      "driver": "source",
+      "state": "02-source-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "ambiguous",
+      "label": "Profile ambiguous",
+      "driver": "base",
+      "state": "02-ambiguous",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "no-profile",
+      "label": "No profile",
+      "driver": "base",
+      "state": "02-no-profile",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "drift",
+      "label": "Profile drift",
+      "driver": "base",
+      "state": "02-drift",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "retired",
+      "label": "Profile retired",
+      "driver": "base",
+      "state": "02-retired",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "analyze",
+      "id": "provider",
+      "label": "Provider unavailable",
+      "driver": "base",
+      "state": "02-provider",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "resolve",
+      "id": "ready",
+      "label": "Approved profile reused · Ready",
+      "driver": "base",
+      "state": "03-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "resolve",
+      "id": "manual",
+      "label": "Manual mapping required",
+      "driver": "base",
+      "state": "03-manual",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "resolve",
+      "id": "id-unresolved",
+      "label": "Identity unresolved",
+      "driver": "base",
+      "state": "03-id-unresolved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "resolve",
+      "id": "id-ambiguous",
+      "label": "Identity ambiguous",
+      "driver": "base",
+      "state": "03-id-ambiguous",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "resolve",
+      "id": "missing",
+      "label": "Missing declaration",
+      "driver": "base",
+      "state": "03-missing-declaration",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "resolve",
+      "id": "unit",
+      "label": "Unit unresolved",
+      "driver": "base",
+      "state": "03-unit",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "resolve",
+      "id": "permission",
+      "label": "Permission blocked",
+      "driver": "base",
+      "state": "03-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "resolve",
+      "id": "spec",
+      "label": "Reusable spec changed",
+      "driver": "base",
+      "state": "03-spec-changed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "resolve",
+      "id": "sales",
+      "label": "Sales correction detected",
+      "driver": "domain",
+      "state": "03-sales-correction",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "resolve",
+      "id": "conflict",
+      "label": "Correction conflict",
+      "driver": "domain",
+      "state": "03-correction-conflict",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "view",
+      "label": "View",
+      "driver": "resolver",
+      "state": "03-ui-map-view",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "editing",
+      "label": "Editing",
+      "driver": "resolver",
+      "state": "03-ui-map-editing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "manual",
+      "label": "Manual required",
+      "driver": "resolver",
+      "state": "03-ui-map-manual",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "duplicate",
+      "label": "Duplicate target",
+      "driver": "resolver",
+      "state": "03-ui-map-duplicate",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "ignore",
+      "label": "Explicit ignore",
+      "driver": "resolver",
+      "state": "03-ui-map-ignore",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "reusable",
+      "label": "Reusable spec changed",
+      "driver": "resolver",
+      "state": "03-ui-map-reusable",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "failed",
+      "label": "Legacy save failed",
+      "driver": "resolver",
+      "state": "03-ui-map-error",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "saved",
+      "label": "Saved",
+      "driver": "resolver",
+      "state": "03-ui-map-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "mutation-saving",
+      "label": "Saving",
+      "driver": "resolver",
+      "state": "03-ui-map-mutation-saving",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "mutation-failed",
+      "label": "Save failed",
+      "driver": "resolver",
+      "state": "03-ui-map-mutation-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "mutation-uncertain",
+      "label": "Save outcome uncertain",
+      "driver": "resolver",
+      "state": "03-ui-map-mutation-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "mutation-checking",
+      "label": "Checking saved state",
+      "driver": "resolver",
+      "state": "03-ui-map-mutation-checking",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "mutation-saved",
+      "label": "Saved after readback",
+      "driver": "resolver",
+      "state": "03-ui-map-mutation-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "mutation-unknown",
+      "label": "Still unknown",
+      "driver": "resolver",
+      "state": "03-ui-map-mutation-unknown",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "mapping",
+      "id": "mutation-not-saved",
+      "label": "Confirmed not saved",
+      "driver": "resolver",
+      "state": "03-ui-map-mutation-not-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "resolved",
+      "label": "Resolved",
+      "driver": "resolver",
+      "state": "03-ui-id-resolved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "unresolved",
+      "label": "Unresolved",
+      "driver": "resolver",
+      "state": "03-ui-id-unresolved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "search",
+      "label": "Search",
+      "driver": "resolver",
+      "state": "03-ui-id-search",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "ambiguous",
+      "label": "Ambiguous",
+      "driver": "resolver",
+      "state": "03-ui-id-ambiguous",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "selected",
+      "label": "Selected",
+      "driver": "resolver",
+      "state": "03-ui-id-selected",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "binding-permission",
+      "label": "Binding permission blocked",
+      "driver": "resolver",
+      "state": "03-ui-id-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "no-match",
+      "label": "No match",
+      "driver": "resolver",
+      "state": "03b-create-no-match",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "create",
+      "label": "Create entity",
+      "driver": "resolver",
+      "state": "03b-create-form",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "validation",
+      "label": "Create validation",
+      "driver": "resolver",
+      "state": "03b-create-validation",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "possible-duplicate",
+      "label": "Possible duplicate",
+      "driver": "resolver",
+      "state": "03b-create-duplicate",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "permission",
+      "label": "Create permission blocked",
+      "driver": "resolver",
+      "state": "03b-create-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "creating",
+      "label": "Creating",
+      "driver": "resolver",
+      "state": "03b-create-creating",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "failed",
+      "label": "Create failed",
+      "driver": "resolver",
+      "state": "03b-create-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "created",
+      "label": "Created + bound",
+      "driver": "resolver",
+      "state": "03b-create-created",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "identity",
+      "id": "created-reusable",
+      "label": "Created + reusable change",
+      "driver": "resolver",
+      "state": "03b-create-created-reusable",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "view",
+      "label": "View",
+      "driver": "resolver",
+      "state": "03-ui-dec-view",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "missing",
+      "label": "Missing",
+      "driver": "resolver",
+      "state": "03-ui-dec-missing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "editing",
+      "label": "Editing",
+      "driver": "resolver",
+      "state": "03-ui-dec-editing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "validation",
+      "label": "Validation error",
+      "driver": "resolver",
+      "state": "03-ui-dec-error",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "batch-only",
+      "label": "Batch-only",
+      "driver": "resolver",
+      "state": "03c-batch-only",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "reusable",
+      "label": "Reusable proposal",
+      "driver": "resolver",
+      "state": "03c-reusable-editing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "source-value",
+      "label": "Source value present",
+      "driver": "resolver",
+      "state": "03c-source-value",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "replacing",
+      "label": "Replacing source value",
+      "driver": "resolver",
+      "state": "03c-editing-replacement",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "replacement-validation",
+      "label": "Replacement validation",
+      "driver": "resolver",
+      "state": "03c-validation-replacement",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "permission",
+      "label": "Permission blocked",
+      "driver": "resolver",
+      "state": "03c-error-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "save-failed",
+      "label": "Save failed",
+      "driver": "resolver",
+      "state": "03c-error-save",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "declarations",
+      "id": "saved",
+      "label": "Saved",
+      "driver": "resolver",
+      "state": "03-ui-dec-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "compatible",
+      "label": "Compatible",
+      "driver": "resolver",
+      "state": "03-ui-unit-compatible",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "known-exact",
+      "label": "Exact conversion",
+      "driver": "resolver",
+      "state": "03-ui-unit-conversion",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "needs-resolution",
+      "label": "Needs resolution",
+      "driver": "resolver",
+      "state": "03-ui-unit-needs",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "unsupported",
+      "label": "Unsupported",
+      "driver": "resolver",
+      "state": "03-ui-unit-unsupported",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "saved",
+      "label": "Saved",
+      "driver": "resolver",
+      "state": "03-ui-unit-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "needs-exact",
+      "label": "Needs exact conversion",
+      "driver": "resolver",
+      "state": "03d-exact-needs",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "editing-exact",
+      "label": "Editing conversion",
+      "driver": "resolver",
+      "state": "03d-exact-editing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "invalid",
+      "label": "Invalid conversion",
+      "driver": "resolver",
+      "state": "03d-exact-invalid",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "evidence",
+      "label": "Evidence required",
+      "driver": "resolver",
+      "state": "03d-exact-evidence",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "permission",
+      "label": "Permission blocked",
+      "driver": "resolver",
+      "state": "03d-exact-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "failed",
+      "label": "Save failed",
+      "driver": "resolver",
+      "state": "03d-exact-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "units",
+      "id": "saved-exact",
+      "label": "Exact conversion saved",
+      "driver": "resolver",
+      "state": "03d-exact-saved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "spec",
+      "label": "Reusable spec changed",
+      "driver": "base",
+      "state": "03-spec-changed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "submit",
+      "label": "Submit · Ready",
+      "driver": "base",
+      "state": "03-submit",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "submit-saving",
+      "label": "Submit · Saving",
+      "driver": "base",
+      "state": "03-submit-saving",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "submit-failed",
+      "label": "Submit · Failed",
+      "driver": "base",
+      "state": "03-submit-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "submit-uncertain",
+      "label": "Submit · Outcome uncertain",
+      "driver": "base",
+      "state": "03-submit-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "submit-checking",
+      "label": "Submit · Checking result",
+      "driver": "base",
+      "state": "03-submit-checking",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "submit-confirmed",
+      "label": "Submit · Confirmed",
+      "driver": "base",
+      "state": "03-submit-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "waiting",
+      "label": "Waiting for Owner",
+      "driver": "base",
+      "state": "03-waiting",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "withdraw-confirm",
+      "label": "Withdraw · Confirmation",
+      "driver": "base",
+      "state": "03-withdraw-confirm",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "withdraw-saving",
+      "label": "Withdraw · Saving",
+      "driver": "base",
+      "state": "03-withdraw-saving",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "withdraw-failed",
+      "label": "Withdraw · Failed",
+      "driver": "base",
+      "state": "03-withdraw-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "withdraw-uncertain",
+      "label": "Withdraw · Outcome uncertain",
+      "driver": "base",
+      "state": "03-withdraw-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "withdraw-checking",
+      "label": "Withdraw · Checking",
+      "driver": "base",
+      "state": "03-withdraw-checking",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "withdrawn",
+      "label": "Withdrawn · Terminal",
+      "driver": "base",
+      "state": "03-withdrawn",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "waiting-permission",
+      "label": "Waiting · Permission lost",
+      "driver": "base",
+      "state": "03-waiting-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "waiting-stale",
+      "label": "Waiting · Stale / superseded",
+      "driver": "base",
+      "state": "03-waiting-stale",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "request-changes",
+      "label": "Owner requested changes",
+      "driver": "base",
+      "state": "03-request-changes",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "resubmit",
+      "label": "Resubmit · Ready",
+      "driver": "base",
+      "state": "03-resubmit",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "resubmit-saving",
+      "label": "Resubmit · Saving",
+      "driver": "base",
+      "state": "03-resubmit-saving",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "resubmit-failed",
+      "label": "Resubmit · Failed",
+      "driver": "base",
+      "state": "03-resubmit-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "resubmit-uncertain",
+      "label": "Resubmit · Outcome uncertain",
+      "driver": "base",
+      "state": "03-resubmit-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "resubmit-checking",
+      "label": "Resubmit · Checking result",
+      "driver": "base",
+      "state": "03-resubmit-checking",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "resubmit-confirmed",
+      "label": "Resubmit · Confirmed",
+      "driver": "base",
+      "state": "03-resubmit-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "waiting-resubmitted",
+      "label": "Waiting · Resubmitted",
+      "driver": "base",
+      "state": "03-waiting-resubmitted",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "approved",
+      "label": "Approved",
+      "driver": "base",
+      "state": "03-approved",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "owner-approval",
+      "id": "rejected",
+      "label": "Rejected",
+      "driver": "base",
+      "state": "03-rejected",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "clean",
+      "label": "Clean",
+      "driver": "base",
+      "state": "04-preview",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "warnings",
+      "label": "Warnings",
+      "driver": "base",
+      "state": "04-warning",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "blocked",
+      "label": "Blocked",
+      "driver": "base",
+      "state": "04-blocked",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "stale",
+      "label": "Stale",
+      "driver": "base",
+      "state": "04-stale",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "inventory",
+      "label": "Inventory count preview",
+      "driver": "base",
+      "state": "04-inventory",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "sales-preview",
+      "label": "Sales correction · Preview rows",
+      "driver": "domain",
+      "state": "04-sales-correction-preview",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "sales-detail",
+      "label": "Sales correction · Detail",
+      "driver": "domain",
+      "state": "04-sales-correction-detail",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "sales-confirmed",
+      "label": "Sales correction · Confirmed replacement",
+      "driver": "domain",
+      "state": "04-sales-correction-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "sales-disjoint",
+      "label": "Sales correction · Keep separate",
+      "driver": "domain",
+      "state": "04-sales-correction-disjoint",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "sales-conflict",
+      "label": "Sales correction · Relationship unresolved",
+      "driver": "domain",
+      "state": "04-sales-correction-conflict",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "sales-permission",
+      "label": "Sales correction · Permission blocked",
+      "driver": "domain",
+      "state": "04-sales-correction-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "sales-failed",
+      "label": "Sales correction · Save failed",
+      "driver": "domain",
+      "state": "04-sales-correction-save-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "supplier-preview",
+      "label": "Supplier terms · Preview",
+      "driver": "domain",
+      "state": "04-supplier-preview",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "supplier-changed",
+      "label": "Supplier term · Changed",
+      "driver": "domain",
+      "state": "04-supplier-changed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "supplier-missing",
+      "label": "Supplier term · Missing effective date",
+      "driver": "domain",
+      "state": "04-supplier-missing-effective",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "supplier-fee",
+      "label": "Supplier term · Fee changed",
+      "driver": "domain",
+      "state": "04-supplier-fee",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "supplier-conflict",
+      "label": "Supplier term · Effectivity conflict",
+      "driver": "domain",
+      "state": "04-supplier-conflict",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "supplier-permission",
+      "label": "Supplier term · Permission blocked",
+      "driver": "domain",
+      "state": "04-supplier-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "supplier-confirmed",
+      "label": "Supplier term · Confirmed",
+      "driver": "domain",
+      "state": "04-supplier-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "preview",
+      "id": "supplier-failed",
+      "label": "Supplier term · Save failed",
+      "driver": "domain",
+      "state": "04-supplier-save-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "domain-summary",
+      "label": "Review · Domain review summary",
+      "driver": "review",
+      "state": "05-review-domain-summary",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "domain-blocked",
+      "label": "Review · Domain blocker unresolved",
+      "driver": "review",
+      "state": "05-review-domain-blocked",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "review-not-confirmed",
+      "label": "Review · Not confirmed",
+      "driver": "review",
+      "state": "05-review-not-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "review-confirming",
+      "label": "Review · Confirming",
+      "driver": "review",
+      "state": "05-review-confirming",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "review-failed",
+      "label": "Review · Confirm failed",
+      "driver": "review",
+      "state": "05-review-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "review-uncertain",
+      "label": "Review · Confirmation uncertain",
+      "driver": "review",
+      "state": "05-review-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "review-confirmed",
+      "label": "Review · Confirmed",
+      "driver": "review",
+      "state": "05-review-confirmed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "review-expired",
+      "label": "Review · Expired / stale",
+      "driver": "review",
+      "state": "05-review-expired",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "review-permission",
+      "label": "Review · Permission blocked",
+      "driver": "review",
+      "state": "05-review-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "commit-ready",
+      "label": "Commit · Ready · reason required",
+      "driver": "review",
+      "state": "05-commit-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "commit-ready-required",
+      "label": "Commit · Consequential · reason required",
+      "driver": "review",
+      "state": "05-commit-ready-required",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "commit-ready-optional",
+      "label": "Commit · Pure insert / NO_OP · reason optional",
+      "driver": "review",
+      "state": "05-commit-ready-optional",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "commit-permission",
+      "label": "Commit · Permission blocked",
+      "driver": "review",
+      "state": "05-commit-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "commit-profile-retired",
+      "label": "Commit · Profile retired",
+      "driver": "review",
+      "state": "05-commit-profile-retired",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "commit-preview-stale",
+      "label": "Commit · Preview stale",
+      "driver": "review",
+      "state": "05-commit-preview-stale",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "commit-processing",
+      "label": "Commit · Processing",
+      "driver": "review",
+      "state": "05-processing",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "commit-failed",
+      "label": "Commit · Failed",
+      "driver": "review",
+      "state": "05-failed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "commit",
+      "id": "commit-uncertain",
+      "label": "Commit · Result uncertain",
+      "driver": "review",
+      "state": "05-uncertain",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "completed-ready",
+      "label": "Completed + Ready",
+      "driver": "advanced",
+      "state": "06-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "completed-not-ready",
+      "label": "Completed + Not ready",
+      "driver": "advanced",
+      "state": "06-not-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "not-assessed",
+      "label": "Readiness not assessed",
+      "driver": "advanced",
+      "state": "06-not-assessed",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "selecting",
+      "label": "Selecting date / scope",
+      "driver": "advanced",
+      "state": "06-selecting",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "loading",
+      "label": "Loading",
+      "driver": "advanced",
+      "state": "06-loading",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "ready",
+      "label": "Ready",
+      "driver": "advanced",
+      "state": "06-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "not-ready",
+      "label": "Not ready",
+      "driver": "advanced",
+      "state": "06-not-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "unknown",
+      "label": "Unknown",
+      "driver": "advanced",
+      "state": "06-unknown",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "unavailable",
+      "label": "Unavailable",
+      "driver": "advanced",
+      "state": "06-unavailable",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "permission",
+      "label": "Permission blocked",
+      "driver": "advanced",
+      "state": "06-permission",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "warning-ready",
+      "label": "Completed with warnings · Ready",
+      "driver": "advanced",
+      "state": "06-warning-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "warning-not-ready",
+      "label": "Completed with warnings · Not ready",
+      "driver": "advanced",
+      "state": "06-warning-not-ready",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "completion",
+      "id": "completed-warning",
+      "label": "Completed with warnings",
+      "driver": "base",
+      "state": "06-warning",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    },
+    {
+      "role": "STAFF",
+      "surface": "history",
+      "id": "default",
+      "label": "Import history",
+      "driver": "base",
+      "state": "history",
+      "live_status": "NOT_RUN",
+      "controlled_evidence": "See 019 receipt and named tests; catalogue enumeration alone is not acceptance."
+    }
+  ],
+  "scope_options": [
+    [
+      "normal",
+      "Normal"
+    ],
+    [
+      "multiple-files",
+      "Multiple files"
+    ],
+    [
+      "multiple-sheets",
+      "Multiple sheets"
+    ],
+    [
+      "current-unresolved",
+      "Current sheet unresolved"
+    ],
+    [
+      "current-complete-more",
+      "Current sheet complete · More elsewhere"
+    ],
+    [
+      "all-scope-resolved",
+      "All current scope resolved"
+    ],
+    [
+      "loading-scope",
+      "Loading scope"
+    ],
+    [
+      "scope-load-failed",
+      "Scope load failed"
+    ],
+    [
+      "empty-scope",
+      "Empty scope"
+    ],
+    [
+      "partial-page",
+      "Partial page loaded"
+    ],
+    [
+      "loading-more",
+      "Loading more"
+    ],
+    [
+      "load-more-failed",
+      "Load more failed"
+    ],
+    [
+      "next-unresolved",
+      "Next unresolved"
+    ]
+  ],
+  "notes": [
+    "13 canonical code contexts audited; six primary surface previews inspected.",
+    "Second pass compares code contexts, production navigation and bounded controlled runtime screenshots, not every state visually.",
+    "NOT_RUN refers to live UI acceptance. No production backend mutation was performed."
+  ]
+}

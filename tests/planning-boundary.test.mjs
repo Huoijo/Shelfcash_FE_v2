@@ -321,3 +321,17 @@ test('mock mode is explicit per-instance, canonical and isolated from HTTP/API f
   assert.equal(replay.data.run_id, receipt.data.run_id); assert.equal(replay.data.status, 'completed')
   await assert.rejects(first.create(ids.store, { key: KEY, request: custom('0') }))
 })
+
+test('supplied Planning readiness preserves exact C02 JSON and rejects a default-scope or wrong-mode response',async t=>{
+ const body=custom('0');let sent,out=readiness()
+ out.data.planning_assessment={input_scope:'SUPPLIED_REQUEST',requirements_mode:'custom',configuration_status:'RESOLVED',blockers:[],warnings:[]}
+ fetchWith(t,async url=>{sent=new URL(url);return respond(out)})
+ await source().readiness(ids.store,body.forecast_start_date,undefined,body)
+ assert.deepEqual(JSON.parse(sent.searchParams.get('planning_request')),body)
+ assert.equal(sent.searchParams.get('actions'),'planning');assert.equal(sent.searchParams.get('forecast_start_date'),body.forecast_start_date)
+ out.data.planning_assessment.input_scope='DEFAULT_CONFIGURATION'
+ await assert.rejects(source().readiness(ids.store,body.forecast_start_date,undefined,body),e=>e.kind==='protocol')
+ out.data.planning_assessment.input_scope='SUPPLIED_REQUEST';out.data.planning_assessment.requirements_mode='saved'
+ await assert.rejects(source().readiness(ids.store,body.forecast_start_date,undefined,body),e=>e.kind==='protocol')
+ await assert.rejects(source().readiness(ids.store,'2026-10-12',undefined,body),/date must match/)
+})

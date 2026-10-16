@@ -1,0 +1,2 @@
+ingredients.source_business_key,ingredients.name,ingredients.base_unit,ingredients.sku,ingredients.expiry_tracking,ingredients.active
+IMPORT-SMOKE-2026-10-16T08-29-02-943Z,Synthetic smoke ingredient,g,IMPORT-SMOKE-2026-10-16T08-29-02-943Z,false,true
