@@ -1,0 +1,91 @@
+{
+  "baseline": "623574d6eea2710504fb0d8f5fdd70bf259cb05b",
+  "checks": [
+    {
+      "file": "src/features/import-history/components/ImportHistoryList.tsx",
+      "unchangedExceptAdjudicatedCopyAndItsPresentationOnlyMarkup": true,
+      "permittedItemIds": [
+        "CP-2308",
+        "CP-2309"
+      ]
+    },
+    {
+      "file": "src/features/operations/StoreActivityPage.tsx",
+      "unchangedExceptAdjudicatedCopyAndItsPresentationOnlyMarkup": true,
+      "permittedItemIds": [
+        "CP-3168"
+      ]
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequests.tsx",
+      "unchangedExceptAdjudicatedCopyAndItsPresentationOnlyMarkup": true,
+      "permittedItemIds": [
+        "CP-3205",
+        "CP-3206"
+      ]
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "unchangedExceptAdjudicatedCopyAndItsPresentationOnlyMarkup": true,
+      "permittedItemIds": [
+        "CP-3341"
+      ]
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOverview.tsx",
+      "unchangedExceptAdjudicatedCopyAndItsPresentationOnlyMarkup": true,
+      "permittedItemIds": [
+        "CP-3367",
+        "CP-3391"
+      ]
+    },
+    {
+      "file": "src/features/store/StoreBootstrap.tsx",
+      "unchangedExceptAdjudicatedCopyAndItsPresentationOnlyMarkup": true,
+      "permittedItemIds": [
+        "CP-3666",
+        "CP-3673",
+        "CP-3679"
+      ]
+    },
+    {
+      "file": "src/pages/home/HomePage.tsx",
+      "unchangedExceptAdjudicatedCopyAndItsPresentationOnlyMarkup": true,
+      "permittedItemIds": [
+        "CP-3766",
+        "CP-3767"
+      ]
+    },
+    {
+      "file": "src/shared/UnderConstruction.tsx",
+      "unchangedExceptAdjudicatedCopyAndItsPresentationOnlyMarkup": true,
+      "permittedItemIds": [
+        "CP-4195"
+      ]
+    }
+  ],
+  "permittedContractCopyCorrections": [
+    {
+      "id": "CP-3766",
+      "file": "src/pages/home/HomePage.tsx",
+      "before": "Bảng giá sẽ được cập nhật. Liên hệ hỗ trợ ShelfCash để tìm hiểu thêm.",
+      "after": "Bảng giá chưa khả dụng."
+    },
+    {
+      "id": "CP-3767",
+      "file": "src/pages/home/HomePage.tsx",
+      "before": "Tài liệu hướng dẫn có sẵn trong ứng dụng tại Nhập dữ liệu → HDSD.",
+      "after": "Tài nguyên chưa khả dụng."
+    }
+  ],
+  "css": {
+    "file": "src/features/store/StoreBootstrap.css",
+    "onlyUnusedEyebrowRuleRemoved": true
+  },
+  "businessHandlers": "UNCHANGED",
+  "roleAndPermissionGuards": "UNCHANGED",
+  "stateAndRoutes": "UNCHANGED",
+  "apiAndMutationCalls": "UNCHANGED",
+  "requestPayloads": "UNCHANGED",
+  "exception": "One pure JSX visibility guard around the deleted invitation-selector helper disappears with its paragraph. No event handler or business guard was inside it."
+}

@@ -23,7 +23,7 @@ V1 là current planning source of truth. [FOUND_MISSING_UI.md](../FOUND_MISSING_
 ## Executive status
 
 - Register items: **29**; đủ FM-001 → FM-016, không tạo thêm FM ID.
-- Design missing: **1** (parked SC-01); READY **26**; NOT_REQUIRED **2**.
+- Design missing: **2** (parked SC-01 and TD-01's final marketing preview asset); READY **25**; NOT_REQUIRED **2**. TD-01's MISSING is limited to that asset/content decision; existing canonical layouts remain available.
 - FE incomplete: **13** (PARTIAL **12**, NOT_IMPLEMENTED **1**); IMPLEMENTED **16**.
 - BE missing/partial: **14** (MISSING **1**, PARTIAL **13**); UNCERTAIN **0**, SUPPORTED **13**, NOT_REQUIRED **2**.
 - Live NOT_RUN/BLOCKED: **4** (NOT_RUN **4**, BLOCKED **0**); CONTROLLED_ONLY **25**, VERIFIED **0**. Tất cả **29** items còn thiếu live acceptance, kể cả CONTROLLED_ONLY.
@@ -317,13 +317,13 @@ Cover signup/email/Store/invitation continuation; partial and lost-ACK uploads; 
 
 ### TD-01 — Non-blocking FE visual / diff / bundle debt
 
-**Design:** READY · **Frontend:** PARTIAL · **Backend:** NOT_REQUIRED · **Live verification:** CONTROLLED_ONLY
-**Owner:** FE · **Blocker category:** VISUAL_POLISH, FE_IMPLEMENTATION
+**Design:** MISSING · **Frontend:** PARTIAL · **Backend:** NOT_REQUIRED · **Live verification:** CONTROLLED_ONLY
+**Owner:** FE + Design · **Blocker category:** DESIGN_ASSET, VISUAL_POLISH, FE_IMPLEMENTATION
 
 - **Current state:** Bounded earlier screenshots có; array diff positional; bundle/lint debt còn. The 17/10 canonical green visual refinement is implemented across existing surfaces, with current/completed full-arrow stepper shared by Owner/Staff and explicit neutral negative/uncertain actions. All 13 final design sources were inspected; AST/CSS checks and 479 controlled tests pass. New FE browser/render/a11y acceptance remains NOT_RUN; see [visual receipt](../sprints/020/020_Visual_Language_Refinement.md).
-- **Remaining gap:** Thiếu full visual/a11y, reorder-friendly diff và bundle isolation. The later [visual-convergence pass](../testing/visual-fidelity/MAGICPATH_FE_CONVERGENCE.md) adds controlled static Planning/default/blocked/busy/permission/Readiness/mobile and Import/History loading captures, plus 252 controlled regressions. Planning geometry/typography is closer to current canonical; full generic requirement-widget fidelity, complete copy provenance and hydrated all-family/state acceptance remain open. Earlier green-pass browser NOT_RUN is historical and is not changed into live acceptance.
-- **Next action:** FE audit frozen states/focus; stable-identity diff; đo/split generated registry.
-- **Safe current behavior:** Full spec vẫn authority; không redesign hoặc merge theo tên.
+- **Remaining gap:** Thiếu full visual/a11y, reorder-friendly diff và bundle isolation. The [visual-convergence pass](../testing/visual-fidelity/MAGICPATH_FE_CONVERGENCE.md) has bounded Planning geometry/render evidence; full generic requirement-widget fidelity, completion wrapper and hydrated all-family/state acceptance remain open. Copy provenance is now **CLOSED — REVIEW ITEMS REMAIN**: [final ledger](../testing/visual-fidelity/COPY_PROVENANCE_FINAL.json), 4,131 producer/value occurrences, 14 unsupported removals, 370 controlled tests and 22 before/after captures. One review case covers 16 marketing-hero strings. **Design MISSING scope:** current Marketing `458083907045322752` / `461893687010529280` supplies only `ShelfCash Product Preview` / `Vùng giữ chỗ giao diện sản phẩm`, not a final production asset. Existing FE process illustration is unapproved; this is missing final asset/content evidence, not a pixel/CSS defect or a missing workflow. Other current canonical family layouts remain design-ready. Earlier green-pass browser NOT_RUN remains historical; controlled evidence is not live acceptance.
+- **Next action:** Design supplies/approves the final marketing preview asset or omission of that region; FE converges after that decision. Continue existing geometry/focus/diff/bundle work separately, without reopening proven copy provenance.
+- **Safe current behavior:** Full spec vẫn authority; không redesign hoặc merge theo tên. Keep the existing hero illustration explicitly REVIEW_REQUIRED/unapproved; do not ship prototype placeholder copy as its replacement or mark the asset gap closed. Production HDSD is not reachable because its only opener is DEV-only; copy audit did not enable it.
 - **Evidence:** [Profile diff](../../src/features/import-data/components/ImportProfileSpecification.tsx), [capabilities imports](../../src/features/backend-capabilities/capabilities.react.ts), [019 screenshots/checks](../sprints/019/019_Main_Frontend_Implementation.md#final-verification-receipt--16102026).
 
 ## Sufficiently implemented — live acceptance still open

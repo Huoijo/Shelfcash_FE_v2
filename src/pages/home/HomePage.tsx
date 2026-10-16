@@ -101,7 +101,7 @@ export const HomePage = () => {
     } else {
       event.preventDefault();
       if (href === '/login') navigate('/login');
-      else setRouteNotice(href === '/pricing' ? 'Bảng giá sẽ được cập nhật. Liên hệ hỗ trợ ShelfCash để tìm hiểu thêm.' : 'Tài liệu hướng dẫn có sẵn trong ứng dụng tại Nhập dữ liệu → HDSD.');
+      else setRouteNotice(href === '/pricing' ? 'Bảng giá chưa khả dụng.' : 'Tài nguyên chưa khả dụng.');
     }
   };
   const actionProps = {

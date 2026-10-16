@@ -13,9 +13,7 @@ export function ImportHistoryList({ response, timezone, nextLink, firstLink }: {
     return (
       <div className="history-empty" role="status">
         <h3>{response.meta.unfiltered_date_count === 0 ? 'Chưa có lần nhập nào' : 'Không có kết quả phù hợp'}</h3>
-        <p>{response.meta.unfiltered_date_count === 0
-          ? 'Chọn một ngày khác trên lịch để xem các lần nhập dữ liệu.'
-          : 'Thử thay đổi bộ lọc hoặc chọn ngày khác.'}</p>
+
         {firstLink && <Link to={firstLink}>Quay lại trang đầu</Link>}
       </div>
     )

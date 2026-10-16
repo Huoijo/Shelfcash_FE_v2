@@ -13,7 +13,7 @@ export function StoreOverview({ store, mockPreview = false }: { store: StoreCont
   return <div className="sc-store-stack">
     {mockPreview && <p className="sc-store-note" role="note">Minh họa DEV: loại hình, địa chỉ, điện thoại và giờ mở cửa dưới đây là dữ liệu mẫu, không phải thông tin đã lưu.</p>}
     <section className="sc-store-card sc-store-card-body" aria-labelledby={`${id}-profile`}>
-      <div className="sc-store-section-heading"><div><h2 id={`${id}-profile`}>Thông tin cửa hàng</h2><p className="sc-store-copy">Thông tin nhận diện cơ bản của địa điểm kinh doanh.</p></div></div>
+      <div className="sc-store-section-heading"><div><h2 id={`${id}-profile`}>Thông tin cửa hàng</h2></div></div>
       <div className="sc-store-fields">
         <label className="sc-store-field">Tên cửa hàng<input className="sc-store-input" value={store.name} disabled readOnly /></label>
         <label className="sc-store-field">Loại hình kinh doanh<select className="sc-store-input" disabled value={mockPreview ? illustrativeProfile.businessType : ''}><option value="">{unavailable}</option>{mockPreview && <option value="Café">Café · minh họa</option>}</select></label>
@@ -32,7 +32,7 @@ export function StoreOverview({ store, mockPreview = false }: { store: StoreCont
         </div>)}</div><p className="sc-store-note sc-store-note-spaced">Giờ mở cửa chưa được hỗ trợ. Không suy ra giờ mở cửa từ lịch giao hàng hay dữ liệu bán.</p>
       </section>
       <section className="sc-store-card sc-store-card-body" aria-labelledby={`${id}-status`}><h2 id={`${id}-status`}>Trạng thái</h2>
-        <div className="sc-store-status-row"><div><p>Đang hoạt động</p><p className="sc-store-note">Cửa hàng hiện cho phép truy cập.</p></div><StoreReadonlyToggle checked label="Cửa hàng đang cho phép truy cập; không thể thay đổi tại đây" /></div>
+        <div className="sc-store-status-row"><div><p>Đang hoạt động</p></div><StoreReadonlyToggle checked label="Cửa hàng đang cho phép truy cập; không thể thay đổi tại đây" /></div>
         <p className="sc-store-note sc-store-divider">Chuyển cửa hàng sang Tạm ngưng chưa được hỗ trợ. Trạng thái này không được suy từ dữ liệu hoặc số thành viên.</p>
       </section>
     </div>

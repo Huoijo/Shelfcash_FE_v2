@@ -2,6 +2,8 @@
 
 Date: 2026-10-17. Baseline: `d0de974` (`Update: Colour update`). Verdict: **PARTIAL VISUAL CONVERGENCE — FOLLOW-UP REQUIRED**.
 
+Current follow-up: copy provenance is **COPY PROVENANCE CLOSED — REVIEW ITEMS REMAIN** at baseline `623574d`; see [adjudication closure](#copy-provenance-adjudication-closure). This does not close the separate whole-product visual/geometry/accessibility work. The initial screening and earlier verification below remain historical evidence.
+
 ## Constraint and scope
 
 Read and applied [.agents/rules/SHELFCASH_VISUAL_FIDELITY.md](../../../.agents/rules/SHELFCASH_VISUAL_FIDELITY.md). The requested `.agents/SHELFCASH_VISUAL_FIDELITY.md` path does not exist; the supplied rule exists in `rules/` and was left untouched. The user's provenance safeguards override the attachment's broader permission to shorten/rewrite copy or edit MagicPath. This is a frontend convergence pass. No MagicPath edits, new revisions, API/contract changes, live BE access, credentials, uploads or business mutations.
@@ -84,7 +86,7 @@ The following were left in place, with independent dispositions:
 
 - **UNRESOLVED_VISUAL_DEFECT:** RequirementsControls still renders generic nested RecordFacts rather than the exact canonical compact value arrangement. All values were kept. The scoped typography/container fixes improve hierarchy, but the full nested default/custom/saved/management state set has not been reconciled. Do not call this widget visually converged or silently replace its input/data contract.
 - **UNRESOLVED_VISUAL_DEFECT:** the existing early-return completion-receipt retrieval branch lacks the styled normal-flow wrapper. Its captured heading/action remain readable, but this sparse loading surface is not visually accepted against a dedicated canonical receipt-retrieval state. The two roles share the same branch. This pass removed only the redundant sentence; it did not invent a replacement loading workflow or claim this styling issue resolved.
-- **UNRESOLVED_VISUAL_DEFECT:** the 266 unmatched literal occurrences are screening candidates, not 266 unsupported strings. Semantic/contract review of every occurrence and all dynamic/prop-based copy remains open. No automatic removal is authorized by this inventory.
+- **Historical screening, superseded:** the 266 literal non-matches were screening candidates, not 266 unsupported strings. Their production occurrences now have final classifications in [COPY_PROVENANCE_FINAL.json](COPY_PROVENANCE_FINAL.json); DEV/dead declarations and prior removals have explicit dispositions. The old raw inventory remains evidence of the initial screen, not an open production backlog.
 - **CONTRACT_REQUIRED:** pending/unknown replay, grants/revisions, reason/ack, staged correction confirmations, source proof, unsupported actions, budget precision and missing-vs-zero feedback differ from or supplement prototype copy to preserve actual published/runtime contracts.
 - **RUNTIME_REQUIRED:** real Store/actor/date/amount/status values, paginated data and unavailable/partial sections replace prototype sample data. No mock result or implied success was shipped.
 - **RENDERED_VERIFICATION_PENDING:** authenticated app-shell captures, hydrated interactions, every empty/loading/error/drawer/confirmation state and complete Owner/Staff role coverage across the other families. Component SSR captures do not close this work.
@@ -124,3 +126,122 @@ Reviewed actual captures for spacing/alignment, labels, state context, CTA visib
 - Live BE / live E2E: **NOT RUN**. Controlled screenshots are not live acceptance.
 
 **PARTIAL VISUAL CONVERGENCE — FOLLOW-UP REQUIRED.** Source screening and the bounded changes above are complete; a complete production copy census, unresolved widget fidelity and hydrated all-family/state visual acceptance remain explicitly open in TD-01. No new product decision is required to retain the safe current behavior. No commit/push.
+
+## Copy provenance adjudication closure
+
+Date: 2026-10-17. Baseline: `623574d` (`Update: Clean up subtitle elements`). The paragraph immediately above describes the earlier pass; this section supersedes its copy-census limitation. Persistent constraints: [visual fidelity](../../../.agents/rules/SHELFCASH_VISUAL_FIDELITY.md) and [copy provenance](../../../.agents/rules/SHELFCASH_COPY_PROVENANCE.md).
+
+### A. Adjudication summary
+
+**COPY PROVENANCE CLOSED — REVIEW ITEMS REMAIN.** [Final ledger](COPY_PROVENANCE_FINAL.json) contains one terminal classification per in-scope candidate. No production candidate remains merely unmatched/unclassified. One explicit design-review case covers 16 strings in the marketing hero illustration.
+
+Started from the previous evidence. Expanded from literal paragraphs to JSX text, helper/description/title props, labels, placeholders, dictionaries, state/validation/empty/help copy, table renderers, accessible names and rendered data branches. Reachability starts at `src/main.tsx`; DEV/debug/mock branches, unused declarations, structural attributes, comments/logs and non-rendered schema/type metadata are excluded. Static aliases/composition are accounted for at their producer rather than being legitimized as dynamic data. Conditional/coalescing value branches are separate from their static prefixes/fallbacks. The final JSON records source locations, state/role context, current MagicPath references or runtime evidence, exclusions and bindings.
+
+All **315** original screened occurrences are reconciled: **275** map to adjudicated production copy, **38** are explicitly non-production, and **2** were already removed by the earlier pass. Identical text in the unused `UnderConstructionPage` is not conflated with the active `UnderConstructionButton` occurrence.
+
+Important reachability finding: `ImportPage` initializes `helpOpen=false`; its sole HDSD opener is inside `DebugContent`. Therefore `ImportHelp` is not user-openable in production. Its temporary follow-up edits were reverted, its candidates excluded, and its final bytes match the follow-up baseline. Controlled opening of a closed dialog does not prove a production entry point. No Help UI was enabled. This also disproves the old marketing resource notice's production HDSD handoff.
+
+### B. Final classification counts
+
+**4,131 adjudicated producer/value occurrences**, including removed occurrences and two new minimal availability notices. This is not a count of subtitles or simultaneous DOM nodes. Counts cover the expanded scope; the old 49/266 screening counts are not the result.
+
+- `MAGICPATH_EXACT`: **1,065** → KEEP.
+- `MAGICPATH_SEMANTIC`: **15** → KEEP.
+- `CONTRACT_REQUIRED`: **2,305** → KEEP_MINIMAL.
+- `DYNAMIC_DATA`: **716** → KEEP.
+- `UNSUPPORTED_COPY`: **14** → REMOVE; all applied.
+- `REVIEW_REQUIRED`: **16** → REPORT / DO_NOT_AUTO_EDIT; one explicit case.
+
+Source code, dictionaries and data bindings can produce multiple states; counts do not certify hydrated reachability or live integration. The production exclusions are part of the ledger, not unclassified items retained by default.
+
+### C. Unsupported copy removed
+
+Fourteen literal occurrences removed from **9 product files** (8 TSX plus one unused CSS rule). Every removal has an item ID and evidence in the ledger. Repeated conditional alternatives are counted separately, though they share a paragraph.
+
+- Import History empty/filter state: removed the two additional instructions to choose another day/change filters. The canonical empty/no-match state titles and existing pagination control remain.
+- Store activity: removed the invitation-selector instruction repeated by its label and placeholder; retained selection, pagination, authorization and error handling.
+- Permission-request queue, Owner/Staff: removed both FE-only introductory alternatives. Kept request scope, status, reasons, grants, role gates and the request action.
+- Store overview: removed the generic identity subtitle and repeated active-access sentence. Kept every form label, value, read-only restriction and status control.
+- Operational defaults: removed the receiving-day definition repeated by its heading. Unsupported scheduling feedback remains.
+- Store bootstrap: removed the decorative eyebrow and two unproven assertions that the account/Store has no business data or no menu/inventory/budget. T03/access-count responses do not establish those assertions. Removed only the now-unused eyebrow CSS rule.
+- Shared unavailable-feature dialog: removed the promise that the feature will become available in the next update. The named current-unavailable state and Close action remain. The unused page export is not edited.
+- Public marketing notices: removed the future-pricing/support promise and the instruction pointing to DEV-only HDSD. Replaced them in the **existing notice** with `Bảng giá chưa khả dụng.` and `Tài nguyên chưa khả dụng.` These two minimal `CONTRACT_REQUIRED` strings identify actual unsupported destinations. Click handling, modifiers, routing and notice dismissal are unchanged.
+
+No approved MagicPath copy was rewritten. No new routes, cards, dialogs, tooltips, API calls or product flows. No typography normalization. Wrapper cleanup is limited to the deleted copy; no full RequirementsControls or completion-wrapper redesign.
+
+### D. Contract-required copy retained
+
+Concrete evidence is attached to each item, including the producing source/symbol/branch or published contract. In particular:
+
+- Planning: Store ceiling vs run budget; exact decimal/zero bounds; saved/default/custom requirements; missing budget; unsupported advanced controls and winner selection; date/readiness gates; immutable retained evidence; paused polling versus server cancellation.
+- Import OWNER/STAFF: source proof; explicit entity binding; declaration scope; required source-column replacement acknowledgement; unknown/false/zero; units/conversion evidence; conditional commit reason; separate Review/Commit acknowledgement; staged domain/history confirmations versus atomic commit; Profile approval versus commit authority; current permission/CAS/snapshot/unknown recovery.
+- Store: current membership vs offered invitation grants; partial approval; inactive Staff; grants dependencies; reason requirements; nonempty/precision/IANA/currency validation; T03 uncertain create/replay/readback; unsupported profile/hours/operational controls.
+- Auth/Invitation: verification/setup/login/acceptance distinctions; current-account matching; expired/invalid/wrong-account states; unknown acceptance/decline recovery and reason requirements.
+- Notifications/Today/Inventory/Menu: read vs handled; authorized destinations; missing/partial data; physical vs usable stock; missing vs zero; recipe quantity/yield/effectivity; version/pagination mismatch; captured evidence versus current Store data.
+
+Labels, accessible-region names and status/action identifiers remain where the actual adjacent control/data/state requires them. Backend catalog descriptions and business values are `DYNAMIC_DATA`; frontend fallbacks/dictionaries/static prose are separate adjudicated producers. A `{title}`/`{routeNotice}` binding alone does not grant provenance.
+
+### E. MagicPath semantic equivalents retained
+
+Examples with state-specific source evidence in the ledger:
+
+- Planning Setup: `Cấu hình một lần chạy cho cửa hàng hiện tại.` ↔ canonical `Cấu hình một Planning Run cho Store hiện tại.`
+- Requirements source: FE Store/run/default/custom/saved wording ↔ the canonical source selector in `ShelfCashPlanningScreen.tsx`.
+- Planning budget: Store ceiling/run-budget distinction ↔ canonical BudgetPanel prose.
+- Planning History: saved-run/current-Store introduction and first-run empty state ↔ `ShelfCashPlanHistory.tsx`.
+- Store bootstrap: basic setup now/configure operations later ↔ `ShelfCashStoreBootstrap.tsx`.
+- Export: inspection/export selection does not change the winner ↔ `ShelfCashPlanExportOverlay.tsx`.
+- STAFF import introduction and upload/drop wording ↔ the equivalent current STAFF state; step-4 reusable indicator ↔ current reusable-profile state.
+
+The known exact Import overview, OWNER reusable-interpretation explanation, Store access subtitle, Notifications subtitle and Planning context paragraph remain intact. Their verbosity does not authorize removal.
+
+### F. Review-required items
+
+**RV-01 — Marketing hero product preview**, PUBLIC, `HomePage.tsx`, 16 explicit occurrences listed in the ledger. Current copy includes `Từ dữ liệu đến quyết định`, `MỘT QUY TRÌNH RÕ RÀNG`, `Chủ động hơn / với mỗi lần nhập hàng.`, the preview introduction, three step labels/descriptions, step numbers and the illustration's accessible name.
+
+- **MagicPath evidence found:** component `458083907045322752`, revision `461893687010529280`, `ShelfCashMarketingHomepageGrayscale.tsx` contains only `sc-product-preview`, `aria-label="Vùng giữ chỗ giao diện sản phẩm"` and `ShelfCash Product Preview`.
+- **Evidence missing:** an approved final preview asset/content. The FE process illustration is not the canonical placeholder, and placeholder/prototype copy cannot serve as a production replacement.
+- **Runtime requirement:** none establishes this illustration prose; it is not API/user data or a safety requirement.
+- **Decision needed:** MagicPath Design supplies/approves the final preview asset, or approves omission of that region. No business/permission/API policy needs deciding.
+- **Temporary disposition:** DO_NOT_AUTO_EDIT. Existing illustration remains an explicitly unapproved fallback, not accepted final production UI. Its 16 strings have a terminal `REVIEW_REQUIRED` classification; they are not merely unmatched.
+
+This is one bounded asset/content decision, not a reason to leave other workspaces unclassified. It remains separate from known valid MagicPath copy that may be discussed in a future editorial review.
+
+### G. Files changed
+
+- `src/features/import-history/components/ImportHistoryList.tsx`.
+- `src/features/operations/StoreActivityPage.tsx`.
+- `src/features/store-workspace/components/PermissionRequests.tsx`.
+- `src/features/store-workspace/components/StoreOperatingDefaults.tsx`.
+- `src/features/store-workspace/components/StoreOverview.tsx`.
+- `src/features/store/StoreBootstrap.tsx` and `StoreBootstrap.css`.
+- `src/shared/UnderConstruction.tsx`.
+- `src/pages/home/HomePage.tsx`.
+
+Evidence tooling: [capture-copy-provenance.mjs](../../../scripts/capture-copy-provenance.mjs). Final ledger, [AST evidence](COPY_BEHAVIOR_PRESERVATION.json), [verification](COPY_VERIFICATION.json), captures and this report document the pass. Historical `COPY_PROVENANCE_AUDIT.json`, earlier `BEHAVIOR_PRESERVATION.json`, typography inventory and previous screenshots retain their historical scope. The user-supplied policy files were not modified. No commit/push.
+
+### H. Representative visual evidence
+
+[Capture receipt](copy-closure/capture.json): **22 before/after images**, 1440px, 100% zoom. Nine isolated component states use actual production components with controlled providers/props and SSR: Store overview/defaults/bootstrap, Owner/Staff permission-queue loading, initial administrative activity, named unavailable-feature dialog, and Import History empty/filtered state. The dialog is opened directly in the evidence DOM; this is not a hydrated authenticated-flow interaction. T03 mutations and query effects do not run.
+
+Public marketing pricing/resource notices are additionally exercised through the actual local client component and click handlers in MemoryRouter. The client bundle has no app/BE server, credentials or external navigation; all network requests are denied. **Recorded network attempts: 0.** This is controlled public-component interaction, not authenticated shell or live E2E acceptance.
+
+Representative images: Store overview [before](copy-closure/overview-before.png) / [after](copy-closure/overview-after.png); resource notice [before](copy-closure/public-resources-before.png) / [after](copy-closure/public-resources-after.png); permission queue [Owner](copy-closure/permission-owner-after.png) / [Staff](copy-closure/permission-staff-after.png).
+
+Captures were reviewed for visible state/action labels, alignment and unnecessary empty markup. The new notices report current unavailability without future promises. All existing error/permission/unsupported-state instructions remain. Full authenticated shell, invite-selection activity branch, T03 success/readback and exhaustive state visual verification remain separately pending; source/AST evidence covers the copy-only changes without claiming those states were rendered here.
+
+### I. Regression tests
+
+- Store: **118/118**; Import: **143/143**; Operations: **30/30**; Planning: **79/79** — **370/370** existing controlled tests pass.
+- Build and lint pass. Two pre-existing effect warnings and the large-bundle warning remain.
+- [Structural AST comparison](COPY_BEHAVIOR_PRESERVATION.json) passes for all eight changed TSX files, normalizing only the adjudicated paragraph/segment removals and two declared notice-literal replacements. The sole removed JSX visibility predicate governed only the deleted invitation-selector helper; it enclosed no handler/business action.
+- All other event handlers, role/permission/state checks, routes, API calls, request payloads and mutation logic are unchanged. The CSS diff removes only the unused eyebrow rule. No API/state/service/workflow source file changed.
+- `docs/FOUND_MISSING_UI.md` remains SHA256 `3017bfd528eccd22988ff7851793bfec5babd69eb1aeb6a942a529967828fa9e`.
+
+### J. Live BE status
+
+**NOT RUN.** No live BE reads/mutations, login/accounts, upload, worker/process/PID bypass, contract changes or deployment changes. MagicPath access is read-only; no new revisions. Existing Windows live evidence is not reused as verification for this pass.
+
+### K. Remaining non-copy visual defects
+
+Keep these separate from the adjudication result: RequirementsControls arrangement, completion-receipt wrapper fidelity, approved typography normalization, full-shell/hydrated authenticated/all-state/a11y verification, and RV-01's final marketing preview asset. General visual convergence remains PARTIAL. Copy provenance itself is **COPY PROVENANCE CLOSED — REVIEW ITEMS REMAIN**.

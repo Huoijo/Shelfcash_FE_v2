@@ -1,0 +1,298 @@
+{
+  "kind": "CONTROLLED_COMPONENT_EVIDENCE",
+  "baseline": "623574d6eea2710504fb0d8f5fdd70bf259cb05b",
+  "browser": "156.0.8078.4",
+  "platform": "darwin",
+  "arch": "arm64",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "zoom": 1,
+  "hydrated": false,
+  "liveBE": "NOT RUN",
+  "networkAttempts": [],
+  "captures": [
+    {
+      "state": "overview",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/overview-before.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Thông tin cửa hàng",
+          "Giờ hoạt động",
+          "Trạng thái"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "overview",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/overview-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Thông tin cửa hàng",
+          "Giờ hoạt động",
+          "Trạng thái"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "defaults",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/defaults-before.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Thiết lập chung",
+          "Mặc định lập kế hoạch",
+          "Lịch nhận hàng",
+          "Ngân sách mặc định"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "defaults",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/defaults-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Thiết lập chung",
+          "Mặc định lập kế hoạch",
+          "Lịch nhận hàng",
+          "Ngân sách mặc định"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "bootstrap",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/bootstrap-before.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Bạn chưa có cửa hàng",
+          "Thiết lập không gian làm việc"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "bootstrap",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/bootstrap-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Bạn chưa có cửa hàng",
+          "Thiết lập không gian làm việc"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "permission-owner",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/permission-owner-before.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Yêu cầu quyền"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "permission-owner",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/permission-owner-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Yêu cầu quyền"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "permission-staff",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/permission-staff-before.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Yêu cầu quyền"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "permission-staff",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/permission-staff-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Yêu cầu quyền"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "activity",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/activity-before.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Hoạt động quản trị"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "activity",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/activity-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Hoạt động quản trị"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "construction",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/construction-before.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Hỏi AI đang được xây dựng"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "construction",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/construction-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Hỏi AI đang được xây dựng"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "history-empty",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/history-empty-before.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Chưa có lần nhập nào"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "history-empty",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/history-empty-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Chưa có lần nhập nào"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "history-filtered",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/history-filtered-before.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Không có kết quả phù hợp"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "history-filtered",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/history-filtered-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "headings": [
+          "Không có kết quả phù hợp"
+        ],
+        "emptyParagraphs": 0
+      }
+    },
+    {
+      "state": "public-pricing",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/public-pricing-before.png",
+      "controlledPublicClient": true,
+      "message": "Bảng giá sẽ được cập nhật. Liên hệ hỗ trợ ShelfCash để tìm hiểu thêm."
+    },
+    {
+      "state": "public-resources",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/public-resources-before.png",
+      "controlledPublicClient": true,
+      "message": "Tài liệu hướng dẫn có sẵn trong ứng dụng tại Nhập dữ liệu → HDSD."
+    },
+    {
+      "state": "public-pricing",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/public-pricing-after.png",
+      "controlledPublicClient": true,
+      "message": "Bảng giá chưa khả dụng."
+    },
+    {
+      "state": "public-resources",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/public-resources-after.png",
+      "controlledPublicClient": true,
+      "message": "Tài nguyên chưa khả dụng."
+    }
+  ],
+  "modes": [
+    "STATIC_SSR_AUTHENTICATED_COMPONENTS",
+    "LOCAL_CLIENT_MOUNT_PUBLIC_MARKETING"
+  ],
+  "authenticatedClientInteraction": "NOT RUN",
+  "publicClientInteraction": "CONTROLLED_ONLY",
+  "noLiveBackend": true
+}

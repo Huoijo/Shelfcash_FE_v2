@@ -1,0 +1,249 @@
+{
+  "date": "2026-10-17",
+  "baseline": "623574d6eea2710504fb0d8f5fdd70bf259cb05b",
+  "verdict": "COPY PROVENANCE CLOSED — REVIEW ITEMS REMAIN",
+  "classificationCounts": {
+    "CONTRACT_REQUIRED": 2305,
+    "MAGICPATH_EXACT": 1065,
+    "DYNAMIC_DATA": 716,
+    "MAGICPATH_SEMANTIC": 15,
+    "UNSUPPORTED_COPY": 14,
+    "REVIEW_REQUIRED": 16
+  },
+  "totalCandidates": 4131,
+  "removedOccurrences": 14,
+  "reviewCases": 1,
+  "reviewOccurrences": 16,
+  "productFiles": [
+    {
+      "file": "src/features/import-history/components/ImportHistoryList.tsx",
+      "sha256": "9881208bc34959b36c740a2c779f945028ce9e1dfa9ed9a3e2a6b0e607a7eff8"
+    },
+    {
+      "file": "src/features/operations/StoreActivityPage.tsx",
+      "sha256": "97efcca79385d6406adfd056990a933e8103a1c35fa9c5d18a580f2da29f41e6"
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequests.tsx",
+      "sha256": "8bfaf0c5c82e0247345f2610dfc7969c6455a9f891fced4c2988e7076f1b8226"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "sha256": "e7f57f78d69991aad2374892e29f7e91eeff4d4fcc2b33f6b2328c45876a88b3"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOverview.tsx",
+      "sha256": "a84668bdddeed463e704f0953bf2f49ae709789a444144c5bc4468a3bb214f28"
+    },
+    {
+      "file": "src/features/store/StoreBootstrap.css",
+      "sha256": "792ad0b59a02ff78b2b2b539525bb71d9a2c80db1b7a0531925fa222f0c6117d"
+    },
+    {
+      "file": "src/features/store/StoreBootstrap.tsx",
+      "sha256": "745b773eb02be91066174721b12eb8936ecf89c0f1c8c13f496deffcf0cee55b"
+    },
+    {
+      "file": "src/pages/home/HomePage.tsx",
+      "sha256": "55bdc03aa8fe197f482f7dbb23f5ea9e63478a985789ff095b4da3ab436b548b"
+    },
+    {
+      "file": "src/shared/UnderConstruction.tsx",
+      "sha256": "5c9c6653261ba8115435812e9f26cbe1d97bc73349983abcb9946b2b5a4079d2"
+    }
+  ],
+  "historicalRegisterSha256": "3017bfd528eccd22988ff7851793bfec5babd69eb1aeb6a942a529967828fa9e",
+  "behaviorProof": "COPY_BEHAVIOR_PRESERVATION.json",
+  "suites": [
+    {
+      "name": "store",
+      "tests": 118,
+      "pass": 118,
+      "fail": 0
+    },
+    {
+      "name": "import",
+      "tests": 143,
+      "pass": 143,
+      "fail": 0
+    },
+    {
+      "name": "operations",
+      "tests": 30,
+      "pass": 30,
+      "fail": 0
+    },
+    {
+      "name": "planning",
+      "tests": 79,
+      "pass": 79,
+      "fail": 0
+    }
+  ],
+  "totalTests": 370,
+  "build": "PASS",
+  "lint": "PASS_WITH_TWO_PREEXISTING_EFFECT_WARNINGS",
+  "bundleWarning": "PREEXISTING_LARGE_CHUNK_WARNING",
+  "captures": [
+    {
+      "state": "overview",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/overview-before.png",
+      "sha256": "45d88939e2065c14d742805a444b2e062f5cec52166c2874216316fc448550aa"
+    },
+    {
+      "state": "overview",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/overview-after.png",
+      "sha256": "e2e47bd104f1635fb9f3b4aee7e09437fbb78b944dc8eaf7cd02063c8f405cf4"
+    },
+    {
+      "state": "defaults",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/defaults-before.png",
+      "sha256": "a502b83b4f101396efc3dfa6647f17492dad35bb12e3799a912636d96cdc7ac8"
+    },
+    {
+      "state": "defaults",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/defaults-after.png",
+      "sha256": "fad1d7c0ffb4efb728d40fa1ec24c532bf10ffe9b1972ce2233ac484a9d0eecb"
+    },
+    {
+      "state": "bootstrap",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/bootstrap-before.png",
+      "sha256": "07702aceec823fe9e9ce51b32412140715b5bfdd51a7a20054462643478fa502"
+    },
+    {
+      "state": "bootstrap",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/bootstrap-after.png",
+      "sha256": "e9a1e322a13f980c54a962d9beb1c4c8c679614e3610994f55e06fac97c60061"
+    },
+    {
+      "state": "permission-owner",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/permission-owner-before.png",
+      "sha256": "fc4491af3a1d29302f4af7f9740254f2050570ab2c659ea0987e0f32dafe7980"
+    },
+    {
+      "state": "permission-owner",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/permission-owner-after.png",
+      "sha256": "92acd486d1adc3a69590e972d6c55db420faa91784916a88c5e003dd2ce47851"
+    },
+    {
+      "state": "permission-staff",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/permission-staff-before.png",
+      "sha256": "3b5bfc7106805ea5739b23faeb5d6672fc9d88ccf6590d5213d048dbf7824210"
+    },
+    {
+      "state": "permission-staff",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/permission-staff-after.png",
+      "sha256": "7b9ad390421d02d67898b1f5f83cc90af931db0f7623ffcb881f7ba1141fe793"
+    },
+    {
+      "state": "activity",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/activity-before.png",
+      "sha256": "ff409d7bea5f3efc14ba7dc6a711b314a4e347a509eb7de594bb18ebe31471d3"
+    },
+    {
+      "state": "activity",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/activity-after.png",
+      "sha256": "ff409d7bea5f3efc14ba7dc6a711b314a4e347a509eb7de594bb18ebe31471d3"
+    },
+    {
+      "state": "construction",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/construction-before.png",
+      "sha256": "13da3aa75b82d7df2a95307ab3e497a0bf032829c5d15fe885a70284672a3f43"
+    },
+    {
+      "state": "construction",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/construction-after.png",
+      "sha256": "60769bf6f007d8d9c1936fa0b8d7534771b4e8c19b9c568b29e1469fd64df109"
+    },
+    {
+      "state": "history-empty",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/history-empty-before.png",
+      "sha256": "88bea1e4a56e47dbcf52398eeec2b609d4083c041d670c13b6626cf65cb757d6"
+    },
+    {
+      "state": "history-empty",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/history-empty-after.png",
+      "sha256": "7ff7a9392be6f669a2548a6b813082077e16e328334fe9d6ad66767598ace836"
+    },
+    {
+      "state": "history-filtered",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/history-filtered-before.png",
+      "sha256": "a2c7fa34d0ee17c29441b7881f3b36172812988752541293bb67d3bdfdfe4706"
+    },
+    {
+      "state": "history-filtered",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/history-filtered-after.png",
+      "sha256": "dd9d0b2c0d44cf2e322068737f58230a0e7c031eb9d458895554cd0da1c0b04b"
+    },
+    {
+      "state": "public-pricing",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/public-pricing-before.png",
+      "sha256": "d78adaa80df5076af5addab05bdef18a49f2fda572b6863c72765325852e8ee5",
+      "publicClient": true,
+      "message": "Bảng giá sẽ được cập nhật. Liên hệ hỗ trợ ShelfCash để tìm hiểu thêm."
+    },
+    {
+      "state": "public-resources",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/copy-closure/public-resources-before.png",
+      "sha256": "aacf47fc10be3c7089f28c047b0aceb8aa8a2415eccbfb218be5c200a5be402b",
+      "publicClient": true,
+      "message": "Tài liệu hướng dẫn có sẵn trong ứng dụng tại Nhập dữ liệu → HDSD."
+    },
+    {
+      "state": "public-pricing",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/public-pricing-after.png",
+      "sha256": "6df5f229bf80724e03f465ee3a0741427e7ebd5bbd947cb1df7564d93b8dc49b",
+      "publicClient": true,
+      "message": "Bảng giá chưa khả dụng."
+    },
+    {
+      "state": "public-resources",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/copy-closure/public-resources-after.png",
+      "sha256": "d97f0b5a7cd39c77209c604fe482087c6bf4a74c65a1dfbeb42fb54cc7372e36",
+      "publicClient": true,
+      "message": "Tài nguyên chưa khả dụng."
+    }
+  ],
+  "networkAttempts": [],
+  "liveBE": "NOT RUN",
+  "liveE2E": "NOT RUN",
+  "authenticatedFullShellAcceptance": "NOT RUN",
+  "remainingNonCopyVisualDebt": [
+    "RequirementsControls geometry",
+    "Completion receipt wrapper fidelity",
+    "Typography normalization",
+    "Hydrated authenticated full-shell and all-state coverage"
+  ],
+  "evidenceTool": {
+    "file": "scripts/capture-copy-provenance.mjs",
+    "sha256": "f53425659cb8855e7df4fe82780fbe6b934357b3de95c061e86e9b9278fb61a6"
+  },
+  "ledgerSha256": "5f074ae5639fc23de5afbb2241554db08aeee3d52086a2fe8abc6999489c1431",
+  "earlier315Disposition": {
+    "ADJUDICATED": 275,
+    "EXCLUDED_NON_PRODUCTION": 38,
+    "PREVIOUS_PASS_UNSUPPORTED_REMOVAL": 2
+  }
+}
