@@ -1,0 +1,2077 @@
+[
+  {
+    "component": {
+      "id": "458185906336202752",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "461578655542439936",
+      "baseRevisionId": "461578655542439936",
+      "generatedName": "gentle-forest-2488",
+      "name": "ShelfCash · Đăng nhập / Đăng ký"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 490,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAuthLifecycle.css",
+        "characters": 2886,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashNgNhPNgK.css",
+        "characters": 5907,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashNgNhPNgK.tsx",
+        "characters": 16241,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/index.css",
+        "characters": 5192,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "460747146686242816",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "461726308171411456",
+      "baseRevisionId": "461726308171411456",
+      "generatedName": "softly-door-9234",
+      "name": "ShelfCash · Input flow · OWNER"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 877,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAdvancedImportSurface.tsx",
+        "characters": 10740,
+        "states": [
+          "01-partial",
+          "01-partial-must",
+          "01-retrying",
+          "01-ack-checking",
+          "01-ack-confirmed",
+          "01-ack-unknown",
+          "01-confirm-set",
+          "06-warning-ready",
+          "06-warning-not-ready",
+          "06-ready",
+          "06-not-ready",
+          "06-loading",
+          "06-permission",
+          "06-unavailable",
+          "06-unknown",
+          "06-not-assessed",
+          "06-selecting"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashClosureExtensions.css",
+        "characters": 6711,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashContextPrimitives.css",
+        "characters": 3295,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashContextPrimitives.tsx",
+        "characters": 3398,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashDeclarationContextEditor.tsx",
+        "characters": 10697,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashDomainReviewSurface.css",
+        "characters": 9934,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashDomainReviewSurface.tsx",
+        "characters": 24670,
+        "states": [
+          "03-sales-correction",
+          "03-correction-conflict"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashHistoryCorrectionSurface.tsx",
+        "characters": 13172,
+        "states": [
+          "05-history-correction-saving",
+          "05-history-correction-failed",
+          "05-history-correction-uncertain",
+          "05-history-correction-checking",
+          "05-history-correction-resolved",
+          "04-history-correction-preview",
+          "05-history-correction-preview",
+          "05-history-correction-one",
+          "05-history-correction-multiple",
+          "05-history-correction-partial",
+          "05-history-correction-detail",
+          "05-history-correction-none",
+          "05-history-correction-stale",
+          "05-history-correction-permission"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashInputFlowController.tsx",
+        "characters": 12257,
+        "states": [
+          "05-history-correction-one",
+          "05-history-correction-uncertain",
+          "03-spec-changed",
+          "02-no-profile",
+          "05-review",
+          "05-review-domain-summary",
+          "04-review",
+          "03-new-entity",
+          "03-new-entity-blocked",
+          "05-preview",
+          "04-preview",
+          "01-confirm-set"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashInputFlowOWNER.css",
+        "characters": 16671,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx",
+        "characters": 50036,
+        "states": [
+          "01-empty",
+          "history",
+          "queue",
+          "profiles-active",
+          "profiles-retired",
+          "01-ready",
+          "02-complete",
+          "02-source",
+          "Cần xác nhận nguồn",
+          "02-ambiguous",
+          "Nhiều profile phù hợp",
+          "Cần xử lý",
+          "02-failed",
+          "03-overview-unresolved",
+          "03a-ignore",
+          "03a-unresolved",
+          "03a-duplicate",
+          "03a-error",
+          "03b-search",
+          "03b-selected",
+          "03b-unresolved",
+          "03b-ambiguous",
+          "03b-permission",
+          "03c-missing",
+          "03c-validation",
+          "03d-unsupported",
+          "03d-needs",
+          "03d-conversion",
+          "04-approved",
+          "Profile cần xử lý",
+          "04-rejected",
+          "05-warning",
+          "05-blocked",
+          "Preview bị chặn",
+          "05-stale",
+          "Preview stale",
+          "Preview đã tạo · Chưa ghi dữ liệu",
+          "05-permission",
+          "Commit bị chặn",
+          "Review hoàn tất · Chờ xác nhận",
+          "05-failed",
+          "Commit chưa hoàn tất",
+          "05-uncertain",
+          "Đang kiểm tra kết quả",
+          "Đang ghi dữ liệu",
+          "Import hoàn tất",
+          "05-preview",
+          "05-review",
+          "05-profile-retired",
+          "05-processing",
+          "06-ready",
+          "02-running"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashInputFlowOWNERStep3.css",
+        "characters": 7399,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashLatestAuditFixes.css",
+        "characters": 497,
+        "states": [
+          "04-review",
+          "04-review-first",
+          "04-review-full",
+          "04-approve-ready"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMutationRecovery.css",
+        "characters": 2477,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMutationRecovery.tsx",
+        "characters": 5949,
+        "states": [
+          "04-failed"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPrototypeCatalog.ts",
+        "characters": 21431,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPrototypeStatePlayground.css",
+        "characters": 829,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashResolverMutationRecovery.tsx",
+        "characters": 9520,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashResolverScopeSurface.tsx",
+        "characters": 27386,
+        "states": [
+          "Đã xử lý",
+          "2 cần xử lý",
+          "1 cần xử lý",
+          "03b-create-no-match",
+          "03b-create-permission",
+          "03b-create-creating",
+          "03b-create-created",
+          "03b-create-created-reusable",
+          "03b-create-duplicate",
+          "03b-create-failed",
+          "03b-create-validation",
+          "03d-exact-permission",
+          "03d-exact-saved",
+          "03d-exact-failed",
+          "03d-exact-invalid",
+          "03d-exact-evidence"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashResolverWave1.css",
+        "characters": 7334,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashReviewCommitSurface.css",
+        "characters": 6434,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashReviewCommitSurface.tsx",
+        "characters": 21709,
+        "states": [
+          "05-review-domain-summary",
+          "05-commit-ready-optional",
+          "05-review-failed",
+          "05-review-domain-blocked",
+          "05-review-confirming",
+          "05-processing",
+          "05-review-uncertain",
+          "05-review-expired",
+          "05-review-permission",
+          "05-commit-permission",
+          "05-commit-profile-retired",
+          "05-commit-preview-stale",
+          "05-failed",
+          "05-uncertain"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashSourceContextSurface.css",
+        "characters": 4436,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashSourceContextSurface.tsx",
+        "characters": 19212,
+        "states": [
+          "02-source-context-mutation-saving",
+          "02-source-context-mutation-failed",
+          "02-source-context-mutation-uncertain",
+          "02-source-context-mutation-checking",
+          "02-source-context-mutation-saved",
+          "02-source-custom",
+          "02-source-validation",
+          "02-source-locale",
+          "02-source-period",
+          "02-source-amendment",
+          "02-source-confirmed",
+          "02-source-evidence",
+          "02-source-context-invalid",
+          "02-source-stockout-declared",
+          "02-source-stockout-missing",
+          "02-source-stockout-alias",
+          "02-source-stockout-alias-evidence",
+          "02-source-context-reusable",
+          "02-source-cost-basis",
+          "Nguồn đã xác nhận"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashWave2.css",
+        "characters": 10075,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashWave7ProfileDecision.css",
+        "characters": 14125,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashWave7ProfileDecision.tsx",
+        "characters": 40731,
+        "states": [
+          "unchanged",
+          "changed",
+          "added",
+          "removed",
+          "04-review-staff",
+          "04-review-first",
+          "04-review-no-change",
+          "04-approved",
+          "04-rejected",
+          "04-request-changes-confirmed",
+          "04-changed",
+          "04-handled",
+          "04-permission",
+          "04-retired",
+          "04-review-full",
+          "04-approve-ready",
+          "03-waiting-resubmitted",
+          "03-waiting",
+          "03-withdrawn",
+          "03-waiting-permission",
+          "03-waiting-stale",
+          "03-request-changes",
+          "03-approved",
+          "03-rejected",
+          "03-submit-saving",
+          "03-submit-checking",
+          "03-resubmit-saving",
+          "03-resubmit-checking",
+          "03-withdraw-saving",
+          "03-withdraw-checking",
+          "03-submit-confirmed",
+          "03-resubmit-confirmed",
+          "03-withdraw-confirm",
+          "03-withdraw-failed",
+          "03-withdraw-uncertain",
+          "profiles-retire-decision-confirmed"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/index.css",
+        "characters": 8505,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "460747115572916224",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "461725038614315008",
+      "baseRevisionId": "461725038614315008",
+      "generatedName": "wildly-shade-4015",
+      "name": "ShelfCash · Input flow · STAFF"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 877,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAdvancedImportSurface.tsx",
+        "characters": 10740,
+        "states": [
+          "01-partial",
+          "01-partial-must",
+          "01-retrying",
+          "01-ack-checking",
+          "01-ack-confirmed",
+          "01-ack-unknown",
+          "01-confirm-set",
+          "06-warning-ready",
+          "06-warning-not-ready",
+          "06-ready",
+          "06-not-ready",
+          "06-loading",
+          "06-permission",
+          "06-unavailable",
+          "06-unknown",
+          "06-not-assessed",
+          "06-selecting"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashClosureExtensions.css",
+        "characters": 6711,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashContextPrimitives.css",
+        "characters": 3295,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashContextPrimitives.tsx",
+        "characters": 3314,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashDeclarationContextEditor.tsx",
+        "characters": 10630,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashDomainReviewSurface.css",
+        "characters": 9934,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashDomainReviewSurface.tsx",
+        "characters": 19304,
+        "states": [
+          "03-sales-correction",
+          "03-correction-conflict"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashHistoryCorrectionSurface.tsx",
+        "characters": 13172,
+        "states": [
+          "05-history-correction-saving",
+          "05-history-correction-failed",
+          "05-history-correction-uncertain",
+          "05-history-correction-checking",
+          "05-history-correction-resolved",
+          "04-history-correction-preview",
+          "05-history-correction-preview",
+          "05-history-correction-one",
+          "05-history-correction-multiple",
+          "05-history-correction-partial",
+          "05-history-correction-detail",
+          "05-history-correction-none",
+          "05-history-correction-stale",
+          "05-history-correction-permission"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashInputFlowController.tsx",
+        "characters": 12190,
+        "states": [
+          "05-history-correction-one",
+          "05-history-correction-uncertain",
+          "03-spec-changed",
+          "02-no-profile",
+          "05-review",
+          "05-review-domain-summary",
+          "04-review",
+          "03-new-entity",
+          "03-new-entity-blocked",
+          "05-preview",
+          "04-preview",
+          "01-confirm-set"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashInputFlowSTAFF.css",
+        "characters": 16832,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx",
+        "characters": 53133,
+        "states": [
+          "01-empty",
+          "history",
+          "01-ready",
+          "02-complete",
+          "02-source",
+          "Cần xác nhận nguồn",
+          "02-ambiguous",
+          "Nhiều profile phù hợp",
+          "Cần xử lý",
+          "02-failed",
+          "02-no-profile",
+          "03-waiting",
+          "Chờ Owner duyệt",
+          "03-approved",
+          "Profile đã được Owner duyệt",
+          "03-rejected",
+          "Owner trả lại",
+          "03-submit",
+          "03-spec-changed",
+          "03-permission",
+          "03-correction-conflict",
+          "03-ui-map-reusable",
+          "03-sales-correction",
+          "03-ready",
+          "03-new-entity-blocked",
+          "04-warning",
+          "04-blocked",
+          "Preview bị chặn",
+          "04-stale",
+          "Preview stale",
+          "04-inventory",
+          "Inventory count preview",
+          "Preview đã tạo · Chưa ghi dữ liệu",
+          "05-permission",
+          "Commit bị chặn",
+          "05-profile-retired",
+          "Profile không còn hiệu lực",
+          "05-preview-stale",
+          "05-failed",
+          "Commit chưa hoàn tất",
+          "05-uncertain",
+          "Đang kiểm tra kết quả",
+          "05-processing",
+          "Đang ghi dữ liệu",
+          "Review hoàn tất · Chờ xác nhận",
+          "06-ready",
+          "06-warning",
+          "02-running"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashMutationRecovery.css",
+        "characters": 2503,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMutationRecovery.tsx",
+        "characters": 5915,
+        "states": [
+          "04-failed"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPrototypeCatalog.ts",
+        "characters": 21431,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPrototypeStatePlayground.css",
+        "characters": 829,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashResolverMutationRecovery.tsx",
+        "characters": 9520,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashResolverScopeSurface.tsx",
+        "characters": 27396,
+        "states": [
+          "Đã xử lý",
+          "2 cần xử lý",
+          "1 cần xử lý",
+          "03b-create-no-match",
+          "03b-create-permission",
+          "03b-create-creating",
+          "03b-create-created",
+          "03b-create-created-reusable",
+          "03b-create-duplicate",
+          "03b-create-failed",
+          "03b-create-validation",
+          "03d-exact-permission",
+          "03d-exact-saved",
+          "03d-exact-failed",
+          "03d-exact-invalid",
+          "03d-exact-evidence"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashResolverWave1.css",
+        "characters": 7334,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashReviewCommitSurface.css",
+        "characters": 6434,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashReviewCommitSurface.tsx",
+        "characters": 21709,
+        "states": [
+          "05-review-domain-summary",
+          "05-commit-ready-optional",
+          "05-review-failed",
+          "05-review-domain-blocked",
+          "05-review-confirming",
+          "05-processing",
+          "05-review-uncertain",
+          "05-review-expired",
+          "05-review-permission",
+          "05-commit-permission",
+          "05-commit-profile-retired",
+          "05-commit-preview-stale",
+          "05-failed",
+          "05-uncertain"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashSourceContextSurface.css",
+        "characters": 4436,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashSourceContextSurface.tsx",
+        "characters": 19212,
+        "states": [
+          "02-source-context-mutation-saving",
+          "02-source-context-mutation-failed",
+          "02-source-context-mutation-uncertain",
+          "02-source-context-mutation-checking",
+          "02-source-context-mutation-saved",
+          "02-source-custom",
+          "02-source-validation",
+          "02-source-locale",
+          "02-source-period",
+          "02-source-amendment",
+          "02-source-confirmed",
+          "02-source-evidence",
+          "02-source-context-invalid",
+          "02-source-stockout-declared",
+          "02-source-stockout-missing",
+          "02-source-stockout-alias",
+          "02-source-stockout-alias-evidence",
+          "02-source-context-reusable",
+          "02-source-cost-basis",
+          "Nguồn đã xác nhận"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashStaffConvergence.css",
+        "characters": 4285,
+        "states": [
+          "03-waiting",
+          "06-ready",
+          "06-not-ready",
+          "06-warning",
+          "03-waiting-resubmitted",
+          "03-submit-confirmed",
+          "03-resubmit-confirmed",
+          "03-withdraw-failed",
+          "03-withdrawn",
+          "03-request-changes",
+          "03-waiting-stale"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashWave2.css",
+        "characters": 10075,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashWave7ProfileDecision.css",
+        "characters": 14125,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashWave7ProfileDecision.tsx",
+        "characters": 40731,
+        "states": [
+          "unchanged",
+          "changed",
+          "added",
+          "removed",
+          "04-review-staff",
+          "04-review-first",
+          "04-review-no-change",
+          "04-approved",
+          "04-rejected",
+          "04-request-changes-confirmed",
+          "04-changed",
+          "04-handled",
+          "04-permission",
+          "04-retired",
+          "04-review-full",
+          "04-approve-ready",
+          "03-waiting-resubmitted",
+          "03-waiting",
+          "03-withdrawn",
+          "03-waiting-permission",
+          "03-waiting-stale",
+          "03-request-changes",
+          "03-approved",
+          "03-rejected",
+          "03-submit-saving",
+          "03-submit-checking",
+          "03-resubmit-saving",
+          "03-resubmit-checking",
+          "03-withdraw-saving",
+          "03-withdraw-checking",
+          "03-submit-confirmed",
+          "03-resubmit-confirmed",
+          "03-withdraw-confirm",
+          "03-withdraw-failed",
+          "03-withdraw-uncertain",
+          "profiles-retire-decision-confirmed"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/index.css",
+        "characters": 12187,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "458590758262427648",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "460395468028002304",
+      "baseRevisionId": "460395468028002304",
+      "generatedName": "fiercely-leaf-3349",
+      "name": "ShelfCash · Kho · Tồn kho hiện tại"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 505,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAIPresentationTypes.ts",
+        "characters": 776,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAppShell.tsx",
+        "characters": 5893,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashContextualAIDrawer.css",
+        "characters": 7013,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashContextualAIDrawer.tsx",
+        "characters": 7940,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashInventoryAIData.ts",
+        "characters": 4334,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashInventoryComponents.tsx",
+        "characters": 12128,
+        "states": [
+          "expired",
+          "near-expiry"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashInventoryData.ts",
+        "characters": 9390,
+        "states": [
+          "low",
+          "stable",
+          "near-expiry",
+          "watch",
+          "empty"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashInventoryScreen.css",
+        "characters": 11011,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashInventoryScreen.tsx",
+        "characters": 14428,
+        "states": [
+          "stable",
+          "filled"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashKhoTNKhoHiNTI.tsx",
+        "characters": 369,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashNhPDLiU.css",
+        "characters": 8952,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashReceiveGoodsFlow.css",
+        "characters": 6576,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashReceiveGoodsFlow.tsx",
+        "characters": 29863,
+        "states": [
+          "empty",
+          "picker-loading",
+          "picker-empty",
+          "validation",
+          "existing-batch",
+          "conflict",
+          "permission-denied",
+          "uncertain",
+          "server-unavailable",
+          "dirty-close",
+          "filled",
+          "success",
+          "success-refresh-failed",
+          "processing",
+          "confirm"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashReceiveGoodsFlowRefined.css",
+        "characters": 6944,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/index.css",
+        "characters": 5192,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "458614109248847872",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "460607009654472704",
+      "baseRevisionId": "460607009654472704",
+      "generatedName": "deep-shore-5752",
+      "name": "ShelfCash · Menu · Món và công thức"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 505,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAIPresentationTypes.ts",
+        "characters": 776,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAppShell.tsx",
+        "characters": 5961,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashContextualAIDrawer.css",
+        "characters": 7012,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashContextualAIDrawer.tsx",
+        "characters": 7940,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashMenuAIData.ts",
+        "characters": 2829,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMenuComponents.tsx",
+        "characters": 9075,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashMenuData.ts",
+        "characters": 5155,
+        "states": [
+          "active",
+          "paused"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMenuMNVCNgThC.tsx",
+        "characters": 287,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMenuScreen.css",
+        "characters": 9900,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMenuScreen.tsx",
+        "characters": 11094,
+        "states": [
+          "current-only",
+          "current-scheduled",
+          "success"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashNhPDLiU.css",
+        "characters": 8949,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashRecipeLifecycle.css",
+        "characters": 17965,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashRecipeLifecycle.tsx",
+        "characters": 32861,
+        "states": [
+          "current-only",
+          "Đã lên lịch",
+          "Đang sử dụng",
+          "Không có công thức",
+          "Đã kết thúc",
+          "edit-scheduled",
+          "validation",
+          "duplicate",
+          "permission-denied",
+          "transport",
+          "uncertain",
+          "dirty-close",
+          "processing",
+          "timeline",
+          "no-current",
+          "historical-detail",
+          "scheduled-detail",
+          "withdraw-future",
+          "confirm",
+          "preview",
+          "warning",
+          "blocker",
+          "conflict",
+          "success",
+          "success-refresh-failed"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/index.css",
+        "characters": 5192,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "458414835571515392",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "461721652229738496",
+      "baseRevisionId": "461721652229738496",
+      "generatedName": "tender-rock-6611",
+      "name": "ShelfCash · Kế hoạch nhập · Thiết lập"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 508,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAppShell.tsx",
+        "characters": 5715,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashKHoChNhPThiTLP.tsx",
+        "characters": 752,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashNhPDLiU.css",
+        "characters": 8950,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPlanHistory.css",
+        "characters": 6898,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPlanHistory.tsx",
+        "characters": 18058,
+        "states": [
+          "populated",
+          "queued",
+          "completed",
+          "no-result",
+          "running",
+          "failed",
+          "unproven",
+          "old-completed",
+          "old-running",
+          "old-failed",
+          "old-unproven",
+          "old-no-result",
+          "filtered-empty",
+          "loading",
+          "empty",
+          "page-loading"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashPlanHistoryClosure.css",
+        "characters": 1817,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPlanningData.ts",
+        "characters": 3773,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPlanningScreen.css",
+        "characters": 12678,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPlanningScreen.tsx",
+        "characters": 22703,
+        "states": [
+          "creating",
+          "ready",
+          "queued",
+          "running",
+          "long",
+          "completed",
+          "no-feasible",
+          "warnings",
+          "blocked",
+          "setup-loading",
+          "setup-error",
+          "setup-forbidden"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/index.css",
+        "characters": 5192,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "458423352311304192",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "461720833971347456",
+      "baseRevisionId": "461720833971347456",
+      "generatedName": "wild-bay-8121",
+      "name": "ShelfCash · Kế hoạch nhập · Kết quả"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 502,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAlternativeStrategies.tsx",
+        "characters": 3443,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashAppShell.tsx",
+        "characters": 5821,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashForecastChartPanel.tsx",
+        "characters": 2530,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashIngredientWorkspace.tsx",
+        "characters": 5838,
+        "states": [
+          "order"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashKHoChNhPKTQu.tsx",
+        "characters": 663,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashNhPDLiU.css",
+        "characters": 8951,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPlanExportDiscovery.css",
+        "characters": 4189,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPlanExportOverlay.css",
+        "characters": 5563,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPlanExportOverlay.tsx",
+        "characters": 20013,
+        "states": [
+          "discovery",
+          "ready",
+          "preparing",
+          "failed",
+          "unavailable",
+          "discovery-loading",
+          "discovery-error",
+          "discovery-permission",
+          "discovery-empty",
+          "return-existing",
+          "discovery-page-loading",
+          "confirm",
+          "queued",
+          "running",
+          "long",
+          "download-running",
+          "download-success",
+          "download-failed",
+          "poll-error",
+          "permission-denied",
+          "existing",
+          "lost-locator",
+          "historical"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashPlanningData.ts",
+        "characters": 3774,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashProcurementComponents.tsx",
+        "characters": 6408,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashProcurementData.ts",
+        "characters": 7776,
+        "states": [
+          "order",
+          "enough"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashProcurementScreen.css",
+        "characters": 14107,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashProcurementScreen.tsx",
+        "characters": 7189,
+        "states": [
+          "normal",
+          "cost-hidden",
+          "no-winner",
+          "partial",
+          "historical",
+          "loading",
+          "core-error",
+          "ingredients-error",
+          "reasons-error"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/index.css",
+        "characters": 5192,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "459953227023159296",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "461722261150400512",
+      "baseRevisionId": "461722261150400512",
+      "generatedName": "gentle-dawn-6293",
+      "name": "ShelfCash · Cửa hàng workspace"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 433,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPermissionAdminWorkspace.tsx",
+        "characters": 45746,
+        "states": [
+          "members-populated",
+          "Chờ chấp nhận",
+          "Đang hoạt động",
+          "Hết hạn",
+          "Đã chấp nhận",
+          "member-read",
+          "member-readonly",
+          "member-unsaved",
+          "member-saving",
+          "member-failed",
+          "member-conflict",
+          "member-saved",
+          "members-owner-only",
+          "request-submit-failed",
+          "request-submit-uncertain",
+          "request-submit-checking",
+          "request-submitting",
+          "Chờ duyệt",
+          "Đã duyệt",
+          "Đã từ chối",
+          "Đã hủy",
+          "Đã xử lý",
+          "Không còn hiệu lực",
+          "request-approved",
+          "request-rejected",
+          "request-submitted",
+          "request-owner-detail",
+          "request-approve-saving",
+          "request-reject-saving",
+          "request-cancel-confirm",
+          "invite-expired",
+          "invite-accepted",
+          "invite-revoked",
+          "invite-resending",
+          "invite-resent",
+          "invite-revoke-confirm",
+          "invite-detail",
+          "invitations-empty",
+          "invite-duplicate",
+          "activity-loading",
+          "activity-failed",
+          "activity-empty",
+          "activity-expanded"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashStoreBootstrap.tsx",
+        "characters": 13998,
+        "states": [
+          "existing-store",
+          "saving",
+          "save-failed",
+          "uncertain",
+          "checking",
+          "not-created",
+          "zero-store",
+          "created",
+          "available-elsewhere"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashStoreConvergence.css",
+        "characters": 486,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/index.css",
+        "characters": 5192,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "461565920406556672",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "461576911768944640",
+      "baseRevisionId": "461576911768944640",
+      "generatedName": "clever-wood-7894",
+      "name": "ShelfCash · Thông báo"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 484,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashThNgBO.tsx",
+        "characters": 26590,
+        "states": [
+          "valid",
+          "04-review-staff",
+          "04-handled",
+          "Đã được xử lý · Profile đã duyệt",
+          "handled",
+          "05-review-domain-blocked",
+          "invite-expired",
+          "proposal-revision:legacy",
+          "stale",
+          "03-approved",
+          "03-request-changes",
+          "03-rejected",
+          "member-read",
+          "permission",
+          "store:LL-003",
+          "store-unavailable",
+          "invitation:legacy-missing"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/index.css",
+        "characters": 5192,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "460368412145782784",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "461727345703817216",
+      "baseRevisionId": "461727345703817216",
+      "generatedName": "richly-winter-1183",
+      "name": "ShelfCash · Employee Invitation Acceptance"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 550,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashEmployeeInvitationAcceptance.css",
+        "characters": 10315,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashEmployeeInvitationAcceptance.tsx",
+        "characters": 23807,
+        "states": [
+          "logged-out",
+          "ready",
+          "accepting",
+          "accept-uncertain",
+          "decline-confirm",
+          "declining",
+          "decline-failed",
+          "decline-uncertain",
+          "decline-checking",
+          "decline-still-active",
+          "decline-still-unknown",
+          "credential-ready",
+          "credential-submitting",
+          "credential-error",
+          "wrong-account"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/index.css",
+        "characters": 5192,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "458255053002780672",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "458402037797892096",
+      "baseRevisionId": "458402037797892096",
+      "generatedName": "radiantly-room-8537",
+      "name": "ShelfCash · Lịch sử nhập"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 487,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAppShell.tsx",
+        "characters": 5085,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashDataImportScreen.tsx",
+        "characters": 10387,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashHelpDrawer.css",
+        "characters": 4857,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashHelpDrawer.tsx",
+        "characters": 8514,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashImportHistoryData.ts",
+        "characters": 5650,
+        "states": [
+          "success",
+          "all",
+          "warning",
+          "failed"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashImportHistoryScreen.css",
+        "characters": 9689,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashImportHistoryScreen.tsx",
+        "characters": 14467,
+        "states": [
+          "success",
+          "failed"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashLChSNhP.tsx",
+        "characters": 526,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMappingData.ts",
+        "characters": 7588,
+        "states": [
+          "confirmation",
+          "ambiguous",
+          "unmatched"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMappingScreen.css",
+        "characters": 16229,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMappingScreen.tsx",
+        "characters": 18681,
+        "states": [
+          "complete",
+          "confirmation",
+          "unmatched"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashNhPDLiU.css",
+        "characters": 8949,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/index.css",
+        "characters": 5192,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "458632053018234880",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "458637450923900928",
+      "baseRevisionId": "458637450923900928",
+      "generatedName": "keen-flood-9071",
+      "name": "ShelfCash · Hôm nay · Trung tâm chú ý"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 508,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAIPresentationTypes.ts",
+        "characters": 776,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAppShell.tsx",
+        "characters": 6030,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashContextualAIDrawer.css",
+        "characters": 7012,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashContextualAIDrawer.tsx",
+        "characters": 7940,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashHMNayTrungTMCh.tsx",
+        "characters": 382,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashInventoryData.ts",
+        "characters": 9390,
+        "states": [
+          "low",
+          "stable",
+          "near-expiry",
+          "watch",
+          "empty"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashNhPDLiU.css",
+        "characters": 8949,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashPlanningData.ts",
+        "characters": 3773,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashProcurementData.ts",
+        "characters": 9211,
+        "states": [
+          "order",
+          "enough"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashTodayAIData.ts",
+        "characters": 3736,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashTodayComponents.tsx",
+        "characters": 9977,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashTodayData.ts",
+        "characters": 6974,
+        "states": [
+          "near-expiry",
+          "low"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashTodayScreen.css",
+        "characters": 11900,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashTodayScreen.tsx",
+        "characters": 8313,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/index.css",
+        "characters": 5192,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "458083907045322752",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "458087405988220928",
+      "baseRevisionId": "458087405988220928",
+      "generatedName": "breezily-winter-9666",
+      "name": "ShelfCash · Marketing Homepage · Grayscale"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 544,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMarketingHomepageGrayscale.css",
+        "characters": 7044,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashMarketingHomepageGrayscale.tsx",
+        "characters": 9211,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/index.css",
+        "characters": 5192,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  },
+  {
+    "component": {
+      "id": "458395069779681280",
+      "projectId": "458079658328604672",
+      "selectedRevisionId": "461108241670217728",
+      "baseRevisionId": "461108241670217728",
+      "generatedName": "peaceful-time-1303",
+      "name": "ShelfCash · Input flow"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "characters": 505,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashAppShell.tsx",
+        "characters": 5085,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashChevronStepperFix.css",
+        "characters": 872,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashGhPCTDLiUBC25.tsx",
+        "characters": 4632,
+        "states": [
+          "file-empty",
+          "staff-manual"
+        ],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashInputStateCatalog.css",
+        "characters": 1166,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashManualMappingVariant.css",
+        "characters": 3319,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashManualMappingVariant.tsx",
+        "characters": 8751,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/components/generated/ShelfCashNhPDLiU.css",
+        "characters": 8949,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashUnifiedImportWorkspace.css",
+        "characters": 17816,
+        "states": [],
+        "hasDisabled": true,
+        "hasOnClick": false
+      },
+      {
+        "path": "src/components/generated/ShelfCashUnifiedImportWorkspace.tsx",
+        "characters": 32914,
+        "states": [
+          "Đã ghép",
+          "Cần Owner duyệt",
+          "Đã phân tích",
+          "entry",
+          "Owner approval",
+          "loading",
+          "load-failed",
+          "review",
+          "handled",
+          "approve-failed",
+          "edited",
+          "rejected",
+          "Owner đang review mapping",
+          "Mapping lifecycle",
+          "Preview đã tạo · Chưa ghi dữ liệu",
+          "Đã kiểm tra · Sẵn sàng xác nhận",
+          "queue"
+        ],
+        "hasDisabled": true,
+        "hasOnClick": true
+      },
+      {
+        "path": "src/index.css",
+        "characters": 7900,
+        "states": [],
+        "hasDisabled": false,
+        "hasOnClick": false
+      }
+    ]
+  }
+]

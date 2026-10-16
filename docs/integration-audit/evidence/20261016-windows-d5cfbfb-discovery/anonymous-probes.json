@@ -1,0 +1,408 @@
+[
+  {
+    "operation": "A03",
+    "path": "/api/v1/auth/me",
+    "request_path": "/api/v1/auth/me",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "c5a72672-7621-44fc-ae79-0051cdbdc213"
+  },
+  {
+    "operation": "T01",
+    "path": "/api/v1/stores",
+    "request_path": "/api/v1/stores",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "7a57bc26-b3d2-4cac-8d1e-a103e5dcb330"
+  },
+  {
+    "operation": "T02",
+    "path": "/api/v1/stores/{store_id}",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "e5e356d9-6d22-4dc7-a2c7-d52614b96bf9"
+  },
+  {
+    "operation": "N12",
+    "path": "/api/v1/stores/{store_id}/memberships",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/memberships",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "7f40e993-4135-4d55-b317-0c998f61ce02"
+  },
+  {
+    "operation": "N14",
+    "path": "/api/v1/stores/{store_id}/permission-events",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/permission-events",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "42b74abe-9602-407a-951e-a7f82ce20505"
+  },
+  {
+    "operation": "N16",
+    "path": "/api/v1/stores/{store_id}/staff-invitations",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/staff-invitations",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "bfdd6898-01c5-4822-b6d4-0e7cbd82dd80"
+  },
+  {
+    "operation": "N18",
+    "path": "/api/v1/staff-invitations/{invitation_id}",
+    "request_path": "/api/v1/staff-invitations/00000000-0000-4000-8000-000000000001",
+    "status": 422,
+    "error_code": "INVALID_TOKEN",
+    "data_is_null": true,
+    "request_id": "51c21b9d-5025-49e6-b1d2-9d3dff0dd8a9"
+  },
+  {
+    "operation": "NF01",
+    "path": "/api/v1/notifications",
+    "request_path": "/api/v1/notifications",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "6359cd04-c36b-4323-9109-7412800321dc"
+  },
+  {
+    "operation": "NF02",
+    "path": "/api/v1/notifications/unread-count",
+    "request_path": "/api/v1/notifications/unread-count",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "1d03bfbd-8532-446a-b21e-e5e6006fd31d"
+  },
+  {
+    "operation": "PR02",
+    "path": "/api/v1/stores/{store_id}/permission-requests",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/permission-requests",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "9384bb71-7033-45d1-8216-1e53a788ef5e"
+  },
+  {
+    "operation": "PR03",
+    "path": "/api/v1/stores/{store_id}/permission-requests/{request_id}",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/permission-requests/00000000-0000-4000-8000-000000000001",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "e2ab2b40-3da2-4ba3-acc2-ddf8566a9c7d"
+  },
+  {
+    "operation": "MQ02",
+    "path": "/api/v1/stores/{store_id}/mapping-submissions",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/mapping-submissions",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "de6c998e-3429-4dc0-b30c-ef43c1b8f078"
+  },
+  {
+    "operation": "MQ03",
+    "path": "/api/v1/stores/{store_id}/mapping-submissions/{submission_id}",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/mapping-submissions/00000000-0000-4000-8000-000000000001",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "b517223c-0458-4d91-aa0a-68677944c187"
+  },
+  {
+    "operation": "P01",
+    "path": "/api/v1/stores/{store_id}/products",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/products",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "P02",
+    "path": "/api/v1/stores/{store_id}/products/{product_id}",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/products/00000000-0000-4000-8000-000000000001",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "V01",
+    "path": "/api/v1/stores/{store_id}/inventory",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/inventory",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "V02",
+    "path": "/api/v1/stores/{store_id}/inventory/{ingredient_id}",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/inventory/00000000-0000-4000-8000-000000000001",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "V03",
+    "path": "/api/v1/stores/{store_id}/inventory/{ingredient_id}/lots",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/inventory/00000000-0000-4000-8000-000000000001/lots",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "V04",
+    "path": "/api/v1/stores/{store_id}/inventory/{ingredient_id}/movements",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/inventory/00000000-0000-4000-8000-000000000001/movements",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "D01",
+    "path": "/api/v1/stores/{store_id}/today",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/today",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "f244b218-610a-4b79-bf7a-30175cb085a1"
+  },
+  {
+    "operation": "SU01",
+    "path": "/api/v1/stores/{store_id}/suppliers",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/suppliers",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "f82b73ab-3a7a-42a1-884e-4373401cc49c"
+  },
+  {
+    "operation": "N20",
+    "path": "/api/v1/stores/{store_id}/products/{product_id}/recipe-schedule",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/products/00000000-0000-4000-8000-000000000001/recipe-schedule",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "45fd5ba5-9c82-417d-af18-86604aa5205c"
+  },
+  {
+    "operation": "N22",
+    "path": "/api/v1/stores/{store_id}/products/{product_id}/recipe-schedule/changes/{change_id}",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/products/00000000-0000-4000-8000-000000000001/recipe-schedule/changes/00000000-0000-4000-8000-000000000001",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "e6e6816d-e7cd-4c36-b115-8f026b3886bd"
+  },
+  {
+    "operation": "H02",
+    "path": "/api/v1/stores/{store_id}/imports",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/imports",
+    "status": 422,
+    "error_code": "INVALID_DATE",
+    "data_is_null": true,
+    "request_id": "2d854d13-1eb5-4de7-9cc5-14046f5cfc6f"
+  },
+  {
+    "operation": "I04",
+    "path": "/api/v1/imports/{import_id}",
+    "request_path": "/api/v1/imports/00000000-0000-4000-8000-000000000001",
+    "status": 404,
+    "error_code": "RESOURCE_NOT_FOUND",
+    "data_is_null": true,
+    "request_id": "00e55638-b7dd-497c-8ab9-152716b33e73"
+  },
+  {
+    "operation": "M01",
+    "path": "/api/v1/imports/{import_id}/mapping-summary",
+    "request_path": "/api/v1/imports/00000000-0000-4000-8000-000000000001/mapping-summary",
+    "status": 404,
+    "error_code": "RESOURCE_NOT_FOUND",
+    "data_is_null": true,
+    "request_id": "6c7ced59-26e6-457a-9551-41a2932c8560"
+  },
+  {
+    "operation": "M02",
+    "path": "/api/v1/imports/{import_id}/mappings",
+    "request_path": "/api/v1/imports/00000000-0000-4000-8000-000000000001/mappings",
+    "status": 404,
+    "error_code": "RESOURCE_NOT_FOUND",
+    "data_is_null": true,
+    "request_id": "49623125-3f4f-4124-b0d7-65a14b0886f4"
+  },
+  {
+    "operation": "M03",
+    "path": "/api/v1/imports/{import_id}/sheets/{sheet_id}/field-options",
+    "request_path": "/api/v1/imports/00000000-0000-4000-8000-000000000001/sheets/00000000-0000-4000-8000-000000000001/field-options",
+    "status": 404,
+    "error_code": "RESOURCE_NOT_FOUND",
+    "data_is_null": true,
+    "request_id": "33a25e04-91b9-4f81-9c51-1d79fd461283"
+  },
+  {
+    "operation": "I06",
+    "path": "/api/v1/imports/{import_id}/completion",
+    "request_path": "/api/v1/imports/00000000-0000-4000-8000-000000000001/completion",
+    "status": 404,
+    "error_code": "RESOURCE_NOT_FOUND",
+    "data_is_null": true,
+    "request_id": "a1aa0d01-e82e-4670-95f6-756e008840e0"
+  },
+  {
+    "operation": "J01",
+    "path": "/api/v1/jobs/{job_id}",
+    "request_path": "/api/v1/jobs/00000000-0000-4000-8000-000000000001",
+    "status": 404,
+    "error_code": "RESOURCE_NOT_FOUND",
+    "data_is_null": true,
+    "request_id": "99c63c74-64e0-402f-8836-071c605c4477"
+  },
+  {
+    "operation": "N2",
+    "path": "/api/v1/stores/{store_id}/planning-requirements/{saved_requirement_id}",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/planning-requirements/00000000-0000-4000-8000-000000000001",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "R01",
+    "path": "/api/v1/stores/{store_id}/readiness",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/readiness",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "C01",
+    "path": "/api/v1/stores/{store_id}/planning-context",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/planning-context",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "N9",
+    "path": "/api/v1/stores/{store_id}/procurement-plans",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/procurement-plans",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "C03",
+    "path": "/api/v1/procurement-plans/{plan_id}",
+    "request_path": "/api/v1/procurement-plans/00000000-0000-4000-8000-000000000001",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "C04",
+    "path": "/api/v1/procurement-plans/{plan_id}/ingredients",
+    "request_path": "/api/v1/procurement-plans/00000000-0000-4000-8000-000000000001/ingredients",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "C05",
+    "path": "/api/v1/procurement-plans/{plan_id}/ingredients/{ingredient_id}",
+    "request_path": "/api/v1/procurement-plans/00000000-0000-4000-8000-000000000001/ingredients/00000000-0000-4000-8000-000000000001",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "C08",
+    "path": "/api/v1/procurement-plans/{plan_id}/explanation",
+    "request_path": "/api/v1/procurement-plans/00000000-0000-4000-8000-000000000001/explanation",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "AS02",
+    "path": "/api/v1/procurement-plans/{plan_id}/assistant/summary/{generation_id}",
+    "request_path": "/api/v1/procurement-plans/00000000-0000-4000-8000-000000000001/assistant/summary/00000000-0000-4000-8000-000000000001",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "H01",
+    "path": "/api/v1/stores/{store_id}/imports/calendar",
+    "request_path": "/api/v1/stores/00000000-0000-4000-8000-000000000001/imports/calendar",
+    "status": 422,
+    "error_code": "INVALID_MONTH",
+    "data_is_null": true,
+    "request_id": "134c5316-715b-4fd9-aa2f-76bbff5e5379"
+  },
+  {
+    "operation": "EX01",
+    "path": "/api/v1/procurement-plans/{plan_id}/exports",
+    "request_path": "/api/v1/procurement-plans/00000000-0000-4000-8000-000000000001/exports",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "N11",
+    "path": "/api/v1/procurement-plans/{plan_id}/exports/{export_id}",
+    "request_path": "/api/v1/procurement-plans/00000000-0000-4000-8000-000000000001/exports/00000000-0000-4000-8000-000000000001",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": null
+  },
+  {
+    "operation": "CORS",
+    "origin": "https://localhost:5173",
+    "status": 200,
+    "allow_origin": "https://localhost:5173",
+    "allow_credentials": "true"
+  },
+  {
+    "operation": "CORS",
+    "origin": "http://localhost:5173",
+    "status": 400,
+    "allow_origin": null,
+    "allow_credentials": "true"
+  },
+  {
+    "operation": "CORS",
+    "origin": "https://127.0.0.1:5173",
+    "status": 400,
+    "allow_origin": null,
+    "allow_credentials": "true"
+  },
+  {
+    "operation": "H01_VALID_MONTH",
+    "status": 401,
+    "error_code": "UNAUTHENTICATED",
+    "data_is_null": true,
+    "request_id": "65c74b36-5c81-4adc-8645-f03d15a11541"
+  }
+]

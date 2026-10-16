@@ -1,0 +1,9 @@
+# Omissions
+
+- Entire `.git`, environments, caches, installed dependencies, node_modules, runtime output/logs, ZIPs and existing review reports/patches are omitted.
+- `.env` and even example env files, credentials/tokens/password values, certificates and keys, uploads/customer raw tables, database files/dumps, model weights (including LightGBM text models) are not included.
+- All `demo/input` workbooks and all non-allowlisted `demo/artifacts` files are omitted. Only small aggregate metric JSON, model metadata, training/quality metadata, feature schema and checksum definitions are included. Omitted assets are described by relative path, size and SHA-256, not their customer rows or model values.
+- The untracked DATA_REQUIREMENTS document and previous reports/ZIP are recorded in snapshot status but excluded from this review. No previous ZIP was unpacked or used as source proof.
+- Whole-repo miscellaneous configuration/setup wrappers not needed for the selected typed interface are omitted. Included source is the three interdependent Python engine/preprocess/pipeline packages, contracts, four selected test files and bounded reproduction/context scripts/docs. This is a code overlay, not an independently installable runtime environment or full asset checkout.
+- Historical test journals, procurement native-solver benchmark outputs, exposed-holdout prediction rows, unpublished training research/protocol files and live BE source are not present in the selected evidence. Aggregate metrics cannot recreate individual predictions. No claim that omitted evidence was executed at this HEAD.
+- Manifest hashes exact included bytes; manifest itself is excluded from its own entries to avoid recursion. Final archive digest and verification result are supplied outside the ZIP. WIP and audit-generated reports mean this bundle must not be described as a pure commit snapshot.

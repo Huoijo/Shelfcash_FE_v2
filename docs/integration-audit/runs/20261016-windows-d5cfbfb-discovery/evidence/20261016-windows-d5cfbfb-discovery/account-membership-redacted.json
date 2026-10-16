@@ -1,0 +1,208 @@
+{
+  "owner": {
+    "login_status": 200,
+    "me_status": 200,
+    "me": {
+      "data": {
+        "user": {
+          "user_id": "2596a493-212d-4d37-8a1a-90b445b71c0a",
+          "email": "[REDACTED]",
+          "display_name": "Local Test Owner"
+        },
+        "session": {
+          "expires_at": "2026-10-16T10:16:51.105803Z",
+          "absolute_expires_at": "2026-10-16T17:46:51.082631Z",
+          "csrf_token": "[REDACTED]"
+        },
+        "default_store_id": "e2597866-e772-4bd5-9f3d-1996ddd0179c",
+        "accessible_store_count": 1,
+        "authorization_version": "auth-6a273d5bddff0ab8981fe125e4f2918518665baf5e8a99ada7569379ffe97d01"
+      },
+      "meta": {
+        "request_id": "b78ce79c-b58c-467f-8713-9ea4098d0156"
+      },
+      "error": null
+    },
+    "stores_status": 200,
+    "stores": {
+      "data": {
+        "items": [
+          {
+            "store_id": "e2597866-e772-4bd5-9f3d-1996ddd0179c",
+            "name": "Local Test Store",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "currency": "VND",
+            "role": "OWNER",
+            "membership_id": "01ad8bcf-681d-4d6c-9371-89b07aad74c5",
+            "authorization_version": "auth-ed1711595b7291e6087b5be377846df5ed5267729858672b89ca44c41a7a0393"
+          }
+        ]
+      },
+      "meta": {
+        "request_id": "8420057c-c881-4278-ac53-d0505420fcad",
+        "pagination": {
+          "limit": 50,
+          "next_cursor": null,
+          "total_count": 1
+        }
+      },
+      "error": null
+    },
+    "details": [
+      {
+        "status": 200,
+        "body": {
+          "data": {
+            "store_id": "e2597866-e772-4bd5-9f3d-1996ddd0179c",
+            "name": "Local Test Store",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "currency": "VND",
+            "role": "OWNER",
+            "membership_id": "01ad8bcf-681d-4d6c-9371-89b07aad74c5",
+            "authorization_version": "auth-ed1711595b7291e6087b5be377846df5ed5267729858672b89ca44c41a7a0393",
+            "active": true,
+            "server_now": "2026-10-16T09:46:51.137005Z",
+            "as_of_date": "2026-10-16",
+            "membership": {
+              "membership_id": "01ad8bcf-681d-4d6c-9371-89b07aad74c5",
+              "role": "OWNER",
+              "authorization_version": "auth-ed1711595b7291e6087b5be377846df5ed5267729858672b89ca44c41a7a0393",
+              "effective_permissions": [
+                "budget.read",
+                "budget.update",
+                "calendar.read",
+                "calendar.write",
+                "import.analyze",
+                "import.commit",
+                "import.create",
+                "import.preview",
+                "import.read",
+                "import.upload",
+                "ingredient.create",
+                "ingredient.read",
+                "inventory.count.correct",
+                "inventory.read",
+                "inventory.receive",
+                "mapping.propose",
+                "mapping.read",
+                "menu.read",
+                "planning.context.read",
+                "planning.export",
+                "planning.requirements.create",
+                "planning.requirements.manage",
+                "planning.requirements.read",
+                "planning.result.read",
+                "planning.run",
+                "procurement.cost.read",
+                "product.create",
+                "purchase.history.read",
+                "purchase.history.write",
+                "recipe.create_version",
+                "recipe.manage_effectivity",
+                "recipe.read",
+                "sales.correct",
+                "sales.merge",
+                "sales.read",
+                "sales.record",
+                "supplier.create",
+                "supplier.fees.manage",
+                "supplier.read",
+                "supplier.terms.correct",
+                "supplier.terms.create",
+                "usage.history.read",
+                "usage.history.write"
+              ]
+            },
+            "permission_catalog_version": "permissions-v3"
+          },
+          "meta": {
+            "request_id": "1b201b1d-63f5-45c0-9aed-0e2da5f57ad1"
+          },
+          "error": null
+        }
+      }
+    ]
+  },
+  "staff": {
+    "login_status": 200,
+    "me_status": 200,
+    "me": {
+      "data": {
+        "user": {
+          "user_id": "a67c4983-c484-4e00-ad2a-a91338dfb2a7",
+          "email": "[REDACTED]",
+          "display_name": "Local Test Staff"
+        },
+        "session": {
+          "expires_at": "2026-10-16T10:16:53.277712Z",
+          "absolute_expires_at": "2026-10-16T17:46:53.261373Z",
+          "csrf_token": "[REDACTED]"
+        },
+        "default_store_id": "e2597866-e772-4bd5-9f3d-1996ddd0179c",
+        "accessible_store_count": 1,
+        "authorization_version": "auth-470a9866ff05e276d1642079ad4cada9b920324d6708b10da6236bdea2fb812f"
+      },
+      "meta": {
+        "request_id": "4233305f-0319-40b1-9123-942c63125151"
+      },
+      "error": null
+    },
+    "stores_status": 200,
+    "stores": {
+      "data": {
+        "items": [
+          {
+            "store_id": "e2597866-e772-4bd5-9f3d-1996ddd0179c",
+            "name": "Local Test Store",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "currency": "VND",
+            "role": "STAFF",
+            "membership_id": "df6004df-5f58-4036-a7e5-a7360f1499ce",
+            "authorization_version": "auth-26a827ceb63c3e77776d1c48d4eae67c223ac7d65ea022f8ff926f3178679c02"
+          }
+        ]
+      },
+      "meta": {
+        "request_id": "f5a726b4-2202-4ffb-b7fe-bd6751d701b6",
+        "pagination": {
+          "limit": 50,
+          "next_cursor": null,
+          "total_count": 1
+        }
+      },
+      "error": null
+    },
+    "details": [
+      {
+        "status": 200,
+        "body": {
+          "data": {
+            "store_id": "e2597866-e772-4bd5-9f3d-1996ddd0179c",
+            "name": "Local Test Store",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "currency": "VND",
+            "role": "STAFF",
+            "membership_id": "df6004df-5f58-4036-a7e5-a7360f1499ce",
+            "authorization_version": "auth-26a827ceb63c3e77776d1c48d4eae67c223ac7d65ea022f8ff926f3178679c02",
+            "active": true,
+            "server_now": "2026-10-16T09:46:53.302945Z",
+            "as_of_date": "2026-10-16",
+            "membership": {
+              "membership_id": "df6004df-5f58-4036-a7e5-a7360f1499ce",
+              "role": "STAFF",
+              "authorization_version": "auth-26a827ceb63c3e77776d1c48d4eae67c223ac7d65ea022f8ff926f3178679c02",
+              "effective_permissions": [
+                "menu.read"
+              ]
+            },
+            "permission_catalog_version": "permissions-v3"
+          },
+          "meta": {
+            "request_id": "bf3e67fb-966e-4ed9-bb51-02b2a0c5ee61"
+          },
+          "error": null
+        }
+      }
+    ]
+  }
+}

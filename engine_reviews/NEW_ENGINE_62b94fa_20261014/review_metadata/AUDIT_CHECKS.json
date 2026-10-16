@@ -1,0 +1,13 @@
+{
+  "source_python_ast_parse": "PASS",
+  "python_source_files": 192,
+  "selected_repo_payloads": 236,
+  "high_confidence_secret_marker_scan": "PASS",
+  "scanner_scope": "private key headers, OpenAI-shaped keys, GitHub-shaped tokens, AWS access keys; allowlist excludes env/raw/customer/runtime files; not a universal secret detector",
+  "runtime_suite": "NOT_RUN",
+  "provider": "NOT_CALLED",
+  "training": "NOT_RUN",
+  "benchmark": "NOT_RUN",
+  "git_mutations": "NONE",
+  "source_correspondence": "Checked by verifier after ZIP creation"
+}

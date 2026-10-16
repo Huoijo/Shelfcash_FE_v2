@@ -1,8 +1,8 @@
 # ShelfCash FE-BE integration audit workspace
 
-Prepared on 2026-10-16, Asia/Saigon. Current assignment mode: **PREPARATION_ONLY**.
+Current run: **20261016-windows-d5cfbfb-discovery**, 2026-10-16 Asia/Saigon. Current assignment mode: **DISCOVERY_EXECUTION**. Outcome: **DISCOVERY_ENVIRONMENT_LIMITED**; see [REPORT](REPORT.md).
 
-This workspace prepares a discovery audit for a compatible target machine. No application, API, browser, worker, database, build, test, or static-contract audit was executed as part of this preparation. No execution results, defect counts, baseline hashes, or target-host compatibility are claimed.
+This workspace owns the current bounded discovery report, environment/source baseline, case ledger and defects. The user explicitly authorized execution on Windows; HANDOFF/PROMPT/playbook retain the earlier preparation context. Current results come only from this run, separated by evidence mode. Assigned Store credentials and browser TLS trust blocked live business flows; controlled/static/API diagnostics proceeded. No product fixes were made.
 
 The user reports that macOS PID tracking prevents E2E execution on the current environment. This is a reported handoff blocker, not an independently established root cause. Earlier smoke evidence remains historical and does not prove that diagnosis.
 
@@ -38,8 +38,8 @@ docs/integration-audit/
 
 Read HANDOFF, the original prompt, the agent rule/skill, ENVIRONMENT, SYSTEM_MAP, STATE_MATRIX, CONTRACT_AUDIT, and EXECUTION_PLAYBOOK. Then establish the new run baseline before executing any case. Populate INPUT_DATA from actual workbook inspection and accepted semantics before mutations that depend on those files.
 
-COVERAGE_MATRIX, BUGS, and REPORT are the active documents for one explicitly identified run, not an all-time tracker. Archive a previous completed run before replacing its active documents. Preserve all existing historical receipts and frozen artifacts.
+COVERAGE_MATRIX, BUGS, and REPORT are the active documents for the identified run, not an all-time tracker. Archive a previous completed run before replacing its active documents. Preserve all existing historical receipts and frozen artifacts.
 
 ## Preparation boundary
 
-All new instructions and templates in this package are in English. Existing documents, source workbooks, credentials files, application code, and historical evidence retain their original content/language. No credentials are copied into this package. No runner scripts, tests, execution evidence, or synthetic PASS rows are created here.
+All new instructions and templates in this package are in English. Existing documents, source workbooks, credentials files, application code, and historical evidence retain their original content/language. No credentials are copied into this package. The preparation created no runner scripts, tests or execution evidence. Current ignored discovery harnesses and sanitized evidence are referenced by REPORT; controlled results are never labeled live UI acceptance.

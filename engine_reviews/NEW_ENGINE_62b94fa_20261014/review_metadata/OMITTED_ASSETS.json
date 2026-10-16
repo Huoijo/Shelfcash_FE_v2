@@ -1,0 +1,118 @@
+{
+  "schema_context": [
+    "canonical table requirements: shelfcash_preprocess/schema.py and models.py",
+    "model input features: demo/artifacts/feature_schema.json",
+    "residual schema: shelfcash_forecast/scenario/residuals.py REQUIRED_COLUMNS and validators"
+  ],
+  "supply": "Request authorized original assets from owner; compare actual byte digests; no upload/customer contents bundled",
+  "files": [
+    {
+      "path": "demo/input/01_POS_Export_DEMO_to_2026-08-12.xlsx",
+      "bytes": 42759,
+      "sha256": "1f9da7242a748f30b7068e0558cc6466286cbc7546fa8355ead9f0efba8e9712",
+      "reason": "raw workbook/data omitted; no customer rows bundled"
+    },
+    {
+      "path": "demo/input/02_TieuThu_NguyenLieu_DEMO_to_2026-08-12.xlsx",
+      "bytes": 23699,
+      "sha256": "7d5cb77e0157b1b2b68e818bda9c49f2899744702015e6a6c48b3877b2f5f2d7",
+      "reason": "raw workbook/data omitted; no customer rows bundled"
+    },
+    {
+      "path": "demo/input/03_Kho_NhapHang_NCC_DEMO_snapshot_2026-08-12_WITH_RECEIVED_DATE_SHELF_LIFE.xlsx",
+      "bytes": 15283,
+      "sha256": "16646f2a1adbb1617c0c993416cf8b58d15cf117b600dfb196862fbc120e0d4e",
+      "reason": "raw workbook/data omitted; no customer rows bundled"
+    },
+    {
+      "path": "demo/input/04_Recipes_BusinessRules_DEMO_2026-08-19_OPERATING_RULES.xlsx",
+      "bytes": 14104,
+      "sha256": "a4370e477ffc4cfe843cdf7d46c2bf53a1a86ad84f4f1695496a2f8e2332023e",
+      "reason": "raw workbook/data omitted; no customer rows bundled"
+    },
+    {
+      "path": "demo/input/05_Context_Calendar_DEMO_2026-01-01_to_2026-08-26.xlsx",
+      "bytes": 14276,
+      "sha256": "474909150a0c656f3b24c8b2f40f185b21d04891695cc1c792ea25e03b069b7a",
+      "reason": "raw workbook/data omitted; no customer rows bundled"
+    },
+    {
+      "path": "demo/input/06_Menu_DEMO.xlsx",
+      "bytes": 14885,
+      "sha256": "6864dc86b9cbcca1b89ba875648be3bd31a86a9497c79620b2adc3cff872ba98",
+      "reason": "raw workbook/data omitted; no customer rows bundled"
+    },
+    {
+      "path": "demo/artifacts/calibration_predictions.parquet",
+      "bytes": 128722,
+      "sha256": "27f51bb0ebb389cfb53e8ebc469ab2b7bbb8dbd021bb0aa95ebeba45ee6814d5",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    },
+    {
+      "path": "demo/artifacts/calibrator.json",
+      "bytes": 1641,
+      "sha256": "8c7e10e03d3f4c8e964b001c9150055a9bcafd8b254533ef22be434743c03958",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    },
+    {
+      "path": "demo/artifacts/category_mappings.json",
+      "bytes": 140,
+      "sha256": "c7987481abec8f51818156a047a706a0a83e267fd350029deb62c2a4a7842571",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    },
+    {
+      "path": "demo/artifacts/model_q25.txt",
+      "bytes": 193059,
+      "sha256": "45867558571f92d0cc13e17c33ea84bfeb14193ee7776e7b5d3379441928dc20",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    },
+    {
+      "path": "demo/artifacts/model_q50.txt",
+      "bytes": 128331,
+      "sha256": "1552b2b02bf1455d0937b81f217eb4d3e0d262006f9a19eb2608dd5037149402",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    },
+    {
+      "path": "demo/artifacts/model_q75.txt",
+      "bytes": 114512,
+      "sha256": "73add9795e37b47d5890dcd314bbcbb5614c8fd7c6903c7b2f0760d631d88588",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    },
+    {
+      "path": "demo/artifacts/point_corrector.json",
+      "bytes": 2130,
+      "sha256": "75bf5d03eac703755083a1b812b5c9886fce60bf019b6cbf62a30c022f7ce35e",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    },
+    {
+      "path": "demo/artifacts/point_fit_predictions.parquet",
+      "bytes": 90055,
+      "sha256": "74972aa7081b0f6c66d4d752846945a90403b18c34dd6efe5416cacfd8b7ecb2",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    },
+    {
+      "path": "demo/artifacts/preprocessing_config.json",
+      "bytes": 1337,
+      "sha256": "2da8d42f7bbb2cf4ac575ed257d533e5bd56b17abd26d5e0bed7540ed07ddaa5",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    },
+    {
+      "path": "demo/artifacts/test_predictions.parquet",
+      "bytes": 288149,
+      "sha256": "b92ce5830aafec96349eeb1f4aac5bcb44701dbcb6d748206b4fcb20af2efc0a",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    },
+    {
+      "path": "demo/artifacts/walk_forward_predictions.parquet",
+      "bytes": 205959,
+      "sha256": "e96a1369800312f2b68527275403b8a699bd9a8adba037a7b59a1f135a41b10b",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    },
+    {
+      "path": "demo/artifacts/walk_forward_residuals.parquet",
+      "bytes": 48200,
+      "sha256": "c9b6445aa7324375aaf896adaec892c51d4b36fb6fe83036a65f67ddff2eeb6d",
+      "reason": "model/residual/other runtime artifact omitted; supply separately with authorization"
+    }
+  ]
+}

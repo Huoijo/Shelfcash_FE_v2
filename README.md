@@ -21,6 +21,9 @@ npm install
 # Start local development server
 npm run dev
 
+# HTTPS local development matching the backend's allowed browser origin
+npm run dev:https
+
 # Typecheck and build for production
 VITE_DATA_SOURCE=api npm run build
 
@@ -41,6 +44,8 @@ npm run check:planning-wire
 ```
 
 UI transitions use Motion with `reducedMotion="user"`. Shared timing, active-tab indicators, content reveals and panel transitions live in `src/shared/motion`. Explicit panel Close/Escape animates for 160ms before restoring focus; route/Store/read invalidation still unmounts immediately and cancels pending close callbacks. Import progress uses authoritative counters, and the completion icon appears only with the retained completion receipt. The same UI motion is available in local mock mode.
+
+Open `https://localhost:5173` when using `dev:https`; `http` and `127.0.0.1` are different browser origins. The dev-only SSL plugin caches a self-signed certificate under `node_modules/.vite`; the browser may require accepting its local certificate warning. Stop any existing server on port 5173 first. API login also requires `VITE_DATA_SOURCE=api` in `.env` and a reachable `VITE_API_BASE_URL`. This command does not change backend CORS or cookie settings.
 
 ## Milestone 10: Cửa hàng
 
