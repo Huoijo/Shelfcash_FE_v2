@@ -1,0 +1,159 @@
+{
+  "date": "2026-10-17",
+  "projectId": "458079658328604672",
+  "scope": "Canonical MagicPath visual language + latest OWNER/STAFF full-arrow stepper",
+  "palette": {
+    "brand": "#1F6B4A",
+    "hover": "#18563C",
+    "soft": "#EEF6F1",
+    "border": "#B8D1C3",
+    "success": "#2E7D5A"
+  },
+  "components": [
+    {
+      "surface": "home",
+      "componentId": "458083907045322752",
+      "revisionId": "461893687010529280",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Marketing Homepage · Grayscale",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "auth",
+      "componentId": "458185906336202752",
+      "revisionId": "461891988820754432",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Đăng nhập / Đăng ký",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "today",
+      "componentId": "458632053018234880",
+      "revisionId": "461892308242173952",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Hôm nay · Trung tâm chú ý",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "history",
+      "componentId": "458255053002780672",
+      "revisionId": "461892415150780416",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Lịch sử nhập",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "CAPTURE_UNAVAILABLE_SOURCE_CHECKED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "setup",
+      "componentId": "458414835571515392",
+      "revisionId": "461892440547299328",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Kế hoạch nhập · Thiết lập",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "results",
+      "componentId": "458423352311304192",
+      "revisionId": "461892460948385792",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Kế hoạch nhập · Kết quả",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "inventory",
+      "componentId": "458590758262427648",
+      "revisionId": "461892685356224512",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Kho · Tồn kho hiện tại",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "menu",
+      "componentId": "458614109248847872",
+      "revisionId": "461892711532871680",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Menu · Món và công thức",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "store",
+      "componentId": "459953227023159296",
+      "revisionId": "461892732009484288",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Cửa hàng workspace",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "staff",
+      "componentId": "460747115572916224",
+      "revisionId": "461895532667871232",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Input flow · STAFF",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "owner",
+      "componentId": "460747146686242816",
+      "revisionId": "461895559079428096",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Input flow · OWNER",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "notifications",
+      "componentId": "461565920406556672",
+      "revisionId": "461893380679548928",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Thông báo",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    },
+    {
+      "surface": "invitation",
+      "componentId": "460368412145782784",
+      "revisionId": "461893402536087552",
+      "projectId": "458079658328604672",
+      "canonicalName": "ShelfCash · Employee Invitation Acceptance",
+      "sourceInspected": true,
+      "workerReportedBuild": "COMPLETED",
+      "workerReportedPreview": "RENDER_VERIFIED",
+      "feBrowserVerification": "NOT_RUN"
+    }
+  ],
+  "legacyInputFlow": "458395069779681280 excluded; not canonical",
+  "verificationBoundary": "Exact final revision source inspected via MagicPath. Worker build/render claims are user-supplied; this pass does not claim FE browser/render/live acceptance."
+}

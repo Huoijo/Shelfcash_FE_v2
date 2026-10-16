@@ -11,6 +11,7 @@ The [English integration audit workspace](../integration-audit/README.md) contai
 
 ## Inventory và verification receipts
 
+- [Visual green design audit](VISUAL_GREEN_20261017_DESIGN_AUDIT.json) và [verification](PASS_020_VISUAL_GREEN_VERIFICATION.json): exact 13 canonical revisions, restrained palette, visual-only source checks and controlled regressions; FE browser/live acceptance NOT_RUN.
 - [PASS_020_CLASSIFICATION_DRAFT_VERIFICATION.json](PASS_020_CLASSIFICATION_DRAFT_VERIFICATION.json): immediate classification-dependent mapping choices; 143 controlled Import tests, browser/live NOT_RUN.
 - [LIVE_E2E_DESIGN_INVENTORY.json](LIVE_E2E_DESIGN_INVENTORY.json): baseline danh mục thiết kế/điều kiện; không phải chứng nhận live coverage.
 - [BACKEND_CAPABILITY_COVERAGE.json](BACKEND_CAPABILITY_COVERAGE.json): inventory service/state được generator pin với contract; `npm run check:capabilities-wire` kiểm tra artifact này.

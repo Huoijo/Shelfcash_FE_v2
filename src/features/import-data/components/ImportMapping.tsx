@@ -137,7 +137,7 @@ function MappingCard({ issue, options, busy, readBusy, onLoadOptions, onConfirm,
     <p className="import-flow__muted">{issueLabels[issue.issue_type]}</p>
     <div className="import-flow__issue-heading">
       <h3 id={`${id}-title`}>{issue.source_header ?? issueLabels[issue.issue_type]}</h3>
-      <span className="import-flow__badge">{statusLabels[issue.status]}{issue.ignored ? ' · Bỏ qua' : ''}</span>
+      <span className="import-flow__badge" data-brand-success={!issue.ignored && ['resolved', 'auto_mapped'].includes(issue.status)}>{statusLabels[issue.status]}{issue.ignored ? ' · Bỏ qua' : ''}</span>
     </div>
     <p className="import-flow__samples">Mẫu dữ liệu: {issue.samples.length ? issue.samples.map((sample) => sample === '' ? '"" (chuỗi rỗng)' : sample).join(' · ') : 'Không có mẫu'}</p>
     {issue.suggested_target_field && <p className="import-flow__muted">{issue.suggestion_origin === 'QWEN' ? 'AI đề xuất' : 'Gợi ý ghép cột'}{typeof issue.confidence === 'number' ? ` · ${Math.round(issue.confidence * 100)}%` : ''}</p>}

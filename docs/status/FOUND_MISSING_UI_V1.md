@@ -1,9 +1,11 @@
 # ShelfCash — Current Missing UI & Runtime Register v1
 
-Last reconciled: **16/10/2026**. General context: current engineering backlog sau implementation020. API-01–06 dùng canonical designs mới; trạng thái runtime chỉ theo code và controlled verification.
+Last reconciled: **17/10/2026**. General context: current engineering backlog sau implementation020. API-01–06 dùng canonical designs mới; trạng thái runtime chỉ theo code và controlled verification.
 Earlier 020 checkout: dirty HEAD `2d43d9d0fbf02b06b73a04d37e231c93ba1e7b1b`; 019 baseline fingerprint `b8275c7a64712d504533f9426270e90139b23f812f65449c0ac05c70b1acf05a`; current020 evidence trong [020 receipt](../sprints/020/020_Closed_Design_Gap_Implementation.md).
 Backend contract: capabilities now pins [main020](../../contracts/020/openapi.main.json), SHA256 `18fb4eabe469c69c817fcf5f0c5b4764c3feb1a886adb71b382c19b347147f7a`, supplied BE `d5cfbfb59de7c45bc08eb47129b5ba3919e05473`, **76 operations / 69 paths**. The 73 existing operations/schemas are unchanged; older feature pins remain main011/main016. The package itself says runtime_deployed=false; the later [Windows run](../integration-audit/REPORT.md) independently reports deployed d5cfbfb on that host. This does not attest deployment on the current macOS host. [Afternoon integration receipt](../sprints/020/020_Backend_Handoff_Integration.md) supplements the earlier 020 evidence; neither proves deployment.
-MagicPath current020: project `458079658328604672`; Owner `461726308171411456`, Staff `461725038614315008`, Store `461722261150400512`, Invitations `461725062467305472`, Planning Setup `461721652229738496`, Results `461720833971347456`. Source và rendered previews của sáu revisions đã audit; hashes trong [020 verification](../testing/PASS_020_VERIFICATION.json). Notifications/Auth và các phần ngoài sáu gap giữ019 evidence, không claim audit mới cho mọi family.
+Earlier020 behavioral design evidence: project `458079658328604672`; Owner `461726308171411456`, Staff `461725038614315008`, Store `461722261150400512`, Invitations `461725062467305472`, Planning Setup `461721652229738496`, Results `461720833971347456`. Source và rendered previews của sáu revisions đã audit; hashes trong [020 verification](../testing/PASS_020_VERIFICATION.json). Notifications/Auth và các phần ngoài sáu gap giữ019 evidence, không claim audit mới cho mọi family.
+
+Current visual authority (17/10/2026): [13 canonical final revisions](../testing/VISUAL_GREEN_20261017_DESIGN_AUDIT.json), including OWNER `461895559079428096` and STAFF `461895532667871232`. [Visual refinement receipt](../sprints/020/020_Visual_Language_Refinement.md) records the CSS/presentation-only green pass. Behavioral authority and prior evidence above remain historical; no workflow/routing/IA/state changes or FE browser acceptance are claimed.
 
 ## How to read this file
 
@@ -316,7 +318,7 @@ Cover signup/email/Store/invitation continuation; partial and lost-ACK uploads; 
 **Design:** READY · **Frontend:** PARTIAL · **Backend:** NOT_REQUIRED · **Live verification:** CONTROLLED_ONLY
 **Owner:** FE · **Blocker category:** VISUAL_POLISH, FE_IMPLEMENTATION
 
-- **Current state:** Bounded screenshots có; array diff positional; bundle/lint debt còn.
+- **Current state:** Bounded earlier screenshots có; array diff positional; bundle/lint debt còn. The 17/10 canonical green visual refinement is implemented across existing surfaces, with current/completed full-arrow stepper shared by Owner/Staff and explicit neutral negative/uncertain actions. All 13 final design sources were inspected; AST/CSS checks and 479 controlled tests pass. New FE browser/render/a11y acceptance remains NOT_RUN; see [visual receipt](../sprints/020/020_Visual_Language_Refinement.md).
 - **Remaining gap:** Thiếu full visual/a11y, reorder-friendly diff và bundle isolation.
 - **Next action:** FE audit frozen states/focus; stable-identity diff; đo/split generated registry.
 - **Safe current behavior:** Full spec vẫn authority; không redesign hoặc merge theo tên.

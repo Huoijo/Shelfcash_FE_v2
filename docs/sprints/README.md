@@ -96,6 +96,7 @@ Quy trình017 nằm tại [testing](../testing/017_Live_BE_FE_E2E_Protocol.md); 
 
 ### 020
 
+- [020_Visual_Language_Refinement.md](020/020_Visual_Language_Refinement.md).
 - [020_Classification_Draft_Options.md](020/020_Classification_Draft_Options.md).
 - [020_Backend_Handoff_Integration.md](020/020_Backend_Handoff_Integration.md).
 - [020_Closed_Design_Gap_Implementation.md](020/020_Closed_Design_Gap_Implementation.md).

@@ -185,6 +185,6 @@ export function InvitationActionDrawer({ invitation, catalog, catalogVersion, ca
         <label className="sc-store-field" htmlFor={`${id}-reason`}>Lý do<textarea className="sc-store-input" id={`${id}-reason`} value={reason} disabled={!editable} maxLength={2000} onChange={(event) => setReason(event.target.value)} /></label>
       </>}
       <DrawerFeedback busy={busy} error={error} notice={notice} locked={locked} onRetry={onRetry} />
-    </section>{invitation.status !== 'accepted' && <footer className="sc-store-actions"><button type="submit" className="sc-store-primary" disabled={!validStoreReason(reason) || (action === 'reissue' ? !canReissue : !canRevoke)}>{action === 'revoke' ? 'Thu hồi lời mời' : 'Phát hành lại lời mời'}</button></footer>}</form>
+    </section>{invitation.status !== 'accepted' && <footer className="sc-store-actions"><button type="submit" className="sc-store-primary" data-brand-accent={action === 'revoke' ? false : undefined} disabled={!validStoreReason(reason) || (action === 'reissue' ? !canReissue : !canRevoke)}>{action === 'revoke' ? 'Thu hồi lời mời' : 'Phát hành lại lời mời'}</button></footer>}</form>
   </StoreDrawer>
 }

@@ -1,0 +1,202 @@
+/* MagicPath canonical visual refinement, 2026-10-17.
+   Colour only. Shared primary classes deliberately remain neutral unless scoped
+   below or explicitly marked with a presentation-only data-brand-accent hook. */
+:root {
+  --sc-brand-green: #1F6B4A;
+  --sc-brand-green-hover: #18563C;
+  --sc-brand-green-soft: #EEF6F1;
+  --sc-brand-green-border: #B8D1C3;
+  --sc-success-green: #2E7D5A;
+}
+
+/* Brand memory cue; wordmarks themselves retain their neutral typography. */
+:is(.sc-wordmark, .login-page__brand, .app-shell__wordmark, .sc-invite-wordmark)::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 5px;
+  border-radius: 999px;
+  background: var(--sc-brand-green);
+  vertical-align: super;
+}
+.app-sidebar__item[aria-current] .app-sidebar__icon {
+  background: var(--sc-brand-green) !important;
+  border-color: var(--sc-brand-green) !important;
+}
+.sc-page .sc-navigation-item:hover { color: var(--sc-brand-green) !important; }
+
+/* Positive CTA allowlist, never a global .primary override. */
+:is(
+  .sc-page .sc-button.sc-primary,
+  .auth-form__primary-button,
+  .sc-today-primary-action,
+  .menu-primary,
+  .sc-planning-content:not(.sc-planning-lifecycle) .sc-planning-primary-cta,
+  .import-page .input-primary:not([data-brand-accent='false']),
+  .import-flow .import-flow__primary:not([data-brand-accent='false']),
+  .sc-store-members-heading > .sc-store-primary,
+  .sc-store-tabpanel form.sc-store-stack > .sc-store-actions > .sc-store-primary,
+  .store-bootstrap__card .sc-store-primary,
+  .sc-invite-form .sc-invite-primary,
+  .notification-dialog a.sc-flow-primary,
+  [data-brand-accent='true']
+):not(:disabled):not([aria-disabled='true']):not([data-brand-accent='false']) {
+  background: var(--sc-brand-green) !important;
+  border-color: var(--sc-brand-green) !important;
+  color: #fff !important;
+}
+:is(
+  .sc-page .sc-button.sc-primary,
+  .auth-form__primary-button,
+  .sc-today-primary-action,
+  .menu-primary,
+  .sc-planning-content:not(.sc-planning-lifecycle) .sc-planning-primary-cta,
+  .import-page .input-primary:not([data-brand-accent='false']),
+  .import-flow .import-flow__primary:not([data-brand-accent='false']),
+  .sc-store-members-heading > .sc-store-primary,
+  .sc-store-tabpanel form.sc-store-stack > .sc-store-actions > .sc-store-primary,
+  .store-bootstrap__card .sc-store-primary,
+  .sc-invite-form .sc-invite-primary,
+  .notification-dialog a.sc-flow-primary,
+  [data-brand-accent='true']
+):not(:disabled):not([aria-disabled='true']):not([data-brand-accent='false']):hover {
+  background: var(--sc-brand-green-hover) !important;
+  border-color: var(--sc-brand-green-hover) !important;
+}
+
+/* Focus and selected controls; no blanket green body links or icons. */
+:is(.sc-page, .login-page, .app-shell, .sc-invite-page, .sc-flow-dialog, .sc-store-drawer) :focus-visible {
+  outline-color: var(--sc-brand-green) !important;
+}
+:is(.auth-form__input-shell, .sc-invite-input-shell, .menu-search, .inventory-search,
+  .history-search-control, .sc-planning-date-control, .sc-planning-currency-control,
+  .sc-proc-input-with-unit):focus-within {
+  outline-color: var(--sc-brand-green) !important;
+  border-color: var(--sc-brand-green-border) !important;
+}
+.sc-store-input:focus:not([aria-invalid='true']),
+.sc-invite-field input:focus:not([aria-invalid='true']) {
+  outline-color: var(--sc-brand-green) !important;
+  border-color: var(--sc-brand-green-border) !important;
+}
+input[type='checkbox'], input[type='radio'] {
+  accent-color: var(--sc-brand-green);
+}
+.auth-form__tabs button[aria-selected='true'],
+.sc-store-tabs button[aria-selected='true'],
+.sc-proc-tabs > button.sc-proc-tab-active,
+.inventory-detail-tabs button[aria-selected='true'] {
+  color: var(--sc-brand-green) !important;
+  border-color: var(--sc-brand-green) !important;
+}
+:is(
+  .input-view-tabs [aria-current],
+  .input-resolver-scope-tools button[aria-pressed='true'],
+  .sc-flow-tabs button[aria-selected='true'],
+  .menu-filters button[aria-pressed='true'],
+  .inventory-filters button[aria-pressed='true'],
+  .notification-page__filters button[aria-pressed='true'],
+  .sc-proc-ingredient-filters button.sc-proc-filter-active,
+  .sc-planning-priority-selected,
+  .history-calendar__day--active,
+  .history-calendar__day[aria-current],
+  .sc-today-day.sc-today-day-selected
+) {
+  color: var(--sc-brand-green) !important;
+  background: var(--sc-brand-green-soft) !important;
+  border-color: var(--sc-brand-green-border) !important;
+}
+.history-calendar__day[aria-current] .history-calendar__number,
+.sc-today-day-selected .sc-today-day-date,
+.sc-step-number {
+  color: var(--sc-brand-green) !important;
+}
+.sc-ingredient-popover [role='option'][aria-selected='true'] {
+  color: var(--sc-brand-green) !important;
+  background: var(--sc-brand-green-soft) !important;
+  border-color: var(--sc-brand-green-border) !important;
+}
+.sc-proc-strategy-card.sc-proc-strategy-selected {
+  border-color: var(--sc-brand-green-border) !important;
+}
+.import-mapping-progress__bar > span { background: var(--sc-success-green) !important; }
+
+/* OWNER/STAFF share these arrows. Preserve clip-path, size and spacing. */
+.input-steps li.current {
+  background: var(--sc-brand-green) !important;
+  color: #fff !important;
+}
+.input-steps li.current small { color: #D8EBE2 !important; }
+.input-steps li.complete {
+  background: var(--sc-brand-green-soft) !important;
+  color: #315C48 !important;
+}
+.input-steps li.complete small { color: #6F8F80 !important; }
+.input-steps li:is(.current, .complete) > span {
+  background: var(--sc-brand-green) !important;
+  border-color: var(--sc-brand-green) !important;
+  color: #fff !important;
+}
+
+/* Positive status accents stay on badges/icons, never their enclosing cards. */
+:is(
+  span[data-brand-success='true'],
+  .menu-status--active,
+  .history-batch__status--completed,
+  .input-status-card.success > span,
+  .import-result__check,
+  .sc-invite-status-icon--success,
+  .sc-today-stage-ready .sc-today-stage-icon,
+  .sc-today-calm-check
+) {
+  color: var(--sc-success-green) !important;
+  background: var(--sc-brand-green-soft) !important;
+  border-color: var(--sc-brand-green-border) !important;
+}
+.sc-invite-status-icon--success {
+  background: var(--sc-success-green) !important;
+  color: #fff !important;
+}
+.sc-invite-stages .done span {
+  color: var(--sc-success-green) !important;
+  background: var(--sc-brand-green-soft) !important;
+  border-color: var(--sc-brand-green-border) !important;
+}
+.sc-planning-ready-status[data-brand-success='true'],
+.sc-today-readiness li[data-brand-success='true'] {
+  color: var(--sc-success-green) !important;
+}
+.notification-bell__count {
+  background: var(--sc-brand-green) !important;
+}
+.notification-row--unread .notification-row__content strong > span,
+.history-calendar__count > span[aria-hidden='true'] {
+  color: var(--sc-brand-green) !important;
+}
+.notification-page__heading h1 small {
+  color: var(--sc-brand-green) !important;
+  border-color: var(--sc-brand-green-border) !important;
+  background: var(--sc-brand-green-soft) !important;
+}
+
+/* Negative/uncertain confirmations remain neutral, including their controls. */
+.sc-flow-dialog:has(.sc-flow-primary:not([data-brand-accent='true'])) input[type='checkbox'],
+.sc-flow-dialog:has(.sc-flow-primary:not([data-brand-accent='true'])) input[type='radio'],
+.sc-store-drawer:has([data-brand-accent='false']) input[type='checkbox'],
+.sc-store-drawer:has([data-brand-accent='false']) input[type='radio'] {
+  accent-color: #555;
+}
+.sc-flow-dialog:has(.sc-flow-primary:not([data-brand-accent='true'])) :focus-visible,
+.sc-store-drawer:has([data-brand-accent='false']) :focus-visible,
+.import-resolver:has(option[value='IGNORE']:checked) :focus-visible {
+  outline-color: #616161 !important;
+}
+.import-resolver:has(option[value='IGNORE']:checked) input[type='checkbox'] {
+  accent-color: #555;
+}
+.import-resolver:has(option[value='IGNORE']:checked) [data-brand-accent='true']:not(:disabled) {
+  background: #2C2C2C !important;
+  border-color: #2C2C2C !important;
+  color: #fff !important;
+}

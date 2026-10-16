@@ -45,7 +45,7 @@ export function ImportReadiness({preview}:{preview?:PlanningReadiness} = {}) {
   const unavailable=assessment.status==='error'&&!assessment.permission
   const denied=!canRead||assessment.status==='error'&&assessment.permission
   return <section className="input-readiness" aria-labelledby="import-planning-readiness">
-    <header><div><small>Readiness</small><h2 id="import-planning-readiness">Khả năng lập kế hoạch</h2></div><span className="import-page__step">{denied?'Không có quyền':unavailable?'Tạm thời không khả dụng':assessment.status === 'loading' ? 'Đang kiểm tra' : action ? ready ? 'Đủ dữ liệu' : action.availability === 'blocked' ? 'Cần bổ sung' : 'Chưa xác định' : 'Chưa đánh giá'}</span></header>
+    <header><div><small>Readiness</small><h2 id="import-planning-readiness">Khả năng lập kế hoạch</h2></div><span className="import-page__step" data-brand-success={ready && !denied && !unavailable}>{denied?'Không có quyền':unavailable?'Tạm thời không khả dụng':assessment.status === 'loading' ? 'Đang kiểm tra' : action ? ready ? 'Đủ dữ liệu' : action.availability === 'blocked' ? 'Cần bổ sung' : 'Chưa xác định' : 'Chưa đánh giá'}</span></header>
     {(selecting||assessment.status!=='idle')&&<label>Ngày bắt đầu kế hoạch<input type="date" value={date} disabled={assessment.status === 'loading'} onChange={event => setDate(event.target.value)} /></label>}
     {!canRead && <p className="input-status">Bạn chưa có quyền xem đánh giá lập kế hoạch.</p>}
     <button className="input-primary" disabled={!canRead || !date || assessment.status === 'loading'} onClick={() => { if(!selecting&&assessment.status==='idle')setSelecting(true);else void assess() }}>{assessment.status === 'loading' ? 'Đang kiểm tra…' : 'Kiểm tra Readiness'}</button>

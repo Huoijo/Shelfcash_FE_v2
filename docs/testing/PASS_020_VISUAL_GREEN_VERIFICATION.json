@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-17",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "frontend_head": "88893fb500a93a0d4694d966b173e9cfea17d6eb",
+  "scope": "Canonical visual language colour refinement only",
+  "design_audit": "docs/testing/VISUAL_GREEN_20261017_DESIGN_AUDIT.json",
+  "checks": [
+    {
+      "command": "npm run test:auth",
+      "exit_code": 0,
+      "passed": 26,
+      "log_sha256": "a5041175c52464724d3faff2e5173e4aa28a9b7584d1855c7a1036471d0002fd"
+    },
+    {
+      "command": "npm run test:import",
+      "exit_code": 0,
+      "passed": 143,
+      "log_sha256": "d257b06944c9215ad43d752aad4f149b0182e65ff01c8328df7c072f80ed4c2a"
+    },
+    {
+      "command": "npm run test:planning",
+      "exit_code": 0,
+      "passed": 79,
+      "log_sha256": "51bd4766dbeaf2e7fd0534053a9e14dc8d2cfe59a914bfaa14c3c88965dbaaf8"
+    },
+    {
+      "command": "npm run test:store",
+      "exit_code": 0,
+      "passed": 118,
+      "log_sha256": "b880c8310608852a2fa906e3b98335aec7f2e6625ff189836ef144dfa8bd5525"
+    },
+    {
+      "command": "npm run test:operations",
+      "exit_code": 0,
+      "passed": 30,
+      "log_sha256": "90d4ca87e281c1835bbd36ece40e374c20993511c0c1cb2ebe7c9ac951c8688d"
+    },
+    {
+      "command": "npm run test:capabilities",
+      "exit_code": 0,
+      "passed": 83,
+      "log_sha256": "088132fd50644a4c190066b84ae33b6d61afb3947aff4eacdf31aa39459bfe3b"
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "log_sha256": "02cad2197c396f4d7b7241e41dc4c63b147b0f534a6f7021f258c06460228f83"
+    },
+    {
+      "command": "npm run lint",
+      "exit_code": 0,
+      "log_sha256": "e4460453bd9d34f36b4e88f9ae98c0568ede84a3e21814d09abb89a6883c0028"
+    }
+  ],
+  "controlled_tests_passed": 479,
+  "visual_ast_check": {
+    "status": "PASS",
+    "files": [
+      "src/features/auth/OnboardingPages.tsx",
+      "src/features/decision-planning/components/PlanningSetup.tsx",
+      "src/features/import-data/components/ImportDomainReview.tsx",
+      "src/features/import-data/components/ImportFlow.tsx",
+      "src/features/import-data/components/ImportHistoryCorrections.tsx",
+      "src/features/import-data/components/ImportMapping.tsx",
+      "src/features/import-data/components/ImportReadiness.tsx",
+      "src/features/import-data/components/ImportResolveDrawers.tsx",
+      "src/features/import-data/components/ImportSubmissionLifecycle.tsx",
+      "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "src/features/operations/InventoryActions.tsx",
+      "src/features/operations/PlanExport.tsx",
+      "src/features/operations/PlanningHistoryPage.tsx",
+      "src/features/operations/RecipeSchedulePage.tsx",
+      "src/features/store-workspace/components/PermissionRequests.tsx",
+      "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "src/pages/today/TodayPage.tsx"
+    ],
+    "ignoredAttributes": [
+      "data-brand-accent",
+      "data-brand-success"
+    ],
+    "handlersRoutingStateAndJsxStructure": "IDENTICAL_TO_HEAD"
+  },
+  "css_check": {
+    "status": "PASS",
+    "rules_inspected": 32,
+    "non_colour_changes": "Only the canonical 6px wordmark pseudo-element; no type/spacing/geometry/clip-path changes elsewhere"
+  },
+  "fe_browser_visual_acceptance": "NOT_RUN",
+  "live_backend": "NOT_RUN",
+  "e2e": "NOT_RUN",
+  "new_screenshots": [],
+  "warnings": [
+    "Two existing set-state-in-effect warnings in OnboardingPages and RecipeSchedulePage",
+    "Existing large-chunk build warning"
+  ],
+  "source_hashes": {
+    "src/features/auth/OnboardingPages.tsx": "f58f843d353292f27fd4bc33d0a0e75142fb69786ba33902ee8d656eb3290074",
+    "src/features/decision-planning/components/PlanningSetup.tsx": "c33d1e4ba5c0d4c208504ed5995736342097b31eed19be6db682d24cd7b32a59",
+    "src/features/import-data/components/ImportDomainReview.tsx": "ef95a9472431005f9f53df8055820e0ed1ed0dfeb49b8fdf0ae451bd25313e7e",
+    "src/features/import-data/components/ImportFlow.tsx": "e1c5a825e0782693f4623eadcceb8305dd6bb37498f240835b7a11faab638491",
+    "src/features/import-data/components/ImportHistoryCorrections.tsx": "2418907bfc53d29835c3c1ea4c4d58a7894f8934029f39d13afb3f6b28e1ae32",
+    "src/features/import-data/components/ImportMapping.tsx": "b2eb0896a3abb3736aedeec2609976c00c514e785af0fa1adffc8c167ef0daf2",
+    "src/features/import-data/components/ImportReadiness.tsx": "4877249bc586e2517564fab5852ab51d34e62b6873460344ea5bfeee63b09ec7",
+    "src/features/import-data/components/ImportResolveDrawers.tsx": "83d11ec05ae12f2540657f86e223da45f5a1735c6404fb6f7fbc325f2fb928b3",
+    "src/features/import-data/components/ImportSubmissionLifecycle.tsx": "2cd40ef500891feab38f276afd2030acc74b6a94fd77de10030c2abf8f13d994",
+    "src/features/import-data/components/MappingSubmissionsPage.tsx": "2a0f583948341c1a52ea1833df8a2d263adc50d3c938fda42448e35b16621c24",
+    "src/features/operations/InventoryActions.tsx": "2a1980f364d2486059db14239c9ba722650a33b611c73111d2a1c649c24b2b66",
+    "src/features/operations/PlanExport.tsx": "6161665576ffd0bc2e31ee9130428b805f84d95596946b345966052ecbe4c7a7",
+    "src/features/operations/PlanningHistoryPage.tsx": "e0a3ad20b20a1e38abb5227bdf941b500533de25935771f0d6a78aff7ce55ac8",
+    "src/features/operations/RecipeSchedulePage.tsx": "111c577c4e35728cbf57700b9dfaac6ac09452151cdd4377ab0598ba441d4578",
+    "src/features/store-workspace/components/PermissionRequests.tsx": "655ce2694360dc611562f2bc8026f75a452251575226b0a763e74dd3cf5f4e23",
+    "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx": "1414554404af163a9b0b0afa36a47b6958011d4ee988abb844823dbc68f8faf4",
+    "src/pages/today/TodayPage.tsx": "f30c8e5612a7f0c67a8032821b4088238f2892788f6ae98d044289dff2d85d6c",
+    "src/index.css": "2bc0da2614d356d31ef2a090b1bd1af13b62118293d5631c8b529add2e8c317f",
+    "src/shared/styles/BrandAccent.css": "defb07c15ab5b32900ab71d70d5f8be9f59bbcd02c5ca67d837202cc9bb1c612"
+  }
+}
