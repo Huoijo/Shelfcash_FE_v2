@@ -7,6 +7,8 @@ Earlier020 behavioral design evidence: project `458079658328604672`; Owner `4617
 
 Current visual authority (17/10/2026): [13 canonical final revisions](../testing/VISUAL_GREEN_20261017_DESIGN_AUDIT.json), including OWNER `461895559079428096` and STAFF `461895532667871232`. [Visual refinement receipt](../sprints/020/020_Visual_Language_Refinement.md) records the CSS/presentation-only green pass. Behavioral authority and prior evidence above remain historical; no workflow/routing/IA/state changes or FE browser acceptance are claimed.
 
+Later visual-convergence audit (17/10/2026): [current source inventory](../testing/visual-fidelity/CANONICAL_DESIGN_AUDIT.json) supersedes the green-pass pins for Planning Setup (`461898344663502848`) and Results (`461899945612550144`); other canonical pins are unchanged. [Convergence report](../testing/visual-fidelity/MAGICPATH_FE_CONVERGENCE.md) records bounded Planning CSS corrections, two provenance-classified copy removals and isolated controlled static component captures. Full-product visual convergence remains PARTIAL; no live BE/E2E acceptance or business-gap closure.
+
 ## How to read this file
 
 V1 là current planning source of truth. [FOUND_MISSING_UI.md](../FOUND_MISSING_UI.md) là **historical audit register**, giữ nguyên bytes. Chi tiết lịch sử nằm ở đó; 018 mô tả service-only tại thời điểm018, không phủ định UI callers019. Stale statements trong older receipts/workflow notes không override code/main016/019 khi có evidence cụ thể dưới đây.
@@ -319,7 +321,7 @@ Cover signup/email/Store/invitation continuation; partial and lost-ACK uploads; 
 **Owner:** FE · **Blocker category:** VISUAL_POLISH, FE_IMPLEMENTATION
 
 - **Current state:** Bounded earlier screenshots có; array diff positional; bundle/lint debt còn. The 17/10 canonical green visual refinement is implemented across existing surfaces, with current/completed full-arrow stepper shared by Owner/Staff and explicit neutral negative/uncertain actions. All 13 final design sources were inspected; AST/CSS checks and 479 controlled tests pass. New FE browser/render/a11y acceptance remains NOT_RUN; see [visual receipt](../sprints/020/020_Visual_Language_Refinement.md).
-- **Remaining gap:** Thiếu full visual/a11y, reorder-friendly diff và bundle isolation.
+- **Remaining gap:** Thiếu full visual/a11y, reorder-friendly diff và bundle isolation. The later [visual-convergence pass](../testing/visual-fidelity/MAGICPATH_FE_CONVERGENCE.md) adds controlled static Planning/default/blocked/busy/permission/Readiness/mobile and Import/History loading captures, plus 252 controlled regressions. Planning geometry/typography is closer to current canonical; full generic requirement-widget fidelity, complete copy provenance and hydrated all-family/state acceptance remain open. Earlier green-pass browser NOT_RUN is historical and is not changed into live acceptance.
 - **Next action:** FE audit frozen states/focus; stable-identity diff; đo/split generated registry.
 - **Safe current behavior:** Full spec vẫn authority; không redesign hoặc merge theo tên.
 - **Evidence:** [Profile diff](../../src/features/import-data/components/ImportProfileSpecification.tsx), [capabilities imports](../../src/features/backend-capabilities/capabilities.react.ts), [019 screenshots/checks](../sprints/019/019_Main_Frontend_Implementation.md#final-verification-receipt--16102026).

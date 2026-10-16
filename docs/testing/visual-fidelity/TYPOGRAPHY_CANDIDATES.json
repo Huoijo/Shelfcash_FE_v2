@@ -1,0 +1,489 @@
+{
+  "warning": "Source declarations, not confirmed computed styles or production reachability. Some selectors are DEV/prototype-only. No automatic normalization or copy deletion.",
+  "count": 69,
+  "candidates": [
+    {
+      "file": "src/features/auth/OnboardingPages.css",
+      "line": 1,
+      "selector": ".sc-invite-stages span",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/auth/OnboardingPages.css",
+      "line": 1,
+      "selector": ".sc-invite-prototype-toolbar span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/auth/OnboardingPages.css",
+      "line": 1,
+      "selector": ".sc-invite-prototype-toolbar select",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/decision-planning/components/Planning.css",
+      "line": 314,
+      "selector": ".sc-planning-content .sc-requirements .sc-flow-facts dt",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.css",
+      "line": 108,
+      "selector": ".import-flow__issue .import-flow__badge",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 4,
+      "selector": ".input-resolve-card > header > span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 6,
+      "selector": ".input-resolve-card header p",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 8,
+      "selector": ".input-card-result span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 11,
+      "selector": ".input-card-status > span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 14,
+      "selector": ".import-flow .input-card-status button",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 18,
+      "selector": ".input-summary-strip span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 22,
+      "selector": ".input-actionright > span",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 30,
+      "selector": ".import-resolver .sc-flow-dialog-header small",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 32,
+      "selector": ".import-resolver .sc-flow-dialog-header p",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 35,
+      "selector": ".input-resolver-meta span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 38,
+      "selector": ".import-resolver .sc-flow-dialog-footer > small",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 44,
+      "selector": ".input-resolver-section header > span,.input-resolver-muted",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 49,
+      "selector": ".input-resolver-row > span",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 52,
+      "selector": ".input-samples > span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 53,
+      "selector": ".import-resolver label",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 60,
+      "selector": ".input-resolver-help",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 65,
+      "selector": ".input-entity-results strong",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 66,
+      "selector": ".input-entity-results small",
+      "size": "8px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 69,
+      "selector": ".import-resolver .input-status",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 72,
+      "selector": ".input-summary-strip span",
+      "size": "8px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 76,
+      "selector": ".import-resolver .input-resolver-scope select",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 79,
+      "selector": ".input-resolver-scope-summary span",
+      "size": "8px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 81,
+      "selector": ".import-resolver .input-resolver-scope-tools button",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 83,
+      "selector": ".input-resolver-itemnav strong",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 88,
+      "selector": ".input-profile-change-summary article span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 89,
+      "selector": ".input-profile-toggle button",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 90,
+      "selector": ".input-profile-rule-group small,.input-domain-review small",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 90,
+      "selector": ".input-profile-rule-group article>header>button",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 90,
+      "selector": ".input-profile-rule-group .import-flow__spec",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 92,
+      "selector": ".input-domain-grid p,.input-domain-review>p",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 92,
+      "selector": ".input-domain-grid button",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 93,
+      "selector": ".input-context-evidence",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 93,
+      "selector": ".input-context-evidence p",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 94,
+      "selector": ".input-admission-files small",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 94,
+      "selector": ".input-admission-files button",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 95,
+      "selector": ".import-flow__card>header>span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 97,
+      "selector": ".input-review-receipt small",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 100,
+      "selector": ".input-source-context .import-flow__form label",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 100,
+      "selector": ".input-source-context .import-flow__form p,.input-source-context .import-flow__form small",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 100,
+      "selector": ".input-source-context .import-flow__form details",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 101,
+      "selector": ".input-profile-rule-group article>header>span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/features/notifications/NotificationsPage.css",
+      "line": 1,
+      "selector": ".notification-bell__count",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/home/HomePage.css",
+      "line": 106,
+      "selector": ".home-preview__eyebrow",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/import-history/ImportHistoryPage.css",
+      "line": 35,
+      "selector": ".history-calendar__count > span",
+      "size": "8px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 62,
+      "selector": ".input-steps li > span",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 63,
+      "selector": ".input-steps small",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 68,
+      "selector": ".input-source dt",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 71,
+      "selector": ".input-section-title small",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 84,
+      "selector": ".input-resolve-grid > section > span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 131,
+      "selector": ".input-stat",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 149,
+      "selector": ".input-source dt",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 156,
+      "selector": ".input-readout span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 164,
+      "selector": ".input-progress-list small",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 180,
+      "selector": ".import-page .import-upload__file-size",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 185,
+      "selector": ".import-page .sc-preview-explorer table",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 186,
+      "selector": ".import-page .sc-preview-explorer th,.import-page .sc-preview-explorer td",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 188,
+      "selector": ".import-page .sc-preview-explorer td:last-child button",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 193,
+      "selector": ".import-page .sc-preview-review-summary span",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 195,
+      "selector": ".import-page .sc-preview-review-summary small",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 203,
+      "selector": ".import-evidence .sc-flow-dialog-header small",
+      "size": "9px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/inventory/InventoryPage.css",
+      "line": 38,
+      "selector": ".inventory-row-note",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/menu/MenuPage.css",
+      "line": 40,
+      "selector": ".menu-row-note",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/today/TodayPage.css",
+      "line": 69,
+      "selector": ".sc-today-day-weekday",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    },
+    {
+      "file": "src/pages/today/TodayPage.css",
+      "line": 73,
+      "selector": ".sc-today-demand-label",
+      "size": "10px",
+      "status": "TYPOGRAPHY NORMALIZATION CANDIDATE — preserved pending canonical state and readability review"
+    }
+  ]
+}

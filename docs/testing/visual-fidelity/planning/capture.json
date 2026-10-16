@@ -1,0 +1,425 @@
+{
+  "kind": "CONTROLLED_STATIC_COMPONENT_RENDER",
+  "platform": "darwin",
+  "arch": "arm64",
+  "browser": "156.0.8078.4",
+  "viewport": {
+    "width": 1440,
+    "height": 1000,
+    "deviceScaleFactor": 1
+  },
+  "zoom": 1,
+  "font": "Inter if locally installed; system fallback otherwise; no remote font fetch",
+  "notLive": true,
+  "hydrated": false,
+  "shell": "240px blank inset; component capture only",
+  "states": [
+    {
+      "state": "default",
+      "stage": "before",
+      "file": "docs/testing/visual-fidelity/planning/default-before.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [
+          {
+            "x": 317,
+            "width": 1046,
+            "padding": "0px 0px 28px",
+            "headingSize": "18px"
+          },
+          {
+            "x": 317,
+            "width": 1046,
+            "padding": "0px 0px 28px",
+            "headingSize": "18px"
+          },
+          {
+            "x": 317,
+            "width": 1046,
+            "padding": "0px 0px 28px",
+            "headingSize": "18px"
+          },
+          {
+            "x": 317,
+            "width": 1046,
+            "padding": "0px 0px 28px",
+            "headingSize": "18px"
+          }
+        ],
+        "ctaDisabled": false,
+        "ctaBackground": "rgb(31, 107, 74)"
+      }
+    },
+    {
+      "state": "default",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/planning/default-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          }
+        ],
+        "ctaDisabled": false,
+        "ctaBackground": "rgb(31, 107, 74)"
+      }
+    },
+    {
+      "state": "blocked",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/planning/blocked-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          }
+        ],
+        "ctaDisabled": true,
+        "ctaBackground": "rgb(233, 233, 233)"
+      }
+    },
+    {
+      "state": "busy",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/planning/busy-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          }
+        ],
+        "ctaDisabled": true,
+        "ctaBackground": "rgb(233, 233, 233)"
+      }
+    },
+    {
+      "state": "permission",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/planning/permission-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          }
+        ],
+        "ctaDisabled": true,
+        "ctaBackground": "rgb(233, 233, 233)"
+      }
+    },
+    {
+      "state": "missing-budget",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/planning/missing-budget-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          }
+        ],
+        "ctaDisabled": true,
+        "ctaBackground": "rgb(233, 233, 233)"
+      }
+    },
+    {
+      "state": "readiness-loading",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/planning/readiness-loading-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          }
+        ],
+        "ctaDisabled": true,
+        "ctaBackground": "rgb(233, 233, 233)"
+      }
+    },
+    {
+      "state": "readiness-error",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/planning/readiness-error-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          }
+        ],
+        "ctaDisabled": true,
+        "ctaBackground": "rgb(233, 233, 233)"
+      }
+    },
+    {
+      "state": "advanced",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/planning/advanced-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 289,
+            "width": 1102,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          }
+        ],
+        "ctaDisabled": false,
+        "ctaBackground": "rgb(31, 107, 74)"
+      }
+    },
+    {
+      "state": "mobile",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/planning/mobile-after.png",
+      "metrics": {
+        "scrollWidth": 390,
+        "viewport": 390,
+        "sections": [
+          {
+            "x": 17,
+            "width": 356,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 17,
+            "width": 356,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 17,
+            "width": 356,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          },
+          {
+            "x": 17,
+            "width": 356,
+            "padding": "22px 24px",
+            "headingSize": "15px"
+          }
+        ],
+        "ctaDisabled": false,
+        "ctaBackground": "rgb(31, 107, 74)"
+      }
+    },
+    {
+      "state": "import-owner",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/import/import-owner-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [],
+        "ctaDisabled": null,
+        "ctaBackground": null
+      }
+    },
+    {
+      "state": "import-staff",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/import/import-staff-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [],
+        "ctaDisabled": null,
+        "ctaBackground": null
+      }
+    },
+    {
+      "state": "history-loading",
+      "stage": "after",
+      "file": "docs/testing/visual-fidelity/planning/history-loading-after.png",
+      "metrics": {
+        "scrollWidth": 1440,
+        "viewport": 1440,
+        "sections": [],
+        "ctaDisabled": null,
+        "ctaBackground": null
+      }
+    }
+  ],
+  "networkAttempts": []
+}

@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-17",
+  "baseline": "d0de97482d8f4ae63f23c5154417c0edccad7d6a",
+  "verdict": "PARTIAL VISUAL CONVERGENCE — FOLLOW-UP REQUIRED",
+  "suites": [
+    {
+      "name": "planning",
+      "tests": 79,
+      "passed": 79,
+      "failed": 0
+    },
+    {
+      "name": "import",
+      "tests": 143,
+      "passed": 143,
+      "failed": 0
+    },
+    {
+      "name": "operations",
+      "tests": 30,
+      "passed": 30,
+      "failed": 0
+    }
+  ],
+  "totalTests": 252,
+  "build": "PASS",
+  "lint": "PASS_WITH_TWO_PREEXISTING_EFFECT_WARNINGS",
+  "bundleWarning": "PREEXISTING_LARGE_CHUNK_WARNING",
+  "sourceFiles": {
+    "src/features/decision-planning/components/Planning.css": "6206abec78cbef734cc98eb127965953fee30de718a8a5a8f3df4fced5081705",
+    "src/features/import-data/components/ImportFlow.tsx": "fa478593b1ffe0b6256d82b2e74a4409e12f9875e5a6df8fc61b71510399343e",
+    "src/features/operations/PlanningHistoryPage.tsx": "5ff4d5cacd98ff28a356ebf9bb846fc0c8f0a475523da157524611df786e1f03",
+    "scripts/capture-visual-convergence.mjs": "5760b55380572af5035300f31c2fb469890e8ebbc459a14014c3aa0e59af0b15"
+  },
+  "historicalRegisterSha256": "3017bfd528eccd22988ff7851793bfec5babd69eb1aeb6a942a529967828fa9e",
+  "copyRemovals": 2,
+  "behaviorProof": "BEHAVIOR_PRESERVATION.json",
+  "controlledCaptures": [
+    {
+      "file": "docs/testing/visual-fidelity/planning/default-before.png",
+      "sha256": "50c344d5573c5a89503c78f661178f479c32bf4a664d5e37a115b4ea03fc2184",
+      "state": "default",
+      "stage": "before"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/planning/default-after.png",
+      "sha256": "1a63d1c116a9b35343a0a5d732662366805518653c36699a2e3a415b6016de48",
+      "state": "default",
+      "stage": "after"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/planning/blocked-after.png",
+      "sha256": "14b463b045ca4aa50039fba465009bf206aaab99262b0bdb37c42271361bf24f",
+      "state": "blocked",
+      "stage": "after"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/planning/busy-after.png",
+      "sha256": "f3b091b78c1911fa4e3787d0b96fcddda5d23a8ed374730a7842290066d9c867",
+      "state": "busy",
+      "stage": "after"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/planning/permission-after.png",
+      "sha256": "1817d4e8ca682952d0448033db7d80eb6b086397e8aeebdb1e054cb3de201111",
+      "state": "permission",
+      "stage": "after"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/planning/missing-budget-after.png",
+      "sha256": "264cdba1cd6b346cef41672e58e09482613e723ad53d56d15d7cd869c97cecc9",
+      "state": "missing-budget",
+      "stage": "after"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/planning/readiness-loading-after.png",
+      "sha256": "a94047376b98037eb12c176304415852ea325def113ac9597d72bbf52ecb240b",
+      "state": "readiness-loading",
+      "stage": "after"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/planning/readiness-error-after.png",
+      "sha256": "bd3cfed661b67e28430a99b5508ee563a4626612f43591be92d62476e03bdc9d",
+      "state": "readiness-error",
+      "stage": "after"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/planning/advanced-after.png",
+      "sha256": "295dff7f2c410ad7745472c6f52c28e00b645a05c5e510d016afaed6618c8a76",
+      "state": "advanced",
+      "stage": "after"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/planning/mobile-after.png",
+      "sha256": "d4ceaed2bd67c32d30b07073837e4390415d1c5990da5d8cf2a29e20fb71b4bf",
+      "state": "mobile",
+      "stage": "after"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/import/import-owner-after.png",
+      "sha256": "d9525e560b29711b4df53487133f5c69a064fe59ae8282c4de27185f09d4c416",
+      "state": "import-owner",
+      "stage": "after"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/import/import-staff-after.png",
+      "sha256": "d9525e560b29711b4df53487133f5c69a064fe59ae8282c4de27185f09d4c416",
+      "state": "import-staff",
+      "stage": "after"
+    },
+    {
+      "file": "docs/testing/visual-fidelity/planning/history-loading-after.png",
+      "sha256": "853d2655ee43bfad89edd5027f2f4c118b93bcd6875e8085c12e383cedec4494",
+      "state": "history-loading",
+      "stage": "after"
+    }
+  ],
+  "networkAttempts": 0,
+  "hydratedBrowserInteraction": "NOT_RUN",
+  "liveBE": "NOT_RUN",
+  "liveE2E": "NOT_RUN",
+  "wholeProductVisualAcceptance": "PENDING",
+  "canonicalPreview": {
+    "file": "planning/canonical-preview.png",
+    "sha256": "3c826629a2ae2ad778a1f1a6dd3306eab07449878750f897a0870bbc451c7124",
+    "source": "https://storage.googleapis.com/storage.magicpath.ai/component-previews/2c843027-a085-4c63-822f-44096703d24b.png",
+    "scope": "Current component listing preview, cropped first viewport; not full state coverage"
+  }
+}

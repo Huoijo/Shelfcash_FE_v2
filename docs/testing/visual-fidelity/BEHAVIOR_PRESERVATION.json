@@ -1,0 +1,15 @@
+{
+  "baseline": "d0de974",
+  "checks": [
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "identicalExceptApprovedCopyRemoval": true
+    },
+    {
+      "file": "src/features/operations/PlanningHistoryPage.tsx",
+      "identicalExceptApprovedCopyRemoval": true
+    }
+  ],
+  "apiContractsChanged": false,
+  "sourceStateServicesChanged": false
+}

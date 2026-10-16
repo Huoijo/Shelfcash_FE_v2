@@ -1,0 +1,2915 @@
+{
+  "date": "2026-10-17",
+  "scope": "Static literal p/small JSX text longer than 15 characters; not a complete runtime-string census",
+  "baseline": "d0de974",
+  "extracted": 315,
+  "exactSourceMatches": 49,
+  "unmatched": 266,
+  "warning": "Exact match screening is not provenance approval. A semantic match, duplicate occurrence, legacy bundled file or prototype-only note must be assessed in its equivalent canonical state. Unmatched is never an automatic UNSUPPORTED_COPY verdict.",
+  "removals": [
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 107,
+      "family": "Completion receipt retrieval",
+      "roles": [
+        "OWNER",
+        "STAFF"
+      ],
+      "removed": "Đang tải kết quả của lô đã nhập.",
+      "provenance": "UNSUPPORTED_COPY",
+      "reason": "FE-authored extra loading explanation; no canonical matching extra line found. The retained heading Đang đọc biên nhận hoàn tất already identifies both the receipt and retrieval state; error message, refresh action and busy state remain.",
+      "replacement": null
+    },
+    {
+      "file": "src/features/operations/PlanningHistoryPage.tsx",
+      "line": 34,
+      "family": "Planning History loading",
+      "roles": [
+        "authorized users"
+      ],
+      "removed": "Đang đọc các lần chạy đã lưu.",
+      "provenance": "UNSUPPORTED_COPY",
+      "reason": "Canonical ShelfCashPlanHistory.tsx already expresses loading as Đang tải lịch sử kế hoạch…. FE repeats it with a second sentence under the identical retained loading title. No Store, actor, date, pagination, permission or recovery fact is lost.",
+      "replacement": null
+    }
+  ],
+  "occurrences": [
+    {
+      "file": "src/app/AppRouter.tsx",
+      "line": 45,
+      "tag": "p",
+      "text": "Đang tải Cửa hàng…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/app/AppRouter.tsx",
+      "line": 55,
+      "tag": "p",
+      "text": "Đang tải kế hoạch nhập…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/AccountLifecycle.tsx",
+      "line": 13,
+      "tag": "p",
+      "text": "TÀI KHOẢN SHELFCASH",
+      "matches": [
+        {
+          "key": "auth",
+          "path": "src/components/generated/ShelfCashNgNhPNgK.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/auth/AccountLifecycle.tsx",
+      "line": 30,
+      "tag": "p",
+      "text": "Bạn sẽ thiết lập mật khẩu từ liên kết xác minh trong email.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/AccountLifecycle.tsx",
+      "line": 30,
+      "tag": "p",
+      "text": "Chưa xác nhận được kết quả. Kiểm tra hộp thư hoặc đăng nhập; không gửi lại tự động.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/AccountLifecycle.tsx",
+      "line": 68,
+      "tag": "p",
+      "text": "Sau khi đăng nhập, bạn sẽ quay lại lời mời để xác nhận tham gia.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/AccountLifecycle.tsx",
+      "line": 72,
+      "tag": "p",
+      "text": "Đã nhận yêu cầu gửi lại email xác minh. Kiểm tra hộp thư của bạn.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/AccountLifecycle.tsx",
+      "line": 76,
+      "tag": "p",
+      "text": "Chưa rõ kết quả yêu cầu trước. Kiểm tra email hoặc đăng nhập, không gửi lại bằng ý định mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/AccountLifecycle.tsx",
+      "line": 83,
+      "tag": "p",
+      "text": "Đã nhận yêu cầu. Kiểm tra email nếu tài khoản đủ điều kiện.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/AccountLifecycle.tsx",
+      "line": 83,
+      "tag": "p",
+      "text": "Chưa xác nhận được kết quả; kiểm tra hộp thư trước khi yêu cầu khác.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/InvitationDecline.tsx",
+      "line": 13,
+      "tag": "p",
+      "text": "Chưa rõ lời mời đã được từ chối hay chưa. Kiểm tra trạng thái trước khi thử lại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/LoginForm.tsx",
+      "line": 88,
+      "tag": "p",
+      "text": "Chưa xác nhận được phiên đăng nhập. Bạn có thể đăng nhập lại hoặc thử kiểm tra phiên.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/OnboardingPages.tsx",
+      "line": 30,
+      "tag": "p",
+      "text": "Liên kết hiện tại chưa có token thiết lập tài khoản.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/OnboardingPages.tsx",
+      "line": 61,
+      "tag": "p",
+      "text": "Đăng xuất rồi xác thực bằng tài khoản được mời để tiếp tục.",
+      "matches": [
+        {
+          "key": "invitation",
+          "path": "src/components/generated/ShelfCashEmployeeInvitationAcceptance.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/auth/OnboardingPages.tsx",
+      "line": 63,
+      "tag": "p",
+      "text": "Giữ nguyên logical intent. Kiểm tra lại bằng cùng yêu cầu, không tạo một lần chấp nhận mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/OnboardingPages.tsx",
+      "line": 65,
+      "tag": "p",
+      "text": "Cửa hàng được mời sẽ được chọn khi bạn tiếp tục.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/auth/OnboardingPages.tsx",
+      "line": 66,
+      "tag": "p",
+      "text": "Thiết lập tài khoản cần liên kết riêng từ kênh hỗ trợ đã xác minh.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningEvidence.tsx",
+      "line": 19,
+      "tag": "p",
+      "text": "Không có phương án được chọn. Không thể suy ra kế hoạch mua hàng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningEvidence.tsx",
+      "line": 28,
+      "tag": "small",
+      "text": "Kích thước pack chưa được cung cấp",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningEvidence.tsx",
+      "line": 32,
+      "tag": "p",
+      "text": "Phương án có danh sách mua trống; không tự tạo dòng mua.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningEvidence.tsx",
+      "line": 71,
+      "tag": "p",
+      "text": "LOW / BASE / HIGH là các đường tính của máy chủ, không phải P25 / P50 / P75. Giá trị từng ngày không phải tổng của cả kỳ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningEvidence.tsx",
+      "line": 72,
+      "tag": "p",
+      "text": "Chưa có bằng chứng tính theo ngày.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningEvidence.tsx",
+      "line": 79,
+      "tag": "p",
+      "text": "Xác nhận không có lô tồn trong snapshot.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningEvidence.tsx",
+      "line": 80,
+      "tag": "p",
+      "text": "Phạm vi tồn chưa biết; không suy ra tồn bằng 0.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningLifecycle.tsx",
+      "line": 10,
+      "tag": "p",
+      "text": "Không tạo run thay thế chỉ vì chờ lâu hoặc chưa đọc được trạng thái.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningResults.tsx",
+      "line": 66,
+      "tag": "p",
+      "text": "Máy chủ đang tính kế hoạch. Chưa có khuyến nghị hoàn tất.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningResults.tsx",
+      "line": 104,
+      "tag": "p",
+      "text": "Hỏi AI và kịch bản giả định chưa khả dụng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningResults.tsx",
+      "line": 119,
+      "tag": "p",
+      "text": "Đang đọc bằng chứng nguyên liệu…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningResults.tsx",
+      "line": 120,
+      "tag": "p",
+      "text": "Chọn nguyên liệu để xem bằng chứng đã lưu theo ngày.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningResults.tsx",
+      "line": 124,
+      "tag": "p",
+      "text": "Chọn thẻ chỉ để kiểm tra dữ liệu đã lưu, không đổi chiến lược hoặc chạy lại. Nhiều chiến lược có thể trỏ cùng một phương án.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningResults.tsx",
+      "line": 135,
+      "tag": "p",
+      "text": "Chưa có dữ liệu so sánh chiến lược.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningResults.tsx",
+      "line": 137,
+      "tag": "p",
+      "text": "Bằng chứng của lần chạy đã lưu, độc lập với dữ liệu cửa hàng hiện tại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningResults.tsx",
+      "line": 137,
+      "tag": "p",
+      "text": "Chưa đọc được bằng chứng lựa chọn. Các phần đã tải vẫn có thể xem.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningSetup.tsx",
+      "line": 24,
+      "tag": "p",
+      "text": "Cấu hình một lần chạy cho cửa hàng hiện tại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningSetup.tsx",
+      "line": 25,
+      "tag": "p",
+      "text": "Xác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.",
+      "matches": [
+        {
+          "key": "setup",
+          "path": "src/components/generated/ShelfCashPlanningScreen.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningSetup.tsx",
+      "line": 26,
+      "tag": "p",
+      "text": "Chọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningSetup.tsx",
+      "line": 26,
+      "tag": "p",
+      "text": "Ưu tiên được xác định khi lập kế hoạch. Chưa hỗ trợ chọn thủ công.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningSetup.tsx",
+      "line": 26,
+      "tag": "p",
+      "text": "Chưa hỗ trợ tính đơn hàng đang chờ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningSetup.tsx",
+      "line": 26,
+      "tag": "p",
+      "text": "Các tùy chọn nâng cao chưa khả dụng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningSetup.tsx",
+      "line": 27,
+      "tag": "p",
+      "text": "Trần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningSetup.tsx",
+      "line": 28,
+      "tag": "p",
+      "text": "Kiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningSetup.tsx",
+      "line": 28,
+      "tag": "p",
+      "text": "Backend hiện chưa cho phép chọn phương án kế hoạch.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/decision-planning/components/PlanningSetup.tsx",
+      "line": 28,
+      "tag": "p",
+      "text": "Ngày, ngân sách hoặc cấu hình yêu cầu chưa hợp lệ/khả dụng. Ngân sách không được vượt trần hiện hành.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportBatchPanel.tsx",
+      "line": 50,
+      "tag": "p",
+      "text": "Chưa có hạn mức hiện tại. Cần đọc lại lô từ máy chủ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportBatchPanel.tsx",
+      "line": 51,
+      "tag": "p",
+      "text": "File bị từ chối không dùng hạn mức. Hạn mức có thể thay đổi nếu có người tải đồng thời; máy chủ quyết định kết quả cuối cùng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportBatchPanel.tsx",
+      "line": 73,
+      "tag": "p",
+      "text": "Để nhập thêm hoặc thay file, hãy bắt đầu lần nhập mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportBatchPanel.tsx",
+      "line": 74,
+      "tag": "p",
+      "text": "Đang phân tích dữ liệu…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportBatchPanel.tsx",
+      "line": 75,
+      "tag": "p",
+      "text": "Phân tích thất bại. Chỉ có thể thử lại khi máy chủ cho phép; tập file vẫn giữ nguyên.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportBatchPanel.tsx",
+      "line": 76,
+      "tag": "p",
+      "text": "Đã kết thúc bước phân tích. Tiếp tục ở bước Kiểm tra cách hiểu; chưa ghi dữ liệu nghiệp vụ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportDomainReview.tsx",
+      "line": 13,
+      "tag": "p",
+      "text": "Xác nhận các thay đổi này trước khi Review.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportDomainReview.tsx",
+      "line": 26,
+      "tag": "p",
+      "text": "Thay đổi còn bị chặn. Quay lại xử lý nguồn; xác nhận không sửa ngày hiệu lực hoặc cắt ngắn kỳ lịch sử.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportDomainReview.tsx",
+      "line": 30,
+      "tag": "p",
+      "text": "Xác nhận được giữ cho quyết định nhập này. Dữ liệu chỉ được ghi khi commit toàn bộ lô.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportExperience.tsx",
+      "line": 60,
+      "tag": "small",
+      "text": "Bước 2/6 · Phân tích",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        },
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashSourceContextSurface.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashSourceContextSurface.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 103,
+      "tag": "small",
+      "text": "Bước 3/6 · Nhánh Owner approval",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 103,
+      "tag": "p",
+      "text": "Import vẫn được giữ. Bạn không cần tải file lại.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 104,
+      "tag": "small",
+      "text": "Bước 3/6 · Kiểm tra cách hiểu",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashDomainReviewSurface.tsx"
+        },
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashDomainReviewSurface.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 104,
+      "tag": "p",
+      "text": "File, mapping cũ, identity đã resolve và batch context vẫn được giữ.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 105,
+      "tag": "small",
+      "text": "Bước 3/6 · Kiểm tra cách hiểu",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashDomainReviewSurface.tsx"
+        },
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashDomainReviewSurface.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 105,
+      "tag": "p",
+      "text": "Bạn có thể tiếp tục kiểm tra dữ liệu. Approval không có nghĩa dữ liệu đã được import.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 107,
+      "tag": "p",
+      "text": "Đang tải kết quả của lô đã nhập.",
+      "matches": [],
+      "decision": "REMOVE_UNSUPPORTED_COPY"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 118,
+      "tag": "small",
+      "text": "Bước 3/6 · Kiểm tra cách hiểu",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashDomainReviewSurface.tsx"
+        },
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashDomainReviewSurface.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 118,
+      "tag": "p",
+      "text": "Xem tổng quan trước; chỉ mở resolver khi cần kiểm tra hoặc chỉnh một phần.",
+      "matches": [
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 119,
+      "tag": "p",
+      "text": "Profile đã duyệt được tái sử dụng; không cần Owner duyệt lại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 120,
+      "tag": "p",
+      "text": "Thay đổi này ảnh hưởng reusable semantics và cần Owner duyệt trước khi tiếp tục.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 121,
+      "tag": "p",
+      "text": "Import vẫn được giữ. Bạn không cần tải file lại.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 123,
+      "tag": "p",
+      "text": "Bạn có thể tiếp tục kiểm tra dữ liệu. Approval không có nghĩa dữ liệu đã được import.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 142,
+      "tag": "p",
+      "text": "Chỉ reusable spec cần Owner duyệt. Import vẫn được giữ; approval không commit.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 145,
+      "tag": "p",
+      "text": "Gửi Owner liên kết lô để duyệt cách đọc, sau đó kiểm tra lại quyết định.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 147,
+      "tag": "p",
+      "text": "Chưa có tóm tắt cách hiểu. Đợi phân tích hoàn tất hoặc đọc lại trạng thái.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 149,
+      "tag": "small",
+      "text": "Bước 4/6 · Duyệt cách đọc dữ liệu",
+      "matches": [
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 152,
+      "tag": "p",
+      "text": "Profile version này có thể được tái sử dụng cho các file nguồn tương thích. Dữ liệu batch hiện tại vẫn chưa được nhập.",
+      "matches": [
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 153,
+      "tag": "p",
+      "text": "Các giá trị này không được lưu làm mặc định cho những lần nhập sau.",
+      "matches": [
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 157,
+      "tag": "p",
+      "text": "Mapping hoặc profile đã thay đổi sau lần Preview trước.",
+      "matches": [
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 158,
+      "tag": "p",
+      "text": "Không có dòng nào bị bỏ qua âm thầm. Hãy quay lại xử lý.",
+      "matches": [
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "line": 164,
+      "tag": "p",
+      "text": "Chưa có dữ liệu nào được ghi vào ShelfCash.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportGuardHelp.tsx",
+      "line": 4,
+      "tag": "p",
+      "text": "Quay lại ghép dữ liệu để xác nhận nguồn, loại báo cáo và bằng chứng của lần nhập này. Không dùng tên file hoặc header giống nhau làm bằng chứng nguồn.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportGuardHelp.tsx",
+      "line": 5,
+      "tag": "p",
+      "text": "Công thức cùng món và phiên bản xuất hiện ở nhiều file/Sheet. Hiện chưa hỗ trợ ghép các phần qua nhiều file/Sheet; hãy đối chiếu nguồn và chuẩn bị một bản công thức đầy đủ trong một Sheet. Lỗi chặn toàn lô; hệ thống không tự gộp hoặc chọn file cuối.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.tsx",
+      "line": 41,
+      "tag": "p",
+      "text": "Chuẩn bị tệp trước khi chọn",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.tsx",
+      "line": 54,
+      "tag": "p",
+      "text": "Chỉ chọn tệp có phần mở rộng .csv hoặc .xlsx. Thiết bị kiểm tra sơ bộ; khi tải lên, máy chủ xác minh định dạng và quyết định nhận từng tệp.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.tsx",
+      "line": 64,
+      "tag": "p",
+      "text": "Giới hạn của lô tính tất cả tệp máy chủ đã nhận qua các lần tải. Tệp bị từ chối không dùng hạn mức. Khi chọn cục bộ, lần thêm không hợp lệ giữ nguyên danh sách cũ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.tsx",
+      "line": 69,
+      "tag": "p",
+      "text": "Các nhóm dữ liệu dưới đây thuộc phạm vi nhập khi kết nối máy chủ. Không cần có đủ mọi nhóm trong một tệp.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.tsx",
+      "line": 91,
+      "tag": "p",
+      "text": "Kéo thả tệp vào vùng chọn hoặc nhấn để chọn từ thiết bị. Các tệp hiện chỉ được kiểm tra sơ bộ trên thiết bị: phần mở rộng, số lượng và dung lượng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.tsx",
+      "line": 92,
+      "tag": "p",
+      "text": "Chọn ngày dữ liệu, rồi nhấn “Phân tích dữ liệu”. Hệ thống tải và phân tích các file được nhận. Sau khi phân tích hoàn tất, nhấn “Kiểm tra cách hiểu” để xử lý nguồn, semantics, identity, batch facts và units. File bị từ chối có thông báo riêng. Để thay hoặc bổ sung file sau khi phân tích, bắt đầu lần nhập mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.tsx",
+      "line": 93,
+      "tag": "p",
+      "text": "Lựa chọn file và intent thử lại chỉ giữ trong bộ nhớ, mất khi làm mới/rời khu vực Nhập dữ liệu. URL giữ import ID để đọc lại trạng thái từ máy chủ; cũng có thể mở lô đã tải qua Lịch sử. Draft chưa tải file không được Lịch sử tìm thấy. Sau kết quả chưa xác định, không tải lại như yêu cầu mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.tsx",
+      "line": 94,
+      "tag": "p",
+      "text": "Sau phân tích, chọn loại dữ liệu của từng Sheet, khai báo ngữ cảnh nguồn rồi xử lý cột, định danh, quy đổi hoặc shared value theo descriptor máy chủ. Chọn trong danh sách chưa lưu thay đổi. Staff dùng approved profile tương thích đi thẳng tới Preview. Chỉ profile mới hoặc reusable interpretation thay đổi mới cần Owner xem đầy đủ spec và bằng chứng rồi duyệt; resolved không có nghĩa approved.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.tsx",
+      "line": 95,
+      "tag": "p",
+      "text": "Tạo Preview, đọc đủ các trang thay đổi và cảnh báo. Xác nhận từng thay đổi doanh số/điều khoản/phí nếu được yêu cầu, rồi chọn “Xác nhận đã kiểm tra” với lý do Review. Bước này chỉ lưu xác nhận trên máy chủ, chưa ghi dữ liệu. Sau đó nhập lý do và acknowledgment riêng để ghi nguyên tử toàn lô. Mapping hoặc dữ liệu nguồn thay đổi có thể làm Preview/review hết hiệu lực.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.tsx",
+      "line": 96,
+      "tag": "p",
+      "text": "Nhận tệp, phân tích hoặc HTTP202 chưa phải Import thành công. Chỉ biên nhận hoàn tất từ máy chủ xác nhận dữ liệu đã ghi hoặc không có thay đổi. Các trường hợp còn lỗi chặn, stale preview hoặc cần Owner duyệt vẫn bị khóa. Chế độ minh họa không ghi dữ liệu; kết nối thật cần backend, phiên đăng nhập và Store hợp lệ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHistoryCorrections.tsx",
+      "line": 10,
+      "tag": "p",
+      "text": "Xác nhận từng bản sửa trước khi Review. Dữ liệu chỉ được ghi khi nhập toàn bộ lô.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHistoryCorrections.tsx",
+      "line": 14,
+      "tag": "p",
+      "text": "Chưa thể xác nhận trên trạng thái hoặc quyền hiện tại. Đọc lại Preview trước khi tiếp tục.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHistoryCorrections.tsx",
+      "line": 14,
+      "tag": "p",
+      "text": "Xác nhận được giữ trong lần nhập này, chưa ghi lên dữ liệu lịch sử. Lý do nhập toàn bộ lô được nhập riêng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportIdentityResolver.tsx",
+      "line": 35,
+      "tag": "p",
+      "text": "Đề xuất entity mới cần Owner review và commit. Lưu đề xuất chưa tạo đối tượng trong Store.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportIdentityResolver.tsx",
+      "line": 40,
+      "tag": "p",
+      "text": "Chưa đọc được danh mục phù hợp. Các liên kết đã xác định vẫn được giữ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportIdentityResolver.tsx",
+      "line": 42,
+      "tag": "p",
+      "text": "Chưa đọc được danh mục. Vui lòng thử lại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportIdentityResolver.tsx",
+      "line": 44,
+      "tag": "p",
+      "text": "Không tìm thấy đối tượng phù hợp.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportIdentityResolver.tsx",
+      "line": 45,
+      "tag": "p",
+      "text": "Có nhiều entity phù hợp. Chọn rõ đối tượng dự định dùng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportIdentityResolver.tsx",
+      "line": 51,
+      "tag": "p",
+      "text": "Cần quyền để tạo binding mới. Bạn vẫn có thể xem các bindings đã xác định.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMapping.tsx",
+      "line": 98,
+      "tag": "p",
+      "text": "Bạn chỉ có quyền xem. Cần người có quyền chỉnh sửa xử lý mục này.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMapping.tsx",
+      "line": 99,
+      "tag": "p",
+      "text": "Chọn một Sheet để đọc danh sách từ máy chủ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMapping.tsx",
+      "line": 101,
+      "tag": "p",
+      "text": "Không có trường trong bộ lọc này.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMapping.tsx",
+      "line": 103,
+      "tag": "p",
+      "text": "Các mục đã tải trong nhóm này.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMapping.tsx",
+      "line": 144,
+      "tag": "p",
+      "text": "Xác nhận nguồn và loại báo cáo của lần nhập này, kèm bằng chứng. Header giống profile cũ không chứng minh file mới cùng nguồn; duyệt profile không thay bước Preview/Review.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMapping.tsx",
+      "line": 145,
+      "tag": "p",
+      "text": "Có nhiều trường phù hợp",
+      "matches": [
+        {
+          "key": "history",
+          "path": "src/components/generated/ShelfCashMappingData.ts"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMapping.tsx",
+      "line": 206,
+      "tag": "p",
+      "text": "Chưa tải đủ cách đọc đề xuất. Tải lại trước khi duyệt.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMapping.tsx",
+      "line": 207,
+      "tag": "p",
+      "text": "Chưa tải đủ cách đọc đã duyệt để so sánh. Tải lại trước khi quyết định.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMapping.tsx",
+      "line": 214,
+      "tag": "p",
+      "text": "Đề xuất được giữ lại để Owner xem và quyết định.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMapping.tsx",
+      "line": 226,
+      "tag": "p",
+      "text": "Profile version này sẽ không được chọn cho import mới. Import đã hoàn tất không bị thay đổi; không tự kích hoạt version khác.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreview.tsx",
+      "line": 36,
+      "tag": "p",
+      "text": "Đây là quyết định ghi dữ liệu business. Dữ liệu chỉ được ghi sau khi bạn xác nhận.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreview.tsx",
+      "line": 39,
+      "tag": "p",
+      "text": "Owner profile approval và Staff commit permission là hai quyết định khác nhau.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreview.tsx",
+      "line": 51,
+      "tag": "p",
+      "text": "Cần xác nhận Review được lưu thành công trước khi nhập dữ liệu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreview.tsx",
+      "line": 52,
+      "tag": "p",
+      "text": "Quyền nhập dữ liệu sẽ được kiểm tra lại trước khi ghi.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreview.tsx",
+      "line": 56,
+      "tag": "p",
+      "text": "Chưa thể ghi dữ liệu:",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreviewExplorer.tsx",
+      "line": 30,
+      "tag": "p",
+      "text": "Chưa có dữ liệu nào được ghi vào ShelfCash.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreviewExplorer.tsx",
+      "line": 32,
+      "tag": "p",
+      "text": "Mapping hoặc profile đã thay đổi sau lần Preview trước.",
+      "matches": [
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreviewExplorer.tsx",
+      "line": 33,
+      "tag": "p",
+      "text": "Cảnh báo không chặn import; bạn vẫn có thể tiếp tục sau khi review.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreviewExplorer.tsx",
+      "line": 36,
+      "tag": "p",
+      "text": "Thử nhóm khác hoặc tải thêm dữ liệu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportProfileSpecification.tsx",
+      "line": 36,
+      "tag": "p",
+      "text": "Quyết định duyệt áp dụng cho toàn bộ Profile version này, kể cả khi đang xem “Thay đổi”.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportProfileSpecification.tsx",
+      "line": 37,
+      "tag": "small",
+      "text": "Reusable specification",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashWave7ProfileDecision.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashWave7ProfileDecision.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportProfileSpecification.tsx",
+      "line": 37,
+      "tag": "p",
+      "text": "Không còn trong Profile đề xuất",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashWave7ProfileDecision.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashWave7ProfileDecision.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportProfileSpecification.tsx",
+      "line": 38,
+      "tag": "p",
+      "text": "Read-only · Quyết định này không sửa cách hiểu ở Step 3.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportReadiness.tsx",
+      "line": 50,
+      "tag": "p",
+      "text": "Bạn chưa có quyền xem đánh giá lập kế hoạch.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportReadiness.tsx",
+      "line": 52,
+      "tag": "p",
+      "text": "Chưa thể xác định readiness. Kết quả import đã hoàn tất không bị ảnh hưởng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportReadiness.tsx",
+      "line": 53,
+      "tag": "p",
+      "text": "Chưa kiểm tra được khả năng lập kế hoạch. Vui lòng thử lại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 27,
+      "tag": "p",
+      "text": "Cần kiểm tra dữ liệu nguồn trước khi tiếp tục. Không tự thay dữ liệu thiếu thành 0.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 53,
+      "tag": "p",
+      "text": "Đang tải các loại dữ liệu có thể chọn.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 93,
+      "tag": "p",
+      "text": "Tên file hoặc sheet chỉ là context; không được coi là bằng chứng nguồn. Khai báo semantics này đề xuất thay đổi cách hiểu nguồn dùng lại; cần qua quyết định Profile. Giá trị chỉ cho lô này được khai báo tại phần thông tin còn thiếu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 96,
+      "tag": "small",
+      "text": "Mã hệ thống nguồn chỉ dùng chữ, số, dấu chấm, gạch ngang, gạch dưới hoặc dấu hai chấm.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 99,
+      "tag": "p",
+      "text": "Dùng mã nguồn báo cáo đã được thống nhất với cửa hàng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 112,
+      "tag": "p",
+      "text": "Giá và MOQ cần có cơ sở tính rõ ràng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 117,
+      "tag": "p",
+      "text": "Không tự động đóng kỳ lịch sử.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 164,
+      "tag": "p",
+      "text": "Chọn đúng đối tượng thuộc cửa hàng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 179,
+      "tag": "p",
+      "text": "Đề xuất đối tượng mới cần Owner duyệt.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 201,
+      "tag": "p",
+      "text": "Tỉ lệ = tử số / mẫu số. Không tự làm tròn.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 212,
+      "tag": "p",
+      "text": "Không bỏ qua dữ liệu bắt buộc. Đề xuất này vẫn cần Owner duyệt.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 254,
+      "tag": "p",
+      "text": "Không, 0 và chưa xác định là ba giá trị khác nhau.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 256,
+      "tag": "p",
+      "text": "Cần mở đúng cột nguồn để kiểm tra giá trị gốc trước khi thay thế.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "line": 257,
+      "tag": "p",
+      "text": "Trường này đang lấy dữ liệu từ cột nguồn. Xác nhận chuyển nguồn nếu muốn dùng giá trị khai báo.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolveDrawers.tsx",
+      "line": 50,
+      "tag": "small",
+      "text": "Save chỉ cập nhật phần đang xử lý; không chuyển bước.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/index.css"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolveDrawers.tsx",
+      "line": 58,
+      "tag": "p",
+      "text": "Đang lưu thay đổi… Thông tin bạn vừa xác nhận vẫn được giữ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolveDrawers.tsx",
+      "line": 68,
+      "tag": "p",
+      "text": "Chưa có thông tin khai báo cần xử lý trong phạm vi đã đọc.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolveDrawers.tsx",
+      "line": 91,
+      "tag": "p",
+      "text": "Danh sách trường theo loại dữ liệu đang chọn. Lưu phân loại trước khi xác nhận ghép cột.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolveDrawers.tsx",
+      "line": 92,
+      "tag": "p",
+      "text": "Target này đã được sử dụng. Chọn trường khác trước khi lưu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolveDrawers.tsx",
+      "line": 93,
+      "tag": "p",
+      "text": "Không thể bỏ qua dữ kiện bắt buộc.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResult.tsx",
+      "line": 15,
+      "tag": "small",
+      "text": "Bước 6/6 · Hoàn tất",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashAdvancedImportSurface.tsx"
+        },
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashAdvancedImportSurface.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResult.tsx",
+      "line": 15,
+      "tag": "p",
+      "text": "Batch đã commit thành công. Readiness được đánh giá riêng bên dưới.",
+      "matches": [
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSourceContext.tsx",
+      "line": 17,
+      "tag": "small",
+      "text": "Bước 2/6 · Phân tích",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        },
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashSourceContextSurface.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashSourceContextSurface.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSourceContext.tsx",
+      "line": 17,
+      "tag": "p",
+      "text": "Đề xuất nguồn dựa trên bằng chứng trong nội dung export, không dựa vào tên file một cách đơn lẻ.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashSourceContextSurface.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashSourceContextSurface.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSourceContext.tsx",
+      "line": 22,
+      "tag": "p",
+      "text": "Bạn vẫn có thể xem bằng chứng; cần quyền chỉnh sửa để xác nhận nguồn.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSubmissionLifecycle.tsx",
+      "line": 35,
+      "tag": "p",
+      "text": "Gửi từng Profile để Owner quyết định. File và các quyết định của lần nhập vẫn được giữ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSubmissionLifecycle.tsx",
+      "line": 36,
+      "tag": "p",
+      "text": "Đang kiểm tra đề xuất hiện tại…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSubmissionLifecycle.tsx",
+      "line": 38,
+      "tag": "p",
+      "text": "Chưa rõ kết quả gửi đề xuất. Không chỉnh proposal hoặc gửi ý định mới; kiểm tra đúng yêu cầu trước.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSubmissionLifecycle.tsx",
+      "line": 39,
+      "tag": "p",
+      "text": "Chỉnh cách hiểu ở Step 3 rồi gửi lại. Không cần tải lại file hoặc làm lại quyết định không liên quan.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSubmissionLifecycle.tsx",
+      "line": 39,
+      "tag": "p",
+      "text": "Proposal hiện tại đã kết thúc. Có thể chỉnh cách hiểu cho một đề xuất mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSubmissionLifecycle.tsx",
+      "line": 39,
+      "tag": "p",
+      "text": "Tiếp tục Preview khi tất cả điều kiện của lần nhập đã đủ. Approval không cấp quyền commit.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSubmissionLifecycle.tsx",
+      "line": 41,
+      "tag": "p",
+      "text": "Chỉ gửi một Profile theo revision đang xem. Chưa ghi dữ liệu của batch.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/ImportUpload.tsx",
+      "line": 132,
+      "tag": "p",
+      "text": "Chưa có file nào.",
+      "matches": [
+        {
+          "key": "history",
+          "path": "src/components/generated/ShelfCashDataImportScreen.tsx"
+        },
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashInputFlowOWNER.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportUploadAdmission.tsx",
+      "line": 11,
+      "tag": "p",
+      "text": "Chỉ những file đã được nhận bên dưới sẽ đi vào lần phân tích này.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashAdvancedImportSurface.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashAdvancedImportSurface.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/ImportUploadAdmission.tsx",
+      "line": 13,
+      "tag": "small",
+      "text": "Không thể thêm file này",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashAdvancedImportSurface.tsx"
+        },
+        {
+          "key": "owner",
+          "path": "src/components/generated/ShelfCashAdvancedImportSurface.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "line": 22,
+      "tag": "p",
+      "text": "Liên kết cửa hàng không hợp lệ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "line": 23,
+      "tag": "p",
+      "text": "Chọn cửa hàng để đọc đề xuất.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "line": 24,
+      "tag": "p",
+      "text": "Liên kết đề xuất không hợp lệ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "line": 25,
+      "tag": "p",
+      "text": "Quyết định cách đọc reusable. Dữ liệu chỉ được ghi qua Preview → Review → Commit.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "line": 43,
+      "tag": "p",
+      "text": "Đang đọc đề xuất…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "line": 43,
+      "tag": "p",
+      "text": "Chưa có đề xuất trong phạm vi này.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "line": 103,
+      "tag": "p",
+      "text": "Không quyết định dựa trên phiên bản trong liên kết cũ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "line": 104,
+      "tag": "p",
+      "text": "Quyết định Profile không có nghĩa dữ liệu đã nhập.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "line": 105,
+      "tag": "p",
+      "text": "Đề xuất hiện không đủ điều kiện quyết định. Đọc lại trạng thái trước khi tiếp tục.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "line": 112,
+      "tag": "p",
+      "text": "Giữ nguyên yêu cầu trước. Không tạo quyết định cạnh tranh.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/inventory/components/InventoryDetail.tsx",
+      "line": 40,
+      "tag": "p",
+      "text": "Ưu tiên sử dụng trước · theo máy chủ",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/inventory/components/InventoryDetail.tsx",
+      "line": 102,
+      "tag": "p",
+      "text": "Lịch sử tồn kho, không phải lịch sử nhập file. Các bản ghi gần đây không thay thế số dư hiện tại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/inventory/components/InventoryDetail.tsx",
+      "line": 103,
+      "tag": "p",
+      "text": "Đang tải biến động…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/inventory/components/InventoryDetail.tsx",
+      "line": 106,
+      "tag": "p",
+      "text": "Chưa có biến động được ghi nhận.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/inventory/components/InventoryDetail.tsx",
+      "line": 216,
+      "tag": "p",
+      "text": "Đang tải chi tiết…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/inventory/components/InventoryDetail.tsx",
+      "line": 230,
+      "tag": "p",
+      "text": "Chưa có lô được ghi nhận; không tự xác nhận tồn thực tế bằng 0.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/inventory/components/InventoryTable.tsx",
+      "line": 31,
+      "tag": "p",
+      "text": "Không có bản ghi không đồng nghĩa tồn thực tế bằng 0.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/menu/components/MenuDetail.tsx",
+      "line": 55,
+      "tag": "p",
+      "text": "Công thức có hiệu lực nhưng chưa có dòng nguyên liệu; chưa đủ dữ liệu BOM.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/menu/components/MenuDetail.tsx",
+      "line": 111,
+      "tag": "p",
+      "text": "Đang tải chi tiết món…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/notifications/NotificationsPage.tsx",
+      "line": 16,
+      "tag": "p",
+      "text": "Những việc cần bạn chú ý và nơi cần đến để xử lý.",
+      "matches": [
+        {
+          "key": "notifications",
+          "path": "src/components/generated/ShelfCashThNgBO.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/notifications/NotificationsPage.tsx",
+      "line": 52,
+      "tag": "p",
+      "text": "Mỗi thông báo giữ đúng cửa hàng và nội dung cần mở.",
+      "matches": [
+        {
+          "key": "notifications",
+          "path": "src/components/generated/ShelfCashThNgBO.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/notifications/NotificationsPage.tsx",
+      "line": 53,
+      "tag": "p",
+      "text": "Kết nối tài khoản để đọc thông báo hiện tại. Bản minh họa không gọi API.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/notifications/NotificationsPage.tsx",
+      "line": 54,
+      "tag": "p",
+      "text": "Đang tải thông báo…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/notifications/NotificationsPage.tsx",
+      "line": 56,
+      "tag": "p",
+      "text": "Thông báo cần bạn chú ý sẽ xuất hiện ở đây.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/notifications/NotificationsPage.tsx",
+      "line": 61,
+      "tag": "p",
+      "text": "Thông báo giữ lịch sử. Quyền và trạng thái công việc được kiểm tra lại ở màn hình đích; hành động cũ không được tự thực hiện lại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/notifications/NotificationsPage.tsx",
+      "line": 61,
+      "tag": "p",
+      "text": "Chưa xác nhận trạng thái đã đọc. Bạn vẫn có thể mở nội dung.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/IngredientPicker.tsx",
+      "line": 21,
+      "tag": "p",
+      "text": "Đang tải nguyên liệu…",
+      "matches": [
+        {
+          "key": "inventory",
+          "path": "src/components/generated/ShelfCashReceiveGoodsFlow.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/operations/IngredientPicker.tsx",
+      "line": 21,
+      "tag": "p",
+      "text": "Không tìm thấy nguyên liệu đang hoạt động. Thử từ khóa khác.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/IngredientPicker.tsx",
+      "line": 22,
+      "tag": "small",
+      "text": "Chỉ chọn nguyên liệu đang hoạt động trong danh mục cửa hàng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/InventoryActions.tsx",
+      "line": 71,
+      "tag": "p",
+      "text": "Không cần nhận hàng lại. Chỉ thử tải lại phần tồn kho/lô/biến động.",
+      "matches": [
+        {
+          "key": "inventory",
+          "path": "src/components/generated/ShelfCashReceiveGoodsFlow.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/operations/InventoryActions.tsx",
+      "line": 71,
+      "tag": "p",
+      "text": "Không gửi lại yêu cầu trong lúc này.",
+      "matches": [
+        {
+          "key": "inventory",
+          "path": "src/components/generated/ShelfCashReceiveGoodsFlow.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/operations/InventoryActions.tsx",
+      "line": 71,
+      "tag": "p",
+      "text": "Phản hồi trước chưa rõ. Không tạo receipt mới; thử lại giữ nguyên key, nội dung và phiên bản.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/InventoryActions.tsx",
+      "line": 71,
+      "tag": "p",
+      "text": "Tồn kho, lô và biến động chỉ được hiển thị sau khi hệ thống xác nhận.",
+      "matches": [
+        {
+          "key": "inventory",
+          "path": "src/components/generated/ShelfCashReceiveGoodsFlow.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/operations/InventoryActions.tsx",
+      "line": 73,
+      "tag": "p",
+      "text": "Nhà cung cấp chưa khai báo. Trùng mã lô không tự gộp lô.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanExport.tsx",
+      "line": 59,
+      "tag": "p",
+      "text": "Chọn phương án để xuất không thay đổi winner của Run.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanExport.tsx",
+      "line": 59,
+      "tag": "p",
+      "text": "Mở cửa sổ chưa tạo tác vụ. Chỉ xác nhận xuất mới gửi yêu cầu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanExport.tsx",
+      "line": 60,
+      "tag": "p",
+      "text": "Phương án này không đáp ứng điều kiện khuyến nghị. PDF giữ trạng thái và lý do đã lưu; xuất file không đổi winner hoặc xác nhận đặt hàng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanExport.tsx",
+      "line": 61,
+      "tag": "p",
+      "text": "Artifact hiện không đọc được hoặc chưa xác minh được tính toàn vẹn. Có thể thử tải lại cùng bản; tạo export mới cần xác nhận riêng và không bảo đảm khôi phục được.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanExport.tsx",
+      "line": 62,
+      "tag": "p",
+      "text": "Không quét hoặc tạo export mới để tìm artifact cũ. Có thể chủ động tạo một export mới nếu Run vẫn đủ điều kiện.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanExport.tsx",
+      "line": 63,
+      "tag": "p",
+      "text": "Export gốc vẫn tiếp tục trên server. Kiểm tra lại dùng cùng locator.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanExport.tsx",
+      "line": 64,
+      "tag": "p",
+      "text": "Artifact đã sẵn sàng để tải và kiểm tra.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanExport.tsx",
+      "line": 65,
+      "tag": "p",
+      "text": "File được tải từ artifact đã xác nhận. Run và tồn kho không thay đổi.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanExport.tsx",
+      "line": 68,
+      "tag": "p",
+      "text": "Thử lại giữ nguyên phương án, body và key. Không tạo export thay thế.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanExport.tsx",
+      "line": 69,
+      "tag": "p",
+      "text": "Xuất PDF không đặt hàng hoặc thay đổi tồn kho.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanningHistoryPage.tsx",
+      "line": 14,
+      "tag": "p",
+      "text": "Chưa đủ quyền đọc lịch sử kế hoạch và dữ liệu chi phí.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanningHistoryPage.tsx",
+      "line": 32,
+      "tag": "p",
+      "text": "Xem lại các lần chạy đã lưu của cửa hàng hiện tại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/PlanningHistoryPage.tsx",
+      "line": 34,
+      "tag": "p",
+      "text": "Đang đọc các lần chạy đã lưu.",
+      "matches": [],
+      "decision": "REMOVE_UNSUPPORTED_COPY"
+    },
+    {
+      "file": "src/features/operations/RecipeSchedulePage.tsx",
+      "line": 18,
+      "tag": "p",
+      "text": "Kiểm tra quyền truy cập cửa hàng hiện tại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RecipeSchedulePage.tsx",
+      "line": 65,
+      "tag": "p",
+      "text": "Lịch sử, công thức hiện tại và phiên bản đã lên lịch.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RecipeSchedulePage.tsx",
+      "line": 67,
+      "tag": "p",
+      "text": "Không dùng phiên bản tương lai thay cho công thức hiện tại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RecipeSchedulePage.tsx",
+      "line": 71,
+      "tag": "p",
+      "text": "Đang chờ máy chủ xác nhận. Không gửi yêu cầu mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RecipeSchedulePage.tsx",
+      "line": 71,
+      "tag": "p",
+      "text": "Giữ nguyên nội dung, key và phiên bản đã gửi.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RecipeSchedulePage.tsx",
+      "line": 71,
+      "tag": "p",
+      "text": "Nội dung phiên bản là bất biến; chỉ lịch tương lai được sửa qua Preview.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RecipeSchedulePage.tsx",
+      "line": 73,
+      "tag": "p",
+      "text": "Preview chưa ghi dữ liệu; cần xác nhận cuối cùng để lưu lịch.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RecipeSchedulePage.tsx",
+      "line": 73,
+      "tag": "p",
+      "text": "Tải lại lịch và bằng chứng để tiếp tục.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RecipeSchedulePage.tsx",
+      "line": 74,
+      "tag": "p",
+      "text": "Draft vẫn được giữ. Tải lịch mới nhất và tạo Preview mới trước khi commit.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RecipeSchedulePage.tsx",
+      "line": 76,
+      "tag": "p",
+      "text": "Thay đổi theo Preview đã xác nhận. Nội dung lịch sử và các Run đã lưu giữ nguyên.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RecipeSchedulePage.tsx",
+      "line": 76,
+      "tag": "p",
+      "text": "Chỉ nút xác nhận này mới bắt đầu commit.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RequirementsControls.tsx",
+      "line": 41,
+      "tag": "p",
+      "text": "Chọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RequirementsControls.tsx",
+      "line": 42,
+      "tag": "p",
+      "text": "Chuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RequirementsControls.tsx",
+      "line": 43,
+      "tag": "p",
+      "text": "Các thay đổi chỉ áp dụng cho lần chạy này. Lưu thành bộ mới là thao tác riêng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RequirementsControls.tsx",
+      "line": 44,
+      "tag": "p",
+      "text": "Chưa có bộ yêu cầu đã lưu. Chuyển sang Tùy chỉnh để tạo bộ mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RequirementsControls.tsx",
+      "line": 45,
+      "tag": "p",
+      "text": "Đang đọc bộ yêu cầu…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RequirementsControls.tsx",
+      "line": 46,
+      "tag": "p",
+      "text": "Đã có biên nhận ghi. Chỉ đọc lại để xác minh dữ liệu đã lưu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RequirementsControls.tsx",
+      "line": 48,
+      "tag": "p",
+      "text": "Các Run đã tạo giữ nguyên. Bộ được lưu trữ không dùng cho Run mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RequirementsControls.tsx",
+      "line": 49,
+      "tag": "p",
+      "text": "Thử lại giữ nguyên hành động, nội dung, key và phiên bản đã gửi.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RetainedExports.tsx",
+      "line": 21,
+      "tag": "p",
+      "text": "Tải bản xuất đã có không tạo bản xuất mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RetainedExports.tsx",
+      "line": 21,
+      "tag": "p",
+      "text": "Đang tải danh sách bản xuất…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RetainedExports.tsx",
+      "line": 21,
+      "tag": "p",
+      "text": "Danh sách đã thay đổi. Đọc lại từ trang đầu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RetainedExports.tsx",
+      "line": 21,
+      "tag": "p",
+      "text": "Chưa có bản xuất được lưu cho kế hoạch này.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/RetainedExports.tsx",
+      "line": 21,
+      "tag": "p",
+      "text": "Bản không khả dụng cần kiểm tra lại trạng thái. Không tự tạo bản thay thế và không suy đoán thời hạn lưu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/StoreActivityPage.tsx",
+      "line": 13,
+      "tag": "p",
+      "text": "Chỉ Owner được đọc hoạt động quản trị.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/StoreActivityPage.tsx",
+      "line": 29,
+      "tag": "p",
+      "text": "Chọn lời mời để đọc lịch sử riêng của lời mời đó.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/operations/StoreActivityPage.tsx",
+      "line": 29,
+      "tag": "p",
+      "text": "Đang tải hoạt động…",
+      "matches": [
+        {
+          "key": "store",
+          "path": "src/components/generated/ShelfCashPermissionAdminWorkspace.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/operations/StoreActivityPage.tsx",
+      "line": 29,
+      "tag": "p",
+      "text": "Chưa có sự kiện trong phạm vi này.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store/StoreBootstrap.tsx",
+      "line": 38,
+      "tag": "p",
+      "text": "BẮT ĐẦU VỚI SHELFCASH",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store/StoreBootstrap.tsx",
+      "line": 39,
+      "tag": "p",
+      "text": "Chưa có dữ liệu kinh doanh nào được tạo cho tài khoản.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store/StoreBootstrap.tsx",
+      "line": 39,
+      "tag": "p",
+      "text": "Cửa hàng chưa có menu, tồn kho hoặc ngân sách.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store/StoreBootstrap.tsx",
+      "line": 39,
+      "tag": "p",
+      "text": "Nhập thông tin cơ bản. Bạn có thể cấu hình vận hành sau.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store/StoreBootstrap.tsx",
+      "line": 40,
+      "tag": "p",
+      "text": "Yêu cầu trước có thể đã tạo cửa hàng. Không gửi ý định mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store/StoreBootstrap.tsx",
+      "line": 41,
+      "tag": "p",
+      "text": "Đang kiểm tra cửa hàng của tài khoản…",
+      "matches": [
+        {
+          "key": "store",
+          "path": "src/components/generated/ShelfCashStoreBootstrap.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/store/StoreBootstrap.tsx",
+      "line": 42,
+      "tag": "p",
+      "text": "Múi giờ IANA, ví dụ Asia/Ho_Chi_Minh. Mã tiền tệ, ví dụ VND.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequestNotice.tsx",
+      "line": 9,
+      "tag": "p",
+      "text": "Đang kiểm tra quyền và yêu cầu hiện tại…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequestNotice.tsx",
+      "line": 10,
+      "tag": "p",
+      "text": "Đọc yêu cầu không thay đổi quyền. Màn hình quyền hiện tại là thao tác quản trị riêng, không phải tự phê duyệt yêu cầu này.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequests.tsx",
+      "line": 16,
+      "tag": "p",
+      "text": "Đang tải yêu cầu quyền…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequests.tsx",
+      "line": 16,
+      "tag": "p",
+      "text": "Chưa có yêu cầu trong phạm vi này.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequests.tsx",
+      "line": 21,
+      "tag": "p",
+      "text": "Chọn quyền cần thêm. Gửi yêu cầu chưa thay đổi quyền của bạn.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequests.tsx",
+      "line": 21,
+      "tag": "p",
+      "text": "Chưa xác nhận kết quả gửi. Không tạo yêu cầu mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequests.tsx",
+      "line": 32,
+      "tag": "p",
+      "text": "Đang đọc yêu cầu và quyền hiện tại…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequests.tsx",
+      "line": 32,
+      "tag": "p",
+      "text": "Đã đọc không có nghĩa đã duyệt. Quyền chỉ thay đổi sau quyết định được máy chủ xác nhận.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequests.tsx",
+      "line": 32,
+      "tag": "p",
+      "text": "Chọn toàn bộ hoặc một phần quyền được yêu cầu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/PermissionRequests.tsx",
+      "line": 33,
+      "tag": "p",
+      "text": "Chưa rõ kết quả quyết định. Không gửi quyết định mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreMembers.tsx",
+      "line": 31,
+      "tag": "p",
+      "text": "Ai đang có quyền truy cập cửa hàng này?",
+      "matches": [
+        {
+          "key": "store",
+          "path": "src/components/generated/ShelfCashPermissionAdminWorkspace.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreMembers.tsx",
+      "line": 34,
+      "tag": "p",
+      "text": "Chỉ Owner được xem danh sách Staff, thay đổi quyền và mời nhân viên. Quyền hiện hành của bạn vẫn do cửa hàng xác định.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreMembers.tsx",
+      "line": 46,
+      "tag": "p",
+      "text": "Lời mời chưa chấp nhận không phải thành viên và chưa cấp quyền.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "line": 43,
+      "tag": "p",
+      "text": "Múi giờ và tiền tệ là cùng thông tin cửa hàng ở Tổng quan, không có bản chỉnh sửa riêng. Ngày bắt đầu tuần và tùy chọn ngôn ngữ chưa được hỗ trợ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "line": 46,
+      "tag": "p",
+      "text": "Tính đơn hàng đang chờ",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "line": 47,
+      "tag": "p",
+      "text": "Ưu tiên mặc định",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "line": 48,
+      "tag": "p",
+      "text": "Chưa hỗ trợ chọn ưu tiên mặc định. Ba chiến lược là phương án được máy chủ so sánh, không phải tùy chọn đầu vào; không chọn Cân bằng giả.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "line": 49,
+      "tag": "p",
+      "text": "Ngày cửa hàng có thể nhận hàng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "line": 50,
+      "tag": "p",
+      "text": "Chưa hỗ trợ lịch nhận hàng chung của cửa hàng. Không dùng lịch giao của từng nhà cung cấp thay thế.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "line": 55,
+      "tag": "p",
+      "text": "Lưu chỉ thay trần ngân sách, không đổi yêu cầu phục vụ đã lưu. Nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chưa thiết lập không có nghĩa không giới hạn.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "line": 56,
+      "tag": "p",
+      "text": "Bạn chưa có đủ quyền đọc cấu hình và thay đổi ngân sách.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "line": 57,
+      "tag": "p",
+      "text": "Cửa hàng chưa có trần ngân sách. Lưu sẽ tạo cấu hình ban đầu; nếu người khác vừa tạo, hãy đọc lại để đối chiếu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "line": 58,
+      "tag": "p",
+      "text": "Đang tải ngân sách hiện hành…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOperatingDefaults.tsx",
+      "line": 62,
+      "tag": "p",
+      "text": "Yêu cầu ngân sách trước chưa được giải quyết. Chưa thể gửi thay đổi mới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOverview.tsx",
+      "line": 14,
+      "tag": "p",
+      "text": "Minh họa DEV: loại hình, địa chỉ, điện thoại và giờ mở cửa dưới đây là dữ liệu mẫu, không phải thông tin đã lưu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOverview.tsx",
+      "line": 16,
+      "tag": "p",
+      "text": "Thông tin nhận diện cơ bản của địa điểm kinh doanh.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOverview.tsx",
+      "line": 24,
+      "tag": "p",
+      "text": "Chỉnh sửa thông tin cửa hàng chưa được hỗ trợ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOverview.tsx",
+      "line": 32,
+      "tag": "p",
+      "text": "Giờ mở cửa chưa được hỗ trợ. Không suy ra giờ mở cửa từ lịch giao hàng hay dữ liệu bán.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOverview.tsx",
+      "line": 35,
+      "tag": "p",
+      "text": "Cửa hàng hiện cho phép truy cập.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreOverview.tsx",
+      "line": 36,
+      "tag": "p",
+      "text": "Chuyển cửa hàng sang Tạm ngưng chưa được hỗ trợ. Trạng thái này không được suy từ dữ liệu hoặc số thành viên.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceChrome.tsx",
+      "line": 11,
+      "tag": "p",
+      "text": "Bạn có quyền xem thông tin cửa hàng. Quản lý thành viên chỉ dành cho Owner; thay đổi ngân sách cần quyền tương ứng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceChrome.tsx",
+      "line": 31,
+      "tag": "p",
+      "text": "Tài khoản này hiện chưa được cấp quyền truy cập cửa hàng nào.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceChrome.tsx",
+      "line": 31,
+      "tag": "p",
+      "text": "Liên hệ Owner hoặc hỗ trợ ShelfCash.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 47,
+      "tag": "p",
+      "text": "Bạn có thay đổi chưa lưu. Bỏ thay đổi để đóng?",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 77,
+      "tag": "p",
+      "text": "Đang gửi yêu cầu…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 78,
+      "tag": "p",
+      "text": "Yêu cầu trước chưa được giải quyết. Đóng bảng không hủy yêu cầu đã gửi; chưa gửi thay đổi mới khi chưa đối chiếu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 106,
+      "tag": "p",
+      "text": "Chọn những khu vực và hành động nhân viên này được phép sử dụng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 108,
+      "tag": "p",
+      "text": "Staff không hoạt động chỉ được xem. Thay đổi quyền không kích hoạt lại thành viên.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 109,
+      "tag": "p",
+      "text": "Có quyền chưa được đối chiếu đầy đủ. Chưa thể lưu tập quyền thay thế; cần tải lại danh mục hiện hành.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 112,
+      "tag": "p",
+      "text": "Cần lý do từ 1 đến 1.000 ký tự. Bỏ chọn tất cả sẽ thu toàn bộ quyền tính năng, không xóa thành viên.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 143,
+      "tag": "p",
+      "text": "Gửi email chưa có nghĩa đã cấp quyền hoặc người nhận đã đọc email. Nhân viên cần tự đăng nhập và chấp nhận.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 147,
+      "tag": "p",
+      "text": "Có thể không chọn quyền nào. Quyền đề nghị chưa phải quyền hiện hành.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 148,
+      "tag": "p",
+      "text": "Cần lý do từ 1 đến 1.000 ký tự. Không gửi lời mời làm Owner.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 182,
+      "tag": "p",
+      "text": "Lời mời đã chấp nhận không thể gửi lại hoặc thu hồi. Đổi quyền của thành viên trong danh sách Staff, không dùng quyền đề nghị cũ làm quyền hiện hành.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/features/store-workspace/components/StoreWorkspaceDrawers.tsx",
+      "line": 184,
+      "tag": "p",
+      "text": "Phát hành lại tạo lời mời phiên bản mới và vô hiệu liên kết cũ. Không đổi email người nhận, không kích hoạt thành viên.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/forecast/PlanningPage.tsx",
+      "line": 105,
+      "tag": "p",
+      "text": "DEV/QA minh họa — dữ liệu cố định, không chạy dự báo hay ghi dữ liệu thật.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/forecast/PlanningPage.tsx",
+      "line": 108,
+      "tag": "p",
+      "text": "Cần quyền xem kết quả kế hoạch, ngân sách và giá mua của cửa hàng hiện tại. Không hiển thị kết quả cũ hoặc tự chuyển cửa hàng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/forecast/PlanningPage.tsx",
+      "line": 109,
+      "tag": "p",
+      "text": "Đang đọc trạng thái kế hoạch…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/forecast/PlanningPage.tsx",
+      "line": 112,
+      "tag": "p",
+      "text": "Định danh trong URL chưa khớp kế hoạch đã đọc. Các thao tác trên kế hoạch cũ bị khóa.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/forecast/PlanningPage.tsx",
+      "line": 113,
+      "tag": "p",
+      "text": "Chưa biết máy chủ đã nhận yêu cầu hay chưa. Thử lại dùng nguyên nội dung và Idempotency-Key. Không tạo intent mới; tải lại trang, rời màn hình, đổi cửa hàng hoặc đăng nhập lại sẽ mất intent đang giữ trong bộ nhớ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/forecast/PlanningPage.tsx",
+      "line": 116,
+      "tag": "p",
+      "text": "Đã tạm dừng tự kiểm tra sau 60 lượt; máy chủ có thể vẫn đang xử lý. Không hủy hoặc tự chạy lại kế hoạch.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/home/HomePage.tsx",
+      "line": 177,
+      "tag": "p",
+      "text": "ShelfCash biến dữ liệu bán hàng và tồn kho thành dự báo nhu cầu, kế hoạch nhập hàng và những quyết định dễ hiểu cho doanh nghiệp F&B.",
+      "matches": [
+        {
+          "key": "home",
+          "path": "src/components/generated/ShelfCashMarketingHomepageGrayscale.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/pages/home/HomePage.tsx",
+      "line": 182,
+      "tag": "p",
+      "text": "Tập trung dữ liệu, theo dõi tồn kho và lập kế hoạch trong cùng một nơi.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/home/HomePage.tsx",
+      "line": 182,
+      "tag": "small",
+      "text": "Bán hàng · Tồn kho · Công thức",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/home/HomePage.tsx",
+      "line": 182,
+      "tag": "small",
+      "text": "Hiểu nhu cầu nguyên liệu sắp tới",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/home/HomePage.tsx",
+      "line": 182,
+      "tag": "small",
+      "text": "Xem đề xuất và cơ sở quyết định",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/import-history/ImportHistoryPage.tsx",
+      "line": 108,
+      "tag": "p",
+      "text": "Đang tải lịch sử nhập…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/import-history/ImportHistoryPage.tsx",
+      "line": 130,
+      "tag": "p",
+      "text": "Dữ liệu chưa tải được. Vui lòng thử lại.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.tsx",
+      "line": 71,
+      "tag": "p",
+      "text": "Thêm một hoặc nhiều file. Mỗi file vẫn giữ cấu trúc và ý nghĩa riêng.",
+      "matches": [
+        {
+          "key": "staff",
+          "path": "src/components/generated/ShelfCashInputFlowSTAFF.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/pages/inventory/InventoryPage.tsx",
+      "line": 103,
+      "tag": "p",
+      "text": "Đang tải tồn kho…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/login/LoginPage.tsx",
+      "line": 15,
+      "tag": "p",
+      "text": "TÀI KHOẢN SHELFCASH",
+      "matches": [
+        {
+          "key": "auth",
+          "path": "src/components/generated/ShelfCashNgNhPNgK.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/pages/login/LoginPage.tsx",
+      "line": 17,
+      "tag": "p",
+      "text": "Tiếp tục quản lý tồn kho và kế hoạch nhập hàng.",
+      "matches": [
+        {
+          "key": "auth",
+          "path": "src/components/generated/ShelfCashNgNhPNgK.tsx"
+        }
+      ],
+      "decision": "KEEP_EXACT_MATCH_CANDIDATE"
+    },
+    {
+      "file": "src/pages/store/StorePage.tsx",
+      "line": 35,
+      "tag": "p",
+      "text": "Đang đọc danh sách…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/store/StorePage.tsx",
+      "line": 36,
+      "tag": "p",
+      "text": "Giải quyết thay đổi chưa lưu hoặc yêu cầu đang chờ trước khi đổi cửa hàng.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/store/StorePage.tsx",
+      "line": 48,
+      "tag": "p",
+      "text": "DEV/QA minh họa — dữ liệu và thay đổi chỉ ở bộ nhớ; không ghi Backend hoặc gửi email thật.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/store/StorePage.tsx",
+      "line": 50,
+      "tag": "p",
+      "text": "Liên kết cửa hàng không hợp lệ.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/store/StorePage.tsx",
+      "line": 102,
+      "tag": "p",
+      "text": "Quyền truy cập chưa được xác minh lại nên thao tác thử lại đang bị khóa. Kết quả lần gửi đầu vẫn chưa biết; cần đối chiếu với hỗ trợ, không suy ra yêu cầu chưa được nhận.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/store/StorePage.tsx",
+      "line": 103,
+      "tag": "p",
+      "text": "Chưa biết kết quả yêu cầu trước. Thử lại giữ nguyên nội dung, key và version gốc. Refresh, rời màn hình hoặc đăng xuất sẽ mất intent ở bộ nhớ; không tạo yêu cầu mới khi chưa đối chiếu.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/today/TodayPage.tsx",
+      "line": 27,
+      "tag": "p",
+      "text": "Đang đọc tổng quan hiện tại…",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/today/TodayPage.tsx",
+      "line": 27,
+      "tag": "p",
+      "text": "Kết nối tài khoản để đọc tổng quan. Bản minh họa không tạo dữ liệu Hôm nay.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/today/TodayPage.tsx",
+      "line": 33,
+      "tag": "p",
+      "text": "Chưa có dữ liệu xác định quyết định đang chờ. Run gần nhất không mặc nhiên là quyết định cần xác nhận.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/pages/today/TodayPage.tsx",
+      "line": 34,
+      "tag": "p",
+      "text": "Chưa có dữ liệu tổng quan nhu cầu, rủi ro thiếu hàng và lịch nhận hàng cho 7 ngày tới.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/shared/UnderConstruction.tsx",
+      "line": 7,
+      "tag": "p",
+      "text": "Tính năng sẽ khả dụng trong bản cập nhật sau.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/shared/UnderConstruction.tsx",
+      "line": 10,
+      "tag": "p",
+      "text": "Tính năng sẽ khả dụng trong bản cập nhật sau.",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/shared/debug/DevelopmentTools.tsx",
+      "line": 80,
+      "tag": "small",
+      "text": "Development only",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    },
+    {
+      "file": "src/shared/flow/FlowDialog.tsx",
+      "line": 15,
+      "tag": "p",
+      "text": "Đóng và bỏ các thông tin đã nhập?",
+      "matches": [],
+      "decision": "KEEP_PENDING_SEMANTIC_OR_CONTRACT_REVIEW"
+    }
+  ]
+}
