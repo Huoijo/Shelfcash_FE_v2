@@ -17,6 +17,7 @@ Tài liệu được nhóm theo mục đích sử dụng; các báo cáo triển
 - [guides/](guides/README.md): hướng dẫn sử dụng theo vai trò/nghiệp vụ.
 - [sprints/](sprints/README.md): báo cáo triển khai, audit, state mapping và tech debt theo ID từng lượt; đọc kết luận tại đúng thời điểm của báo cáo.
 - [testing/](testing/README.md): quy trình kiểm thử và các inventory/verification receipts bằng JSON.
+- [integration-audit/](integration-audit/README.md): English discovery prompt, target-machine handoff, phase 0-8 workflow, and unexecuted coverage/defect/report templates. The current preparation assignment does not authorize testing.
 - [references/](references/README.md): tài liệu nghiệp vụ nguồn do người dùng cung cấp, giữ nguyên bytes.
 - [archive/](archive/README.md): tài liệu đối chiếu đã có nguồn hiện hành thay thế; giữ để tra cứu lịch sử.
 

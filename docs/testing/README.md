@@ -1,5 +1,9 @@
 # Kiểm thử và evidence
 
+## Integration audit preparation
+
+The [English integration audit workspace](../integration-audit/README.md) contains the original discovery prompt, target-machine handoff, environment/system/state/contract guidance, and COVERAGE_MATRIX/BUGS/REPORT templates. Current mode is PREPARATION_ONLY: no new execution results are claimed. Future discovery follows the [agent rule](../../.agents/rules/integration-audit.md) and requires a fresh target-host baseline; existing evidence below remains historical.
+
 ## Quy trình
 
 - [017 — Live BE/FE E2E protocol](017_Live_BE_FE_E2E_Protocol.md): Owner/Staff, scope, quyền, mutation safety, authoritative readback, coverage và exit criteria.
