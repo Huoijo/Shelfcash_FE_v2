@@ -36,6 +36,8 @@ export function createCapabilityReadState<K extends CapabilityReadOperation>(api
 }
 
 function definitelyRejected(error: unknown, operation: CapabilityWriteOperation): boolean {
+  // Assistant 409 can mean a live/unknown retained generation claim, including paid-provider uncertainty.
+  if (['AS01', 'AS03'].includes(operation) && error instanceof HttpError && error.status === 409) return false
   if (['A02', 'A06', 'A07'].includes(operation) && error instanceof HttpError && error.kind === 'contract' && error.problem?.code === 'EMAIL_DELIVERY_UNAVAILABLE' && error.status === 503) return true
   return error instanceof CapabilityInputError || error instanceof CsrfTokenUnavailableError ||
     (error instanceof HttpError && error.kind === 'contract' && error.status !== undefined && error.status >= 400 && error.status < 500 && ![408, 499].includes(error.status))

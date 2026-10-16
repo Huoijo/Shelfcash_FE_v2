@@ -1,0 +1,57 @@
+{
+  "date_utc": "2026-10-16T15:16:52.887009+00:00",
+  "scope": "Immediate mapping choices from unsaved classification in existing Owner/Staff structure resolver",
+  "design_source_audit": {
+    "project_id": "458079658328604672",
+    "owner_component": "460747146686242816",
+    "owner_revision": "461726308171411456",
+    "staff_component": "460747115572916224",
+    "staff_revision": "461725038614315008",
+    "mode": "CURRENT_SOURCE_CONTEXT; no browser/rendered acceptance or design mutation"
+  },
+  "checks": [
+    {
+      "command": "npm run test:import",
+      "exit_code": 0,
+      "passed": 143,
+      "added_cases": 8
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run lint",
+      "exit_code": 0,
+      "warnings": "2 existing set-state-in-effect warnings in unchanged files"
+    },
+    {
+      "command": "npm run check:import-wire",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "test_modes": [
+    "CONTROLLED_UNIT",
+    "REACT_SERVER_RENDER"
+  ],
+  "browser_interaction": "NOT_RUN",
+  "live_backend": "NOT_RUN",
+  "e2e": "NOT_RUN",
+  "screenshots": [],
+  "semantics": "Selection projects validated BE M03 schemas[].fields immediately; no write/provider call. Column confirmation requires saved classification and per-column M03 authority.",
+  "source_hashes": {
+    "src/features/import-data/importClassificationDraft.ts": "d20fb97666bbcd5a65144e0b1f4de5e4561c7e30cc90dae1cf041bc400a6df74",
+    "src/features/import-data/components/ImportResolveDrawers.tsx": "7188073d86e236a27f61e3fb4e86add56699df701d88ee4504ce31020ed3fa51",
+    "src/features/import-data/components/ImportResolutionEditor.tsx": "25e4d9402c344f5658c091d12f98a2c6314ffa406d56464b89a9934977330805",
+    "src/features/import-data/components/ImportFlow.tsx": "259dabd77bc1caadc3f75846be914c2af3087e3a2424b2ecebb8ff4c3b24a724",
+    "tests/import-mapping-ui.test.mjs": "4f9b2756da445bbe03036bffe3e9c19457b9ed32a211dd1fe20c43d355ce889e"
+  },
+  "log_hashes": {
+    "/tmp/shelfcash-classification-import-tests.log": "8bdfc130a736bcf5f5b0eae86513cd5b200a9184489878b879d56619abe28805",
+    "/tmp/shelfcash-classification-build.log": "1229222564dba774dd79c98e2823c242814a6982c4beb0a36e2257ef007e4117"
+  }
+}

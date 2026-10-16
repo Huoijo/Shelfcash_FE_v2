@@ -1,4 +1,5 @@
 import './frozen-policy.test.mjs'
+import './backend-handoff-020.test.mjs'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
@@ -20,10 +21,10 @@ const permission=()=>({request_id:id,store_id:id,requester_membership_id:id,requ
 const mq=()=>({path:{import_id:id},key,revision:'import/1',body:{action:'submit',reason:'Review this profile',profile_id:id,proposal_revision:'proposal/1',mapping_revision:'mapping/1'}})
 
 test('all published operations have callable typed services with exact method/path/status inventories',()=>{
- const spec=JSON.parse(readFileSync('contracts/016/openapi.main.json','utf8'))
+ const spec=JSON.parse(readFileSync('contracts/020/openapi.main.json','utf8'))
  const ids=[]
  for(const [path,verbs]of Object.entries(spec.paths))for(const [method,op]of Object.entries(verbs))if(op.operationId){ids.push(op.operationId);const def=capabilityOperations[op.operationId];assert.equal(def.path,path);assert.equal(def.method,method.toUpperCase());assert.deepEqual(def.statuses,Object.keys(op.responses).filter(s=>s.startsWith('2')).map(Number));assert.equal(typeof api.operations[op.operationId],'function')}
- assert.equal(ids.length,73);assert.deepEqual(Object.keys(capabilityOperations).sort(),ids.sort())
+ assert.equal(ids.length,76);assert.deepEqual(Object.keys(capabilityOperations).sort(),ids.sort())
 })
 test('client construction and state construction perform no requests',t=>{
  let calls=0;stub(t,async()=>{calls++;throw Error('Unexpected I/O')});const a=createBackendCapabilitiesApi(BASE)

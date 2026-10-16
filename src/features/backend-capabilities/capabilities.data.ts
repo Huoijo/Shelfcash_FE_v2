@@ -10,6 +10,7 @@ export type CapabilityCallOptions = {
   // Readers can pin successive pages without replacing captured evidence with latest state.
   snapshotId?: string
   submissionPin?: { submission_id: string; version: string; spec_digest: string }
+  assistantPin?: { store_id: string; evidence_version: string }
 }
 export type CapabilityServices = { [K in CapabilityOperation]: (input: CapabilityInput<K>, options?: CapabilityCallOptions) => Promise<CapabilityOutput<K>> }
 export class CapabilityInputError extends Error {
@@ -31,6 +32,11 @@ export function captureCapabilityInput<K extends CapabilityOperation>(operation:
   const record = input as Record<string, unknown>
   const body = isRecord(record.body) ? record.body : undefined
   const query = isRecord(record.query) ? record.query : undefined
+  if (['AS01', 'AS03'].includes(operation)) {
+    if (typeof body?.expected_evidence_version !== 'string' || !body.expected_evidence_version.trim()) throw new CapabilityInputError(operation, 'Assistant requires retained C03 response_version.')
+    if (isRecord(body.context) && (body.context.run_id !== (record.path as Record<string, unknown>).plan_id || body.context.evidence_version !== body.expected_evidence_version)) throw new CapabilityInputError(operation, 'Follow-up context belongs to a different run/evidence version.')
+    if (operation === 'AS03' && typeof body.question === 'string' && !body.question.trim()) throw new CapabilityInputError(operation, 'Question must not be blank.')
+  }
   if (typeof record.revision === 'string') quotedRevision(operation, record.revision)
   if (operation === 'N4' && (typeof record.revision === 'string') === (record.ifNoneMatch === '*')) throw new CapabilityInputError(operation, 'Budget requires exactly one explicit create or update precondition.')
   if (typeof record.invitationToken === 'string' && /[\r\n]/.test(record.invitationToken)) throw new CapabilityInputError(operation, 'Invitation proof cannot contain header control characters.')
@@ -54,6 +60,18 @@ function validateResponse<K extends CapabilityOperation>(operation: K, input: Ca
   const data = result.data
   if (!isRecord(data)) return protocol(operation, 'Missing response data.')
   const args = input as { path?: Record<string, unknown>; query?: Record<string, unknown>; body?: Record<string, unknown> }
+  if (['AS01', 'AS02', 'AS03'].includes(operation)) {
+    const answer = operation === 'AS03' ? data : data.result
+    if (isRecord(answer)) {
+      const identity = isRecord(answer.identity) ? answer.identity : answer
+      const version = operation === 'AS03' ? answer.evidence_version : identity.aggregate_digest
+      const expectedVersion = args.body?.expected_evidence_version ?? options.assistantPin?.evidence_version
+      if (identity.run_id !== args.path?.plan_id || (expectedVersion !== undefined && version !== expectedVersion) || (options.assistantPin && operation !== 'AS03' && identity.store_id !== options.assistantPin.store_id)) return protocol(operation, 'Assistant evidence belongs to another run, Store or retained version.')
+      if (args.body && (answer.locale !== args.body.locale || (args.body.option_id != null && answer.option_id !== args.body.option_id))) return protocol(operation, 'Assistant presentation does not match the requested locale/option.')
+      if (isRecord(answer.context) && (answer.context.run_id !== args.path?.plan_id || answer.context.evidence_version !== version)) return protocol(operation, 'Assistant follow-up context changed evidence.')
+    }
+    if (operation !== 'AS03' && ((data.status === 'completed') !== isRecord(data.result))) return protocol(operation, 'Summary status and retained result disagree.')
+  }
   const expected = { ...args.path }
   for (const key of ['store_id', 'import_id', 'file_id']) if (args.query?.[key] != null) expected[key] = args.query[key]
   if (['MQ01', 'N5'].includes(operation) && args.body) for (const key of ['profile_id', 'submission_id']) if (args.body[key] != null) expected[key] = args.body[key]
@@ -92,7 +110,7 @@ export function createBackendCapabilitiesApi(baseUrl: string) {
   if (!['https:', 'http:'].includes(parsed.protocol) || parsed.username || parsed.password || parsed.search || parsed.hash) throw new Error('Invalid API base URL.')
   const base = baseUrl.replace(/\/+$/, '')
   async function call<K extends CapabilityOperation>(operation: K, input: CapabilityInput<K>, options: CapabilityCallOptions = {}): Promise<CapabilityOutput<K>> {
-    options = { ...options, submissionPin: options.submissionPin ? { ...options.submissionPin } : undefined }
+    options = { ...options, submissionPin: options.submissionPin ? { ...options.submissionPin } : undefined, assistantPin: options.assistantPin ? { ...options.assistantPin } : undefined }
     const captured = captureCapabilityInput(operation, input)
     const definition = capabilityOperations[operation]
     const args = captured as { path?: Record<string, string>; query?: Record<string, unknown>; body?: unknown; key?: string; revision?: string; ifNoneMatch?: '*'; invitationToken?: string }
@@ -149,6 +167,8 @@ export function createBackendCapabilitiesApi(baseUrl: string) {
     permissions: { submit: operations.PR01, list: operations.PR02, read: operations.PR03, act: operations.PR04 },
     mapping: { submitOrWithdraw: operations.MQ01, list: operations.MQ02, read: operations.MQ03, decide: operations.N5 },
     exports: { list: operations.EX01, create: operations.N10, download: operations.N11, downloadRetained: downloadRetainedExport },
+    // Explicit calls only: AS02 never starts a generation; AS03 has no GET/J01 recovery.
+    assistant: { createSummary: operations.AS01, readSummary: operations.AS02, sendMessage: operations.AS03 },
     planning: {
       contextForRequest: (storeId: string, request: CapabilityInput<'C02'>['body'], options?: CapabilityCallOptions) => operations.C01({ path: { store_id: storeId }, query: { planning_request: planningQuery(request) } }, options),
       readinessForRequest: (storeId: string, request: CapabilityInput<'C02'>['body'], options?: CapabilityCallOptions) => operations.R01({ path: { store_id: storeId }, query: { actions: 'planning', planning_request: planningQuery(request) } }, options),

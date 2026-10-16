@@ -1,8 +1,8 @@
 # ShelfCash — Current Missing UI & Runtime Register v1
 
 Last reconciled: **16/10/2026**. General context: current engineering backlog sau implementation020. API-01–06 dùng canonical designs mới; trạng thái runtime chỉ theo code và controlled verification.
-Frontend checkout: dirty HEAD `2d43d9d0fbf02b06b73a04d37e231c93ba1e7b1b`; 019 baseline fingerprint `b8275c7a64712d504533f9426270e90139b23f812f65449c0ac05c70b1acf05a`; current020 evidence trong [020 receipt](../sprints/020/020_Closed_Design_Gap_Implementation.md).
-Backend contract: [main016](../../contracts/016/openapi.main.json), SHA256 `790443d80350cc597c7c06179309e43303ba558de34017ea1dd4113de71fc1ee`, supplied BE `869eaec914aa6905d6b935889afebe7d973004ae`, **73 operations / 66 paths**; không xác nhận deployed SHA hoặc `b0db90c`.
+Earlier 020 checkout: dirty HEAD `2d43d9d0fbf02b06b73a04d37e231c93ba1e7b1b`; 019 baseline fingerprint `b8275c7a64712d504533f9426270e90139b23f812f65449c0ac05c70b1acf05a`; current020 evidence trong [020 receipt](../sprints/020/020_Closed_Design_Gap_Implementation.md).
+Backend contract: capabilities now pins [main020](../../contracts/020/openapi.main.json), SHA256 `18fb4eabe469c69c817fcf5f0c5b4764c3feb1a886adb71b382c19b347147f7a`, supplied BE `d5cfbfb59de7c45bc08eb47129b5ba3919e05473`, **76 operations / 69 paths**. The 73 existing operations/schemas are unchanged; older feature pins remain main011/main016. Source-only handoff explicitly says runtime_deployed=false. [Afternoon integration receipt](../sprints/020/020_Backend_Handoff_Integration.md) supplements the earlier 020 evidence; neither proves deployment.
 MagicPath current020: project `458079658328604672`; Owner `461726308171411456`, Staff `461725038614315008`, Store `461722261150400512`, Invitations `461725062467305472`, Planning Setup `461721652229738496`, Results `461720833971347456`. Source và rendered previews của sáu revisions đã audit; hashes trong [020 verification](../testing/PASS_020_VERIFICATION.json). Notifications/Auth và các phần ngoài sáu gap giữ019 evidence, không claim audit mới cho mọi family.
 
 ## How to read this file
@@ -27,7 +27,7 @@ V1 là current planning source of truth. [FOUND_MISSING_UI.md](../FOUND_MISSING_
 
 Ưu tiên: **RT-02** là FE integration debt trên design đã có; **CR-01** là durable recovery dependency xuyên flow. API-03 đã có typed intent/global gate và production confirmations020. FM-002/003/007/013–016 được tách implementation khỏi dependency/verification; FM-006/008/012 giữ implemented scope. Không mở lại policy approval/permissions/source_only/unknown/IGNORE. Source semantics (PNK/NCT, recipe yield, pack basis, timezone/calendar) chỉ hỏi source owner khi file cụ thể thiếu evidence, không thành global Product blocker.
 
-Immediate work: [dependency-ordered tasks](#immediate-work-and-dependency-order). DESIGN queue: API-01–06. BE runtime limits: FM-001/004/005/010/011/013–016, CR-01/02, RT-01. RT-02/API-03 là FE gaps trên APIs đã có.
+Immediate work: [dependency-ordered tasks](#immediate-work-and-dependency-order). DESIGN follow-up: afternoon020 journal retention/logout/shared-device behavior and authorized Assistant result binding; API-01–06 retain their existing implementation/design statuses. BE runtime limits: FM-001/004/005/010/011/013–016, CR-01/02, RT-01. RT-02/API-03 là FE gaps trên APIs đã có.
 
 ## Current actionable FM items
 
@@ -84,7 +84,7 @@ Immediate work: [dependency-ordered tasks](#immediate-work-and-dependency-order)
 **Design:** READY · **Frontend:** PARTIAL · **Backend:** SUPPORTED · **Live verification:** CONTROLLED_ONLY
 **Owner:** FE · **Blocker category:** FE_IMPLEMENTATION
 
-- **Current state:** Shared scope/value/evidence và exact source-column replacement ack/reason đã có.
+- **Current state:** Shared scope/value/evidence và exact source-column replacement ack/reason đã có. User-requested classification draft now updates column options immediately from validated M03 `schemas[].fields`, before Save. Draft stays within the current import/sheet/revision drawer; unavailable/unsupported targets remain disabled. Column confirmation waits for explicit classification persistence and authoritative per-column M03 reload. [Implementation and current Owner/Staff design-source audit](../sprints/020/020_Classification_Draft_Options.md); 143 controlled Import tests pass, browser/live acceptance NOT_RUN for this change.
 - **Remaining gap:** Generic value-kind picker chưa đầy đủ descriptor validation/ergonomics; raw source_cells đã publish.
 - **Next action:** FE tighten documented type/nullable/input_sources/scopes trong controls hiện có; add negatives.
 - **Safe current behavior:** Không infer value/precision, drop source column hay reuse batch fact.
@@ -130,7 +130,7 @@ Immediate work: [dependency-ordered tasks](#immediate-work-and-dependency-order)
 ### FM-014 — Authenticated zero-Store bootstrap
 
 **Design:** READY · **Frontend:** IMPLEMENTED · **Backend:** PARTIAL · **Live verification:** CONTROLLED_ONLY
-**Owner:** FE + BE · **Blocker category:** RECOVERY_LIMIT, BACKEND_CAPABILITY
+**Owner:** FE + BE + Product/Design · **Blocker category:** RECOVERY_LIMIT, BACKEND_CAPABILITY, FE_IMPLEMENTATION
 
 - **Current state:** Conditional T03 name/timezone/currency, readback/exact replay và Store continuation đã có.
 - **Remaining gap:** Type/address hoặc universal negative creation proof chưa hỗ trợ.
@@ -170,11 +170,11 @@ Immediate work: [dependency-ordered tasks](#immediate-work-and-dependency-order)
 **Design:** NOT_REQUIRED · **Frontend:** PARTIAL · **Backend:** PARTIAL · **Live verification:** CONTROLLED_ONLY
 **Owner:** FE + BE · **Blocker category:** RECOVERY_LIMIT, BACKEND_CAPABILITY
 
-- **Current state:** Exact request/key/CAS/actor/Store/resource retained trong active memory/internal navigation.
-- **Remaining gap:** Reload/logout/session loss có thể mất intent; không generic authoritative negative reader.
-- **Next action:** BE durable status contract; FE reconnect bằng non-secret reference sau contract.
-- **Safe current behavior:** Không auto-retry/infer rollback/replacement sau lost evidence; operation-specific recovery only.
-- **Evidence:** [State](../../src/features/backend-capabilities/capabilities.state.ts), [retention](../../src/features/backend-capabilities/capabilities.react.ts), Import/Planning workflows; [019 recovery request](../../FE_ask/019_Freeze_Integration_Gaps.md#p1--mutation-proof-after-unknown-outcome).
+- **Current state:** Production callers retain request/key/CAS/actor/Store/resource in memory/internal navigation. Afternoon020 adds an exported opt-in [recovery service](../../src/features/backend-capabilities/recovery.service.ts), [IndexedDB journal](../../src/features/backend-capabilities/recovery.journal.ts) and BE-pinned 28-rule allowlist. Controlled tests cover durable-before-dispatch orchestration, exact replay, reload-style restoration, scope guards, storage failure and denied replay; the storage test double is in memory.
+- **Remaining gap:** No production caller rollout or native IndexedDB/browser acceptance yet; existing reload/logout/session loss can still lose production intent. Metadata-only/excluded bodies cannot be reconstructed; generic authoritative negative proof/cross-device discovery is still absent.
+- **Next action:** FE + Product/Design define retention/logout/shared-device behavior through current MagicPath, connect operation-specific scoped callers/readers, then run target-machine F5/close/reopen/disk/concurrency/live acceptance. The accepted journal direction does not require BE to invent a generic status endpoint first.
+- **Safe current behavior:** No automatic replay/new-key retry, silent expiry/purge, rollback inference or production persistence activation. Journaled dispatched failures remain unknown; PR01/PR04 409 can include lifecycle reconciliation effects. Logout is not cancellation.
+- **Evidence:** [State](../../src/features/backend-capabilities/capabilities.state.ts), [current runtime retention](../../src/features/backend-capabilities/capabilities.react.ts), [afternoon receipt](../sprints/020/020_Backend_Handoff_Integration.md), [accepted allowlist](../../contracts/020/recovery_journal.json), [follow-up](../../FE_ask/020_Backend_Handoff_Followup.md).
 
 ### CR-02 — Immutable friendly display projections
 
@@ -187,7 +187,7 @@ Immediate work: [dependency-ordered tasks](#immediate-work-and-dependency-order)
 - **Safe current behavior:** Không dùng latest catalogue/UUID làm historical name hoặc page length làm total.
 - **Evidence:** [BusinessFacts](../../src/features/import-data/components/ImportBusinessFacts.tsx), `EntityRefs`/`SourceEvidenceCell`/`PreviewSummary`; [display brief](../../FE_ask/013_Import_Display_Contract_Clarifications.md).
 
-CR-01 affects FM-001/005/007/010/011/013–016, resolver M04, N5, MQ01, I05 Review/Commit, T03, NF03, Planning C02 and other keyed writers. Desired capability (**proposal, not an existing endpoint**): `operation_id / idempotency_key → authorized authoritative status/readback → pending / succeeded / rejected / unknown`, with retention and exact actor/Store/resource association. A frontend-persisted operation reference may help reconnect; it is never business truth. Public token/email and upload recovery remain operation-specific. CR-02 affects resolver/Profile/Preview/notifications/history displays; supplied raw cells/contribution projections are not re-requested as absent.
+CR-01 affects FM-001/005/007/010/011/013–016, resolver M04, N5, MQ01, I05 Review/Commit, T03, NF03, Planning C02 and other keyed writers. Desired capability (**proposal, not an existing endpoint**): `operation_id / idempotency_key → authorized authoritative status/readback → pending / succeeded / rejected / unknown`, with retention and exact actor/Store/resource association. The accepted FE-owned allowlisted journal may help reconnect; it is never business truth. This generic lookup remains a proposed extension, not a prerequisite for the accepted operation-specific journal direction. Public token/email and upload recovery remain operation-specific. CR-02 affects resolver/Profile/Preview/notifications/history displays; supplied raw cells/contribution projections are not re-requested as absent.
 
 ## Backend-supported capabilities — canonical020 implementation
 
@@ -286,7 +286,7 @@ CR-01 affects FM-001/005/007/010/011/013–016, resolver M04, N5, MQ01, I05 Revi
 **Design:** MISSING · **Frontend:** NOT_IMPLEMENTED · **Backend:** MISSING · **Live verification:** NOT_RUN
 **Owner:** BE + PRODUCT · **Blocker category:** PRODUCT_DECISION, BACKEND_CAPABILITY, DESIGN
 
-- **Current state:** 019 mở MQ/D01; global Profiles/AI/What-if/Draft PO vẫn parked.
+- **Current state:** 019 mở MQ/D01; global Profiles/AI/What-if/Draft PO vẫn parked. Afternoon020 adds AS01–03 typed API/state only for retained-plan Assistant; no product caller, scope reopening or UI acceptance. Backend MISSING here refers to the full parked workspace expansion, not these supplied Assistant endpoints.
 - **Remaining gap:** Runtime contracts/adequate full-scope action design thiếu, nhất là downstream PO.
 - **Next action:** PRODUCT chỉ explicit reopen; BE/DESIGN chốt contracts/interactions sau đó.
 - **Safe current behavior:** Giữ construction/disabled entries; PDF/N6/C05/C08 vẫn riêng; layout/weather/combo imports là expansion.
@@ -392,15 +392,16 @@ Planning supplied-request R01/body fence and N9 captured budget are also impleme
 
 1. **FE — RT-02 sealed Analyze retry:** existing failed/retry design đủ; nối published I03 explicit terminal retry với fresh CAS/source set/current allowed_actions. Lost ACK vẫn recovery của original intent; không unseal/thay bytes.
 2. **FE — FM-009 / TD-01:** descriptor validation/ergonomics và full visual/a11y coverage trong controls có sẵn. Không cần invent replacement workspace.
-3. **FE + BE — LV-01:** controlled checks020 không phải live acceptance; cần bounded deployed Store/account/worker/mail evidence theo017. CR-01 durable recovery và CR-02 projections là dependencies riêng.
+3. **FE + Product/Design — CR-01 / Assistant boundary:** [afternoon020](../sprints/020/020_Backend_Handoff_Integration.md) prepares allowlisted durable recovery and AS01–03 without product callers. Audit current MagicPath and connect scoped callers after retention/shared-device decisions; native IndexedDB and live acceptance remain NOT_RUN.
+4. **FE + BE — LV-01:** controlled checks020 không phải live acceptance; cần bounded deployed Store/account/worker/mail evidence theo017. CR-01 durable recovery và CR-02 projections là dependencies riêng.
 
-Waiting on BE: immediate create+bind; source-level period/display projections; accepted-byte replace/delete/unseal; separate Preview decisions; durable/negative outcome proof. SC020-01–03 là design/contract discrepancies đã ghi cách xử lý an toàn, không policy ambiguity. API-01–06 không còn waiting-on-design trong supported scope. SC-01 vẫn parked.
+Waiting on BE: immediate create+bind; source-level period/display projections; accepted-byte replace/delete/unseal; separate Preview decisions; generic negative-outcome proof as a proposed extension. The accepted allowlisted journal direction is available; its production rollout is FE/Product/Design work. SC020-01–03 là design/contract discrepancies đã ghi cách xử lý an toàn, không policy ambiguity. API-01–06 không còn waiting-on-design trong supported scope. SC-01 vẫn parked.
 
 ## Next missing UI audit — 020
 
-[73-operation reconciliation](../testing/PASS_020_CAPABILITY_AUDIT.json) so sánh published capabilities, reachable routes/adapters và canonical designs. I03 RT-02 và M04 FM-009 là **PARTIAL_UI** có design; supported D01 sections, retained recipe changes và remaining service families có callers. Dedicated infrastructure workspaces là **NOT_REQUIRED**, health là **BACKEND_ONLY_INTERNAL**, SC-01 là **PARKED_PRODUCT_SCOPE**.
+Earlier [73-operation reconciliation](../testing/PASS_020_CAPABILITY_AUDIT.json) remains historical. The current [76-operation service inventory](../testing/BACKEND_CAPABILITY_COVERAGE.json) adds AS01–03 at the API/state boundary only; it is not an updated UI audit. The earlier reconciliation so sánh published capabilities, reachable routes/adapters và canonical designs. I03 RT-02 và M04 FM-009 là **PARTIAL_UI** có design; supported D01 sections, retained recipe changes và remaining service families có callers. Dedicated infrastructure workspaces là **NOT_REQUIRED**, health là **BACKEND_ONLY_INTERNAL**, SC-01 là **PARKED_PRODUCT_SCOPE**.
 
-**NO ACTIVE MISSING UI FOUND** ngoài supported designs đang implement, adequate-design FE debt, BE gaps và parked/not-required scope. Không tạo next-screen spec hoặc MagicPath worker prompt giả. Danh sách conflict và limitations chi tiết tại020; không đổi historical register.
+Earlier020 audit conclusion: **NO ACTIVE MISSING UI FOUND** ngoài supported designs đang implement, adequate-design FE debt, BE gaps và parked/not-required scope. Afternoon020 performs no new UI audit; recovery rollout/Assistant binding still require current MagicPath review and cannot be marked design-approved from this historical conclusion. Không tạo next-screen spec hoặc MagicPath worker prompt giả. Danh sách conflict và limitations chi tiết tại020; không đổi historical register.
 
 ## Reconciliation evidence / maintenance
 

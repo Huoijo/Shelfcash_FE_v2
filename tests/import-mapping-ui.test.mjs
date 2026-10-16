@@ -4,6 +4,8 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { ImportMapping, ImportProfileReview } from '../src/features/import-data/components/ImportMapping'
 import { ImportResolutionEditor } from '../src/features/import-data/components/ImportResolutionEditor'
+import { MappingEditor } from '../src/features/import-data/components/ImportResolveDrawers'
+import { classificationDraftOptions, classificationDraftScope } from '../src/features/import-data/importClassificationDraft'
 import { ImportDomainReview } from '../src/features/import-data/components/ImportDomainReview'
 import { ImportPreview } from '../src/features/import-data/components/ImportPreview'
 import { ImportFlow } from '../src/features/import-data/components/ImportFlow'
@@ -49,6 +51,76 @@ const renderMapping = (overrides = {}) => renderToStaticMarkup(createElement(Imp
   canPropose: true, onSelectSheet: noop, onFilter: noop, onLoadOptions: noop, onLoadSheetOptions: noop,
   onConfirm: noop, onResolve: noop, onLoadMore: noop, ...overrides,
 }))
+
+const classificationFixture=()=>{
+  const current=summary();current.sheets[0].selected_type=null
+  const inventory={...field,key:'inventory_count.quantity',label:'Số lượng kiểm kê từ BE',support:'source_only'}
+  const catalogue={...options,schema:null,options:[],schemas:[...options.schemas,{schema_id:'inventory_count',label:'Kiểm kê từ BE',description:'Đếm thực tế',fields:[inventory]}]}
+  const draft={scope:classificationDraftScope(current,id(3)),sheetType:'sales',reason:'Nguồn bán hàng',acknowledged:false}
+  return {current,catalogue,draft,inventory}
+}
+test('classification selection immediately projects server catalogue fields before saving or requesting anything',t=>{
+  t.mock.method(globalThis,'fetch',()=>{throw Error('Selection must not dispatch')})
+  const {current,catalogue,draft}=classificationFixture(),before=structuredClone(catalogue)
+  const sales=classificationDraftOptions(current,id(3),draft,catalogue)
+  assert.equal(sales.pending,true);assert.deepEqual(sales.options.options.map(o=>o.key),['sales.unit'])
+  const inventory=classificationDraftOptions(current,id(3),{...draft,sheetType:'inventory_count'},catalogue)
+  assert.deepEqual(inventory.options.options.map(o=>o.key),['inventory_count.quantity'])
+  assert.equal(inventory.options.options[0].support,'source_only')
+  assert.deepEqual(catalogue,before);assert.equal(current.sheets[0].selected_type,null)
+})
+test('classification draft updates actual column dropdown and removes the previous schema target',()=>{
+  const {current,catalogue,draft}=classificationFixture()
+  const preview=classificationDraftOptions(current,id(3),{...draft,sheetType:'inventory_count'},catalogue)
+  for(const selectedIssue of [issue(),{...issue(),status:'unmatched',target_field:null}]){
+    const html=renderToStaticMarkup(createElement(MappingEditor,{issue:selectedIssue,summary:current,options:preview.options,classificationPending:preview.pending,disabled:false,onConfirm:noop,onResolve:noop,onProposal:noop}))
+    assert.match(html,/Số lượng kiểm kê từ BE/);assert.doesNotMatch(html,/value="sales\.unit"/)
+    assert.match(html,/<option value="" selected="">Chọn trường/)
+    assert.match(html,/Lưu phân loại trước khi xác nhận ghép cột/)
+  }
+})
+test('classification controlled editor retains chosen type/reason while navigating mapping rows',()=>{
+  const {current,catalogue,draft}=classificationFixture()
+  const value={...draft,sheetType:'inventory_count',reason:'Giữ bằng chứng kiểm kê'}
+  const html=renderToStaticMarkup(createElement(ImportResolutionEditor,{issue:issue('classification'),options:catalogue,disabled:false,onResolve:noop,classificationDraft:{value,onChange:noop}}))
+  assert.match(html,/<option value="inventory_count" selected="">Kiểm kê từ BE/)
+  assert.match(html,/Giữ bằng chứng kiểm kê/)
+  assert.match(html,/Đếm thực tế/)
+  assert.equal(current.sheets[0].selected_type,null)
+})
+test('classification draft cannot reuse another sheet, import or mapping revision',()=>{
+  const {current,catalogue,draft}=classificationFixture()
+  for(const scoped of [{...draft,scope:classificationDraftScope(current,id(30))},{...draft,scope:classificationDraftScope({...current,import_id:id(99)},id(3))},{...draft,scope:classificationDraftScope({...current,mapping_revision:'new'},id(3))}]){
+    const result=classificationDraftOptions(current,id(3),scoped,catalogue)
+    assert.equal(result.pending,false);assert.equal(result.options,catalogue)
+  }
+})
+test('classification changed without coherent catalogue never falls back to stale schema fields',()=>{
+  const {current,catalogue,draft}=classificationFixture()
+  for(const descriptor of [undefined,{...catalogue,schema_context_id:id(33)},{...catalogue,mapping_revision:'old'},{...catalogue,unsupportedFields:['unknown']}]){
+    const result=classificationDraftOptions(current,id(3),draft,descriptor)
+    assert.equal(result.pending,true);assert.equal(result.options,undefined)
+  }
+})
+test('classification blank, IGNORE or absent schema clears candidate fields rather than guessing',()=>{
+  const {current,catalogue,draft}=classificationFixture()
+  for(const sheetType of ['','IGNORE','weather'])assert.deepEqual(classificationDraftOptions(current,id(3),{...draft,sheetType},catalogue).options.options,[])
+})
+test('saved classification keeps per-column availability and cancel drops all draft projections',()=>{
+  const {current,catalogue,draft}=classificationFixture();current.sheets[0].selected_type='sales'
+  const column={...catalogue,schema:'sales',options:[{...field,available:false,reason_code:'TARGET_ALREADY_USED'}]}
+  const same=classificationDraftOptions(current,id(3),draft,column)
+  assert.equal(same.pending,false);assert.equal(same.options,column);assert.equal(same.options.options[0].available,false)
+  const cancelled=classificationDraftOptions(current,id(3),null,column)
+  assert.equal(cancelled.pending,false);assert.equal(cancelled.options,column)
+})
+test('draft catalogue availability and unsupported fields remain disabled in the actual selector',()=>{
+  const {current,catalogue,draft}=classificationFixture()
+  catalogue.schemas[0].fields=[{...field,available:false},{...field,key:'sales.unsupported',support:'unsupported'}]
+  const preview=classificationDraftOptions(current,id(3),draft,catalogue)
+  const html=renderToStaticMarkup(createElement(MappingEditor,{issue:issue(),summary:current,options:preview.options,classificationPending:true,disabled:false,onConfirm:noop,onResolve:noop,onProposal:noop}))
+  assert.match(html,/<option value="sales.unit" disabled=""/);assert.match(html,/<option value="sales.unsupported" disabled=""/)
+})
 
 test('mapping UI joins flat files/top-level sheets, escapes evidence and never fabricates filter counts', () => {
   const html = renderMapping()

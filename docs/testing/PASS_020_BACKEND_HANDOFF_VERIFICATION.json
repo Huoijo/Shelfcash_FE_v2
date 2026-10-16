@@ -1,0 +1,275 @@
+{
+  "date_utc": "2026-10-16T10:30:55.121092+00:00",
+  "scope": "Sprint020 afternoon BE handoff: typed Assistant and opt-in durable recovery boundary; no production UI rollout",
+  "frontend_head": "951ac2d07631f23927ba28da1a612619b4731d86",
+  "backend_source_sha": "d5cfbfb59de7c45bc08eb47129b5ba3919e05473",
+  "backend_runtime_deployed": false,
+  "openapi_sha256": "18fb4eabe469c69c817fcf5f0c5b4764c3feb1a886adb71b382c19b347147f7a",
+  "handoff_manifest_entries_verified": 155,
+  "historical_contract_files_preserved": 252,
+  "historical_register_sha256": "3017bfd528eccd22988ff7851793bfec5babd69eb1aeb6a942a529967828fa9e",
+  "inventory": {
+    "operations": 76,
+    "paths": 69,
+    "added_operations": [
+      "AS01",
+      "AS02",
+      "AS03"
+    ],
+    "old_operations_and_schemas_changed": 0,
+    "recovery_operation_phase_rules": 28
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "controlled_test_count": null,
+      "output_sha256": "58157317bd7e285ad9e1135369c1093731dd1151e37d6896adb48e6e1d56a980",
+      "summary": [
+        "dist/assets/index-D9IrVxoq.js          1,467.15 kB │ gzip: 351.10 kB",
+        "",
+        "[plugin builtin:vite-reporter] ",
+        "(!) Some chunks are larger than 500 kB after minification. Consider:",
+        "- Using dynamic import() to code-split the application",
+        "- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting",
+        "- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.",
+        "✓ built in 241ms"
+      ]
+    },
+    {
+      "command": "npm run check:capabilities-wire",
+      "exit_code": 0,
+      "controlled_test_count": null,
+      "output_sha256": "2800cc4d8ad2daf94def0c4836a69351eca65ec9d0dbb95d8d12682d4064edca",
+      "summary": [
+        "",
+        "> shelfcash-fe-v2@0.0.0 check:capabilities-wire",
+        "> node scripts/sync-capabilities-wire.mjs --check",
+        "",
+        "Capabilities wire PASS: 76 operations, 489 schemas"
+      ]
+    },
+    {
+      "command": "npm run check:contracts",
+      "exit_code": 0,
+      "controlled_test_count": null,
+      "output_sha256": "c86bbeaacb2d21b3198cefed03f82296a923d129c2b5978388b7d1d1e84ba7f9",
+      "summary": [
+        "",
+        "> shelfcash-fe-v2@0.0.0 check:contracts",
+        "> node scripts/check-contracts.mjs",
+        "",
+        "baseline: 54 operations / 50 paths",
+        "import: 73 operations / 66 paths",
+        "capabilities: 76 operations / 69 paths",
+        "Contract consolidation PASS: 252 historical files preserved byte-for-byte; slice pins verified"
+      ]
+    },
+    {
+      "command": "npm run check:import-wire",
+      "exit_code": 0,
+      "controlled_test_count": null,
+      "output_sha256": "cdd111e483e5d244e7f93f439d282b5c68c4e0c4ec9b79853c278c7d7c1fd53a",
+      "summary": [
+        "",
+        "> shelfcash-fe-v2@0.0.0 check:import-wire",
+        "> node scripts/check-import-wire.mjs --check",
+        "",
+        "Import wire drift gate PASS: 181 schemas, 181 types; SHA256 64011b37f41bf5f7f8ab6636b6047b2e68a413e5ac5850032c0f299d739172d4"
+      ]
+    },
+    {
+      "command": "npm run check:operations-wire",
+      "exit_code": 0,
+      "controlled_test_count": null,
+      "output_sha256": "87df4370fa10e0bed6256a5359355127317f778b0e14255bb4f73b3d08451d71",
+      "summary": [
+        "",
+        "> shelfcash-fe-v2@0.0.0 check:operations-wire",
+        "> node scripts/check-operations-wire.mjs --check",
+        "",
+        "Operations wire PASS: 96 schemas"
+      ]
+    },
+    {
+      "command": "npm run check:planning-wire",
+      "exit_code": 0,
+      "controlled_test_count": null,
+      "output_sha256": "549df5a38c94b779aea4fdd40429742828a4a2bc9a67a7d4f4a3e94b9a98dddf",
+      "summary": [
+        "",
+        "> shelfcash-fe-v2@0.0.0 check:planning-wire",
+        "> node scripts/check-planning-wire.mjs --check",
+        "",
+        "Planning wire drift gate PASS: 84 schemas, 84 types; SHA256 8be08434fb0748a177089caa668d1b04fd19844b41376c67c9850ccc2cb52e8f"
+      ]
+    },
+    {
+      "command": "npm run check:recovery-policy",
+      "exit_code": 0,
+      "controlled_test_count": null,
+      "output_sha256": "294739ff64ea91694b7bfba956418c48e9dc53a4f78c04334c3c11db0e3d2771",
+      "summary": [
+        "",
+        "> shelfcash-fe-v2@0.0.0 check:recovery-policy",
+        "> node scripts/sync-recovery-policy.mjs --check",
+        "",
+        "Recovery policy PASS: 28 operation/phase rules"
+      ]
+    },
+    {
+      "command": "npm run check:store-wire",
+      "exit_code": 0,
+      "controlled_test_count": null,
+      "output_sha256": "8183287a72e0ce1076af20f865c62d37fb0c65188f487a3859495334d229f315",
+      "summary": [
+        "",
+        "> shelfcash-fe-v2@0.0.0 check:store-wire",
+        "> node scripts/check-store-wire.mjs --check",
+        "",
+        "Store Workspace wire drift gate PASS: 25 schemas, 25 types; SHA256 1bc0aa5a9a200b1de0bea8031952bdd43037dc5412f22c7d19cd57bae94b1dd8"
+      ]
+    },
+    {
+      "command": "npm run lint",
+      "exit_code": 0,
+      "controlled_test_count": null,
+      "output_sha256": "6c7f4a44564bdb2b81c1a011c14891d3aad4923af693213da3d2e38a14e7fdc4",
+      "summary": [
+        "",
+        "> shelfcash-fe-v2@0.0.0 lint",
+        "> oxlint",
+        "",
+        "src/features/auth/OnboardingPages.tsx:48:140: warning react(set-state-in-effect): Calling setState synchronously within an effect can trigger cascading renders help: Effects should synchronize React with external systems. Calling setState synchronously inside an effect starts another render and is usually unnecessary. Derive the value during render, initialize state directly, or update it from the event that caused the change. Use an effect only when synchronizing with an external system.",
+        "src/features/operations/RecipeSchedulePage.tsx:40:105: warning react(set-state-in-effect): Calling setState synchronously within an effect can trigger cascading renders help: Effects should synchronize React with external systems. Calling setState synchronously inside an effect starts another render and is usually unnecessary. Derive the value during render, initialize state directly, or update it from the event that caused the change. Use an effect only when synchronizing with an external system."
+      ]
+    },
+    {
+      "command": "npm run test:auth",
+      "exit_code": 0,
+      "controlled_test_count": 26,
+      "output_sha256": "0f511e430970d5b065dc9edd0854e038e06474216316bb4feda0eb3af53d0491",
+      "summary": [
+        "ℹ tests 26",
+        "ℹ suites 0",
+        "ℹ pass 26",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 1277.948167"
+      ]
+    },
+    {
+      "command": "npm run test:capabilities",
+      "exit_code": 0,
+      "controlled_test_count": 83,
+      "output_sha256": "fea2aefb8802b2b605e5e141deb1b01db44d2ec86b7c7994ae8ce10d218c71b0",
+      "summary": [
+        "ℹ tests 83",
+        "ℹ suites 0",
+        "ℹ pass 83",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 336.327417"
+      ]
+    },
+    {
+      "command": "npm run test:import",
+      "exit_code": 0,
+      "controlled_test_count": 135,
+      "output_sha256": "bb3af6d73389ec3f7468092f08db629efd690ec8cb60b8a6982e33a3dc673776",
+      "summary": [
+        "ℹ tests 135",
+        "ℹ suites 0",
+        "ℹ pass 135",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 1215.574834"
+      ]
+    },
+    {
+      "command": "npm run test:operations",
+      "exit_code": 0,
+      "controlled_test_count": 30,
+      "output_sha256": "ba0a6fd6ec29ea0f2a3789bb13c1a3d4fc20be9eb502e0162f0ecf2f75a8b428",
+      "summary": [
+        "ℹ tests 30",
+        "ℹ suites 0",
+        "ℹ pass 30",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 3623.583375"
+      ]
+    },
+    {
+      "command": "npm run test:planning",
+      "exit_code": 0,
+      "controlled_test_count": 79,
+      "output_sha256": "3881ea380727b6872d381ee7637b50c4d412c01738b75c20d3e63f5fdc024e90",
+      "summary": [
+        "ℹ tests 79",
+        "ℹ suites 0",
+        "ℹ pass 79",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 1386.434416"
+      ]
+    },
+    {
+      "command": "npm run test:store",
+      "exit_code": 0,
+      "controlled_test_count": 118,
+      "output_sha256": "3330a0fd90574b1696babfd40ede4b6bcb7a38ac8f1f5b15a7d34ceb2720f61d",
+      "summary": [
+        "ℹ tests 118",
+        "ℹ suites 0",
+        "ℹ pass 118",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 994.299917"
+      ]
+    }
+  ],
+  "controlled_tests_total": 471,
+  "added_afternoon_tests": 22,
+  "recovery_test_storage": "IN_MEMORY_TEST_DOUBLE; native IndexedDB adapter compiled but NOT browser-executed",
+  "live_backend": "NOT_RUN",
+  "browser_e2e": "NOT_RUN",
+  "native_indexeddb": "NOT_RUN",
+  "magicpath_audit": "NOT_RUN_THIS_PASS; no UI/interaction edits",
+  "production_recovery_callers": "NOT_CONNECTED; existing memory-based callers unchanged",
+  "assistant_product_callers": "NOT_CONNECTED; API/state only",
+  "warnings": [
+    "Existing set-state-in-effect warnings in unchanged OnboardingPages.tsx and RecipeSchedulePage.tsx",
+    "Build large-chunk warning"
+  ],
+  "source_hashes": {
+    "src/features/backend-capabilities/recovery.policy.ts": "a129000cfcf0787a372a452550f32710cd6700712468a98f68b75b33788349ff",
+    "src/features/backend-capabilities/recovery.service.ts": "3cd0ce2931607add7308f63c8db899b8ecac4e4b22a467c5ef6cdae502c95e30",
+    "src/features/backend-capabilities/capabilities.react.ts": "fb5b7c42bad1db47661cf231e29c14880a90e5e39e799dfe899614a4f5a526e4",
+    "src/features/backend-capabilities/recovery.journal.ts": "b75a4e1779d0f89adfc7e83f53c529b2d8a13b0afc547e99d4fbd795931008d5",
+    "src/features/backend-capabilities/capabilities.state.ts": "61b0e740dbb5ab475c8d1be28b8bd10b7f786fa215a124a1f96cff4738d06c78",
+    "src/features/backend-capabilities/capabilities.data.ts": "4295327244de9f9e735fd4a7bc0abf689a65a620a1c53356a50f98308b43df08",
+    "src/features/backend-capabilities/index.ts": "370f3b28b4d9767b2ec7f46366b70eb997a99a8bd3e5937dd8a54d8d56e27181",
+    "src/features/backend-capabilities/capabilities.wire.ts": "04b07636dc49b5a68142dd1ee762be5f261cf095b75ece5dfe47e5da5e6ee8fb",
+    "src/features/backend-capabilities/capabilities.validation.ts": "fe71c78abe9dad8e0aaa6b975b1983916945a8d469b9e6a24ae39816b10e4aca",
+    "tests/backend-handoff-020.test.mjs": "42efcbf0bed318bdc87956046e3f8ad4707db64e41cf828cf1689ff112797f05",
+    "tests/backend-capabilities.test.mjs": "2ce01fb4e36c46bffde235dbfdccb765fc7670ac11e51bcd249a0a854630f678",
+    "scripts/sync-recovery-policy.mjs": "7acf20c9a7aa02f7ac89b07a6ec6ec8d3dcee79dae4d50e1d40a59438ce6d60b",
+    "scripts/sync-capabilities-wire.mjs": "b6ef88732d47c49bb9b81de5d5b4792bb253a8750bea26426a0a91cc47551edc",
+    "scripts/wire-source.mjs": "46041acaca5a4b4eca4f6228957c541eaeaf6a9f34bc7071f71fd33607c57150",
+    "scripts/check-contracts.mjs": "5ae39078489aefba89d4e2f5f5a0583a1f9b4b13cb35b51f2ebc4e0bf1bf60c5",
+    "package.json": "64135e43acc3225f11def694c29ab450afa50cc25913d329b0c480fe84d0e6ff"
+  }
+}

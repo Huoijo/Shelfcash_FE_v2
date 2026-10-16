@@ -11,9 +11,11 @@ The [English integration audit workspace](../integration-audit/README.md) contai
 
 ## Inventory và verification receipts
 
+- [PASS_020_CLASSIFICATION_DRAFT_VERIFICATION.json](PASS_020_CLASSIFICATION_DRAFT_VERIFICATION.json): immediate classification-dependent mapping choices; 143 controlled Import tests, browser/live NOT_RUN.
 - [LIVE_E2E_DESIGN_INVENTORY.json](LIVE_E2E_DESIGN_INVENTORY.json): baseline danh mục thiết kế/điều kiện; không phải chứng nhận live coverage.
 - [BACKEND_CAPABILITY_COVERAGE.json](BACKEND_CAPABILITY_COVERAGE.json): inventory service/state được generator pin với contract; `npm run check:capabilities-wire` kiểm tra artifact này.
 - [FREEZE_019_DESIGN_AUDIT.json](FREEZE_019_DESIGN_AUDIT.json) và [FREEZE_019_VERIFICATION.json](FREEZE_019_VERIFICATION.json): design pins, source fingerprints và kết quả tại freeze019.
+- [PASS_020_BACKEND_HANDOFF_VERIFICATION.json](PASS_020_BACKEND_HANDOFF_VERIFICATION.json): afternoon020 offline tests and integrity checks; native IndexedDB/browser/live acceptance NOT_RUN.
 - [PASS_020_CAPABILITY_AUDIT.json](PASS_020_CAPABILITY_AUDIT.json) và [PASS_020_VERIFICATION.json](PASS_020_VERIFICATION.json): audit 73 operations và evidence của implementation020.
 
 Các JSON trên được giữ nguyên bytes trong lần sắp xếp thư mục. Kết quả chỉ có giá trị với source, contract, môi trường và phạm vi đã ghi. Controlled/mock/API-only pass không đồng nghĩa BE live acceptance. Path cũ trong frozen receipts được tra qua [manifest di chuyển](../PATHS.json).

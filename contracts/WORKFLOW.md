@@ -10,6 +10,14 @@ Sprint 016 · 16/10/2026. This reconciles v1/v2 workflow facts with the supplied
 - Newer prose can contain older checkpoint paragraphs. Apply the handoff's [document mismatch register](../shelfcash_FE_handoff_869eaec9/verification/DOC_MISMATCHES_VI.md) and current source/DTO evidence; do not rewrite older documents to pretend those facts existed earlier.
 - BE's user-supplied response for `b0db90c` is reported evidence. This workspace pins supplied `869eaec9`; it does not relabel it as `b0db90c` or assert live deployment. Historical handoff health/OpenAPI/CORS checks did not verify business mutations or worker health.
 
+## Afternoon 020 update — current additive authority
+
+Capabilities now pins source-only BE `d5cfbfb59de7c45bc08eb47129b5ba3919e05473` under [contracts/020](020/provenance.json): 76 operations / 69 paths. All old operations/schemas are unchanged; existing feature pins stay explicit. The older narrative below is contextualized by [the afternoon receipt](../docs/sprints/020/020_Backend_Handoff_Integration.md) and current code. No BE deployment, new UI audit or live acceptance is claimed.
+
+The accepted FE journal direction is operation/phase allowlisted, durable-before-dispatch, current actor/Store/session scoped and default-deny. Full-body replay preserves original presence/order/key/CAS; metadata-only bodies cannot be recovered from hashes. Never persist credentials, proof tokens, raw files/cells or unreviewed chat text. An opt-in IndexedDB/service boundary exists; production callers still use memory pending retention/logout/shared-device design and native-browser acceptance. No generic lookup/negative proof, silent purge or automatic retry is introduced. PR01/PR04 409 may reconcile lifecycle audits; a denied replay does not prove no effect.
+
+AS01 creates/replays a summary explicitly; AS02 reads a retained generation without starting work; AS03 supports original same-key/body POST replay only, with no GET message/J01 recovery. Require current planning.result.read + budget.read + procurement.cost.read; use retained C03 response_version for expected_evidence_version. Preserve diagnostics, references, structured clarification and unknown values. Model-off fallback is supported; HTTP200 does not prove model execution. Version/provider/claim policy stays BE-owned. Standalone AI/What-if/PO remain parked. Legacy import registry prose does not replace the current 15 schemas.
+
 ## Authentication and Store
 
 Cookie-backed session is authoritative; A01 login must be followed by A03 confirmation. Protected mutations use current CSRF, Origin and operation-specific key/CAS. No fabricated bearer token, Store ID or mock fallback.
@@ -26,7 +34,7 @@ Each Store has current membership/grants. Read permission is not write permissio
 4. M04 updates typed interpretation/resolution with mapping CAS, not approval. Unknown differs from null, zero, false and explicit IGNORE. Identity binds exact same-Store entities; conversions require declared exact ratios. IMPORT_VALUE is per-batch; PROFILE_CONSTANT affects reusable spec. New entity proposal ACK is not entity creation.
 5. N5 Owner approval covers one complete valid full spec; eligible deterministic RULE candidates can be approved together with missing_fields empty and become auto_mapped. Staff cannot approve; Owner may approve their own proposal. No automatic cross-profile bulk decision. MQ submit/withdraw, Store/own queue and pinned detail exist in newer BE; 019 wires submission/withdrawal/queue/detail/evidence and Staff-only request_changes context; exact affected resolver targets remain unavailable. Notifications locate work; they neither approve nor commit.
 6. I05 Preview is pinned to source/mapping/read-set/evidence; after reading all coherent pages and resolving supported row decisions, explicit confirm_review persists a separate server confirmation. A separate explicit commit rechecks current authority and facts, writes atomically, and is complete only with retained I06 evidence. 202 and J01 HTTP 200 are not sufficient success conditions.
-7. Pure inserts/NO_OP may omit/null commit reason in BE. Correction/amendment and specific row decisions require justification. FE still has the older always-required reason UI pending design reconciliation (FM-003); this bounded fallback is not new BE policy.
+7. Pure inserts/NO_OP may omit/null commit reason in BE. Correction/amendment and specific row decisions require justification. Current earlier020 UI already supports the conditional reason requirement from complete pinned Preview evidence (FM-003); preserve that implementation and do not regress it based on the BE audit of older FE019.
 
 ## Domain invariants retained from v1/v2
 
@@ -44,4 +52,4 @@ Default and supplied planning requests have distinct assessment scope. Missing d
 
 ## Current FE scope and outstanding work
 
-[Sprint 016](../docs/016_Integration_Sprint.md) records implemented slices, deferred integration/design work and exact verification. [FE_ask/016](../FE_ask/016_Integration_Design_and_Verification.md) requests only missing evidence/design/scope clarification, not APIs already supplied. [User flow guide](../docs/IMPORT_FLOW_OWNER_STAFF_GUIDE.md) describes actual buttons and recovery. Existing underconstruction Today/AI/What-if/PO flows remain outside this implementation.
+[Sprint 016](../docs/016_Integration_Sprint.md) records implemented slices, deferred integration/design work and exact verification. [FE_ask/016](../FE_ask/016_Integration_Design_and_Verification.md) requests only missing evidence/design/scope clarification, not APIs already supplied. [User flow guide](../docs/guides/IMPORT_FLOW_OWNER_STAFF_GUIDE.md) describes actual buttons and recovery. Existing underconstruction Today/AI/What-if/PO flows remain outside this implementation.

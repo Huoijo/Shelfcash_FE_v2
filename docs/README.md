@@ -5,7 +5,7 @@ Tài liệu được nhóm theo mục đích sử dụng; các báo cáo triển
 ## Bắt đầu từ đâu
 
 1. [Register hiện hành](status/FOUND_MISSING_UI_V1.md): trạng thái Design / FE / BE / verification, owner và bước tiếp theo. Đây là nơi cập nhật backlog hiện tại.
-2. [Implementation 020](sprints/020/020_Closed_Design_Gap_Implementation.md): sáu design gaps vừa tích hợp, giới hạn contract và kết quả đối chiếu hiện tại.
+2. [Afternoon BE integration020](sprints/020/020_Backend_Handoff_Integration.md): 76-operation pin, Assistant/recovery API-state boundaries, pending rollout and offline verification. Earlier [Implementation 020](sprints/020/020_Closed_Design_Gap_Implementation.md): sáu design gaps vừa tích hợp, giới hạn contract và kết quả đối chiếu hiện tại.
 3. [Kiến trúc nền tảng](architecture/001-architecture-foundation.md) và [service/application-state boundary 018](sprints/018/018_Backend_Capabilities_Service_Boundary.md): kiến trúc và bối cảnh các lớp tích hợp; đọc cùng code và receipt mới hơn.
 4. [Hướng dẫn Import cho Owner/Staff](guides/IMPORT_FLOW_OWNER_STAFF_GUIDE.md): thao tác, API và lỗi theo từng bước; các phần ghi historical phải được đối chiếu với register/receipt mới nhất.
 5. [Quy trình E2E với BE live](testing/017_Live_BE_FE_E2E_Protocol.md): scope, quyền, dữ liệu, readback, recovery và tiêu chí nghiệm thu. Controlled checks không thay thế live acceptance.

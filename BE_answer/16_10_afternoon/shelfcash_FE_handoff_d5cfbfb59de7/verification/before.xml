@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="15.793" timestamp="2026-10-16T15:45:52.074682+07:00" hostname="Alam"><testcase classname="tests.unit.test_application_contracts" name="test_application_has_no_http_or_direct_queries" time="1.765"><failure message="AssertionError: &lt;backend&gt;\app\application\use_cases\planning_challenger.py: direct query lines [146, 148]&#10;assert not [146, 148]&#10; +  where [146, 148] = direct_query_calls(&lt;ast.Module object at 0x0000020D66164CA0&gt;)">tests\unit\test_application_contracts.py:166: in test_application_has_no_http_or_direct_queries
+    assert not direct_query_calls(tree),f'{path}: direct query lines {direct_query_calls(tree)}'
+E   AssertionError: &lt;backend&gt;\app\application\use_cases\planning_challenger.py: direct query lines [146, 148]
+E   assert not [146, 148]
+E    +  where [146, 148] = direct_query_calls(&lt;ast.Module object at 0x0000020D66164CA0&gt;)</failure></testcase><testcase classname="tests.integration.test_store_creation" name="test_receipt_retention_schema_parity_and_no_destructive_downgrade" time="3.214"><failure message="AssertionError: assert 'l5_20261016_assistant_f4' == '0027_self_service_stores'&#10;  &#10;  - 0027_self_service_stores&#10;  + l5_20261016_assistant_f4">tests\integration\test_store_creation.py:158: in test_receipt_retention_schema_parity_and_no_destructive_downgrade
+    assert fresh.scalar(text('SELECT version_num FROM alembic_version'))=='0027_self_service_stores'
+E   AssertionError: assert 'l5_20261016_assistant_f4' == '0027_self_service_stores'
+E     
+E     - 0027_self_service_stores
+E     + l5_20261016_assistant_f4</failure></testcase></testsuite></testsuites>

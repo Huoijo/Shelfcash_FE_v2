@@ -3,9 +3,10 @@ import { businessField } from '../importPresentation'
 import { useContext, useState } from 'react'
 import { ResolverFormBody, ResolverSubmit } from './ImportResolverForm'
 import { ImportResolutionView } from '../importResolutionView.context'
+import type { ClassificationDraft } from '../importClassificationDraft'
 import type { MappingIssue, MappingOptions, MappingResolution } from '../importFlow.types'
 
-type Props = { newOnly?:boolean; includeShared?: boolean; issue: MappingIssue; options?: MappingOptions; disabled: boolean; onResolve: (resolution: MappingResolution) => void }
+type Props = { newOnly?:boolean; includeShared?: boolean; issue: MappingIssue; options?: MappingOptions; disabled: boolean; onResolve: (resolution: MappingResolution) => void; classificationDraft?: { value: ClassificationDraft; onChange: (value: ClassificationDraft) => void } }
 type SourceContext = Extract<MappingResolution, { kind: 'source_context' }>
 type PeriodAmendment = { id: string; expected_version: string; effective_to: string; reason: string }
 
@@ -28,25 +29,30 @@ export function ImportResolutionEditor(props: Props) {
   </>
 }
 
-function ClassificationEditor({ options, disabled, onResolve }: Props) {
-  const [schema, setSchema] = useState('')
-  const [reason, setReason] = useState('')
-  const [acknowledged, setAcknowledged] = useState(false)
+function ClassificationEditor({ options, disabled, onResolve, classificationDraft }: Props) {
+  const [localDraft, setLocalDraft] = useState<ClassificationDraft>({ scope: '', sheetType: '', reason: '', acknowledged: false })
+  const draft = classificationDraft?.value ?? localDraft
+  const update = (patch: Partial<ClassificationDraft>) => {
+    const next = { ...draft, ...patch }
+    if (classificationDraft) classificationDraft.onChange(next)
+    else setLocalDraft(next)
+  }
+  const { sheetType: schema, reason, acknowledged } = draft
   const ignored = schema === 'IGNORE'
   const selected = options?.schemas.find((entry) => entry.schema_id === schema)
   const valid=!disabled&&!!reason.trim()&&!!(selected||ignored)&&(!ignored||acknowledged)
   const submit=()=>onResolve({kind:'sheet_type',sheet_type:ignored?null:selected!.schema_id,ignored,acknowledgment:ignored&&acknowledged,reason:reason.trim()})
   return <ResolverFormBody valid={valid} onSubmit={submit}><fieldset disabled={disabled} className="import-flow__form">
     <legend>Chọn loại dữ liệu cho Sheet</legend>
-    <label>Loại dữ liệu<select value={schema} onChange={(event) => { setSchema(event.target.value); setAcknowledged(false) }}>
+    <label>Loại dữ liệu<select value={schema} onChange={(event) => update({ sheetType: event.target.value, acknowledged: false })}>
       <option value="">Chọn loại dữ liệu…</option>
       {options?.schemas.map((entry) => <option key={entry.schema_id} value={entry.schema_id}>{entry.label}</option>)}
       <option value="IGNORE">Không nhập dữ liệu của Sheet này</option>
     </select></label>
     {selected && <p>{selected.description}</p>}
     {!options && <p className="import-flow__muted">Đang tải các loại dữ liệu có thể chọn.</p>}
-    <label>Lý do phân loại hoặc bỏ qua<textarea maxLength={1000} value={reason} onChange={(event) => setReason(event.target.value)} /></label>
-    {ignored && <label className="import-flow__check"><input type="checkbox" checked={acknowledged} onChange={(event) => setAcknowledged(event.target.checked)} />Tôi xác nhận toàn bộ Sheet này không tham gia import. Thao tác làm mất hiệu lực Preview/review hiện tại.</label>}
+    <label>Lý do phân loại hoặc bỏ qua<textarea maxLength={1000} value={reason} onChange={(event) => update({ reason: event.target.value })} /></label>
+    {ignored && <label className="import-flow__check"><input type="checkbox" checked={acknowledged} onChange={(event) => update({ acknowledged: event.target.checked })} />Tôi xác nhận toàn bộ Sheet này không tham gia import. Thao tác làm mất hiệu lực Preview/review hiện tại.</label>}
 
     <ResolverSubmit disabled={!valid}>Lưu loại dữ liệu</ResolverSubmit>
   </fieldset></ResolverFormBody>

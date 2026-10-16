@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="9.379" timestamp="2026-10-16T15:57:53.263107+07:00" hostname="Alam"><testcase classname="tests.integration.test_fe_handoff_examples" name="test_summary_chat_context_and_clarification_examples" time="5.478" /></testsuite></testsuites>

@@ -1,0 +1,13 @@
+{
+  "source_sha": "d5cfbfb59de7c45bc08eb47129b5ba3919e05473",
+  "source_directory": "BE_answer/16_10_afternoon/shelfcash_FE_handoff_d5cfbfb59de7",
+  "runtime_deployed": false,
+  "manifest_files_verified": 155,
+  "files": {
+    "recovery_journal.json": "e06d47cd202a42a79f6ca978c244ea8218baaf0405cb60667dde505d3f7ae3be",
+    "openapi_diff_fe73.json": "a764651042f1df38f627541a8df7b3c9251818f07a021f160689131de1f5b37e",
+    "handoff.provenance.json": "210b5dd6e4fd6a88f21419b0a0849c9c131b22bc793cf7c5fca0fee24b3fe9b0",
+    "openapi.main.json": "18fb4eabe469c69c817fcf5f0c5b4764c3feb1a886adb71b382c19b347147f7a"
+  },
+  "scope": "Capabilities wire and opt-in recovery boundary only; existing 011/016 feature pins preserved."
+}

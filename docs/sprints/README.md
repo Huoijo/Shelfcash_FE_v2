@@ -4,6 +4,7 @@ Các nhóm giữ nguyên ID và tên file gốc. Receipt, audit/state mapping v�
 
 ## Tra cứu nhanh
 
+- [020 — Afternoon BE handoff integration](020/020_Backend_Handoff_Integration.md).
 - [020 — Closed-design implementation](020/020_Closed_Design_Gap_Implementation.md).
 - [019 — Main frontend implementation](019/019_Main_Frontend_Implementation.md).
 - [018 — Backend service/application-state boundary](018/018_Backend_Capabilities_Service_Boundary.md).
@@ -95,5 +96,7 @@ Quy trình017 nằm tại [testing](../testing/017_Live_BE_FE_E2E_Protocol.md); 
 
 ### 020
 
+- [020_Classification_Draft_Options.md](020/020_Classification_Draft_Options.md).
+- [020_Backend_Handoff_Integration.md](020/020_Backend_Handoff_Integration.md).
 - [020_Closed_Design_Gap_Implementation.md](020/020_Closed_Design_Gap_Implementation.md).
 

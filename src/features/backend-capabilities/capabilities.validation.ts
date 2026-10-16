@@ -2,7 +2,7 @@
 export type JsonSchema = {
   $ref?: string; type?: string; const?: unknown; enum?: unknown[]
   anyOf?: JsonSchema[]; oneOf?: JsonSchema[]; properties?: Record<string, JsonSchema>
-  required?: string[]; additionalProperties?: boolean | JsonSchema; items?: JsonSchema
+  required?: string[]; additionalProperties?: boolean | JsonSchema; items?: JsonSchema; prefixItems?: JsonSchema[]
   minLength?: number; maxLength?: number; pattern?: string; format?: string
   minimum?: number; maximum?: number; exclusiveMinimum?: number; exclusiveMaximum?: number
   minItems?: number; maxItems?: number; uniqueItems?: boolean
@@ -30,7 +30,7 @@ export function matchesCapabilitySchema(schema: JsonSchema, value: unknown, regi
     return true
   }
   if (schema.type === 'integer' || schema.type === 'number') return typeof value === 'number' && Number.isFinite(value) && (schema.type !== 'integer' || Number.isSafeInteger(value)) && (schema.minimum === undefined || value >= schema.minimum) && (schema.maximum === undefined || value <= schema.maximum) && (schema.exclusiveMinimum === undefined || value > schema.exclusiveMinimum) && (schema.exclusiveMaximum === undefined || value < schema.exclusiveMaximum)
-  if (schema.type === 'array') return Array.isArray(value) && (schema.minItems === undefined || value.length >= schema.minItems) && (schema.maxItems === undefined || value.length <= schema.maxItems) && (!schema.uniqueItems || new Set(value.map(v => JSON.stringify(v))).size === value.length) && value.every(v => matchesCapabilitySchema(schema.items ?? {}, v, registry))
+  if (schema.type === 'array') return Array.isArray(value) && (schema.minItems === undefined || value.length >= schema.minItems) && (schema.maxItems === undefined || value.length <= schema.maxItems) && (!schema.uniqueItems || new Set(value.map(v => JSON.stringify(v))).size === value.length) && value.every((v, index) => matchesCapabilitySchema(schema.prefixItems?.[index] ?? schema.items ?? {}, v, registry))
   if (schema.type === 'object' || schema.properties) {
     if (value === null || typeof value !== 'object' || Array.isArray(value) || ![Object.prototype, null].includes(Object.getPrototypeOf(value))) return false
     const record = value as Record<string, unknown>

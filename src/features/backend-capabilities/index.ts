@@ -3,3 +3,6 @@ export type { CapabilityApi, CapabilityInput, CapabilityOutput, CapabilityCallOp
 export { createCapabilityReadState, createCapabilityMutationState } from './capabilities.state'
 export type { ReadState, MutationState } from './capabilities.state'
 export type { CapabilityOperation, CapabilityReadOperation, CapabilityWriteOperation, CapabilityContracts } from './capabilities.wire'
+export { createCapabilityRecoveryService } from './recovery.service'
+export { createIndexedDbRecoveryJournal, prepareRecoveryRecord, RecoveryJournalError } from './recovery.journal'
+export type { RecoveryScope, RecoveryRecord, RecoveryJournal } from './recovery.journal'

@@ -1,7 +1,7 @@
 {
-  "source": "contracts/016/openapi.main.json",
-  "sourceSha": "869eaec914aa6905d6b935889afebe7d973004ae",
-  "sourceSha256": "790443d80350cc597c7c06179309e43303ba558de34017ea1dd4113de71fc1ee",
+  "source": "contracts/020/openapi.main.json",
+  "sourceSha": "d5cfbfb59de7c45bc08eb47129b5ba3919e05473",
+  "sourceSha256": "18fb4eabe469c69c817fcf5f0c5b4764c3feb1a886adb71b382c19b347147f7a",
   "evidence": "Typed callable service + controlled tests; no live acceptance; existing UI consumers/pins not migrated.",
   "operations": [
     {
@@ -691,6 +691,36 @@
       "responseKind": "envelope",
       "service": "IMPLEMENTED",
       "applicationState": "SCOPED_READ",
+      "uiChange": "NONE",
+      "liveVerification": "NOT_RUN"
+    },
+    {
+      "operationId": "AS01",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/{plan_id}/assistant/summary",
+      "responseKind": "envelope",
+      "service": "IMPLEMENTED",
+      "applicationState": "EXPLICIT_MUTATION",
+      "uiChange": "NONE",
+      "liveVerification": "NOT_RUN"
+    },
+    {
+      "operationId": "AS02",
+      "method": "GET",
+      "path": "/api/v1/procurement-plans/{plan_id}/assistant/summary/{generation_id}",
+      "responseKind": "envelope",
+      "service": "IMPLEMENTED",
+      "applicationState": "SCOPED_READ",
+      "uiChange": "NONE",
+      "liveVerification": "NOT_RUN"
+    },
+    {
+      "operationId": "AS03",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/{plan_id}/assistant/messages",
+      "responseKind": "envelope",
+      "service": "IMPLEMENTED",
+      "applicationState": "EXPLICIT_MUTATION",
       "uiChange": "NONE",
       "liveVerification": "NOT_RUN"
     },
