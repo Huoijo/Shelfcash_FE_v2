@@ -1,0 +1,51 @@
+{
+  "identity": [
+    "shelfcash_local",
+    "shelfcash_local_runtime"
+  ],
+  "staff_batch_count": 0,
+  "batch": {
+    "id": "0532608d-53a2-499b-a248-afd91b069ced",
+    "store_id": "e2597866-e772-4bd5-9f3d-1996ddd0179c",
+    "status": "completed",
+    "sealed": true,
+    "active_job_id": null
+  },
+  "jobs": [
+    {
+      "id": "91b8b020-079b-45b4-899b-81a318f3bc67",
+      "operation": "import_commit",
+      "status": "completed",
+      "stage": "completed",
+      "started_at": "2026-10-16 10:37:54.933382+00:00",
+      "completed_at": "2026-10-16 10:37:54.979621+00:00"
+    },
+    {
+      "id": "6beec166-21c8-4190-a89e-0c645122bc0c",
+      "operation": "import_analyze",
+      "status": "completed",
+      "stage": "completed",
+      "started_at": "2026-10-16 10:33:23.882048+00:00",
+      "completed_at": "2026-10-16 10:33:25.258084+00:00"
+    },
+    {
+      "id": "c6b8c149-5a77-461a-b4c1-d100f32a77a3",
+      "operation": "import_preview",
+      "status": "completed",
+      "stage": "completed",
+      "started_at": "2026-10-16 10:36:38.878533+00:00",
+      "completed_at": "2026-10-16 10:36:38.941343+00:00"
+    }
+  ],
+  "products": [
+    {
+      "id": "c0a7181c-7258-48df-818e-19c6a028080b",
+      "store_id": "e2597866-e772-4bd5-9f3d-1996ddd0179c",
+      "name": "Audit 20261016 R2 disposable product",
+      "sku": "AUDIT-R2-P01",
+      "selling_unit": "ly",
+      "price": "12345",
+      "active": true
+    }
+  ]
+}

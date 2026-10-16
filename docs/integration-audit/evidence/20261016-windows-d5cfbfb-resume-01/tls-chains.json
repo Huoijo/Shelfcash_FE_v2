@@ -1,0 +1,38 @@
+[
+  {
+    "name": "FE",
+    "port": 5173,
+    "public_path": "D:/hocc_bk/ai/proj/projectMLAI/Shelfcash_FE_v2/node_modules/.vite/basic-ssl/localhost-public.cer",
+    "authorized": true,
+    "match": true,
+    "subject": "CN=example.org\nC=US\nST=Virginia\nL=Blacksburg\nO=Test\nOU=Test",
+    "issuer": "CN=example.org\nC=US\nST=Virginia\nL=Blacksburg\nO=Test\nOU=Test",
+    "san": "DNS:localhost, DNS:[::1], IP Address:127.0.0.1, IP Address:FE80:0:0:0:0:0:0:1",
+    "valid_from": "Oct 15 12:52:57 2026 GMT",
+    "valid_to": "Nov 14 12:52:57 2026 GMT",
+    "sha256": "20:67:A4:CE:6F:45:48:27:AE:77:C4:7A:01:42:1B:51:D5:25:ED:25:31:6A:3A:97:08:17:15:B3:EF:0D:6D:45",
+    "sha1": "54:A4:C9:C9:A6:20:2D:2B:77:55:56:7F:F5:87:51:24:8F:50:ED:9B",
+    "ca": false,
+    "chain": [
+      "20:67:A4:CE:6F:45:48:27:AE:77:C4:7A:01:42:1B:51:D5:25:ED:25:31:6A:3A:97:08:17:15:B3:EF:0D:6D:45"
+    ]
+  },
+  {
+    "name": "BE",
+    "port": 8103,
+    "public_path": "D:/hocc_bk/ai/proj/projectMLAI/backend/runtime/local/private/localhost.pem",
+    "authorized": true,
+    "match": true,
+    "subject": "CN=ShelfCash integrated localhost",
+    "issuer": "CN=ShelfCash integrated localhost",
+    "san": "DNS:localhost, IP Address:127.0.0.1",
+    "valid_from": "Oct 14 09:44:06 2026 GMT",
+    "valid_to": "Nov 13 09:49:06 2026 GMT",
+    "sha256": "EB:A0:03:E5:6B:CE:39:8E:53:F2:4A:EC:92:6C:74:B7:82:0F:E7:18:C3:24:66:E9:EF:67:8B:94:FF:64:3A:25",
+    "sha1": "18:C7:DC:12:80:A7:44:A4:FB:81:E3:28:F1:5A:6E:35:A1:8A:7A:A0",
+    "ca": false,
+    "chain": [
+      "EB:A0:03:E5:6B:CE:39:8E:53:F2:4A:EC:92:6C:74:B7:82:0F:E7:18:C3:24:66:E9:EF:67:8B:94:FF:64:3A:25"
+    ]
+  }
+]

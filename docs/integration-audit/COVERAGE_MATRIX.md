@@ -1,49 +1,298 @@
-# Integration coverage matrix
+Run: `20261016-windows-d5cfbfb-resume-01`. Mode: **IMPLEMENTATION_AND_RESUME_DISCOVERY**. Date: 2026-10-16, Asia/Saigon. Outcome: **BOUNDED_LIVE_IMPORT_VERIFIED_WITH_REMAINING_LIMITS**.
 
-Document state: TEMPLATE_ONLY. Assignment mode: PREPARATION_ONLY. Run ID: NOT_RECORDED.
+# Current bounded coverage
 
-No concrete execution cases have been inventoried or run for this package. Counts and coverage denominators are NOT_CALCULATED. The record below is a template, not a counted case.
+| Total | PASS | FAIL | BLOCKED | N/A | NOT_RUN |
+| --- | --- | --- | --- | --- | --- |
+| 279 | 269 | 2 | 4 | 4 | 0 |
 
-## Case record template
+| Mode | PASS | FAIL | BLOCKED | N/A |
+| --- | --- | --- | --- | --- |
+| CONTROLLED | 244 | 0 | 0 | 0 |
+| STATIC_ONLY | 2 | 0 | 0 | 4 |
+| LIVE_UI | 20 | 2 | 4 | 0 |
+| API_ONLY | 3 | 0 | 0 | 0 |
 
-```yaml
-case_id: TO_ASSIGN
-phase_and_area: NOT_RECORDED
-status: NOT_RUN
-execution_mode: NOT_RECORDED
-fe_be_build_contract_design_refs: NOT_RECORDED
-route_surface_control_and_transition: NOT_RECORDED
-role_session_and_permission_variant: NOT_RECORDED
-store_context_and_resource_ids: NOT_RECORDED
-dataset_baseline_and_independent_oracle: NOT_RECORDED
-data_and_lifecycle_state: NOT_RECORDED
-preconditions: NOT_RECORDED
-action_and_expected_navigation: NOT_RECORDED
-backend_boundary_and_expected_request_response: NOT_RECORDED
-expected_pending_error_recovery_ui: NOT_RECORDED
-expected_persisted_effects_and_no_effects: NOT_RECORDED
-refresh_deep_link_and_cache_expectation: NOT_RECORDED
-actual_observation: NOT_RECORDED
-evidence_refs: []
-defect_ids: []
-blocker_type_and_dependency: NOT_RECORDED
-scope_disposition_and_authority: NOT_RECORDED
-not_applicable_reason_and_guard: NOT_RECORDED
-timestamp_and_tester: NOT_RECORDED
-```
+Counts are explicit current assertions, not exhaustive app coverage. Original761 rows remain archived; none is silently promoted.39 unique controlled browser cases are reconciled to their latest relevant observations, with initial37-test34pass/3fail and all affected reruns disclosed.205 unit/SSR tests pass. Final8T03+2history cases pass; the independent history/denied replay additions increase the unique browser denominator from37to39. API-only Staff probes are separate from UI denials. Live chains use actual unchanged BE, Edge default TLS, network/retained reads and fresh-session DB evidence. No mock fallback/live fault injection. Remaining unenumerated full route/nested/permission/data inventory prevents an exhaustive completion claim.
 
-## Required status semantics
-
-- NOT_RUN: discovered case not executed; not an implicit PASS.
-- PASS: applicable expectations, UI/network/authoritative state, and required persistence/recovery evidence agree. A correctly enforced negative case can PASS.
-- FAIL: observed departure from an authoritative expectation. Link a reproducible defect; do not conceal a broken committed capability as a mere blocker.
-- BLOCKED: a prerequisite prevents evaluation. Record ENVIRONMENT/PLATFORM/DATA/CONTRACT/DESIGN/FE/BE separately, with dependency, evidence, owner, and next action.
-- NOT_APPLICABLE: a proven impossible/inapplicable combination with guard/contract and scope authority. Missing accounts/data/environment are not N/A.
-
-Record STATIC_ONLY, API_ONLY, LIVE_UI, LIVE_WITH_FAULT_INJECTION, CONTROLLED, or MOCK as a separate execution mode. Do not combine their PASS counts into a live UI acceptance number.
-
-## Completion accounting
-
-Account for all discovered routes, consumers, relevant endpoints, states, controls/edges, roles/grants, Stores, datasets, and mutations. Include success/failure, authorization, refresh/deep-link, and an additional exploratory sweep. Log newly discovered cases rather than excluding them from the denominator.
-
-At report time, reconcile total = NOT_RUN + PASS + FAIL + BLOCKED + NOT_APPLICABLE for actual case records. Count scoped exclusions and blocker categories separately. No average coverage score can override an authorization, isolation, atomicity, or data-integrity failure. Do not close discovery as complete with NOT_RUN cases or an incomplete inventory; use an explicitly limited report instead.
+| ID | Mode | Status | Scope/action | Oracle | Observation/blocker |
+| --- | --- | --- | --- | --- | --- |
+| CTL-001 | CONTROLLED | PASS | design-states.api.spec.ts:10 / wrong-account invitation reveals only current account and supports logout before login | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-002 | CONTROLLED | PASS | design-states.api.spec.ts:26 / invitation expired is terminal without acceptance writes | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-003 | CONTROLLED | PASS | design-states.api.spec.ts:26 / invitation revoked is terminal without acceptance writes | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-004 | CONTROLLED | PASS | design-states.api.spec.ts:35 / acceptance lost ACK preserves intent and opens freshly verified invited Store | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-005 | CONTROLLED | PASS | design-states.api.spec.ts:57 / credential UI retains 12-character contract, hides token and never auto-logins | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-006 | CONTROLLED | PASS | design-states.api.spec.ts:79 / confirmed receipt with failed readback retries reads without another receipt write | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-007 | CONTROLLED | PASS | design-states.api.spec.ts:99 / PDF captures chosen alternative and download failure retries artifact only | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-008 | CONTROLLED | PASS | design-states.api.spec.ts:120 / History paginates same snapshot and empty filters never manufacture budget or results | Named controlled assertion, current typed fixtures; synthetic BE effects only | Latest focused result |
+| CTL-009 | CONTROLLED | PASS | frozen-lifecycle.api.spec.ts:10 / registration sends only A02 fields, then verification-required; it creates no session or Store | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-010 | CONTROLLED | PASS | frozen-lifecycle.api.spec.ts:17 / verification scrubs proof, waits for explicit password and preserves invitation without accepting it | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-011 | CONTROLLED | PASS | frozen-lifecycle.api.spec.ts:27 / zero-Store T03 uncertainty cannot be disproved by empty T01 and exact replay preserves original key/body | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-012 | CONTROLLED | PASS | frozen-lifecycle.api.spec.ts:35 / notification opening causes no business write; failed read acknowledgment retains unread state and handoff pins destination | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-013 | CONTROLLED | PASS | frozen-lifecycle.api.spec.ts:42 / Owner request changes requires real Staff submission; own=false | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-014 | CONTROLLED | PASS | frozen-lifecycle.api.spec.ts:42 / Owner request changes requires real Staff submission; own=true | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-015 | CONTROLLED | PASS | frozen-lifecycle.api.spec.ts:50 / Today unknown inventory remains unknown and does not claim calm, zero stock or pending decision | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-016 | CONTROLLED | PASS | frozen-lifecycle.api.spec.ts:55 / unknown read acknowledgment survives internal navigation and only exact replay releases the writer | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-017 | CONTROLLED | PASS | pass020.api.spec.ts:8 / decline success: separate confirmation and N18-first recovery | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-018 | CONTROLLED | PASS | pass020.api.spec.ts:8 / decline failure: separate confirmation and N18-first recovery | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-019 | CONTROLLED | PASS | pass020.api.spec.ts:8 / decline lost-declined: separate confirmation and N18-first recovery | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-020 | CONTROLLED | PASS | pass020.api.spec.ts:8 / decline lost-pending: separate confirmation and N18-first recovery | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-021 | CONTROLLED | PASS | pass020.api.spec.ts:21 / Owner permission approve: current grant fence and explicit subset | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-022 | CONTROLLED | PASS | pass020.api.spec.ts:21 / Owner permission reject: current grant fence and explicit subset | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-023 | CONTROLLED | PASS | pass020.api.spec.ts:21 / Owner permission stale: current grant fence and explicit subset | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-024 | CONTROLLED | PASS | pass020.api.spec.ts:21 / Owner permission unknown: current grant fence and explicit subset | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-025 | CONTROLLED | PASS | pass020.api.spec.ts:29 / retained discovery availability=true: GET-only download without create | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-026 | CONTROLLED | PASS | pass020.api.spec.ts:29 / retained discovery availability=false: GET-only download without create | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-027 | CONTROLLED | PASS | pass020.api.spec.ts:34 / N9 distinct creator/Store creation/forecast filters preserve URL state and paging | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-028 | CONTROLLED | PASS | pass020.api.spec.ts:41 / Staff submits catalog-backed request, observes pending and can cancel with fresh request CAS | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-029 | CONTROLLED | PASS | pass020.api.spec.ts:54 / retained exports empty/error can reread without ever creating a new export | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-030 | CONTROLLED | PASS | pass020.api.spec.ts:61 / N9 creator selection and load-more retain Store-local date and forecast filters together | Named controlled assertion, current typed fixtures; synthetic BE effects only | Initial regression result; unrelated invitation exact-GET-count flake passed one affected rerun |
+| CTL-031 | CONTROLLED | PASS | store-journal.api.spec.ts:25 / T03 unknown -> reload restores exact intent; empty readback stays locked; explicit replay uses fresh CSRF | Named controlled assertion, current typed fixtures; synthetic BE effects only | Latest focused result |
+| CTL-032 | CONTROLLED | PASS | store-journal.api.spec.ts:34 / T03 unavailable durable storage prevents any initial dispatch | Named controlled assertion, current typed fixtures; synthetic BE effects only | Latest focused result |
+| CTL-033 | CONTROLLED | PASS | store-journal.api.spec.ts:38 / T03 write transaction failure prevents dispatch even when storage reads succeed | Named controlled assertion, current typed fixtures; synthetic BE effects only | Latest focused result |
+| CTL-034 | CONTROLLED | PASS | store-journal.api.spec.ts:42 / T03 switching account hides another actor intent and restores it only for matching actor | Named controlled assertion, current typed fixtures; synthetic BE effects only | Latest focused result |
+| CTL-035 | CONTROLLED | PASS | store-journal.api.spec.ts:47 / T03 wrong current cookie account blocks replay before POST | Named controlled assertion, current typed fixtures; synthetic BE effects only | Latest focused result |
+| CTL-036 | CONTROLLED | PASS | store-journal.api.spec.ts:51 / T03 two tabs share one intent and cannot dispatch concurrently; replay keeps original key | Named controlled assertion, current typed fixtures; synthetic BE effects only | Latest focused result |
+| CTL-037 | CONTROLLED | PASS | store-journal.api.spec.ts:58 / T03 late original success after reload is reconciled only with original key | Named controlled assertion, current typed fixtures; synthetic BE effects only | Latest focused result |
+| CTL-038 | CONTROLLED | PASS | history-contract.api.spec.ts:4 / Independent current-contract N9 history paginates, preserves filter, and reloads | Named controlled assertion, current typed fixtures; synthetic BE effects only | Latest focused result |
+| CTL-039 | CONTROLLED | PASS | store-journal.api.spec.ts:64 / T03 denied replay keeps original uncertainty across reload and never unlocks a replacement | Named controlled assertion, current typed fixtures; synthetic BE effects only | Latest focused result |
+| UNIT-AUTH-001 | CONTROLLED | PASS | auth / A01 posts canonical credentials without session CSRF or token fabrication | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-002 | CONTROLLED | PASS | auth / invalid credentials stay a public A01 error; protected 401 policy does not run | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-003 | CONTROLLED | PASS | auth / invalid login input fails locally and does not send credentials | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-004 | CONTROLLED | PASS | auth / A03 authoritative session read uses included cookies, no query or mutation CSRF | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-005 | CONTROLLED | PASS | auth / protected 401 invalidates current session even if response body is malformed | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-006 | CONTROLLED | PASS | auth / late protected 401 cannot invalidate a newer CSRF session | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-007 | CONTROLLED | PASS | auth / late protected 401 cannot invalidate replacement session hooks | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-008 | CONTROLLED | PASS | auth / aborted protected request does not invalidate canonical session | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-009 | CONTROLLED | PASS | auth / session-owned current CSRF is injected into JSON and multipart mutations | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-010 | CONTROLLED | PASS | auth / missing CSRF refuses protected writes; caller header cannot bypass session source | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-011 | CONTROLLED | PASS | auth / CSRF/Origin denial has no fabricated token refresh or automatic retry | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-012 | CONTROLLED | PASS | auth / A04 accepts only204, sends no body/JSON content type and uses central CSRF | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-013 | CONTROLLED | PASS | auth / logout failure stays an error; no automatic local-success translation | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-014 | CONTROLLED | PASS | auth / HTTP errors preserve safe request references and validate nested canonical errors | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-015 | CONTROLLED | PASS | auth / session context validates default Store/count, UUIDs, token and true UTC instants | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-016 | CONTROLLED | PASS | auth / malformed Auth envelope, backend503 and network errors remain distinct | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-017 | CONTROLLED | PASS | auth / T01 omits default limit, preserves opaque cursor and validates pagination | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-018 | CONTROLLED | PASS | auth / T02 consumes exact Store UUID, timezone/current-date and membership permissions | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-019 | CONTROLLED | PASS | auth / Store schema rejects unavailable membership, wrong role/version/timezone and malformed permissions | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-020 | CONTROLLED | PASS | auth / Owner permissions remain exact server-provided catalogue entries, not inferred actions | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-021 | CONTROLLED | PASS | auth / Store reads propagate403/404 and do not silently choose a fixture or default Store | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-022 | CONTROLLED | PASS | auth / cleaning stale hook registration cannot remove the current session source | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-023 | CONTROLLED | PASS | auth / all Inventory/Menu/History reads use current Store scope and ignore poisoned development Store | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-024 | CONTROLLED | PASS | auth / missing or invalid current Store blocks every business read before fetch without development fallback | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-025 | CONTROLLED | PASS | auth / business GET401 uses central session invalidation without requiring or sending CSRF | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-AUTH-026 | CONTROLLED | PASS | auth / Inventory timestamps use actual Store timezone while date-only facts and explicit UTC fallback stay unchanged | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-001 | CONTROLLED | PASS | capabilities / request changes requires verified current Staff origin and never an Owner self-proposal | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-002 | CONTROLLED | PASS | capabilities / notifications navigate only resource-matching registered paths with Store and submission version intact | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-003 | CONTROLLED | PASS | capabilities / commit reason optional only for full pure insert/NO_OP preview; updates, consequential actions and incomplete evidence require reason | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-004 | CONTROLLED | PASS | capabilities / Staff submission gate reads the complete batch queue and refuses duplicate/repeating pages | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-005 | CONTROLLED | PASS | capabilities / history corrections join the global gate: missing, duplicate, stale and extra confirmations cannot bypass Review | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-006 | CONTROLLED | PASS | capabilities / all published operations have callable typed services with exact method/path/status inventories | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-007 | CONTROLLED | PASS | capabilities / client construction and state construction perform no requests | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-008 | CONTROLLED | PASS | capabilities / A02/A06/A07 public mail acceptance carries no session CSRF and never auto-logs in or creates Store | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-009 | CONTROLLED | PASS | capabilities / A05 and N7 remain distinct public token purposes; password preserved exactly, no automatic retry | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-010 | CONTROLLED | PASS | capabilities / T03 accepts documented non-UUID ASCII key, explicit fields and only returns a Store receipt | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-011 | CONTROLLED | PASS | capabilities / IN01 decline uses current session, proof in body and exact invitation CAS without acceptance side effects | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-012 | CONTROLLED | PASS | capabilities / MQ01 submits exactly one pinned profile and withdrawal uses submission fence; no approval/commit | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-013 | CONTROLLED | PASS | capabilities / MQ02 preserves scoped filters, counters and cursor; rejects cross-Store rows and repeating cursor | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-014 | CONTROLLED | PASS | capabilities / MQ03 keeps captured spec/evidence and rejects changed submission pins or non-advancing evidence pages | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-015 | CONTROLLED | PASS | capabilities / N5 request_changes carries lifecycle CAS plus explicit submission ID/version and remains separate from commit | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-016 | CONTROLLED | PASS | capabilities / NF01/NF02 bind snapshots and current count scope; NF03 accepts read/unread CAS without navigation | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-017 | CONTROLLED | PASS | capabilities / PR01/02/03/04 preserve permission catalog/grants/request CAS and do not update session grants | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-018 | CONTROLLED | PASS | capabilities / EX01 retains explicit filters/snapshot and never downloads an arbitrary server URL | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-019 | CONTROLLED | PASS | capabilities / D01 is an explicit section reader, preserves unavailable/null sections and enables no Today UI | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-020 | CONTROLLED | PASS | capabilities / retained export download verifies bytes/hash and ignores untrusted download_url | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-021 | CONTROLLED | PASS | capabilities / JSON, raw health, 204 logout and PDF modes validate the documented success status and payload | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-022 | CONTROLLED | PASS | capabilities / I02 uploads named bytes and one explicit client ID per file without JSON/boundary rewriting | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-023 | CONTROLLED | PASS | capabilities / N4 explicit create/update preconditions cannot be omitted or combined | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-024 | CONTROLLED | PASS | capabilities / supplied planning helpers preserve exact custom request and known zero without changing default scope | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-025 | CONTROLLED | PASS | capabilities / preflight rejects unknown properties, bad enum/UUID/cursor and unsafe revision before network | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-026 | CONTROLLED | PASS | capabilities / reads cannot clear a newer session on stale 401; protected writes require current CSRF | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-027 | CONTROLLED | PASS | capabilities / mutation state locks lost ACK and replays immutable original key/body/CAS only by explicit request | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-028 | CONTROLLED | PASS | capabilities / public email unknown and upload unknown cannot replay; dispose forgets intent without claiming rollback | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-029 | CONTROLLED | PASS | capabilities / mutation state keeps uncertain 5xx/protocol outcomes and distinguishes certain rejection without auto retry | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-030 | CONTROLLED | PASS | capabilities / scoped read state ignores out-of-order responses and clears data on scope teardown | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-031 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/a01-login-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-032 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/a03-me-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-033 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/t03-create-store-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-034 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/a02-email-accepted.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-035 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c02-accepted-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-036 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c03-queued-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-037 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c03-running-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-038 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c03-failed-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-039 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c03-completed-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-040 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c03-completed-no-winner-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-041 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c03-failed-partial-unknown-proof-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-042 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c04-retained-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-043 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c04-unknown-null-digest-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-044 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c05-retained-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-045 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c05-unknown-null-digest-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-046 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c08-retained-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-047 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c08-retained-source-reference-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-048 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c01-default-blocked-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-049 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/c01-contextual-custom-ready-warning-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-050 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/r01-default-blocked-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-051 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/r01-contextual-ready-warning-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-052 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/nf03-read-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-053 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/handoff-a05-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-054 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/handoff-n19-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-055 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/handoff-in01-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-056 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/n9-history-captured-zero-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-057 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/h01-import-history-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-058 | CONTROLLED | PASS | capabilities / published main fixture survives strict service boundary: examples/h02-import-history-response.json | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-059 | CONTROLLED | PASS | capabilities / a denied exact replay preserves original unknown outcome and original mutation fence | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-060 | CONTROLLED | PASS | capabilities / documented email delivery configuration failure is retryable only as an explicit new request | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-CAPABILITIES-061 | CONTROLLED | PASS | capabilities / decline unknown requires matching N18 read before exact replay and terminal readback retires the writer | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-001 | CONTROLLED | PASS | store / one canonical default Store bootstraps T01 then T02, never role-derived grants | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-002 | CONTROLLED | PASS | store / multiple Stores with null default require explicit selection, never items[0] | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-003 | CONTROLLED | PASS | store / no accessible Store is a valid empty state without T02 or fabricated Store | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-004 | CONTROLLED | PASS | store / missing default from a newer T01 does not choose the first available item | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-005 | CONTROLLED | PASS | store / A to B clears old context immediately until current T02 resolves | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-006 | CONTROLLED | PASS | store / late A response cannot overwrite B even when transport ignores abort | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-007 | CONTROLLED | PASS | store / new AuthContext invalidates accessible list, context and stale old-owner T02 | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-008 | CONTROLLED | PASS | store / T01 failure is retryable, never interpreted as no Store or API-to-mock fallback | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-009 | CONTROLLED | PASS | store / T02 denial clears prior context and retains exact request reference | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-010 | CONTROLLED | PASS | store / T02 Store mismatch is a protocol failure, not a scope switch | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-011 | CONTROLLED | PASS | store / refresh reads latest T02 grants/version without freezing the login or T01 version | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-012 | CONTROLLED | PASS | store / dirty change guard prevents Store switching; cleanup permits explicit switch | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-013 | CONTROLLED | PASS | store / late guard confirmation from prior owner cannot start a Store read | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-014 | CONTROLLED | PASS | store / choosing the current Store cancels an older asynchronous switch confirmation | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-015 | CONTROLLED | PASS | store / opaque cursor bounds reject locally without issuing a request | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-016 | CONTROLLED | PASS | store / StrictMode setup-cleanup-setup aborts old request and leaves no busy lock | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-017 | CONTROLLED | PASS | store / T01 pagination appends explicit accessible Stores without selecting a first item | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-018 | CONTROLLED | PASS | store / duplicate or stalled T01 pagination is rejected without duplicate/foreign rows | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-019 | CONTROLLED | PASS | store / late paginated list from an old owner cannot enter the new owner list | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-020 | CONTROLLED | PASS | store / DEV preview has deterministic two-Store discovery and never calls auth or fetch | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-021 | CONTROLLED | PASS | store / DEV fixtures pass the same T01/T02 boundary validation | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-022 | CONTROLLED | PASS | store / T01 adapter encodes cursor; T02 GET uses cookie session without mutation or session Store write | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-023 | CONTROLLED | PASS | store / Login return accepts exact Store route with query and hash | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-024 | CONTROLLED | PASS | store / Store return rejects foreign origin and prefix lookalikes | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-025 | CONTROLLED | PASS | store / Sidebar exposes real URL-active Store link without fake href | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-026 | CONTROLLED | PASS | store / Store route is protected but outside StoreGate so no/multi Store can resolve | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-027 | CONTROLLED | PASS | store / Today does not fabricate inventory or readiness before D01 is read | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-028 | CONTROLLED | PASS | store / Homepage is a public destination and sends account entry to the real login route | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-029 | CONTROLLED | PASS | store / Completion links to planning setup without inventing planning readiness or aggregate counts | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-030 | CONTROLLED | PASS | store / Shared shell keys all business outlets by Store and current authorization/catalog | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-031 | CONTROLLED | PASS | store / API Store workspace renders canonical identity and no DEV fixture notice | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-032 | CONTROLLED | PASS | store / Authenticated no-Store and multi-Store selection are not login failures | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-033 | CONTROLLED | PASS | store / Business StoreGate routes unselected user to Store without mounting children | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-034 | CONTROLLED | PASS | store / current Store Workspace fixtures conform to frozen canonical schemas | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-035 | CONTROLLED | PASS | store / N12 preserves inactive Staff, independent grants and canonical optional defaults | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-036 | CONTROLLED | PASS | store / N12 rejects fake Owner roster, duplicates, missing pagination and unknown grant keys | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-037 | CONTROLLED | PASS | store / full replacement grants are sorted unique and never silently add prerequisites | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-038 | CONTROLLED | PASS | store / nondelegable catalogue keys cannot be granted even if known | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-039 | CONTROLLED | PASS | store / N13 no-op receipt cannot fabricate a change event or a different submitted grant set | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-040 | CONTROLLED | PASS | store / invitation requests reject role, user/account creation, arbitrary lifecycle and Owner token fields | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-041 | CONTROLLED | PASS | store / invitation creation queued delivery is distinct from membership and accepted state | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-042 | CONTROLLED | PASS | store / N15 receipt pins canonical recipient and original pending/queued state, not later lifecycle | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-043 | CONTROLLED | PASS | store / N16 rejects cross-Store response, inconsistent lifecycle and duplicate invitation rows | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-044 | CONTROLLED | PASS | store / N17 reissue and revoke receipts retain precise action-specific lifecycle | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-045 | CONTROLLED | PASS | store / budget preserves exact zero and huge decimal text, rejecting unlimited/null and runtime knobs | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-046 | CONTROLLED | PASS | store / CAS and idempotency header validation accepts opaque keys, never wildcard/weak/multiple CAS | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-047 | CONTROLLED | PASS | store / API GETs use Store scope, explicit filters, include cookies and never send mutation CSRF | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-048 | CONTROLLED | PASS | store / N13 writes exact body, original key/CAS and shared session CSRF without editing role or active | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-049 | CONTROLLED | PASS | store / N15/N17 do not call account, recipient acceptance or token endpoints | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-050 | CONTROLLED | PASS | store / N4 sends exactly one conditional header for create versus replace, preserving zero text | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-051 | CONTROLLED | PASS | store / unsupported body/precondition/query/ID inputs are rejected before a network call | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-052 | CONTROLLED | PASS | store / mutation needs current session CSRF and never falls back to fixtures | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-053 | CONTROLLED | PASS | store / transport uncertainty never automatically retries a write or fabricates success | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-054 | CONTROLLED | PASS | store / canonical 403/409/412/428/429 errors retain server codes/request IDs without reinterpretation | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-055 | CONTROLLED | PASS | store / an aborted N12 response cannot populate the catalogue for a later mutation | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-056 | CONTROLLED | PASS | store / API mutation snapshots the original body before asynchronous catalogue loading | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-057 | CONTROLLED | PASS | store / mock permission changes are exact, CAS protected, no-op aware and receipt replay safe | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-058 | CONTROLLED | PASS | store / mock invitation creation and lifecycle never creates Staff membership or delivers mail | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-059 | CONTROLLED | PASS | store / mock budget writes independent of planning readiness and isolate Store state | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-060 | CONTROLLED | PASS | store / mock paginated snapshots reject a changed list instead of mixing pages | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-061 | CONTROLLED | PASS | store / overview preserves MagicPath profile, hours and status cards without inventing API profile data or save | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-062 | CONTROLLED | PASS | store / illustrative fields exist only with explicit mockPreview and are labelled noncanonical | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-063 | CONTROLLED | PASS | store / tabs preserve designed names and expose linked roving-focus tab semantics | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-064 | CONTROLLED | PASS | store / Store header uses only canonical current identity and restricted-state guidance | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-065 | CONTROLLED | PASS | store / member names are real keyboard buttons and Staff roster is distinct from Owner self and invitations | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-066 | CONTROLLED | PASS | store / restricted Staff never sees cached Owner roster or invitations even if parent has old rows | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-067 | CONTROLLED | PASS | store / permission drawer labels canonical grants and requires reason before save | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-068 | CONTROLLED | PASS | store / Owner identity drawer and inactive Staff are read-only, without ownership or activation mutation affordances | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-069 | CONTROLLED | PASS | store / busy or uncertain permission intents lock the draft, and revoking edit authority never permits a new save | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-070 | CONTROLLED | PASS | store / unknown and nondelegable grants are not mapped, not dropped, not editable, and are escaped | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-071 | CONTROLLED | PASS | store / required_with produces guidance only, never adds permissions or uses prototype groups as grant keys | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-072 | CONTROLLED | PASS | store / invitation form fixes Staff role, no preselected grants and no token or account-existence disclosure | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-073 | CONTROLLED | PASS | store / invitation receipt reports canonical delivery status rather than fake membership success | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-074 | CONTROLLED | PASS | store / accepted invitation is terminal and offered grants never substitute current membership grants | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-075 | CONTROLLED | PASS | store / operating defaults preserve design cards but budget writer is only canonical ceiling | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-076 | CONTROLLED | PASS | store / budget unavailable and true zero remain distinct; no rights, loading or uncertain intent locks editing | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-077 | CONTROLLED | PASS | store / exact budget formatting and parsing never coerce large monetary values to Number | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-078 | CONTROLLED | PASS | store / email normalization and reason Unicode bounds preserve canonical write intent | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-079 | CONTROLLED | PASS | store / dialog focus trap index wraps only at boundaries and no-Store state never creates fake Store | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-080 | CONTROLLED | PASS | store / static responsive contracts include desktop density, narrow drawers and scroll-contained tables, not browser QA | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-081 | CONTROLLED | PASS | store / Staff cannot load Owner roster/invitations or mutate grants/invitations even with copied action strings | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-082 | CONTROLLED | PASS | store / Owner role alone does not authorize budget read/update without exact current grants | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-083 | CONTROLLED | PASS | store / Staff with all exact budget grants may update budget independently of Owner-only roster | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-084 | CONTROLLED | PASS | store / known budget cap accepts exact zero and preserves original CAS without changing requirements | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-085 | CONTROLLED | PASS | store / authorized null ceiling creates initial cap with create-only condition and preserves exact zero | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-086 | CONTROLLED | PASS | store / money input keeps up to 18 fractional digits without Number coercion; invalid input never writes | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-087 | CONTROLLED | PASS | store / permission lost ACK preserves stable key, original CAS and defensive-cloned body on explicit retry | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-088 | CONTROLLED | PASS | store / later definitive denial cannot erase earlier lost-ACK uncertainty or replace original intent | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-089 | CONTROLLED | PASS | store / budget lost ACK retries exact amount/key/original budget version, without refetching a new CAS | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-090 | CONTROLLED | PASS | store / known permission receipt plus failed follow-up GET never replays the mutation | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-091 | CONTROLLED | PASS | store / known budget receipt plus failed C01 reread stays a read failure and cannot replay N4 | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-092 | CONTROLLED | PASS | store / definitive CAS conflict invalidates draft revision, rereads, and requires a new explicit intent | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-093 | CONTROLLED | PASS | store / budget CAS conflict rereads current ceiling without silently resubmitting against new version | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-094 | CONTROLLED | PASS | store / no-op permission receipt remains successful without claiming a permission event was created | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-095 | CONTROLLED | PASS | store / inactive membership cannot be edited or submitted despite being in roster | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-096 | CONTROLLED | PASS | store / unknown grant fails before write; full replacement permits explicit empty grants | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-097 | CONTROLLED | PASS | store / dispose aborts pending read and ignores late data; controller can be used after Strict replay | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-098 | CONTROLLED | PASS | store / dispose while writing ignores a late receipt and never begins its follow-up GET | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-099 | CONTROLLED | PASS | store / superseded member read cannot overwrite the newest request response | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-100 | CONTROLLED | PASS | store / C01 Store/currency/timezone mismatch clears context and blocks budget write | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-101 | CONTROLLED | PASS | store / valid member pagination preserves server catalogue and exact total | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-102 | CONTROLLED | PASS | store / member pagination rejects duplicate membership, clears stale catalogue/rows and increments draft revision | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-103 | CONTROLLED | PASS | store / member pagination rejects changed catalogue, clears stale catalogue/rows and increments draft revision | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-104 | CONTROLLED | PASS | store / member pagination rejects changed exact total, clears stale catalogue/rows and increments draft revision | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-105 | CONTROLLED | PASS | store / member pagination rejects stalled cursor, clears stale catalogue/rows and increments draft revision | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-106 | CONTROLLED | PASS | store / invitation creation only confirms pending invitation/delivery, never a new member | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-107 | CONTROLLED | PASS | store / accepted invitation is terminal; expired cannot revoke but may explicitly reissue | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-108 | CONTROLLED | PASS | store / duplicate invitation pagination clears old rows instead of merging duplicates | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-109 | CONTROLLED | PASS | store / lost invitation-create ACK replays one original intent and does not send a second independent invitation | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-110 | CONTROLLED | PASS | store / member pagination rejects a longer cursor cycle even without duplicate IDs or known total | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-111 | CONTROLLED | PASS | store / invitation pagination rejects a longer cursor cycle, not just immediate repetition | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-112 | CONTROLLED | PASS | store / definitive 403 mutation rejection invalidates sensitive caches and blocks cached authority until T02 refresh | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-113 | CONTROLLED | PASS | store / definitive 404 mutation rejection invalidates sensitive caches and blocks cached authority until T02 refresh | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-114 | CONTROLLED | PASS | store / 403 from a workspace read clears previously loaded unrelated sensitive resources | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-115 | CONTROLLED | PASS | store / late successful read cannot restore caches after a concurrent authorization rejection | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-116 | CONTROLLED | PASS | store / N17 receipt for a different target email stays uncertain and cannot silently retarget the action | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-117 | CONTROLLED | PASS | store / initial budget lost ACK replays original create-only key/body and fresh reads cap zero | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| UNIT-STORE-118 | CONTROLLED | PASS | store / initial budget race rereads competing cap without converting create to replace | Exact checked-in unit/SSR controlled assertions; no live DB | Passed |
+| BUILD-TYPES | STATIC_ONLY | PASS | final changed FE files / node node_modules/typescript/bin/tsc -b --pretty false | No TypeScript errors | Exit0 on final source |
+| LINT-CHANGED | STATIC_ONLY | PASS | StoreBootstrap/storeCreate.react/storeCreate.journal / targeted oxlint | No errors/warnings | Exit0 after derived restored fields and layout actor fence |
+| TLS-FE | LIVE_UI | PASS | HTTPS5173 / Inspect served chain, import exact public leaf into CurrentUser Root, fresh Edge login | Served DER matches exported public file; hostname/validity/trust normal | Browser pages/auth load with default TLS validation; no ignoreHTTPSErrors |
+| TLS-COMPARE | API_ONLY | PASS | HTTPS8103 vs5173 / Compare verified TLS chains | Distinct self-signed localhost leaves; exact configured public files | FE2067a4... differs from BEeba003...; no BE import/substitution |
+| LIVE-OWNER | LIVE_UI | PASS | Owner login/context / A01 UI -> A03/T01/T02 -> imports rendering | Exact Local Test Store/43 permissions; independent browser context | Verified; no credentials stored |
+| LIVE-STAFF | LIVE_UI | PASS | Staff login/context / A01 UI -> A03/T01/T02 | Exact Store/STAFF/menu.read only; separate cookie context | Verified |
+| LIVE-ADMISSION | LIVE_UI | PASS | Owner import file / Choose synthetic CSV/date -> I01/I02 -> accepted-source confirmation | One141-byte file/digest, source set/quota via I04; no canonical writes | One batch/file admitted; no replacement batch |
+| LIVE-ANALYZE | LIVE_UI | PASS | Owner Analyze / Explicit exact accepted set -> one I03 -> J01 -> Step2 source screen | One job running/parsing -> completed; fresh Session sealed batch | 6beec166-21c8-4190-a89e-0c645122bc0c completed |
+| LIVE-SOURCE | LIVE_UI | PASS | Source declaration / Fill author-owned synthetic source/report/evidence -> M04 -> Step3 | Persist integration_audit_r2/products_master/evidence, no filename inference | Scoped source context saved; no stock/date semantics invented |
+| LIVE-METADATA | LIVE_UI | PASS | New Product proposal / Identity new-entity form -> M04 -> retained proposal | Exact CSV row2 metadata; reservation is not canonical creation | Typed proposed Product saved, no guessing/binding another entity |
+| LIVE-APPROVAL | LIVE_UI | PASS | Owner full-spec approval / Review all six RULE bindings + source/entity evidence -> N5 | Owner may self-approve; eligible full spec/missing_fields[] | Version b5af21bb-f365-4614-b9e4-7676b05279c1 active; no per-RULE busywork |
+| LIVE-PROFILE-COPY | LIVE_UI | FAIL | Approved profile display / Inspect Step4 immediately after N5 receipt, without editing | Approved state must not demand a new approval only because owner_reviewed changed | BUG-002: says new version/1 changed rule/needs Owner decision beside approved state |
+| LIVE-PREVIEW | LIVE_UI | PASS | Owner Preview / Tạo Preview -> I05/J01 -> full single preview row | ExactlyNEW1,0changes/invalid/conflict, exact known product values | Preview job c6b8c149-5a77-461a-b4c1-d100f32a77a3 completed |
+| LIVE-REVIEW | LIVE_UI | PASS | Owner persisted Review / Reason/ack -> confirm_review -> I04 | Distinct durable confirmation with matching preview/source/mapping/read-set pins | Confirmation d3ab309a-3031-45cb-9532-1a79ea6a0033 usable |
+| LIVE-COMMIT | LIVE_UI | PASS | Owner atomic Commit / Explicit ack with optional reason empty -> one commit/J01/I06 | Exactlyone inserted Product;0changed/no-op; no stock/sales/supplier writes | Commit c74915b0-5961-4808-a126-5c8fadbf39af; job91b8b020 completed; I06 committed |
+| LIVE-PERSISTENCE | LIVE_UI | PASS | Fresh database session / Read-only guarded SQLAlchemy Session after HTTP job and receipt | Exactlyone SKU/name/unit/price/active tuple in correct Store; completed jobs | Independent fresh-session assertion passed; repeated final read unchanged |
+| LIVE-COMPLETION-RELOAD | LIVE_UI | PASS | Retained completion / Direct /imports?import_id then reload | Same committed receipt/counts; no new write/replay | Completion restored and no extra I01/I03/commit |
+| LIVE-SOURCE-COPY | LIVE_UI | FAIL | Completion source label / Reload completed batch and inspect source summary; compare M01 | Approved source must not be called unconfirmed just because summary not loaded | BUG-003: label Chưa xác nhận while M01 approved_contexts contains source |
+| LIVE-MENU-OWNER | LIVE_UI | PASS | Owner menu readback / Menu deep link/reload -> P01 | 1 Product/12345VND/active/no recipe, exact canonical ID | Matches fresh DB and I06; UI12.345VND, Chưa có công thức |
+| LIVE-MENU-STAFF | LIVE_UI | PASS | Staff permitted read / Menu before and after Owner commit -> reload/P01 | menu.read permits Product, no recipe/ingredient detail leakage | Count0 ->1 after reload; UI Không có quyền xem for recipe |
+| LIVE-STAFF-INVENTORY | LIVE_UI | PASS | Staff forbidden inventory / Direct inventory URL + independent V01 GET | 403PERMISSION_DENIED/data=null, visible safe error | Denied as expected; no Owner session borrowed |
+| LIVE-STAFF-IMPORT | API_ONLY | PASS | Staff forbidden I01 / One direct API-only POST, current Staff CSRF and unique intent | 403PERMISSION_DENIED and no Staff batch row | Denied; negative request key retained, no retry |
+| LIVE-STAFF-COMPLETION | API_ONLY | PASS | Staff forbidden retained Import / Direct I06 read of assigned test batch | Missing import.read ->403/data=null | Denied as expected |
+| LIVE-STAFF-PLANNING | LIVE_UI | PASS | Staff Planning UI / Direct /forecast/planning | Deny missing planning/budget/cost reads, no cached result | Permission guidance shown; no plan created |
+| LIVE-READINESS | LIVE_UI | PASS | Owner current readiness / C01 + valid R01 actions=planning/date query | Known missing facts remain unknown/blocked; no fabricated defaults | can_execute=false, exact config/history/recipe blockers; completion stays committed |
+| LIVE-PLANNING | LIVE_UI | BLOCKED | Planning creation/computation / Inspect default setup and disabled create | Needs authorized computable source/recipe/history/config facts | No history/recipe/default requirements/budget/model/constraints/inbound completeness [DATA-PLANNING] |
+| LIVE-PDF | LIVE_UI | BLOCKED | Retained plan/PDF / No authorized retained Run exists | No fabricated Run/option/export | No C02/C03/C04/C05/C08/N10/J01/N11 PDF execution [DATA-PLANNING] |
+| LIVE-HISTORY | LIVE_UI | PASS | Owner N9 history / Initial UI503 -> independent200 -> fresh navigation/reload | Empty history with current metadata, safe transient-error recovery | One transient SERVICE_UNAVAILABLE; subsequent200empty/UI Chưa có kế hoạch nào |
+| LIVE-NOTIFICATIONS | LIVE_UI | PASS | Owner inbox / /notifications -> NF01/NF02 -> reload | Empty inbox/unread0 coherent; no implicit business action | Normal empty state; no notification write needed |
+| LIVE-NOTIFICATION-WRITE | LIVE_UI | BLOCKED | NF03 and handoff / No actual inbox items | Do not fabricate notifications or unrelated invitation/grant events | Live read-state/handoff untested; controlled coverage historical only [DATA-NOTIFICATIONS] |
+| LIVE-ISOLATION | LIVE_UI | BLOCKED | Multi/foreign Store and revocation / No additional authorized fixtures or grant edits | Do not create/modify users/Stores/grants | Not tested live [SCOPE-FIXTURES] |
+| OUT-1 | STATIC_ONLY | NOT_APPLICABLE | real email delivery / Not invoked | Explicit user exclusions; keep flags/config unchanged | Out of scope [EXCLUDED] |
+| OUT-2 | STATIC_ONLY | NOT_APPLICABLE | Import Qwen/paid provider / Not invoked | Explicit user exclusions; keep flags/config unchanged | Out of scope [EXCLUDED] |
+| OUT-3 | STATIC_ONLY | NOT_APPLICABLE | Summary/Chat live model / Not invoked | Explicit user exclusions; keep flags/config unchanged | Out of scope [EXCLUDED] |
+| OUT-4 | STATIC_ONLY | NOT_APPLICABLE | parked What-if/Draft PO / Not invoked | Explicit user exclusions; keep flags/config unchanged | Out of scope [EXCLUDED] |

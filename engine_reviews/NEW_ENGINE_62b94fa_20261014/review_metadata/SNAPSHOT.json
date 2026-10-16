@@ -1,0 +1,132 @@
+{
+  "role": "NEW_ENGINE",
+  "repo_name": "Forecast_Engine_FandB",
+  "repo_location_redacted": "<projectMLAI>/Forecast_Engine_FandB",
+  "branch": "main",
+  "head": "62b94fa4d67cb04141d32be4e57d6f9740c2a8fc",
+  "commit": "62b94fa4d67cb04141d32be4e57d6f9740c2a8fc\n2026-10-09T23:03:54+07:00\nUpdate until not rule based",
+  "captured_utc": "2026-10-14T11:49:20.175032+00:00",
+  "snapshot_kind": "SELECTED_WORKING_TREE_OVERLAY_WITH_AUDIT_ARTIFACTS_NOT_PURE_COMMIT",
+  "initial_and_packaging_git_status": "?? DATA_REQUIREMENTS_VI.md\n?? ENGINE_REVIEW_NEW_ENGINE_VI.md\n?? engine_review_NEW_ENGINE_62b94fa.zip\n?? engine_review_NEW_ENGINE_62b94fa.zip.sha256\n?? reports/ALL_FILE_INVENTORY.csv\n?? reports/ENGINE_ACTIVE_CORE_DIFF.patch\n?? reports/ENGINE_FILE_INVENTORY.csv\n?? reports/ENGINE_FORECAST_DIFF.patch\n?? reports/SO_SANH_ENGINE_CU_MOI_VI.md\n?? reports/engine_review_NEW_ENGINE_62b94fa_INTEGRITY.json\n?? reports/engine_review_tools/package_review.py\n?? reports/engine_review_tools/verify_review.py\n?? shelfcash_legacy_review.zip",
+  "wip_files": [
+    {
+      "status": "??",
+      "path": "DATA_REQUIREMENTS_VI.md",
+      "included": false,
+      "sha256": "e76ae313506530862eeca1e6260a8be458e40ee23721f0123ee9cdbc5f656d25",
+      "bytes": 24689
+    },
+    {
+      "status": "??",
+      "path": "ENGINE_REVIEW_NEW_ENGINE_VI.md",
+      "included": false,
+      "sha256": "a638e736c25d6b0ea35abfd54959f2a5d77f7c96ef24ebc0624bde94b62df757",
+      "bytes": 31976
+    },
+    {
+      "status": "??",
+      "path": "engine_review_NEW_ENGINE_62b94fa.zip",
+      "included": false,
+      "sha256": "ba2d6afb6bcc19ea44951ca360062ec297b7b30375968f77a78f4c3d20c1f91d",
+      "bytes": 609147
+    },
+    {
+      "status": "??",
+      "path": "engine_review_NEW_ENGINE_62b94fa.zip.sha256",
+      "included": false,
+      "sha256": "7e6442c148ce4951a0fd1a511a96d5ca29a764030c70dace23d8acba3935707c",
+      "bytes": 104
+    },
+    {
+      "status": "??",
+      "path": "reports/ALL_FILE_INVENTORY.csv",
+      "included": false,
+      "sha256": "81a2a6a8e1194ade9437c2b1d9d3ecd6584236744afc439686ea757826b2f36d",
+      "bytes": 89504
+    },
+    {
+      "status": "??",
+      "path": "reports/ENGINE_ACTIVE_CORE_DIFF.patch",
+      "included": false,
+      "sha256": "c83dcbfd300be97e5e769f6d099fd95436da5dc4b30e420e1357a3196d3b4ceb",
+      "bytes": 252935
+    },
+    {
+      "status": "??",
+      "path": "reports/ENGINE_FILE_INVENTORY.csv",
+      "included": false,
+      "sha256": "2dae41dc6ae904a392fcc3ef4f52c8fddbc4c6e3858e9debb19852931b5aae0a",
+      "bytes": 75934
+    },
+    {
+      "status": "??",
+      "path": "reports/ENGINE_FORECAST_DIFF.patch",
+      "included": false,
+      "sha256": "d4c4f36b50fff63ac2765f052bd290d58db3bbda35d3509c69a81e73c4bc1a66",
+      "bytes": 421698
+    },
+    {
+      "status": "??",
+      "path": "reports/SO_SANH_ENGINE_CU_MOI_VI.md",
+      "included": false,
+      "sha256": "12c3a3946ad4fcdf197eb375bbd347bb9f6b1b7853e2259901ea8694dfdc9b08",
+      "bytes": 60327
+    },
+    {
+      "status": "??",
+      "path": "reports/engine_review_NEW_ENGINE_62b94fa_INTEGRITY.json",
+      "included": false,
+      "sha256": "88bd0fbce1cab0d9be531cbc7bf7e6ff07fe4ddda3666a89b26e76c6ee1efad3",
+      "bytes": 403
+    },
+    {
+      "status": "??",
+      "path": "reports/engine_review_tools/package_review.py",
+      "included": false,
+      "sha256": "74640e3535499172bc8e4abee3a1e081d6bb8fc5e1327ef7fc611ff8ca3eb5a5",
+      "bytes": 13941
+    },
+    {
+      "status": "??",
+      "path": "reports/engine_review_tools/verify_review.py",
+      "included": false,
+      "sha256": "d316dc114f40db1343545a32e547f357b9c27f5ceea3dfccb697e9ecd2b64f3a",
+      "bytes": 1408
+    },
+    {
+      "status": "??",
+      "path": "shelfcash_legacy_review.zip",
+      "included": false,
+      "sha256": "8c58050723d2b9dc7837859679ee9a65c758482a17e5475496bf33f9ad272a9a",
+      "bytes": 1310105
+    }
+  ],
+  "tracked_diff_present": false,
+  "audit_python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "audit_installed_distributions": {
+    "numpy": "2.2.6",
+    "pandas": "NOT_INSTALLED_IN_AUDIT_INTERPRETER",
+    "pydantic": "2.13.5",
+    "typer": "NOT_INSTALLED_IN_AUDIT_INTERPRETER",
+    "openpyxl": "NOT_INSTALLED_IN_AUDIT_INTERPRETER",
+    "charset-normalizer": "3.5.2",
+    "openai": "NOT_INSTALLED_IN_AUDIT_INTERPRETER",
+    "lightgbm": "4.6.0",
+    "scikit-learn": "NOT_INSTALLED_IN_AUDIT_INTERPRETER",
+    "scipy": "1.17.1",
+    "statsmodels": "NOT_INSTALLED_IN_AUDIT_INTERPRETER",
+    "pyarrow": "NOT_INSTALLED_IN_AUDIT_INTERPRETER",
+    "pytest": "9.1.1"
+  },
+  "dependency_definitions": [
+    "pyproject.toml",
+    "requirements-demo.lock.txt"
+  ],
+  "dependencies_installed_by_audit": false,
+  "runtime_tests_executed_by_audit": false,
+  "solver_called_by_audit": false,
+  "provider_called_by_audit": false,
+  "source_writes": false,
+  "notebooks_in_scoped_repo": [],
+  "audit_artifact_location_redacted": "<FE_workspace>/engine_reviews/NEW_ENGINE_62b94fa_20261014"
+}

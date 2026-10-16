@@ -1,52 +1,29 @@
-# Integration defect ledger
+Run: `20261016-windows-d5cfbfb-resume-01`. Mode: **IMPLEMENTATION_AND_RESUME_DISCOVERY**. Date: 2026-10-16, Asia/Saigon. Outcome: **BOUNDED_LIVE_IMPORT_VERIFIED_WITH_REMAINING_LIMITS**.
 
-Document state: TEMPLATE_ONLY. Run ID: NOT_RECORDED. No discovery pass was executed and no new confirmed defects are asserted here. Do not interpret an empty ledger as evidence that the application has no defects.
+# Fixed defects and new findings
 
-Historical observations stay linked to their original runs. The user-reported macOS PID issue belongs in the environment/blocker record until supported by reproducible evidence; it is not automatically a new confirmed product defect.
+## BUG-001 — FIXED for T03; CONTROLLED verification
 
-## Defect record template
+P2 historical defect; original reproduction and evidence retained in [archived ledger](runs/20261016-windows-d5cfbfb-discovery/BUGS.md). T03 now reserves a validated allowlisted record in IndexedDB1 before POST and awaits strict transaction completion. Record contains operation/method/path/actor/null Store/nullCAS/original key/body/timestamps/state/receipt ID only. Body allowlistname/timezone/currency; secrets/session/CSRF never persisted. Unavailable/malformed/version-blocked/storage-write failure fails closed before dispatch. Pending/unknown/confirmed receipt fence survives reload; empty T01 does not clear it. Current actor scopes access; logout/account switching retains unresolved records without authorizing wrong-account replay. No journal deletion/TTL or inferred server cancellation.
 
-ID: TO_ASSIGN
-Severity: P0 / P1 / P2 / P3 / P4
-Area: NOT_RECORDED
-Route: NOT_RECORDED
-Role: NOT_RECORDED
-Store context: NOT_RECORDED
-Precondition: NOT_RECORDED
-Case IDs / build / contract / design references: NOT_RECORDED
+Web Locks serialize the full attempt/replay per actor, with IndexedDB reservation preventing a replacement intent across tabs. BroadcastChannel/focus re-read scoped records; missing Web Locks fails closed. No heartbeat/lease/timeout unlock. Replay retains exact original key/body and gets current A03/CSRF before POST; cookie/session change between read and write is still constrained by CSRF. Current-account mismatch triggers Auth refresh, hides the other actor's form and sends no POST. Unknown replay denial preserves uncertainty. A successful late original/replayed receipt is never overwritten by a later failed attempt. Existing confirmed receipt remains a fence if zero-Store view later returns; replays still require current server authority.
 
-Steps to reproduce: NOT_RECORDED
+Final8 controlled T03 cases pass: reload restore/fresh-CSRF exact replay, readback-empty lock, unavailable storage, transaction-write failure, actor switch, wrong-cookie actor, two tabs/in-flight coordination, late original success, and denied-replay reload. The first case covers both empty readback and exact key/body/fresh-CSRF. Controlled effects are simulated; **no real extra Store created**. This is a T03-specific foundation, not durable recovery for every mutation. Other operations remain memory-only. T03 implementation does not alter public API/BE semantics. Final typecheck and changed-file lint pass.
 
-Expected: NOT_RECORDED
+## QA-001 — FIXED; CONTROLLED verification
 
-Actual: NOT_RECORDED
+P3 verification defect. Obsolete N9 fixture now includes captured_budget={availability:unavailable,limit:null,currency:null}, timezone and applied_filters. Its no-manufactured-budget assertion now checks the current unavailable display rather than obsolete “Xem trong Run” copy. Existing1->2-row pagination/filter assertions retained; not removed or weakened. Independent current-contract history test retained in tests/e2e/history-contract.api.spec.ts, with known zeroVND budget/fullmeta/coherent pages/filter/reset-cursor/reload. Both pass. Live N9 empty-state/readback/reload also verified; no populated live Run/PDF case claimed.
 
-Frontend evidence: NOT_RECORDED
+## BUG-002 — P3: Approved profile still presents an approval-required “new version” diff
 
-Network evidence: NOT_RECORDED
+Mode:LIVE_UI + STATIC_ONLY. Route/import:/imports?import_id=0532608d-53a2-499b-a248-afd91b069ced, Owner/assigned Store. Precondition: synthetic six-column product profile, no missing fields, source/entity facts explicitly supplied. Steps: review fullspec; issue one N5approve_activate; wait for acknowledged receipt and reloaded M01; inspect Step4 without new edits. Expected: distinguish already-approved source provenance from new user changes; do not tell Owner another approval is required solely because server marked reviewed=true. Actual: “Profile đã được duyệt” appears beside “Đề xuất version mới · Chưa có hiệu lực”, “1 quy tắc thay đổi”, “Cần Owner quyết định”; visible before/proposed evidence strings are identical. Tạo Preview remains usable; flow completed safely.
 
-Backend evidence: NOT_RECORDED
+Network/backend: N5200decision8bbd268a-636f-4c7b-8ed8-c2b8836cd279, active versionb5af21bb-f365-4614-b9e4-7676b05279c1; M01can_preview=true. Proposed source_provenance.owner_reviewed=false versus approvedtrue is the differing internal value. Frontend ImportProfileSpecification.tsx compares whole source_provenance JSON yet CompactValue displays only evidence references, producing an unexplained diff. Likely boundary: approved/proposed provenance presentation, not a lost approval/backend permission bug. ConfidenceHIGH for observation; cause supported by source/diff. [Screenshot](evidence/20261016-windows-d5cfbfb-resume-01/approved-profile-contradictory-status.png), [HTTP evidence](evidence/20261016-windows-d5cfbfb-resume-01/live-evidence.json). No console exception required to reproduce. OwnerFE; follow-up should reconcile approved current version/provenance display without silently reapproving or altering BE semantics. **Not fixed in this assignment.**
 
-Console evidence: NOT_RECORDED
+## BUG-003 — P3: Reloaded committed batch incorrectly labels its source “unconfirmed”
 
-Screenshot/evidence path: NOT_RECORDED
+Mode:LIVE_UI/API_ONLY. Route:/imports?import_id=0532608d-53a2-499b-a248-afd91b069ced, Owner/assigned Store. Steps: complete profile/preview/persistedReview/Commit; direct-link or reload completed batch; inspect Source strip; independently read M01. Expected: show retained approved source or neutral not-loaded wording, not a claim that source lacks confirmation. Actual: completed receipt is restored but Source shows “Chưa xác nhận”. Backend M01200approved_contexts contains integration_audit_r2/products_master, approved_byOwner/approved_at2026-10-16T10:36:21.359361Z; all9 fields complete. I06stillcompleted/samecommit/one Product. Frontend completion hydration uses a missing in-memory mapping summary as if source were not confirmed. Likely boundary: reload/hydration versus derived source label. ConfidenceHIGH for contradiction,MEDIUM for exact cause. [Reload screenshot](evidence/20261016-windows-d5cfbfb-resume-01/completion-source-label-after-reload.png) and HTTP/readback evidence. User impact: misleading audit/source status after a successful durable import; no persistence loss observed. OwnerFE; follow-up should hydrate retained source evidence or use accurate unloaded wording. **Not fixed.**
 
-Suspected integration boundary: NOT_RECORDED
+## Observations kept separate
 
-Likely root cause: UNKNOWN until supported
-
-Confidence: HIGH / MEDIUM / LOW
-
-User impact / dependent blocked cases / safe stop: NOT_RECORDED
-
-Owner / recommended next action / verification reference: NOT_RECORDED
-
-## Severity for new discovery runs
-
-- P0: security breach, destructive corruption, or a product defect making the application unusable.
-- P1: critical user flow impossible, authorization bypass, wrong-Store data, or persistent data corruption.
-- P2: materially broken feature, incorrect state transition, or failed error/recovery handling.
-- P3: minor functional defect, confusing state, or recoverable inconsistency.
-- P4: cosmetic/polish issue without meaningful functional impact.
-
-Prioritize correctness and data integrity. An environmental outage does not by itself establish a P0 product defect. Confidence describes evidence strength; suspected root cause is not proven causation. Do not combine unrelated defects, regrade historical records silently, or fix defects during discovery.
+Initial unrelated controlled invitation test expected GET/POST/GET/POST but observed an extra initialGET; one affected rerun passed unchanged. No product fix or assertion relaxation. Initial live N9GET503SERVICE_UNAVAILABLE later recovered to200empty; UI showed error/retry and fresh navigation/reload rendered empty. Server log reports Auth persistence OperationalError amid connection resets; root cause unestablished, no persistent defect asserted. A transient loading-only identity permission message cleared once descriptors loaded; new-entity form then worked, so no false authorization defect logged.

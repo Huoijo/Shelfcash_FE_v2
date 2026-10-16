@@ -2,7 +2,7 @@
 
 ## Integration audit preparation
 
-The [English integration audit workspace](../integration-audit/README.md) contains the original discovery prompt, target-machine handoff, environment/system/state/contract guidance, and COVERAGE_MATRIX/BUGS/REPORT templates. Current mode is PREPARATION_ONLY: no new execution results are claimed. Future discovery follows the [agent rule](../../.agents/rules/integration-audit.md) and requires a fresh target-host baseline; existing evidence below remains historical.
+The [English integration audit workspace](../integration-audit/README.md) contains the original prompt/handoff and the later Windows discovery/resume reports. The [active report](../integration-audit/REPORT.md) records bounded Windows execution and T03 recovery browser evidence; the [archived discovery run](../integration-audit/runs/20261016-windows-d5cfbfb-discovery/REPORT.md) remains historical. Preparation templates and earlier macOS limitations do not override those host-specific results. This Git integration pass runs offline checks only; it does not rerun live/browser acceptance. Future discovery follows the [agent rule](../../.agents/rules/integration-audit.md) and establishes a fresh target-host baseline.
 
 ## Quy trình
 

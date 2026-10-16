@@ -1,23 +1,38 @@
-# Phase 2: meaningful state coverage
+Run: `20261016-windows-d5cfbfb-discovery`. Mode: **DISCOVERY_EXECUTION**. Date: 2026-10-16, Asia/Saigon. Outcome: **DISCOVERY_ENVIRONMENT_LIMITED**.
 
-Template status: NOT_RUN. These are coverage obligations, not enumerated or executed cases.
+# State and transition matrix
 
-Derive meaningful combinations of route x role x permission x Store context x data state x lifecycle state x action. Reduce impossible combinations only with a specific guard/contract explanation. Do not generate an arbitrary full Cartesian product or claim every theoretical combination was exercised.
+The [case ledger](COVERAGE_MATRIX.md) distinguishes actual static/control/API results from blocked live obligations. Existing concrete browser tests supplied pre-execution scenarios; the complete active ledger was materialized during evidence reconciliation. Inventory and nested-edge audit remain partial, so no exhaustive discovery completion claim is made.
 
-## Dimensions
+Dimensions retained: unauthenticated/valid/invalid/expired session; Owner/Staff/current each-required-grant; no/one/multi/stale/inaccessible Store; empty/populated/partial/stale/missing entity; loading/error/readback; pending/success/definite rejection/unknown; exact replay versus new-key writer; refresh/deep-link/back/forward/multiple tabs; source/schema/date/quantity/unit precision. Every registered route has a blocked normal live-UI entry case. Every Store surface additionally has separate Owner and Staff live obligations, blocked on assigned membership. Controlled tests carry synthetic fixtures; no live grants are borrowed.
 
-- User: unauthenticated/authenticated, valid/expired/invalid session, current account and invited-account mismatch where applicable.
-- Authorization: Owner/Staff, read/write allowed/forbidden, each required grant missing, grants or membership changing after load and before/in flight with a mutation.
-- Store: none/one/multiple, selected, stale/invalid/inaccessible Store, Store/entity/cursor substitutions, late responses after switching scope.
-- Data: loading/populated/empty/partial/stale; missing/invalid referenced entities; unknown/absent/null/zero/false; boundary size/value/date/timezone/unit conditions.
-- Lifecycle: every backend-supported state, terminal state, retained receipt, eligible/ineligible transition, and guard; do not copy prototype scenario names as invented backend enums.
-- Mutation: idle/pending/succeeded/rejected/unknown; validation/authorization/conflict/stale/backend/network failure; known receipt followed by failed readback; operation-specific recovery.
-- Interaction: submit/cancel/close/back/retry, double-click, competing pending submissions, refresh/deep-link, multiple tabs/actors, and out-of-order reads.
+## Lifecycle families and live obligations
 
-## Coverage accounting
+| Family | States/conditions represented | Meaningful transitions |
+| --- | --- | --- |
+| Import batch | draft, analyzing, review_required, ready_for_preview, previewing, committing, completed, completed_with_warnings, failed | Allowed action; denied/stale/conflict; pending; receipt/readback; refresh/deep-link; no duplicate replay |
+| File admission | uploaded, rejected, not_started, parsed, failed | Allowed action; denied/stale/conflict; pending; receipt/readback; refresh/deep-link; no duplicate replay |
+| Mapping issue | auto_mapped, resolved, needs_confirmation, ambiguous, unmatched | Allowed action; denied/stale/conflict; pending; receipt/readback; refresh/deep-link; no duplicate replay |
+| Mapping submission | submitted, changes_requested, approved, rejected, stale, withdrawn | Allowed action; denied/stale/conflict; pending; receipt/readback; refresh/deep-link; no duplicate replay |
+| Job/Planning/PDF | queued, running, completed, failed | Allowed action; denied/stale/conflict; pending; receipt/readback; refresh/deep-link; no duplicate replay |
+| Review/commit | preview coherent, confirm_review retained, stale preview, permission lost, profile retired, known receipt + failed readback, unknown outcome + exact replay, reload loses intent | Allowed action; denied/stale/conflict; pending; receipt/readback; refresh/deep-link; no duplicate replay |
+| Permission request | pending, approved, rejected, cancelled, satisfied, invalidated | Allowed action; denied/stale/conflict; pending; receipt/readback; refresh/deep-link; no duplicate replay |
+| Invitation | pending, accepted, expired, revoked, declined | Allowed action; denied/stale/conflict; pending; receipt/readback; refresh/deep-link; no duplicate replay |
+| Readiness | ready, blocked, unknown, not_assessed, forbidden, unavailable | Allowed action; denied/stale/conflict; pending; receipt/readback; refresh/deep-link; no duplicate replay |
 
-Record node/state coverage, control/edge coverage, endpoint/contract coverage, permission/Store coverage, data coverage, and execution mode separately. A state rendering correctly does not prove its outgoing transitions work. Parent-screen coverage does not cover nested drawers/fields/errors.
+Import batch state names come from use-case assignments; public Draft/Batch status is a string, so these are discovered source states rather than an invented closed DTO enum. Mapping issues and MQ/PR/job states are typed literals in backend/app/application/contracts. Readiness row mixes assessment values with permission/unavailable UI conditions; those are explicitly conditions, not all one backend enum. Source schema inventory has15 values (INPUT_DATA), not six filenames.
 
-Each execution case uses exactly NOT_RUN, PASS, FAIL, BLOCKED, or NOT_APPLICABLE. A scope disposition such as PARKED_PRODUCT_SCOPE is a separate field; excluded combinations require a reason and authority. Missing prerequisites are BLOCKED, not NOT_APPLICABLE.
+Recipe and receipt additional obligations: current/scheduled/historical/no-current timeline; preview/confirm/commit/withdraw; yield and quantities exact; current lots/empty/missing/null received date; receipt identity replay; snapshot/CAS version conflict; threshold absent/null/zero. Planning: default/saved/custom scope, zero/absent budget, recognized model fallback, warning/no winner/completed, retained digest missing, historical read-only, PDF queued/running/failed/ready/download failure. Detailed live nested-edge enumeration remains incomplete, recorded as a confidence limit; the controlled case titles preserve what was actually exercised.
 
-At discovery close, every enumerated row must have a result or an explicit remaining NOT_RUN limitation. Any remaining NOT_RUN prevents claiming discovery completion. Blocked rows permit an environment-limited discovery report, not full acceptance. Add new cases discovered by the final exploratory sweep and evaluate them before closing as far as the environment allows.
+## Guarded reductions and exclusions
+
+- Public signup/verification do not imply session/Owner/Store, so automatic verified-login/Store creation is not an accepted transition. Real email paths are excluded by the new scope; missing credentials are BLOCKED, never N/A.
+- Staff cannot approve reusable profiles; Owner may self-approve. Approval != batch confirm_review != commit. No Manager role or hidden Owner-authority substitution.
+- Once source set is sealed, accepted-file delete/replace/unseal is not a current capability. No test invents those writers or claims rollback on browser cancellation.
+- Missing budget/cost/read rights cannot be tested by stripping price fields from a successful response. Multi/foreign-Store cases need expressly authorized fixtures, not new Stores or guessed existing IDs.
+- Unknown mutation followed by empty lookup cannot unlock a competing intent. EXP-01 adds the previously untested reload edge, reproducing BUG-001; in-app exact replay still passed its original controlled case.
+- Provider-backed AI, real email and parked What-if/Draft PO are OUT_OF_SCOPE/NOT_APPLICABLE. Deterministic Assistant reads/responses are conceptually in scope but blocked without a valid authorized retained plan; no model PASS inferred from HTTP200.
+
+## Additional exploratory sweep
+
+EXP-01: unknown T03 -> browser reload -> empty T01 -> same form submits fresh key: FAIL, controlled, BUG-001. EXP-02: current N9 captured zero budget/full meta -> coherent second page -> filter clears cursor -> reload reconstructs filter: PASS, controlled. These are additions beyond the existing59 browser cases. No live fault injection, permission changes, data deletion or arbitrary second-Store fixtures were used.

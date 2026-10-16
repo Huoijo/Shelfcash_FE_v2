@@ -1,0 +1,6879 @@
+{
+  "pin_sha256": "790443d80350cc597c7c06179309e43303ba558de34017ea1dd4113de71fc1ee",
+  "live_sha256": "f5db5878d5799770f96035d10c15a7960774329bf2a0bb868cd36ba41aa25d1e",
+  "added_operations": [
+    {
+      "method": "post",
+      "path": "/api/v1/procurement-plans/{plan_id}/assistant/summary",
+      "operation": "AS01"
+    },
+    {
+      "method": "get",
+      "path": "/api/v1/procurement-plans/{plan_id}/assistant/summary/{generation_id}",
+      "operation": "AS02"
+    },
+    {
+      "method": "post",
+      "path": "/api/v1/procurement-plans/{plan_id}/assistant/messages",
+      "operation": "AS03"
+    }
+  ],
+  "boundaries": [
+    {
+      "operation": "health_health_get",
+      "method": "GET",
+      "path": "/health",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [],
+      "requestBody": null,
+      "responses": [
+        "200"
+      ]
+    },
+    {
+      "operation": "A02",
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/auth/AccountLifecycle.tsx",
+        "src/features/backend-capabilities/capabilities.state.ts"
+      ],
+      "parameters": [
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RegistrationRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "202",
+        "400",
+        "403",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "A06",
+      "method": "POST",
+      "path": "/api/v1/auth/email-verifications/request",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/auth/AccountLifecycle.tsx",
+        "src/features/backend-capabilities/capabilities.state.ts"
+      ],
+      "parameters": [
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PublicEmailRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "202",
+        "400",
+        "403",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "A05",
+      "method": "POST",
+      "path": "/api/v1/auth/email-verifications/complete",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/auth/AccountLifecycle.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CredentialCompletion"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "403",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "A07",
+      "method": "POST",
+      "path": "/api/v1/auth/password-reset/request",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/auth/AccountLifecycle.tsx",
+        "src/features/backend-capabilities/capabilities.state.ts"
+      ],
+      "parameters": [
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PublicEmailRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "202",
+        "400",
+        "403",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "A01",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/LoginRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "A03",
+      "method": "GET",
+      "path": "/api/v1/auth/me",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "A04",
+      "method": "POST",
+      "path": "/api/v1/auth/logout",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Required when a valid session exists.",
+            "title": "X-Csrf-Token"
+          },
+          "description": "Required when a valid session exists."
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "204",
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "N7",
+      "method": "POST",
+      "path": "/api/v1/auth/credentials/complete",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CredentialCompletion"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "T01",
+      "method": "GET",
+      "path": "/api/v1/stores",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store/store.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "T03",
+      "method": "POST",
+      "path": "/api/v1/stores",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store/StoreBootstrap.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/StoreCreateRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "201",
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "429",
+        "503",
+        "409",
+        "413",
+        "428"
+      ]
+    },
+    {
+      "operation": "T02",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store/store.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "N12",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/memberships",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store-workspace/storeWorkspace.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "role",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "const": "STAFF",
+            "type": "string",
+            "default": "STAFF",
+            "title": "Role"
+          }
+        },
+        {
+          "name": "active",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "enum": [
+              "all",
+              "true",
+              "false"
+            ],
+            "type": "string",
+            "default": "all",
+            "title": "Active"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "410",
+        "412",
+        "422",
+        "428",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "N13",
+      "method": "PUT",
+      "path": "/api/v1/stores/{store_id}/memberships/{membership_id}/permissions",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store-workspace/storeWorkspace.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "membership_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Membership Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GrantsRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "410",
+        "412",
+        "422",
+        "428",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "N14",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/permission-events",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "membership_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Membership Id"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "410",
+        "412",
+        "422",
+        "428",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "N15",
+      "method": "POST",
+      "path": "/api/v1/stores/{store_id}/staff-invitations",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store-workspace/storeWorkspace.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CreateInvitation"
+            }
+          }
+        }
+      },
+      "responses": [
+        "201",
+        "401",
+        "403",
+        "404",
+        "409",
+        "410",
+        "412",
+        "422",
+        "428",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "N16",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/staff-invitations",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store-workspace/storeWorkspace.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "view",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "enum": [
+              "invitations",
+              "events"
+            ],
+            "type": "string",
+            "default": "invitations",
+            "title": "View"
+          }
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        {
+          "name": "email",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 320
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          }
+        },
+        {
+          "name": "invitation_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Invitation Id"
+          }
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "const": "-issued_at",
+            "type": "string",
+            "default": "-issued_at",
+            "title": "Sort"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "410",
+        "412",
+        "422",
+        "428",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "N17",
+      "method": "POST",
+      "path": "/api/v1/stores/{store_id}/staff-invitations/{invitation_id}/actions",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store-workspace/storeWorkspace.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "invitation_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Invitation Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/ReissueInvitation"
+                },
+                {
+                  "$ref": "#/components/schemas/RevokeInvitation"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "action",
+                "mapping": {
+                  "reissue": "#/components/schemas/ReissueInvitation",
+                  "revoke": "#/components/schemas/RevokeInvitation"
+                }
+              },
+              "title": "Body"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "410",
+        "412",
+        "422",
+        "428",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "N18",
+      "method": "GET",
+      "path": "/api/v1/staff-invitations/{invitation_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/backend-capabilities/capabilities.react.ts",
+        "src/features/backend-capabilities/capabilities.state.ts"
+      ],
+      "parameters": [
+        {
+          "name": "invitation_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Invitation Id"
+          }
+        },
+        {
+          "name": "X-Invitation-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Invitation-Token"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "410",
+        "412",
+        "422",
+        "428",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "N19",
+      "method": "POST",
+      "path": "/api/v1/staff-invitations/{invitation_id}/accept",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "invitation_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Invitation Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AcceptInvitation"
+            }
+          }
+        }
+      },
+      "responses": [
+        "201",
+        "401",
+        "403",
+        "404",
+        "409",
+        "410",
+        "412",
+        "422",
+        "428",
+        "429",
+        "503",
+        "200"
+      ]
+    },
+    {
+      "operation": "IN01",
+      "method": "POST",
+      "path": "/api/v1/staff-invitations/{invitation_id}/decline",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/auth/InvitationDecline.tsx",
+        "src/features/backend-capabilities/capabilities.state.ts"
+      ],
+      "parameters": [
+        {
+          "name": "invitation_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Invitation Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DeclineInvitation"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "410",
+        "412",
+        "422",
+        "428",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "NF01",
+      "method": "GET",
+      "path": "/api/v1/notifications",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/backend-capabilities/capabilities.data.ts"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "unread",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unread"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "NF02",
+      "method": "GET",
+      "path": "/api/v1/notifications/unread-count",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/backend-capabilities/capabilities.data.ts",
+        "src/features/notifications/NotificationProvider.tsx",
+        "src/features/notifications/NotificationsPage.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "snapshot_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "NF03",
+      "method": "PATCH",
+      "path": "/api/v1/notifications/{notification_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/backend-capabilities/capabilities.data.ts",
+        "src/features/backend-capabilities/capabilities.react.ts",
+        "src/features/notifications/NotificationsPage.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "notification_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Notification Id"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ReadRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "PR01",
+      "method": "POST",
+      "path": "/api/v1/stores/{store_id}/permission-requests",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store-workspace/components/PermissionRequests.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SubmitRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "201",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "PR02",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/permission-requests",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store-workspace/components/PermissionRequests.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "state",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "pending",
+                  "approved",
+                  "rejected",
+                  "cancelled",
+                  "satisfied",
+                  "invalidated"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "State"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "PR03",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/permission-requests/{request_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store-workspace/components/PermissionRequestNotice.tsx",
+        "src/features/store-workspace/components/PermissionRequests.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "request_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Request Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "PR04",
+      "method": "POST",
+      "path": "/api/v1/stores/{store_id}/permission-requests/{request_id}/actions",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/store-workspace/components/PermissionRequests.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "request_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Request Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/ApproveRequest"
+                },
+                {
+                  "$ref": "#/components/schemas/RejectRequest"
+                },
+                {
+                  "$ref": "#/components/schemas/CancelRequest"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "action",
+                "mapping": {
+                  "approve": "#/components/schemas/ApproveRequest",
+                  "reject": "#/components/schemas/RejectRequest",
+                  "cancel": "#/components/schemas/CancelRequest"
+                }
+              },
+              "title": "Body"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "MQ01",
+      "method": "POST",
+      "path": "/api/v1/imports/{import_id}/mapping-submissions",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/backend-capabilities/capabilities.data.ts",
+        "src/features/import-data/components/ImportSubmissionLifecycle.tsx",
+        "src/features/import-data/components/MappingSubmissionsPage.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "import_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Import Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/SubmitMapping"
+                },
+                {
+                  "$ref": "#/components/schemas/WithdrawMapping"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "action",
+                "mapping": {
+                  "submit": "#/components/schemas/SubmitMapping",
+                  "withdraw": "#/components/schemas/WithdrawMapping"
+                }
+              },
+              "title": "Body"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503",
+        "201"
+      ]
+    },
+    {
+      "operation": "MQ02",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/mapping-submissions",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/import-data/components/MappingSubmissionsPage.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "state",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "submitted",
+                  "changes_requested",
+                  "approved",
+                  "rejected",
+                  "stale",
+                  "withdrawn"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "State"
+          }
+        },
+        {
+          "name": "file_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Id"
+          }
+        },
+        {
+          "name": "import_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Import Id"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "MQ03",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/mapping-submissions/{submission_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/import-data/components/MappingSubmissionsPage.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "submission_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Submission Id"
+          }
+        },
+        {
+          "name": "evidence_limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 20,
+            "title": "Evidence Limit"
+          }
+        },
+        {
+          "name": "evidence_cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence Cursor"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "P01",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/products",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "q",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Q"
+          }
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "active",
+                  "paused"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "enum": [
+              "name",
+              "-name",
+              "selling_price",
+              "-selling_price"
+            ],
+            "type": "string",
+            "default": "name",
+            "title": "Sort"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "P02",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/products/{product_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "product_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Product Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "V01",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/inventory",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "q",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Q"
+          }
+        },
+        {
+          "name": "ingredient_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ingredient Id"
+          }
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "enum": [
+              "name",
+              "-name",
+              "nearest_expiry"
+            ],
+            "type": "string",
+            "default": "name",
+            "title": "Sort"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "V02",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/inventory/{ingredient_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "ingredient_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Ingredient Id"
+          }
+        },
+        {
+          "name": "snapshot_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Id"
+          }
+        },
+        {
+          "name": "lot_limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Lot Limit"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "V03",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/inventory/{ingredient_id}/lots",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "ingredient_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Ingredient Id"
+          }
+        },
+        {
+          "name": "snapshot_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Id"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "const": "expiry_date,batch_code",
+            "type": "string",
+            "default": "expiry_date,batch_code",
+            "title": "Sort"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "V04",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/inventory/{ingredient_id}/movements",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "ingredient_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Ingredient Id"
+          }
+        },
+        {
+          "name": "snapshot_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Id"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "const": "-occurred_at",
+            "type": "string",
+            "default": "-occurred_at",
+            "title": "Sort"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "D01",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/today",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/pages/today/TodayPage.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "section",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Section"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 20,
+            "minimum": 1,
+            "default": 5,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "snapshot_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "SU01",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/suppliers",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "q",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Q"
+          }
+        },
+        {
+          "name": "active",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Active"
+          }
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "enum": [
+              "name",
+              "-name"
+            ],
+            "type": "string",
+            "default": "name",
+            "title": "Sort"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        },
+        {
+          "name": "snapshot_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "N6",
+      "method": "POST",
+      "path": "/api/v1/stores/{store_id}/inventory/receipts",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/StockReceiptRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "201",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503",
+        "200"
+      ]
+    },
+    {
+      "operation": "N8",
+      "method": "PUT",
+      "path": "/api/v1/stores/{store_id}/inventory/{ingredient_id}/threshold",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "ingredient_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Ingredient Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ThresholdRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "N20",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/products/{product_id}/recipe-schedule",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "product_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Product Id"
+          }
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "maxLength": 128,
+            "default": "in_effect,scheduled",
+            "title": "Status"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "maxLength": 64,
+            "default": "effective_from,version",
+            "title": "Sort"
+          }
+        },
+        {
+          "name": "from_date",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "From Date"
+          }
+        },
+        {
+          "name": "to_date",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "To Date"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "N21",
+      "method": "POST",
+      "path": "/api/v1/stores/{store_id}/products/{product_id}/recipe-schedule/changes",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "product_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Product Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/app__application__contracts__recipe_schedule__PreviewRequest"
+                },
+                {
+                  "$ref": "#/components/schemas/app__application__contracts__recipe_schedule__CommitRequest"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "phase",
+                "mapping": {
+                  "preview": "#/components/schemas/app__application__contracts__recipe_schedule__PreviewRequest",
+                  "commit": "#/components/schemas/app__application__contracts__recipe_schedule__CommitRequest"
+                }
+              },
+              "title": "Body"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "N22",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/products/{product_id}/recipe-schedule/changes/{change_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "product_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Product Id"
+          }
+        },
+        {
+          "name": "change_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Change Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "I01",
+      "method": "POST",
+      "path": "/api/v1/stores/{store_id}/imports",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/import-data/importData.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DraftRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "201",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "H02",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/imports",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "import_date",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "date",
+            "title": "Import Date"
+          }
+        },
+        {
+          "name": "category",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "sales",
+                  "inventory",
+                  "recipes",
+                  "supplier",
+                  "calendar",
+                  "usage",
+                  "purchase"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          }
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "in_progress",
+                  "completed",
+                  "completed_with_warnings",
+                  "failed"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        {
+          "name": "q",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Q"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "const": "-imported_at",
+            "type": "string",
+            "default": "-imported_at",
+            "title": "Sort"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "I02",
+      "method": "POST",
+      "path": "/api/v1/imports/{import_id}/files",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/backend-capabilities/capabilities.state.ts",
+        "src/features/import-data/importData.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "import_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Import Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "multipart/form-data": {
+            "schema": {
+              "$ref": "#/components/schemas/Body_I02"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "I03",
+      "method": "POST",
+      "path": "/api/v1/imports/{import_id}/analyze",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/import-data/importData.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "import_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Import Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AnalyzeRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "202",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "I04",
+      "method": "GET",
+      "path": "/api/v1/imports/{import_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/import-data/importData.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "import_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Import Id"
+          }
+        },
+        {
+          "name": "files_limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Files Limit"
+          }
+        },
+        {
+          "name": "files_cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Files Cursor"
+          }
+        },
+        {
+          "name": "include_preview",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "default": false,
+            "title": "Include Preview"
+          }
+        },
+        {
+          "name": "preview_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preview Id"
+          }
+        },
+        {
+          "name": "rows_limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Rows Limit"
+          }
+        },
+        {
+          "name": "rows_cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rows Cursor"
+          }
+        },
+        {
+          "name": "classification",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "NEW",
+                  "UNCHANGED",
+                  "CHANGED",
+                  "INVALID",
+                  "CONFLICT"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Classification"
+          }
+        },
+        {
+          "name": "include",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "configurations",
+                  "preview",
+                  "configurations,preview",
+                  "preview,configurations"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Include"
+          }
+        },
+        {
+          "name": "file_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Id"
+          }
+        },
+        {
+          "name": "sheet_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sheet Id"
+          }
+        },
+        {
+          "name": "projection",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "enum": [
+              "summary",
+              "source_effect"
+            ],
+            "type": "string",
+            "default": "summary",
+            "title": "Projection"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "M01",
+      "method": "GET",
+      "path": "/api/v1/imports/{import_id}/mapping-summary",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/import-data/importFlow.validation.ts",
+        "src/features/import-data/components/MappingSubmissionsPage.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "import_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Import Id"
+          }
+        },
+        {
+          "name": "include_clean_sheets",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "default": false,
+            "title": "Include Clean Sheets"
+          }
+        },
+        {
+          "name": "include_profile_details",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "default": false,
+            "title": "Include Profile Details"
+          }
+        },
+        {
+          "name": "file_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Id"
+          }
+        },
+        {
+          "name": "sheet_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sheet Id"
+          }
+        },
+        {
+          "name": "review_only",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "default": true,
+            "title": "Review Only"
+          }
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "auto_mapped",
+                  "resolved",
+                  "needs_confirmation",
+                  "ambiguous",
+                  "unmatched"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        {
+          "name": "origin",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "RULE",
+                  "QWEN",
+                  "REUSED",
+                  "MANUAL",
+                  "NONE"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "M02",
+      "method": "GET",
+      "path": "/api/v1/imports/{import_id}/mappings",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/import-data/importFlow.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "import_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Import Id"
+          }
+        },
+        {
+          "name": "sheet_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sheet Id"
+          }
+        },
+        {
+          "name": "review_only",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "default": true,
+            "title": "Review Only"
+          }
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "auto_mapped",
+                  "resolved",
+                  "needs_confirmation",
+                  "ambiguous",
+                  "unmatched"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        {
+          "name": "include_details",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "default": false,
+            "title": "Include Details"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        },
+        {
+          "name": "file_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Id"
+          }
+        },
+        {
+          "name": "origin",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "RULE",
+                  "QWEN",
+                  "REUSED",
+                  "MANUAL",
+                  "NONE"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        },
+        {
+          "name": "snapshot_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "M03",
+      "method": "GET",
+      "path": "/api/v1/imports/{import_id}/sheets/{sheet_id}/field-options",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/backend-capabilities/capabilities.data.ts",
+        "src/features/import-data/importFlow.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "import_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Import Id"
+          }
+        },
+        {
+          "name": "sheet_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Sheet Id"
+          }
+        },
+        {
+          "name": "mapping_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mapping Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "M04",
+      "method": "PATCH",
+      "path": "/api/v1/imports/{import_id}/mappings/{mapping_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/import-data/importFlow.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "import_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Import Id"
+          }
+        },
+        {
+          "name": "mapping_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Mapping Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/TargetRequest"
+                },
+                {
+                  "$ref": "#/components/schemas/ResolveRequest-Input"
+                }
+              ],
+              "title": "Body"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "N5",
+      "method": "POST",
+      "path": "/api/v1/stores/{store_id}/mapping-profiles/{profile_id}/decisions",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/backend-capabilities/capabilities.data.ts",
+        "src/features/import-data/importFlow.validation.ts",
+        "src/features/import-data/components/MappingSubmissionsPage.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "profile_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Profile Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Approve"
+                },
+                {
+                  "$ref": "#/components/schemas/Reject"
+                },
+                {
+                  "$ref": "#/components/schemas/RequestChanges"
+                },
+                {
+                  "$ref": "#/components/schemas/Retire"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "decision",
+                "mapping": {
+                  "approve_activate": "#/components/schemas/Approve",
+                  "reject": "#/components/schemas/Reject",
+                  "request_changes": "#/components/schemas/RequestChanges",
+                  "retire": "#/components/schemas/Retire"
+                }
+              },
+              "title": "Body"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "I05",
+      "method": "POST",
+      "path": "/api/v1/imports/{import_id}/process",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "import_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Import Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/app__application__contracts__import_mapping__PreviewRequest"
+                },
+                {
+                  "$ref": "#/components/schemas/app__application__contracts__import_mapping__CommitRequest"
+                },
+                {
+                  "$ref": "#/components/schemas/ConfirmReviewRequest"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "phase",
+                "mapping": {
+                  "preview": "#/components/schemas/app__application__contracts__import_mapping__PreviewRequest",
+                  "commit": "#/components/schemas/app__application__contracts__import_mapping__CommitRequest",
+                  "confirm_review": "#/components/schemas/ConfirmReviewRequest"
+                }
+              },
+              "title": "Body"
+            }
+          }
+        }
+      },
+      "responses": [
+        "202",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503",
+        "200"
+      ]
+    },
+    {
+      "operation": "I06",
+      "method": "GET",
+      "path": "/api/v1/imports/{import_id}/completion",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/import-data/importFlow.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "import_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Import Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "J01",
+      "method": "GET",
+      "path": "/api/v1/jobs/{job_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/import-data/importFlow.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "job_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Job Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "415",
+        "422",
+        "428",
+        "503"
+      ]
+    },
+    {
+      "operation": "N1",
+      "method": "POST",
+      "path": "/api/v1/stores/{store_id}/planning-requirements",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SaveRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "201",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "428",
+        "503",
+        "422"
+      ]
+    },
+    {
+      "operation": "N2",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/planning-requirements/{saved_requirement_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "saved_requirement_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Saved Requirement Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "428",
+        "503",
+        "422"
+      ]
+    },
+    {
+      "operation": "N3",
+      "method": "PUT",
+      "path": "/api/v1/stores/{store_id}/planning-requirements/{saved_requirement_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "saved_requirement_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Saved Requirement Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/ReplaceRequest"
+                },
+                {
+                  "$ref": "#/components/schemas/ArchiveRequest"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "state",
+                "mapping": {
+                  "active": "#/components/schemas/ReplaceRequest",
+                  "archived": "#/components/schemas/ArchiveRequest"
+                }
+              },
+              "title": "Body"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "428",
+        "503",
+        "422"
+      ]
+    },
+    {
+      "operation": "N4",
+      "method": "PUT",
+      "path": "/api/v1/stores/{store_id}/planning-budget",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/backend-capabilities/capabilities.data.ts",
+        "src/features/store-workspace/storeWorkspace.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "If-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-Match"
+          }
+        },
+        {
+          "name": "If-None-Match",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "If-None-Match"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/BudgetRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "412",
+        "413",
+        "428",
+        "503",
+        "422",
+        "201"
+      ]
+    },
+    {
+      "operation": "R01",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/readiness",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "actions",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "maxLength": 128,
+            "default": "import,menu,inventory",
+            "title": "Actions"
+          }
+        },
+        {
+          "name": "forecast_start_date",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forecast Start Date"
+          }
+        },
+        {
+          "name": "planning_request",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 65536
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Planning Request"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "C01",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/planning-context",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/decision-planning/planning.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "planning_request",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 65536
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Planning Request"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "C02",
+      "method": "POST",
+      "path": "/api/v1/stores/{store_id}/procurement-plans",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/backend-capabilities/capabilities.data.ts",
+        "src/features/decision-planning/planning.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "minLength": 36,
+            "maxLength": 36,
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PlanningRequest-Input"
+            }
+          }
+        }
+      },
+      "responses": [
+        "202",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503",
+        "200"
+      ]
+    },
+    {
+      "operation": "N9",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/procurement-plans",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        {
+          "name": "forecast_start_from",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forecast Start From"
+          }
+        },
+        {
+          "name": "forecast_start_to",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forecast Start To"
+          }
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "const": "-accepted_at",
+            "type": "string",
+            "default": "-accepted_at",
+            "title": "Sort"
+          }
+        },
+        {
+          "name": "created_by_user_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created By User Id"
+          }
+        },
+        {
+          "name": "created_date_from",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created Date From"
+          }
+        },
+        {
+          "name": "created_date_to",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created Date To"
+          }
+        },
+        {
+          "name": "snapshot_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "C03",
+      "method": "GET",
+      "path": "/api/v1/procurement-plans/{plan_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/decision-planning/planning.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "plan_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Plan Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "C04",
+      "method": "GET",
+      "path": "/api/v1/procurement-plans/{plan_id}/ingredients",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/decision-planning/planning.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "plan_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Plan Id"
+          }
+        },
+        {
+          "name": "option_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Option Id"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "const": "ingredient_id",
+            "type": "string",
+            "default": "ingredient_id",
+            "title": "Sort"
+          }
+        },
+        {
+          "name": "ingredient_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ingredient Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503",
+        "413"
+      ]
+    },
+    {
+      "operation": "C05",
+      "method": "GET",
+      "path": "/api/v1/procurement-plans/{plan_id}/ingredients/{ingredient_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/decision-planning/planning.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "plan_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Plan Id"
+          }
+        },
+        {
+          "name": "ingredient_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Ingredient Id"
+          }
+        },
+        {
+          "name": "option_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Option Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503",
+        "413"
+      ]
+    },
+    {
+      "operation": "C08",
+      "method": "GET",
+      "path": "/api/v1/procurement-plans/{plan_id}/explanation",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/decision-planning/planning.validation.ts"
+      ],
+      "parameters": [
+        {
+          "name": "plan_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Plan Id"
+          }
+        },
+        {
+          "name": "option_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Option Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "H01",
+      "method": "GET",
+      "path": "/api/v1/stores/{store_id}/imports/calendar",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "store_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          }
+        },
+        {
+          "name": "month",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "minLength": 7,
+            "maxLength": 7,
+            "title": "Month"
+          }
+        },
+        {
+          "name": "category",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "sales",
+                  "inventory",
+                  "recipes",
+                  "supplier",
+                  "calendar",
+                  "usage",
+                  "purchase"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          }
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "in_progress",
+                  "completed",
+                  "completed_with_warnings",
+                  "failed"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        {
+          "name": "q",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Q"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "EX01",
+      "method": "GET",
+      "path": "/api/v1/procurement-plans/{plan_id}/exports",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/operations/RetainedExports.tsx"
+      ],
+      "parameters": [
+        {
+          "name": "plan_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Plan Id"
+          }
+        },
+        {
+          "name": "option_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Option Id"
+          }
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "enum": [
+                  "queued",
+                  "running",
+                  "completed",
+                  "failed"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "default": 50,
+            "title": "Limit"
+          }
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cursor"
+          }
+        },
+        {
+          "name": "snapshot_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snapshot Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "N10",
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/{plan_id}/exports",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [],
+      "parameters": [
+        {
+          "name": "plan_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Plan Id"
+          }
+        },
+        {
+          "name": "Idempotency-Key",
+          "in": "header",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "minLength": 36,
+            "maxLength": 36,
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "title": "Idempotency-Key"
+          }
+        },
+        {
+          "name": "X-CSRF-Token",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "X-Csrf-Token"
+          }
+        },
+        {
+          "name": "Origin",
+          "in": "header",
+          "required": false,
+          "schema": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ExportRequest"
+            }
+          }
+        }
+      },
+      "responses": [
+        "202",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "N11",
+      "method": "GET",
+      "path": "/api/v1/procurement-plans/{plan_id}/exports/{export_id}",
+      "present_live": true,
+      "operation_equal": true,
+      "schema_closure_equal": true,
+      "changed_schemas": [],
+      "source_token_references": [
+        "src/features/backend-capabilities/capabilities.data.ts"
+      ],
+      "parameters": [
+        {
+          "name": "plan_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Plan Id"
+          }
+        },
+        {
+          "name": "export_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Export Id"
+          }
+        }
+      ],
+      "requestBody": null,
+      "responses": [
+        "200",
+        "400",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "503"
+      ]
+    }
+  ]
+}

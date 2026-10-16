@@ -1,0 +1,1470 @@
+{
+  "algorithm": "SHA-256",
+  "role": "NEW_ENGINE",
+  "source_head": "62b94fa4d67cb04141d32be4e57d6f9740c2a8fc",
+  "snapshot_kind": "selected working-tree overlay; WIP disclosed",
+  "self_hash": "Manifest excluded from its own entries; archive digest supplied externally",
+  "files": {
+    ".gitattributes": {
+      "sha256": "eafebaf165ae6771aaf4076e8fc8060f1e45364d7db1820a5cff8b97d0585c4a",
+      "bytes": 149,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": ".gitattributes"
+    },
+    "BE_FE_HANDOFF_VI.md": {
+      "sha256": "f252604900faf0ab749c3bcf42970479a7bf237e91d0c766cfaaac2eae611206",
+      "bytes": 5456,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "BE_FE_HANDOFF_VI.md"
+    },
+    "ENGINE_REVIEW_NEW_ENGINE_VI.md": {
+      "sha256": "d97c88b3760dcb03dd85aeb5aca845757b2ad026023d03da1be7fa0d8441f340",
+      "bytes": 36000,
+      "kind": "audit_generated"
+    },
+    "HANDOFF_VALIDATION.json": {
+      "sha256": "906c8f42b0a9b6c7bcd92d7ef21108f2ff141db43084c6d26f1b09f6c52cbfcc",
+      "bytes": 2390,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "HANDOFF_VALIDATION.json"
+    },
+    "OMISSIONS.md": {
+      "sha256": "31456101885364d857d2765a35ad5b7875f1c9d610227484489feb355261e4e8",
+      "bytes": 1883,
+      "kind": "audit_generated"
+    },
+    "README.md": {
+      "sha256": "195bc851555651b5eb41d1b99d696441514aec4a1943a30a0818d319021efb95",
+      "bytes": 8190,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "README.md"
+    },
+    "README_PREPROCESS_VI.md": {
+      "sha256": "29d2a6d55a63765c0131454da2505336916170a2eaac6072c078791bcf792732",
+      "bytes": 12893,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "README_PREPROCESS_VI.md"
+    },
+    "REVIEW_GUIDE.md": {
+      "sha256": "b7c785e09b092cd1a237f7b50b24deeca74b0e13fb1f2a99c331d370f04145fb",
+      "bytes": 2739,
+      "kind": "audit_generated"
+    },
+    "RUNTIME_CALL_GRAPH.md": {
+      "sha256": "5e43bb6fd2b8a33a8f6569c85fa34290e524b890f23230fa1e68d0ec938132fb",
+      "bytes": 4378,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "RUNTIME_CALL_GRAPH.md"
+    },
+    "SUPPORTED_INPUT_CONTRACT.md": {
+      "sha256": "49ff4ebfaff53d8c26fe6b28de6c255c49eca074168ae88f1594b2e232c5a0a0",
+      "bytes": 9155,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "SUPPORTED_INPUT_CONTRACT.md"
+    },
+    "demo/artifacts/artifact_checksums.json": {
+      "sha256": "f32c03f095fa3f6140437cec6670a7362256b729b283cb14dc3d1ddb7f424a7d",
+      "bytes": 2021,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "demo/artifacts/artifact_checksums.json"
+    },
+    "demo/artifacts/baseline_metrics.json": {
+      "sha256": "ad0e7c19fad8f5dbb53eaf8a5a79fa5799efa83b52b2f946a6bead50bffa6da0",
+      "bytes": 5819,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "demo/artifacts/baseline_metrics.json"
+    },
+    "demo/artifacts/calibration_metrics.json": {
+      "sha256": "a7f224f653e5d9c05790a01673821e137a15dd3f086ac2152268dc0d118a23be",
+      "bytes": 17476,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "demo/artifacts/calibration_metrics.json"
+    },
+    "demo/artifacts/feature_schema.json": {
+      "sha256": "7304c9cb12e6372743353a18816f7f581c68c10ffd3bf8b673f02d3d3c4ead0d",
+      "bytes": 1352,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "demo/artifacts/feature_schema.json"
+    },
+    "demo/artifacts/model_metadata.json": {
+      "sha256": "f9079493fd52b8678a4cecc566b128b0122d0c1e7581d27972d932f12e009e8d",
+      "bytes": 2177,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "demo/artifacts/model_metadata.json"
+    },
+    "demo/artifacts/quality_report.json": {
+      "sha256": "6028917933be8d3b6f1191eeea2c43b00a1a74e9fe253f5bca8167f43696177e",
+      "bytes": 355,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "demo/artifacts/quality_report.json"
+    },
+    "demo/artifacts/test_metrics.json": {
+      "sha256": "645e37a77861b74f0ec8a520b1cb098160c37c09c873b430314cc98c608206dc",
+      "bytes": 1009,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "demo/artifacts/test_metrics.json"
+    },
+    "demo/artifacts/training_manifest.json": {
+      "sha256": "9844d692585b3f4c6c3c4efe265beea75794a99e5642dd87eac59738b73ff4e6",
+      "bytes": 456,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "demo/artifacts/training_manifest.json"
+    },
+    "demo/artifacts/walk_forward_metrics.json": {
+      "sha256": "d79e69fdeb0fc5ddd4821fc6c8f4fc83b8c8733a75b4057eac25a127bc8c6fed",
+      "bytes": 1591,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "demo/artifacts/walk_forward_metrics.json"
+    },
+    "pyproject.toml": {
+      "sha256": "a96ff1d285f02bcccf58ab9f54e8ecdbd96daf53899d3bf2a78eae62fcde4387",
+      "bytes": 1375,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "pyproject.toml"
+    },
+    "requirements-demo.lock.txt": {
+      "sha256": "984d8f91504a94261781501c25be681a1cd2f0fc5780ee70d8ecdcafc2c164b6",
+      "bytes": 887,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "requirements-demo.lock.txt"
+    },
+    "review_metadata/AUDIT_CHECKS.json": {
+      "sha256": "f39f65f30334db600f0bfcd8ea800f1da40cbda9afe84597ee8a15bdf096b633",
+      "bytes": 554,
+      "kind": "audit_generated"
+    },
+    "review_metadata/GIT_STATUS_REDACTED.txt": {
+      "sha256": "2b7ab79a65b1f0195a5688253678a6323225ad2de24f194e72438769995f3f2a",
+      "bytes": 831,
+      "kind": "audit_generated"
+    },
+    "review_metadata/OMITTED_ASSETS.json": {
+      "sha256": "6169ece456540a0b2783614a28474fc5ce39220604178d5a4b904ac5190ae1dd",
+      "bytes": 5451,
+      "kind": "audit_generated"
+    },
+    "review_metadata/SNAPSHOT.json": {
+      "sha256": "f0586feb0aaeabd64647b973d5642bce587c7ead1b80365d896fae882e441755",
+      "bytes": 5160,
+      "kind": "audit_generated"
+    },
+    "review_metadata/SOURCE_INDEX.json": {
+      "sha256": "33ff14add20d57f50e3562ef69be07d732d007dcb09c6966b8300dd43a7d2f5f",
+      "bytes": 277229,
+      "kind": "audit_generated"
+    },
+    "schemas/generalization_v2/DemandScaleModification.schema.json": {
+      "sha256": "9776290d20ef81ec40c96b84a4565165a30585b7aed8eb58dc6f0e47b6bac680",
+      "bytes": 1161,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/DemandScaleModification.schema.json"
+    },
+    "schemas/generalization_v2/ForecastOverridePolicy.schema.json": {
+      "sha256": "d173e3754b38d14b9f2911ef99b1114d91474e5bdbbd7501adf6a271df2fcc82",
+      "bytes": 1804,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/ForecastOverridePolicy.schema.json"
+    },
+    "schemas/generalization_v2/OptimizationRequest.schema.json": {
+      "sha256": "598f7ac9d200dce98367f90e2ac5f27e107f4a331fcd71571e75b1bf62cafb92",
+      "bytes": 23534,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/OptimizationRequest.schema.json"
+    },
+    "schemas/generalization_v2/OptimizationResult.schema.json": {
+      "sha256": "5ae76831cc0204e62e4bbeda22c5746cf89b113e49c794215e8f3ad122586ff7",
+      "bytes": 28812,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/OptimizationResult.schema.json"
+    },
+    "schemas/generalization_v2/PlanningConfig.schema.json": {
+      "sha256": "8068f7897a0c26703e986a5862152008414a70e994cd786ba0869d585858ff9b",
+      "bytes": 14622,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/PlanningConfig.schema.json"
+    },
+    "schemas/generalization_v2/SEMANTICS_OPTIONS.json": {
+      "sha256": "7eda0646a6eee8b353fbe46ee557ec2b132fefdb160f84947929394f9a9ddb35",
+      "bytes": 21714,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/SEMANTICS_OPTIONS.json"
+    },
+    "schemas/generalization_v2/SUPPORTED_ENVELOPE.json": {
+      "sha256": "e610353606eabc9588d6db38b523298bbaf8c3778946c1859ce50768dccec704",
+      "bytes": 235,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/SUPPORTED_ENVELOPE.json"
+    },
+    "schemas/generalization_v2/examples/README.md": {
+      "sha256": "04a8d8442e1ce097499fed3c6be5694804126d8141408277c2475bcd1b54c06b",
+      "bytes": 297,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/README.md"
+    },
+    "schemas/generalization_v2/examples/accepted_nonempty.request.json": {
+      "sha256": "ef851c3d965870f0b021c6dee919c8dc2a87d1d1b385b1cab5dcee731b58f3ab",
+      "bytes": 3977,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/accepted_nonempty.request.json"
+    },
+    "schemas/generalization_v2/examples/accepted_nonempty.response.json": {
+      "sha256": "6ce0662e1974d355b89d14f623db05f3aecfff1e4674d905e07fd161698b0525",
+      "bytes": 204017,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/accepted_nonempty.response.json"
+    },
+    "schemas/generalization_v2/examples/accepted_zero.request.json": {
+      "sha256": "3b8ae19755233ab38859f6573518880772d869a7cf8ece5f1fadfb5b47c52971",
+      "bytes": 3961,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/accepted_zero.request.json"
+    },
+    "schemas/generalization_v2/examples/accepted_zero.response.json": {
+      "sha256": "15f095a01e1423bfe9ee6a83a0660e0c164f30b845c7ce13ed6fbf74c6dbf81a",
+      "bytes": 176509,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/accepted_zero.response.json"
+    },
+    "schemas/generalization_v2/examples/blocked.request.json": {
+      "sha256": "7abf58178fcbaa3e1ead01d27ca86b47013b79bf30f278b7e165f4864d8cf100",
+      "bytes": 7042,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/blocked.request.json"
+    },
+    "schemas/generalization_v2/examples/blocked.response.json": {
+      "sha256": "71c81a24fa763ce67e5418306918908a0601c621cd04e12b4d8c1b4f4fc5a40b",
+      "bytes": 1630,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/blocked.response.json"
+    },
+    "schemas/generalization_v2/examples/demand_1_1.modification.json": {
+      "sha256": "18c5c672cc796311d3d968af20656585cd41057c85a7a22e7018b58df36bf8eb",
+      "bytes": 207,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/demand_1_1.modification.json"
+    },
+    "schemas/generalization_v2/examples/invalid.request.json": {
+      "sha256": "b4e6924a94cdf1f1af798cd4a87dd554d787f4921f58db27e40f89b501069bc8",
+      "bytes": 3977,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/invalid.request.json"
+    },
+    "schemas/generalization_v2/examples/invalid.response.json": {
+      "sha256": "d38bfb84c6cf3056d1f888a9d189ae09ad121113a6c1a657babf36fc9303bb56",
+      "bytes": 871,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/invalid.response.json"
+    },
+    "schemas/generalization_v2/examples/proven_infeasible.request.json": {
+      "sha256": "114503b0a1678e5361343d6770cbd063fe6cdbf82cd916231724125608a835f7",
+      "bytes": 3370,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/proven_infeasible.request.json"
+    },
+    "schemas/generalization_v2/examples/proven_infeasible.response.json": {
+      "sha256": "4a510c892803c7988be4dfaca17ed240653901e3cbc0277365803ea09bbce7b3",
+      "bytes": 9017,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/proven_infeasible.response.json"
+    },
+    "schemas/generalization_v2/examples/search_limit.request.json": {
+      "sha256": "df78824433a7ad10bad616470faf19816aa43ea1548484796c1725dd806e09cf",
+      "bytes": 3981,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/search_limit.request.json"
+    },
+    "schemas/generalization_v2/examples/search_limit.response.json": {
+      "sha256": "b98ff4bd9aa03aeb5a9c51eabd87e0f90c7c3fa2de1fc4b7be662ada1cd48672",
+      "bytes": 1261,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "schemas/generalization_v2/examples/search_limit.response.json"
+    },
+    "scripts/run_typed_planning.ps1": {
+      "sha256": "b014f982402a9fcae488158cc787ec8e0c1e0482b37a24f54ebf70be7bcdc196",
+      "bytes": 776,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "scripts/run_typed_planning.ps1"
+    },
+    "shelfcash_forecast/__init__.py": {
+      "sha256": "3ca9cb7be54c5e7f26a827c7bb1b85e752b9204814a65a0adaaa0340a02eaf26",
+      "bytes": 2665,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/__init__.py"
+    },
+    "shelfcash_forecast/application.py": {
+      "sha256": "8c8972d15af0fa1e9387398f87db4f8ffdf427e53423418bedbb414392aec69f",
+      "bytes": 16808,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/application.py"
+    },
+    "shelfcash_forecast/baselines/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/baselines/__init__.py"
+    },
+    "shelfcash_forecast/baselines/ets.py": {
+      "sha256": "f3924e72cad64ef2c59c946ee58339c78cab6d37297b095754c17a447ab9a758",
+      "bytes": 6698,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/baselines/ets.py"
+    },
+    "shelfcash_forecast/baselines/ets_optimized.py": {
+      "sha256": "c402be029a834d299f8dcb04ad1a48390ed522a67c89a60435164b9f5321407c",
+      "bytes": 4488,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/baselines/ets_optimized.py"
+    },
+    "shelfcash_forecast/baselines/moving_average.py": {
+      "sha256": "867d246ecce482e9b8eb238cc5a313fe6efbcdb924d17982196016833b41514f",
+      "bytes": 1621,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/baselines/moving_average.py"
+    },
+    "shelfcash_forecast/baselines/seasonal_naive.py": {
+      "sha256": "3abc0fda6662bd1c10ddb73f9ea6e796bd6824b55b4fb9014bedcf48d53cf0f2",
+      "bytes": 1322,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/baselines/seasonal_naive.py"
+    },
+    "shelfcash_forecast/bom/__init__.py": {
+      "sha256": "3674404f151805e706be206eb19b9f0700b3d1b79cec1d14e78711a4fcc2a979",
+      "bytes": 520,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/bom/__init__.py"
+    },
+    "shelfcash_forecast/bom/adapter.py": {
+      "sha256": "5ee4aecc83336276bf26d2a65d62393e1a3b69c31557b63ff24c841ac8e3d340",
+      "bytes": 15588,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/bom/adapter.py"
+    },
+    "shelfcash_forecast/bom/contracts.py": {
+      "sha256": "1c20006e930c847fac417e30e1c9593f0715d866db5676638d80a0d35f20201e",
+      "bytes": 6288,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/bom/contracts.py"
+    },
+    "shelfcash_forecast/bom/engine.py": {
+      "sha256": "ce245e210759463bd4eb5ce820311fe08f7a68900d8d4d0412644285d8478594",
+      "bytes": 12856,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/bom/engine.py"
+    },
+    "shelfcash_forecast/bom/recipe_resolver.py": {
+      "sha256": "e925ab8d7569600011b103ead501e6f5ecfa2b0e18a3d986aba7898ef3ab1cd9",
+      "bytes": 6107,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/bom/recipe_resolver.py"
+    },
+    "shelfcash_forecast/bom/units.py": {
+      "sha256": "a1ee342b385e7aa44bb9029ec4d2c1f3aec4dca0a365f9d6a31828c9d64b651b",
+      "bytes": 11856,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/bom/units.py"
+    },
+    "shelfcash_forecast/calibration/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/calibration/__init__.py"
+    },
+    "shelfcash_forecast/calibration/cqr.py": {
+      "sha256": "c57a7af16e10daa3796db54ecc72ec79bfdb7e5c9c1ba72b5f01bba53f612aab",
+      "bytes": 8768,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/calibration/cqr.py"
+    },
+    "shelfcash_forecast/calibration/crossing.py": {
+      "sha256": "f7ac4c08692cdde3e0655c0ba33f129354901248b125c36957e57ab70af37eed",
+      "bytes": 678,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/calibration/crossing.py"
+    },
+    "shelfcash_forecast/calibration/metrics.py": {
+      "sha256": "9aa26a0c5539344c371492aab855f41ebaed86cfdd6c93ae122667848a03230d",
+      "bytes": 2346,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/calibration/metrics.py"
+    },
+    "shelfcash_forecast/calibration/point.py": {
+      "sha256": "51371fa6813d711f06f9f3cbb5b952c2c7a9d1d9df43c1f793c70b689328f508",
+      "bytes": 13117,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/calibration/point.py"
+    },
+    "shelfcash_forecast/cli.py": {
+      "sha256": "71f569b02ff556ac5642a18b71b7c7881208e586b1b7c06156c51ddccef2186f",
+      "bytes": 5067,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/cli.py"
+    },
+    "shelfcash_forecast/config.py": {
+      "sha256": "840a94887fd275a1aa2bb3e5d9efd01d87b9e47467935c1466fd614e320438ed",
+      "bytes": 5889,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/config.py"
+    },
+    "shelfcash_forecast/contracts.py": {
+      "sha256": "3f8d53032fd0c490be642dcd75bf32979a7346733fbe24acbc473e7fbe7aa849",
+      "bytes": 1879,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/contracts.py"
+    },
+    "shelfcash_forecast/data/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/data/__init__.py"
+    },
+    "shelfcash_forecast/data/adapter.py": {
+      "sha256": "8872aa0a4511cbe93acf29ed881cf074f5867d89826bf8b0c88777712b6f1510",
+      "bytes": 9980,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/data/adapter.py"
+    },
+    "shelfcash_forecast/data/contracts.py": {
+      "sha256": "f2cb7310485fdb54f0e9e32d4da0ff16a6e27b7c149aca13be354495dfa77947",
+      "bytes": 3653,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/data/contracts.py"
+    },
+    "shelfcash_forecast/data/demand_reconstruction.py": {
+      "sha256": "fa5ecd0c225d4a66679c1cd51550dc2449ca1b57ee6fa90c70b19c39dd5e8259",
+      "bytes": 8580,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/data/demand_reconstruction.py"
+    },
+    "shelfcash_forecast/data/panel_builder.py": {
+      "sha256": "74b5fcebb19a3334ed469733ab842615f3106d29958249743e6e35db0616ec5f",
+      "bytes": 4653,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/data/panel_builder.py"
+    },
+    "shelfcash_forecast/data/validator.py": {
+      "sha256": "bfd9a032156ef6aa94452ba9d3992eb57507731c75de0b3f11ecc627255bc82e",
+      "bytes": 5500,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/data/validator.py"
+    },
+    "shelfcash_forecast/decision_intelligence/__init__.py": {
+      "sha256": "3429dbd50141a0b20551ef1dcd3d107067be845b968be86c686e39e8e97490d9",
+      "bytes": 3698,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/__init__.py"
+    },
+    "shelfcash_forecast/decision_intelligence/agents/__init__.py": {
+      "sha256": "306ad370f710609b6e5f4d53ff01e1dca090983caabc3c94c417b47d655e8e2e",
+      "bytes": 930,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/agents/__init__.py"
+    },
+    "shelfcash_forecast/decision_intelligence/agents/adapters.py": {
+      "sha256": "4b8c2a25a967cae8fc63331519fbd40e003f521c9713d55cb2da75a5a9008926",
+      "bytes": 2199,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/agents/adapters.py"
+    },
+    "shelfcash_forecast/decision_intelligence/agents/contracts.py": {
+      "sha256": "449b22eb638fe519f18ff2cc8baabb12a0011fbae1eb813c67b90b28eeeb3bba",
+      "bytes": 4596,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/agents/contracts.py"
+    },
+    "shelfcash_forecast/decision_intelligence/agents/intents.py": {
+      "sha256": "4905d0ef7f6edb98f31321d587e916b43fd748863fedf674351c61d19a47a775",
+      "bytes": 6163,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/agents/intents.py"
+    },
+    "shelfcash_forecast/decision_intelligence/agents/orchestrator.py": {
+      "sha256": "49b37c68872bf41bec048baff9431877ff30268d04eca1cf01d17842e31f1353",
+      "bytes": 17179,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/agents/orchestrator.py"
+    },
+    "shelfcash_forecast/decision_intelligence/agents/policies.py": {
+      "sha256": "dbd7339287ac2171e31d43fb6325a45db6d30270941ebe7634bb222f24d04242",
+      "bytes": 836,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/agents/policies.py"
+    },
+    "shelfcash_forecast/decision_intelligence/agents/telemetry.py": {
+      "sha256": "193097d8d7ed9c9e4849460af96a9f4d053b95ec9fb9d9ab2d9ce364837ce1d8",
+      "bytes": 721,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/agents/telemetry.py"
+    },
+    "shelfcash_forecast/decision_intelligence/agents/tools.py": {
+      "sha256": "deba1f31d1f61cf03c1be563fa7196d370eb3e3ea314a7a42e4fed43318eef27",
+      "bytes": 1110,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/agents/tools.py"
+    },
+    "shelfcash_forecast/decision_intelligence/approval/__init__.py": {
+      "sha256": "5ac49254f2f7d06fc4840a1e181049ac5fe68ffce9d4c695825f0566946d8e30",
+      "bytes": 598,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/approval/__init__.py"
+    },
+    "shelfcash_forecast/decision_intelligence/approval/contracts.py": {
+      "sha256": "5f20b7338f01641f490552ba5b40e16444a1f7e6ce385ea896936f8609373ec5",
+      "bytes": 3656,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/approval/contracts.py"
+    },
+    "shelfcash_forecast/decision_intelligence/approval/integrity.py": {
+      "sha256": "46d04ca50e27654e62ce75f7725601465d4281586190446571e89467d8a7255d",
+      "bytes": 670,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/approval/integrity.py"
+    },
+    "shelfcash_forecast/decision_intelligence/approval/workflow.py": {
+      "sha256": "5faca8f61bdd2e42edba80cf111beec17f97f0b2ae8918373c179c44b1236dfa",
+      "bytes": 10419,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/approval/workflow.py"
+    },
+    "shelfcash_forecast/decision_intelligence/coherence.py": {
+      "sha256": "621d0f422d68dcfb049768a308deafa15689103ec0f0f1b0ec796d247c7dbff1",
+      "bytes": 25333,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/coherence.py"
+    },
+    "shelfcash_forecast/decision_intelligence/computation_gateway.py": {
+      "sha256": "15eb2eb8d0ec6c31b87975f81852add5755c4a416c3ca7cc0a13bebce2170029",
+      "bytes": 1524,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/computation_gateway.py"
+    },
+    "shelfcash_forecast/decision_intelligence/contracts.py": {
+      "sha256": "22ec502df5ac2b71210affc81dc99ae3818d66f2dd50eca660c61db4691df833",
+      "bytes": 23762,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/contracts.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation/__init__.py": {
+      "sha256": "652961a0f2ec642e74337a2b0c74adf1f584bbc0f486b575caa3a5043c0311e1",
+      "bytes": 2743,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation/__init__.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation/contracts.py": {
+      "sha256": "35f58d07abe4a30ca9a46e2b4e4bf848cc8ccfca8449a9730f1e5904df680ccf",
+      "bytes": 22098,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation/contracts.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation/corpus.py": {
+      "sha256": "ef4dc7fba7f25db74fa7080c3aca8cb89ad222b7bb68d1c945134489c62b73f6",
+      "bytes": 24805,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation/corpus.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation/fixtures.py": {
+      "sha256": "11bee7ef0fb2d1537d4c3e3d4a07818f24e99b18a0a01015889e76205089870d",
+      "bytes": 6318,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation/fixtures.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation/gold.py": {
+      "sha256": "df708103ecc2655777dcba3c950e09b575c0c31cc92129aeadf7bee9ac5696af",
+      "bytes": 3420,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation/gold.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation/manifest.py": {
+      "sha256": "73ebfed5e146a2571eb4153cc8b5a83f3e33fa49113b04b208e4719914b7cdd7",
+      "bytes": 3095,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation/manifest.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation/metrics.py": {
+      "sha256": "23b0d7ac351256442dade7a0ca721f8086a9591685a5af7e40333e18ef1dcd5f",
+      "bytes": 7296,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation/metrics.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation/reporting.py": {
+      "sha256": "41ba6f3e17d1ae09ad7b27fbcb63c3525d41c70db22316647eb59f14582a4beb",
+      "bytes": 11161,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation/reporting.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation/retrievers.py": {
+      "sha256": "970c5d31b79c319e6481409c2e3a9c04e6e55cef65bbad6713e2c9c1cbecff1a",
+      "bytes": 2032,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation/retrievers.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation/runner.py": {
+      "sha256": "242a82676245093857b4c8b7147d22812021b4217b0316004910ad7a863efc0e",
+      "bytes": 51204,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation/runner.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation_part2/__init__.py": {
+      "sha256": "474b2558b07f51892eaa07cc2f7d0262dc9ad8934c59a7422e694dd9629782d1",
+      "bytes": 817,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation_part2/__init__.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation_part2/contracts.py": {
+      "sha256": "bf1bccfe69778ee32d17d990116ceb50a6e88aec804e1a21f85749b0d2c103d8",
+      "bytes": 6749,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation_part2/contracts.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation_part2/corpus.py": {
+      "sha256": "98c4d70a75e334ce20965e9d7ad4de086c92d724d28cee91a85c7dd416abc733",
+      "bytes": 8368,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation_part2/corpus.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation_part2/fixtures.py": {
+      "sha256": "74bb3280ec4c252d82946def71b175bf080d26090845aab424f7a52829268441",
+      "bytes": 5230,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation_part2/fixtures.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation_part2/reporting.py": {
+      "sha256": "44a7eedf8815c64ad256e5d5548468a392c664b91f6f3bac4295a138dcd236a6",
+      "bytes": 4377,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation_part2/reporting.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evaluation_part2/runner.py": {
+      "sha256": "27e980572dcfe177aaf07f9ad796f4c666b4438e83b4446af74c0b58b052aed9",
+      "bytes": 35907,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evaluation_part2/runner.py"
+    },
+    "shelfcash_forecast/decision_intelligence/evidence.py": {
+      "sha256": "d6adf6fdc8ea4694e58a0197ed2f3d5356e9007a974cd87202cd5abd92659f86",
+      "bytes": 41589,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/evidence.py"
+    },
+    "shelfcash_forecast/decision_intelligence/explainers.py": {
+      "sha256": "b1f8a87c2d38228b5e161d0a7637b0dd10e66eb1b4b27514561c9922c61ddb66",
+      "bytes": 31377,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/explainers.py"
+    },
+    "shelfcash_forecast/decision_intelligence/graph.py": {
+      "sha256": "6e21f7f84a4e0a4d1db77540cd41af0e83a708d5be3f933ca03f1ff6014e276b",
+      "bytes": 12441,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/graph.py"
+    },
+    "shelfcash_forecast/decision_intelligence/grounding.py": {
+      "sha256": "ee5ac6a71d08364804597acab383acefae8502333fb17b816cb8df5b03a524d3",
+      "bytes": 57878,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/grounding.py"
+    },
+    "shelfcash_forecast/decision_intelligence/integrity.py": {
+      "sha256": "7f7f483b0d119113386638e7ce31a67386ad75af4175ad14805ad932e73d1a88",
+      "bytes": 2461,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/integrity.py"
+    },
+    "shelfcash_forecast/decision_intelligence/openai_generator.py": {
+      "sha256": "070ef35e6b9a1ec0cb094c2cdd9d276f23ca50ac2776a3d375a905b5eed0f205",
+      "bytes": 6856,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/openai_generator.py"
+    },
+    "shelfcash_forecast/decision_intelligence/regret/__init__.py": {
+      "sha256": "d98e50d5fc31ebf94fadcd7fcf0a67c853330f8566b4fdeb5b555912b835acc7",
+      "bytes": 364,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/regret/__init__.py"
+    },
+    "shelfcash_forecast/decision_intelligence/regret/contracts.py": {
+      "sha256": "4f29010284ee20d7b81e68df86eb11d9a445295dec21c47aec6b2e53f7aaec47",
+      "bytes": 4152,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/regret/contracts.py"
+    },
+    "shelfcash_forecast/decision_intelligence/regret/service.py": {
+      "sha256": "c70412de24ae32a62c82196ba43824ff8872e3424be476a9c6941297a6ec3917",
+      "bytes": 5282,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/regret/service.py"
+    },
+    "shelfcash_forecast/decision_intelligence/retrieval.py": {
+      "sha256": "95a8c07ebb54253ae2cd22fbec17ec8f185a91a5178562db62ade84736f79f40",
+      "bytes": 14607,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/retrieval.py"
+    },
+    "shelfcash_forecast/decision_intelligence/service.py": {
+      "sha256": "7882b67555abd47ee9967c413bc9daa5be7f4cd5114b128360ccc0655425cac9",
+      "bytes": 8995,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/service.py"
+    },
+    "shelfcash_forecast/decision_intelligence/what_if/__init__.py": {
+      "sha256": "429716b01dc6d2f2dc03ec4d6fe4e3fc794b261f96f606f9bd461f7fbce31b0e",
+      "bytes": 1555,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/what_if/__init__.py"
+    },
+    "shelfcash_forecast/decision_intelligence/what_if/comparison.py": {
+      "sha256": "1641468815c99053eb769f5d0235d94dfc5feee0fda733862e419e04ee05329c",
+      "bytes": 11202,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/what_if/comparison.py"
+    },
+    "shelfcash_forecast/decision_intelligence/what_if/contracts.py": {
+      "sha256": "1b3d468b3ce8a19748258823c6caddd94866e3e69aaca1181d94a17c4b70b07d",
+      "bytes": 22452,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/what_if/contracts.py"
+    },
+    "shelfcash_forecast/decision_intelligence/what_if/counterfactual.py": {
+      "sha256": "ff336c6cd6ee17df8561a4a0cf4f576e01928a148e113b98e15a4a4ab7b508b2",
+      "bytes": 5628,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/what_if/counterfactual.py"
+    },
+    "shelfcash_forecast/decision_intelligence/what_if/evidence.py": {
+      "sha256": "56cb4d6f1833ff83b9692dae20c0910c21485cbf4ff78c155bfdaf902e9d5d5b",
+      "bytes": 7022,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/what_if/evidence.py"
+    },
+    "shelfcash_forecast/decision_intelligence/what_if/export.py": {
+      "sha256": "3d4516a6fe6a0b8d3d8e19bbd64730466c1cce09172c95870a6975d4562e25f9",
+      "bytes": 3038,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/what_if/export.py"
+    },
+    "shelfcash_forecast/decision_intelligence/what_if/grounding.py": {
+      "sha256": "c1ca3f7dd4c1ed3a8f6d8ee70f94d86c37570cc106e1376326992866d964a59f",
+      "bytes": 8614,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/what_if/grounding.py"
+    },
+    "shelfcash_forecast/decision_intelligence/what_if/mutations.py": {
+      "sha256": "71c4539e345e50fa71993ff414c00087cc697772d6dd79114d055275a7651e3d",
+      "bytes": 16007,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/what_if/mutations.py"
+    },
+    "shelfcash_forecast/decision_intelligence/what_if/rules.py": {
+      "sha256": "916cadb22cfb8ab4536adf54678519ade6fb710343cc0d7e33a12faa642404d5",
+      "bytes": 4860,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/what_if/rules.py"
+    },
+    "shelfcash_forecast/decision_intelligence/what_if/service.py": {
+      "sha256": "a3cf81956558afa83f9f82b40685ac391488c396d56ef929100992aedf8830cf",
+      "bytes": 13639,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/decision_intelligence/what_if/service.py"
+    },
+    "shelfcash_forecast/evaluation/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/evaluation/__init__.py"
+    },
+    "shelfcash_forecast/evaluation/block_bootstrap.py": {
+      "sha256": "7de1f8124764bac5651c8d0b7c262f4cfec3a2adc764525df46d43e1b75aba07",
+      "bytes": 10137,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/evaluation/block_bootstrap.py"
+    },
+    "shelfcash_forecast/evaluation/metrics.py": {
+      "sha256": "a9490cdbd48e6ee94ff32497fbe1d87cf76818ac285fc139a2fd503a7ae8a3e0",
+      "bytes": 5343,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/evaluation/metrics.py"
+    },
+    "shelfcash_forecast/evaluation/splits.py": {
+      "sha256": "f46391aca60c0ee47779194dc4fa639a149e05aff6822c6af868984491bd6265",
+      "bytes": 6458,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/evaluation/splits.py"
+    },
+    "shelfcash_forecast/evaluation/walk_forward.py": {
+      "sha256": "ec7503492a964ad54b1e9c1eaf7629b06320f7160fe370bec1023763aae2cf4a",
+      "bytes": 6499,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/evaluation/walk_forward.py"
+    },
+    "shelfcash_forecast/exceptions.py": {
+      "sha256": "c01d19a77e23a1fd16bd38e239bcfe54251c8d72861dffc02dd316850100cd70",
+      "bytes": 5561,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/exceptions.py"
+    },
+    "shelfcash_forecast/features/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/features/__init__.py"
+    },
+    "shelfcash_forecast/features/future.py": {
+      "sha256": "9d1ae710f0d8e19e991e8af206e3659da8fc7b5c8043d3ba222c3c7e8fc11ae6",
+      "bytes": 3965,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/features/future.py"
+    },
+    "shelfcash_forecast/features/historical.py": {
+      "sha256": "28cea8a50f19a93e058b65f725e9f1e5b79372e71a80bf713c9ec52307014f25",
+      "bytes": 2584,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/features/historical.py"
+    },
+    "shelfcash_forecast/features/specification.py": {
+      "sha256": "9684408d9c84a3592392273a822c75e3d9b7bef939ba502109792c65488e82a7",
+      "bytes": 4310,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/features/specification.py"
+    },
+    "shelfcash_forecast/features/training_table.py": {
+      "sha256": "5603de53af5acc64f352fea7ecc0a919ef44d7e9ca2c50a7495f0cd253718fa3",
+      "bytes": 4311,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/features/training_table.py"
+    },
+    "shelfcash_forecast/inventory/__init__.py": {
+      "sha256": "3e4932a9ccef7c0d5e108225413ad0fa8365161a67f074e2b91ca7a338b9df3c",
+      "bytes": 5940,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/inventory/__init__.py"
+    },
+    "shelfcash_forecast/inventory/accounting.py": {
+      "sha256": "8a4aeaeab470430a2dbc48c5f765f2193767ccc6f5decf742193eecd160a6a8e",
+      "bytes": 1434,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/inventory/accounting.py"
+    },
+    "shelfcash_forecast/inventory/adapters.py": {
+      "sha256": "636fa7f4935d76b006735dd5d49862715589777eb519070c1c0fc0b0b530f53f",
+      "bytes": 11304,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/inventory/adapters.py"
+    },
+    "shelfcash_forecast/inventory/contracts.py": {
+      "sha256": "571b66a09705392357bdf6c1fb2aa4ac3cbd706c88ed8a0b130d851ff89e408f",
+      "bytes": 23438,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/inventory/contracts.py"
+    },
+    "shelfcash_forecast/inventory/fefo.py": {
+      "sha256": "ee2f43cb2926edb9a259a3448938628801baaa52a7d523efbb82fa61f7ca1e77",
+      "bytes": 4557,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/inventory/fefo.py"
+    },
+    "shelfcash_forecast/inventory/metrics.py": {
+      "sha256": "360e6a68721322856254d2f27f27ee2253dcab0479229ea006433567a3c1650e",
+      "bytes": 17889,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/inventory/metrics.py"
+    },
+    "shelfcash_forecast/inventory/monte_carlo.py": {
+      "sha256": "f03b1fc288142d7b050fe5763729fe1378598cc91a24e3869fa4842e2795f1f2",
+      "bytes": 5727,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/inventory/monte_carlo.py"
+    },
+    "shelfcash_forecast/inventory/simulator.py": {
+      "sha256": "88f8f22b97f299197583521f6fab652b288d2f6a87bc562339e4942dfbdae651",
+      "bytes": 26198,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/inventory/simulator.py"
+    },
+    "shelfcash_forecast/inventory/stress.py": {
+      "sha256": "fae1bbdcbc7b765c1fddbf8ddb3df4b4af7553e0c24e234f12398446abf7f8b3",
+      "bytes": 5259,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/inventory/stress.py"
+    },
+    "shelfcash_forecast/json_output.py": {
+      "sha256": "5332f326987087e9184391d26a1cfc7918c77093f80bbb5cb844af272c587037",
+      "bytes": 3733,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/json_output.py"
+    },
+    "shelfcash_forecast/models/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/models/__init__.py"
+    },
+    "shelfcash_forecast/models/predictor.py": {
+      "sha256": "d66efee3dae9cd224c18e79cbea0e6529b348da6160999705b39f2165bb56a1c",
+      "bytes": 2318,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/models/predictor.py"
+    },
+    "shelfcash_forecast/models/quantile_models.py": {
+      "sha256": "209482e0c9f81fea97d7c167cb689a551935cba485f7672538a3238d155f27b1",
+      "bytes": 3121,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/models/quantile_models.py"
+    },
+    "shelfcash_forecast/models/trainer.py": {
+      "sha256": "09bc2d2aa751baaa72271f9abd89ba54836793ebe3bf07b1f0e1b28050bfc166",
+      "bytes": 1302,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/models/trainer.py"
+    },
+    "shelfcash_forecast/optimization/__init__.py": {
+      "sha256": "cee1c0effec951504ecd2b8a1a97c14e753b9d9ec8a7a5c7d1a9475583b98d22",
+      "bytes": 3460,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/__init__.py"
+    },
+    "shelfcash_forecast/optimization/adapters.py": {
+      "sha256": "210d9966241d48bc60a03d89468cad9f2ac9f482f031f18f5da868ab74f5bbc3",
+      "bytes": 5221,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/adapters.py"
+    },
+    "shelfcash_forecast/optimization/business_rules.py": {
+      "sha256": "840f50de85aa0288226ca56f5be2abc0e54088fdd4392f197385225b300fba43",
+      "bytes": 9122,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/business_rules.py"
+    },
+    "shelfcash_forecast/optimization/chronology.py": {
+      "sha256": "b107a441900344108dbc063abffc1b623a6044188025f1a96f7cecb383054597",
+      "bytes": 3672,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/chronology.py"
+    },
+    "shelfcash_forecast/optimization/constraints.py": {
+      "sha256": "e64d5e760b3ecb9174b0417887405936f355362e1b17d70199609447df7725b3",
+      "bytes": 6814,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/constraints.py"
+    },
+    "shelfcash_forecast/optimization/contracts.py": {
+      "sha256": "4bfd510730ddf48f5c68fcff93e68780bc90876df09ea9735e82afa476cb1998",
+      "bytes": 27121,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/contracts.py"
+    },
+    "shelfcash_forecast/optimization/critic.py": {
+      "sha256": "f9e95ce43053aaf286e35fb64f96925120aa795913f36213ca644e0a400f45fb",
+      "bytes": 21651,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/critic.py"
+    },
+    "shelfcash_forecast/optimization/customer_export.py": {
+      "sha256": "d40479a28819662974fcb78f01220d9f1ebcc5896638fb1384a5ab18ef317b20",
+      "bytes": 27264,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/customer_export.py"
+    },
+    "shelfcash_forecast/optimization/decomposition.py": {
+      "sha256": "7eead553d9f10714b2b6e7ca16521d90f01ccd5f94bee34e45ad8619e5652141",
+      "bytes": 8655,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/decomposition.py"
+    },
+    "shelfcash_forecast/optimization/deterministic.py": {
+      "sha256": "33d5db83e798b3e6355bd268365cd27fd5e8ef66cbf605e04014124779897e24",
+      "bytes": 400,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/deterministic.py"
+    },
+    "shelfcash_forecast/optimization/export.py": {
+      "sha256": "0e3482b507446ea65b320fb7fcdcfc25b5112bd16ccaec9178e6c8e109b56c67",
+      "bytes": 10814,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/export.py"
+    },
+    "shelfcash_forecast/optimization/input_validation.py": {
+      "sha256": "22a193e33932c04e289f8713efe230ebe33dd379b2516448e977d125d7f78bf5",
+      "bytes": 6469,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/input_validation.py"
+    },
+    "shelfcash_forecast/optimization/lot_milp.py": {
+      "sha256": "b796979465f0fb2f17525e294238942f13a755161cc0633dac62d012ce420152",
+      "bytes": 31969,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/lot_milp.py"
+    },
+    "shelfcash_forecast/optimization/model_data.py": {
+      "sha256": "a0adef6095a7b0a737b2f9c44e12ac4b3361813b5c367576b9be6fb3adb28d4d",
+      "bytes": 9599,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/model_data.py"
+    },
+    "shelfcash_forecast/optimization/optimizer.py": {
+      "sha256": "03c6e24b12b59678686de5dce6453d015d6563b5cd77befb67fcf628c0a17ece",
+      "bytes": 12948,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/optimizer.py"
+    },
+    "shelfcash_forecast/optimization/parameter_registry.py": {
+      "sha256": "af1d842126db9ee48846d3332613dd4f1615dc5b1e233f1bee1d3ca5a19e6c8a",
+      "bytes": 13849,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/parameter_registry.py"
+    },
+    "shelfcash_forecast/optimization/planning_config.py": {
+      "sha256": "fe9f56a1bc8adf47afb5512c72d82d78ca2eabe173b88b6a8e2b438e3712d265",
+      "bytes": 10462,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/planning_config.py"
+    },
+    "shelfcash_forecast/optimization/planning_service.py": {
+      "sha256": "602e517a6e42870ad52cca9cce495f3b0200aeb7f22443d280ff8658a3e18fe6",
+      "bytes": 27912,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/planning_service.py"
+    },
+    "shelfcash_forecast/optimization/preflight.py": {
+      "sha256": "a5e08eb43a46fe2a04e7adaa9ff0a6b15d6378afa70600b8873f392a84aa3b70",
+      "bytes": 17239,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/preflight.py"
+    },
+    "shelfcash_forecast/optimization/resimulation.py": {
+      "sha256": "597fac7271685290d12481608ea12a63bd128a14d89185da49470a02c9b97d7f",
+      "bytes": 3830,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/resimulation.py"
+    },
+    "shelfcash_forecast/optimization/risk.py": {
+      "sha256": "fd153578d21ce098462f924b38aa2a5d91d50f0736ef4c53b3a64587e4d53f3a",
+      "bytes": 738,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/risk.py"
+    },
+    "shelfcash_forecast/optimization/robust.py": {
+      "sha256": "1e070b165e15127f7a02f2c1fca2ea79197dcae251ccef747fa33a6f26c0bc9e",
+      "bytes": 1009,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/robust.py"
+    },
+    "shelfcash_forecast/optimization/rolling_horizon.py": {
+      "sha256": "f5a0c1df48d3d05d7b03200bace6d153a286d14c4eacc41f6cfcd1bbb030149f",
+      "bytes": 2554,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/rolling_horizon.py"
+    },
+    "shelfcash_forecast/optimization/scenario_contracts.py": {
+      "sha256": "36911dae9e167b859c170f2c721b2f461841b98a017f1a123fc58efbf9f5f0bb",
+      "bytes": 8696,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/scenario_contracts.py"
+    },
+    "shelfcash_forecast/optimization/scenario_profiles.py": {
+      "sha256": "93ae8fcc9a19947745d4ad357dbe9f44d803b5fe7f84f40bce52f3e4af91e27c",
+      "bytes": 22500,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/scenario_profiles.py"
+    },
+    "shelfcash_forecast/optimization/shipment_fees.py": {
+      "sha256": "5e1c4b3f3e3231ec3d36d3f89fe3a71faf37f171cb7296f9455b6cc19b534de2",
+      "bytes": 798,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/shipment_fees.py"
+    },
+    "shelfcash_forecast/optimization/stochastic.py": {
+      "sha256": "ce3ada2678063efe8a12b699543253fa95811aec2436ae7703e41cb7e04dd7f2",
+      "bytes": 393,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/stochastic.py"
+    },
+    "shelfcash_forecast/optimization/strategies.py": {
+      "sha256": "312ea91fdd714c26f9c9c57dd6e1eab0cf4b5dbf89dd3a77fd0687e897dfc716",
+      "bytes": 1280,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/optimization/strategies.py"
+    },
+    "shelfcash_forecast/pipeline/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/pipeline/__init__.py"
+    },
+    "shelfcash_forecast/pipeline/forecast_overrides.py": {
+      "sha256": "f1511cafb56317c9de897ac017d7cb7bdbdda3696f30bdbfcc22df30f32b7551",
+      "bytes": 3662,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/pipeline/forecast_overrides.py"
+    },
+    "shelfcash_forecast/pipeline/inference_pipeline.py": {
+      "sha256": "bc6dc52a040ba97a6ce2fa633197ae03a5c1b23aa8fcd3294a25aa3fbb67cd18",
+      "bytes": 12184,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/pipeline/inference_pipeline.py"
+    },
+    "shelfcash_forecast/pipeline/ingredient_demand_pipeline.py": {
+      "sha256": "0266a1f6cf32dc364691900377c2503dacb56894ba8e485a853fd66fa67a53f5",
+      "bytes": 2636,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/pipeline/ingredient_demand_pipeline.py"
+    },
+    "shelfcash_forecast/pipeline/scenario_pipeline.py": {
+      "sha256": "97aa4eb936672a3e4b22514686d189f5994e0cd9a137a5497593ea70cf49855c",
+      "bytes": 3865,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/pipeline/scenario_pipeline.py"
+    },
+    "shelfcash_forecast/pipeline/training_pipeline.py": {
+      "sha256": "0f2b9a36dfb281003783ea23ce0bb22467ef0134908650d04e0559c55f01c665",
+      "bytes": 13524,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/pipeline/training_pipeline.py"
+    },
+    "shelfcash_forecast/registry/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/registry/__init__.py"
+    },
+    "shelfcash_forecast/registry/execution.py": {
+      "sha256": "b3c21cb5eef859dc59881000808489be5f0e8d77f12136ea0dd1b853e1aeacfe",
+      "bytes": 3599,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/registry/execution.py"
+    },
+    "shelfcash_forecast/registry/governance.py": {
+      "sha256": "13cb9ca42b82dc310a81b7f6590b04fee541d3abd686fa1d0f1d7810ccd26c9e",
+      "bytes": 2759,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/registry/governance.py"
+    },
+    "shelfcash_forecast/registry/loader.py": {
+      "sha256": "ea86f822452b797fdbccb82bd337bc690e1d26760b8abd1e1a5c9dcd549e5be6",
+      "bytes": 7401,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/registry/loader.py"
+    },
+    "shelfcash_forecast/registry/writer.py": {
+      "sha256": "669dd48312514d5a59fc7aebf6cd01e4aaa4635adbab4a48a98cce010ecc8aeb",
+      "bytes": 7633,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/registry/writer.py"
+    },
+    "shelfcash_forecast/scenario/__init__.py": {
+      "sha256": "a8547e6a7b2adb1e8f4c22990db452561554ef262cf14ce16925d1d748be6f3c",
+      "bytes": 1956,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/scenario/__init__.py"
+    },
+    "shelfcash_forecast/scenario/bom.py": {
+      "sha256": "49e87ca11ccb55091f97158b646ac847c29517e0af8474e286a34a642d00fd6e",
+      "bytes": 5136,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/scenario/bom.py"
+    },
+    "shelfcash_forecast/scenario/bootstrap.py": {
+      "sha256": "46bfd7fa992e1e241eced76a8eb0190de422d8f0bf55c8a57f0f3dde2a377999",
+      "bytes": 10506,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/scenario/bootstrap.py"
+    },
+    "shelfcash_forecast/scenario/composer.py": {
+      "sha256": "3f0f413f2d888a7b38f7943b786166f9c8a0658255e1790788a4735caefc1a05",
+      "bytes": 5627,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/scenario/composer.py"
+    },
+    "shelfcash_forecast/scenario/contracts.py": {
+      "sha256": "efbd2809424e2f7a8971eabce83c0bc5ae777c961bfd120b5cefc5984f9c5281",
+      "bytes": 6413,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/scenario/contracts.py"
+    },
+    "shelfcash_forecast/scenario/copula.py": {
+      "sha256": "300147bd10108a10e000659443b12bda65577990f32eef0566fd547d22baa3f3",
+      "bytes": 11664,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/scenario/copula.py"
+    },
+    "shelfcash_forecast/scenario/lead_time.py": {
+      "sha256": "ac61f51c4747135e62772c4cc5e35b29e79021f2b2bc49402b2d975011a61630",
+      "bytes": 6964,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/scenario/lead_time.py"
+    },
+    "shelfcash_forecast/scenario/residuals.py": {
+      "sha256": "866876f27e870876791863cdda0590821f728befd5b2d47e51d5114c0aaa37d4",
+      "bytes": 7543,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/scenario/residuals.py"
+    },
+    "shelfcash_forecast/scenario/shelf_life.py": {
+      "sha256": "444d72238a1db978f318338160ef07e697188aefb65322215ae5e9e65eb3f0e2",
+      "bytes": 991,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/scenario/shelf_life.py"
+    },
+    "shelfcash_forecast/scenario/validation.py": {
+      "sha256": "1c5ecb0b3381d44961f000693bd87ad0ae70df09eed235aead2dfd4dff2be388",
+      "bytes": 2768,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/scenario/validation.py"
+    },
+    "shelfcash_forecast/scenario/yield_loss.py": {
+      "sha256": "e824c7591cbcfef7fbc5ff9ad2118abb8981bfcd9c659c41a40ece178f412dbb",
+      "bytes": 11024,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_forecast/scenario/yield_loss.py"
+    },
+    "shelfcash_pipeline/PARAMETERS_AND_VERIFICATION_VI.md": {
+      "sha256": "d63ccc94638a32f04e495003740a2f9440e82250ec09f9e415af577d87fdaf04",
+      "bytes": 15556,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/PARAMETERS_AND_VERIFICATION_VI.md"
+    },
+    "shelfcash_pipeline/README.md": {
+      "sha256": "f758973798760d8876bad1265cbf3eefdc9db624eddd7abbbe0971aec8a33814",
+      "bytes": 12997,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/README.md"
+    },
+    "shelfcash_pipeline/__init__.py": {
+      "sha256": "439fc5b67194fdd1c22bb24cc9ab853a5f62f2908df2239039776bae02384e85",
+      "bytes": 74,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/__init__.py"
+    },
+    "shelfcash_pipeline/__main__.py": {
+      "sha256": "0d81914e2e7a18d2dc31ae8471f3cfaa584d32d307d83c180798f6076fe2107a",
+      "bytes": 66,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/__main__.py"
+    },
+    "shelfcash_pipeline/config_runner.py": {
+      "sha256": "0b00899101c883491bc19cd942911d70029f08bb8b99def2235fb7ac970f8104",
+      "bytes": 10445,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/config_runner.py"
+    },
+    "shelfcash_pipeline/context.py": {
+      "sha256": "b5166bd975151c306f554773d095219184440f4d557f352fc2a769efbc0bdd4f",
+      "bytes": 10451,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/context.py"
+    },
+    "shelfcash_pipeline/context_demo.example.json": {
+      "sha256": "9d5c9ae49c61725226ed382ca3a92865ba87d32a4488db1935538a3431ec32f3",
+      "bytes": 442,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/context_demo.example.json"
+    },
+    "shelfcash_pipeline/demand_what_if.py": {
+      "sha256": "dbaa26cf4e1340fc744f310024dbdb38b49e702e15078bf88c73bb34bc30e7dd",
+      "bytes": 13520,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/demand_what_if.py"
+    },
+    "shelfcash_pipeline/m1.py": {
+      "sha256": "5414dc7b162edeb857ea6e530c6dca4a3e2e6df504a33a509f0f38058899e50c",
+      "bytes": 2176,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/m1.py"
+    },
+    "shelfcash_pipeline/m2.py": {
+      "sha256": "6dbf32902a8c123dc0678084fcec82b19fb442a4e6a9c3e61e820939cb0e3554",
+      "bytes": 656,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/m2.py"
+    },
+    "shelfcash_pipeline/m3.py": {
+      "sha256": "87878772b707449430c10d92ee4afd56f0bdcfb2af6522bc2950b981e4d87764",
+      "bytes": 2204,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/m3.py"
+    },
+    "shelfcash_pipeline/m4.py": {
+      "sha256": "7d0596b3eeaf6bbd68e9838f3a0d62bfcd87315f97cc8f38a605c700e6495b44",
+      "bytes": 4341,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/m4.py"
+    },
+    "shelfcash_pipeline/m5.py": {
+      "sha256": "306e0c5d1eb84f85aab6c2162648a44b55fd3571138e1b988f89df94bfbc4797",
+      "bytes": 1877,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/m5.py"
+    },
+    "shelfcash_pipeline/m6.py": {
+      "sha256": "4deb32c921e168fa920cf7567df395c9dcdcd00de0f457e60b48e27c877c7c52",
+      "bytes": 1833,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/m6.py"
+    },
+    "shelfcash_pipeline/point_correction.py": {
+      "sha256": "e706019ee7e86b531b74aae4ac743204f667759d8344309b966c82700e3665a9",
+      "bytes": 504,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/point_correction.py"
+    },
+    "shelfcash_pipeline/preprocess.py": {
+      "sha256": "e1cf67fc7a69d3ad124cfa784349e5b071c38b83533120c3e3e4602e2e6ccec3",
+      "bytes": 2522,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/preprocess.py"
+    },
+    "shelfcash_pipeline/run.ps1": {
+      "sha256": "89504e9fdd42f5f7d00da6fe72c2b3c6a9bf0d9d27c236d314d242fb8228a82d",
+      "bytes": 4517,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/run.ps1"
+    },
+    "shelfcash_pipeline/run.py": {
+      "sha256": "485a9ea5beb9c1631e6ba8fe2fdf00b3b9dcdc0ee5abf97c951549b443ceec7a",
+      "bytes": 8396,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/run.py"
+    },
+    "shelfcash_pipeline/typed_runner.py": {
+      "sha256": "4c7c8d5c0c2d7069bd78753b0d1dab7bd4260eaba04f9e416ee1c722eb1f7814",
+      "bytes": 1277,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/typed_runner.py"
+    },
+    "shelfcash_pipeline/what_if_runner.py": {
+      "sha256": "51e3f46817d5e25be3edab27ae69040c6c6d05054d859fe09ea5133f05bd958d",
+      "bytes": 9271,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_pipeline/what_if_runner.py"
+    },
+    "shelfcash_preprocess/__init__.py": {
+      "sha256": "2aff469f144cc710523df87b37e1c50dcda51c4a778cd1be36d721312b15a6d5",
+      "bytes": 875,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/__init__.py"
+    },
+    "shelfcash_preprocess/__main__.py": {
+      "sha256": "bf6c3c1c8b67e790531403be9c98f728b8e25986d96e0b1a6961e9a838ae8cd1",
+      "bytes": 48,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/__main__.py"
+    },
+    "shelfcash_preprocess/canonical.py": {
+      "sha256": "4191c36b07abe1bf88d9012a9602eb1a9ac611811d395486904a150c6041c2be",
+      "bytes": 32920,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/canonical.py"
+    },
+    "shelfcash_preprocess/cli.py": {
+      "sha256": "2df14eee44068d31015829c72d99c880c99ae1ac1d4e843f68e52e945e31c8dc",
+      "bytes": 8702,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/cli.py"
+    },
+    "shelfcash_preprocess/config.py": {
+      "sha256": "b3ecfef003714822463f03c470d08f5dc7959aac2a6e21f8ae15920f27ec17a3",
+      "bytes": 4410,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/config.py"
+    },
+    "shelfcash_preprocess/discovery.py": {
+      "sha256": "9078a76b36d732a3c0c2e1f170c24046ff5b7b8934c41fe426d68c9ea10a3649",
+      "bytes": 11351,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/discovery.py"
+    },
+    "shelfcash_preprocess/engine.py": {
+      "sha256": "9ddfdd4ea602002a168eb37be8ee7b581399a2c10179c07502281921982c718c",
+      "bytes": 16773,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/engine.py"
+    },
+    "shelfcash_preprocess/import_semantics.py": {
+      "sha256": "2d2e9fb105778d66713c86d01b6a85efab8f268345cd202c50a1191940fd2f7f",
+      "bytes": 6461,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/import_semantics.py"
+    },
+    "shelfcash_preprocess/integrity.py": {
+      "sha256": "e0b73945f200ab5d889a3248314b4f4d2f625eaba7f28fe0d94cf0f23e62ac2d",
+      "bytes": 4977,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/integrity.py"
+    },
+    "shelfcash_preprocess/llm.py": {
+      "sha256": "d8ab3e8f8543d1d9a3a0ef33919c1f807730d2f77b900f858c96240d48a7afe5",
+      "bytes": 10223,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/llm.py"
+    },
+    "shelfcash_preprocess/mapping.py": {
+      "sha256": "e9d85e49b9dad73fdb60bceaba6ffcb2dfe4f683af0ca3389cada6849af73fd4",
+      "bytes": 15377,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/mapping.py"
+    },
+    "shelfcash_preprocess/models.py": {
+      "sha256": "d0ee6b5efe6a1059b7a2ac1f5c1c7810f4076b7bb1753379c09b2dbc57801eaa",
+      "bytes": 9080,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/models.py"
+    },
+    "shelfcash_preprocess/operations.py": {
+      "sha256": "d0a89bff705d6f63c726fe2409b93a1e86e3c1507097a0e2d6d796f55b6ee3e7",
+      "bytes": 5834,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/operations.py"
+    },
+    "shelfcash_preprocess/pipeline.py": {
+      "sha256": "20f62e7ba3d742945525537c386eb0ba90967c4a4dc03490f87d58a3cf87767c",
+      "bytes": 44901,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/pipeline.py"
+    },
+    "shelfcash_preprocess/readers.py": {
+      "sha256": "4164eb4be21d31d990641c760e56a6c91d53233a883c34348554651810e6fb97",
+      "bytes": 21422,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/readers.py"
+    },
+    "shelfcash_preprocess/schema.py": {
+      "sha256": "b8610c2b5654deeb7dea67be9edac3bc1ea7b7acdc00fdff3040108e1c5f3b57",
+      "bytes": 8867,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/schema.py"
+    },
+    "shelfcash_preprocess/values.py": {
+      "sha256": "53667bda37a057a1175f666d746d0e4a0bc13eb752094378d4500458496eff51",
+      "bytes": 4204,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "shelfcash_preprocess/values.py"
+    },
+    "tests/test_checkout_runner.py": {
+      "sha256": "35bacd66cc20322c3a1b540ae0be92cb54e573fd7e09d316880c7bae25f739d9",
+      "bytes": 8769,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "tests/test_checkout_runner.py"
+    },
+    "tests/test_forecast_origin_safety.py": {
+      "sha256": "7372c28a80f07951cdc03f841863540786731d3bbea60a7ef714b861f0d3178d",
+      "bytes": 8836,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "tests/test_forecast_origin_safety.py"
+    },
+    "tests/test_json_output.py": {
+      "sha256": "fd73c1af943ece9b542ef5996779bc27e31b127ebe2a69bcd8583e127978bd3c",
+      "bytes": 4418,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "tests/test_json_output.py"
+    },
+    "tests/test_regressions_v2.py": {
+      "sha256": "e4e246649134a3fb16c59a0663bf95c69637c43d966564ca977ef4a706878804",
+      "bytes": 25835,
+      "kind": "repo_working_tree_file",
+      "source_relative_path": "tests/test_regressions_v2.py"
+    },
+    "verify_review.py": {
+      "sha256": "d35e9d0288eb5877c4412dc7caa6775e3e8d0f51c819751b5032ada86918246e",
+      "bytes": 2527,
+      "kind": "audit_generated"
+    }
+  }
+}
