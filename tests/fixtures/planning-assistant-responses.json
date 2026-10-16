@@ -1,0 +1,332 @@
+{
+  "provenance": {
+    "kind": "SYNTHETIC_CONTROLLED_ONLY",
+    "source": "BE_answer/17_10_earlymorning/shelfcash-fe-summary-pdf-chat-preview-a17d153/docs/handoff/examples.json",
+    "source_sha256": "c085eb896b46ca5c885da028994ade0b47bcd5b98a34beb085a2f71ed6f7c1b4",
+    "note": "Three exact illustrative BE fixture envelopes, not MagicPath values, live results or production defaults. Candidate/state variants are locally constructed."
+  },
+  "answer": {
+    "data": {
+      "schema_version": "decision_assistant/1",
+      "run_id": "00000000-0000-0000-0000-000000001bbd",
+      "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+      "result_digest": "42ab9fb6984a1cb2dad8e127c0ec8e23c37faf1b81ae6e38e89901ce385c5836",
+      "option_id": "cmp1_aed8ebc43e1b6d7f617016c35fe21978c89e6ccaa4651e1bfa3e0ece107b11ed",
+      "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+      "locale": "vi",
+      "kind": "answer",
+      "source": "deterministic_fallback",
+      "answer": "Lượng mua đề xuất cho nguyên liệu đang xem là 20 g.",
+      "claims": [
+        {
+          "text": "Lượng mua đề xuất cho nguyên liệu đang xem là 20 g.",
+          "evidence_ids": [
+            "ev-6042cb5a25740bba304db005bf1c02344bfb67dae6a0b118db405feb01a2dc47",
+            "ev-18493d069b3987020d49585f8a73aea959d3c19de2061945c39ec291928aaefe",
+            "ev-0daf77a9157c8c701acdc641ff922768cef89637387cbb5fce5f0f2444e499ea",
+            "ev-658d9f8ba827806139ca0c11441431fd4fd62106e2a07a1996e16554a982693d"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "evidence_id": "ev-18493d069b3987020d49585f8a73aea959d3c19de2061945c39ec291928aaefe",
+          "pointer": "/overview/recommendation_available",
+          "source": "retained_C03"
+        },
+        {
+          "evidence_id": "ev-0daf77a9157c8c701acdc641ff922768cef89637387cbb5fce5f0f2444e499ea",
+          "pointer": "/overview/explanation",
+          "source": "retained_C08"
+        },
+        {
+          "evidence_id": "ev-658d9f8ba827806139ca0c11441431fd4fd62106e2a07a1996e16554a982693d",
+          "pointer": "/option/option_id",
+          "source": "retained_C03"
+        },
+        {
+          "evidence_id": "ev-6042cb5a25740bba304db005bf1c02344bfb67dae6a0b118db405feb01a2dc47",
+          "pointer": "/ingredient/purchases",
+          "source": "retained_C05"
+        }
+      ],
+      "clarification": null,
+      "diagnostics": {
+        "reason": "MODEL_DISABLED",
+        "prompt_version": null,
+        "validator_version": "decision_chat_renderer/7",
+        "model": null,
+        "resolved_model": null,
+        "provider": null,
+        "attempts": 0,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost_usd": null,
+        "latency_ms": null,
+        "finish_reason": null,
+        "disposition": "FALLBACK",
+        "prompt_hash": null,
+        "schema_hash": null,
+        "evidence_hash": null
+      },
+      "context": {
+        "run_id": "00000000-0000-0000-0000-000000001bbd",
+        "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+        "option_id": null,
+        "comparison_pair": null,
+        "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+        "product_id": null,
+        "pending": null,
+        "topic": "purchase"
+      }
+    },
+    "meta": {
+      "request_id": "illustrative-1"
+    },
+    "error": null
+  },
+  "clarification": {
+    "data": {
+      "schema_version": "decision_assistant/1",
+      "run_id": "00000000-0000-0000-0000-000000001bbd",
+      "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+      "result_digest": "42ab9fb6984a1cb2dad8e127c0ec8e23c37faf1b81ae6e38e89901ce385c5836",
+      "option_id": "cmp1_aed8ebc43e1b6d7f617016c35fe21978c89e6ccaa4651e1bfa3e0ece107b11ed",
+      "ingredient_id": null,
+      "locale": "vi",
+      "kind": "clarification",
+      "source": "deterministic_clarification",
+      "answer": "Bạn muốn hỏi nguyên liệu nào? Chọn một tên bên dưới.",
+      "claims": [],
+      "references": [],
+      "clarification": {
+        "code": "ENTITY_AMBIGUOUS",
+        "question": "Bạn muốn hỏi nguyên liệu nào? Chọn một tên bên dưới.",
+        "candidates": [
+          {
+            "ingredient_id": "00000000-0000-0000-0000-0000000000c8",
+            "name": "Sữa tươi"
+          },
+          {
+            "ingredient_id": "00000000-0000-0000-0000-0000000000c9",
+            "name": "Sữa đặc"
+          }
+        ],
+        "original_question": "Sữa cần mua bao nhiêu?",
+        "option_candidates": []
+      },
+      "diagnostics": {
+        "reason": "EVIDENCE_INSUFFICIENT",
+        "prompt_version": null,
+        "validator_version": "decision_chat_renderer/1",
+        "model": null,
+        "resolved_model": null,
+        "provider": null,
+        "attempts": 0,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost_usd": null,
+        "latency_ms": null,
+        "finish_reason": null,
+        "disposition": "FALLBACK",
+        "prompt_hash": null,
+        "schema_hash": null,
+        "evidence_hash": null
+      },
+      "context": {
+        "run_id": "00000000-0000-0000-0000-000000001bbd",
+        "evidence_version": "36e91a3fb26f8c5ec67ac954ebcf1c23170c7e67956d7a056ea37fe39e68a2da",
+        "option_id": null,
+        "comparison_pair": null,
+        "ingredient_id": null,
+        "product_id": null,
+        "pending": {
+          "original_question": "Sữa cần mua bao nhiêu?",
+          "candidate_ids": [
+            "00000000-0000-0000-0000-0000000000c8",
+            "00000000-0000-0000-0000-0000000000c9"
+          ]
+        },
+        "topic": null
+      }
+    },
+    "meta": {
+      "request_id": "illustrative-2"
+    },
+    "error": null
+  },
+  "summary": {
+    "data": {
+      "generation_id": "00000000-0000-0000-0000-000000000385",
+      "run_id": "00000000-0000-0000-0000-000000001b5a",
+      "status": "completed",
+      "created_at": "2026-10-08T00:00:01Z",
+      "finished_at": "2026-10-08T00:00:01Z",
+      "result": {
+        "schema_version": "plan_summary/1",
+        "identity": {
+          "run_id": "00000000-0000-0000-0000-000000001b5a",
+          "store_id": "00000000-0000-0000-0000-000000000001",
+          "aggregate_digest": "58e394d93bed777b25f698150678e30ce842c1c2ecac875a0bf8463915ccff32",
+          "input_digest": "e0d279ddc61f35cca259f737f917a35976b14b997ffd08ce17a62f67a2ad95b6",
+          "result_digest": "0cc0f2af5f1faa5b03d29af55ef4c25b873b18d78eb574afcd45ec5667be699a",
+          "request_digest": "dc7495f9558ee209d6677f871a4377cdffda6076611de9900c5944985fd6beb9",
+          "storage_version": "planning_storage/1",
+          "package_schema_version": 1,
+          "result_schema_version": "operational_pipeline/2",
+          "capture_schema_version": "operational_capture/2",
+          "accepted_at": "2026-10-07T23:59:59Z",
+          "started_at": "2026-10-07T23:59:59Z",
+          "finished_at": "2026-10-08T00:00:01Z",
+          "captured_at": "2026-10-08T00:00:00Z"
+        },
+        "option_id": "cmp1_aed8ebc43e1b6d7f617016c35fe21978c89e6ccaa4651e1bfa3e0ece107b11ed",
+        "locale": "vi",
+        "detail_level": "simple",
+        "source": "model_presentation",
+        "presentation": {
+          "ordering": [
+            "outcome",
+            "cost",
+            "requirements",
+            "coverage",
+            "proof",
+            "limitations"
+          ],
+          "tone": "plain"
+        },
+        "answer": "Phương án tinh gọn/cân bằng/bảo vệ được khuyến nghị cho kế hoạch này.\n\nPhương án đang xem cần tổng chi 10 VND: tiền mua 10 VND, phí phải trả 0 VND. Giới hạn ngân sách đã lưu là 10 VND.\n\nCó 2 đánh giá đạt, 0 chưa đạt, 0 chưa đánh giá theo từng món và đường nhu cầu.\n\nPhạm vi đã tính gồm 2 trong tổng số 2 món.\n\nKết quả tìm kiếm còn thiếu chứng nhận đầy đủ trong miền đã lưu. Việc so sánh chỉ bao gồm các phương án đã đánh giá, không chứng minh tối ưu toàn cục.\n\nKết quả mô phỏng chưa tạo đơn mua và không phản ánh tiêu thụ thực tế.",
+        "claims": [
+          {
+            "family": "outcome",
+            "text": "Phương án tinh gọn/cân bằng/bảo vệ được khuyến nghị cho kế hoạch này.",
+            "evidence_ids": [
+              "ev-4cb0a45df1bd8478e35a03a2643ad881078618c723bc5b018b79056ad085a067",
+              "ev-0b6dfa898f9b0966c2210f7b2b4498c48f60e5744105cc3f1310e29d63632eee",
+              "ev-1c7354df442e285023f80c8e7f2c70baa3f4f0d8fb7c65173486b201e58a0300"
+            ]
+          },
+          {
+            "family": "cost",
+            "text": "Phương án đang xem cần tổng chi 10 VND: tiền mua 10 VND, phí phải trả 0 VND. Giới hạn ngân sách đã lưu là 10 VND.",
+            "evidence_ids": [
+              "ev-df5b1c20ae1eeef70c4526ca7997c9ac63527712667d4e30cbc69b7f4575beed",
+              "ev-e8cb8a24080982275c8072c263602bf236735b48ab15b592d0b24e8555e3231d",
+              "ev-835e102d5e4672f937490c60cf4c72973af1e13acd7becc83a2474efc8285e82"
+            ]
+          },
+          {
+            "family": "requirements",
+            "text": "Có 2 đánh giá đạt, 0 chưa đạt, 0 chưa đánh giá theo từng món và đường nhu cầu.",
+            "evidence_ids": [
+              "ev-ad03e5e8b59e11cfcd895f693b62c9f9fa5317d9926c5cdd32b4c7eacc490fd6"
+            ]
+          },
+          {
+            "family": "coverage",
+            "text": "Phạm vi đã tính gồm 2 trong tổng số 2 món.",
+            "evidence_ids": [
+              "ev-28022f1c3f3d2c6fd4582f4f0505d7dbfa36bba5eda08f8b8076007198e48ea9"
+            ]
+          },
+          {
+            "family": "proof",
+            "text": "Kết quả tìm kiếm còn thiếu chứng nhận đầy đủ trong miền đã lưu. Việc so sánh chỉ bao gồm các phương án đã đánh giá, không chứng minh tối ưu toàn cục.",
+            "evidence_ids": [
+              "ev-1ffb1de20a99aaab45891584c879efc01e1c900347a46f86b97ca4fed5e87702",
+              "ev-2aee7b8202f445a9be51bcc758facc82cd4bb195f3453836492b0510a4b99bbd"
+            ]
+          },
+          {
+            "family": "limitations",
+            "text": "Kết quả mô phỏng chưa tạo đơn mua và không phản ánh tiêu thụ thực tế.",
+            "evidence_ids": [
+              "ev-137bd9ce95e095bd629986f1db340847947bb901085329b36397268772716a19",
+              "ev-58c176015eab78f85f6f5b33026a44146e45adfc70e4ef2a8d27ba7892b1304c"
+            ]
+          }
+        ],
+        "references": [
+          {
+            "evidence_id": "ev-4cb0a45df1bd8478e35a03a2643ad881078618c723bc5b018b79056ad085a067",
+            "pointer": "/overview/recommendation_available",
+            "source": "retained_C03"
+          },
+          {
+            "evidence_id": "ev-835e102d5e4672f937490c60cf4c72973af1e13acd7becc83a2474efc8285e82",
+            "pointer": "/overview/configuration",
+            "source": "retained_C03"
+          },
+          {
+            "evidence_id": "ev-28022f1c3f3d2c6fd4582f4f0505d7dbfa36bba5eda08f8b8076007198e48ea9",
+            "pointer": "/overview/scope",
+            "source": "retained_C03"
+          },
+          {
+            "evidence_id": "ev-1ffb1de20a99aaab45891584c879efc01e1c900347a46f86b97ca4fed5e87702",
+            "pointer": "/overview/strategies",
+            "source": "retained_C03"
+          },
+          {
+            "evidence_id": "ev-1c7354df442e285023f80c8e7f2c70baa3f4f0d8fb7c65173486b201e58a0300",
+            "pointer": "/overview/options",
+            "source": "retained_C03"
+          },
+          {
+            "evidence_id": "ev-0b6dfa898f9b0966c2210f7b2b4498c48f60e5744105cc3f1310e29d63632eee",
+            "pointer": "/overview/explanation",
+            "source": "retained_C08"
+          },
+          {
+            "evidence_id": "ev-2aee7b8202f445a9be51bcc758facc82cd4bb195f3453836492b0510a4b99bbd",
+            "pointer": "/overview/selection_proof",
+            "source": "retained_capture"
+          },
+          {
+            "evidence_id": "ev-137bd9ce95e095bd629986f1db340847947bb901085329b36397268772716a19",
+            "pointer": "/overview/assumptions",
+            "source": "retained_capture"
+          },
+          {
+            "evidence_id": "ev-58c176015eab78f85f6f5b33026a44146e45adfc70e4ef2a8d27ba7892b1304c",
+            "pointer": "/overview/omissions",
+            "source": "retained_capture"
+          },
+          {
+            "evidence_id": "ev-df5b1c20ae1eeef70c4526ca7997c9ac63527712667d4e30cbc69b7f4575beed",
+            "pointer": "/option/option_id",
+            "source": "retained_C03"
+          },
+          {
+            "evidence_id": "ev-e8cb8a24080982275c8072c263602bf236735b48ab15b592d0b24e8555e3231d",
+            "pointer": "/option/costs",
+            "source": "retained_C03"
+          },
+          {
+            "evidence_id": "ev-ad03e5e8b59e11cfcd895f693b62c9f9fa5317d9926c5cdd32b4c7eacc490fd6",
+            "pointer": "/option/requirements_assessment",
+            "source": "retained_C03"
+          }
+        ],
+        "diagnostics": {
+          "disposition": "ACCEPTED",
+          "reason": "NONE",
+          "prompt_version": "plan_summary_prompt/2",
+          "validator_version": "summary_narrative_guard/2",
+          "requested_model": "synthetic-summary",
+          "resolved_model": null,
+          "resolved_provider": null,
+          "attempts": 1,
+          "input_tokens": null,
+          "output_tokens": null
+        },
+        "renderer_version": "plan_summary_renderer/2"
+      },
+      "error_code": null
+    },
+    "meta": {
+      "request_id": "synthetic-narrative-example"
+    },
+    "error": null
+  }
+}

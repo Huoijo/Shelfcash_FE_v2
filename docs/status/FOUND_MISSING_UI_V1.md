@@ -302,11 +302,12 @@ CR-01 affects FM-001/005/007/010/011/013–016, resolver M04, N5, MQ01, I05 Revi
 ### PL-01 — Retained Planning Summary / Assistant interactions
 
 **Design:** MISSING · **Frontend:** PARTIAL · **Backend:** SUPPORTED · **Live verification:** CONTROLLED_ONLY
-**Owner:** DESIGN + FE · **Blocker category:** DESIGN, LIVE_VERIFICATION
+**Owner:** DESIGN + FE · **Blocker category:** DESIGN, FE_IMPLEMENTATION, LIVE_VERIFICATION
 
 - **Current state:** Current Results revision `461899945612550144` has the native Copilot drawer/first-open/answer/loading/error/permission patterns. 021 implements AS01–03 typed application state, clarification selection, bounded local history/returned context, valid fallback, stale/authority fences and durable recovery policy. PDF N10/J01/N11 and EX01 are integrated in the existing approved export UI.
 - **Remaining gap:** No canonical clarification candidate interaction, stale-context reset, lost-ACK Chat after reload, or Summary generation/mode/language lifecycle. AS03 metadata cannot reconstruct excluded original text. Summary/Chat application APIs have no product caller; controlled state tests are not UI completion. Provider/deployment/live acceptance remain unverified.
-- **Next action:** DESIGN supply the exact states in [021 design request](../../FE_ask/021_Planning_Assistant_Design_States.md); FE then bind the existing drawer to the prepared application owner without prototype data/actions. BE verify serving source/schema separately.
+- **Preparation findings:** [30-state binding matrix](../testing/planning-021/ASSISTANT_UI_BINDING_MATRIX.md) and [browser plan](../testing/planning-021/ASSISTANT_UI_BROWSER_PLAN.md) are prepared without product edits. B01: terminal Summary presentation change blocks a deliberate new generation; B02: old-version recovery needs explicit current-evidence gating. Unknown AS03 metadata after reload still blocks new same-scope questions. Characterization evidence is not UI acceptance.
+- **Next action:** FE fix/retest B01 and enforce B02 current-versus-retained evidence gating in the authorized implementation; DESIGN supply the exact states in [021 design request](../../FE_ask/021_Planning_Assistant_Design_States.md); FE then bind the existing drawer to the prepared application owner without prototype data/actions. BE verify serving source/schema separately.
 - **Safe current behavior:** Keep existing Assistant entry parked; no new placeholder conversation, invented candidate controls, provider/version selector, write commands or silent text persistence. Unknown outcomes remain blocked with original identity preserved.
 - **Evidence:** [021 integration receipt](../sprints/021/021_Planning_Handoff_Integration.md), [application owner](../../src/features/decision-planning/planning.assistant.ts), [native controlled browser](../testing/planning-021/BROWSER_VERIFICATION.json).
 

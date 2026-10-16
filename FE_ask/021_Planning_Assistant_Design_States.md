@@ -16,3 +16,14 @@ Existing answer/loading/error/permission styling and approved wording remain use
 Implemented now: typed API, scoped application state, explicit candidate validation/continuation, bounded history, returned context, deterministic fallback, stale/authority fencing, AS01 full-body and AS03 metadata-only pre-dispatch journals, AS02 reader and exact replay. No new Assistant product flow or prototype action is enabled.
 
 BE prerequisite is deployment verification of the supplied source/schema, not another policy decision. Backend status remains SOURCE_READY / NOT_DEPLOYED, serving runtime UNVERIFIED. Candidate8/provider activation are not FE controls. The newer Import branch is excluded.
+
+## Preparation follow-up — current implementation limits
+
+See the [binding matrix](../docs/testing/planning-021/ASSISTANT_UI_BINDING_MATRIX.md), [future browser cases](../docs/testing/planning-021/ASSISTANT_UI_BROWSER_PLAN.md) and [integration checklist](../docs/testing/planning-021/ASSISTANT_DESIGN_INTEGRATION_CHECKLIST.md). This preparation does not change MagicPath or enable the entry.
+
+- A deliberate new same-scope question after metadata-only uncertain reload is currently **blocked**, not an available escape/retry. A separate positive fixture requires a proven terminal prior outcome; no new policy is requested.
+- B01 is a reproducible FE blocker: setPresentation after terminal Summary clears the result but leaves a locator that prevents generateSummary. Initial four presentation combinations do not establish switching support.
+- B02 is a recovery/presentation hazard: an old retained Summary replay can return an old identity to a new owner. Final binding must fence it from current-evidence display; this is not a request to rewrite the old replay version/body or change BE policy.
+- C03 refresh is external orchestration plus fresh owner construction; the current owner has no implemented context-refresh action. Journal uncertainty survives C03 refresh.
+
+No UI action/copy should imply unsupported continuation. B01 needs a separate scoped implementation fix; B02 needs explicit tested current-versus-retained gating before final enablement. The final MagicPath revision/state IDs remain pending and must be recorded after the parallel design pass.

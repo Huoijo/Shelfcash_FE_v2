@@ -1,0 +1,138 @@
+{
+  "task": "PL-01 implementation preparation",
+  "mode": "PREPARATION_ONLY / EXPLICIT_TEST_FIXTURE_AND_SAFE_CHECK_AUTHORIZATION",
+  "verdict": "PL-01 PREPARATION PARTIAL — BLOCKERS FOUND",
+  "verified_at_utc": "2026-10-16T20:41:33.544087+00:00",
+  "product_UI_files_modified": "NONE",
+  "production_mapping_helpers": "NONE — existing state shape is sufficient.",
+  "production_source_hashes_unchanged": true,
+  "contracts_and_recovery_policy_hashes_unchanged": true,
+  "existing_agent_rules_and_skills_preserved": true,
+  "previous_bootstrap_changes_preserved": true,
+  "historical_planning_evidence_unchanged": true,
+  "baselined_file_count": 524,
+  "allowed_baseline_doc_edit": [
+    "docs/testing/planning-021/README.md"
+  ],
+  "existing_phase_names": [
+    "idle",
+    "sending",
+    "answer",
+    "clarification",
+    "stale",
+    "permission",
+    "error",
+    "uncertain"
+  ],
+  "existing_intent_status_names": [
+    "restoring",
+    "idle",
+    "pending",
+    "succeeded",
+    "failed",
+    "unknown",
+    "blocked"
+  ],
+  "binding_matrix_states": 30,
+  "fixture_catalog_keys": [
+    "NORMAL_FIRST_OPEN",
+    "NORMAL_ANSWER",
+    "LOADING",
+    "PERMISSION_DENIED",
+    "UNAVAILABLE",
+    "CLARIFICATION_INGREDIENT",
+    "CLARIFICATION_SIMILAR_INGREDIENTS",
+    "CLARIFICATION_OPTION",
+    "CLARIFICATION_PRODUCT",
+    "QUERY_UNSUPPORTED",
+    "CONTEXT_STALE",
+    "CONTEXT_REFRESHING",
+    "CONTEXT_RESTORED",
+    "CONTEXT_RESTORED_UNRESOLVED",
+    "UNCERTAIN_AFTER_RELOAD",
+    "UNCERTAIN_BLOCKED_CONTINUATION",
+    "NEW_QUESTION_AFTER_UNCERTAIN",
+    "NEW_QUESTION_AFTER_KNOWN_TERMINAL",
+    "SUMMARY_INITIAL",
+    "SUMMARY_RUNNING",
+    "SUMMARY_COMPLETED",
+    "SUMMARY_FAILED",
+    "SUMMARY_SAFE_RECOVERY",
+    "SUMMARY_NEW_GENERATION",
+    "LOADING_RETAINED_ANSWER",
+    "PERMISSION_DENIED_UNCERTAIN",
+    "SUMMARY_VI_SIMPLE",
+    "SUMMARY_VI_TECHNICAL",
+    "SUMMARY_EN_SIMPLE",
+    "SUMMARY_EN_TECHNICAL"
+  ],
+  "fixture_scope": "TEST_ONLY / PORTABLE_TS_JSON / NO_REACT_NO_IO",
+  "browser_cases": {
+    "planned": 30,
+    "executed": 0,
+    "status": "NOT_RUN / FINAL_CANONICAL_BINDING_PENDING",
+    "new_screenshots": 0,
+    "fake_UI_created": false
+  },
+  "canonical_design": {
+    "parallel_final_revision": "PENDING",
+    "prior_021_revision": "461899945612550144",
+    "prior_revision_status": "HISTORICAL_REFERENCE_ONLY / NOT_REAUDITED",
+    "magicpath_access": "NONE"
+  },
+  "validation": {
+    "planning_controlled_tests": {
+      "passed": 166,
+      "failed": 0,
+      "new_preparation_tests": 47,
+      "previous_planning_tests": 119
+    },
+    "fixture_typecheck": "PASS / TSC_STRICT_IGNORE_CONFIG_RESOLVE_JSON_MODULE",
+    "build": "PASS / EXISTING_LARGE_CHUNK_WARNING",
+    "lint": "PASS / TWO_EXISTING_EFFECT_WARNINGS",
+    "contract_gate": "PASS",
+    "capability_wire_gate": "PASS",
+    "git_diff_check": "PASS",
+    "matrix_and_fixture_coverage": "PASS",
+    "local_links": "PASS"
+  },
+  "findings": [
+    {
+      "id": "B01",
+      "status": "REPRODUCED_NOT_FIXED",
+      "description": "Terminal Summary setPresentation clears summary while retained generation locator blocks intentional generation",
+      "acceptance": "BLOCKED_UNTIL_SCOPED_FIX_AND_REGRESSION"
+    },
+    {
+      "id": "B02",
+      "status": "REPRODUCED_NOT_FIXED / BINDING_GATE_REQUIRED",
+      "description": "Old-version AS01 exact replay can publish phase answer under a newer owner pin; retained receipt must not be labeled current",
+      "acceptance": "CURRENT_VERSUS_RETAINED_EVIDENCE_GATE_REQUIRED"
+    }
+  ],
+  "uncertain_new_question": "BLOCKED_SAME_SCOPE_AFTER_METADATA_ONLY_RELOAD; POSITIVE_PATH_REQUIRES_KNOWN_TERMINAL_OUTCOME",
+  "C03_context_refresh": "EXTERNAL_CALLER_ORCHESTRATION / NOT_AN_ASSISTANT_METHOD",
+  "test_transport": "EXISTING_NODE_TEST_FETCH_INTERCEPTION / NEVER_DELEGATES_TO_ORIGINAL_FETCH",
+  "live_BE": "NOT RUN",
+  "live_BE_calls": 0,
+  "external_provider_calls": 0,
+  "real_business_mutations": 0,
+  "pending_Assistant_UI_rendering": "NOT_RUN",
+  "complete_Assistant_entry": "PARKED_UNCHANGED",
+  "commit_push": "NOT_PERFORMED",
+  "production_source_sha256": {
+    "src/features/backend-capabilities/recovery.policy.ts": "a129000cfcf0787a372a452550f32710cd6700712468a98f68b75b33788349ff",
+    "src/features/backend-capabilities/recovery.journal.ts": "3fa880ffbd20e446f2213683788938d2322c67a01064d89e8d555a4d62d90585",
+    "src/features/decision-planning/planning.intent.ts": "3be6a1c5d1eee50a70a179dee1bb27cd4844b290e2575481e9e1d6e6d5a7369f",
+    "src/features/decision-planning/planning.assistant.ts": "31bfb22de150ffb81b1d9fbdc64db2aa5920b5da5b1e88b1ff35274d1b5d0349"
+  },
+  "artifact_sha256": {
+    "tests/fixtures/planning-assistant-preparation.ts": "c3daa68c9e97e7785d24d8ae41d923e38c61d1e399ee58140207433628924e7d",
+    "tests/fixtures/planning-assistant-responses.json": "3f2e40ad71cbf1d4dd5628e942e375b57fd9818adfc8ad641ef6e16bf1b9d739",
+    "tests/helpers/planning-assistant-preparation.mjs": "21917e0a2cd7a2ac05328609b0da53b1d0099c81c81ce8b53ab7e53565064439",
+    "tests/planning-assistant-preparation.test.mjs": "26902963ba274e3365117c5935437311b59e0ce00eee0cc16ad52ab76fc55152",
+    "docs/testing/planning-021/ASSISTANT_UI_BINDING_MATRIX.md": "8ea89b5fefa98ad10d1f30818cbae77fc2a373d651c899408e00a238ba5785e3",
+    "docs/testing/planning-021/ASSISTANT_UI_BROWSER_PLAN.md": "3332d9120e58f5891307b803a73cf86fa9f99df57ad20f2b007f3b7beeaaaa24",
+    "docs/testing/planning-021/ASSISTANT_DESIGN_INTEGRATION_CHECKLIST.md": "9014f493d8a51a16bed4032d4a102f7d5972e4e14d7356b0b145b4fe90e26a6a"
+  }
+}

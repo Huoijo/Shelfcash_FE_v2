@@ -1,0 +1,129 @@
+{
+  "task": "ShelfCash UI toolchain bootstrap",
+  "verdict": "UI REFACTOR TOOLCHAIN READY",
+  "scope": "TOOLING_SKILLS_DOCS_ONLY",
+  "verified_at_utc": "2026-10-16T20:28:48.295474+00:00",
+  "baseline_head": "002c48830a3f7cf390eb4583a517a139975f4d8d",
+  "baselined_file_count": 247,
+  "baseline_changed_files": [
+    "AGENTS.md"
+  ],
+  "product_source": "BYTE_IDENTICAL",
+  "existing_shelfcash_rules": "BYTE_IDENTICAL",
+  "existing_playwright_config_and_capture_scripts": "BYTE_IDENTICAL",
+  "existing_skills": "UNCHANGED / GIT_DIFF_CHECK",
+  "package_json_sha256": "b5d2849d15e7ad21d4aad01ba729cec828e23422a21962914ab725eea8837bf0",
+  "lockfile_sha256": "5a3ce7fe453937b8465990cb1737c9cf8390d142b83534f8dc13c32695e75be7",
+  "dependency_changes": [],
+  "skills": {
+    "frontend-ui-standards": {
+      "installed_path": ".agents/skills/frontend-ui-standards",
+      "validator": "PASS",
+      "frontend_repo": "https://github.com/MaxHan7/frontend-ui-standards-skill",
+      "commit": "0609cb07793ee1f8f6626c98042ee2e811f81735",
+      "upstream_skill_sha256": "eaf57d57968e678b8eb06f7687b28cc00959801eba5dfbca0b342e88122d8feb",
+      "license_sha256": "cdc0ece1627e05b0ee2caefb5047182fca983b2d7186736b870ea5451fe5a5d7",
+      "adaptation": "SHELFCASH_SCOPED_ENTRYPOINT / UNMODIFIED_UPSTREAM_REFERENCE"
+    },
+    "design-md-workflow": {
+      "installed_path": ".agents/skills/design-md-workflow",
+      "validator": "PASS",
+      "source": "SHELFCASH_AUTHORED_LOCAL_EQUIVALENT"
+    },
+    "playwright-cli": {
+      "installed_path": ".agents/skills/playwright-cli",
+      "validator": "PASS",
+      "source": "MICROSOFT_OFFICIAL_SKILL_AND_CLI_ALREADY_IN_LOCKED_DEPENDENCY",
+      "playwright_core_version": "1.64.0",
+      "official_skill_path": "node_modules/playwright-core/lib/tools/skills/playwright-cli/SKILL.md",
+      "official_skill_sha256": "49bebc4b652d58860e91d6478fa446645e349ba8556667cc02702645d7ffde0b",
+      "cli_path": "node_modules/playwright-core/lib/tools/cli-client/cli.js",
+      "cli_help": "PASS"
+    }
+  },
+  "design_entrypoint": "DESIGN.md",
+  "storybook": {
+    "existing": false,
+    "installed": false,
+    "recommendation": "NOT CURRENTLY NECESSARY",
+    "future_setup": "SEPARATE_EXPLICIT_TASK",
+    "potential_packages": [
+      "storybook",
+      "@storybook/react-vite"
+    ],
+    "optional_packages": [
+      "@storybook/addon-docs",
+      "@storybook/addon-a11y"
+    ],
+    "peer_compatibility": "NOT_TESTED / VERIFY_AT_FUTURE_SETUP"
+  },
+  "build": "PASS / EXISTING_LARGE_CHUNK_WARNING",
+  "lint": "PASS / TWO_EXISTING_EFFECT_WARNINGS",
+  "controlled_tests": {
+    "planning": {
+      "passed": 119,
+      "failed": 0,
+      "kind": "CONTROLLED"
+    },
+    "capabilities": {
+      "passed": 83,
+      "failed": 0,
+      "kind": "CONTROLLED"
+    },
+    "operations": {
+      "passed": 30,
+      "failed": 0,
+      "kind": "CONTROLLED"
+    },
+    "import": {
+      "passed": 143,
+      "failed": 0,
+      "kind": "CONTROLLED"
+    },
+    "store": {
+      "passed": 118,
+      "failed": 0,
+      "kind": "CONTROLLED"
+    },
+    "auth": {
+      "passed": 26,
+      "failed": 0,
+      "kind": "CONTROLLED"
+    }
+  },
+  "total_controlled_tests": 519,
+  "browser_smoke": {
+    "kind": "TOOLING_SMOKE_ONLY",
+    "status": "PASS",
+    "browser": "156.0.8078.4",
+    "platform": "darwin",
+    "arch": "arm64",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "screenshotBytes": 9455,
+    "networkAttempts": 0,
+    "liveBE": "NOT_RUN",
+    "productionUI": "NOT_RENDERED",
+    "historicalCaptureScripts": "INSPECTED_NOT_RERUN"
+  },
+  "markdown_local_links": "PASS",
+  "historical_captures": "NOT_OVERWRITTEN",
+  "magicpath": "NOT_ACCESSED",
+  "live_BE": "NOT_ACCESSED",
+  "full_app_e2e": "NOT_RUN",
+  "typography_refactor": "NOT_STARTED",
+  "product_visual_acceptance": "NOT_RUN",
+  "commit_push": "NOT_PERFORMED",
+  "added_file_sha256": {
+    ".agents/skills/design-md-workflow/SKILL.md": "e0cc9890ddee9167216711633f081b01bd30020c4fb7a373960859379a3fb9e9",
+    ".agents/skills/frontend-ui-standards/LICENSE": "cdc0ece1627e05b0ee2caefb5047182fca983b2d7186736b870ea5451fe5a5d7",
+    ".agents/skills/frontend-ui-standards/SKILL.md": "8094d188a0e26c6e452b9f5c23c79dae988d6ed1b21a297ac32104a6fe4857d2",
+    ".agents/skills/frontend-ui-standards/agents/openai.yaml": "2480aa172658234bcbe862549e6bfc53a96bc930b12213f38e0be66a9d6bd020",
+    ".agents/skills/frontend-ui-standards/references/upstream-SKILL.md": "eaf57d57968e678b8eb06f7687b28cc00959801eba5dfbca0b342e88122d8feb",
+    ".agents/skills/playwright-cli/SKILL.md": "97057f818f3e59df2e7c24c91606cf14b07c181ff4ac65e48e2e318cd5b64e3b",
+    "DESIGN.md": "ebdf19fafbbdf0535dc7b9cfaef524c0b1c7e9e654acab738c100d2a1a5a22a7",
+    "docs/architecture/UI_REFACTOR_TOOLCHAIN.md": "66a01d6c947afaac7655f83cab9fcb4682e2cd685977bdf0eececbbcf6f928f6"
+  }
+}

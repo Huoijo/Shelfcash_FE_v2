@@ -11,6 +11,8 @@ The [English integration audit workspace](../integration-audit/README.md) contai
 
 ## Inventory và verification receipts
 
+- [UI toolchain bootstrap verification](UI_TOOLCHAIN_BOOTSTRAP_VERIFICATION.json) and [assessment](../architecture/UI_REFACTOR_TOOLCHAIN.md): skills/design-index setup only; 519 controlled tests plus a network-blocked browser engine smoke, no product rendering or live BE.
+
 - [021 Planning handoff verification](planning-021/VERIFICATION.json), [native controlled browser](planning-021/BROWSER_VERIFICATION.json) and [implementation receipt](../sprints/021/021_Planning_Handoff_Integration.md): expanded Summary/PDF contracts, Assistant application boundary, N10 durable production caller. HTTP fixtures/local state/native browser storage are controlled evidence; live BE/full app E2E NOT_RUN.
 
 - [MagicPath → FE visual convergence](visual-fidelity/MAGICPATH_FE_CONVERGENCE.md): current 13 source pins, copy provenance/removal ledger, typography candidates and controlled static component screenshots; PARTIAL, no live BE/E2E claim.

@@ -1,0 +1,6 @@
+interface:
+  display_name: "ShelfCash Frontend UI Standards"
+  short_description: "Approved tokens, primitives, type and spacing"
+  default_prompt: "Use $frontend-ui-standards after reading DESIGN.md; implement only approved MagicPath values and patterns under ShelfCash rules."
+policy:
+  allow_implicit_invocation: true
