@@ -1,0 +1,59 @@
+{
+  "status": "SOURCE_READY / NOT_DEPLOYED",
+  "implementation_sha": "d555035bdb52929eea4ce7b60b5d1447ce748078",
+  "baseline_sha": "0786505f152b0a59f1fa6b4be8e6df0a4796911d",
+  "repository": "https://github.com/trankhanhnamhoccode/MLAI_backend",
+  "full_source_inventory": {
+    "operations": 78,
+    "paths": 71
+  },
+  "subset": {
+    "operations": 2,
+    "paths": 2,
+    "schemas": 50,
+    "is_complete_backend_openapi": false
+  },
+  "canonical_contract": "docs/PROCUREMENT_API_CONTRACT_VI.md#what-if-replan",
+  "reviewed_results_origin": {
+    "archive_sha256": "051e6a45ae1e0804a7502d192dd8d6a970c565462c5e952fbbcf8eeb70d9958f",
+    "files": [
+      "review/cases/demand/comparison.json",
+      "review/cases/delay/comparison.json",
+      "review/cases/combined/comparison.json"
+    ]
+  },
+  "implementation_source_sha256": {
+    "app/api/planning_public.py": "6919879bee254dae2668f6f93e85aefac217f7b49696933396ab6f6a3db1fae3",
+    "app/application/contracts/what_if.py": "e3776cc48df10569c35663e51c20c34565e4bc05f398b26b74a3131bcce426d8",
+    "app/application/contracts/planning_public.py": "c0b4d2f63ce6ce17aca14186e10b4e4f5693438f4c8109809c491801a3a97b31",
+    "app/application/use_cases/what_if.py": "ea3004032d43fc238b90847bdf67fe7469f30021561c87274c914c64f0d10529",
+    "app/application/what_if_comparison.py": "ea02a9c439fc4fee3c1001d1ed69c00e0533b9d7fa4a86a9d3039ad83698602a",
+    "app/main.py": "16d8d2cc43a226f0dc390b27fce6cb9c4a9f49f4e859a66a3e33d16f6a7288ff"
+  },
+  "examples": {
+    "classification": "SYNTHETIC",
+    "completed": "Reviewed actual engine results; no new solve",
+    "lifecycle": "DTO/source state fixtures",
+    "transport": "Actual FastAPI router/handlers with fixture service; no DB/provider/runtime call"
+  },
+  "validation": {
+    "subset_ref_closure": true,
+    "source_operation_definitions_preserved": true,
+    "success_and_error_dto_validation": true,
+    "exact_preset_type_and_bounds": true,
+    "router_response_headers_and_status_checked": true,
+    "synthetic_oracle_checked": true,
+    "json_schema_shape_type_bounds_pattern_format_checked": true
+  },
+  "known_source_drift": [
+    "S02 AuthError envelope meta.request_id differs from declared ConfigurationErrorEnvelope",
+    "S02 runtime ETag header not declared",
+    "S01 streaming413 guard not declared"
+  ],
+  "limits": [
+    "No browser/FE/deployment acceptance",
+    "No full regression rerun for packaging; reviewed feature bytes unchanged",
+    "No push/merge/customerDB migration/reset/restart/provider/email action"
+  ],
+  "manifest_scope": "Archive-relative payload paths; manifest.sha256 excludes itself; no docs commit self-reference"
+}

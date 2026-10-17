@@ -1,0 +1,67 @@
+{
+  "baseline_sha": "0786505f152b0a59f1fa6b4be8e6df0a4796911d",
+  "baseline_openapi_sha256": "816290d549479c170e3dd3090714dca081b0998706222db47e0d9b66f3561e93",
+  "implementation_sha": "d555035bdb52929eea4ce7b60b5d1447ce748078",
+  "implementation_openapi_sha256": "c358ecf796cb6cf2ceb3c97e3645804a7be1c2e698129beb1650cc91c989fbe6",
+  "baseline_operations": 76,
+  "current_operations": 78,
+  "baseline_paths": 69,
+  "current_paths": 71,
+  "added_operations": [
+    {
+      "method": "POST",
+      "path": "/api/v1/procurement-plans/{plan_id}/what-if",
+      "id": "S01"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/what-if/{scenario_id}",
+      "id": "S02"
+    }
+  ],
+  "removed_operations": [],
+  "changed_operations": [],
+  "added_schemas": [
+    "MetricDelta",
+    "PlanningEnvelope_WhatIfView_",
+    "SignedQuantity",
+    "WhatIfPin",
+    "WhatIfRequest",
+    "WhatIfView"
+  ],
+  "removed_schemas": [],
+  "changed_schemas": [
+    "RunView"
+  ],
+  "changed_properties": {
+    "RunView": {
+      "authority": {
+        "before": null,
+        "after": {
+          "type": "string",
+          "enum": [
+            "RETAINED_PLAN",
+            "HYPOTHETICAL"
+          ],
+          "title": "Authority",
+          "default": "RETAINED_PLAN"
+        }
+      },
+      "baseline_run_id": {
+        "before": null,
+        "after": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Baseline Run Id"
+        }
+      }
+    }
+  }
+}
