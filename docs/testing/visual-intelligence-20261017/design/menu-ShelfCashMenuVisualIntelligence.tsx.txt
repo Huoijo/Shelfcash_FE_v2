@@ -1,0 +1,69 @@
+import type { MenuProduct, RecipeIngredient } from './ShelfCashMenuData';
+import { menuNumber } from './ShelfCashMenuData';
+import './ShelfCashMenuVisualIntelligence.css';
+type UnitGroup = {
+  unit: string;
+  lines: RecipeIngredient[];
+};
+function groupIngredients(product: MenuProduct): UnitGroup[] {
+  const groups = new Map<string, RecipeIngredient[]>();
+  for (const line of product.recipe?.ingredients ?? []) {
+    const key = line.unit || 'Không rõ đơn vị';
+    const current = groups.get(key) ?? [];
+    current.push(line);
+    groups.set(key, current);
+  }
+  return Array.from(groups, ([unit, lines]) => ({
+    unit,
+    lines
+  }));
+}
+function validQuantity(line: RecipeIngredient) {
+  return line.quantity !== null && Number.isFinite(line.quantity) && line.quantity >= 0;
+}
+function DependencyGroup({
+  group
+}: {
+  group: UnitGroup;
+}) {
+  const known = group.lines.filter(validQuantity);
+  const total = known.reduce((sum, line) => sum + Math.max(0, line.quantity ?? 0), 0);
+  const comparable = group.unit !== 'Không rõ đơn vị' && known.length > 1 && total > 0;
+  return <section className="sc-menu-dependency-group" aria-label={`Nguyên liệu dùng đơn vị ${group.unit}`}>
+    <header><strong>Nhóm {group.unit}</strong><span>{comparable ? 'Tỷ trọng trong cùng đơn vị' : 'Định lượng trực tiếp'}</span></header>
+    <div className="sc-menu-dependency-list">
+      {group.lines.map(line => {
+        const available = validQuantity(line);
+        const share = available && comparable ? Math.max(0, Math.min(100, (line.quantity ?? 0) / total * 100)) : null;
+        const shareText = share !== null ? `${share.toLocaleString('vi-VN', {
+          maximumFractionDigits: 1
+        })}% trong nhóm` : null;
+        return <div className={`sc-menu-dependency-row${available ? '' : ' is-unavailable'}`} key={line.id} data-state={available ? comparable ? 'comparable' : 'direct' : 'unavailable'}>
+          <div className="sc-menu-dependency-label"><strong>{line.name}</strong><span>{available ? `${menuNumber(line.quantity!)} ${line.unit || '· thiếu đơn vị'}${shareText ? ` · ${shareText}` : ''}` : 'Không khả dụng'}</span></div>
+          {share !== null ? <div className="sc-menu-dependency-rail" aria-label={`${line.name}: ${menuNumber(line.quantity!)} ${line.unit}; ${shareText}; chỉ so sánh trong nhóm ${group.unit}`}><span style={{
+              width: `${share}%`
+            }} /></div> : <div className="sc-menu-dependency-direct" aria-hidden="true"><span>{available ? group.unit ? '—' : 'Thiếu đơn vị so sánh' : 'Dữ liệu thiếu'}</span></div>}
+        </div>;
+      })}
+    </div>
+  </section>;
+}
+export function RecipeDependencyVisual({
+  product
+}: {
+  product: MenuProduct;
+}) {
+  if (!product.recipe) return <section className="sc-menu-intelligence" data-state="empty" aria-label="Phụ thuộc nguyên liệu"><header><div><span>VISUAL INTELLIGENCE</span><h3>Phụ thuộc nguyên liệu</h3></div><strong className="sc-menu-intelligence-state">Trống</strong></header><p className="sc-menu-intelligence-empty">Chưa có công thức để biểu diễn phụ thuộc nguyên liệu.</p></section>;
+  const groups = groupIngredients(product);
+  const hasUnknown = product.recipe.ingredients.some(line => !validQuantity(line) || !line.unit);
+  return <section className="sc-menu-intelligence" data-state={hasUnknown ? 'partial' : 'default'} aria-label="Phụ thuộc nguyên liệu trong công thức hiện tại">
+    <header><div><span>VISUAL INTELLIGENCE</span><h3>Phụ thuộc nguyên liệu</h3></div><strong className="sc-menu-intelligence-state">{hasUnknown ? 'Một phần' : 'Công thức hiện tại'}</strong></header>
+    <p className="sc-menu-intelligence-help">Rail biểu diễn tỷ trọng chỉ trong từng nhóm có cùng đơn vị; mỗi nhóm cộng thành 100%. Không cộng chéo g, ml, cái và không diễn giải thành tỷ trọng toàn công thức.</p>
+    <div className="sc-menu-dependency-groups">{groups.map(group => <DependencyGroup key={group.unit} group={group} />)}</div>
+    {hasUnknown && <p className="sc-menu-intelligence-partial">! Một số định lượng hoặc đơn vị chưa khả dụng; ShelfCash không thay dữ liệu thiếu bằng 0 và không tạo tỷ trọng khi đơn vị chưa rõ.</p>}
+    <div className="sc-menu-contract-grid">
+      <section><span>RỦI RO TỒN KHO</span><strong>DATA CONTRACT REQUIRED</strong><p>Menu hiện không có trạng thái tồn kho authoritative cho từng nguyên liệu của món.</p></section>
+      <section><span>CHI PHÍ NGUYÊN LIỆU</span><strong>DATA CONTRACT REQUIRED</strong><p>Menu không có ingredient cost; không suy chi phí, margin hoặc lợi nhuận từ giá bán.</p></section>
+    </div>
+  </section>;
+}

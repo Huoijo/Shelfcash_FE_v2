@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-17",
+  "projectId": "458079658328604672",
+  "mode": "READ_ONLY_AUTHENTICATED_MAGICPATH",
+  "charts": "Explicitly excluded by user; no MagicPath writes or chart implementation",
+  "surfaces": [
+    {
+      "component": {
+        "id": "460747146686242816",
+        "projectId": "458079658328604672",
+        "selectedRevisionId": "461975629559140352",
+        "baseRevisionId": "461975629559140352",
+        "generatedName": "softly-door-9234",
+        "name": "ShelfCash · Input flow · OWNER"
+      },
+      "promptRevision": "461895559079428096",
+      "unchangedFiles": [
+        "src/App.tsx",
+        "src/components/generated/ShelfCashBrandAccent.css",
+        "src/components/generated/ShelfCashClosureExtensions.css",
+        "src/components/generated/ShelfCashContextPrimitives.css",
+        "src/components/generated/ShelfCashContextPrimitives.tsx",
+        "src/components/generated/ShelfCashDeclarationContextEditor.tsx",
+        "src/components/generated/ShelfCashDomainReviewSurface.css",
+        "src/components/generated/ShelfCashDomainReviewSurface.tsx",
+        "src/components/generated/ShelfCashHistoryCorrectionSurface.tsx",
+        "src/components/generated/ShelfCashInputFlowController.tsx",
+        "src/components/generated/ShelfCashInputFlowOWNER.css",
+        "src/components/generated/ShelfCashInputFlowOWNER.tsx",
+        "src/components/generated/ShelfCashInputFlowOWNERStep3.css",
+        "src/components/generated/ShelfCashLatestAuditFixes.css",
+        "src/components/generated/ShelfCashMutationRecovery.css",
+        "src/components/generated/ShelfCashMutationRecovery.tsx",
+        "src/components/generated/ShelfCashPrototypeCatalog.ts",
+        "src/components/generated/ShelfCashPrototypeStatePlayground.css",
+        "src/components/generated/ShelfCashResolverMutationRecovery.tsx",
+        "src/components/generated/ShelfCashResolverScopeSurface.tsx",
+        "src/components/generated/ShelfCashResolverWave1.css",
+        "src/components/generated/ShelfCashReviewCommitSurface.css",
+        "src/components/generated/ShelfCashSourceContextSurface.css",
+        "src/components/generated/ShelfCashSourceContextSurface.tsx",
+        "src/components/generated/ShelfCashWave2.css",
+        "src/components/generated/ShelfCashWave7ProfileDecision.css",
+        "src/components/generated/ShelfCashWave7ProfileDecision.tsx",
+        "src/index.css"
+      ],
+      "changedFiles": [
+        "src/components/generated/ShelfCashAdvancedImportSurface.tsx",
+        "src/components/generated/ShelfCashReviewCommitSurface.tsx",
+        "src/components/generated/ShelfCashVisualIntelligence.css",
+        "src/components/generated/ShelfCashVisualIntelligence.tsx"
+      ]
+    },
+    {
+      "component": {
+        "id": "460747115572916224",
+        "projectId": "458079658328604672",
+        "selectedRevisionId": "461976479094435840",
+        "baseRevisionId": "461976479094435840",
+        "generatedName": "wildly-shade-4015",
+        "name": "ShelfCash · Input flow · STAFF"
+      },
+      "promptRevision": "461895532667871232",
+      "unchangedFiles": [
+        "src/App.tsx",
+        "src/components/generated/ShelfCashBrandAccent.css",
+        "src/components/generated/ShelfCashClosureExtensions.css",
+        "src/components/generated/ShelfCashContextPrimitives.css",
+        "src/components/generated/ShelfCashContextPrimitives.tsx",
+        "src/components/generated/ShelfCashDeclarationContextEditor.tsx",
+        "src/components/generated/ShelfCashDomainReviewSurface.css",
+        "src/components/generated/ShelfCashDomainReviewSurface.tsx",
+        "src/components/generated/ShelfCashHistoryCorrectionSurface.tsx",
+        "src/components/generated/ShelfCashInputFlowController.tsx",
+        "src/components/generated/ShelfCashInputFlowSTAFF.css",
+        "src/components/generated/ShelfCashInputFlowSTAFF.tsx",
+        "src/components/generated/ShelfCashMutationRecovery.css",
+        "src/components/generated/ShelfCashMutationRecovery.tsx",
+        "src/components/generated/ShelfCashPrototypeCatalog.ts",
+        "src/components/generated/ShelfCashPrototypeStatePlayground.css",
+        "src/components/generated/ShelfCashResolverMutationRecovery.tsx",
+        "src/components/generated/ShelfCashResolverScopeSurface.tsx",
+        "src/components/generated/ShelfCashResolverWave1.css",
+        "src/components/generated/ShelfCashReviewCommitSurface.css",
+        "src/components/generated/ShelfCashSourceContextSurface.css",
+        "src/components/generated/ShelfCashSourceContextSurface.tsx",
+        "src/components/generated/ShelfCashStaffConvergence.css",
+        "src/components/generated/ShelfCashWave2.css",
+        "src/components/generated/ShelfCashWave7ProfileDecision.css",
+        "src/components/generated/ShelfCashWave7ProfileDecision.tsx",
+        "src/index.css"
+      ],
+      "changedFiles": [
+        "src/components/generated/ShelfCashAdvancedImportSurface.tsx",
+        "src/components/generated/ShelfCashReviewCommitSurface.tsx",
+        "src/components/generated/ShelfCashVisualIntelligence.css",
+        "src/components/generated/ShelfCashVisualIntelligence.tsx"
+      ]
+    },
+    {
+      "component": {
+        "id": "458255053002780672",
+        "projectId": "458079658328604672",
+        "selectedRevisionId": "461979574209744896",
+        "baseRevisionId": "461979574209744896",
+        "generatedName": "radiantly-room-8537",
+        "name": "ShelfCash · Lịch sử nhập"
+      },
+      "promptRevision": "461892415150780416",
+      "unchangedFiles": [
+        "src/App.tsx",
+        "src/components/generated/ShelfCashAppShell.tsx",
+        "src/components/generated/ShelfCashBrandAccent.css",
+        "src/components/generated/ShelfCashDataImportScreen.tsx",
+        "src/components/generated/ShelfCashHelpDrawer.css",
+        "src/components/generated/ShelfCashHelpDrawer.tsx",
+        "src/components/generated/ShelfCashImportHistoryData.ts",
+        "src/components/generated/ShelfCashImportHistoryScreen.css",
+        "src/components/generated/ShelfCashLChSNhP.tsx",
+        "src/components/generated/ShelfCashMappingData.ts",
+        "src/components/generated/ShelfCashMappingScreen.css",
+        "src/components/generated/ShelfCashMappingScreen.tsx",
+        "src/components/generated/ShelfCashNhPDLiU.css",
+        "src/index.css"
+      ],
+      "changedFiles": [
+        "src/components/generated/ShelfCashHistoryVisualIntelligence.css",
+        "src/components/generated/ShelfCashImportHistoryScreen.tsx"
+      ]
+    }
+  ]
+}

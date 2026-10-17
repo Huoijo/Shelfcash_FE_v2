@@ -19,8 +19,8 @@ let context,page,stage='running',deny=false,denyDiscoveryNext=false,postCount=0,
 const cases=[]
 const record=name=>cases.push({name,status:'PASS',evidence:'CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB'})
 try{
- await fs.mkdir(output,{recursive:true});await fs.symlink(path.join(root,'node_modules'),path.join(temp,'node_modules'),'dir')
- const src=path.join(root,'src')
+ await fs.mkdir(output,{recursive:true});await fs.symlink(path.join(root,'node_modules'),path.join(temp,'node_modules'),process.platform==='win32'?'junction':'dir')
+ const src=path.join(root,'src').replaceAll('\\','/')
  await fs.writeFile(path.join(temp,'entry.tsx'),`
 import React,{useState} from 'react';import{createRoot}from'react-dom/client';import{MemoryRouter}from'react-router';
 import{PlanExport}from'${src}/features/operations/PlanExport';import{AuthContextValue}from'${src}/features/auth/auth.context';import{CurrentStore}from'${src}/features/store/store.context';
@@ -34,7 +34,7 @@ function App(){const[denied,setDenied]=useState(false);const store=mockStoreCont
  const js=await fs.readFile(path.join(temp,'out/bundle.js'),'utf8'),files=await fs.readdir(path.join(temp,'out'));let css='';for(const f of files.filter(f=>f.endsWith('.css')))css+=await fs.readFile(path.join(temp,'out',f),'utf8')
  const html=`<!doctype html><meta charset="utf-8"><style>${css}</style><div id="root"></div><script>${js.replaceAll('</script>','<\\/script>')}</script>`
  const start=async()=>{
-  context=await chromium.launchPersistentContext(path.join(temp,'profile'),{headless:true,viewport:{width:1440,height:1000},acceptDownloads:true})
+  context=await chromium.launchPersistentContext(path.join(temp,'profile'),{headless:true,...(process.env.SHELFCASH_CHROMIUM_PATH?{executablePath:process.env.SHELFCASH_CHROMIUM_PATH}:{}),viewport:{width:1440,height:1000},acceptDownloads:true})
   await context.route('**/*',async route=>{
    const req=route.request(),url=new URL(req.url())
    if(url.origin===origin&&url.pathname==='/test')return route.fulfill({status:200,contentType:'text/html',body:html})

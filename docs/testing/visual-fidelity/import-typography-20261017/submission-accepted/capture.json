@@ -1,0 +1,267 @@
+{
+  "kind": "CONTROLLED_HYDRATED_PRODUCTION_COMPONENTS",
+  "baseline": false,
+  "apiSubmission": true,
+  "zoom": 1,
+  "viewports": [
+    1440,
+    390
+  ],
+  "browser": "151.0.7922.34",
+  "font": "Locally available Inter or system fallback; remote requests blocked",
+  "intercepted": [
+    "/api/v1/stores/00000000-0000-4000-8000-000000000021/mapping-submissions/00000000-0000-4000-8000-000000000041",
+    "/api/v1/stores/00000000-0000-4000-8000-000000000021/memberships",
+    "/api/v1/stores/00000000-0000-4000-8000-000000000021/mapping-submissions/00000000-0000-4000-8000-000000000041",
+    "/api/v1/stores/00000000-0000-4000-8000-000000000021/memberships",
+    "/api/v1/stores/00000000-0000-4000-8000-000000000021/mapping-submissions/00000000-0000-4000-8000-000000000041",
+    "/api/v1/stores/00000000-0000-4000-8000-000000000021/memberships",
+    "/api/v1/stores/00000000-0000-4000-8000-000000000021/mapping-submissions/00000000-0000-4000-8000-000000000041",
+    "/api/v1/stores/00000000-0000-4000-8000-000000000021/memberships"
+  ],
+  "interactions": [],
+  "networkAttempts": [],
+  "errors": [],
+  "states": [
+    {
+      "role": "OWNER",
+      "scenario": "submission-staff",
+      "width": 1440,
+      "file": "owner-submission-staff-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "submission-own",
+      "width": 1440,
+      "file": "owner-submission-own-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "submission-staff",
+      "width": 390,
+      "file": "owner-submission-staff-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "submission-own",
+      "width": 390,
+      "file": "owner-submission-own-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ]
+      }
+    }
+  ]
+}

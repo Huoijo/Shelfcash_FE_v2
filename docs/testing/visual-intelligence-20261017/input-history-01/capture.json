@@ -1,0 +1,4409 @@
+{
+  "kind": "CONTROLLED_HYDRATED_PRODUCTION_COMPONENTS",
+  "baseline": false,
+  "apiSubmission": false,
+  "zoom": 1,
+  "viewports": [
+    1440,
+    390
+  ],
+  "browser": "151.0.7922.34",
+  "font": "Locally available Inter or system fallback; remote requests blocked",
+  "intercepted": [],
+  "interactions": [
+    {
+      "role": "OWNER",
+      "scenario": "preview-warnings",
+      "name": "preview-row-evidence",
+      "width": 1440,
+      "file": "owner-preview-row-evidence-1440.png",
+      "checks": {
+        "dialogWidth": 420,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "profile-reusable",
+      "name": "profile-reusable-evidence",
+      "width": 1440,
+      "file": "owner-profile-reusable-evidence-1440.png",
+      "checks": {
+        "dialogWidth": 420,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "domain-history",
+      "name": "sales-before-after",
+      "width": 1440,
+      "file": "owner-sales-before-after-1440.png",
+      "checks": {
+        "dialogWidth": 420,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "domain-history",
+      "name": "supplier-before-after",
+      "width": 1440,
+      "file": "owner-supplier-before-after-1440.png",
+      "checks": {
+        "dialogWidth": 420,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "domain-history",
+      "name": "history-correction",
+      "width": 1440,
+      "file": "owner-history-correction-1440.png",
+      "checks": {
+        "dialogWidth": 420,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "profile-review",
+      "name": "profile-review-evidence",
+      "width": 1440,
+      "file": "owner-profile-review-evidence-1440.png",
+      "checks": {
+        "dialogWidth": 420,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "preview-warnings",
+      "name": "preview-row-evidence",
+      "width": 1440,
+      "file": "staff-preview-row-evidence-1440.png",
+      "checks": {
+        "dialogWidth": 420,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "profile-reusable",
+      "name": "profile-reusable-evidence",
+      "width": 1440,
+      "file": "staff-profile-reusable-evidence-1440.png",
+      "checks": {
+        "dialogWidth": 420,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "domain-history",
+      "name": "sales-before-after",
+      "width": 1440,
+      "file": "staff-sales-before-after-1440.png",
+      "checks": {
+        "dialogWidth": 420,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "domain-history",
+      "name": "supplier-before-after",
+      "width": 1440,
+      "file": "staff-supplier-before-after-1440.png",
+      "checks": {
+        "dialogWidth": 420,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "domain-history",
+      "name": "history-correction",
+      "width": 1440,
+      "file": "staff-history-correction-1440.png",
+      "checks": {
+        "dialogWidth": 420,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "preview-warnings",
+      "name": "preview-row-evidence",
+      "width": 390,
+      "file": "owner-preview-row-evidence-390.png",
+      "checks": {
+        "dialogWidth": 390,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "profile-reusable",
+      "name": "profile-reusable-evidence",
+      "width": 390,
+      "file": "owner-profile-reusable-evidence-390.png",
+      "checks": {
+        "dialogWidth": 390,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "domain-history",
+      "name": "sales-before-after",
+      "width": 390,
+      "file": "owner-sales-before-after-390.png",
+      "checks": {
+        "dialogWidth": 390,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "domain-history",
+      "name": "supplier-before-after",
+      "width": 390,
+      "file": "owner-supplier-before-after-390.png",
+      "checks": {
+        "dialogWidth": 390,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "domain-history",
+      "name": "history-correction",
+      "width": 390,
+      "file": "owner-history-correction-390.png",
+      "checks": {
+        "dialogWidth": 390,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "profile-review",
+      "name": "profile-review-evidence",
+      "width": 390,
+      "file": "owner-profile-review-evidence-390.png",
+      "checks": {
+        "dialogWidth": 390,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "preview-warnings",
+      "name": "preview-row-evidence",
+      "width": 390,
+      "file": "staff-preview-row-evidence-390.png",
+      "checks": {
+        "dialogWidth": 390,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "profile-reusable",
+      "name": "profile-reusable-evidence",
+      "width": 390,
+      "file": "staff-profile-reusable-evidence-390.png",
+      "checks": {
+        "dialogWidth": 390,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "domain-history",
+      "name": "sales-before-after",
+      "width": 390,
+      "file": "staff-sales-before-after-390.png",
+      "checks": {
+        "dialogWidth": 390,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "domain-history",
+      "name": "supplier-before-after",
+      "width": 390,
+      "file": "staff-supplier-before-after-390.png",
+      "checks": {
+        "dialogWidth": 390,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "domain-history",
+      "name": "history-correction",
+      "width": 390,
+      "file": "staff-history-correction-390.png",
+      "checks": {
+        "dialogWidth": 390,
+        "documentOverflow": false,
+        "footerCollision": false,
+        "undersized": []
+      }
+    }
+  ],
+  "networkAttempts": [],
+  "errors": [],
+  "states": [
+    {
+      "role": "OWNER",
+      "scenario": "file-ready",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "analyze-source",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "source-evidence",
+      "width": 1440,
+      "file": "owner-source-evidence-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-context-evidence",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "input-context-evidence",
+            "size": "12px",
+            "lineHeight": "20px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-complete",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-manual",
+      "width": 1440,
+      "file": "owner-resolve-manual-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-identity",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-declaration",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "20px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-unit",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-permission",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "preview-warnings",
+      "width": 1440,
+      "file": "owner-preview-warnings-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "review-awaiting",
+      "width": 1440,
+      "file": "owner-review-awaiting-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "commit-optional",
+      "width": 1440,
+      "file": "owner-commit-optional-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "commit-review",
+      "width": 1440,
+      "file": "owner-commit-review-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "commit-permission",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "commit-uncertain",
+      "width": 1440,
+      "file": "owner-commit-uncertain-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "complete-ready",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "complete-blocked",
+      "width": 1440,
+      "file": "owner-complete-blocked-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "history-calendar",
+      "width": 1440,
+      "file": "owner-history-calendar-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "profile-reusable",
+      "width": 1440,
+      "file": "owner-profile-reusable-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "domain-history",
+      "width": 1440,
+      "file": "owner-domain-history-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "profile-review",
+      "width": 1440,
+      "file": "owner-profile-review-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "profile-dirty",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "file-ready",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "analyze-source",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "source-evidence",
+      "width": 1440,
+      "file": "staff-source-evidence-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-context-evidence",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "input-context-evidence",
+            "size": "12px",
+            "lineHeight": "20px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-complete",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-manual",
+      "width": 1440,
+      "file": "staff-resolve-manual-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-identity",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-declaration",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "20px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-unit",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-permission",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "preview-warnings",
+      "width": 1440,
+      "file": "staff-preview-warnings-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "review-awaiting",
+      "width": 1440,
+      "file": "staff-review-awaiting-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "commit-optional",
+      "width": 1440,
+      "file": "staff-commit-optional-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "commit-review",
+      "width": 1440,
+      "file": "staff-commit-review-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "commit-permission",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "commit-uncertain",
+      "width": 1440,
+      "file": "staff-commit-uncertain-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "complete-ready",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "complete-blocked",
+      "width": 1440,
+      "file": "staff-complete-blocked-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "history-calendar",
+      "width": 1440,
+      "file": "staff-history-calendar-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "profile-reusable",
+      "width": 1440,
+      "file": "staff-profile-reusable-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "domain-history",
+      "width": 1440,
+      "file": "staff-domain-history-1440.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-changed",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-waiting",
+      "width": 1440,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "file-ready",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "analyze-source",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "source-evidence",
+      "width": 390,
+      "file": "owner-source-evidence-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-context-evidence",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "input-context-evidence",
+            "size": "12px",
+            "lineHeight": "20px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-complete",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-manual",
+      "width": 390,
+      "file": "owner-resolve-manual-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-identity",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-declaration",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "20px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-unit",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "resolve-permission",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "preview-warnings",
+      "width": 390,
+      "file": "owner-preview-warnings-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "review-awaiting",
+      "width": 390,
+      "file": "owner-review-awaiting-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "commit-optional",
+      "width": 390,
+      "file": "owner-commit-optional-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "commit-review",
+      "width": 390,
+      "file": "owner-commit-review-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "commit-permission",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "commit-uncertain",
+      "width": 390,
+      "file": "owner-commit-uncertain-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "complete-ready",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "complete-blocked",
+      "width": 390,
+      "file": "owner-complete-blocked-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "history-calendar",
+      "width": 390,
+      "file": "owner-history-calendar-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": []
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "profile-reusable",
+      "width": 390,
+      "file": "owner-profile-reusable-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "domain-history",
+      "width": 390,
+      "file": "owner-domain-history-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "profile-review",
+      "width": 390,
+      "file": "owner-profile-review-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "OWNER",
+      "scenario": "profile-dirty",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "file-ready",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "analyze-source",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "source-evidence",
+      "width": 390,
+      "file": "staff-source-evidence-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-context-evidence",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "input-context-evidence",
+            "size": "12px",
+            "lineHeight": "20px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-complete",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-manual",
+      "width": 390,
+      "file": "staff-resolve-manual-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-identity",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-declaration",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "20px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-unit",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-permission",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "preview-warnings",
+      "width": 390,
+      "file": "staff-preview-warnings-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "review-awaiting",
+      "width": 390,
+      "file": "staff-review-awaiting-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "commit-optional",
+      "width": 390,
+      "file": "staff-commit-optional-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "commit-review",
+      "width": 390,
+      "file": "staff-commit-review-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "commit-permission",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "commit-uncertain",
+      "width": 390,
+      "file": "staff-commit-uncertain-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "complete-ready",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "complete-blocked",
+      "width": 390,
+      "file": "staff-complete-blocked-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "history-calendar",
+      "width": 390,
+      "file": "staff-history-calendar-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": []
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "profile-reusable",
+      "width": 390,
+      "file": "staff-profile-reusable-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-resolver-help",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          },
+          {
+            "selector": "SECTION",
+            "size": "12px",
+            "lineHeight": "20px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "11px",
+            "lineHeight": "18px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "domain-history",
+      "width": 390,
+      "file": "staff-domain-history-390.png",
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ]
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-changed",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    },
+    {
+      "role": "STAFF",
+      "scenario": "resolve-waiting",
+      "width": 390,
+      "file": null,
+      "metrics": {
+        "documentOverflow": false,
+        "undersized": [],
+        "controls": [],
+        "semanticViolations": [],
+        "stepperTextOverflow": [],
+        "clipped": [],
+        "roles": [
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "SMALL",
+            "size": "10px",
+            "lineHeight": "16px"
+          },
+          {
+            "selector": "input-status",
+            "size": "12px",
+            "lineHeight": "19.8px"
+          }
+        ],
+        "stepperHeight": 88
+      }
+    }
+  ]
+}

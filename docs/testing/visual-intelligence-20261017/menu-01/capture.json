@@ -1,0 +1,136 @@
+{
+  "kind": "CONTROLLED_HYDRATED_PRODUCTION_COMPONENTS",
+  "browser": "151.0.7922.34",
+  "errors": [],
+  "unexpected": [],
+  "cases": [
+    {
+      "scenario": "menu-default",
+      "width": 1440,
+      "file": "menu-default-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Cà phê sữa\nGiá bán\n42.000 VND\ncho 1 cup\nTrạng thái\nĐang bán\nThành phẩm\n1 cup\nĐịnh lượng nguyên liệu\n\nĐịnh lượng cho toàn mẻ 1 cup.\n\nĐịnh lượng nguyên liệu cho toàn mẻ 1 cup\nNguyên liệu\tĐịnh lượng\tĐơn vị\nCà phê rang xay\t20\tg\nSữa đặc\t30\tg\nĐá viên\t100\tg\nCông thức hiện tại\nHiệu lực từ 01/10/2026\nĐến hết 10/10/2026\nRecipe dependency\nĐịnh lượng cho toàn mẻ\n\nChỉ so sánh trong nhóm có cùng đơn vị. Không cộng chéo g, ml, cái; không phải tỷ trọng toàn công thức.\n\nNhóm g\nTỷ trọng trong cùng đơn vị\nCà phê rang xay\n20 g\n13,3% trong nhóm\nSữa đặc\n30 g\n20% trong nhóm\nĐá viên\n100 g\n66,6% trong nhóm\nRủi ro tồn kho\nDATA CONTRACT REQUIRED\nMenu chưa có trạng thái tồn kho authoritative cho từng nguyên liệu.\nChi phí nguyên liệu\nDATA CONTRACT REQUIRED\nChưa có ingredient cost; không suy chi phí, margin hoặc lợi nhuận từ giá bán.\nXem tồn kho nguyên liệu\nHỏi AI về món này",
+        "vi": [
+          {
+            "className": "sc-vi-card sc-menu-vi",
+            "width": 391
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 176.5
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 176.5
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "menu-mixed",
+      "width": 1440,
+      "file": "menu-mixed-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Matcha Latte\nGiá bán\n49.000 VND\ncho 1 cup\nTrạng thái\nĐang bán\nThành phẩm\n2 cup\nĐịnh lượng nguyên liệu\n\nĐịnh lượng cho toàn mẻ 2 cup. Không phải định lượng cho một đơn vị bán.\n\nĐịnh lượng nguyên liệu cho toàn mẻ 2 cup\nNguyên liệu\tĐịnh lượng\tĐơn vị\nSữa tươi\t360\tml\nBột matcha\t8,05\tg\nĐá viên\t200\tg\nCông thức hiện tại\nHiệu lực từ 05/10/2026\nTỷ lệ hao hụt toàn mẻ: 0,02 (không phải %)\nRecipe dependency\nĐịnh lượng cho toàn mẻ\n\nChỉ so sánh trong nhóm có cùng đơn vị. Không cộng chéo g, ml, cái; không phải tỷ trọng toàn công thức.\n\nNhóm ml\nĐịnh lượng trực tiếp\nSữa tươi\n360 ml\nĐịnh lượng trực tiếp · không có tỷ lệ so sánh\nNhóm g\nTỷ trọng trong cùng đơn vị\nBột matcha\n8,05 g\n3,8% trong nhóm\nĐá viên\n200 g\n96,1% trong nhóm\nRủi ro tồn kho\nDATA CONTRACT REQUIRED\nMenu chưa có trạng thái tồn kho authoritative cho từng nguyên liệu.\nChi phí nguyên liệu\nDATA CONTRACT REQUIRED\nChưa có ingredient cost; không suy chi phí, margin hoặc lợi nhuận từ giá bán.\nXem tồn kho nguyên liệu\nHỏi AI về món này",
+        "vi": [
+          {
+            "className": "sc-vi-card sc-menu-vi",
+            "width": 391
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 176.5
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 176.5
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "menu-no-recipe",
+      "width": 1440,
+      "file": "menu-no-recipe-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Cà phê đen\nGiá bán\nChưa biết\ncho 1 cup\nTrạng thái\nTạm ngưng\nThành phẩm\nChưa có công thức\n\nKhông có công thức hiệu lực tại ngày đọc.\n\nĐịnh lượng nguyên liệu\n\nChưa có công thức hiệu lực tại ngày đọc 10/10/2026.\n\nRecipe dependency\nĐịnh lượng cho toàn mẻ\n\nChỉ so sánh trong nhóm có cùng đơn vị. Không cộng chéo g, ml, cái; không phải tỷ trọng toàn công thức.\n\nNguyên liệu\nKhông khả dụng\nChưa đủ dữ liệu công thức để tạo dependency.\nRủi ro tồn kho\nDATA CONTRACT REQUIRED\nMenu chưa có trạng thái tồn kho authoritative cho từng nguyên liệu.\nChi phí nguyên liệu\nDATA CONTRACT REQUIRED\nChưa có ingredient cost; không suy chi phí, margin hoặc lợi nhuận từ giá bán.\nXem tồn kho nguyên liệu\nHỏi AI về món này",
+        "vi": [
+          {
+            "className": "sc-vi-card sc-menu-vi",
+            "width": 391
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 361
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 176.5
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 176.5
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "menu-empty",
+      "width": 1440,
+      "file": "menu-empty-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Nước ấm\nGiá bán\n0 VND\ncho 1 cup\nTrạng thái\nTạm ngưng\nThành phẩm\n1 cup\n\nCông thức hiện hành chưa có nguyên liệu.\n\nĐịnh lượng nguyên liệu\n\nĐịnh lượng cho toàn mẻ 1 cup.\n\nĐịnh lượng nguyên liệu cho toàn mẻ 1 cup\nNguyên liệu\tĐịnh lượng\tĐơn vị\n\nCông thức có hiệu lực nhưng chưa có dòng nguyên liệu; chưa đủ dữ liệu BOM.\n\nCông thức hiện tại\nHiệu lực từ 01/09/2026\nRecipe dependency\nĐịnh lượng cho toàn mẻ\n\nChỉ so sánh trong nhóm có cùng đơn vị. Không cộng chéo g, ml, cái; không phải tỷ trọng toàn công thức.\n\nNguyên liệu\nTrống\nChưa đủ dữ liệu công thức để tạo dependency.\nRủi ro tồn kho\nDATA CONTRACT REQUIRED\nMenu chưa có trạng thái tồn kho authoritative cho từng nguyên liệu.\nChi phí nguyên liệu\nDATA CONTRACT REQUIRED\nChưa có ingredient cost; không suy chi phí, margin hoặc lợi nhuận từ giá bán.\nXem tồn kho nguyên liệu\nHỏi AI về món này",
+        "vi": [
+          {
+            "className": "sc-vi-card sc-menu-vi",
+            "width": 391
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 361
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 176.5
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 176.5
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "menu-direct",
+      "width": 1440,
+      "file": "menu-direct-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Soda\nGiá bán\nChưa biết\ncho 1 cup\nTrạng thái\nĐang bán\nThành phẩm\n1 cup\nĐịnh lượng nguyên liệu\n\nĐịnh lượng cho toàn mẻ 1 cup.\n\nĐịnh lượng nguyên liệu cho toàn mẻ 1 cup\nNguyên liệu\tĐịnh lượng\tĐơn vị\nSoda\t250\tml\nCông thức hiện tại\nHiệu lực từ 01/10/2026\nRecipe dependency\nĐịnh lượng cho toàn mẻ\n\nChỉ so sánh trong nhóm có cùng đơn vị. Không cộng chéo g, ml, cái; không phải tỷ trọng toàn công thức.\n\nNhóm ml\nĐịnh lượng trực tiếp\nSoda\n250 ml\nĐịnh lượng trực tiếp · không có tỷ lệ so sánh\nRủi ro tồn kho\nDATA CONTRACT REQUIRED\nMenu chưa có trạng thái tồn kho authoritative cho từng nguyên liệu.\nChi phí nguyên liệu\nDATA CONTRACT REQUIRED\nChưa có ingredient cost; không suy chi phí, margin hoặc lợi nhuận từ giá bán.\nXem tồn kho nguyên liệu\nHỏi AI về món này",
+        "vi": [
+          {
+            "className": "sc-vi-card sc-menu-vi",
+            "width": 391
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 176.5
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 176.5
+          }
+        ]
+      }
+    }
+  ]
+}

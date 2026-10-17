@@ -1,0 +1,377 @@
+{
+  "kind": "CONTROLLED_SOURCE_COMPARISON",
+  "baselineHead": "b318e90888ba60c7c1c226e05855d1a1989f74a3",
+  "priorTypographyPreserved": true,
+  "current": {
+    "startTime": "2026-10-17T01:38:21.192Z",
+    "duration": 895334.685,
+    "expected": 83,
+    "skipped": 0,
+    "unexpected": 13,
+    "flaky": 0
+  },
+  "baselineFailedSubset": {
+    "startTime": "2026-10-17T01:54:05.958Z",
+    "duration": 1125507.192,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 13,
+    "flaky": 0
+  },
+  "pairs": [
+    {
+      "current": {
+        "key": "import-playground.mock.spec.ts:17:014 every catalog scenario renders the actual Import screen without reload:mock-desktop",
+        "title": "014 every catalog scenario renders the actual Import screen without reload",
+        "project": "mock-desktop",
+        "file": "import-playground.mock.spec.ts",
+        "line": 17,
+        "status": "unexpected",
+        "errors": [
+          "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+        ]
+      },
+      "baseline": {
+        "key": "import-playground.mock.spec.ts:17:014 every catalog scenario renders the actual Import screen without reload:mock-desktop",
+        "title": "014 every catalog scenario renders the actual Import screen without reload",
+        "project": "mock-desktop",
+        "file": "import-playground.mock.spec.ts",
+        "line": 17,
+        "status": "unexpected",
+        "errors": [
+          "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+        ]
+      },
+      "currentFailureLocation": "Test timeout of 60000ms exceeded.",
+      "baselineFailureLocation": "Test timeout of 60000ms exceeded.",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "operations.mock.spec.ts:80:parked features show construction notices and close accessibly:mock-desktop",
+        "title": "parked features show construction notices and close accessibly",
+        "project": "mock-desktop",
+        "file": "operations.mock.spec.ts",
+        "line": 80,
+        "status": "unexpected",
+        "errors": [
+          "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+          "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Hỏi AI', exact: true })\u001b[22m\n\n\n  86 |   await page.getByRole('button',{name:'Tạo kế hoạch nhập hàng'}).click()\n  87 |   for(const name of ['Hỏi AI','Kịch bản giả định','Tạo Draft PO']){\n> 88 |     await page.getByRole('button',{name,exact:true}).click()\n     |                                                      ^\n  89 |     await expect(page.getByRole('dialog')).toContainText('đang được xây dựng')\n  90 |     await page.getByRole('dialog').getByRole('button',{name:'Đóng',exact:true}).click()\n  91 |   }\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.mock.spec.ts:88:54"
+        ]
+      },
+      "baseline": {
+        "key": "operations.mock.spec.ts:80:parked features show construction notices and close accessibly:mock-desktop",
+        "title": "parked features show construction notices and close accessibly",
+        "project": "mock-desktop",
+        "file": "operations.mock.spec.ts",
+        "line": 80,
+        "status": "unexpected",
+        "errors": [
+          "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+          "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Hỏi AI', exact: true })\u001b[22m\n\n\n  86 |   await page.getByRole('button',{name:'Tạo kế hoạch nhập hàng'}).click()\n  87 |   for(const name of ['Hỏi AI','Kịch bản giả định','Tạo Draft PO']){\n> 88 |     await page.getByRole('button',{name,exact:true}).click()\n     |                                                      ^\n  89 |     await expect(page.getByRole('dialog')).toContainText('đang được xây dựng')\n  90 |     await page.getByRole('dialog').getByRole('button',{name:'Đóng',exact:true}).click()\n  91 |   }\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.mock.spec.ts:88:54"
+        ]
+      },
+      "currentFailureLocation": "Test timeout of 60000ms exceeded.",
+      "baselineFailureLocation": "Test timeout of 60000ms exceeded.",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "design-states.api.spec.ts:99:PDF captures chosen alternative and download failure retries artifact only:controlled-api",
+        "title": "PDF captures chosen alternative and download failure retries artifact only",
+        "project": "controlled-api",
+        "file": "design-states.api.spec.ts",
+        "line": 99,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  112 |   await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog')\n  113 |   await d.getByLabel('Phương án sẽ xuất').selectOption(option);expect(writes).toBe(0)\n> 114 |   await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n      |                                                                                                                         ^\n  115 |   await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('button',{name:'Thử lại tải'})).toBeVisible()\n  116 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử lại tải'}).click();await download\n  117 |   await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(writes).toBe(1);expect(downloads).toBe(2)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts:114:121"
+        ]
+      },
+      "baseline": {
+        "key": "design-states.api.spec.ts:99:PDF captures chosen alternative and download failure retries artifact only:controlled-api",
+        "title": "PDF captures chosen alternative and download failure retries artifact only",
+        "project": "controlled-api",
+        "file": "design-states.api.spec.ts",
+        "line": 99,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  112 |   await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog')\n  113 |   await d.getByLabel('Phương án sẽ xuất').selectOption(option);expect(writes).toBe(0)\n> 114 |   await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n      |                                                                                                                         ^\n  115 |   await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('button',{name:'Thử lại tải'})).toBeVisible()\n  116 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử lại tải'}).click();await download\n  117 |   await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(writes).toBe(1);expect(downloads).toBe(2)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts:114:121"
+        ]
+      },
+      "currentFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })",
+      "baselineFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "import-experience.api.spec.ts:138:012 API Preview stale cannot enter Review and offers correct recovery:controlled-api",
+        "title": "012 API Preview stale cannot enter Review and offers correct recovery",
+        "project": "controlled-api",
+        "file": "import-experience.api.spec.ts",
+        "line": 138,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận' })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" getByRole('button', { name: 'Tiếp tục xác nhận' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận' })\u001b[22m\n\n\n  152 |     await expect(page.getByText('Preview không còn mới nhất', { exact: true })).toBeVisible()\n  153 |     await page.getByRole('button', { name: 'Tạo lại Preview', exact: true }).click()\n> 154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n      |                                                                           ^\n  155 |   } else {\n  156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:154:75"
+        ]
+      },
+      "baseline": {
+        "key": "import-experience.api.spec.ts:138:012 API Preview stale cannot enter Review and offers correct recovery:controlled-api",
+        "title": "012 API Preview stale cannot enter Review and offers correct recovery",
+        "project": "controlled-api",
+        "file": "import-experience.api.spec.ts",
+        "line": 138,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận' })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" getByRole('button', { name: 'Tiếp tục xác nhận' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận' })\u001b[22m\n\n\n  152 |     await expect(page.getByText('Preview không còn mới nhất', { exact: true })).toBeVisible()\n  153 |     await page.getByRole('button', { name: 'Tạo lại Preview', exact: true }).click()\n> 154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n      |                                                                           ^\n  155 |   } else {\n  156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:154:75"
+        ]
+      },
+      "currentFailureLocation": "Locator: getByRole('button', { name: 'Tiếp tục xác nhận' })",
+      "baselineFailureLocation": "Locator: getByRole('button', { name: 'Tiếp tục xác nhận' })",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "import-experience.api.spec.ts:138:012 API Preview blocked cannot enter Review and offers correct recovery:controlled-api",
+        "title": "012 API Preview blocked cannot enter Review and offers correct recovery",
+        "project": "controlled-api",
+        "file": "import-experience.api.spec.ts",
+        "line": 138,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Preview bị chặn toàn lô', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Preview bị chặn toàn lô', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Preview bị chặn toàn lô', { exact: true })\u001b[22m\n\n\n  154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n  155 |   } else {\n> 156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n      |                                                                              ^\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()\n  158 |     await expect(page.getByRole('heading', { name: 'Kiểm tra cách hiểu', exact: true })).toBeVisible()\n  159 |     await expect(page.getByRole('list', { name: 'Tiến trình nhập dữ liệu 6 bước' }).locator('[aria-current=step]')).toContainText('Kiểm tra')\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:156:78"
+        ]
+      },
+      "baseline": {
+        "key": "import-experience.api.spec.ts:138:012 API Preview blocked cannot enter Review and offers correct recovery:controlled-api",
+        "title": "012 API Preview blocked cannot enter Review and offers correct recovery",
+        "project": "controlled-api",
+        "file": "import-experience.api.spec.ts",
+        "line": 138,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Preview bị chặn toàn lô', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Preview bị chặn toàn lô', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Preview bị chặn toàn lô', { exact: true })\u001b[22m\n\n\n  154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n  155 |   } else {\n> 156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n      |                                                                              ^\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()\n  158 |     await expect(page.getByRole('heading', { name: 'Kiểm tra cách hiểu', exact: true })).toBeVisible()\n  159 |     await expect(page.getByRole('list', { name: 'Tiến trình nhập dữ liệu 6 bước' }).locator('[aria-current=step]')).toContainText('Kiểm tra')\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:156:78"
+        ]
+      },
+      "currentFailureLocation": "Locator: getByText('Preview bị chặn toàn lô', { exact: true })",
+      "baselineFailureLocation": "Locator: getByText('Preview bị chặn toàn lô', { exact: true })",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "import-experience.api.spec.ts:164:frozen v1 Sales and Supplier decisions gate Review and require separate persisted Review before Commit:controlled-api",
+        "title": "frozen v1 Sales and Supplier decisions gate Review and require separate persisted Review before Commit",
+        "project": "controlled-api",
+        "file": "import-experience.api.spec.ts",
+        "line": 164,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n\n\n  169 |   await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click()\n  170 |   const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true})\n> 171 |   await expect(next).toBeDisabled()\n      |                      ^\n  172 |   const domain=page.locator('.input-domain-review')\n  173 |   await domain.locator('.input-domain-grid article').first().getByRole('button').click()\n  174 |   let drawer=page.getByRole('dialog',{name:'Hai contribution riêng',exact:true})\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:171:22"
+        ]
+      },
+      "baseline": {
+        "key": "import-experience.api.spec.ts:164:frozen v1 Sales and Supplier decisions gate Review and require separate persisted Review before Commit:controlled-api",
+        "title": "frozen v1 Sales and Supplier decisions gate Review and require separate persisted Review before Commit",
+        "project": "controlled-api",
+        "file": "import-experience.api.spec.ts",
+        "line": 164,
+        "status": "unexpected",
+        "errors": [
+          "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n\n\n  169 |   await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click()\n  170 |   const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true})\n> 171 |   await expect(next).toBeDisabled()\n      |                      ^\n  172 |   const domain=page.locator('.input-domain-review')\n  173 |   await domain.locator('.input-domain-grid article').first().getByRole('button').click()\n  174 |   let drawer=page.getByRole('dialog',{name:'Hai contribution riêng',exact:true})\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:171:22"
+        ]
+      },
+      "currentFailureLocation": "Locator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })",
+      "baselineFailureLocation": "Locator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "import-experience.api.spec.ts:309:020 multiple history corrections gate every Review entry; closing evidence leaves pending and commit loss freezes confirmed rows:controlled-api",
+        "title": "020 multiple history corrections gate every Review entry; closing evidence leaves pending and commit loss freezes confirmed rows",
+        "project": "controlled-api",
+        "file": "import-experience.api.spec.ts",
+        "line": 309,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n\n\n  311 |  work.source.readPreview=async(...args)=>{const value=await original(...args);return {...value,preview:{...value.preview,rows:value.preview.rows.map(row=>({...row,proposed_action:'CORRECT_HISTORY_RECORD',confirmation_required:true,expected_version:'history/1'}))}}}\n  312 |  const writes=await api(page,work,(_path,method,body)=>method==='POST'&&body?.phase==='commit'?'ABORT':undefined)\n> 313 |  await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click();const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true});await expect(next).toBeDisabled()\n      |                                                                                                                                                                                                  ^\n  314 |  await page.getByRole('button',{name:'Chi tiết bản sửa',exact:true}).first().click();let d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByRole('button',{name:'Đóng',exact:true}).click();await expect(next).toBeDisabled();expect(writes.filter(w=>w.body.phase==='commit')).toHaveLength(0)\n  315 |  const buttons=page.getByRole('button',{name:'Chi tiết bản sửa',exact:true});expect(await buttons.count()).toBe(2)\n  316 |  for(let i=0;i<2;i++){await buttons.nth(i).click();d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByLabel('Lý do correction').fill(`Evidence for history ${i+1}`);await d.getByRole('checkbox').check();await d.getByRole('button',{name:'Xác nhận cho lần nhập này',exact:true}).click();if(i===0)await expect(next).toBeDisabled()}\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:313:194"
+        ]
+      },
+      "baseline": {
+        "key": "import-experience.api.spec.ts:309:020 multiple history corrections gate every Review entry; closing evidence leaves pending and commit loss freezes confirmed rows:controlled-api",
+        "title": "020 multiple history corrections gate every Review entry; closing evidence leaves pending and commit loss freezes confirmed rows",
+        "project": "controlled-api",
+        "file": "import-experience.api.spec.ts",
+        "line": 309,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n\n\n  311 |  work.source.readPreview=async(...args)=>{const value=await original(...args);return {...value,preview:{...value.preview,rows:value.preview.rows.map(row=>({...row,proposed_action:'CORRECT_HISTORY_RECORD',confirmation_required:true,expected_version:'history/1'}))}}}\n  312 |  const writes=await api(page,work,(_path,method,body)=>method==='POST'&&body?.phase==='commit'?'ABORT':undefined)\n> 313 |  await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click();const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true});await expect(next).toBeDisabled()\n      |                                                                                                                                                                                                  ^\n  314 |  await page.getByRole('button',{name:'Chi tiết bản sửa',exact:true}).first().click();let d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByRole('button',{name:'Đóng',exact:true}).click();await expect(next).toBeDisabled();expect(writes.filter(w=>w.body.phase==='commit')).toHaveLength(0)\n  315 |  const buttons=page.getByRole('button',{name:'Chi tiết bản sửa',exact:true});expect(await buttons.count()).toBe(2)\n  316 |  for(let i=0;i<2;i++){await buttons.nth(i).click();d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByLabel('Lý do correction').fill(`Evidence for history ${i+1}`);await d.getByRole('checkbox').check();await d.getByRole('button',{name:'Xác nhận cho lần nhập này',exact:true}).click();if(i===0)await expect(next).toBeDisabled()}\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:313:194"
+        ]
+      },
+      "currentFailureLocation": "Locator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })",
+      "baselineFailureLocation": "Locator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "operations.api.spec.ts:28:retained run → PDF job → authenticated binary download; no procurement/stock mutation:controlled-api",
+        "title": "retained run → PDF job → authenticated binary download; no procurement/stock mutation",
+        "project": "controlled-api",
+        "file": "operations.api.spec.ts",
+        "line": 28,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng')\u001b[22m\n\n\n  36 |     if(path.endsWith('/exports/'+exp))return bytes\n  37 |   })\n> 38 |   await page.goto('/forecast/planning?plan_id='+run.run_id);await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog');await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng')).toBeVisible();const downloading=page.waitForEvent('download');await d.getByRole('button',{name:'Tải PDF',exact:true}).click();const download=await downloading;expect(download.suggestedFilename()).toContain(exp);expect(writes).toEqual([`/api/v1/procurement-plans/${run.run_id}/exports`])\n     |                                                                                                                                                                                                                                                                           ^\n  39 | })\n  40 | test('confirmed saved write with failed N2 retries only readback, never creates another resource',async({page})=>{\n  41 |   const savedId='00000000-0000-4000-8000-000000000041';let writes=0,reads=0\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts:38:267"
+        ]
+      },
+      "baseline": {
+        "key": "operations.api.spec.ts:28:retained run → PDF job → authenticated binary download; no procurement/stock mutation:controlled-api",
+        "title": "retained run → PDF job → authenticated binary download; no procurement/stock mutation",
+        "project": "controlled-api",
+        "file": "operations.api.spec.ts",
+        "line": 28,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng')\u001b[22m\n\n\n  36 |     if(path.endsWith('/exports/'+exp))return bytes\n  37 |   })\n> 38 |   await page.goto('/forecast/planning?plan_id='+run.run_id);await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog');await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng')).toBeVisible();const downloading=page.waitForEvent('download');await d.getByRole('button',{name:'Tải PDF',exact:true}).click();const download=await downloading;expect(download.suggestedFilename()).toContain(exp);expect(writes).toEqual([`/api/v1/procurement-plans/${run.run_id}/exports`])\n     |                                                                                                                                                                                                                                                                           ^\n  39 | })\n  40 | test('confirmed saved write with failed N2 retries only readback, never creates another resource',async({page})=>{\n  41 |   const savedId='00000000-0000-4000-8000-000000000041';let writes=0,reads=0\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts:38:267"
+        ]
+      },
+      "currentFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng')",
+      "baselineFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng')",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "pass020.api.spec.ts:8:decline lost-pending: separate confirmation and N18-first recovery:controlled-api",
+        "title": "decline lost-pending: separate confirmation and N18-first recovery",
+        "project": "controlled-api",
+        "file": "pass020.api.spec.ts",
+        "line": 8,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[31m+   \"GET\",\u001b[39m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m  ]\u001b[22m\n\n  15 |  await d.getByLabel('Lý do từ chối lời mời').fill('Cannot join');await d.getByRole('button',{name:'Xác nhận từ chối'}).click()\n  16 |  if(mode==='failure'){await expect(d.getByRole('alert')).toContainText('INVALID_DECLINE_REASON');expect(posts).toBe(1);return}\n> 17 |  if(mode.startsWith('lost')){await expect(d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời',exact:true})).toBeDisabled();expect(posts).toBe(1);await expect(d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'})).toHaveCount(0);await d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'}).click();if(mode==='lost-pending'){await d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'}).click();const writes=events.filter(e=>e.method==='POST');expect(writes[1]).toEqual(writes[0]);expect(events.map(e=>e.method)).toEqual(['GET','POST','GET','POST'])}else expect(posts).toBe(1)}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  18 |  await expect(page.getByRole('heading',{name:'Lời mời đã được từ chối'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời'})).toHaveCount(0)\n  19 | })\n  20 | const request=(actions=['approve','reject'])=>({request_id:id,store_id:s,requester_membership_id:member,requester_user_id:job,requested_permissions:['supplier.read','inventory.read'],grants_at_submission:[],current_grants:[],approved_permissions:[],actually_added_permissions:[],permission_catalog_version:'permissions-v3',grants_version_at_submission:'member/1',current_grants_version:'member/1',version:'request/1',state:'pending',reason:'Need access',created_at:at,updated_at:at,decision:null,allowed_actions:actions})\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts:17:621"
+        ]
+      },
+      "baseline": {
+        "key": "pass020.api.spec.ts:8:decline lost-pending: separate confirmation and N18-first recovery:controlled-api",
+        "title": "decline lost-pending: separate confirmation and N18-first recovery",
+        "project": "controlled-api",
+        "file": "pass020.api.spec.ts",
+        "line": 8,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[31m+   \"GET\",\u001b[39m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m  ]\u001b[22m\n\n  15 |  await d.getByLabel('Lý do từ chối lời mời').fill('Cannot join');await d.getByRole('button',{name:'Xác nhận từ chối'}).click()\n  16 |  if(mode==='failure'){await expect(d.getByRole('alert')).toContainText('INVALID_DECLINE_REASON');expect(posts).toBe(1);return}\n> 17 |  if(mode.startsWith('lost')){await expect(d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời',exact:true})).toBeDisabled();expect(posts).toBe(1);await expect(d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'})).toHaveCount(0);await d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'}).click();if(mode==='lost-pending'){await d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'}).click();const writes=events.filter(e=>e.method==='POST');expect(writes[1]).toEqual(writes[0]);expect(events.map(e=>e.method)).toEqual(['GET','POST','GET','POST'])}else expect(posts).toBe(1)}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  18 |  await expect(page.getByRole('heading',{name:'Lời mời đã được từ chối'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời'})).toHaveCount(0)\n  19 | })\n  20 | const request=(actions=['approve','reject'])=>({request_id:id,store_id:s,requester_membership_id:member,requester_user_id:job,requested_permissions:['supplier.read','inventory.read'],grants_at_submission:[],current_grants:[],approved_permissions:[],actually_added_permissions:[],permission_catalog_version:'permissions-v3',grants_version_at_submission:'member/1',current_grants_version:'member/1',version:'request/1',state:'pending',reason:'Need access',created_at:at,updated_at:at,decision:null,allowed_actions:actions})\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts:17:621"
+        ]
+      },
+      "currentFailureLocation": "Error: expect(received).toEqual(expected) // deep equality",
+      "baselineFailureLocation": "Error: expect(received).toEqual(expected) // deep equality",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "sprint011.api.spec.ts:11:011 reference candidate without winner exports with warning; lost ACK preserves intent:controlled-api",
+        "title": "011 reference candidate without winner exports with warning; lost ACK preserves intent",
+        "project": "controlled-api",
+        "file": "sprint011.api.spec.ts",
+        "line": 11,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  24 |  await expect(d.getByText('CUSTOMER_REQUIREMENTS_NOT_MET',{exact:true})).toBeVisible()\n  25 |  await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await d.getByRole('button',{name:'Thử lại cùng yêu cầu'}).click()\n> 26 |  await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible();await expect(d.getByText('Phương án tham khảo — không được khuyến nghị',{exact:true})).toBeVisible()\n     |                                                         ^\n  27 |  expect(posts).toHaveLength(2);expect(posts[0]).toEqual(posts[1]);expect(posts[0].body.option_id).toBe(option);expect(run.result!.winner_option_id).toBeNull()\n  28 |  await d.screenshot({path:'test-results/011-reference-export.png',animations:'disabled'})\n  29 | })\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:26:57"
+        ]
+      },
+      "baseline": {
+        "key": "sprint011.api.spec.ts:11:011 reference candidate without winner exports with warning; lost ACK preserves intent:controlled-api",
+        "title": "011 reference candidate without winner exports with warning; lost ACK preserves intent",
+        "project": "controlled-api",
+        "file": "sprint011.api.spec.ts",
+        "line": 11,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  24 |  await expect(d.getByText('CUSTOMER_REQUIREMENTS_NOT_MET',{exact:true})).toBeVisible()\n  25 |  await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await d.getByRole('button',{name:'Thử lại cùng yêu cầu'}).click()\n> 26 |  await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible();await expect(d.getByText('Phương án tham khảo — không được khuyến nghị',{exact:true})).toBeVisible()\n     |                                                         ^\n  27 |  expect(posts).toHaveLength(2);expect(posts[0]).toEqual(posts[1]);expect(posts[0].body.option_id).toBe(option);expect(run.result!.winner_option_id).toBeNull()\n  28 |  await d.screenshot({path:'test-results/011-reference-export.png',animations:'disabled'})\n  29 | })\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:26:57"
+        ]
+      },
+      "currentFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })",
+      "baselineFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "sprint011.api.spec.ts:38:011 artifact unavailable 503 uses explicit retry recovery:controlled-api",
+        "title": "011 artifact unavailable 503 uses explicit retry recovery",
+        "project": "controlled-api",
+        "file": "sprint011.api.spec.ts",
+        "line": 38,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156"
+        ]
+      },
+      "baseline": {
+        "key": "sprint011.api.spec.ts:38:011 artifact unavailable 503 uses explicit retry recovery:controlled-api",
+        "title": "011 artifact unavailable 503 uses explicit retry recovery",
+        "project": "controlled-api",
+        "file": "sprint011.api.spec.ts",
+        "line": 38,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156"
+        ]
+      },
+      "currentFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })",
+      "baselineFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "sprint011.api.spec.ts:38:011 artifact unavailable 503 uses explicit new recovery:controlled-api",
+        "title": "011 artifact unavailable 503 uses explicit new recovery",
+        "project": "controlled-api",
+        "file": "sprint011.api.spec.ts",
+        "line": 38,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156"
+        ]
+      },
+      "baseline": {
+        "key": "sprint011.api.spec.ts:38:011 artifact unavailable 503 uses explicit new recovery:controlled-api",
+        "title": "011 artifact unavailable 503 uses explicit new recovery",
+        "project": "controlled-api",
+        "file": "sprint011.api.spec.ts",
+        "line": 38,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156"
+        ]
+      },
+      "currentFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })",
+      "baselineFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+      "current": {
+        "key": "sprint011.api.spec.ts:56:011 revoked download permission prevents retry and new export actions:controlled-api",
+        "title": "011 revoked download permission prevents retry and new export actions",
+        "project": "controlled-api",
+        "file": "sprint011.api.spec.ts",
+        "line": 56,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  62 |   if(path.endsWith('/exports/'+exp))return errorResponse(403,'PERMISSION_DENIED')\n  63 |  })\n> 64 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  65 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Không còn quyền tải PDF'})).toBeVisible()\n  66 |  await expect(d.getByRole('button',{name:/Tải PDF|Thử lại tải|Tạo export mới|Thử tải lại artifact/})).toHaveCount(0);expect(writes).toBe(1)\n  67 | })\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:64:156"
+        ]
+      },
+      "baseline": {
+        "key": "sprint011.api.spec.ts:56:011 revoked download permission prevents retry and new export actions:controlled-api",
+        "title": "011 revoked download permission prevents retry and new export actions",
+        "project": "controlled-api",
+        "file": "sprint011.api.spec.ts",
+        "line": 56,
+        "status": "unexpected",
+        "errors": [
+          "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  62 |   if(path.endsWith('/exports/'+exp))return errorResponse(403,'PERMISSION_DENIED')\n  63 |  })\n> 64 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  65 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Không còn quyền tải PDF'})).toBeVisible()\n  66 |  await expect(d.getByRole('button',{name:/Tải PDF|Thử lại tải|Tạo export mới|Thử tải lại artifact/})).toHaveCount(0);expect(writes).toBe(1)\n  67 | })\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:64:156"
+        ]
+      },
+      "currentFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })",
+      "baselineFailureLocation": "Locator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })",
+      "comparison": "BASELINE_FAILURE_REPRODUCED"
+    }
+  ]
+}

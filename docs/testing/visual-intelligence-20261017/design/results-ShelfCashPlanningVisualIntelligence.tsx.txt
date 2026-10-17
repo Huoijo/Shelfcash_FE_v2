@@ -1,0 +1,89 @@
+import './ShelfCashPlanningVisualIntelligence.css';
+const money = (value: number) => `${value.toLocaleString('vi-VN')} ₫`;
+export function BudgetUsageRail({
+  share,
+  cost
+}: {
+  share: number | null;
+  cost: number | null;
+}) {
+  if (share === null || cost === null || !Number.isFinite(share) || !Number.isFinite(cost)) {
+    return <div className="sc-pvi-result-unavailable"><strong>Không khả dụng</strong><span>Không có đủ retained denominator để biểu diễn tỷ lệ ngân sách.</span></div>;
+  }
+  const fill = Math.max(0, Math.min(100, share));
+  const aria = `Chi phí đề xuất retained ${money(cost)} tương đương ${share.toLocaleString('vi-VN')} phần trăm ngân sách của Planning Run.`;
+  return <div className="sc-pvi-budget-share" aria-label={aria}>
+    <div className="sc-pvi-result-rail" role="img" aria-label={aria}><i style={{
+        width: `${fill}%`
+      }} /></div>
+    <div className="sc-pvi-result-rail-copy"><strong>{share.toLocaleString('vi-VN')}% ngân sách run</strong><span>Retained proposed cost · không phải tiền đã chi</span></div>
+  </div>;
+}
+export function CoverageLeadRelation({
+  coverageDays,
+  leadDays,
+  horizonDays
+}: {
+  coverageDays: number | null;
+  leadDays: number | null;
+  horizonDays: number | null;
+}) {
+  const values = [coverageDays !== null ? `Tồn kho đủ ${coverageDays.toLocaleString('vi-VN')} ngày` : null, leadDays !== null ? `Lead time ${leadDays.toLocaleString('vi-VN')} ngày` : null, horizonDays !== null ? `Kỳ kế hoạch ${horizonDays.toLocaleString('vi-VN')} ngày` : null].filter(Boolean) as string[];
+  const complete = coverageDays !== null && leadDays !== null && horizonDays !== null && horizonDays > 0;
+  if (!complete) return <section className="sc-pvi-coverage is-partial" aria-label={`Quan hệ coverage và lead time: ${values.join(', ') || 'không có dữ liệu'}`}>
+    <header><span>Coverage × lead time</span><strong>Quan hệ chưa đầy đủ</strong></header>
+    <div className="sc-pvi-coverage-facts">{values.map(value => <span key={value}>{value}</span>)}{coverageDays === null && <span>Coverage · Không khả dụng</span>}{leadDays === null && <span>Lead time · Không khả dụng</span>}</div>
+    <p>Không tạo rail khi thiếu một trong các retained facts cần thiết.</p>
+  </section>;
+  const coveragePosition = Math.max(0, Math.min(100, coverageDays / horizonDays * 100));
+  const leadPosition = Math.max(0, Math.min(100, leadDays / horizonDays * 100));
+  const attention = coverageDays < leadDays;
+  const aria = `Trong kỳ kế hoạch ${horizonDays} ngày, tồn kho retained đủ ${coverageDays} ngày và lead time retained là ${leadDays} ngày.`;
+  return <section className={`sc-pvi-coverage${attention ? ' is-attention' : ''}`} aria-label={aria}>
+    <header><span>Coverage × lead time</span><strong>{attention ? 'Coverage ngắn hơn lead time' : 'So sánh retained timing'}</strong></header>
+    <div className="sc-pvi-coverage-rail" role="img" aria-label={aria}>
+      <i className="coverage" style={{
+        width: `${coveragePosition}%`
+      }} />
+      <b className="lead" style={{
+        left: `${leadPosition}%`
+      }} aria-hidden="true" />
+    </div>
+    <div className="sc-pvi-coverage-scale"><span>0 ngày</span><strong>{coverageDays.toLocaleString('vi-VN')} ngày coverage</strong><strong>{leadDays.toLocaleString('vi-VN')} ngày lead</strong><span>{horizonDays} ngày</span></div>
+    <p>Lead time là retained timing fact, không phải ngưỡng rủi ro. Rail không suy ra probability hay reorder point.</p>
+  </section>;
+}
+export function TrajectoryContractState() {
+  return <section className="sc-pvi-trajectory-contract" aria-label="Projected inventory versus demand chưa có dữ liệu time series">
+    <header><div><span>Projected inventory vs demand</span><strong>DATA CONTRACT REQUIRED</strong></div><span className="sc-pvi-contract-mark">—</span></header>
+    <p>Aggregate demand, coverage và lead time không đủ để dựng daily trajectory một cách trung thực.</p>
+    <dl>
+      <div><dt>Projected inventory series</dt><dd>Required</dd></div>
+      <div><dt>Projected demand series</dt><dd>Required</dd></div>
+      <div><dt>Inbound event series</dt><dd>Required nếu hiển thị hàng về</dd></div>
+    </dl>
+    <small>Không nội suy từ ảnh raster cũ, không tổng hợp daily points từ aggregate demand, và không nối qua missing future points.</small>
+  </section>;
+}
+export function StrategyCostDelta({
+  currentLabel,
+  currentCost,
+  compareLabel,
+  compareCost,
+  hidden = false
+}: {
+  currentLabel: string;
+  currentCost: number | null;
+  compareLabel: string;
+  compareCost: number | null;
+  hidden?: boolean;
+}) {
+  if (hidden) return <div className="sc-pvi-strategy-delta is-unavailable"><span>Delta chi phí</span><strong>Không khả dụng theo quyền hiện tại</strong></div>;
+  if (currentCost === null || compareCost === null) return <div className="sc-pvi-strategy-delta is-unavailable"><span>Delta chi phí</span><strong>Không khả dụng · thiếu retained cost để so sánh</strong></div>;
+  const delta = currentCost - compareCost;
+  const sign = delta > 0 ? '+' : delta < 0 ? '−' : '';
+  const amount = Math.abs(delta);
+  return <div className="sc-pvi-strategy-delta" aria-label={`${currentLabel} chênh ${delta >= 0 ? 'cao hơn hoặc bằng' : 'thấp hơn'} ${money(amount)} so với ${compareLabel}`}>
+    <span>Delta chi phí retained</span><strong>{sign}{money(amount)} <small>vs {compareLabel}</small></strong>
+  </div>;
+}

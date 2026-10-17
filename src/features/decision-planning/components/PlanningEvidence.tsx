@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import type { PlanningIngredient, PlanningNotification, PlanningOption, PlanningReasons, PlanningRun } from '../planning.types'
 import { formatPlanningDate, formatPlanningDecimal, formatPlanningMoney, formatPlanningQuantity, planningStrategyLabels } from '../planning.format'
+import { PlanningIngredientVisual } from './PlanningVisualIntelligence'
 
 export function PlanningNotifications({ title, items, action }: { title: string; items: PlanningNotification[]; action?: ReactNode }) {
   if (items.length === 0) return null
@@ -63,10 +64,11 @@ export function PlanningOptionFacts({ option, run }: { option: PlanningOption; r
   </div>
 }
 
-export function PlanningIngredientPanel({ ingredient, currency }: { ingredient: PlanningIngredient; currency: string }) {
+export function PlanningIngredientPanel({ ingredient, currency, start }: { ingredient: PlanningIngredient; currency: string; start?:string }) {
   return <article className="sc-proc-ingredient-detail">
     <header className="sc-proc-ingredient-detail-header"><div><h2>{ingredient.name_availability === 'captured' && ingredient.display_name !== null ? ingredient.display_name : ingredient.ingredient_id}</h2><p className="sc-planning-note">{ingredient.ingredient_id} · {ingredient.unit}</p></div></header>
     <div className="sc-proc-ingredient-detail-scroll">
+      <PlanningIngredientVisual ingredient={ingredient} start={start??ingredient.daily_balances?.[0]?.day??''}/>
       <dl className="sc-proc-ingredient-metadata"><div><dt>Tên nguyên liệu</dt><dd>{ingredient.name_availability === 'captured' ? 'Đã chụp cùng lần chạy' : 'Không được chụp; dùng UUID'}</dd></div>
         <div><dt>Phạm vi tồn chụp</dt><dd>{ingredient.captured_stock.scope_declaration}</dd></div><div><dt>Bằng chứng</dt><dd>{ingredient.evidence_availability}</dd></div><div><dt>Phương án đang xem</dt><dd>{ingredient.selected_option_id ?? 'Chưa chọn'}</dd></div></dl>
       <section className="sc-proc-chart-panel"><h3>Nhu cầu và tồn từng ngày</h3><p className="sc-planning-note">LOW / BASE / HIGH là các đường tính của máy chủ, không phải P25 / P50 / P75. Giá trị từng ngày không phải tổng của cả kỳ.</p>

@@ -1,0 +1,23 @@
+
+> shelfcash-fe-v2@0.0.0 build
+> tsc -b && vite build
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 723 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                            0.78 kB │ gzip:   0.41 kB
+dist/assets/StorePage-BkUiJbkY.css        13.50 kB │ gzip:   2.91 kB
+dist/assets/PlanningPage-AyvSF4zv.css     46.61 kB │ gzip:   8.12 kB
+dist/assets/index-CfaGw7Zp.css           156.26 kB │ gzip:  25.39 kB
+dist/assets/StorePage-B5PHpS6p.js         75.24 kB │ gzip:  19.26 kB
+dist/assets/PlanningPage-C72pWmm9.js     134.81 kB │ gzip:  35.65 kB
+dist/assets/index-Dm6f97OD.js          1,483.82 kB │ gzip: 356.00 kB
+
+✓ built in 2.32s
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

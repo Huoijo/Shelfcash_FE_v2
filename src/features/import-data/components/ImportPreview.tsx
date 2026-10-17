@@ -10,6 +10,7 @@ import {ImportDomainReview} from './ImportDomainReview'
 import {importDomainBlockers} from '../importDomainReview'
 import { commitReasonRequired } from '../importCommitReason'
 import { Evidence } from './ImportMapping'
+import { ImportWriteComposition } from './ImportVisualIntelligence'
 
 export function ImportPreview({ mapping,stage = 'all', showStaleNotice=true, bundle, busy, locked, blockers, reason, acknowledged, reviewReason, reviewAcknowledged, reviewBlockers,
   resolutions, supplierChanges, historyCorrections = [], onHistoryCorrections, onReviewReason, onReviewAcknowledge, onConfirmReview, onResolutions, onSupplierChanges,
@@ -34,7 +35,9 @@ export function ImportPreview({ mapping,stage = 'all', showStaleNotice=true, bun
     </>}
     {stage !== 'preview' && <>
     <header className="input-section-title"><h2>Xác nhận nhập dữ liệu</h2><p>Đây là quyết định ghi dữ liệu business. Dữ liệu chỉ được ghi sau khi bạn xác nhận.</p></header>
-    <div className="sc-preview-review-summary">{summary.groups.map(g=><div key={g.canonical_domain+g.required_write_action}><span>{previewDomainLabels[g.canonical_domain]}</span><strong>{g.row_count}</strong><small>{g.planned_insert_count} thêm · {g.planned_update_count} cập nhật · {g.no_op_count} không đổi · {g.blocked_count} chặn</small></div>)}</div>
+    {/* MAGICPATH DENSITY NORMALIZATION: one action rail; domain totals add scope. */}
+    <ImportWriteComposition summary={summary}/>
+    <div className="sc-preview-review-summary">{summary.groups.map(g=><div key={g.canonical_domain+g.required_write_action}><span>{previewDomainLabels[g.canonical_domain]}</span><strong>{g.row_count} dòng</strong><details><summary>Hành động trong nhóm</summary><small>{g.planned_insert_count} thêm · {g.planned_update_count} cập nhật · {g.no_op_count} không đổi · {g.blocked_count} chặn</small></details></div>)}</div>
     {!!(summary.blockers.length || summary.warnings.length) && <section className="import-flow__card"><h3>Cần chú ý</h3><ImportGuardHelp codes={summary.blockers.map(n=>n.code)}/>{[...summary.blockers,...summary.warnings].map((n,i)=><p key={n.code+i}>{n.severity==='ERROR'?'Chặn':'Cảnh báo'}: {importMessage(n.code,n.message)}</p>)}</section>}
     {[...blockers,...reviewBlockers].some(value=>/quyền|Quyền/.test(value)) && <section className="input-status" role="alert"><strong>Không đủ quyền ghi dữ liệu</strong><p>Owner profile approval và Staff commit permission là hai quyết định khác nhau.</p></section>}
     <section className="import-flow__card" aria-labelledby="import-review-title">

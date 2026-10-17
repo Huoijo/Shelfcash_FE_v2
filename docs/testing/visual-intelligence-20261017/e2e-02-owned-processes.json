@@ -1,0 +1,50 @@
+﻿[
+    {
+        "ProcessId":  17076,
+        "ParentProcessId":  16788,
+        "CreationDate":  "\/Date(1792200870794)\/",
+        "CommandLine":  "\"C:\\Program Files\\nodejs\\node.exe\" node_modules/@playwright/test/cli.js test --config scripts/playwright-visual-intelligence.config.ts"
+    },
+    {
+        "ProcessId":  20864,
+        "ParentProcessId":  17076,
+        "CreationDate":  "\/Date(1792200872300)\/",
+        "CommandLine":  "C:\\WINDOWS\\system32\\cmd.exe /d /s /c \"node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4180 --strictPort\""
+    },
+    {
+        "ProcessId":  18212,
+        "ParentProcessId":  20864,
+        "CreationDate":  "\/Date(1792200872344)\/",
+        "CommandLine":  "node  node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4180 --strictPort"
+    },
+    {
+        "ProcessId":  5744,
+        "ParentProcessId":  17076,
+        "CreationDate":  "\/Date(1792200873257)\/",
+        "CommandLine":  "C:\\WINDOWS\\system32\\cmd.exe /d /s /c \"node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort\""
+    },
+    {
+        "ProcessId":  11312,
+        "ParentProcessId":  5744,
+        "CreationDate":  "\/Date(1792200873300)\/",
+        "CommandLine":  "node  node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort"
+    },
+    {
+        "ProcessId":  19852,
+        "ParentProcessId":  17076,
+        "CreationDate":  "\/Date(1792200874346)\/",
+        "CommandLine":  "C:\\WINDOWS\\system32\\cmd.exe /d /s /c \"node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4174 --strictPort\""
+    },
+    {
+        "ProcessId":  18976,
+        "ParentProcessId":  19852,
+        "CreationDate":  "\/Date(1792200874398)\/",
+        "CommandLine":  "node  node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4174 --strictPort"
+    },
+    {
+        "ProcessId":  15396,
+        "ParentProcessId":  17076,
+        "CreationDate":  "\/Date(1792200920181)\/",
+        "CommandLine":  "\"C:\\Program Files\\nodejs\\node.exe\" C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+    }
+]

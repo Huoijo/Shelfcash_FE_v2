@@ -1,0 +1,15 @@
+
+> shelfcash-fe-v2@0.0.0 check:capabilities-wire
+> node scripts/sync-capabilities-wire.mjs --check
+
+file:///C:/Users/Dell/Desktop/Shelfcash_FE_v2/scripts/sync-capabilities-wire.mjs:100
+if(process.argv.includes('--check')) { if(readFileSync(output,'utf8')!==result)throw Error('Capabilities wire drift; regenerate after reviewing pinned source') }
+                                                                                     ^
+
+Error: Capabilities wire drift; regenerate after reviewing pinned source
+    at file:///C:/Users/Dell/Desktop/Shelfcash_FE_v2/scripts/sync-capabilities-wire.mjs:100:86
+    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)
+    at async node:internal/modules/esm/loader:639:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.15.0

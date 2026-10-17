@@ -1,0 +1,970 @@
+[
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-resolve-card > header > span",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-resolve-card header p",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-card-result span",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-card-status > span",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "recovery / status"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".import-flow .input-card-status button",
+    "before": "10px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "recovery / status"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-summary-strip span",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-actionright > span",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "recovery / status"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".import-resolver .sc-flow-dialog-header small",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".import-resolver .sc-flow-dialog-header p",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-resolver-meta span",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".import-resolver .sc-flow-dialog-footer > small",
+    "before": "9px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-resolver-section header > span,.input-resolver-muted",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-resolver-row strong",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-resolver-row > span",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-samples > span",
+    "before": "9px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "evidence"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".import-resolver label",
+    "before": "10px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".import-resolver input,.import-resolver select,.import-resolver textarea",
+    "before": "11px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-resolver-help",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-entity-results strong",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-entity-results small",
+    "before": "8px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".import-resolver .input-status",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "recovery / status"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-summary-strip span",
+    "before": "8px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".import-resolver .input-resolver-scope select",
+    "before": "10px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-resolver-scope-summary span",
+    "before": "8px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-resolver-scope-summary strong",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".import-resolver .input-resolver-scope-tools button",
+    "before": "9px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-resolver-itemnav strong",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "resolver"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-profile-version",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "profile / before-after"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-profile-change-summary>header,.input-profile-rule-group article>header,.input-domain-review>header",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "profile / before-after"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-profile-change-summary article span",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "profile / before-after"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-profile-toggle button",
+    "before": "10px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "profile / before-after"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-profile-rule-group small,.input-domain-review small",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "profile / before-after"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-profile-rule-group h3,.input-domain-review h3",
+    "before": "13px",
+    "role": "card",
+    "after": [
+      14,
+      22
+    ],
+    "family": "profile / before-after"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-profile-rule-group article>header>button",
+    "before": "10px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "profile / before-after"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-profile-rule-group .import-flow__spec",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "profile / before-after"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-domain-grid p,.input-domain-review>p",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "domain review"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-domain-grid button",
+    "before": "10px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "domain review"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-context-evidence",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "evidence"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-context-evidence h3,.input-context-evidence h4",
+    "before": "11px",
+    "role": "card",
+    "after": [
+      14,
+      22
+    ],
+    "family": "evidence"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-context-evidence p",
+    "before": "9px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "evidence"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-admission-files article",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-admission-files small",
+    "before": "9px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-admission-files button",
+    "before": "10px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-upload-confirm p",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".import-flow__card>header>span",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-review-receipt",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-review-receipt small",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": "/* The full-page source editor uses the same compact fields as its resolver. */\r\n.input-source-context .import-flow__form",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "source context"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-source-context .import-flow__form label",
+    "before": "10px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "source context"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-source-context .import-flow__form p,.input-source-context .import-flow__form small",
+    "before": "9px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "source context"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-source-context .import-flow__form details",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "source context"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-profile-rule-group .import-flow__profile-comparison>section",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "profile / before-after"
+  },
+  {
+    "file": "src/features/import-data/components/ImportResolve.css",
+    "selector": ".input-profile-rule-group article>header>span",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "profile / before-after"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-steps li > span",
+    "before": "10px",
+    "role": "micro",
+    "after": [
+      10,
+      16
+    ],
+    "family": "stepper"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-steps small",
+    "before": "9px",
+    "role": "micro",
+    "after": [
+      10,
+      16
+    ],
+    "family": "stepper"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-source dt",
+    "before": "10px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "source context"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-section-title small",
+    "before": "10px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-actions > p, .input-actions > span",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-resolve-grid > section > span",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-resolve-grid p",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-readout span",
+    "before": "11px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-readout strong",
+    "before": "22px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-batch-only p",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-stat",
+    "before": "10px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-source dt",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "source context"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-source dd",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "source context"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-readout span",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-readout strong",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-progress-list small",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-status-card p",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "recovery / status"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".import-page .import-upload__filename",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".import-page .import-upload__file-size",
+    "before": "9px",
+    "role": "micro",
+    "after": [
+      10,
+      16
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".import-page .sc-preview-explorer table",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "tables / review / commit"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".import-page .sc-preview-explorer th,.import-page .sc-preview-explorer td",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "tables / review / commit"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".import-page .sc-preview-explorer td:last-child button",
+    "before": "10px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "tables / review / commit"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".import-page .sc-flow-tabs button",
+    "before": "11px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".import-page .sc-preview-review-summary span",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "tables / review / commit"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".import-page .sc-preview-review-summary small",
+    "before": "10px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "tables / review / commit"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".import-evidence .sc-flow-dialog-header small",
+    "before": "9px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "evidence"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".import-evidence .sc-flow-section h3",
+    "before": "11px",
+    "role": "card",
+    "after": [
+      14,
+      22
+    ],
+    "family": "evidence"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".import-evidence .sc-flow-dialog-body",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "evidence"
+  },
+  {
+    "file": "src/pages/imports/ImportPage.css",
+    "selector": ".input-processing-list",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportFlow.css",
+    "selector": ".import-flow__filters",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportFlow.css",
+    "selector": ".import-mapping-filter-tabs button",
+    "before": "11px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportFlow.css",
+    "selector": ".import-flow__issue .import-flow__badge",
+    "before": "10px",
+    "role": "label",
+    "after": [
+      11,
+      18
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportFlow.css",
+    "selector": ".import-flow__issue summary",
+    "before": "11px",
+    "role": "control",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportFlow.css",
+    "selector": ".import-result__impact small",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "other"
+  },
+  {
+    "file": "src/features/import-data/components/ImportPreviewExplorer.css",
+    "selector": ".sc-preview-explorer table td:last-child",
+    "before": "11px",
+    "role": "body",
+    "after": [
+      12,
+      20
+    ],
+    "family": "tables / review / commit"
+  }
+]

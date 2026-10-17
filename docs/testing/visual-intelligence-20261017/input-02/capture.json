@@ -1,0 +1,336 @@
+{
+  "kind": "CONTROLLED_HYDRATED_PRODUCTION_COMPONENTS",
+  "browser": "151.0.7922.34",
+  "errors": [],
+  "unexpected": [],
+  "cases": [
+    {
+      "scenario": "mapping-owner",
+      "width": 1440,
+      "file": "mapping-owner-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Phân bổ trạng thái ghép\nToàn lô · không phải độ tin cậy AI\nGhép tự động\n4\nĐã xác nhận\n2\nCần xác nhận\n2\nMơ hồ\n1\nChưa ghép\n1\n3A\nCấu trúc & semantics\n\nSource field → semantic field.\n\nMappings1Trạng tháiĐã xử lý\nSẵn sàngChỉnh mapping\n3B\nIdentity\n\nGiá trị nguồn → Store entity.\n\nBindings0Trạng tháiĐã xác định\nSẵn sàngXem bindings\n3C\nThông tin cần xác nhận\n\nGiá trị ShelfCash không tự suy đoán.\n\nDeclarations0Trạng tháiĐã xác nhận\nSẵn sàngXác nhận thông tin\n3D\nUnits\n\nĐơn vị và conversion của import.\n\nUnits0Trạng tháiHợp lệ\nĐã kiểm traKiểm tra đơn vị\nMappings1\nIdentity bindings0\nDeclarations0\nChưa xử lý0",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 1152
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "mapping-staff",
+      "width": 1440,
+      "file": "mapping-staff-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Phân bổ trạng thái ghép\nToàn lô · không phải độ tin cậy AI\nGhép tự động\n4\nĐã xác nhận\n2\nCần xác nhận\n2\nMơ hồ\n1\nChưa ghép\n1\n3A\nCấu trúc & semantics\n\nSource field → semantic field.\n\nMappings1Trạng tháiĐã xử lý\nSẵn sàngChỉnh mapping\n3B\nIdentity\n\nGiá trị nguồn → Store entity.\n\nBindings0Trạng tháiĐã xác định\nSẵn sàngXem bindings\n3C\nThông tin cần xác nhận\n\nGiá trị ShelfCash không tự suy đoán.\n\nDeclarations0Trạng tháiĐã xác nhận\nSẵn sàngXác nhận thông tin\n3D\nUnits\n\nĐơn vị và conversion của import.\n\nUnits0Trạng tháiHợp lệ\nĐã kiểm traKiểm tra đơn vị\nMappings1\nIdentity bindings0\nDeclarations0\nChưa xử lý0",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 1152
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "mapping-unknown",
+      "width": 1440,
+      "file": "mapping-unknown-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Phân bổ trạng thái ghép\nToàn lô · không phải độ tin cậy AI\nPhân bổ trạng thái ghép\nKhông khả dụng\nChưa có bộ đếm trạng thái đầy đủ cho toàn lô. Danh sách đang tải không đại diện toàn bộ dữ liệu.\n3A\nCấu trúc & semantics\n\nSource field → semantic field.\n\nMappings1Trạng tháiĐã xử lý\nSẵn sàngChỉnh mapping\n3B\nIdentity\n\nGiá trị nguồn → Store entity.\n\nBindings0Trạng tháiĐã xác định\nSẵn sàngXem bindings\n3C\nThông tin cần xác nhận\n\nGiá trị ShelfCash không tự suy đoán.\n\nDeclarations0Trạng tháiĐã xác nhận\nSẵn sàngXác nhận thông tin\n3D\nUnits\n\nĐơn vị và conversion của import.\n\nUnits0Trạng tháiHợp lệ\nĐã kiểm traKiểm tra đơn vị\nMappings1\nIdentity bindings0\nDeclarations0\nChưa xử lý0",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 1152
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 1122
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "readiness-default",
+      "width": 1440,
+      "file": "readiness-default-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Readiness\nKhả năng lập kế hoạch\nĐủ dữ liệu\nNgày bắt đầu kế hoạch\nDữ liệu sẵn sàng\nKhông phải tiến trình bước\n?\nDoanh số\nChưa xác định\n?\nTồn kho\nChưa xác định\n?\nCông thức\nChưa xác định\n?\nNhà cung cấp\nChưa xác định\n\nTheo hành động planning và ngày đã chọn. Chưa có đánh giá riêng từng nguồn không đồng nghĩa nguồn đã hoàn tất.\n\nKiểm tra Readiness\n\nĐủ dữ liệu cho hành động tiếp theo\n\nHoàn tất\nĐi tới Dự đoán",
+        "vi": [
+          {
+            "className": "sc-vi-card sc-vi-readiness",
+            "width": 1154
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "readiness-warning",
+      "width": 1440,
+      "file": "readiness-warning-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Readiness\nKhả năng lập kế hoạch\nĐủ dữ liệu\nNgày bắt đầu kế hoạch\nDữ liệu sẵn sàng\nKhông phải tiến trình bước\n?\nDoanh số\nChưa xác định\n!\nTồn kho\nCần chú ý\n?\nCông thức\nChưa xác định\n?\nNhà cung cấp\nChưa xác định\n\nTheo hành động planning và ngày đã chọn. Chưa có đánh giá riêng từng nguồn không đồng nghĩa nguồn đã hoàn tất.\n\nKiểm tra Readiness\n\nĐủ dữ liệu cho hành động tiếp theo\n\nCảnh báo: Có thông tin cần kiểm tra trước khi tiếp tục.Xem Kho\nHoàn tất\nĐi tới Dự đoán",
+        "vi": [
+          {
+            "className": "sc-vi-card sc-vi-readiness",
+            "width": 1154
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "readiness-permission",
+      "width": 1440,
+      "file": "readiness-permission-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Readiness\nKhả năng lập kế hoạch\nKhông có quyền\nDữ liệu sẵn sàng\nKhông phải tiến trình bước\n—\nDoanh số\nGiới hạn quyền\n—\nTồn kho\nGiới hạn quyền\n—\nCông thức\nGiới hạn quyền\n—\nNhà cung cấp\nGiới hạn quyền\n\nTheo hành động planning và ngày đã chọn. Chưa có đánh giá riêng từng nguồn không đồng nghĩa nguồn đã hoàn tất.\n\nBạn chưa có quyền xem đánh giá lập kế hoạch.\n\nKiểm tra Readiness\nHoàn tất",
+        "vi": [
+          {
+            "className": "sc-vi-card sc-vi-readiness",
+            "width": 1154
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "history-default",
+      "width": 1440,
+      "file": "history-default-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "‹\nTháng trước\nTHÁNG 10 2026\nTháng sau\n›\n7 lần nhậpTrong tháng · theo bộ lọc hiện tại\nTrạng thái trong tháng\nDATA CONTRACT REQUIRED\nChưa có tổng số thành công / cảnh báo / thất bại của cả tháng. Trạng thái từng lần nhập ở danh sách ngày đã chọn.\nT2\nT3\nT4\nT5\nT6\nT7\nCN\n1\n● 1\n2\n● 5\n3\n4\n5\n● 1\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n7 lần nhập trong tháng\nNgày tải lên · Asia/Ho_Chi_Minh",
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 1198
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "history-empty",
+      "width": 1440,
+      "file": "history-empty-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "‹\nTháng trước\nTHÁNG 10 2026\nTháng sau\n›\n0 lần nhậpTrong tháng · theo bộ lọc hiện tại\nTrạng thái trong tháng\nTrống\nKhông có lần nhập theo bộ lọc hiện tại.\nT2\nT3\nT4\nT5\nT6\nT7\nCN\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n0 lần nhập trong tháng\nNgày tải lên · Asia/Ho_Chi_Minh",
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 1198
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "history-unknown",
+      "width": 1440,
+      "file": "history-unknown-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "‹\nTháng trước\nTHÁNG 10 2026\nTháng sau\n›\nChưa rõ số lần nhậpTrong tháng · theo bộ lọc hiện tại\nTrạng thái trong tháng\nDATA CONTRACT REQUIRED\nChưa có tổng số thành công / cảnh báo / thất bại của cả tháng. Trạng thái từng lần nhập ở danh sách ngày đã chọn.\nT2\nT3\nT4\nT5\nT6\nT7\nCN\n1\nChưa biết\n2\n● 5\n3\n4\n5\n● 1\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\nChưa có tổng số lần nhập trong tháng\nNgày tải lên · Asia/Ho_Chi_Minh",
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 1198
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "history-loading",
+      "width": 1440,
+      "file": "history-loading-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "‹\nTháng trước\nTHÁNG 10 2026\nTháng sau\n›\nChưa rõ số lần nhậpTrong tháng · theo bộ lọc hiện tại\nTrạng thái trong tháng\nĐang tải…\nChưa có tổng số thành công / cảnh báo / thất bại của cả tháng. Trạng thái từng lần nhập ở danh sách ngày đã chọn.\nT2\nT3\nT4\nT5\nT6\nT7\nCN\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\nChưa có dữ liệu lịch",
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 1198
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "mapping-owner",
+      "width": 390,
+      "file": "mapping-owner-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Phân bổ trạng thái ghép\nToàn lô · không phải độ tin cậy AI\nGhép tự động\n4\nĐã xác nhận\n2\nCần xác nhận\n2\nMơ hồ\n1\nChưa ghép\n1\n3A\nCấu trúc & semantics\n\nSource field → semantic field.\n\nMappings1Trạng tháiĐã xử lý\nSẵn sàngChỉnh mapping\n3B\nIdentity\n\nGiá trị nguồn → Store entity.\n\nBindings0Trạng tháiĐã xác định\nSẵn sàngXem bindings\n3C\nThông tin cần xác nhận\n\nGiá trị ShelfCash không tự suy đoán.\n\nDeclarations0Trạng tháiĐã xác nhận\nSẵn sàngXác nhận thông tin\n3D\nUnits\n\nĐơn vị và conversion của import.\n\nUnits0Trạng tháiHợp lệ\nĐã kiểm traKiểm tra đơn vị\nMappings1\nIdentity bindings0\nDeclarations0\nChưa xử lý0",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 342
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "mapping-staff",
+      "width": 390,
+      "file": "mapping-staff-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Phân bổ trạng thái ghép\nToàn lô · không phải độ tin cậy AI\nGhép tự động\n4\nĐã xác nhận\n2\nCần xác nhận\n2\nMơ hồ\n1\nChưa ghép\n1\n3A\nCấu trúc & semantics\n\nSource field → semantic field.\n\nMappings1Trạng tháiĐã xử lý\nSẵn sàngChỉnh mapping\n3B\nIdentity\n\nGiá trị nguồn → Store entity.\n\nBindings0Trạng tháiĐã xác định\nSẵn sàngXem bindings\n3C\nThông tin cần xác nhận\n\nGiá trị ShelfCash không tự suy đoán.\n\nDeclarations0Trạng tháiĐã xác nhận\nSẵn sàngXác nhận thông tin\n3D\nUnits\n\nĐơn vị và conversion của import.\n\nUnits0Trạng tháiHợp lệ\nĐã kiểm traKiểm tra đơn vị\nMappings1\nIdentity bindings0\nDeclarations0\nChưa xử lý0",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 342
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "mapping-unknown",
+      "width": 390,
+      "file": "mapping-unknown-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Phân bổ trạng thái ghép\nToàn lô · không phải độ tin cậy AI\nPhân bổ trạng thái ghép\nKhông khả dụng\nChưa có bộ đếm trạng thái đầy đủ cho toàn lô. Danh sách đang tải không đại diện toàn bộ dữ liệu.\n3A\nCấu trúc & semantics\n\nSource field → semantic field.\n\nMappings1Trạng tháiĐã xử lý\nSẵn sàngChỉnh mapping\n3B\nIdentity\n\nGiá trị nguồn → Store entity.\n\nBindings0Trạng tháiĐã xác định\nSẵn sàngXem bindings\n3C\nThông tin cần xác nhận\n\nGiá trị ShelfCash không tự suy đoán.\n\nDeclarations0Trạng tháiĐã xác nhận\nSẵn sàngXác nhận thông tin\n3D\nUnits\n\nĐơn vị và conversion của import.\n\nUnits0Trạng tháiHợp lệ\nĐã kiểm traKiểm tra đơn vị\nMappings1\nIdentity bindings0\nDeclarations0\nChưa xử lý0",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 342
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 312
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "readiness-default",
+      "width": 390,
+      "file": "readiness-default-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Readiness\nKhả năng lập kế hoạch\nĐủ dữ liệu\nNgày bắt đầu kế hoạch\nDữ liệu sẵn sàng\nKhông phải tiến trình bước\n?\nDoanh số\nChưa xác định\n?\nTồn kho\nChưa xác định\n?\nCông thức\nChưa xác định\n?\nNhà cung cấp\nChưa xác định\n\nTheo hành động planning và ngày đã chọn. Chưa có đánh giá riêng từng nguồn không đồng nghĩa nguồn đã hoàn tất.\n\nKiểm tra Readiness\n\nĐủ dữ liệu cho hành động tiếp theo\n\nHoàn tất\nĐi tới Dự đoán",
+        "vi": [
+          {
+            "className": "sc-vi-card sc-vi-readiness",
+            "width": 356
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "readiness-warning",
+      "width": 390,
+      "file": "readiness-warning-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Readiness\nKhả năng lập kế hoạch\nĐủ dữ liệu\nNgày bắt đầu kế hoạch\nDữ liệu sẵn sàng\nKhông phải tiến trình bước\n?\nDoanh số\nChưa xác định\n!\nTồn kho\nCần chú ý\n?\nCông thức\nChưa xác định\n?\nNhà cung cấp\nChưa xác định\n\nTheo hành động planning và ngày đã chọn. Chưa có đánh giá riêng từng nguồn không đồng nghĩa nguồn đã hoàn tất.\n\nKiểm tra Readiness\n\nĐủ dữ liệu cho hành động tiếp theo\n\nCảnh báo: Có thông tin cần kiểm tra trước khi tiếp tục.Xem Kho\nHoàn tất\nĐi tới Dự đoán",
+        "vi": [
+          {
+            "className": "sc-vi-card sc-vi-readiness",
+            "width": 356
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "readiness-permission",
+      "width": 390,
+      "file": "readiness-permission-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Readiness\nKhả năng lập kế hoạch\nKhông có quyền\nDữ liệu sẵn sàng\nKhông phải tiến trình bước\n—\nDoanh số\nGiới hạn quyền\n—\nTồn kho\nGiới hạn quyền\n—\nCông thức\nGiới hạn quyền\n—\nNhà cung cấp\nGiới hạn quyền\n\nTheo hành động planning và ngày đã chọn. Chưa có đánh giá riêng từng nguồn không đồng nghĩa nguồn đã hoàn tất.\n\nBạn chưa có quyền xem đánh giá lập kế hoạch.\n\nKiểm tra Readiness\nHoàn tất",
+        "vi": [
+          {
+            "className": "sc-vi-card sc-vi-readiness",
+            "width": 356
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "history-default",
+      "width": 390,
+      "file": "history-default-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "‹\nTháng trước\nTHÁNG 10 2026\nTháng sau\n›\n7 lần nhậpTrong tháng · theo bộ lọc hiện tại\nTrạng thái trong tháng\nDATA CONTRACT REQUIRED\nChưa có tổng số thành công / cảnh báo / thất bại của cả tháng. Trạng thái từng lần nhập ở danh sách ngày đã chọn.\nT2\nT3\nT4\nT5\nT6\nT7\nCN\n1\n● 1\n2\n● 5\n3\n4\n5\n● 1\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n7 lần nhập trong tháng\nNgày tải lên · Asia/Ho_Chi_Minh",
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 388
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "history-empty",
+      "width": 390,
+      "file": "history-empty-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "‹\nTháng trước\nTHÁNG 10 2026\nTháng sau\n›\n0 lần nhậpTrong tháng · theo bộ lọc hiện tại\nTrạng thái trong tháng\nTrống\nKhông có lần nhập theo bộ lọc hiện tại.\nT2\nT3\nT4\nT5\nT6\nT7\nCN\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n0 lần nhập trong tháng\nNgày tải lên · Asia/Ho_Chi_Minh",
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 388
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "history-unknown",
+      "width": 390,
+      "file": "history-unknown-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "‹\nTháng trước\nTHÁNG 10 2026\nTháng sau\n›\nChưa rõ số lần nhậpTrong tháng · theo bộ lọc hiện tại\nTrạng thái trong tháng\nDATA CONTRACT REQUIRED\nChưa có tổng số thành công / cảnh báo / thất bại của cả tháng. Trạng thái từng lần nhập ở danh sách ngày đã chọn.\nT2\nT3\nT4\nT5\nT6\nT7\nCN\n1\nChưa biết\n2\n● 5\n3\n4\n5\n● 1\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\nChưa có tổng số lần nhập trong tháng\nNgày tải lên · Asia/Ho_Chi_Minh",
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 388
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "history-loading",
+      "width": 390,
+      "file": "history-loading-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "‹\nTháng trước\nTHÁNG 10 2026\nTháng sau\n›\nChưa rõ số lần nhậpTrong tháng · theo bộ lọc hiện tại\nTrạng thái trong tháng\nĐang tải…\nChưa có tổng số thành công / cảnh báo / thất bại của cả tháng. Trạng thái từng lần nhập ở danh sách ngày đã chọn.\nT2\nT3\nT4\nT5\nT6\nT7\nCN\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\nChưa có dữ liệu lịch",
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 388
+          }
+        ]
+      }
+    }
+  ]
+}

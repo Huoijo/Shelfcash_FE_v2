@@ -1,0 +1,56 @@
+{
+  "scope": [
+    "src/features/import-data",
+    "src/pages/imports",
+    "src/features/import-history",
+    "src/pages/import-history"
+  ],
+  "unit": "CSS declarations including token definition and references, not rendered text count",
+  "counts": {
+    "APPROVED_MICRO": 5,
+    "PROTOTYPE_ONLY": 0,
+    "UNRESOLVED": 0
+  },
+  "occurrences": [
+    {
+      "file": "src/features/import-data/components/ImportTypography.css",
+      "line": 9,
+      "selector": "/* ShelfCash semantic scale, scoped to existing Import surfaces. PL-01 is isolated. */\n:where(.import-page, .import-flow, .import-resolver, .import-evidence, .input-panel)",
+      "value": "--sc-import-type-micro: 10px",
+      "classification": "APPROVED_MICRO",
+      "reason": "Import-scoped 10px token, used only by documented secondary roles"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 63,
+      "selector": ".input-steps li > span",
+      "value": "font-size:var(--sc-import-type-micro)",
+      "classification": "APPROVED_MICRO",
+      "reason": "Redundant step numeral / secondary orientation; title is 11px and stage stays 54px high"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 64,
+      "selector": ".input-steps small",
+      "value": "font-size:var(--sc-import-type-micro)",
+      "classification": "APPROVED_MICRO",
+      "reason": "Redundant step numeral / secondary orientation; title is 11px and stage stays 54px high"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 182,
+      "selector": ".import-page .import-upload__file-size",
+      "value": "font-size:var(--sc-import-type-micro)",
+      "classification": "APPROVED_MICRO",
+      "reason": "Secondary noninteractive byte size; filename and quota are stronger"
+    },
+    {
+      "file": "src/pages/import-history/ImportHistoryPage.css",
+      "line": 36,
+      "selector": ".history-calendar__count > span",
+      "value": "font-size: 8px",
+      "classification": "APPROVED_MICRO",
+      "reason": "Decorative aria-hidden dot; adjacent count has its own 11px text"
+    }
+  ]
+}

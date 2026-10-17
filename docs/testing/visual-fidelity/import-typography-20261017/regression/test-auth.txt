@@ -1,0 +1,38 @@
+
+> shelfcash-fe-v2@0.0.0 test:auth
+> node tests/run-auth-session.mjs
+
+✔ A01 posts canonical credentials without session CSRF or token fabrication (78.725ms)
+✔ invalid credentials stay a public A01 error; protected 401 policy does not run (5.3102ms)
+✔ invalid login input fails locally and does not send credentials (0.9544ms)
+✔ A03 authoritative session read uses included cookies, no query or mutation CSRF (3.1571ms)
+✔ protected 401 invalidates current session even if response body is malformed (3.0208ms)
+✔ late protected 401 cannot invalidate a newer CSRF session (2.2799ms)
+✔ late protected 401 cannot invalidate replacement session hooks (4.0973ms)
+✔ aborted protected request does not invalidate canonical session (2.7191ms)
+✔ session-owned current CSRF is injected into JSON and multipart mutations (4.5399ms)
+✔ missing CSRF refuses protected writes; caller header cannot bypass session source (2.8553ms)
+✔ CSRF/Origin denial has no fabricated token refresh or automatic retry (1.8832ms)
+✔ A04 accepts only204, sends no body/JSON content type and uses central CSRF (3.5875ms)
+✔ logout failure stays an error; no automatic local-success translation (1.4094ms)
+✔ HTTP errors preserve safe request references and validate nested canonical errors (2.4577ms)
+✔ session context validates default Store/count, UUIDs, token and true UTC instants (2.1833ms)
+✔ malformed Auth envelope, backend503 and network errors remain distinct (2.8954ms)
+✔ T01 omits default limit, preserves opaque cursor and validates pagination (95.0515ms)
+✔ T02 consumes exact Store UUID, timezone/current-date and membership permissions (4.5988ms)
+✔ Store schema rejects unavailable membership, wrong role/version/timezone and malformed permissions (4.7891ms)
+✔ Owner permissions remain exact server-provided catalogue entries, not inferred actions (1.0477ms)
+✔ Store reads propagate403/404 and do not silently choose a fixture or default Store (1.5737ms)
+✔ cleaning stale hook registration cannot remove the current session source (0.8996ms)
+✔ all Inventory/Menu/History reads use current Store scope and ignore poisoned development Store (10.5851ms)
+✔ missing or invalid current Store blocks every business read before fetch without development fallback (1.808ms)
+✔ business GET401 uses central session invalidation without requiring or sending CSRF (2.0067ms)
+✔ Inventory timestamps use actual Store timezone while date-only facts and explicit UTC fallback stay unchanged (2.7095ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 510.535

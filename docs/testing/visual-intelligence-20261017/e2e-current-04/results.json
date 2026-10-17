@@ -1,0 +1,4203 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "scripts/playwright-visual-intelligence.config.ts"
+    ],
+    "configFile": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\scripts\\playwright-visual-intelligence.config.ts",
+    "rootDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-current-04/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mock-desktop",
+        "name": "mock-desktop",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/mock\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-current-04/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mock-mobile",
+        "name": "mock-mobile",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/responsive\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-current-04/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "production-parity",
+        "name": "production-parity",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/production\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-current-04/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "controlled-api",
+        "name": "controlled-api",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/api\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mock-desktop",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4173"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mock-desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mock-mobile",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4173"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mock-mobile"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "production-parity",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4180"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "production-parity"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "controlled-api",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4174"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "controlled-api"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "content-parity.mock.spec.ts",
+      "file": "content-parity.mock.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "013 centralized Debug is out of flow, preserves geometry and restores focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7981,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:38:26.224Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24de9062094d2f650174-57d7a38bad1712909459",
+          "file": "content-parity.mock.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "013 row evidence is available only in Debug, including while a product drawer is open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11374,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:38:34.598Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24de9062094d2f650174-d0168a5ed3dc86e8e5de",
+          "file": "content-parity.mock.spec.ts",
+          "line": 33,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "import-experience.mock.spec.ts",
+      "file": "import-experience.mock.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "012 OWNER navigates Analyze → Resolve → reusable approval → Preview → Review → Commit → separate Readiness",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20936,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:38:46.044Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f85141bbeee47313d0f-decb2603302b7536dd21",
+          "file": "import-experience.mock.spec.ts",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "012 STAFF reuses approved profile without Owner approval controls and completes import",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16752,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:39:07.022Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f85141bbeee47313d0f-15f50f0bfa67744cb8c7",
+          "file": "import-experience.mock.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "012 STAFF reusable change: submit → waiting → approved retains batch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22844,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:39:23.815Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f85141bbeee47313d0f-506c7ecf1a6ebb437e94",
+          "file": "import-experience.mock.spec.ts",
+          "line": 69,
+          "column": 37
+        },
+        {
+          "title": "012 STAFF reusable change: submit → waiting → rejected → retained mapping → unchanged proposal resubmit blocked retains batch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13061,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:39:46.735Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f85141bbeee47313d0f-dfafffdf5c5fec9fb400",
+          "file": "import-experience.mock.spec.ts",
+          "line": 69,
+          "column": 37
+        },
+        {
+          "title": "012 unknown reopened import never creates a replacement draft on refresh",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6096,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:39:59.853Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f85141bbeee47313d0f-e051fe677daca65fbd32",
+          "file": "import-experience.mock.spec.ts",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "frozen v1 Owner rejection has separate reason/ack and returns to retained Resolve",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8997,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:05.989Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f85141bbeee47313d0f-d326f2b9ca17d18b0bdf",
+          "file": "import-experience.mock.spec.ts",
+          "line": 104,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "import-playground.mock.spec.ts",
+      "file": "import-playground.mock.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "014 every catalog scenario renders the actual Import screen without reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 79223,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:40:15.229Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-playground.mock-014-b2280-mport-screen-without-reload-mock-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-playground.mock-014-b2280-mport-screen-without-reload-mock-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-playground.mock-014-b2280-mport-screen-without-reload-mock-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1fa4b9f1432ed5fa0395-5517adac713da9f1f23d",
+          "file": "import-playground.mock.spec.ts",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "014 Next/Previous follow both canonical paths, including frozen Processing and ready Completion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13673,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:41:53.865Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1fa4b9f1432ed5fa0395-7ea4f8c54dff2c0e158f",
+          "file": "import-playground.mock.spec.ts",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "014 presets/errors update screens; reset and exit preserve the original selected file",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4858,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:42:07.901Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1fa4b9f1432ed5fa0395-0d9318d3ecbdfd716791",
+          "file": "import-playground.mock.spec.ts",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "014 product buttons progress the isolated world independently of controller navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11463,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:42:12.803Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1fa4b9f1432ed5fa0395-e6fe936d1db8435e8406",
+          "file": "import-playground.mock.spec.ts",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "frozen v1 OWNER/STAFF share resolver scope geometry and a single navigation counter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7273,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:42:24.307Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1fa4b9f1432ed5fa0395-21483804e0f0673298de",
+          "file": "import-playground.mock.spec.ts",
+          "line": 88,
+          "column": 1
+        },
+        {
+          "title": "frozen v1 identity search requires explicit Store entity selection and does not call HTTP in DEV preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4637,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:42:31.617Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1fa4b9f1432ed5fa0395-c2215d249454f3d54833",
+          "file": "import-playground.mock.spec.ts",
+          "line": 109,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "operations.mock.spec.ts",
+      "file": "operations.mock.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "receipt writes shared stock and later detail/lots/movements reads; reset is explicit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6598,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:42:36.339Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14169e696226e3c8272c-ad935b9772f4646ee875",
+          "file": "operations.mock.spec.ts",
+          "line": 2,
+          "column": 1
+        },
+        {
+          "title": "planning run retained across navigation appears in shared History",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6318,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:42:42.973Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14169e696226e3c8272c-3afe53285b1c4f771fe3",
+          "file": "operations.mock.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "recipe preview → commit → fresh timeline, old content remains",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5087,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:42:49.320Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14169e696226e3c8272c-2c6e42e622ce3de3b60e",
+          "file": "operations.mock.spec.ts",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "readonly actor cannot start receipt/planning writes; no-store does not expose fixture data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7813,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:42:54.439Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14169e696226e3c8272c-1375d358dca73de0be24",
+          "file": "operations.mock.spec.ts",
+          "line": 58,
+          "column": 1
+        },
+        {
+          "title": "Import step navigation is Preview before review/commit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2696,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:43:02.282Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14169e696226e3c8272c-bcb6dcb73bd43c69bd68",
+          "file": "operations.mock.spec.ts",
+          "line": 75,
+          "column": 1
+        },
+        {
+          "title": "parked features show construction notices and close accessibly",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 60785,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.mock.spec.ts",
+                        "column": 54,
+                        "line": 88
+                      },
+                      "message": "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Hỏi AI', exact: true })\u001b[22m\n\n\n  86 |   await page.getByRole('button',{name:'Tạo kế hoạch nhập hàng'}).click()\n  87 |   for(const name of ['Hỏi AI','Kịch bản giả định','Tạo Draft PO']){\n> 88 |     await page.getByRole('button',{name,exact:true}).click()\n     |                                                      ^\n  89 |     await expect(page.getByRole('dialog')).toContainText('đang được xây dựng')\n  90 |     await page.getByRole('dialog').getByRole('button',{name:'Đóng',exact:true}).click()\n  91 |   }\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.mock.spec.ts:88:54"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:43:05.009Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\operations.mock-parked-fea-156aa-otices-and-close-accessibly-mock-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\operations.mock-parked-fea-156aa-otices-and-close-accessibly-mock-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\operations.mock-parked-fea-156aa-otices-and-close-accessibly-mock-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "14169e696226e3c8272c-bcf8a73b78c67716ed98",
+          "file": "operations.mock.spec.ts",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "new requirements become discoverable and run uses saved zero budget",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7506,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:44:08.644Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14169e696226e3c8272c-600a66b7bd49c51e7cf5",
+          "file": "operations.mock.spec.ts",
+          "line": 93,
+          "column": 1
+        },
+        {
+          "title": "Preview groups, keyboard row drawer and same-snapshot Review gate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16399,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:44:16.829Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14169e696226e3c8272c-aeca50606f64d588c343",
+          "file": "operations.mock.spec.ts",
+          "line": 106,
+          "column": 1
+        },
+        {
+          "title": "custom requirements draft survives mode changes and saved configurations stay readonly until explicit management",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4383,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:44:33.272Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14169e696226e3c8272c-786ee29a45d7e29d3ec4",
+          "file": "operations.mock.spec.ts",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "receipt dirty close keeps draft and combobox Escape closes only its popup",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3601,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:44:37.702Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "14169e696226e3c8272c-938fa4f295e51439dc9c",
+          "file": "operations.mock.spec.ts",
+          "line": 157,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "responsive.spec.ts",
+      "file": "responsive.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "mobile Inventory and public credential page remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-mobile",
+              "projectName": "mock-mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6652,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:44:43.047Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e0223b006feb3d306446-9828d1dfa4a9d824b58a",
+          "file": "responsive.spec.ts",
+          "line": 2,
+          "column": 1
+        },
+        {
+          "title": "012 mobile Staff import keeps six steps, usable Resolve actions and page width",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-mobile",
+              "projectName": "mock-mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5696,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:44:50.025Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e0223b006feb3d306446-11b6b80025dbc41a7bd5",
+          "file": "responsive.spec.ts",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "014 mobile playground changes role/state without resizing the page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-mobile",
+              "projectName": "mock-mobile",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4522,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:44:55.767Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e0223b006feb3d306446-b8917673b3260d5dfba2",
+          "file": "responsive.spec.ts",
+          "line": 31,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "content-parity.production.spec.ts",
+      "file": "content-parity.production.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "013 production build exposes product UI without Debug, mock controls or diagnostic surfaces",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "production-parity",
+              "projectName": "production-parity",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2060,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:01.776Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e0317a7ed2b5e680e3bc-11d62fc4e337756e80b1",
+          "file": "content-parity.production.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "auth-recovery.api.spec.ts",
+      "file": "auth-recovery.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "login remains usable after server session failure; retry confirms session",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3983,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:05.577Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82219e3f89bb655e00e4-951408d2436c2a059fc0",
+          "file": "auth-recovery.api.spec.ts",
+          "line": 16,
+          "column": 3
+        },
+        {
+          "title": "login remains usable after transport session failure; retry confirms session",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3360,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:09.867Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82219e3f89bb655e00e4-b96d9e6f4ab2d9fee712",
+          "file": "auth-recovery.api.spec.ts",
+          "line": 16,
+          "column": 3
+        },
+        {
+          "title": "login remains usable after protocol session failure; retry confirms session",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3265,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:13.272Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82219e3f89bb655e00e4-29aa7ee1bdbb86185c88",
+          "file": "auth-recovery.api.spec.ts",
+          "line": 16,
+          "column": 3
+        },
+        {
+          "title": "protected session error offers login and returns to the original Import URL only after verification",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4715,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:16.579Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82219e3f89bb655e00e4-cfb33ba7bb7d912e06f4",
+          "file": "auth-recovery.api.spec.ts",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "protected retry recovers without a login request",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3428,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:21.361Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82219e3f89bb655e00e4-29d36171390b18394d63",
+          "file": "auth-recovery.api.spec.ts",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "401 redirects to login without treating it as a session-check error",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3031,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:24.859Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82219e3f89bb655e00e4-5c0733b1bd38ef895313",
+          "file": "auth-recovery.api.spec.ts",
+          "line": 81,
+          "column": 1
+        },
+        {
+          "title": "accepted login with failed session verification stays protected and can recover through a read",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4844,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:27.933Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "82219e3f89bb655e00e4-5c58ae42f5f2746ffa5e",
+          "file": "auth-recovery.api.spec.ts",
+          "line": 94,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "design-states.api.spec.ts",
+      "file": "design-states.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "wrong-account invitation reveals only current account and supports logout before login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3408,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:33.090Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6162ae31a4ed3e2b75aa-bfb561f9d4e8ffee2ae7",
+          "file": "design-states.api.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "invitation expired is terminal without acceptance writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3924,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:36.542Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6162ae31a4ed3e2b75aa-489fcc23a0c82e09e0dd",
+          "file": "design-states.api.spec.ts",
+          "line": 26,
+          "column": 52
+        },
+        {
+          "title": "invitation revoked is terminal without acceptance writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3351,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:40.508Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6162ae31a4ed3e2b75aa-abed26c511c8bfefbbc1",
+          "file": "design-states.api.spec.ts",
+          "line": 26,
+          "column": 52
+        },
+        {
+          "title": "acceptance lost ACK preserves intent and opens freshly verified invited Store",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5398,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:43.906Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6162ae31a4ed3e2b75aa-156eb3647d48ac87768c",
+          "file": "design-states.api.spec.ts",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "credential UI retains 12-character contract, hides token and never auto-logins",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4596,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:49.345Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6162ae31a4ed3e2b75aa-27c7d71de0c06d315e13",
+          "file": "design-states.api.spec.ts",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "confirmed receipt with failed readback retries reads without another receipt write",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11387,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:45:53.981Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6162ae31a4ed3e2b75aa-5882df1fb5856b31b13f",
+          "file": "design-states.api.spec.ts",
+          "line": 79,
+          "column": 1
+        },
+        {
+          "title": "PDF captures chosen alternative and download failure retries artifact only",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11485,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts:114:121",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts",
+                      "column": 121,
+                      "line": 114
+                    },
+                    "snippet": "  112 |   await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog')\n  113 |   await d.getByLabel('Phương án sẽ xuất').selectOption(option);expect(writes).toBe(0)\n> 114 |   await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n      |                                                                                                                         ^\n  115 |   await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('button',{name:'Thử lại tải'})).toBeVisible()\n  116 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử lại tải'}).click();await download\n  117 |   await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(writes).toBe(1);expect(downloads).toBe(2)"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts",
+                        "column": 121,
+                        "line": 114
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  112 |   await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog')\n  113 |   await d.getByLabel('Phương án sẽ xuất').selectOption(option);expect(writes).toBe(0)\n> 114 |   await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n      |                                                                                                                         ^\n  115 |   await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('button',{name:'Thử lại tải'})).toBeVisible()\n  116 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử lại tải'}).click();await download\n  117 |   await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(writes).toBe(1);expect(downloads).toBe(2)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts:114:121"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:46:05.408Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\design-states.api-PDF-capt-2d924-ilure-retries-artifact-only-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\design-states.api-PDF-capt-2d924-ilure-retries-artifact-only-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\design-states.api-PDF-capt-2d924-ilure-retries-artifact-only-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts",
+                    "column": 121,
+                    "line": 114
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6162ae31a4ed3e2b75aa-1a90e0c643f45ff35b9e",
+          "file": "design-states.api.spec.ts",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "History paginates same snapshot and empty filters never manufacture budget or results",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3788,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:46:19.072Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6162ae31a4ed3e2b75aa-3da8c7885c06f211cf86",
+          "file": "design-states.api.spec.ts",
+          "line": 120,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "frozen-lifecycle.api.spec.ts",
+      "file": "frozen-lifecycle.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "registration sends only A02 fields, then verification-required; it creates no session or Store",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2924,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:46:23.262Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9f6183cb8dd79410b31d-5dcea041034e8c0a299c",
+          "file": "frozen-lifecycle.api.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "verification scrubs proof, waits for explicit password and preserves invitation without accepting it",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4250,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:46:26.229Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9f6183cb8dd79410b31d-07f67ac60bb0a3821ede",
+          "file": "frozen-lifecycle.api.spec.ts",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "zero-Store T03 uncertainty cannot be disproved by empty T01 and exact replay preserves original key/body",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5663,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:46:30.530Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9f6183cb8dd79410b31d-64f4e47393db1f44c9e0",
+          "file": "frozen-lifecycle.api.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "notification opening causes no business write; failed read acknowledgment retains unread state and handoff pins destination",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3729,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:46:36.242Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9f6183cb8dd79410b31d-2bb89d733e7bbd678e2b",
+          "file": "frozen-lifecycle.api.spec.ts",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "Owner request changes requires real Staff submission; own=false",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4309,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:46:40.013Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9f6183cb8dd79410b31d-a039b0c04723d33bf264",
+          "file": "frozen-lifecycle.api.spec.ts",
+          "line": 42,
+          "column": 31
+        },
+        {
+          "title": "Owner request changes requires real Staff submission; own=true",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3264,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:46:44.364Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9f6183cb8dd79410b31d-cbdcdfcb26ad582b53ed",
+          "file": "frozen-lifecycle.api.spec.ts",
+          "line": 42,
+          "column": 31
+        },
+        {
+          "title": "Today unknown inventory remains unknown and does not claim calm, zero stock or pending decision",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3547,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:46:47.662Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9f6183cb8dd79410b31d-a99bec4814bb4e1c16a8",
+          "file": "frozen-lifecycle.api.spec.ts",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "unknown read acknowledgment survives internal navigation and only exact replay releases the writer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3871,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:46:51.252Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9f6183cb8dd79410b31d-5e2d2eee44be0f345e2b",
+          "file": "frozen-lifecycle.api.spec.ts",
+          "line": 55,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "history-contract.api.spec.ts",
+      "file": "history-contract.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Independent current-contract N9 history paginates, preserves filter, and reloads",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6595,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:46:55.199Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "synthetic-history-requests",
+                      "contentType": "application/json",
+                      "body": "WyJodHRwOi8vMTI3LjAuMC4xOjE4MDAxL2FwaS92MS9zdG9yZXMvZjE3ZTAwMDAtMDAwMC00MDAwLTgwMDAtMDAwMDAwMDAwMDAwL3Byb2N1cmVtZW50LXBsYW5zP2xpbWl0PTUwJnNvcnQ9LWFjY2VwdGVkX2F0IiwiaHR0cDovLzEyNy4wLjAuMToxODAwMS9hcGkvdjEvc3RvcmVzL2YxN2UwMDAwLTAwMDAtNDAwMC04MDAwLTAwMDAwMDAwMDAwMC9wcm9jdXJlbWVudC1wbGFucz9saW1pdD01MCZzb3J0PS1hY2NlcHRlZF9hdCIsImh0dHA6Ly8xMjcuMC4wLjE6MTgwMDEvYXBpL3YxL3N0b3Jlcy9mMTdlMDAwMC0wMDAwLTQwMDAtODAwMC0wMDAwMDAwMDAwMDAvcHJvY3VyZW1lbnQtcGxhbnM/bGltaXQ9NTAmY3Vyc29yPXNpZ25lZC1uZXh0JnNvcnQ9LWFjY2VwdGVkX2F0IiwiaHR0cDovLzEyNy4wLjAuMToxODAwMS9hcGkvdjEvc3RvcmVzL2YxN2UwMDAwLTAwMDAtNDAwMC04MDAwLTAwMDAwMDAwMDAwMC9wcm9jdXJlbWVudC1wbGFucz9saW1pdD01MCZzb3J0PS1hY2NlcHRlZF9hdCZzdGF0dXM9ZmFpbGVkIiwiaHR0cDovLzEyNy4wLjAuMToxODAwMS9hcGkvdjEvc3RvcmVzL2YxN2UwMDAwLTAwMDAtNDAwMC04MDAwLTAwMDAwMDAwMDAwMC9wcm9jdXJlbWVudC1wbGFucz9saW1pdD01MCZzb3J0PS1hY2NlcHRlZF9hdCZzdGF0dXM9ZmFpbGVkIiwiaHR0cDovLzEyNy4wLjAuMToxODAwMS9hcGkvdjEvc3RvcmVzL2YxN2UwMDAwLTAwMDAtNDAwMC04MDAwLTAwMDAwMDAwMDAwMC9wcm9jdXJlbWVudC1wbGFucz9saW1pdD01MCZzb3J0PS1hY2NlcHRlZF9hdCZzdGF0dXM9ZmFpbGVkIl0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cc5989ef6bc20cb2756e-4cf2d81e358f36d13f7a",
+          "file": "history-contract.api.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "import-experience.api.spec.ts",
+      "file": "import-experience.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "frozen Staff submits a persisted profile, waits, then resumes retained batch after separate Owner approval",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10034,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:47:02.011Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-5281a6a35a662fa11004",
+          "file": "import-experience.api.spec.ts",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "012 API permission revoked at commit has its own state and retains batch/review without retrying a new write",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12356,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:47:12.086Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-a555f8813cb30d1e8648",
+          "file": "import-experience.api.spec.ts",
+          "line": 97,
+          "column": 1
+        },
+        {
+          "title": "012 API lost commit acknowledgement retains exact intent; completion may still have blocked Readiness",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21914,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:47:24.506Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-c86970285264e7d3d495",
+          "file": "import-experience.api.spec.ts",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "012 API Preview stale cannot enter Review and offers correct recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16801,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận' })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" getByRole('button', { name: 'Tiếp tục xác nhận' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận' })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" getByRole('button', { name: 'Tiếp tục xác nhận' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận' })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:154:75",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                      "column": 75,
+                      "line": 154
+                    },
+                    "snippet": "  152 |     await expect(page.getByText('Preview không còn mới nhất', { exact: true })).toBeVisible()\n  153 |     await page.getByRole('button', { name: 'Tạo lại Preview', exact: true }).click()\n> 154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n      |                                                                           ^\n  155 |   } else {\n  156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                        "column": 75,
+                        "line": 154
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận' })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" getByRole('button', { name: 'Tiếp tục xác nhận' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận' })\u001b[22m\n\n\n  152 |     await expect(page.getByText('Preview không còn mới nhất', { exact: true })).toBeVisible()\n  153 |     await page.getByRole('button', { name: 'Tạo lại Preview', exact: true }).click()\n> 154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n      |                                                                           ^\n  155 |   } else {\n  156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:154:75"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:47:46.488Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-012--d55cb-and-offers-correct-recovery-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-012--d55cb-and-offers-correct-recovery-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-012--d55cb-and-offers-correct-recovery-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                    "column": 75,
+                    "line": 154
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-c74e44fa93c2f775e3e8",
+          "file": "import-experience.api.spec.ts",
+          "line": 138,
+          "column": 54
+        },
+        {
+          "title": "012 API Preview blocked cannot enter Review and offers correct recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10309,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Preview bị chặn toàn lô', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Preview bị chặn toàn lô', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Preview bị chặn toàn lô', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Preview bị chặn toàn lô', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Preview bị chặn toàn lô', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Preview bị chặn toàn lô', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:156:78",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                      "column": 78,
+                      "line": 156
+                    },
+                    "snippet": "  154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n  155 |   } else {\n> 156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n      |                                                                              ^\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()\n  158 |     await expect(page.getByRole('heading', { name: 'Kiểm tra cách hiểu', exact: true })).toBeVisible()\n  159 |     await expect(page.getByRole('list', { name: 'Tiến trình nhập dữ liệu 6 bước' }).locator('[aria-current=step]')).toContainText('Kiểm tra')"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                        "column": 78,
+                        "line": 156
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Preview bị chặn toàn lô', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Preview bị chặn toàn lô', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Preview bị chặn toàn lô', { exact: true })\u001b[22m\n\n\n  154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n  155 |   } else {\n> 156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n      |                                                                              ^\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()\n  158 |     await expect(page.getByRole('heading', { name: 'Kiểm tra cách hiểu', exact: true })).toBeVisible()\n  159 |     await expect(page.getByRole('list', { name: 'Tiến trình nhập dữ liệu 6 bước' }).locator('[aria-current=step]')).toContainText('Kiểm tra')\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:156:78"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:06.412Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-012--cc2bb-and-offers-correct-recovery-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-012--cc2bb-and-offers-correct-recovery-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-012--cc2bb-and-offers-correct-recovery-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                    "column": 78,
+                    "line": 156
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-ecb40083ca6a647fad20",
+          "file": "import-experience.api.spec.ts",
+          "line": 138,
+          "column": 54
+        },
+        {
+          "title": "frozen v1 Sales and Supplier decisions gate Review and require separate persisted Review before Commit",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10232,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:171:22",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                      "column": 22,
+                      "line": 171
+                    },
+                    "snippet": "  169 |   await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click()\n  170 |   const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true})\n> 171 |   await expect(next).toBeDisabled()\n      |                      ^\n  172 |   const domain=page.locator('.input-domain-review')\n  173 |   await domain.locator('.input-domain-grid article').first().getByRole('button').click()\n  174 |   let drawer=page.getByRole('dialog',{name:'Hai contribution riêng',exact:true})"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                        "column": 22,
+                        "line": 171
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n\n\n  169 |   await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click()\n  170 |   const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true})\n> 171 |   await expect(next).toBeDisabled()\n      |                      ^\n  172 |   const domain=page.locator('.input-domain-review')\n  173 |   await domain.locator('.input-domain-grid article').first().getByRole('button').click()\n  174 |   let drawer=page.getByRole('dialog',{name:'Hai contribution riêng',exact:true})\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:171:22"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:19.151Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-froz-cea0f-sisted-Review-before-Commit-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-froz-cea0f-sisted-Review-before-Commit-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-froz-cea0f-sisted-Review-before-Commit-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                    "column": 22,
+                    "line": 171
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-1c25bd15fbdfee776e5e",
+          "file": "import-experience.api.spec.ts",
+          "line": 164,
+          "column": 1
+        },
+        {
+          "title": "frozen v1 Analyze source context uses actual evidence and validates custom identifiers without guessing a provider",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6999,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:33.115Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-b406a2b929283092e5ae",
+          "file": "import-experience.api.spec.ts",
+          "line": 199,
+          "column": 1
+        },
+        {
+          "title": "016 Supplier resolver uses SU01 snapshot paging and saves only the explicitly selected identity",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7041,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:40.430Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-a03bcf474fd383e70194",
+          "file": "import-experience.api.spec.ts",
+          "line": 232,
+          "column": 1
+        },
+        {
+          "title": "016 Owner reaches complete full-spec review with pending RULE candidates without an M04 confirmation first",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5882,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:47.504Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-f8de4c1256fa4a5aad13",
+          "file": "import-experience.api.spec.ts",
+          "line": 273,
+          "column": 1
+        },
+        {
+          "title": "016 completion keeps receipt but disables R01 when planning.context.read is absent",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17774,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:48:53.428Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-07411fe0fee58ec768eb",
+          "file": "import-experience.api.spec.ts",
+          "line": 296,
+          "column": 90
+        },
+        {
+          "title": "016 completion keeps receipt but disables R01 when budget.read is absent",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17059,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:11.245Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-a9f7266f5ea94d41b1d5",
+          "file": "import-experience.api.spec.ts",
+          "line": 296,
+          "column": 90
+        },
+        {
+          "title": "016 completion keeps receipt but disables R01 when procurement.cost.read is absent",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18127,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:28.339Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-19dfe0a8da41ede8b75e",
+          "file": "import-experience.api.spec.ts",
+          "line": 296,
+          "column": 90
+        },
+        {
+          "title": "020 multiple history corrections gate every Review entry; closing evidence leaves pending and commit loss freezes confirmed rows",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12692,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:313:194",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                      "column": 194,
+                      "line": 313
+                    },
+                    "snippet": "  311 |  work.source.readPreview=async(...args)=>{const value=await original(...args);return {...value,preview:{...value.preview,rows:value.preview.rows.map(row=>({...row,proposed_action:'CORRECT_HISTORY_RECORD',confirmation_required:true,expected_version:'history/1'}))}}}\n  312 |  const writes=await api(page,work,(_path,method,body)=>method==='POST'&&body?.phase==='commit'?'ABORT':undefined)\n> 313 |  await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click();const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true});await expect(next).toBeDisabled()\n      |                                                                                                                                                                                                  ^\n  314 |  await page.getByRole('button',{name:'Chi tiết bản sửa',exact:true}).first().click();let d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByRole('button',{name:'Đóng',exact:true}).click();await expect(next).toBeDisabled();expect(writes.filter(w=>w.body.phase==='commit')).toHaveLength(0)\n  315 |  const buttons=page.getByRole('button',{name:'Chi tiết bản sửa',exact:true});expect(await buttons.count()).toBe(2)\n  316 |  for(let i=0;i<2;i++){await buttons.nth(i).click();d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByLabel('Lý do correction').fill(`Evidence for history ${i+1}`);await d.getByRole('checkbox').check();await d.getByRole('button',{name:'Xác nhận cho lần nhập này',exact:true}).click();if(i===0)await expect(next).toBeDisabled()}"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                        "column": 194,
+                        "line": 313
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n\n\n  311 |  work.source.readPreview=async(...args)=>{const value=await original(...args);return {...value,preview:{...value.preview,rows:value.preview.rows.map(row=>({...row,proposed_action:'CORRECT_HISTORY_RECORD',confirmation_required:true,expected_version:'history/1'}))}}}\n  312 |  const writes=await api(page,work,(_path,method,body)=>method==='POST'&&body?.phase==='commit'?'ABORT':undefined)\n> 313 |  await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click();const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true});await expect(next).toBeDisabled()\n      |                                                                                                                                                                                                  ^\n  314 |  await page.getByRole('button',{name:'Chi tiết bản sửa',exact:true}).first().click();let d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByRole('button',{name:'Đóng',exact:true}).click();await expect(next).toBeDisabled();expect(writes.filter(w=>w.body.phase==='commit')).toHaveLength(0)\n  315 |  const buttons=page.getByRole('button',{name:'Chi tiết bản sửa',exact:true});expect(await buttons.count()).toBe(2)\n  316 |  for(let i=0;i<2;i++){await buttons.nth(i).click();d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByLabel('Lý do correction').fill(`Evidence for history ${i+1}`);await d.getByRole('checkbox').check();await d.getByRole('button',{name:'Xác nhận cho lần nhập này',exact:true}).click();if(i===0)await expect(next).toBeDisabled()}\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:313:194"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:49:46.501Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-020--bfb09-loss-freezes-confirmed-rows-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-020--bfb09-loss-freezes-confirmed-rows-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\import-experience.api-020--bfb09-loss-freezes-confirmed-rows-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                    "column": 194,
+                    "line": 313
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-ec5368f2395649bf4177",
+          "file": "import-experience.api.spec.ts",
+          "line": 309,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "import-playground.api.spec.ts",
+      "file": "import-playground.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "014 API-mode playground cannot call live Import mutations or Readiness",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6344,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:50:02.148Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c7b2627e0aecfc058954-bb64b53ef539cead2b03",
+          "file": "import-playground.api.spec.ts",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "operations.api.spec.ts",
+      "file": "operations.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "API receipt lost response retries same intent; fresh snapshot/lot/movement reads confirm one write",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4980,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:50:08.879Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25deadd30e3af96e390f-7f2420890e5aaa97954a",
+          "file": "operations.api.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "retained run → PDF job → authenticated binary download; no procurement/stock mutation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9601,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng')\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts:38:267",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts",
+                      "column": 267,
+                      "line": 38
+                    },
+                    "snippet": "  36 |     if(path.endsWith('/exports/'+exp))return bytes\n  37 |   })\n> 38 |   await page.goto('/forecast/planning?plan_id='+run.run_id);await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog');await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng')).toBeVisible();const downloading=page.waitForEvent('download');await d.getByRole('button',{name:'Tải PDF',exact:true}).click();const download=await downloading;expect(download.suggestedFilename()).toContain(exp);expect(writes).toEqual([`/api/v1/procurement-plans/${run.run_id}/exports`])\n     |                                                                                                                                                                                                                                                                           ^\n  39 | })\n  40 | test('confirmed saved write with failed N2 retries only readback, never creates another resource',async({page})=>{\n  41 |   const savedId='00000000-0000-4000-8000-000000000041';let writes=0,reads=0"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts",
+                        "column": 267,
+                        "line": 38
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng')\u001b[22m\n\n\n  36 |     if(path.endsWith('/exports/'+exp))return bytes\n  37 |   })\n> 38 |   await page.goto('/forecast/planning?plan_id='+run.run_id);await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog');await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng')).toBeVisible();const downloading=page.waitForEvent('download');await d.getByRole('button',{name:'Tải PDF',exact:true}).click();const download=await downloading;expect(download.suggestedFilename()).toContain(exp);expect(writes).toEqual([`/api/v1/procurement-plans/${run.run_id}/exports`])\n     |                                                                                                                                                                                                                                                                           ^\n  39 | })\n  40 | test('confirmed saved write with failed N2 retries only readback, never creates another resource',async({page})=>{\n  41 |   const savedId='00000000-0000-4000-8000-000000000041';let writes=0,reads=0\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts:38:267"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:50:13.889Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\operations.api-retained-ru-68201--procurement-stock-mutation-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\operations.api-retained-ru-68201--procurement-stock-mutation-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\operations.api-retained-ru-68201--procurement-stock-mutation-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts",
+                    "column": 267,
+                    "line": 38
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "25deadd30e3af96e390f-ae7cbda4bcd6156e59a5",
+          "file": "operations.api.spec.ts",
+          "line": 28,
+          "column": 1
+        },
+        {
+          "title": "confirmed saved write with failed N2 retries only readback, never creates another resource",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4854,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:50:25.436Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "25deadd30e3af96e390f-7d1a616db51808c4b260",
+          "file": "operations.api.spec.ts",
+          "line": 40,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "pass020.api.spec.ts",
+      "file": "pass020.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "decline success: separate confirmation and N18-first recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3419,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:50:30.640Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-3dfafbe0f2f723e223d5",
+          "file": "pass020.api.spec.ts",
+          "line": 8,
+          "column": 81
+        },
+        {
+          "title": "decline failure: separate confirmation and N18-first recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3305,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:50:34.099Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-af227dd061c368dfb2fd",
+          "file": "pass020.api.spec.ts",
+          "line": 8,
+          "column": 81
+        },
+        {
+          "title": "decline lost-declined: separate confirmation and N18-first recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3676,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:50:37.454Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-203c0086d2fc21d762f9",
+          "file": "pass020.api.spec.ts",
+          "line": 8,
+          "column": 81
+        },
+        {
+          "title": "decline lost-pending: separate confirmation and N18-first recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3810,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[31m+   \"GET\",\u001b[39m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m  ]\u001b[22m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[31m+   \"GET\",\u001b[39m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m  ]\u001b[22m\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts:17:621",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts",
+                      "column": 621,
+                      "line": 17
+                    },
+                    "snippet": "  15 |  await d.getByLabel('Lý do từ chối lời mời').fill('Cannot join');await d.getByRole('button',{name:'Xác nhận từ chối'}).click()\n  16 |  if(mode==='failure'){await expect(d.getByRole('alert')).toContainText('INVALID_DECLINE_REASON');expect(posts).toBe(1);return}\n> 17 |  if(mode.startsWith('lost')){await expect(d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời',exact:true})).toBeDisabled();expect(posts).toBe(1);await expect(d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'})).toHaveCount(0);await d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'}).click();if(mode==='lost-pending'){await d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'}).click();const writes=events.filter(e=>e.method==='POST');expect(writes[1]).toEqual(writes[0]);expect(events.map(e=>e.method)).toEqual(['GET','POST','GET','POST'])}else expect(posts).toBe(1)}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  18 |  await expect(page.getByRole('heading',{name:'Lời mời đã được từ chối'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời'})).toHaveCount(0)\n  19 | })\n  20 | const request=(actions=['approve','reject'])=>({request_id:id,store_id:s,requester_membership_id:member,requester_user_id:job,requested_permissions:['supplier.read','inventory.read'],grants_at_submission:[],current_grants:[],approved_permissions:[],actually_added_permissions:[],permission_catalog_version:'permissions-v3',grants_version_at_submission:'member/1',current_grants_version:'member/1',version:'request/1',state:'pending',reason:'Need access',created_at:at,updated_at:at,decision:null,allowed_actions:actions})"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts",
+                        "column": 621,
+                        "line": 17
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[31m+   \"GET\",\u001b[39m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m  ]\u001b[22m\n\n  15 |  await d.getByLabel('Lý do từ chối lời mời').fill('Cannot join');await d.getByRole('button',{name:'Xác nhận từ chối'}).click()\n  16 |  if(mode==='failure'){await expect(d.getByRole('alert')).toContainText('INVALID_DECLINE_REASON');expect(posts).toBe(1);return}\n> 17 |  if(mode.startsWith('lost')){await expect(d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời',exact:true})).toBeDisabled();expect(posts).toBe(1);await expect(d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'})).toHaveCount(0);await d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'}).click();if(mode==='lost-pending'){await d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'}).click();const writes=events.filter(e=>e.method==='POST');expect(writes[1]).toEqual(writes[0]);expect(events.map(e=>e.method)).toEqual(['GET','POST','GET','POST'])}else expect(posts).toBe(1)}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  18 |  await expect(page.getByRole('heading',{name:'Lời mời đã được từ chối'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời'})).toHaveCount(0)\n  19 | })\n  20 | const request=(actions=['approve','reject'])=>({request_id:id,store_id:s,requester_membership_id:member,requester_user_id:job,requested_permissions:['supplier.read','inventory.read'],grants_at_submission:[],current_grants:[],approved_permissions:[],actually_added_permissions:[],permission_catalog_version:'permissions-v3',grants_version_at_submission:'member/1',current_grants_version:'member/1',version:'request/1',state:'pending',reason:'Need access',created_at:at,updated_at:at,decision:null,allowed_actions:actions})\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts:17:621"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:50:41.173Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\pass020.api-decline-lost-p-fe421-tion-and-N18-first-recovery-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\pass020.api-decline-lost-p-fe421-tion-and-N18-first-recovery-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\pass020.api-decline-lost-p-fe421-tion-and-N18-first-recovery-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts",
+                    "column": 621,
+                    "line": 17
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-0eeff100f429b3c8b8de",
+          "file": "pass020.api.spec.ts",
+          "line": 8,
+          "column": 81
+        },
+        {
+          "title": "Owner permission approve: current grant fence and explicit subset",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5218,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:50:46.898Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-ab2d7accb744fd082290",
+          "file": "pass020.api.spec.ts",
+          "line": 21,
+          "column": 67
+        },
+        {
+          "title": "Owner permission reject: current grant fence and explicit subset",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4815,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:50:52.358Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-ecb7ee96e69a9bcdb4ef",
+          "file": "pass020.api.spec.ts",
+          "line": 21,
+          "column": 67
+        },
+        {
+          "title": "Owner permission stale: current grant fence and explicit subset",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4892,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:50:57.232Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-5977d89956fb64fff438",
+          "file": "pass020.api.spec.ts",
+          "line": 21,
+          "column": 67
+        },
+        {
+          "title": "Owner permission unknown: current grant fence and explicit subset",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5422,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:51:02.170Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-60f3f666f364a737906c",
+          "file": "pass020.api.spec.ts",
+          "line": 21,
+          "column": 67
+        },
+        {
+          "title": "retained discovery availability=true: GET-only download without create",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5161,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:51:07.643Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-1d99dab2dfb935dadec5",
+          "file": "pass020.api.spec.ts",
+          "line": 29,
+          "column": 37
+        },
+        {
+          "title": "retained discovery availability=false: GET-only download without create",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4437,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:51:12.844Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-71767d75e8dab06bc70e",
+          "file": "pass020.api.spec.ts",
+          "line": 29,
+          "column": 37
+        },
+        {
+          "title": "N9 distinct creator/Store creation/forecast filters preserve URL state and paging",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3731,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:51:17.318Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-bde966104af8d76c1ef1",
+          "file": "pass020.api.spec.ts",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "Staff submits catalog-backed request, observes pending and can cancel with fresh request CAS",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6003,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:51:21.096Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-5740f8129f44c1dc208b",
+          "file": "pass020.api.spec.ts",
+          "line": 41,
+          "column": 1
+        },
+        {
+          "title": "retained exports empty/error can reread without ever creating a new export",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6893,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:51:27.146Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-38fff83502ec0fa7b805",
+          "file": "pass020.api.spec.ts",
+          "line": 54,
+          "column": 1
+        },
+        {
+          "title": "N9 creator selection and load-more retain Store-local date and forecast filters together",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3894,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:51:34.092Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-e9801327ace6878edec2",
+          "file": "pass020.api.spec.ts",
+          "line": 61,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "sprint011.api.spec.ts",
+      "file": "sprint011.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "011 reference candidate without winner exports with warning; lost ACK preserves intent",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10928,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:26:57",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                      "column": 57,
+                      "line": 26
+                    },
+                    "snippet": "  24 |  await expect(d.getByText('CUSTOMER_REQUIREMENTS_NOT_MET',{exact:true})).toBeVisible()\n  25 |  await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await d.getByRole('button',{name:'Thử lại cùng yêu cầu'}).click()\n> 26 |  await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible();await expect(d.getByText('Phương án tham khảo — không được khuyến nghị',{exact:true})).toBeVisible()\n     |                                                         ^\n  27 |  expect(posts).toHaveLength(2);expect(posts[0]).toEqual(posts[1]);expect(posts[0].body.option_id).toBe(option);expect(run.result!.winner_option_id).toBeNull()\n  28 |  await d.screenshot({path:'test-results/011-reference-export.png',animations:'disabled'})\n  29 | })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                        "column": 57,
+                        "line": 26
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  24 |  await expect(d.getByText('CUSTOMER_REQUIREMENTS_NOT_MET',{exact:true})).toBeVisible()\n  25 |  await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await d.getByRole('button',{name:'Thử lại cùng yêu cầu'}).click()\n> 26 |  await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible();await expect(d.getByText('Phương án tham khảo — không được khuyến nghị',{exact:true})).toBeVisible()\n     |                                                         ^\n  27 |  expect(posts).toHaveLength(2);expect(posts[0]).toEqual(posts[1]);expect(posts[0].body.option_id).toBe(option);expect(run.result!.winner_option_id).toBeNull()\n  28 |  await d.screenshot({path:'test-results/011-reference-export.png',animations:'disabled'})\n  29 | })\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:26:57"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:51:38.148Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-referenc-d1d38-g-lost-ACK-preserves-intent-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-referenc-d1d38-g-lost-ACK-preserves-intent-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-referenc-d1d38-g-lost-ACK-preserves-intent-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                    "column": 57,
+                    "line": 26
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8175f559eb93a99e62bc-b90d7c35440c49d44476",
+          "file": "sprint011.api.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "011 no retained candidate never submits export or invents a selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4131,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:51:52.422Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8175f559eb93a99e62bc-94840f46078170e847ba",
+          "file": "sprint011.api.spec.ts",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "011 artifact unavailable 503 uses explicit retry recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9023,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                      "column": 156,
+                      "line": 46
+                    },
+                    "snippet": "  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                        "column": 156,
+                        "line": 46
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:51:56.882Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-artifact-89165-ses-explicit-retry-recovery-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-artifact-89165-ses-explicit-retry-recovery-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-artifact-89165-ses-explicit-retry-recovery-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                    "column": 156,
+                    "line": 46
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8175f559eb93a99e62bc-988e579d6524debed6c1",
+          "file": "sprint011.api.spec.ts",
+          "line": 38,
+          "column": 48
+        },
+        {
+          "title": "011 artifact unavailable 503 uses explicit new recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 14,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9375,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                      "column": 156,
+                      "line": 46
+                    },
+                    "snippet": "  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                        "column": 156,
+                        "line": 46
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:52:07.542Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-artifact-4fb26--uses-explicit-new-recovery-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-artifact-4fb26--uses-explicit-new-recovery-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-artifact-4fb26--uses-explicit-new-recovery-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                    "column": 156,
+                    "line": 46
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8175f559eb93a99e62bc-662e9e4f30be06ea4d34",
+          "file": "sprint011.api.spec.ts",
+          "line": 38,
+          "column": 48
+        },
+        {
+          "title": "011 revoked download permission prevents retry and new export actions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 15,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9313,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:64:156",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                      "column": 156,
+                      "line": 64
+                    },
+                    "snippet": "  62 |   if(path.endsWith('/exports/'+exp))return errorResponse(403,'PERMISSION_DENIED')\n  63 |  })\n> 64 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  65 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Không còn quyền tải PDF'})).toBeVisible()\n  66 |  await expect(d.getByRole('button',{name:/Tải PDF|Thử lại tải|Tạo export mới|Thử tải lại artifact/})).toHaveCount(0);expect(writes).toBe(1)\n  67 | })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                        "column": 156,
+                        "line": 64
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  62 |   if(path.endsWith('/exports/'+exp))return errorResponse(403,'PERMISSION_DENIED')\n  63 |  })\n> 64 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  65 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Không còn quyền tải PDF'})).toBeVisible()\n  66 |  await expect(d.getByRole('button',{name:/Tải PDF|Thử lại tải|Tạo export mới|Thử tải lại artifact/})).toHaveCount(0);expect(writes).toBe(1)\n  67 | })\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:64:156"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:52:19.230Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-revoked--6bdcf-etry-and-new-export-actions-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-revoked--6bdcf-etry-and-new-export-actions-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-current-04\\artifacts\\sprint011.api-011-revoked--6bdcf-etry-and-new-export-actions-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                    "column": 156,
+                    "line": 64
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8175f559eb93a99e62bc-8586d4bd3c3a9505e70b",
+          "file": "sprint011.api.spec.ts",
+          "line": 56,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "store-journal.api.spec.ts",
+      "file": "store-journal.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "T03 unknown -> reload restores exact intent; empty readback stays locked; explicit replay uses fresh CSRF",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6225,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:52:30.452Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e5f251a0e1b7eed093b-2e75c509dc9fb468cf39",
+          "file": "store-journal.api.spec.ts",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "T03 unavailable durable storage prevents any initial dispatch",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2782,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:52:36.952Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e5f251a0e1b7eed093b-475083a1424e2ddc9fc7",
+          "file": "store-journal.api.spec.ts",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "T03 write transaction failure prevents dispatch even when storage reads succeed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3603,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:52:39.764Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e5f251a0e1b7eed093b-97e601469739fb48473c",
+          "file": "store-journal.api.spec.ts",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "T03 switching account hides another actor intent and restores it only for matching actor",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7997,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:52:43.395Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e5f251a0e1b7eed093b-0aa23420b60ad1edc1db",
+          "file": "store-journal.api.spec.ts",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "T03 wrong current cookie account blocks replay before POST",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3692,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:52:51.424Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e5f251a0e1b7eed093b-acab135fdbb30ca4dce5",
+          "file": "store-journal.api.spec.ts",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "T03 two tabs share one intent and cannot dispatch concurrently; replay keeps original key",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6930,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:52:55.153Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e5f251a0e1b7eed093b-9fb1861fa0fd4d9b0a8c",
+          "file": "store-journal.api.spec.ts",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "T03 late original success after reload is reconciled only with original key",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6138,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:53:02.118Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e5f251a0e1b7eed093b-ce47b385f8d58427a69d",
+          "file": "store-journal.api.spec.ts",
+          "line": 58,
+          "column": 1
+        },
+        {
+          "title": "T03 denied replay keeps original uncertainty across reload and never unlocks a replacement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 16,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6598,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:53:08.290Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5e5f251a0e1b7eed093b-97634597f109a2357624",
+          "file": "store-journal.api.spec.ts",
+          "line": 64,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T01:38:21.192Z",
+    "duration": 895334.685,
+    "expected": 83,
+    "skipped": 0,
+    "unexpected": 13,
+    "flaky": 0
+  }
+}

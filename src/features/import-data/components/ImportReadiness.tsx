@@ -11,6 +11,8 @@ import type { PlanningReadiness } from '../../decision-planning/planning.types'
 import { shiftPlanningDate } from '../../decision-planning/planning.validation'
 import {readImportReadiness} from '../importReadiness.data'
 import type {WireReadiness} from '../importFlow.wire'
+import { ReadinessSegments } from '../../../shared/visual-intelligence/VisualIntelligence'
+import { importReadinessSegments } from '../import.visual'
 
 type Assessment = { status: 'idle' } | { status: 'loading' } | { status: 'error'; message: string; permission: boolean } | { status: 'loaded'; value: PlanningReadiness | WireReadiness }
 
@@ -47,6 +49,7 @@ export function ImportReadiness({preview}:{preview?:PlanningReadiness} = {}) {
   return <section className="input-readiness" aria-labelledby="import-planning-readiness">
     <header><div><small>Readiness</small><h2 id="import-planning-readiness">Khả năng lập kế hoạch</h2></div><span className="import-page__step" data-brand-success={ready && !denied && !unavailable}>{denied?'Không có quyền':unavailable?'Tạm thời không khả dụng':assessment.status === 'loading' ? 'Đang kiểm tra' : action ? ready ? 'Đủ dữ liệu' : action.availability === 'blocked' ? 'Cần bổ sung' : 'Chưa xác định' : 'Chưa đánh giá'}</span></header>
     {(selecting||assessment.status!=='idle')&&<label>Ngày bắt đầu kế hoạch<input type="date" value={date} disabled={assessment.status === 'loading'} onChange={event => setDate(event.target.value)} /></label>}
+    <ReadinessSegments items={importReadinessSegments(action,denied?'permission':unavailable?'error':assessment.status==='loaded'?'loaded':assessment.status==='loading'?'loading':'pending')} note="Theo hành động planning và ngày đã chọn. Chưa có đánh giá riêng từng nguồn không đồng nghĩa nguồn đã hoàn tất."/>
     {!canRead && <p className="input-status">Bạn chưa có quyền xem đánh giá lập kế hoạch.</p>}
     <button className="input-primary" disabled={!canRead || !date || assessment.status === 'loading'} onClick={() => { if(!selecting&&assessment.status==='idle')setSelecting(true);else void assess() }}>{assessment.status === 'loading' ? 'Đang kiểm tra…' : 'Kiểm tra Readiness'}</button>
     {unknown&&<p className="input-status" role="status">Chưa thể xác định readiness. Kết quả import đã hoàn tất không bị ảnh hưởng.</p>}

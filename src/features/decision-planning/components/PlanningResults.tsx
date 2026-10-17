@@ -6,6 +6,7 @@ import type { PlanningIngredient, PlanningIngredients, PlanningReasons, Planning
 import { formatPlanningDate, formatPlanningMoney, formatPlanningQuantity, planningStrategyLabels } from '../planning.format'
 import { PlanningEngineReasons, PlanningIngredientPanel, PlanningNotifications, PlanningOptionFacts, PlanningPurchases } from './PlanningEvidence'
 import './Planning.css'
+import { PlanningBudgetShare, PlanningStrategyDelta } from './PlanningVisualIntelligence'
 
 export type PlanningResultsProps = {
   assistantAction?: ReactNode
@@ -79,7 +80,7 @@ export function PlanningResults(props: PlanningResultsProps) {
     </div>
     <section ref={panelRef} className="sc-proc-tab-panel" role="tabpanel" id={`${prefix}-panel-${tab}`} aria-labelledby={`${prefix}-tab-${tab}`} tabIndex={0}>
       {tab === 'overview' && <div className="sc-proc-overview">
-        <div className="sc-proc-kpi-grid"><article className="sc-proc-kpi"><h2>Chi phí dự kiến</h2><strong>{formatPlanningMoney(winner?.costs.total, run.configuration.budget.currency)}</strong><span>{partialFailure && winner ? 'Phương án một phần đã lưu; lần chạy thất bại' : winner ? 'Tổng chi phí canonical của phương án được chọn' : 'Chưa có khuyến nghị hoàn tất'}</span></article>
+        <div className="sc-proc-kpi-grid"><article className="sc-proc-kpi"><h2>Chi phí dự kiến</h2><strong>{formatPlanningMoney(winner?.costs.total, run.configuration.budget.currency)}</strong><span>{partialFailure && winner ? 'Phương án một phần đã lưu; lần chạy thất bại' : winner ? 'Tổng chi phí canonical của phương án được chọn' : 'Chưa có khuyến nghị hoàn tất'}</span><PlanningBudgetShare option={winner} limit={run.configuration.budget.limit} currency={run.configuration.budget.currency}/></article>
           <article className="sc-proc-kpi"><h2>Cần nhập</h2><strong>Chưa biết</strong><span>{winner ? `${winner.purchases.length} dòng mua; chưa có tổng nguyên liệu toàn kế hoạch` : 'Chưa có tổng nguyên liệu toàn kế hoạch'}</span></article>
           <article className="sc-proc-kpi"><h2>Mức đáp ứng</h2><strong>Chưa đánh giá</strong><span>Không có tỷ lệ tổng; xem theo món và đường nhu cầu</span></article></div>
         <section className="sc-proc-priority-purchases"><header><h2>{partialFailure ? 'Dữ liệu mua hàng một phần' : 'Kế hoạch mua hàng'}</h2><span className="sc-proc-strategy-badge">{winner ? winner.source_strategies.map((strategy) => planningStrategyLabels[strategy]).join(' / ') : 'Chưa có chiến lược được chọn'}</span></header>
@@ -119,7 +120,7 @@ export function PlanningResults(props: PlanningResultsProps) {
           {props.hasMoreIngredients && <button type="button" className="sc-proc-text-action planning-page-count" disabled={busy || detailBusy} onClick={onMoreIngredients}>Đọc thêm nguyên liệu</button>}
         </section>
         <div>{detailBusy && <p role="status">Đang đọc bằng chứng nguyên liệu…</p>}{props.detailError && <p role="alert">{props.detailError}</p>}
-          {ingredient ? <PlanningIngredientPanel ingredient={ingredient} currency={run.configuration.budget.currency} /> : <p className="sc-proc-empty-state">Chọn nguyên liệu để xem bằng chứng đã lưu theo ngày.</p>}
+          {ingredient ? <PlanningIngredientPanel ingredient={ingredient} currency={run.configuration.budget.currency} start={run.request.forecast_start_date} /> : <p className="sc-proc-empty-state">Chọn nguyên liệu để xem bằng chứng đã lưu theo ngày.</p>}
         </div>
       </div>}
       {tab === 'strategies' && <div className="sc-proc-strategies">
@@ -133,7 +134,7 @@ export function PlanningResults(props: PlanningResultsProps) {
           </button>
         })}</div>
         {selectedOptionId && <button type="button" className="sc-proc-text-action" disabled={busy || detailBusy} onClick={() => onSelectOption(null)}>Trở về phương án được chọn</button>}
-        {selected && <><PlanningOptionFacts option={selected} run={run} /><PlanningPurchases option={selected} currency={run.configuration.budget.currency} nameFor={nameFor} onInspect={inspect} /></>}
+        {selected && <><PlanningStrategyDelta current={selected} baseline={result?.options.find(option=>option.option_id===result.strategies.find(strategy=>strategy.strategy==='balanced')?.option_id)} currency={run.configuration.budget.currency}/><PlanningOptionFacts option={selected} run={run} /><PlanningPurchases option={selected} currency={run.configuration.budget.currency} nameFor={nameFor} onInspect={inspect} /></>}
         {!result?.strategies.length && <p>Chưa có dữ liệu so sánh chiến lược.</p>}
       </div>}
       {tab==='reasons'&&<section className="sc-proc-reasons-section"><h2>Lý do lựa chọn phương án</h2><p className="sc-planning-note">Bằng chứng của lần chạy đã lưu, độc lập với dữ liệu cửa hàng hiện tại.</p>{props.reasonsError&&<p className="sc-proc-warning" role="alert">{props.reasonsError}</p>}{detailBusy&&<p role="status">Đang tải lý do…</p>}{reasons?<PlanningEngineReasons reasons={reasons}/>:<p>Chưa đọc được bằng chứng lựa chọn. Các phần đã tải vẫn có thể xem.</p>}<button type="button" className="sc-proc-secondary-action" disabled={busy||detailBusy} onClick={onLoadReasons}>Thử lại lý do từ engine</button></section>}

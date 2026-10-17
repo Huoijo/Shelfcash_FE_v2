@@ -1,0 +1,2 @@
+{"type":"receive","time":1792201071000.006,"opcode":1,"data":"{\"type\":\"connected\"}"}
+{"type":"receive","time":1792201071002.924,"opcode":1,"data":"{\"type\":\"full-reload\",\"path\":\"/docs/testing/visual-intelligence-20261017/e2e-current-03/artifacts/.playwright-artifacts-1/traces/resources/d23f5f7677f6406e34149d1f3a49ed454e47da06.html\"}"}

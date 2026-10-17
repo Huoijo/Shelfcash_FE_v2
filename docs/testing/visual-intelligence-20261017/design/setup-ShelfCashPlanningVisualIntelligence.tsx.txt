@@ -1,0 +1,153 @@
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { displayBusinessDate, parseBudgetInput } from './ShelfCashPlanningData';
+import './ShelfCashPlanningVisualIntelligence.css';
+type BudgetMode = 'inherited' | 'custom' | 'no-ceiling' | 'zero-ceiling' | 'forbidden';
+type ReadinessMode = 'ready' | 'warnings' | 'blocked';
+type Snapshot = {
+  businessDate: string;
+  horizon: string;
+  requirement: string;
+  runBudgetInput: string;
+  budgetMode: BudgetMode;
+  readiness: ReadinessMode;
+};
+const money = (value: number) => `${value.toLocaleString('vi-VN')} ₫`;
+function readSnapshot(): Snapshot | null {
+  const main = document.querySelector('.sc-planning-content[aria-labelledby="sc-planning-page-title"]');
+  if (!main) return null;
+  const date = main.querySelector('.sc-planning-native-date') as HTMLInputElement | null;
+  const horizon = main.querySelector('.sc-planning-main-fields-two select') as HTMLSelectElement | null;
+  const requirement = main.querySelector('.sc-planning-mode-tabs button[aria-selected="true"]') as HTMLButtonElement | null;
+  const budget = main.querySelector('.sc-planning-currency-control input') as HTMLInputElement | null;
+  const budgetMode = main.querySelector('.sc-planning-internal-state') as HTMLSelectElement | null;
+  const readiness = main.querySelector('.sc-planning-readiness') as HTMLElement | null;
+  return {
+    businessDate: date?.value || '',
+    horizon: horizon?.selectedOptions[0]?.textContent?.trim() || 'Không khả dụng',
+    requirement: requirement?.textContent?.trim() || 'Không khả dụng',
+    runBudgetInput: budget?.value || '',
+    budgetMode: (budgetMode?.value || 'inherited') as BudgetMode,
+    readiness: (readiness?.dataset.state || 'ready') as ReadinessMode
+  };
+}
+function readinessCopy(mode: ReadinessMode) {
+  if (mode === 'blocked') return {
+    glyph: '!',
+    label: 'Bị chặn',
+    detail: 'Backend chưa cho phép tạo run'
+  };
+  if (mode === 'warnings') return {
+    glyph: '!',
+    label: 'Có cảnh báo',
+    detail: 'Có thể chạy · non-blocking'
+  };
+  return {
+    glyph: '✓',
+    label: 'Sẵn sàng',
+    detail: 'Backend cho phép tạo run'
+  };
+}
+function PlanningContextRail({
+  snapshot
+}: {
+  snapshot: Snapshot;
+}) {
+  const budget = parseBudgetInput(snapshot.runBudgetInput);
+  const readiness = readinessCopy(snapshot.readiness);
+  const budgetLabel = snapshot.budgetMode === 'forbidden' ? 'Không khả dụng' : budget === null ? 'Chưa hợp lệ' : money(budget);
+  return <section className="sc-pvi-context" aria-label="Planning context của lần chạy đang cấu hình">
+    <header><span>Planning context</span><strong>Các facts sẽ được capture khi tạo run</strong></header>
+    <div className="sc-pvi-context-grid">
+      <div><span>Ngày tham chiếu</span><strong>{displayBusinessDate(snapshot.businessDate) || 'Chưa chọn'}</strong></div>
+      <div><span>Kỳ kế hoạch</span><strong>{snapshot.horizon}</strong></div>
+      <div><span>Nguồn yêu cầu</span><strong>{snapshot.requirement}</strong></div>
+      <div><span>Ngân sách run</span><strong>{budgetLabel}</strong></div>
+      <div className={`sc-pvi-readiness-summary is-${snapshot.readiness}`}><span>Readiness backend</span><strong><i aria-hidden="true">{readiness.glyph}</i>{readiness.label}</strong><small>{readiness.detail}</small></div>
+    </div>
+  </section>;
+}
+function BudgetRelationship({
+  snapshot
+}: {
+  snapshot: Snapshot;
+}) {
+  const runBudget = parseBudgetInput(snapshot.runBudgetInput);
+  const ceiling = snapshot.budgetMode === 'zero-ceiling' ? 0 : snapshot.budgetMode === 'inherited' || snapshot.budgetMode === 'custom' ? 50_000_000 : null;
+  const unavailable = snapshot.budgetMode === 'forbidden';
+  const noCeiling = snapshot.budgetMode === 'no-ceiling';
+  const canPlot = !unavailable && !noCeiling && ceiling !== null && ceiling > 0 && runBudget !== null;
+  const ratio = canPlot ? runBudget! / ceiling! : null;
+  const percent = ratio === null ? null : Math.round(ratio * 100);
+  const fill = ratio === null ? 0 : Math.max(0, Math.min(100, ratio * 100));
+  const over = ratio !== null && ratio > 1;
+  const modeLabel = snapshot.budgetMode === 'custom' ? 'Run tùy chỉnh' : snapshot.budgetMode === 'inherited' ? 'Kế thừa trần Store' : snapshot.budgetMode === 'zero-ceiling' ? 'Trần Store = 0 ₫' : snapshot.budgetMode === 'no-ceiling' ? 'Store không có trần' : 'Giới hạn quyền';
+  const aria = unavailable ? 'Không thể xem quan hệ ngân sách vì dữ liệu trần Store bị giới hạn quyền.' : noCeiling ? `Ngân sách run ${runBudget === null ? 'chưa hợp lệ' : money(runBudget)}. Store không có trần ngân sách được cấu hình.` : ceiling === 0 ? `Ngân sách run ${runBudget === null ? 'chưa hợp lệ' : money(runBudget)}. Trần Store là 0 đồng, không diễn giải thành không có trần.` : canPlot ? `Ngân sách run ${money(runBudget!)} bằng ${percent} phần trăm trần Store ${money(ceiling!)}.` : 'Chưa đủ dữ liệu hợp lệ để biểu diễn quan hệ ngân sách.';
+  return <section className={`sc-pvi-budget${over ? ' is-over' : ''}`} aria-label={aria}>
+    <header><div><span>Quan hệ ngân sách</span><strong>{modeLabel}</strong></div><small>Run budget ≠ tiền đã chi</small></header>
+    <div className="sc-pvi-budget-values">
+      <div><span>Ngân sách run</span><strong>{unavailable ? 'Được backend xác thực khi tạo run' : runBudget === null ? 'Chưa hợp lệ' : money(runBudget)}</strong></div>
+      <div><span>Trần Store</span><strong>{unavailable ? 'Không khả dụng' : noCeiling ? 'Không cấu hình' : ceiling === null ? 'Không khả dụng' : money(ceiling)}</strong></div>
+    </div>
+    {canPlot ? <><div className="sc-pvi-budget-rail" role="img" aria-label={aria}><i style={{
+          width: `${fill}%`
+        }} /></div><div className="sc-pvi-budget-scale"><span>0 ₫</span><strong>{over ? `${percent}% · vượt trần retained` : `${percent}% trần Store`}</strong><span>{money(ceiling!)}</span></div></> : <div className="sc-pvi-budget-unavailable"><strong>{unavailable ? 'Không hiển thị tỷ lệ vì không có quyền xem trần Store.' : noCeiling ? 'Không có mẫu số: “không cấu hình trần” khác với 0 ₫.' : ceiling === 0 ? 'Không tạo tỷ lệ khi mẫu số là 0 ₫.' : 'Nhập ngân sách run hợp lệ để xem quan hệ.'}</strong></div>}
+    <p>Rail chỉ so sánh ngân sách run với trần Store khi cả hai giá trị có nghĩa. Không phải health score, confidence hay tiến độ.</p>
+  </section>;
+}
+export function ShelfCashPlanningVisualIntelligence() {
+  const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
+  const [contextHost, setContextHost] = useState<Element | null>(null);
+  const [budgetHost, setBudgetHost] = useState<Element | null>(null);
+  useEffect(() => {
+    let frame = 0;
+    const sync = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const main = document.querySelector('.sc-planning-content[aria-labelledby="sc-planning-page-title"]');
+        if (!main) {
+          setSnapshot(null);
+          setContextHost(null);
+          setBudgetHost(null);
+          return;
+        }
+        const heading = main.querySelector('.sc-planning-page-heading');
+        let contextAnchor = main.querySelector(':scope > .sc-pvi-context-anchor');
+        if (heading && !contextAnchor) {
+          contextAnchor = document.createElement('div');
+          contextAnchor.className = 'sc-pvi-context-anchor';
+          heading.insertAdjacentElement('afterend', contextAnchor);
+        }
+        const budget = main.querySelector('.sc-planning-budget');
+        let budgetAnchor = budget?.querySelector(':scope > .sc-pvi-budget-anchor') || null;
+        if (budget && !budgetAnchor) {
+          budgetAnchor = document.createElement('div');
+          budgetAnchor.className = 'sc-pvi-budget-anchor';
+          budget.appendChild(budgetAnchor);
+        }
+        setContextHost(contextAnchor);
+        setBudgetHost(budgetAnchor);
+        setSnapshot(readSnapshot());
+      });
+    };
+    const observer = new MutationObserver(sync);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['aria-selected', 'data-state', 'value']
+    });
+    document.addEventListener('input', sync, true);
+    document.addEventListener('change', sync, true);
+    sync();
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('input', sync, true);
+      document.removeEventListener('change', sync, true);
+      cancelAnimationFrame(frame);
+      document.querySelectorAll('.sc-pvi-context-anchor,.sc-pvi-budget-anchor').forEach(node => node.remove());
+    };
+  }, []);
+  if (!snapshot) return null;
+  return <>{contextHost && createPortal(<PlanningContextRail snapshot={snapshot} />, contextHost)}{budgetHost && createPortal(<BudgetRelationship snapshot={snapshot} />, budgetHost)}</>;
+}

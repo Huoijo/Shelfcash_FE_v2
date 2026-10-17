@@ -1,0 +1,110 @@
+import type { IngredientInventoryInfo, InventorySnapshot } from './ShelfCashInventoryData';
+import { expiryDays, expiryRemainingLabel, firstUsableLot, formatInventoryDate, movementLabels, movementQuantity, stockQuantity } from './ShelfCashInventoryData';
+export type InventoryIntelligenceState = 'ready' | 'loading' | 'error';
+function IntelligenceState({
+  state
+}: {
+  state: Exclude<InventoryIntelligenceState, 'ready'>;
+}) {
+  return <section className={`sc-stock-intel-state sc-stock-intel-state-${state}`} role={state === 'error' ? 'alert' : 'status'} data-mp-layer-name={`Inventory Intelligence · ${state}`}>
+    {state === 'loading' ? <><span className="sc-stock-intel-static-skeleton" aria-hidden="true" /><span>Đang tải chi tiết định lượng…</span></> : <><strong>Chưa thể tải chi tiết định lượng</strong><span>Tồn kho và danh sách lô vẫn giữ nguyên.</span></>}
+  </section>;
+}
+export function CoverageContractCard() {
+  return <section className="sc-stock-intel-card sc-stock-coverage-contract" aria-label="Độ phủ tồn kho chưa khả dụng" data-component="Coverage Contract State" data-mp-layer-name="Coverage · DATA CONTRACT REQUIRED">
+    <header><div><span>Độ phủ tồn kho</span><strong>Chưa có demand contract</strong></div><small>Stock coverage</small></header>
+    <div className="sc-stock-coverage-unavailable" role="img" aria-label="Chưa thể tính số ngày coverage vì snapshot tồn kho không có expected demand"><span aria-hidden="true">?</span><i aria-hidden="true" /></div>
+    <p>Chưa thể tính số ngày coverage từ snapshot tồn kho hiện tại.</p>
+    <b>DATA CONTRACT REQUIRED</b>
+  </section>;
+}
+export function LotCompositionRail({
+  info,
+  snapshot
+}: {
+  info: IngredientInventoryInfo;
+  snapshot: InventorySnapshot;
+}) {
+  const priority = firstUsableLot(info, snapshot.asOfDate);
+  if (!info.lots.length) return <section className="sc-stock-intel-card sc-stock-intel-unavailable"><header><div><span>Phân bổ theo lô</span><strong>Chưa có lô</strong></div></header><p>Không có dữ liệu lô để tạo composition rail.</p></section>;
+  const description = info.lots.map(lot => `${lot.code ?? 'Chưa có mã'}: ${stockQuantity(lot.quantity, info.ingredient.unit)}, ${expiryRemainingLabel(expiryDays(lot.expiryDate, snapshot.asOfDate))}`).join('; ');
+  return <section className="sc-stock-intel-card sc-stock-lot-composition" data-component="Lot Composition Rail" data-mp-layer-name="Lot Composition Rail">
+    <header><div><span>Phân bổ theo lô</span><strong>{info.lots.length} lô</strong></div><small>Theo lượng tồn hiện tại</small></header>
+    <div className="sc-stock-composition-track" role="img" aria-label={`Phân bổ ${stockQuantity(info.total, info.ingredient.unit)}. ${description}`}>
+      {info.lots.map(lot => {
+        const days = expiryDays(lot.expiryDate, snapshot.asOfDate);
+        const expired = lot.state === 'expired' || days !== null && days < 0;
+        const near = !expired && lot.state === 'near-expiry';
+        const recommended = priority?.id === lot.id;
+        return <span key={lot.id} className={`sc-stock-composition-segment${expired ? ' is-expired' : near ? ' is-near' : ''}${recommended ? ' is-priority' : ''}`} style={{
+          flexGrow: Math.max(lot.quantity, .0001)
+        }} title={`${lot.code ?? 'Chưa có mã'} · ${stockQuantity(lot.quantity, info.ingredient.unit)} · ${expiryRemainingLabel(days)}`} />;
+      })}
+    </div>
+    <ul className="sc-stock-composition-legend">{info.lots.map(lot => {
+        const days = expiryDays(lot.expiryDate, snapshot.asOfDate);
+        const expired = lot.state === 'expired' || days !== null && days < 0;
+        const near = !expired && lot.state === 'near-expiry';
+        const recommended = priority?.id === lot.id;
+        return <li key={lot.id}><i className={`${expired ? 'is-expired' : near ? 'is-near' : 'is-stable'}`} aria-hidden="true" /><div><strong>{lot.code ?? 'Chưa có mã'}</strong><span>{stockQuantity(lot.quantity, info.ingredient.unit)} · {expiryRemainingLabel(days)}</span></div>{recommended && <em>Ưu tiên dùng trước</em>}</li>;
+      })}</ul>
+  </section>;
+}
+export function ExpiryHorizon({
+  info,
+  snapshot
+}: {
+  info: IngredientInventoryInfo;
+  snapshot: InventorySnapshot;
+}) {
+  const lot = info.lots.find(item => item.expiryDate !== null);
+  if (!lot || !lot.expiryDate) return <section className="sc-stock-intel-card sc-stock-intel-unavailable"><header><div><span>Hạn dùng gần nhất</span><strong>Chưa có HSD</strong></div></header><p>Missing expiry không được hiển thị như 0 ngày.</p></section>;
+  const days = expiryDays(lot.expiryDate, snapshot.asOfDate);
+  const expired = lot.state === 'expired' || days !== null && days < 0;
+  const near = !expired && lot.state === 'near-expiry';
+  const tone = expired ? ' is-expired' : near ? ' is-near' : '';
+  return <section className={`sc-stock-intel-card sc-stock-expiry-horizon${tone}`} data-component="Expiry Horizon" data-mp-layer-name="Expiry Horizon">
+    <header><div><span>Hạn dùng gần nhất</span><strong>Lô {lot.code ?? 'chưa có mã'}</strong></div><small>{expired ? 'Hết hạn' : near ? 'Gần hạn' : 'Đang theo dõi'}</small></header>
+    <div className="sc-stock-expiry-line" role="img" aria-label={`Mốc dữ liệu ${formatInventoryDate(snapshot.asOfDate)}, hạn dùng ${formatInventoryDate(lot.expiryDate)}, ${expiryRemainingLabel(days)}`}><span className="start">Mốc dữ liệu<br /><b>{formatInventoryDate(snapshot.asOfDate)}</b></span><div aria-hidden="true"><i /><em>{expiryRemainingLabel(days)}</em><b /></div><span className="end">HSD<br /><b>{formatInventoryDate(lot.expiryDate)}</b></span></div>
+    {(near || expired) && <p>Trạng thái cảnh báo lấy từ trạng thái lô hiện có; không tự đặt ngưỡng ngày mới.</p>}
+  </section>;
+}
+export function MovementMicroTrend({
+  info
+}: {
+  info: IngredientInventoryInfo;
+}) {
+  if (!info.movements.length) return <section className="sc-stock-intel-card sc-stock-intel-unavailable"><header><div><span>Nhịp biến động gần đây</span><strong>Chưa có lịch sử</strong></div></header><p>Không vẽ synthetic history khi chưa có movement records.</p></section>;
+  const points = [...info.movements].slice(0, 7).reverse();
+  const max = Math.max(...points.map(point => Math.abs(point.quantity)), 1);
+  const summary = points.map(point => `${formatInventoryDate(point.occurredAt)} ${movementQuantity(point.quantity, info.ingredient.unit)} ${movementLabels[point.kind]}`).join('; ');
+  return <section className="sc-stock-intel-card sc-stock-movement-trend" data-component="Inventory Movement Micro Trend" data-mp-layer-name="Inventory Movement Micro Trend"><header><div><span>Nhịp biến động gần đây</span><strong>{points.length} ghi nhận</strong></div><small>Movement delta</small></header><div className="sc-stock-microtrend" role="img" aria-label={summary}><span className="sc-stock-microtrend-baseline" aria-hidden="true" />{points.map(point => {
+        const size = Math.max(5, Math.round(Math.abs(point.quantity) / max * 26));
+        const positive = point.quantity >= 0;
+        return <div className="sc-stock-microtrend-point" key={point.id}><div className="sc-stock-microtrend-barbox" aria-hidden="true"><i className={positive ? 'positive' : 'negative'} style={{
+              height: `${size}px`
+            }} /></div><time>{formatInventoryDate(point.occurredAt).slice(0, 5)}</time><strong>{movementQuantity(point.quantity, info.ingredient.unit)}</strong></div>;
+      })}</div><p>Biểu diễn delta đã ghi nhận; không suy ra tồn kho lịch sử giữa các mốc.</p></section>;
+}
+export function LotIntelligence({
+  info,
+  snapshot,
+  state = 'ready'
+}: {
+  info: IngredientInventoryInfo;
+  snapshot: InventorySnapshot;
+  state?: InventoryIntelligenceState;
+}) {
+  if (state !== 'ready') return <IntelligenceState state={state} />;
+  return <div className="sc-stock-intelligence-stack" data-mp-layer-name="Lot Visual Intelligence"><div className="sc-stock-intel-context">Mốc dữ liệu: <strong>{formatInventoryDate(snapshot.asOfDate)}</strong></div><LotCompositionRail info={info} snapshot={snapshot} /><ExpiryHorizon info={info} snapshot={snapshot} /><CoverageContractCard /></div>;
+}
+export function MovementIntelligence({
+  info,
+  state = 'ready'
+}: {
+  info: IngredientInventoryInfo;
+  state?: InventoryIntelligenceState;
+}) {
+  if (state !== 'ready') return <IntelligenceState state={state} />;
+  return <div className="sc-stock-intelligence-stack" data-mp-layer-name="Movement Visual Intelligence"><MovementMicroTrend info={info} /></div>;
+}

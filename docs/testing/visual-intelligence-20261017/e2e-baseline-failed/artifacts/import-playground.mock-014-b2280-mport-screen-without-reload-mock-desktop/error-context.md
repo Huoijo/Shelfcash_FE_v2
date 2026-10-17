@@ -1,0 +1,247 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: import-playground.mock.spec.ts >> 014 every catalog scenario renders the actual Import screen without reload
+- Location: tests\e2e\import-playground.mock.spec.ts:17:1
+
+# Error details
+
+```
+Test timeout of 60000ms exceeded.
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - link "Đi tới nội dung" [ref=e4] [cursor=pointer]:
+      - /url: "#app-content"
+    - complementary "Điều hướng ứng dụng" [ref=e5]:
+      - button "Thu gọn sidebar" [expanded] [ref=e7] [cursor=pointer]
+      - navigation "Các phân hệ ShelfCash" [ref=e11]:
+        - link "Hôm nay" [ref=e12] [cursor=pointer]:
+          - /url: /today
+        - link "Nhập dữ liệu" [ref=e15] [cursor=pointer]:
+          - /url: /imports
+        - link "Dự đoán" [ref=e18] [cursor=pointer]:
+          - /url: /forecast
+        - link "Kho" [ref=e21] [cursor=pointer]:
+          - /url: /inventory
+        - link "Menu" [ref=e24] [cursor=pointer]:
+          - /url: /menu
+        - link "Cửa hàng" [ref=e27] [cursor=pointer]:
+          - /url: /store
+    - generic [ref=e32]:
+      - banner [ref=e33]:
+        - generic [ref=e34]: Nhập dữ liệu
+        - generic [ref=e35]: ShelfCash
+        - link "Thông báo" [ref=e36] [cursor=pointer]:
+          - /url: /notifications
+      - main "Nhập dữ liệu" [ref=e39]:
+        - generic [ref=e41]:
+          - heading "Nhập dữ liệu" [level=1] [ref=e42]
+          - generic [ref=e43]: STAFF FLOW
+        - paragraph [ref=e44]: Reuse khi an toàn, xử lý khi cần; chỉ gửi Owner duyệt khi cách đọc reusable thay đổi.
+        - navigation "Tiện ích nhập dữ liệu" [ref=e45]:
+          - generic [ref=e46] [cursor=pointer]: Nhập mới
+          - link "Lịch sử" [ref=e47] [cursor=pointer]:
+            - /url: /imports/history
+        - list "Tiến trình nhập dữ liệu 6 bước" [ref=e48]:
+          - listitem [ref=e49]:
+            - generic [ref=e50]: ✓
+            - generic [ref=e51]:
+              - strong [ref=e52]: File
+              - generic [ref=e53]: Tải dữ liệu
+          - listitem [ref=e54]:
+            - generic [ref=e55]: ✓
+            - generic [ref=e56]:
+              - strong [ref=e57]: Phân tích
+              - generic [ref=e58]: Đọc nguồn
+          - listitem [ref=e59]:
+            - generic [ref=e60]: ✓
+            - generic [ref=e61]:
+              - strong [ref=e62]: Kiểm tra
+              - generic [ref=e63]: Cách hiểu
+          - listitem [ref=e64]:
+            - generic [ref=e65]: ✓
+            - generic [ref=e66]:
+              - strong [ref=e67]: Xem trước
+              - generic [ref=e68]: Read-only
+          - listitem [ref=e69]:
+            - generic [ref=e70]: ✓
+            - generic [ref=e71]:
+              - strong [ref=e72]: Xác nhận
+              - generic [ref=e73]: Commit
+          - listitem [ref=e74]:
+            - generic [ref=e75]: "6"
+            - generic [ref=e76]:
+              - strong [ref=e77]: Hoàn tất
+              - generic [ref=e78]: Readiness
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - term [ref=e81]: Store
+            - definition [ref=e82]: Cửa hàng A
+          - generic [ref=e83]:
+            - term [ref=e84]: File
+            - definition [ref=e85]: 1 file · 1 sheets
+          - generic [ref=e86]:
+            - term [ref=e87]: Nguồn
+            - definition [ref=e88]: Nguồn cửa hàng · Kiểm kê tồn kho
+          - generic [ref=e89]:
+            - term [ref=e90]: Trạng thái
+            - definition [ref=e91]: Import hoàn tất
+        - paragraph [ref=e92]: "Bước hiện tại: Lô có biên nhận hoàn tất"
+        - region [ref=e93]:
+          - heading "6. Hoàn tất" [level=2] [ref=e94]
+          - generic [ref=e95]:
+            - generic [ref=e96]:
+              - text: Bước 6/6 · Hoàn tất
+              - heading "Import đã hoàn tất" [level=2] [ref=e97]
+              - paragraph [ref=e98]: Batch đã commit thành công. Readiness được đánh giá riêng bên dưới.
+            - region [ref=e99]:
+              - generic [ref=e100]:
+                - heading "2 rows đã được commit" [level=3] [ref=e101]:
+                  - generic [aria-hidden] [ref=e102]: ✓
+                  - text: 2 rows đã được commit
+                - generic [ref=e103]: "Ngày dữ liệu: 10/10/2026"
+              - generic [ref=e104]:
+                - generic [ref=e105]:
+                  - term [ref=e106]: dòng đã xử lý
+                  - definition [ref=e107]: "2"
+                - generic [ref=e108]:
+                  - term [ref=e109]: mới
+                  - definition [ref=e110]: "0"
+                - generic [ref=e111]:
+                  - term [ref=e112]: cập nhật
+                  - definition [ref=e113]: "2"
+                - generic [ref=e114]:
+                  - term [ref=e115]: không đổi
+                  - definition [ref=e116]: "0"
+              - status [ref=e117]: Hoàn tất với 1 cảnh báo.
+            - generic [ref=e118]:
+              - generic [ref=e119]:
+                - heading "Kho" [level=3] [ref=e120]
+                - paragraph [ref=e121]:
+                  - strong [ref=e122]: "2"
+                  - text: nguyên liệu bị ảnh hưởng
+                - link "Xem kho" [ref=e123] [cursor=pointer]:
+                  - /url: /inventory
+                - generic [ref=e124]: Đã cập nhật
+              - generic [ref=e125]:
+                - heading "Menu" [level=3] [ref=e126]
+                - paragraph [ref=e127]:
+                  - strong [ref=e128]: "0"
+                  - text: món bị ảnh hưởng
+                - link "Xem menu" [ref=e129] [cursor=pointer]:
+                  - /url: /menu
+                - generic [ref=e130]: Không cập nhật
+              - generic [ref=e131]:
+                - heading "Bán hàng" [level=3] [ref=e132]
+                - paragraph [ref=e133]:
+                  - strong [ref=e134]: "0"
+                  - text: bản ghi mới
+                - generic [ref=e135]: Không cập nhật bán hàng
+            - region [ref=e136]:
+              - generic [ref=e137]:
+                - generic [ref=e138]:
+                  - text: Readiness
+                  - heading "Khả năng lập kế hoạch" [level=2] [ref=e139]
+                - generic [ref=e140]: Đủ dữ liệu
+              - generic [ref=e141]:
+                - text: Ngày bắt đầu kế hoạch
+                - textbox "Ngày bắt đầu kế hoạch" [ref=e142]: 2026-10-12
+              - button "Kiểm tra Readiness" [ref=e143] [cursor=pointer]
+              - status [ref=e144]:
+                - paragraph [ref=e145]: Đủ dữ liệu cho hành động tiếp theo
+                - article [ref=e146]:
+                  - strong [ref=e147]: "Cảnh báo: Sales coverage chưa đủ"
+                  - link "Nhập thêm dữ liệu" [ref=e148] [cursor=pointer]:
+                    - /url: /imports
+              - generic [ref=e149]:
+                - link "Hoàn tất" [ref=e150] [cursor=pointer]:
+                  - /url: /imports/history
+                - link "Đi tới Dự đoán" [ref=e151] [cursor=pointer]:
+                  - /url: /forecast/planning
+  - button "Debug" [expanded] [ref=e152] [cursor=pointer]
+  - dialog [ref=e154]:
+    - banner [ref=e155]:
+      - generic [ref=e156]:
+        - heading "UI State Preview" [level=2] [ref=e157]
+        - text: Development only
+      - button "Đóng Debug" [active] [ref=e158] [cursor=pointer]: ×
+    - generic [ref=e159]:
+      - region "Import UI State Playground" [ref=e160]:
+        - generic [ref=e161]:
+          - text: Role
+          - combobox "Role" [ref=e162]:
+            - option "OWNER"
+            - option "STAFF" [selected]
+        - generic [ref=e163]:
+          - text: Step
+          - combobox "Step" [ref=e164]:
+            - option "1 · File"
+            - option "2 · Analyze"
+            - option "3 · Resolve"
+            - option "4 · Preview"
+            - option "5 · Commit"
+            - option "6 · Completion" [selected]
+        - generic [ref=e165]:
+          - text: Scenario
+          - combobox "Scenario" [ref=e166]:
+            - option "Completion · Completed + Ready"
+            - option "Completion · Completed + Not ready"
+            - option "Completion · Completed with warnings" [selected]
+        - generic "Current preview" [ref=e167]:
+          - strong [ref=e168]: Current preview
+          - generic [ref=e169]: STAFF · Completion · Completed with warnings
+        - generic [ref=e170]:
+          - button "← Previous state" [ref=e171] [cursor=pointer]
+          - button "Next state →" [ref=e172] [cursor=pointer]
+        - generic [ref=e173]:
+          - text: Data condition
+          - combobox "Data condition" [ref=e174]:
+            - option "Đủ dữ liệu" [selected]
+            - option "Thiếu dữ liệu"
+            - option "Dữ liệu mơ hồ"
+            - option "Dữ liệu lỗi"
+        - generic [ref=e175]:
+          - text: Simulate error
+          - combobox "Simulate error" [ref=e176]:
+            - option "Select error…" [selected]
+            - option "Analyze failed"
+            - option "Source unresolved"
+            - option "Permission revoked"
+            - option "Profile retired"
+            - option "Preview stale"
+            - option "Preview blocked"
+            - option "Commit failed"
+            - option "Lost acknowledgement"
+            - option "Readiness not ready"
+        - group "Happy path" [ref=e177]:
+          - generic [ref=e179]:
+            - button "OWNER · Start" [ref=e180] [cursor=pointer]
+            - button "OWNER · Final" [ref=e181] [cursor=pointer]
+            - button "STAFF · Start" [ref=e182] [cursor=pointer]
+            - button "STAFF · Final" [ref=e183] [cursor=pointer]
+        - generic [ref=e184]:
+          - button "Reset scenario" [ref=e185] [cursor=pointer]
+          - button "Return to current import" [ref=e186] [cursor=pointer]
+      - group [ref=e187]:
+        - generic "Advanced diagnostics" [ref=e188] [cursor=pointer]
+        - option "owner-ready" [selected]
+        - option "staff-importer"
+        - option "staff-approval"
+        - option "staff-rejected"
+        - option "staff-readonly"
+        - option "multi-store"
+        - option "no-store"
+        - option "empty-store"
+        - option "transport-error"
+        - option "revision-conflict"
+```

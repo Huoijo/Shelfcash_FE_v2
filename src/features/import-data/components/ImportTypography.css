@@ -1,0 +1,32 @@
+/* ShelfCash semantic scale, scoped to existing Import surfaces. PL-01 is isolated. */
+:where(.import-page, .import-flow, .import-resolver, .import-evidence, .input-panel) {
+  --sc-import-type-body: 12px;
+  --sc-import-leading-body: 20px;
+  --sc-import-type-control: 12px;
+  --sc-import-leading-control: 20px;
+  --sc-import-type-label: 11px;
+  --sc-import-leading-label: 18px;
+  --sc-import-type-micro: 10px;
+  --sc-import-leading-micro: 16px;
+  --sc-import-type-card: 14px;
+  --sc-import-leading-card: 22px;
+}
+
+/* Values and acknowledgments must not inherit the smaller form-label scale. */
+:is(.import-resolver, .input-source-context) :is(input, select, textarea),
+:is(.import-resolver, .input-source-context) .import-flow__check,
+.input-source-context .import-flow__form .import-flow__check,
+.input-profile-reject .import-flow__check {
+  font-size: var(--sc-import-type-control);
+  line-height: var(--sc-import-leading-control);
+}
+.input-context-evidence .import-flow__spec dt,
+.import-evidence .import-flow__spec dt {
+  font-size: var(--sc-import-type-label);
+  line-height: var(--sc-import-leading-label);
+}
+.input-context-evidence .import-flow__spec dd,
+.import-evidence .import-flow__spec dd {
+  font-size: var(--sc-import-type-body);
+  line-height: var(--sc-import-leading-body);
+}

@@ -6,7 +6,7 @@ import os from 'node:os'
 import assert from 'node:assert/strict'
 import { build } from 'vite'
 import { chromium, devices } from 'playwright'
-const root=process.cwd(), output=path.resolve(root,process.argv[2]??'docs/testing/planning-021/assistant-implementation')
+const root=process.cwd().replaceAll('\\','/'), output=path.resolve(root,process.argv[2]??'docs/testing/planning-021/assistant-implementation')
 const temp=await fs.mkdtemp(path.join(os.tmpdir(),'shelfcash-pl01-controlled-'))
 const origin='https://pl01-controlled.invalid', cases=[], screenshots=[], unexpected=[], errors=[], writes=[]
 let context,page,replies=[],held=[],contextReads=0
@@ -32,8 +32,8 @@ async function shot(name,narrow=false){
  if(narrow)await page.setViewportSize({width:1440,height:1000})
 }
 try {
- await fs.mkdir(output,{recursive:true});await fs.symlink(path.join(root,'node_modules'),path.join(temp,'node_modules'),'dir')
- const src=path.join(root,'src'),fixtures=path.join(root,'tests/fixtures/planning-assistant-preparation')
+ await fs.mkdir(output,{recursive:true});await fs.symlink(path.join(root,'node_modules'),path.join(temp,'node_modules'),process.platform==='win32'?'junction':'dir')
+ const src=path.join(root,'src').replaceAll('\\','/'),fixtures=path.join(root,'tests/fixtures/planning-assistant-preparation').replaceAll('\\','/')
  await fs.writeFile(path.join(temp,'entry.tsx'),`
 import React,{useState} from 'react';import{createRoot}from'react-dom/client';import{MemoryRouter}from'react-router';
 import{PlanningAssistantDrawer}from'${src}/features/decision-planning/components/PlanningAssistantDrawer';
@@ -64,7 +64,7 @@ createRoot(document.getElementById('root')).render(<App/>);`)
  await build({root:temp,configFile:false,logLevel:'error',define:{'import.meta.env.VITE_DATA_SOURCE':JSON.stringify('api'),'import.meta.env.VITE_API_BASE_URL':JSON.stringify(origin),'import.meta.env.DEV':'false','import.meta.env':JSON.stringify({VITE_DATA_SOURCE:'api',VITE_API_BASE_URL:origin,DEV:false}),'process.env.NODE_ENV':JSON.stringify('production')},build:{lib:{entry:path.join(temp,'entry.tsx'),formats:['iife'],name:'PlanningAssistantControlled',cssFileName:'style',fileName:()=> 'bundle.js'},outDir:path.join(temp,'out'),minify:false}})
  const js=await fs.readFile(path.join(temp,'out/bundle.js'),'utf8');let css='';for(const f of await fs.readdir(path.join(temp,'out')))if(f.endsWith('.css'))css+=await fs.readFile(path.join(temp,'out',f),'utf8')
  const html=`<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body{margin:0;background:#f6f6f6;font-family:Arial} ${css}</style><div id="root"></div><script>${js.replaceAll('</script>','<\\/script>')}</script></html>`
- context=await chromium.launchPersistentContext(path.join(temp,'profile'),{headless:true,viewport:{width:1440,height:1000},serviceWorkers:'block'})
+ context=await chromium.launchPersistentContext(path.join(temp,'profile'),{headless:true,...(process.env.SHELFCASH_CHROMIUM_PATH?{executablePath:process.env.SHELFCASH_CHROMIUM_PATH}:{}),viewport:{width:1440,height:1000},serviceWorkers:'block'})
  await context.route('**/*',async route=>{
   const req=route.request(),url=new URL(req.url())
   if(url.origin===origin&&url.pathname==='/test'&&req.method()==='GET')return route.fulfill({contentType:'text/html',body:html})

@@ -1,0 +1,771 @@
+{
+  "status": "PASS",
+  "kind": "CONTROLLED_PRODUCTION_COMPONENT_BROWSER",
+  "canonical": {
+    "project": "458079658328604672",
+    "component": "458423352311304192",
+    "revision": "461952561365278720"
+  },
+  "platform": "win32",
+  "architecture": "x64",
+  "pid": 17344,
+  "browser": "151.0.7922.34",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000,
+      "zoom": "100%"
+    },
+    "narrow": {
+      "width": 390,
+      "height": 664
+    }
+  },
+  "cases": [
+    {
+      "id": "P01",
+      "name": "NORMAL_FIRST_OPEN",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P02",
+      "name": "NORMAL_ANSWER",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P03",
+      "name": "LOADING",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P04",
+      "name": "PERMISSION_DENIED",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P05",
+      "name": "UNAVAILABLE",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P06",
+      "name": "CLARIFICATION_INGREDIENT",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P07",
+      "name": "CLARIFICATION_SIMILAR_INGREDIENTS",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P08",
+      "name": "CLARIFICATION_OPTION",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P09",
+      "name": "CLARIFICATION_PRODUCT",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P10",
+      "name": "QUERY_UNSUPPORTED",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P11",
+      "name": "CONTEXT_STALE",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P12",
+      "name": "CONTEXT_REFRESHING",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P13",
+      "name": "CONTEXT_RESTORED",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P14",
+      "name": "CONTEXT_RESTORED_UNRESOLVED",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P15",
+      "name": "UNCERTAIN_AFTER_RELOAD",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P16",
+      "name": "UNCERTAIN_BLOCKED_CONTINUATION",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P17",
+      "name": "UNCERTAIN_NEW_QUESTION_BLOCKED",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P18",
+      "name": "NEW_QUESTION_AFTER_KNOWN_TERMINAL",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P19",
+      "name": "SUMMARY_INITIAL",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P20",
+      "name": "SUMMARY_RUNNING",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P21",
+      "name": "SUMMARY_COMPLETED",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P22",
+      "name": "SUMMARY_FAILED",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P23",
+      "name": "SUMMARY_SAFE_RECOVERY",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P24",
+      "name": "SUMMARY_NEW_GENERATION",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P25",
+      "name": "SUMMARY_VI_SIMPLE",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P26",
+      "name": "SUMMARY_VI_TECHNICAL",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P27",
+      "name": "SUMMARY_EN_SIMPLE",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P28",
+      "name": "SUMMARY_EN_TECHNICAL",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P29",
+      "name": "LOADING_RETAINED_ANSWER",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P30",
+      "name": "PERMISSION_DENIED_UNCERTAIN",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P31",
+      "name": "SUMMARY_REQUEST_PENDING",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "P32",
+      "name": "SUMMARY_RECOVERED_PREVIOUS_CONTEXT",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT",
+      "evidence": "Actual production render + fixture-bound interaction; no API dispatch claimed"
+    },
+    {
+      "id": "R01",
+      "name": "real Chat first/next turn + retained answer + Escape/focus return",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R02-ingredient",
+      "name": "real explicit candidate preserves question and matching identity",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R02-similar-ingredients",
+      "name": "real explicit candidate preserves question and matching identity",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R02-option",
+      "name": "real explicit candidate preserves question and matching identity",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R02-product",
+      "name": "real explicit candidate preserves question and matching identity",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R02-unsupported",
+      "name": "real unsupported response → explicit new-question composer",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R03",
+      "name": "native IndexedDB AS03 metadata-only reload/close remains blocked",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R04",
+      "name": "real stale→external context refresh→fresh facts + unresolved Chat blocked",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R05-vi-simple",
+      "name": "B01 terminal→deliberate Summary new configuration/new key",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R05-vi-technical",
+      "name": "B01 terminal→deliberate Summary new configuration/new key",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R05-en-simple",
+      "name": "B01 terminal→deliberate Summary new configuration/new key",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R05-en-technical",
+      "name": "B01 terminal→deliberate Summary new configuration/new key",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R06",
+      "name": "retained running→AS02 completed, zero polling POST",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R07",
+      "name": "B02 native reload exact old-key/body AS01 replay displays previous context",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R08",
+      "name": "restored retained locator→AS02 old evidence read, no POST and B02 preserved",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R09",
+      "name": "previous terminal Summary→deliberate current-context generation/new key",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R10-planning.result.read",
+      "name": "revocation+pending/late response redacts protected DOM and retains uncertainty",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R10-budget.read",
+      "name": "revocation+pending/late response redacts protected DOM and retains uncertainty",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R10-procurement.cost.read",
+      "name": "revocation+pending/late response redacts protected DOM and retains uncertainty",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R11",
+      "name": "Staff with all actual grants can ask; role label is not authority",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R12",
+      "name": "contextual Vì sao opens same production drawer and sends scoped canonical question",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R13-qaActor",
+      "name": "identity change disposes old owner and fences delayed answer",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R13-qaSession",
+      "name": "identity change disposes old owner and fences delayed answer",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R13-qaStore",
+      "name": "identity change disposes old owner and fences delayed answer",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R14",
+      "name": "keyboard close focus, tab arrows/selection, focus wrap, named input, disabled send",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R15",
+      "name": "known AS03 GENERATION_FAILED→explicit different question/new key",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R16-401",
+      "name": "fresh HTTP denial removes protected facts without rollback/new-intent assumption",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R16-403",
+      "name": "fresh HTTP denial removes protected facts without rollback/new-intent assumption",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R16-404",
+      "name": "fresh HTTP denial removes protected facts without rollback/new-intent assumption",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    },
+    {
+      "id": "R17",
+      "name": "known unavailable/local failure returns to question surface without reclassifying unknown",
+      "status": "PASS",
+      "boundary": "CONTROLLED_PRODUCTION_COMPONENT"
+    }
+  ],
+  "screenshots": [
+    "normal_answer-desktop.png",
+    "normal_answer-narrow.png",
+    "clarification_similar_ingredients-desktop.png",
+    "clarification_similar_ingredients-narrow.png",
+    "context_stale-desktop.png",
+    "context_stale-narrow.png",
+    "uncertain_after_reload-desktop.png",
+    "uncertain_after_reload-narrow.png",
+    "summary_running-desktop.png",
+    "summary_running-narrow.png",
+    "summary_completed-desktop.png",
+    "summary_completed-narrow.png",
+    "summary_failed-desktop.png",
+    "summary_failed-narrow.png",
+    "summary_safe_recovery-desktop.png",
+    "summary_safe_recovery-narrow.png",
+    "permission_denied_uncertain-desktop.png",
+    "permission_denied_uncertain-narrow.png",
+    "summary_recovered_previous_context-desktop.png",
+    "summary_recovered_previous_context-narrow.png",
+    "runtime-answer-desktop.png",
+    "runtime-previous-context-desktop.png",
+    "runtime-previous-context-narrow.png"
+  ],
+  "writes": [
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "531483c5-e2e6-4d0b-8bda-12bb84953ffd",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "725384ce-2489-4403-bcb2-6dfecc9e8ee2",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "0ae3b716-f7fb-4351-8406-1a16f20865d6",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "4fbfb798-5749-4949-9648-b47a34f7855b",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "4561a6e5-0bef-4443-a51c-b15b119ef064",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "334e4db9-c023-42eb-ac5c-183a072d6a4e",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "2d5a49af-aef1-4330-a32a-32e95f8b0aa9",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "f1b80464-c2b7-4aa5-9282-bb8f5242a971",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "5a26808e-cece-4da4-b066-5942d5b020d7",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "ec14bed2-d57a-40ab-bb01-1dbecd5a09a1",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "c14c86f8-0a39-4578-8825-684e7c878bf8",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "460e9152-e8d3-41bf-9fde-a4b001376a08",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "edd945c9-6219-4c36-b074-b5dce23a22db",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "f6a61389-7026-46f6-9804-e05ae1e15f11",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "72b0df4c-a2b5-47cf-8db5-f1fd0bcfe640",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "850506b8-698c-41f4-b8a2-9e862a115361",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "23d3fc99-1f15-4ac2-a763-77fad1dd7c5e",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "technical"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "ebfa75fd-0c99-4a47-90f0-2f726b3fea8c",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "dc02c299-0886-45ee-91ef-ddaae5f04c2d",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "en",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "e0f7c487-b939-431b-aae5-51f9031a53b1",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "cbacb16b-40dd-4c1b-8478-e1f7e8e90576",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "en",
+      "detail_level": "technical"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "f712331b-a7ba-4b02-8f15-77518269ca0a",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "0686a15e-1342-423d-8ce6-8211cc4ecf74",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "0686a15e-1342-423d-8ce6-8211cc4ecf74",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001b5a/assistant/summary",
+      "key": "1b06d0be-0191-4871-bff7-d9738c4d9b7f",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "3eb170eb-85a8-42ae-8b5e-4fae3a121d66",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "3a22a2cd-70cf-4059-ba44-865f0de7e73a",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "df73ba1b-c6ab-4ab0-ba6e-b09b264be69b",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "5db4c361-3f0f-455f-984d-10d453964ddf",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "0c42343d-a246-48c2-90fd-5561b1bd78ea",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "a5a3bd7d-2b78-42df-bab8-5503203e45ee",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "d6a09f22-947f-4ef2-9a7c-f071d99edb0a",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "69150199-17af-4ce5-ae60-6dbf5c31a720",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "cc0967e5-e68d-4de7-9359-953e55877b38",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "a14eaf53-7abf-4754-aa24-67ecf751a063",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "e0d0e92f-93ee-4a89-b8d3-2b7aaa00f30b",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "b5e139c7-f3f2-4fa2-ad48-86fdff739fd4",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "5eba1466-464d-4595-9eda-fe11872f3372",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "47fb6613-6bda-428a-8c5b-6c3f142fbbe6",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "9a50f0e9-bb1d-4d64-bc56-b17fc9cd2799",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "a16fb2a4-2461-4f64-b385-a54978dde56b",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "83dd1a35-4fcf-4bf3-9265-56bee14485b4",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "776d1d43-366b-4d80-be1c-bf597056f058",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    },
+    {
+      "path": "/api/v1/procurement-plans/00000000-0000-0000-0000-000000001bbd/assistant/messages",
+      "key": "2fbc3248-ab1a-42f9-9d60-a6c05b9d12b8",
+      "csrf": "controlled-fresh-csrf",
+      "locale": "vi",
+      "detail_level": "simple"
+    }
+  ],
+  "contextReads": 1,
+  "unexpected": [],
+  "errors": [],
+  "liveBE": "NOT RUN",
+  "provider": "NOT RUN",
+  "realMutations": 0
+}

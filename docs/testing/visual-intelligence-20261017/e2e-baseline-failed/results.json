@@ -1,0 +1,1298 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "scripts/playwright-visual-intelligence.config.ts",
+      "--last-failed",
+      "--last-failed-file",
+      "docs/testing/visual-intelligence-20261017/e2e-baseline-failed/selection.json"
+    ],
+    "configFile": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\scripts\\playwright-visual-intelligence.config.ts",
+    "rootDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-baseline-failed/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mock-desktop",
+        "name": "mock-desktop",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/mock\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-baseline-failed/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mock-mobile",
+        "name": "mock-mobile",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/responsive\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-baseline-failed/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "production-parity",
+        "name": "production-parity",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/production\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-baseline-failed/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "controlled-api",
+        "name": "controlled-api",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/api\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mock-desktop",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4173"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mock-desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mock-mobile",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4173"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mock-mobile"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "production-parity",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4180"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "production-parity"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "controlled-api",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4174"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "controlled-api"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "import-playground.mock.spec.ts",
+      "file": "import-playground.mock.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "014 every catalog scenario renders the actual Import screen without reload",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 78488,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:54:14.041Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-playground.mock-014-b2280-mport-screen-without-reload-mock-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-playground.mock-014-b2280-mport-screen-without-reload-mock-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-playground.mock-014-b2280-mport-screen-without-reload-mock-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1fa4b9f1432ed5fa0395-5517adac713da9f1f23d",
+          "file": "import-playground.mock.spec.ts",
+          "line": 17,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "operations.mock.spec.ts",
+      "file": "operations.mock.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "parked features show construction notices and close accessibly",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 60457,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.mock.spec.ts",
+                        "column": 54,
+                        "line": 88
+                      },
+                      "message": "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Hỏi AI', exact: true })\u001b[22m\n\n\n  86 |   await page.getByRole('button',{name:'Tạo kế hoạch nhập hàng'}).click()\n  87 |   for(const name of ['Hỏi AI','Kịch bản giả định','Tạo Draft PO']){\n> 88 |     await page.getByRole('button',{name,exact:true}).click()\n     |                                                      ^\n  89 |     await expect(page.getByRole('dialog')).toContainText('đang được xây dựng')\n  90 |     await page.getByRole('dialog').getByRole('button',{name:'Đóng',exact:true}).click()\n  91 |   }\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.mock.spec.ts:88:54"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:57:20.864Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\operations.mock-parked-fea-156aa-otices-and-close-accessibly-mock-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\operations.mock-parked-fea-156aa-otices-and-close-accessibly-mock-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\operations.mock-parked-fea-156aa-otices-and-close-accessibly-mock-desktop\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "14169e696226e3c8272c-bcf8a73b78c67716ed98",
+          "file": "operations.mock.spec.ts",
+          "line": 80,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "design-states.api.spec.ts",
+      "file": "design-states.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "PDF captures chosen alternative and download failure retries artifact only",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9826,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts:114:121",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts",
+                      "column": 121,
+                      "line": 114
+                    },
+                    "snippet": "  112 |   await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog')\n  113 |   await d.getByLabel('Phương án sẽ xuất').selectOption(option);expect(writes).toBe(0)\n> 114 |   await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n      |                                                                                                                         ^\n  115 |   await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('button',{name:'Thử lại tải'})).toBeVisible()\n  116 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử lại tải'}).click();await download\n  117 |   await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(writes).toBe(1);expect(downloads).toBe(2)"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts",
+                        "column": 121,
+                        "line": 114
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  112 |   await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog')\n  113 |   await d.getByLabel('Phương án sẽ xuất').selectOption(option);expect(writes).toBe(0)\n> 114 |   await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n      |                                                                                                                         ^\n  115 |   await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('button',{name:'Thử lại tải'})).toBeVisible()\n  116 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử lại tải'}).click();await download\n  117 |   await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(writes).toBe(1);expect(downloads).toBe(2)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts:114:121"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:58:23.541Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\design-states.api-PDF-capt-2d924-ilure-retries-artifact-only-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\design-states.api-PDF-capt-2d924-ilure-retries-artifact-only-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\design-states.api-PDF-capt-2d924-ilure-retries-artifact-only-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\design-states.api.spec.ts",
+                    "column": 121,
+                    "line": 114
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6162ae31a4ed3e2b75aa-1a90e0c643f45ff35b9e",
+          "file": "design-states.api.spec.ts",
+          "line": 99,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "import-experience.api.spec.ts",
+      "file": "import-experience.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "012 API Preview stale cannot enter Review and offers correct recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 15558,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận' })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" getByRole('button', { name: 'Tiếp tục xác nhận' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận' })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" getByRole('button', { name: 'Tiếp tục xác nhận' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận' })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:154:75",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                      "column": 75,
+                      "line": 154
+                    },
+                    "snippet": "  152 |     await expect(page.getByText('Preview không còn mới nhất', { exact: true })).toBeVisible()\n  153 |     await page.getByRole('button', { name: 'Tạo lại Preview', exact: true }).click()\n> 154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n      |                                                                           ^\n  155 |   } else {\n  156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                        "column": 75,
+                        "line": 154
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận' })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" getByRole('button', { name: 'Tiếp tục xác nhận' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận' })\u001b[22m\n\n\n  152 |     await expect(page.getByText('Preview không còn mới nhất', { exact: true })).toBeVisible()\n  153 |     await page.getByRole('button', { name: 'Tạo lại Preview', exact: true }).click()\n> 154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n      |                                                                           ^\n  155 |   } else {\n  156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:154:75"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:58:36.203Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-012--d55cb-and-offers-correct-recovery-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-012--d55cb-and-offers-correct-recovery-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-012--d55cb-and-offers-correct-recovery-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                    "column": 75,
+                    "line": 154
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-c74e44fa93c2f775e3e8",
+          "file": "import-experience.api.spec.ts",
+          "line": 138,
+          "column": 54
+        },
+        {
+          "title": "012 API Preview blocked cannot enter Review and offers correct recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9929,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Preview bị chặn toàn lô', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Preview bị chặn toàn lô', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Preview bị chặn toàn lô', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Preview bị chặn toàn lô', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Preview bị chặn toàn lô', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Preview bị chặn toàn lô', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:156:78",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                      "column": 78,
+                      "line": 156
+                    },
+                    "snippet": "  154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n  155 |   } else {\n> 156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n      |                                                                              ^\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()\n  158 |     await expect(page.getByRole('heading', { name: 'Kiểm tra cách hiểu', exact: true })).toBeVisible()\n  159 |     await expect(page.getByRole('list', { name: 'Tiến trình nhập dữ liệu 6 bước' }).locator('[aria-current=step]')).toContainText('Kiểm tra')"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                        "column": 78,
+                        "line": 156
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Preview bị chặn toàn lô', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Preview bị chặn toàn lô', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Preview bị chặn toàn lô', { exact: true })\u001b[22m\n\n\n  154 |     await expect(page.getByRole('button', { name: 'Tiếp tục xác nhận' })).toBeEnabled()\n  155 |   } else {\n> 156 |     await expect(page.getByText('Preview bị chặn toàn lô', { exact: true })).toBeVisible()\n      |                                                                              ^\n  157 |     await page.getByRole('button', { name: 'Quay lại xử lý', exact: true }).click()\n  158 |     await expect(page.getByRole('heading', { name: 'Kiểm tra cách hiểu', exact: true })).toBeVisible()\n  159 |     await expect(page.getByRole('list', { name: 'Tiến trình nhập dữ liệu 6 bước' }).locator('[aria-current=step]')).toContainText('Kiểm tra')\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:156:78"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:58:55.309Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-012--cc2bb-and-offers-correct-recovery-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-012--cc2bb-and-offers-correct-recovery-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-012--cc2bb-and-offers-correct-recovery-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                    "column": 78,
+                    "line": 156
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-ecb40083ca6a647fad20",
+          "file": "import-experience.api.spec.ts",
+          "line": 138,
+          "column": 54
+        },
+        {
+          "title": "frozen v1 Sales and Supplier decisions gate Review and require separate persisted Review before Commit",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 741238,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                        "column": 22,
+                        "line": 171
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n\n\n  169 |   await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click()\n  170 |   const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true})\n> 171 |   await expect(next).toBeDisabled()\n      |                      ^\n  172 |   const domain=page.locator('.input-domain-review')\n  173 |   await domain.locator('.input-domain-grid article').first().getByRole('button').click()\n  174 |   let drawer=page.getByRole('dialog',{name:'Hai contribution riêng',exact:true})\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:171:22"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:59:07.618Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-froz-cea0f-sisted-Review-before-Commit-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-froz-cea0f-sisted-Review-before-Commit-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-froz-cea0f-sisted-Review-before-Commit-controlled-api\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-1c25bd15fbdfee776e5e",
+          "file": "import-experience.api.spec.ts",
+          "line": 164,
+          "column": 1
+        },
+        {
+          "title": "020 multiple history corrections gate every Review entry; closing evidence leaves pending and commit loss freezes confirmed rows",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10579,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:313:194",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                      "column": 194,
+                      "line": 313
+                    },
+                    "snippet": "  311 |  work.source.readPreview=async(...args)=>{const value=await original(...args);return {...value,preview:{...value.preview,rows:value.preview.rows.map(row=>({...row,proposed_action:'CORRECT_HISTORY_RECORD',confirmation_required:true,expected_version:'history/1'}))}}}\n  312 |  const writes=await api(page,work,(_path,method,body)=>method==='POST'&&body?.phase==='commit'?'ABORT':undefined)\n> 313 |  await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click();const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true});await expect(next).toBeDisabled()\n      |                                                                                                                                                                                                  ^\n  314 |  await page.getByRole('button',{name:'Chi tiết bản sửa',exact:true}).first().click();let d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByRole('button',{name:'Đóng',exact:true}).click();await expect(next).toBeDisabled();expect(writes.filter(w=>w.body.phase==='commit')).toHaveLength(0)\n  315 |  const buttons=page.getByRole('button',{name:'Chi tiết bản sửa',exact:true});expect(await buttons.count()).toBe(2)\n  316 |  for(let i=0;i<2;i++){await buttons.nth(i).click();d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByLabel('Lý do correction').fill(`Evidence for history ${i+1}`);await d.getByRole('checkbox').check();await d.getByRole('button',{name:'Xác nhận cho lần nhập này',exact:true}).click();if(i===0)await expect(next).toBeDisabled()}"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                        "column": 194,
+                        "line": 313
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\nExpected: disabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" getByRole('button', { name: 'Tiếp tục xác nhận', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Tiếp tục xác nhận', exact: true })\u001b[22m\n\n\n  311 |  work.source.readPreview=async(...args)=>{const value=await original(...args);return {...value,preview:{...value.preview,rows:value.preview.rows.map(row=>({...row,proposed_action:'CORRECT_HISTORY_RECORD',confirmation_required:true,expected_version:'history/1'}))}}}\n  312 |  const writes=await api(page,work,(_path,method,body)=>method==='POST'&&body?.phase==='commit'?'ABORT':undefined)\n> 313 |  await resolve(page,work.id);await page.getByRole('button',{name:'Tạo Preview',exact:true}).click();const next=page.getByRole('button',{name:'Tiếp tục xác nhận',exact:true});await expect(next).toBeDisabled()\n      |                                                                                                                                                                                                  ^\n  314 |  await page.getByRole('button',{name:'Chi tiết bản sửa',exact:true}).first().click();let d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByRole('button',{name:'Đóng',exact:true}).click();await expect(next).toBeDisabled();expect(writes.filter(w=>w.body.phase==='commit')).toHaveLength(0)\n  315 |  const buttons=page.getByRole('button',{name:'Chi tiết bản sửa',exact:true});expect(await buttons.count()).toBe(2)\n  316 |  for(let i=0;i<2;i++){await buttons.nth(i).click();d=page.getByRole('dialog',{name:'Kiểm tra và xác nhận bản sửa'});await d.getByLabel('Lý do correction').fill(`Evidence for history ${i+1}`);await d.getByRole('checkbox').check();await d.getByRole('button',{name:'Xác nhận cho lần nhập này',exact:true}).click();if(i===0)await expect(next).toBeDisabled()}\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts:313:194"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:11:34.175Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-020--bfb09-loss-freezes-confirmed-rows-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-020--bfb09-loss-freezes-confirmed-rows-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\import-experience.api-020--bfb09-loss-freezes-confirmed-rows-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\import-experience.api.spec.ts",
+                    "column": 194,
+                    "line": 313
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "643c6dddbcce4d2c8852-ec5368f2395649bf4177",
+          "file": "import-experience.api.spec.ts",
+          "line": 309,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "operations.api.spec.ts",
+      "file": "operations.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "retained run → PDF job → authenticated binary download; no procurement/stock mutation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10035,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng')\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts:38:267",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts",
+                      "column": 267,
+                      "line": 38
+                    },
+                    "snippet": "  36 |     if(path.endsWith('/exports/'+exp))return bytes\n  37 |   })\n> 38 |   await page.goto('/forecast/planning?plan_id='+run.run_id);await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog');await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng')).toBeVisible();const downloading=page.waitForEvent('download');await d.getByRole('button',{name:'Tải PDF',exact:true}).click();const download=await downloading;expect(download.suggestedFilename()).toContain(exp);expect(writes).toEqual([`/api/v1/procurement-plans/${run.run_id}/exports`])\n     |                                                                                                                                                                                                                                                                           ^\n  39 | })\n  40 | test('confirmed saved write with failed N2 retries only readback, never creates another resource',async({page})=>{\n  41 |   const savedId='00000000-0000-4000-8000-000000000041';let writes=0,reads=0"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts",
+                        "column": 267,
+                        "line": 38
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng')\u001b[22m\n\n\n  36 |     if(path.endsWith('/exports/'+exp))return bytes\n  37 |   })\n> 38 |   await page.goto('/forecast/planning?plan_id='+run.run_id);await page.getByRole('button',{name:'Xuất PDF',exact:true}).click();const d=page.getByRole('dialog');await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng')).toBeVisible();const downloading=page.waitForEvent('download');await d.getByRole('button',{name:'Tải PDF',exact:true}).click();const download=await downloading;expect(download.suggestedFilename()).toContain(exp);expect(writes).toEqual([`/api/v1/procurement-plans/${run.run_id}/exports`])\n     |                                                                                                                                                                                                                                                                           ^\n  39 | })\n  40 | test('confirmed saved write with failed N2 retries only readback, never creates another resource',async({page})=>{\n  41 |   const savedId='00000000-0000-4000-8000-000000000041';let writes=0,reads=0\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts:38:267"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:11:46.963Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\operations.api-retained-ru-68201--procurement-stock-mutation-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\operations.api-retained-ru-68201--procurement-stock-mutation-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\operations.api-retained-ru-68201--procurement-stock-mutation-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\operations.api.spec.ts",
+                    "column": 267,
+                    "line": 38
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "25deadd30e3af96e390f-ae7cbda4bcd6156e59a5",
+          "file": "operations.api.spec.ts",
+          "line": 28,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "pass020.api.spec.ts",
+      "file": "pass020.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "decline lost-pending: separate confirmation and N18-first recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3450,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[31m+   \"GET\",\u001b[39m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m  ]\u001b[22m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[31m+   \"GET\",\u001b[39m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m  ]\u001b[22m\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts:17:621",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts",
+                      "column": 621,
+                      "line": 17
+                    },
+                    "snippet": "  15 |  await d.getByLabel('Lý do từ chối lời mời').fill('Cannot join');await d.getByRole('button',{name:'Xác nhận từ chối'}).click()\n  16 |  if(mode==='failure'){await expect(d.getByRole('alert')).toContainText('INVALID_DECLINE_REASON');expect(posts).toBe(1);return}\n> 17 |  if(mode.startsWith('lost')){await expect(d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời',exact:true})).toBeDisabled();expect(posts).toBe(1);await expect(d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'})).toHaveCount(0);await d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'}).click();if(mode==='lost-pending'){await d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'}).click();const writes=events.filter(e=>e.method==='POST');expect(writes[1]).toEqual(writes[0]);expect(events.map(e=>e.method)).toEqual(['GET','POST','GET','POST'])}else expect(posts).toBe(1)}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  18 |  await expect(page.getByRole('heading',{name:'Lời mời đã được từ chối'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời'})).toHaveCount(0)\n  19 | })\n  20 | const request=(actions=['approve','reject'])=>({request_id:id,store_id:s,requester_membership_id:member,requester_user_id:job,requested_permissions:['supplier.read','inventory.read'],grants_at_submission:[],current_grants:[],approved_permissions:[],actually_added_permissions:[],permission_catalog_version:'permissions-v3',grants_version_at_submission:'member/1',current_grants_version:'member/1',version:'request/1',state:'pending',reason:'Need access',created_at:at,updated_at:at,decision:null,allowed_actions:actions})"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts",
+                        "column": 621,
+                        "line": 17
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[31m+   \"GET\",\u001b[39m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m    \"GET\",\u001b[22m\n\u001b[2m    \"POST\",\u001b[22m\n\u001b[2m  ]\u001b[22m\n\n  15 |  await d.getByLabel('Lý do từ chối lời mời').fill('Cannot join');await d.getByRole('button',{name:'Xác nhận từ chối'}).click()\n  16 |  if(mode==='failure'){await expect(d.getByRole('alert')).toContainText('INVALID_DECLINE_REASON');expect(posts).toBe(1);return}\n> 17 |  if(mode.startsWith('lost')){await expect(d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời',exact:true})).toBeDisabled();expect(posts).toBe(1);await expect(d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'})).toHaveCount(0);await d.getByRole('button',{name:'Kiểm tra trạng thái lời mời'}).click();if(mode==='lost-pending'){await d.getByRole('button',{name:'Kiểm tra lại đúng yêu cầu từ chối'}).click();const writes=events.filter(e=>e.method==='POST');expect(writes[1]).toEqual(writes[0]);expect(events.map(e=>e.method)).toEqual(['GET','POST','GET','POST'])}else expect(posts).toBe(1)}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  18 |  await expect(page.getByRole('heading',{name:'Lời mời đã được từ chối'})).toBeVisible();await expect(page.getByRole('button',{name:'Chấp nhận lời mời'})).toHaveCount(0)\n  19 | })\n  20 | const request=(actions=['approve','reject'])=>({request_id:id,store_id:s,requester_membership_id:member,requester_user_id:job,requested_permissions:['supplier.read','inventory.read'],grants_at_submission:[],current_grants:[],approved_permissions:[],actually_added_permissions:[],permission_catalog_version:'permissions-v3',grants_version_at_submission:'member/1',current_grants_version:'member/1',version:'request/1',state:'pending',reason:'Need access',created_at:at,updated_at:at,decision:null,allowed_actions:actions})\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts:17:621"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:11:59.143Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\pass020.api-decline-lost-p-fe421-tion-and-N18-first-recovery-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\pass020.api-decline-lost-p-fe421-tion-and-N18-first-recovery-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\pass020.api-decline-lost-p-fe421-tion-and-N18-first-recovery-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\pass020.api.spec.ts",
+                    "column": 621,
+                    "line": 17
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "10d6f33c5bcb6cd8bb25-0eeff100f429b3c8b8de",
+          "file": "pass020.api.spec.ts",
+          "line": 8,
+          "column": 81
+        }
+      ]
+    },
+    {
+      "title": "sprint011.api.spec.ts",
+      "file": "sprint011.api.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "011 reference candidate without winner exports with warning; lost ACK preserves intent",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9811,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:26:57",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                      "column": 57,
+                      "line": 26
+                    },
+                    "snippet": "  24 |  await expect(d.getByText('CUSTOMER_REQUIREMENTS_NOT_MET',{exact:true})).toBeVisible()\n  25 |  await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await d.getByRole('button',{name:'Thử lại cùng yêu cầu'}).click()\n> 26 |  await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible();await expect(d.getByText('Phương án tham khảo — không được khuyến nghị',{exact:true})).toBeVisible()\n     |                                                         ^\n  27 |  expect(posts).toHaveLength(2);expect(posts[0]).toEqual(posts[1]);expect(posts[0].body.option_id).toBe(option);expect(run.result!.winner_option_id).toBeNull()\n  28 |  await d.screenshot({path:'test-results/011-reference-export.png',animations:'disabled'})\n  29 | })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                        "column": 57,
+                        "line": 26
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  24 |  await expect(d.getByText('CUSTOMER_REQUIREMENTS_NOT_MET',{exact:true})).toBeVisible()\n  25 |  await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await d.getByRole('button',{name:'Thử lại cùng yêu cầu'}).click()\n> 26 |  await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible();await expect(d.getByText('Phương án tham khảo — không được khuyến nghị',{exact:true})).toBeVisible()\n     |                                                         ^\n  27 |  expect(posts).toHaveLength(2);expect(posts[0]).toEqual(posts[1]);expect(posts[0].body.option_id).toBe(option);expect(run.result!.winner_option_id).toBeNull()\n  28 |  await d.screenshot({path:'test-results/011-reference-export.png',animations:'disabled'})\n  29 | })\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:26:57"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:12:04.973Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-referenc-d1d38-g-lost-ACK-preserves-intent-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-referenc-d1d38-g-lost-ACK-preserves-intent-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-referenc-d1d38-g-lost-ACK-preserves-intent-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                    "column": 57,
+                    "line": 26
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8175f559eb93a99e62bc-b90d7c35440c49d44476",
+          "file": "sprint011.api.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "011 artifact unavailable 503 uses explicit retry recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9787,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                      "column": 156,
+                      "line": 46
+                    },
+                    "snippet": "  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                        "column": 156,
+                        "line": 46
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:12:16.835Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-artifact-89165-ses-explicit-retry-recovery-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-artifact-89165-ses-explicit-retry-recovery-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-artifact-89165-ses-explicit-retry-recovery-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                    "column": 156,
+                    "line": 46
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8175f559eb93a99e62bc-988e579d6524debed6c1",
+          "file": "sprint011.api.spec.ts",
+          "line": 38,
+          "column": 48
+        },
+        {
+          "title": "011 artifact unavailable 503 uses explicit new recovery",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9342,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                      "column": 156,
+                      "line": 46
+                    },
+                    "snippet": "  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                        "column": 156,
+                        "line": 46
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  44 |   if(path.endsWith('/exports/'+exp)){reads++;return reads===1?errorResponse(503,'EXPORT_ARTIFACT_UNAVAILABLE'):bytes}\n  45 |  })\n> 46 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  47 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Bản PDF không còn khả dụng'})).toBeVisible();expect(posts).toHaveLength(1)\n  48 |  if(recovery==='retry'){\n  49 |   const download=page.waitForEvent('download');await d.getByRole('button',{name:'Thử tải lại artifact'}).click();await download;await expect(d.getByRole('heading',{name:'Tải PDF thành công'})).toBeVisible();expect(reads).toBe(2);expect(posts).toHaveLength(1)\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:46:156"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:12:28.456Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-artifact-4fb26--uses-explicit-new-recovery-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-artifact-4fb26--uses-explicit-new-recovery-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-artifact-4fb26--uses-explicit-new-recovery-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                    "column": 156,
+                    "line": 46
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8175f559eb93a99e62bc-662e9e4f30be06ea4d34",
+          "file": "sprint011.api.spec.ts",
+          "line": 38,
+          "column": 48
+        },
+        {
+          "title": "011 revoked download permission prevents retry and new export actions",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "controlled-api",
+              "projectName": "controlled-api",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9712,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:64:156",
+                    "location": {
+                      "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                      "column": 156,
+                      "line": 64
+                    },
+                    "snippet": "  62 |   if(path.endsWith('/exports/'+exp))return errorResponse(403,'PERMISSION_DENIED')\n  63 |  })\n> 64 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  65 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Không còn quyền tải PDF'})).toBeVisible()\n  66 |  await expect(d.getByRole('button',{name:/Tải PDF|Thử lại tải|Tạo export mới|Thử tải lại artifact/})).toHaveCount(0);expect(writes).toBe(1)\n  67 | })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                        "column": 156,
+                        "line": 64
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByText('PDF sẵn sàng', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByText('PDF sẵn sàng', { exact: true })\u001b[22m\n\n\n  62 |   if(path.endsWith('/exports/'+exp))return errorResponse(403,'PERMISSION_DENIED')\n  63 |  })\n> 64 |  const d=await open(page,run.run_id);await d.getByRole('button',{name:'Xác nhận xuất PDF'}).click();await expect(d.getByText('PDF sẵn sàng',{exact:true})).toBeVisible()\n     |                                                                                                                                                            ^\n  65 |  await d.getByRole('button',{name:'Tải PDF',exact:true}).click();await expect(d.getByRole('heading',{name:'Không còn quyền tải PDF'})).toBeVisible()\n  66 |  await expect(d.getByRole('button',{name:/Tải PDF|Thử lại tải|Tạo export mới|Thử tải lại artifact/})).toHaveCount(0);expect(writes).toBe(1)\n  67 | })\n    at C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts:64:156"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T02:12:39.833Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-revoked--6bdcf-etry-and-new-export-actions-controlled-api\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-revoked--6bdcf-etry-and-new-export-actions-controlled-api\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-baseline-failed\\artifacts\\sprint011.api-011-revoked--6bdcf-etry-and-new-export-actions-controlled-api\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e\\sprint011.api.spec.ts",
+                    "column": 156,
+                    "line": 64
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8175f559eb93a99e62bc-8586d4bd3c3a9505e70b",
+          "file": "sprint011.api.spec.ts",
+          "line": 56,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T01:54:05.958Z",
+    "duration": 1125507.192,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 13,
+    "flaky": 0
+  }
+}

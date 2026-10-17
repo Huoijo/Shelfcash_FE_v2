@@ -1,4 +1,5 @@
 import { UnderConstructionButton } from '../../../shared/UnderConstruction'
+import { InventoryLotIntelligence, InventoryMovementIntelligence } from './InventoryVisualIntelligence'
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { ActiveIndicator } from '../../../shared/motion/ActiveIndicator'
 import { useContentReveal } from '../../../shared/motion/useContentReveal'
@@ -103,6 +104,7 @@ function InventoryMovements({ ingredientId, snapshot, onInvalidSnapshot, unit }:
     {state.status === 'loading' && <p className="inventory-feedback" role="status">Đang tải biến động…</p>}
     {state.status === 'error' && <DetailError error={state.error} onRetry={() => { setState({ status: 'loading' }); setRetry((value) => value + 1) }} />}
     {state.status === 'success' && <>
+      <InventoryMovementIntelligence items={state.response.data.items} unit={unit} partial={!!state.response.meta.pagination.next_cursor}/>
       {state.response.data.items.length === 0 && <p className="inventory-detail-empty" role="status">Chưa có biến động được ghi nhận.</p>}
       <ul>{state.response.data.items.map((movement) => <li className="inventory-movement-row" key={movement.movement_id}>
         <div><time dateTime={movement.occurred_at}>{formatInventoryTimestamp(movement.occurred_at, timezone)}</time>
@@ -226,6 +228,7 @@ export function InventoryDetail({ ingredientId, snapshot, onClose, onInvalidSnap
         </dl>
         {info.status_reasons.map((reason, index) => <p className="inventory-detail-note" key={`${reason.code}-${index}`}>{reason.message}</p>)}
         <section className="inventory-lots" aria-label="Các lô hàng">
+          <InventoryLotIntelligence lots={lots.items} unit={info.unit} asOf={snapshot.as_of_date} partial={!!lots.cursor}/>
           {lots.items.map((lot) => <LotCard key={lot.lot_id} lot={lot} asOfDate={snapshot.as_of_date} />)}
           {lots.items.length === 0 && <p className="inventory-detail-empty" role="status">Chưa có lô được ghi nhận; không tự xác nhận tồn thực tế bằng 0.</p>}
           {more.error && <DetailError error={more.error} onRetry={loadMoreLots} />}

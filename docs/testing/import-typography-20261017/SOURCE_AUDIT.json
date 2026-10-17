@@ -1,0 +1,868 @@
+{
+  "date": "2026-10-17",
+  "mode": "SOURCE_ONLY_PRE_IMPLEMENTATION",
+  "scope": [
+    "src/features/import-data",
+    "src/pages/imports"
+  ],
+  "limitations": [
+    "Counts are literal source declarations, not computed styles, unique selectors or visible text occurrences.",
+    "Includes overridden or potentially unreachable declarations; no micro/prototype exception approved.",
+    "Excludes shared styles outside scope, inherited values, rem/em/calc/variables and font shorthand without a literal 8/9/10px size.",
+    "Current MagicPath OWNER/STAFF revisions unavailable; no production edits or rendered acceptance."
+  ],
+  "counts": {
+    "APPROVED_MICRO": 0,
+    "PROTOTYPE_ONLY": 0,
+    "UNRESOLVED": 58
+  },
+  "bySize": {
+    "8": 3,
+    "9": 26,
+    "10": 29
+  },
+  "inputs": [
+    {
+      "file": "src/features/import-data/components/ImportActionBar.tsx",
+      "sha256": "56a462ab98b291568786f2752f6183c4b9be0609df55a3ec892d16ce6a9e009c"
+    },
+    {
+      "file": "src/features/import-data/components/ImportBatchPanel.css",
+      "sha256": "38bb2d620178b7ce2265ba4880372d46855a443ca0d43bba847462fcf6b2ee7e"
+    },
+    {
+      "file": "src/features/import-data/components/ImportBatchPanel.tsx",
+      "sha256": "9d3d95e67bb84c6ca353df862224b3e39aa69f8c97a92254c1a30d65620a50f0"
+    },
+    {
+      "file": "src/features/import-data/components/ImportBusinessFacts.tsx",
+      "sha256": "7c3e2ede8442fdc9c6e035da8dd80fea1cbc39da9c642d4f2497e578a5049126"
+    },
+    {
+      "file": "src/features/import-data/components/ImportDomainReview.tsx",
+      "sha256": "d3a2f551b8b5e919cd8d4ddc8941f8c001316b867951b9c74e2a0a193598af94"
+    },
+    {
+      "file": "src/features/import-data/components/ImportExperience.tsx",
+      "sha256": "eeaa936ded9c7d774f53dc42ce5aea6ca547b113de2915bee7d8940c2b522ddf"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.css",
+      "sha256": "852c51de9a2403dfe802994c0c8b8e86e585f5e346cd0675050eee5871eb04c7"
+    },
+    {
+      "file": "src/features/import-data/components/ImportFlow.tsx",
+      "sha256": "0450a9d70c5248f6af6d8230447e60232aefcce466cb640c182ea4c128252652"
+    },
+    {
+      "file": "src/features/import-data/components/ImportGuardHelp.tsx",
+      "sha256": "8424c3f6129a2225a4922965411176be5d7c637b8bd7acb1cfcc87444365f83d"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.css",
+      "sha256": "2c55fe8b6cb17b99e73131fb6588c4a7504062fd6985fdd4f6a79afe312fadf3"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHelp.tsx",
+      "sha256": "9a27d3107c8af26e61e560062c051b2abcc43763261ea9351d27b35fa5b08ad9"
+    },
+    {
+      "file": "src/features/import-data/components/ImportHistoryCorrections.tsx",
+      "sha256": "12f410c360dad0c2531b75a16850d98e4d3e6eee6365e4b5d322a91b9754a2ce"
+    },
+    {
+      "file": "src/features/import-data/components/ImportIdentityResolver.tsx",
+      "sha256": "c16190a783ec29e5d2d760fcc16f8abcec0d566869590859cfdbb6828d00b6aa"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMapping.tsx",
+      "sha256": "00ca894143e3f006277bad3b0a23457cfd7574b479a789367c9e2c2c9cdfd143"
+    },
+    {
+      "file": "src/features/import-data/components/ImportMutationStatus.tsx",
+      "sha256": "22e615a4bc5c84891db14e1149f5af8d027b557b86bd942adb882db0ee2cff5e"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreview.tsx",
+      "sha256": "40579b1b583b9c455ebe05e57f2b27c31001a9f542ecbd74cbc70ec407d9aafe"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreviewExplorer.css",
+      "sha256": "96bdea5bc3f5671271ec8066cdac953a4329afb4359a1244fe224fe01e19b643"
+    },
+    {
+      "file": "src/features/import-data/components/ImportPreviewExplorer.tsx",
+      "sha256": "a98de288db51bcc235f213f743fe54a90534202cce90802a0523e6c28bc0ec8e"
+    },
+    {
+      "file": "src/features/import-data/components/ImportProcessing.tsx",
+      "sha256": "4b962262220c83f78b2ba7ed0cc9b66f0b5c3d06105802197bccda3d4778f2fa"
+    },
+    {
+      "file": "src/features/import-data/components/ImportProfileSpecification.tsx",
+      "sha256": "4c559eb5dd042d03ad7e4595aafcd6bb7639eb7608c58b597af32cf38206bb72"
+    },
+    {
+      "file": "src/features/import-data/components/ImportReadiness.tsx",
+      "sha256": "d0f201b315b364f942fb83d1cb65534159bed65e31c3f974d962945b5e911742"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolutionEditor.tsx",
+      "sha256": "5133224bf5be70ffa485a6b9c180d3c9072635efcbb3e62f36a2eda32824f9cd"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "sha256": "e0e3931506984f2479a32bef9f51bfcd507c8ca251967fd6c2ebfce1a6854408"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolveDrawers.tsx",
+      "sha256": "c02557109cf54ac3f998d43a10e4cf91d23384bc528eb652875aa293e3f7600e"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolveOverview.tsx",
+      "sha256": "5f0582a2ed489207b724cfc2f72ed45bd1a1162d29c9c40c1b5e068502f29302"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolverForm.tsx",
+      "sha256": "a3c3aac5d287e155975afcaa0accdaea820145d0b4b62be285eb381b746cab61"
+    },
+    {
+      "file": "src/features/import-data/components/ImportResult.tsx",
+      "sha256": "fc2e892f8e94b9269ce30eda108f4560141c8c847e5b6c05f473a9ac73b19aaf"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSourceContext.tsx",
+      "sha256": "00a3b2cadde927ba66380055233325baaec3da25096ab771afb35b1c24b3d4b2"
+    },
+    {
+      "file": "src/features/import-data/components/ImportStatus.tsx",
+      "sha256": "c619ac722688ad383cf5de472d47213075840f74a44969c0193c602cbe9f3ed4"
+    },
+    {
+      "file": "src/features/import-data/components/ImportSubmissionLifecycle.tsx",
+      "sha256": "9a77d587d0a599dab5f6cf110841ac3a7310a6cda1635b1c33624bbf04021974"
+    },
+    {
+      "file": "src/features/import-data/components/ImportUpload.css",
+      "sha256": "6c042af51b93ed776e0021fedb7e6a4d0c1e1e5c24eb99f25818fe4d906e757d"
+    },
+    {
+      "file": "src/features/import-data/components/ImportUpload.tsx",
+      "sha256": "78d3ea72b851fde0363b715165616506fa15717f0b361bcf4c0832aaa5dc27f0"
+    },
+    {
+      "file": "src/features/import-data/components/ImportUploadAdmission.tsx",
+      "sha256": "cfcc4301c038146b3e0aab8604b3bd8a25cae608eabdd5d56472684e327f8f53"
+    },
+    {
+      "file": "src/features/import-data/components/MappingSubmissionsPage.tsx",
+      "sha256": "d6e98e68df1f7fc195bde0777f606987dd5b6eb65ab7b75337efe08dff05b625"
+    },
+    {
+      "file": "src/features/import-data/components/preview.labels.ts",
+      "sha256": "2d82b91519bf0bd3984baa542292965d35efeda6bcbd0d20ead8057b18d86d7f"
+    },
+    {
+      "file": "src/features/import-data/importClassificationDraft.ts",
+      "sha256": "4bf751ad48ebfe4fd34e0372230293c867251c5543f5a47ef3f39a35cf9d2347"
+    },
+    {
+      "file": "src/features/import-data/importCommitReason.ts",
+      "sha256": "badbb60ab58817ee6e7929dc36606a1885c3fc924b07f8516e91057875d3e59a"
+    },
+    {
+      "file": "src/features/import-data/importData.data.ts",
+      "sha256": "f6ec8159093d224564e24fc9e1451ad536cf573fcee75be683c43f0223e68aae"
+    },
+    {
+      "file": "src/features/import-data/importData.files.ts",
+      "sha256": "9e0ab97615d981d7249f2a24db60db333830acf1c2d0d354888e44e0f85bc70f"
+    },
+    {
+      "file": "src/features/import-data/importData.fixtures.ts",
+      "sha256": "ca59e86ad3c549a341f7c7c3eedd98e3945278b950f8d742905d5590bcaaf59d"
+    },
+    {
+      "file": "src/features/import-data/importData.types.ts",
+      "sha256": "d7d4559347bab4bdd74c9eac475938c637d93c0b27ae9af694e8fa69f9ba2ed9"
+    },
+    {
+      "file": "src/features/import-data/importData.validation.ts",
+      "sha256": "848ad727f15afa31947f536f194a7043d28cb6438dbb973684657a5469b50e37"
+    },
+    {
+      "file": "src/features/import-data/importData.workflow.ts",
+      "sha256": "f0be37afaa3000df6470aa3b8820cce5bfc456bf954826fe537939a8b84972ea"
+    },
+    {
+      "file": "src/features/import-data/importDomainReview.ts",
+      "sha256": "63a464e4b7d75288a9460e3aa99f3798bc5e1498bfc28333a856c557d7133c2c"
+    },
+    {
+      "file": "src/features/import-data/importEntitySearch.context.ts",
+      "sha256": "97975739db8a2f680671f0215e29369c958dcd44553de64964d7dd7692d376d6"
+    },
+    {
+      "file": "src/features/import-data/importEntitySearch.data.ts",
+      "sha256": "ca64b4ef402692bae91c8cda44f540c18927467c695c0747623c1396e878e90f"
+    },
+    {
+      "file": "src/features/import-data/importExperience.ts",
+      "sha256": "e7e41e404f17936a6c4931caf19d1dc617b765c2c8abef4e1e06beff95e027f1"
+    },
+    {
+      "file": "src/features/import-data/importFlow.data.ts",
+      "sha256": "cef48e6ce1aa1218df0f6e3cc2b838c01c90485c0a31daac258b32fa387f9276"
+    },
+    {
+      "file": "src/features/import-data/importFlow.fixtures.ts",
+      "sha256": "fb86fbc54c4aac0b3d73b0087ddef5ce65b9d789e4da45d43c84f0d614b6868e"
+    },
+    {
+      "file": "src/features/import-data/importFlow.locator.ts",
+      "sha256": "1010acf1134ad81a024e9f00637f973f23b752b9a926e7e5575a8e94540de931"
+    },
+    {
+      "file": "src/features/import-data/importFlow.stage.ts",
+      "sha256": "0721deb1bac43f672e48031b2c765316b0f8eeb3230f8a6db29a3ac012a911d6"
+    },
+    {
+      "file": "src/features/import-data/importFlow.types.ts",
+      "sha256": "b9c5c384814844db2559ec1d9028f5f6c275f7a2759a59eba92882b66017a8f7"
+    },
+    {
+      "file": "src/features/import-data/importFlow.validation.ts",
+      "sha256": "b3cede1a7d7411412dd27d42743cb8850c1e3121ca1a2a37347035a5e45efbc3"
+    },
+    {
+      "file": "src/features/import-data/importFlow.wire.ts",
+      "sha256": "4d8d467cf531b77add7d14ec5da0d7d20af3eee72926dab8552694d9cd6a2b28"
+    },
+    {
+      "file": "src/features/import-data/importFlow.workflow.ts",
+      "sha256": "b3759c2f8f1552c37743c8beb7c10960d064529a8f9dc34fd47b1090fda0802f"
+    },
+    {
+      "file": "src/features/import-data/importPresentation.ts",
+      "sha256": "c52f32782d5b8a858edeaf7ddd4bd8cf7a3651cdba76f66288ffb8951798488e"
+    },
+    {
+      "file": "src/features/import-data/importReadiness.data.ts",
+      "sha256": "11ba57649b995ed38cf3b97fd26d35158a2e5a55f4f3e91cb259bea0f435b999"
+    },
+    {
+      "file": "src/features/import-data/importResolutionView.context.ts",
+      "sha256": "de156c18d67a938024efda53ac31f09e353df284a8262aaa9708c833aedd51f5"
+    },
+    {
+      "file": "src/features/import-data/importResolve.presentation.ts",
+      "sha256": "7f167200fce71c0729cbdb89510b9c08e11c0764dd9bc02cc4ecd30e12e03cdc"
+    },
+    {
+      "file": "src/features/import-data/importResolverForm.context.ts",
+      "sha256": "a26bb4f0173d0313508e169b7152a45ebe3c32249a2f5438b00c20a143812af9"
+    },
+    {
+      "file": "src/features/import-data/importSubmission.data.ts",
+      "sha256": "fc61b05dcb8c0209c63a4ff3c064a0b5001440da5fd7a3dc3d905f88eaae28cb"
+    },
+    {
+      "file": "src/features/import-data/importSubmission.policy.ts",
+      "sha256": "8abbfd448fdb373aa6080bbb50dbef064166f3315fc81a40efb8cd97eb29fc67"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "sha256": "145627e71e28f2f276741ab303eeb2a0896f0e2d6d9ba8f04a257936c4b40714"
+    },
+    {
+      "file": "src/pages/imports/ImportPage.tsx",
+      "sha256": "d9367d9ed8c4702962d0b5ac7a507972ced84dcb4477b7d3b18ba6f8ac37cc8e"
+    },
+    {
+      "file": "src/pages/imports/ImportWorkspace.tsx",
+      "sha256": "eb4ddbe3ee8fe840528cf0d6d462a533598696f4a63640a40c678cd678971cd9"
+    }
+  ],
+  "candidates": [
+    {
+      "file": "src/features/import-data/components/ImportFlow.css",
+      "line": 109,
+      "selector": ".import-flow__issue .import-flow__badge",
+      "property": "font-size",
+      "declaration": "font-size: 10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 5,
+      "selector": ".input-resolve-card > header > span",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 7,
+      "selector": ".input-resolve-card header p",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 9,
+      "selector": ".input-card-result span",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 12,
+      "selector": ".input-card-status > span",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 15,
+      "selector": ".import-flow .input-card-status button",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 19,
+      "selector": ".input-summary-strip span",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 23,
+      "selector": ".input-actionright > span",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 31,
+      "selector": ".import-resolver .sc-flow-dialog-header small",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 33,
+      "selector": ".import-resolver .sc-flow-dialog-header p",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 36,
+      "selector": ".input-resolver-meta span",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 39,
+      "selector": ".import-resolver .sc-flow-dialog-footer > small",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 45,
+      "selector": ".input-resolver-section header > span,.input-resolver-muted",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 50,
+      "selector": ".input-resolver-row > span",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 53,
+      "selector": ".input-samples > span",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 54,
+      "selector": ".import-resolver label",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 61,
+      "selector": ".input-resolver-help",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 66,
+      "selector": ".input-entity-results strong",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 67,
+      "selector": ".input-entity-results small",
+      "property": "font-size",
+      "declaration": "font-size:8px",
+      "sizePx": 8,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 70,
+      "selector": ".import-resolver .input-status",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 72,
+      "selector": ".input-summary-strip span",
+      "property": "font-size",
+      "declaration": "font-size:8px",
+      "sizePx": 8,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 77,
+      "selector": ".import-resolver .input-resolver-scope select",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 80,
+      "selector": ".input-resolver-scope-summary span",
+      "property": "font-size",
+      "declaration": "font-size:8px",
+      "sizePx": 8,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 82,
+      "selector": ".import-resolver .input-resolver-scope-tools button",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 83,
+      "selector": ".input-resolver-itemnav strong",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 88,
+      "selector": ".input-profile-change-summary article span",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 89,
+      "selector": ".input-profile-toggle button",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 90,
+      "selector": ".input-profile-rule-group small,.input-domain-review small",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 90,
+      "selector": ".input-profile-rule-group article>header>button",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 90,
+      "selector": ".input-profile-rule-group .import-flow__spec",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 92,
+      "selector": ".input-domain-grid p,.input-domain-review>p",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 92,
+      "selector": ".input-domain-grid button",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 93,
+      "selector": ".input-context-evidence",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 93,
+      "selector": ".input-context-evidence p",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 94,
+      "selector": ".input-admission-files small",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 94,
+      "selector": ".input-admission-files button",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 95,
+      "selector": ".import-flow__card>header>span",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 97,
+      "selector": ".input-review-receipt small",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 100,
+      "selector": ".input-source-context .import-flow__form label",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 100,
+      "selector": ".input-source-context .import-flow__form p,.input-source-context .import-flow__form small",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 100,
+      "selector": ".input-source-context .import-flow__form details",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/features/import-data/components/ImportResolve.css",
+      "line": 101,
+      "selector": ".input-profile-rule-group article>header>span",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 63,
+      "selector": ".input-steps li > span",
+      "property": "font-size",
+      "declaration": "font-size: 10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 64,
+      "selector": ".input-steps small",
+      "property": "font-size",
+      "declaration": "font-size: 9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 69,
+      "selector": ".input-source dt",
+      "property": "font-size",
+      "declaration": "font-size: 10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 72,
+      "selector": ".input-section-title small",
+      "property": "font-size",
+      "declaration": "font-size: 10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 85,
+      "selector": ".input-resolve-grid > section > span",
+      "property": "font-size",
+      "declaration": "font-size: 9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 132,
+      "selector": ".input-stat",
+      "property": "font-size",
+      "declaration": "font-size: 10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 150,
+      "selector": ".input-source dt",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 157,
+      "selector": ".input-readout span",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 165,
+      "selector": ".input-progress-list small",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 181,
+      "selector": ".import-page .import-upload__file-size",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 186,
+      "selector": ".import-page .sc-preview-explorer table",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 187,
+      "selector": ".import-page .sc-preview-explorer th,.import-page .sc-preview-explorer td",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 189,
+      "selector": ".import-page .sc-preview-explorer td:last-child button",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 194,
+      "selector": ".import-page .sc-preview-review-summary span",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 196,
+      "selector": ".import-page .sc-preview-review-summary small",
+      "property": "font-size",
+      "declaration": "font-size:10px",
+      "sizePx": 10,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    },
+    {
+      "file": "src/pages/imports/ImportPage.css",
+      "line": 204,
+      "selector": ".import-evidence .sc-flow-dialog-header small",
+      "property": "font-size",
+      "declaration": "font-size:9px",
+      "sizePx": 9,
+      "classification": "UNRESOLVED",
+      "reason": "Source candidate only; cascade, rendered reachability, semantic role and current canonical design not verified."
+    }
+  ]
+}

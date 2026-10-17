@@ -1,4 +1,5 @@
 import { UnderConstructionButton } from '../../../shared/UnderConstruction'
+import { MenuRecipeIntelligence } from './MenuVisualIntelligence'
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { usePanelMotion } from '../../../shared/motion/usePanelMotion'
 import { HttpError } from '../../../shared/http/httpClient'
@@ -116,6 +117,7 @@ export function MenuDetail({ productId, listMeta, listedProduct, onClose, onInva
       {state.status === 'success' && <>
         {state.response.meta.warnings.length > 0 && <div className="menu-detail-warnings" role="status">{state.response.meta.warnings.map((warning, index) => <p key={`${warning.code}-${index}`}>{warning.message}</p>)}</div>}
         <RecipeTable recipe={state.response.data.recipe} asOfDate={state.response.meta.as_of_date} />
+        <MenuRecipeIntelligence recipe={state.response.data.recipe}/>
       </>}
     </div>
     <footer className="menu-detail-actions">

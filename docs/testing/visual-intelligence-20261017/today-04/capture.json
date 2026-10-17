@@ -1,0 +1,160 @@
+{
+  "kind": "CONTROLLED_HYDRATED_PRODUCTION_COMPONENTS",
+  "browser": "151.0.7922.34",
+  "errors": [],
+  "unexpected": [],
+  "cases": [
+    {
+      "scenario": "today-default",
+      "width": 1440,
+      "file": "today-default-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Hôm nay\nShelfCash\nHôm nay\n2026-10-10 · Asia/Ho_Chi_Minh\nHỏi AI về hôm nay · Chưa hỗ trợ\nDữ liệu · Chưa xác định\nCần chú ý hôm nay\nĐọc lại\n\nTồn kho · Chưa xác định\n\nLần nhập cần chú ý · Chưa được đánh giá\n\nĐề xuất cách đọc · Chưa được đánh giá\n\nYêu cầu quyền · Chưa được đánh giá\n\nQuyết định đang chờ\n\nChưa có dữ liệu xác định quyết định đang chờ. Run gần nhất không mặc nhiên là quyết định cần xác nhận.\n\nChưa xác định\n\nTổng quan 7 ngày tới\nInventory pulse · 7 ngày\nDATA CONTRACT REQUIRED\nChưa có dữ liệu tổng quan nhu cầu, rủi ro thiếu hàng và lịch nhận hàng cho 7 ngày tới. Tồn kho hiện tại không thay thế chuỗi dự phóng theo ngày.",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 1102
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "today-error",
+      "width": 1440,
+      "file": "today-error-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Hôm nay\nShelfCash\nHôm nay\nHỏi AI về hôm nay · Chưa hỗ trợ\n\nControlled error Thử lại\n\nDữ liệu · Chưa được đánh giá\nCần chú ý hôm nay\nĐọc lại\n\nTồn kho · Chưa được đánh giá\n\nLần nhập cần chú ý · Chưa được đánh giá\n\nĐề xuất cách đọc · Chưa được đánh giá\n\nYêu cầu quyền · Chưa được đánh giá\n\nQuyết định đang chờ\n\nChưa có dữ liệu xác định quyết định đang chờ. Run gần nhất không mặc nhiên là quyết định cần xác nhận.\n\nKế hoạch chưa được đánh giá\n\nTổng quan 7 ngày tới\nInventory pulse · 7 ngày\nKhông khả dụng\nChưa có dữ liệu tổng quan nhu cầu, rủi ro thiếu hàng và lịch nhận hàng cho 7 ngày tới. Tồn kho hiện tại không thay thế chuỗi dự phóng theo ngày.",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 1102
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "today-permission",
+      "width": 1440,
+      "file": "today-permission-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Hôm nay\nShelfCash\nHôm nay\n2026-10-10 · Asia/Ho_Chi_Minh\nHỏi AI về hôm nay · Chưa hỗ trợ\nDữ liệu · Bạn chưa có quyền xem\nCần chú ý hôm nay\nĐọc lại\n\nTồn kho · Bạn chưa có quyền xem\n\nLần nhập cần chú ý · Chưa được đánh giá\n\nĐề xuất cách đọc · Chưa được đánh giá\n\nYêu cầu quyền · Chưa được đánh giá\n\nQuyết định đang chờ\n\nChưa có dữ liệu xác định quyết định đang chờ. Run gần nhất không mặc nhiên là quyết định cần xác nhận.\n\nBạn chưa có quyền xem\n\nTổng quan 7 ngày tới\nInventory pulse · 7 ngày\nGiới hạn quyền\nChưa có dữ liệu tổng quan nhu cầu, rủi ro thiếu hàng và lịch nhận hàng cho 7 ngày tới. Tồn kho hiện tại không thay thế chuỗi dự phóng theo ngày.",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 1102
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "today-loading",
+      "width": 1440,
+      "file": "today-loading-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Hôm nay\nShelfCash\nHôm nay\nHỏi AI về hôm nay · Chưa hỗ trợ\n\nĐang đọc tổng quan hiện tại…\n\nDữ liệu · Chưa được đánh giá\nCần chú ý hôm nay\nĐọc lại\n\nTồn kho · Chưa được đánh giá\n\nLần nhập cần chú ý · Chưa được đánh giá\n\nĐề xuất cách đọc · Chưa được đánh giá\n\nYêu cầu quyền · Chưa được đánh giá\n\nQuyết định đang chờ\n\nChưa có dữ liệu xác định quyết định đang chờ. Run gần nhất không mặc nhiên là quyết định cần xác nhận.\n\nKế hoạch chưa được đánh giá\n\nTổng quan 7 ngày tới\nInventory pulse · 7 ngày\nĐang tải…\nChưa có dữ liệu tổng quan nhu cầu, rủi ro thiếu hàng và lịch nhận hàng cho 7 ngày tới. Tồn kho hiện tại không thay thế chuỗi dự phóng theo ngày.",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 1102
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "today-default",
+      "width": 390,
+      "file": "today-default-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Hôm nay\nShelfCash\nHôm nay\n2026-10-10 · Asia/Ho_Chi_Minh\nHỏi AI về hôm nay · Chưa hỗ trợ\nDữ liệu · Chưa xác định\nCần chú ý hôm nay\nĐọc lại\n\nTồn kho · Chưa xác định\n\nLần nhập cần chú ý · Chưa được đánh giá\n\nĐề xuất cách đọc · Chưa được đánh giá\n\nYêu cầu quyền · Chưa được đánh giá\n\nQuyết định đang chờ\n\nChưa có dữ liệu xác định quyết định đang chờ. Run gần nhất không mặc nhiên là quyết định cần xác nhận.\n\nChưa xác định\n\nTổng quan 7 ngày tới\nInventory pulse · 7 ngày\nDATA CONTRACT REQUIRED\nChưa có dữ liệu tổng quan nhu cầu, rủi ro thiếu hàng và lịch nhận hàng cho 7 ngày tới. Tồn kho hiện tại không thay thế chuỗi dự phóng theo ngày.",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 356
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "today-error",
+      "width": 390,
+      "file": "today-error-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Hôm nay\nShelfCash\nHôm nay\nHỏi AI về hôm nay · Chưa hỗ trợ\n\nControlled error Thử lại\n\nDữ liệu · Chưa được đánh giá\nCần chú ý hôm nay\nĐọc lại\n\nTồn kho · Chưa được đánh giá\n\nLần nhập cần chú ý · Chưa được đánh giá\n\nĐề xuất cách đọc · Chưa được đánh giá\n\nYêu cầu quyền · Chưa được đánh giá\n\nQuyết định đang chờ\n\nChưa có dữ liệu xác định quyết định đang chờ. Run gần nhất không mặc nhiên là quyết định cần xác nhận.\n\nKế hoạch chưa được đánh giá\n\nTổng quan 7 ngày tới\nInventory pulse · 7 ngày\nKhông khả dụng\nChưa có dữ liệu tổng quan nhu cầu, rủi ro thiếu hàng và lịch nhận hàng cho 7 ngày tới. Tồn kho hiện tại không thay thế chuỗi dự phóng theo ngày.",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 356
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "today-permission",
+      "width": 390,
+      "file": "today-permission-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Hôm nay\nShelfCash\nHôm nay\n2026-10-10 · Asia/Ho_Chi_Minh\nHỏi AI về hôm nay · Chưa hỗ trợ\nDữ liệu · Bạn chưa có quyền xem\nCần chú ý hôm nay\nĐọc lại\n\nTồn kho · Bạn chưa có quyền xem\n\nLần nhập cần chú ý · Chưa được đánh giá\n\nĐề xuất cách đọc · Chưa được đánh giá\n\nYêu cầu quyền · Chưa được đánh giá\n\nQuyết định đang chờ\n\nChưa có dữ liệu xác định quyết định đang chờ. Run gần nhất không mặc nhiên là quyết định cần xác nhận.\n\nBạn chưa có quyền xem\n\nTổng quan 7 ngày tới\nInventory pulse · 7 ngày\nGiới hạn quyền\nChưa có dữ liệu tổng quan nhu cầu, rủi ro thiếu hàng và lịch nhận hàng cho 7 ngày tới. Tồn kho hiện tại không thay thế chuỗi dự phóng theo ngày.",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 356
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "today-loading",
+      "width": 390,
+      "file": "today-loading-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Hôm nay\nShelfCash\nHôm nay\nHỏi AI về hôm nay · Chưa hỗ trợ\n\nĐang đọc tổng quan hiện tại…\n\nDữ liệu · Chưa được đánh giá\nCần chú ý hôm nay\nĐọc lại\n\nTồn kho · Chưa được đánh giá\n\nLần nhập cần chú ý · Chưa được đánh giá\n\nĐề xuất cách đọc · Chưa được đánh giá\n\nYêu cầu quyền · Chưa được đánh giá\n\nQuyết định đang chờ\n\nChưa có dữ liệu xác định quyết định đang chờ. Run gần nhất không mặc nhiên là quyết định cần xác nhận.\n\nKế hoạch chưa được đánh giá\n\nTổng quan 7 ngày tới\nInventory pulse · 7 ngày\nĐang tải…\nChưa có dữ liệu tổng quan nhu cầu, rủi ro thiếu hàng và lịch nhận hàng cho 7 ngày tới. Tồn kho hiện tại không thay thế chuỗi dự phóng theo ngày.",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 356
+          }
+        ]
+      }
+    }
+  ]
+}

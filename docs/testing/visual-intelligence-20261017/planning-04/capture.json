@@ -1,0 +1,616 @@
+{
+  "kind": "CONTROLLED_HYDRATED_PRODUCTION_COMPONENTS",
+  "browser": "151.0.7922.34",
+  "errors": [],
+  "unexpected": [],
+  "cases": [
+    {
+      "scenario": "setup-default",
+      "width": 1440,
+      "file": "setup-default-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\n1.000.000 VND\nReadiness backend\nSẵn sàng\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n1.000.000 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\n1.000.000 VND\nTrần Store\n1.000.000 VND\n100% trần Store\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nSẵn sàng tạo kế hoạch\nSẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 1104
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 1054
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-no-ceiling",
+      "width": 1440,
+      "file": "setup-no-ceiling-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nChưa xác định\nNgân sách run\nChưa biết\nReadiness backend\nChưa đánh giá\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\nChưa cấu hình\nKhông giả định bằng 0.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\nChưa biết\nTrần Store\nKhông cấu hình\nKhông có mẫu số: “không cấu hình trần” khác với 0 ₫.\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nChưa thể tạo kế hoạch\n\nNgày, ngân sách hoặc cấu hình yêu cầu chưa hợp lệ/khả dụng. Ngân sách không được vượt trần hiện hành.\n\nChưa sẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 1104
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 1054
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-zero",
+      "width": 1440,
+      "file": "setup-zero-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\n0 VND\nReadiness backend\nSẵn sàng\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n0 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\n0 VND\nTrần Store\n0 VND\nKhông tạo tỷ lệ khi mẫu số là 0 ₫.\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nSẵn sàng tạo kế hoạch\nSẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 1104
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 1054
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-permission",
+      "width": 1440,
+      "file": "setup-permission-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\nGiới hạn quyền\nReadiness backend\nGiới hạn quyền\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n1.000.000 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\nGiới hạn quyền\nTrần Store\nGiới hạn quyền\nKhông hiển thị tỷ lệ vì không có quyền xem trần Store.\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nSẵn sàng tạo kế hoạch\nChưa sẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 1104
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 1054
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-loading",
+      "width": 1440,
+      "file": "setup-loading-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\n1.000.000 VND\nReadiness backend\nĐang kiểm tra\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n1.000.000 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\n1.000.000 VND\nTrần Store\n1.000.000 VND\n100% trần Store\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nĐang kiểm tra khả năng lập kế hoạch…\nChưa sẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 1104
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 1054
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-error",
+      "width": 1440,
+      "file": "setup-error-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\n1.000.000 VND\nReadiness backend\nKhông khả dụng\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n1.000.000 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\n1.000.000 VND\nTrần Store\n1.000.000 VND\n100% trần Store\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nSẵn sàng tạo kế hoạch\n\nControlled error\n\nSẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 1104
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 1054
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-blocked",
+      "width": 1440,
+      "file": "setup-blocked-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\n1.000.000 VND\nReadiness backend\nBị chặn\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n1.000.000 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\n1.000.000 VND\nTrần Store\n1.000.000 VND\n100% trần Store\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nChưa thể tạo kế hoạch\nChưa sẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 1104
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 1054
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "result-default",
+      "width": 1440,
+      "file": "result-default-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nChi phí dự kiến\n7.000 VND\nTổng chi phí canonical của phương án được chọn\n0,7% ngân sách run · không phải tiền đã chi\nCần nhập\nChưa biết\n1 dòng mua; chưa có tổng nguyên liệu toàn kế hoạch\nMức đáp ứng\nChưa đánh giá\nKhông có tỷ lệ tổng; xem theo món và đường nhu cầu\nKế hoạch mua hàng\nTiết kiệm / Cân bằng / An toàn\n1\nSữa tươi — ví dụ QA\nMua 7 l\n7.000 VND\nXem toàn bộ kế hoạch\nCảnh báo của kết quả\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nCảnh báo dự báo\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nPhạm vi món và dữ liệu bị loại\nThông tin dự báo đã lưu\n\nCơ sở vận hành: CURRENT_CAPTURE · Ngày chụp 11/10/2026 · Asia/Ho_Chi_Minh. Đây không phải tái tạo tồn kho lịch sử.\n\nTạo Draft PO\nXem phương án khác\nXem lý do từ engine\nThông tin lần lập kế hoạch",
+        "belowFloor": [],
+        "vi": []
+      }
+    },
+    {
+      "scenario": "result-no-winner",
+      "width": 1440,
+      "file": "result-no-winner-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nĐã hoàn tất — chưa có phương án đủ điều kiện.\nKết quả: no_eligible_candidate. Không tạo kế hoạch mua giả.\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nChi phí dự kiến\nChưa biết\nChưa có khuyến nghị hoàn tất\nKhông khả dụng · thiếu retained cost hoặc ngân sách run hợp lệ\nCần nhập\nChưa biết\nChưa có tổng nguyên liệu toàn kế hoạch\nMức đáp ứng\nChưa đánh giá\nKhông có tỷ lệ tổng; xem theo món và đường nhu cầu\nKế hoạch mua hàng\nChưa có chiến lược được chọn\nXem toàn bộ kế hoạch\n\nKhông có phương án được chọn. Không thể suy ra kế hoạch mua hàng.\n\nCảnh báo của kết quả\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nCảnh báo dự báo\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nPhạm vi món và dữ liệu bị loại\nThông tin dự báo đã lưu\n\nCơ sở vận hành: CURRENT_CAPTURE · Ngày chụp 11/10/2026 · Asia/Ho_Chi_Minh. Đây không phải tái tạo tồn kho lịch sử.\n\nTạo Draft PO\nXem phương án khác\nXem lý do từ engine\nThông tin lần lập kế hoạch",
+        "belowFloor": [],
+        "vi": []
+      }
+    },
+    {
+      "scenario": "result-partial",
+      "width": 1440,
+      "file": "result-partial-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nChạy kế hoạch thất bại.\nDữ liệu một phần bên dưới chỉ để kiểm tra, không phải khuyến nghị đã hoàn tất.\nPhương án một phần được máy chủ xác minh và giữ lại; không đổi trạng thái thất bại của lần chạy.\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nChi phí dự kiến\n7.000 VND\nPhương án một phần đã lưu; lần chạy thất bại\n0,7% ngân sách run · không phải tiền đã chi\nCần nhập\nChưa biết\n1 dòng mua; chưa có tổng nguyên liệu toàn kế hoạch\nMức đáp ứng\nChưa đánh giá\nKhông có tỷ lệ tổng; xem theo món và đường nhu cầu\nDữ liệu mua hàng một phần\nTiết kiệm / Cân bằng / An toàn\n1\nSữa tươi — ví dụ QA\nMua 7 l\n7.000 VND\nXem toàn bộ kế hoạch\nLỗi thực thi\nVí dụ một nguồn lỗi; giữ phương án từng được xác minh độc lập. ENGINE_SOURCE_ERROR\nCảnh báo của kết quả\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nCảnh báo dự báo\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nPhạm vi món và dữ liệu bị loại\nThông tin dự báo đã lưu\n\nCơ sở vận hành: CURRENT_CAPTURE · Ngày chụp 11/10/2026 · Asia/Ho_Chi_Minh. Đây không phải tái tạo tồn kho lịch sử.\n\nTạo Draft PO\nXem phương án khác\nXem lý do từ engine\nThông tin lần lập kế hoạch",
+        "belowFloor": [],
+        "vi": []
+      }
+    },
+    {
+      "scenario": "result-historical",
+      "width": 1440,
+      "file": "result-historical-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nRun lịch sử · chỉ đọc\nKết quả lịch sử bất biến. Không tái dựng từ tồn kho, công thức hoặc ngân sách hiện tại.\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nChi phí dự kiến\n7.000 VND\nTổng chi phí canonical của phương án được chọn\n0,7% ngân sách run · không phải tiền đã chi\nCần nhập\nChưa biết\n1 dòng mua; chưa có tổng nguyên liệu toàn kế hoạch\nMức đáp ứng\nChưa đánh giá\nKhông có tỷ lệ tổng; xem theo món và đường nhu cầu\nKế hoạch mua hàng\nTiết kiệm / Cân bằng / An toàn\n1\nSữa tươi — ví dụ QA\nMua 7 l\n7.000 VND\nXem toàn bộ kế hoạch\nCảnh báo của kết quả\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nCảnh báo dự báo\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nPhạm vi món và dữ liệu bị loại\nThông tin dự báo đã lưu\n\nCơ sở vận hành: CURRENT_CAPTURE · Ngày chụp 11/10/2026 · Asia/Ho_Chi_Minh. Đây không phải tái tạo tồn kho lịch sử.\n\nTạo Draft PO\nXem phương án khác\nXem lý do từ engine\nThông tin lần lập kế hoạch",
+        "belowFloor": [],
+        "vi": []
+      }
+    },
+    {
+      "scenario": "result-strategies",
+      "width": 1440,
+      "file": "result-strategies-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\n\nChọn thẻ chỉ để kiểm tra dữ liệu đã lưu, không đổi chiến lược hoặc chạy lại. Nhiều chiến lược có thể trỏ cùng một phương án.\n\nTiết kiệm\nĐược chọn\nChi phí dự kiến\n7.000 VND\nThực thi\nINCOMPLETE\nĐường xây dựng\nLOW\nYêu cầu khách hàng\nPASS_EXISTS\nCân bằng\nĐược chọn\nChi phí dự kiến\n7.000 VND\nThực thi\nINCOMPLETE\nĐường xây dựng\nBASE\nYêu cầu khách hàng\nPASS_EXISTS\nAn toàn\nĐược chọn\nChi phí dự kiến\n7.000 VND\nThực thi\nINCOMPLETE\nĐường xây dựng\nHIGH\nYêu cầu khách hàng\nPASS_EXISTS\nDelta chi phí retained\n+0 VND\nvs Cân bằng\nPhương án\nsynthetic-basket/1\nĐủ điều kiện xét chọn\nCó\nChi phí mua\n7.000 VND\nPhí phải trả\n0 VND\nPhí giao hàng\n0 VND · NONE\nTổng chi phí\n7.000 VND\nMức đáp ứng theo món và đường nhu cầu · không phải tổng toàn kế hoạch\nMón\tĐường\tNhu cầu\tĐáp ứng\tThiếu bán\tTỷ lệ\nSữa tươi — ví dụ QA\nd0900000-0000-4000-8000-000000000003\n\tLOW\t7 ly\t7 ly\t0 ly\t100%\nSữa tươi — ví dụ QA\nd0900000-0000-4000-8000-000000000003\n\tBASE\t7 ly\t7 ly\t0 ly\t100%\nSữa tươi — ví dụ QA\nd0900000-0000-4000-8000-000000000003\n\tHIGH\t7 ly\t7 ly\t0 ly\t100%\nĐối chiếu yêu cầu phục vụ đã lưu\nMón\tĐường\tMục tiêu\tKết quả\tThiếu\nd0900000-0000-4000-8000-000000000003\tBASE\t95%\tPASS\t0\nCác dòng mua hàng của phương án · không phải thứ tự ưu tiên\nNguyên liệu / nhà cung cấp\tSố lượng\tPack\tNgày đến / hết hạn\tChi phí mua\nSữa tươi — ví dụ QA\nNguyên liệu: d0900000-0000-4000-8000-000000000004\nNhà cung cấp: d0900000-0000-4000-8000-000000000005\nĐiều khoản: d0900000-0000-4000-8000-000000000006\n\t7 l\t7\nKích thước pack chưa được cung cấp\n\t11/10/2026\nHết hạn: 18/10/2026\n\t7.000 VND\n0 thành phần phí được lưu",
+        "belowFloor": [],
+        "vi": []
+      }
+    },
+    {
+      "scenario": "ingredient-default",
+      "width": 1440,
+      "file": "ingredient-default-1440.png",
+      "detailFile": null,
+      "keyboardFile": "ingredient-default-1440-keyboard.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 1,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nNguyên liệu\n\nTheo phương án được máy chủ chọn.\n\nĐọc lại danh sách\nSữa tươi — ví dụ QA\nMua: 7 l\n\nĐã đọc 1 · Tổng chưa biết\n\nSữa tươi — ví dụ QA\n\nd0900000-0000-4000-8000-000000000004 · l\n\nCoverage × lead time\nMột phần\nCoverage · Không khả dụng · Lead time · Không khả dụng · Kỳ kế hoạch 7 ngày\nProjected inventory vs demand\nMột phần · Retained · l\nLOW\nBASE\nHIGH\n11/10\n12/10\n13/10\n14/10\n15/10\n16/10\n17/10\n— Tồn cuối ngày\n┄ Nhu cầu\n▼ Hàng về\n11/10/2026\n12/10/2026\n13/10/2026\n14/10/2026\n15/10/2026\n16/10/2026\n17/10/2026\nTên nguyên liệu\nĐã chụp cùng lần chạy\nPhạm vi tồn chụp\nCONFIRMED_EMPTY\nBằng chứng\npartial\nPhương án đang xem\nsynthetic-basket/1\nNhu cầu và tồn từng ngày\n\nLOW / BASE / HIGH là các đường tính của máy chủ, không phải P25 / P50 / P75. Giá trị từng ngày không phải tổng của cả kỳ.\n\nGiá trị từng ngày giữ nguyên từ lần chạy\nNgày\tĐường\tNhu cầu\tCó sẵn\tThiếu\tNhập đến\tTiêu thụ\tHết hạn\tHao hụt khác\tCuối ngày\n11/10/2026\tLOW\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tLOW\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n13/10/2026\tLOW\t1 l\t5 l\t0 l\t0 l\t1 l\t0 l\t0 l\t4 l\n14/10/2026\tLOW\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tLOW\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tLOW\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tLOW\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\n11/10/2026\tBASE\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tBASE\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n13/10/2026\tBASE\t1 l\t5 l\t0 l\t0 l\t1 l\t0 l\t0 l\t4 l\n14/10/2026\tBASE\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tBASE\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tBASE\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tBASE\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\n11/10/2026\tHIGH\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tHIGH\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n13/10/2026\tHIGH\t1 l\t5 l\t0 l\t0 l\t1 l\t0 l\t0 l\t4 l\n14/10/2026\tHIGH\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tHIGH\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tHIGH\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tHIGH\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\nCác lô tồn đã chụp (0)\nQuan hệ món / công thức (1)",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 772
+          },
+          {
+            "className": "sc-vi-card sc-pvi-trajectory",
+            "width": 772
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "ingredient-gaps",
+      "width": 1440,
+      "file": "ingredient-gaps-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 1,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nNguyên liệu\n\nTheo phương án được máy chủ chọn.\n\nĐọc lại danh sách\nSữa tươi — ví dụ QA\nMua: 7 l\n\nĐã đọc 1 · Tổng chưa biết\n\nSữa tươi — ví dụ QA\n\nd0900000-0000-4000-8000-000000000004 · l\n\nCoverage × lead time\nMột phần\nCoverage · Không khả dụng · Lead time · Không khả dụng · Kỳ kế hoạch 7 ngày\nProjected inventory vs demand\nMột phần · Retained · l\nLOW\nBASE\nHIGH\n11/10\n12/10\n?\n13/10\n14/10\n15/10\n16/10\n17/10\n— Tồn cuối ngày\n┄ Nhu cầu\n▼ Hàng về\n11/10/2026\n12/10/2026\n13/10/2026 · Chưa có dữ liệu\n14/10/2026\n15/10/2026\n16/10/2026\n17/10/2026\nTên nguyên liệu\nĐã chụp cùng lần chạy\nPhạm vi tồn chụp\nCONFIRMED_EMPTY\nBằng chứng\npartial\nPhương án đang xem\nsynthetic-basket/1\nNhu cầu và tồn từng ngày\n\nLOW / BASE / HIGH là các đường tính của máy chủ, không phải P25 / P50 / P75. Giá trị từng ngày không phải tổng của cả kỳ.\n\nGiá trị từng ngày giữ nguyên từ lần chạy\nNgày\tĐường\tNhu cầu\tCó sẵn\tThiếu\tNhập đến\tTiêu thụ\tHết hạn\tHao hụt khác\tCuối ngày\n11/10/2026\tLOW\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tLOW\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n14/10/2026\tLOW\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tLOW\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tLOW\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tLOW\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\n11/10/2026\tBASE\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tBASE\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n14/10/2026\tBASE\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tBASE\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tBASE\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tBASE\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\n11/10/2026\tHIGH\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tHIGH\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n14/10/2026\tHIGH\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tHIGH\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tHIGH\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tHIGH\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\nCác lô tồn đã chụp (0)\nQuan hệ món / công thức (1)",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 772
+          },
+          {
+            "className": "sc-vi-card sc-pvi-trajectory",
+            "width": 772
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "ingredient-no-series",
+      "width": 1440,
+      "file": "ingredient-no-series-1440.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nNguyên liệu\n\nTheo phương án được máy chủ chọn.\n\nĐọc lại danh sách\nSữa tươi — ví dụ QA\nMua: 7 l\n\nĐã đọc 1 · Tổng chưa biết\n\nSữa tươi — ví dụ QA\n\nd0900000-0000-4000-8000-000000000004 · l\n\nCoverage × lead time\nMột phần\nCoverage · Không khả dụng · Lead time · Không khả dụng · Kỳ kế hoạch 7 ngày\nProjected inventory vs demand\nMột phần · Retained · l\nProjected inventory vs demand\nKhông khả dụng\nChưa có bằng chứng tính theo ngày.\nTên nguyên liệu\nĐã chụp cùng lần chạy\nPhạm vi tồn chụp\nCONFIRMED_EMPTY\nBằng chứng\npartial\nPhương án đang xem\nsynthetic-basket/1\nNhu cầu và tồn từng ngày\n\nLOW / BASE / HIGH là các đường tính của máy chủ, không phải P25 / P50 / P75. Giá trị từng ngày không phải tổng của cả kỳ.\n\nChưa có bằng chứng tính theo ngày.\n\nCác lô tồn đã chụp (0)\nQuan hệ món / công thức (1)",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 772
+          },
+          {
+            "className": "sc-vi-card sc-pvi-trajectory",
+            "width": 772
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 742
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-default",
+      "width": 390,
+      "file": "setup-default-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\n1.000.000 VND\nReadiness backend\nSẵn sàng\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n1.000.000 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\n1.000.000 VND\nTrần Store\n1.000.000 VND\n100% trần Store\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nSẵn sàng tạo kế hoạch\nSẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 358
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 308
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-no-ceiling",
+      "width": 390,
+      "file": "setup-no-ceiling-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nChưa xác định\nNgân sách run\nChưa biết\nReadiness backend\nChưa đánh giá\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\nChưa cấu hình\nKhông giả định bằng 0.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\nChưa biết\nTrần Store\nKhông cấu hình\nKhông có mẫu số: “không cấu hình trần” khác với 0 ₫.\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nChưa thể tạo kế hoạch\n\nNgày, ngân sách hoặc cấu hình yêu cầu chưa hợp lệ/khả dụng. Ngân sách không được vượt trần hiện hành.\n\nChưa sẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 358
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 308
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-zero",
+      "width": 390,
+      "file": "setup-zero-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\n0 VND\nReadiness backend\nSẵn sàng\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n0 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\n0 VND\nTrần Store\n0 VND\nKhông tạo tỷ lệ khi mẫu số là 0 ₫.\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nSẵn sàng tạo kế hoạch\nSẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 358
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 308
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-permission",
+      "width": 390,
+      "file": "setup-permission-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\nGiới hạn quyền\nReadiness backend\nGiới hạn quyền\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n1.000.000 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\nGiới hạn quyền\nTrần Store\nGiới hạn quyền\nKhông hiển thị tỷ lệ vì không có quyền xem trần Store.\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nSẵn sàng tạo kế hoạch\nChưa sẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 358
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 308
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-loading",
+      "width": 390,
+      "file": "setup-loading-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\n1.000.000 VND\nReadiness backend\nĐang kiểm tra\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n1.000.000 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\n1.000.000 VND\nTrần Store\n1.000.000 VND\n100% trần Store\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nĐang kiểm tra khả năng lập kế hoạch…\nChưa sẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 358
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 308
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-error",
+      "width": 390,
+      "file": "setup-error-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\n1.000.000 VND\nReadiness backend\nKhông khả dụng\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n1.000.000 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\n1.000.000 VND\nTrần Store\n1.000.000 VND\n100% trần Store\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nSẵn sàng tạo kế hoạch\n\nControlled error\n\nSẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 358
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 308
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "setup-blocked",
+      "width": 390,
+      "file": "setup-blocked-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\nCấu hình một lần chạy cho cửa hàng hiện tại.\n\nPlanning context\nCác facts sẽ được capture khi tạo run\nNgày tham chiếu\n10/10/2026\nKỳ kế hoạch\n7 ngày\nNguồn yêu cầu\nMặc định\nNgân sách run\n1.000.000 VND\nReadiness backend\nBị chặn\n1\nKỳ kế hoạch\n\nXác định dữ liệu tham chiếu và khoảng thời gian cần lập kế hoạch.\n\nNgày tham chiếu dữ liệu\nLập kế hoạch cho\n7 ngày\n\nKế hoạch từ 11/10/2026 đến 17/10/2026 · Asia/Ho_Chi_Minh. Chỉ hỗ trợ 7 ngày.\n\n2\nYêu cầu\n\nChọn quy tắc mặc định, tùy chỉnh riêng hoặc cấu hình đã lưu.\n\nYêu cầu lập kế hoạch\n\nChọn quy tắc cửa hàng, chỉnh riêng cho lần chạy hoặc dùng cấu hình đã lưu.\n\nMặc định\nTùy chỉnh\nĐã lưu\nMặc định của cửa hàng\n\nChuyển sang Tùy chỉnh để thay đổi riêng cho lần chạy.\n\nNgân sách yêu cầu\nChưa được cung cấp\nCác nhu cầu\nNhu cầu\nBASE\nMức phục vụ tối thiểu (%)\n95\nNgoại lệ theo món\nKhông có\nCài đặt nâng cao\n3\nNgân sách\n\nTrần cửa hàng và ngân sách của lần chạy là hai giá trị riêng.\n\nTrần ngân sách của Store\n1.000.000 VND\nGiới hạn cấu hình hiện hành của cửa hàng.\nNgân sách cho lần chạy này\nVND\n\nCó thể nhập 0 hoặc 50,000,000; dấu chấm là phần thập phân. Chỉ thay ngân sách của lần chạy, giữ nguyên đầy đủ yêu cầu phục vụ.\n\nQuan hệ ngân sách\nRun budget ≠ tiền đã chi\nNgân sách run\n1.000.000 VND\nTrần Store\n1.000.000 VND\n100% trần Store\n4\nReadiness\n\nKiểm tra khả năng lập kế hoạch cho ngày đã chọn trước khi tạo Run.\n\nChưa thể tạo kế hoạch\nChưa sẵn sàng lập kế hoạch\nTạo kế hoạch nhập hàng",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-pvi-context",
+            "width": 358
+          },
+          {
+            "className": "sc-vi-card sc-pvi-budget-relation",
+            "width": 308
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "result-default",
+      "width": 390,
+      "file": "result-default-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nChi phí dự kiến\n7.000 VND\nTổng chi phí canonical của phương án được chọn\n0,7% ngân sách run · không phải tiền đã chi\nCần nhập\nChưa biết\n1 dòng mua; chưa có tổng nguyên liệu toàn kế hoạch\nMức đáp ứng\nChưa đánh giá\nKhông có tỷ lệ tổng; xem theo món và đường nhu cầu\nKế hoạch mua hàng\nTiết kiệm / Cân bằng / An toàn\n1\nSữa tươi — ví dụ QA\nMua 7 l\n7.000 VND\nXem toàn bộ kế hoạch\nCảnh báo của kết quả\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nCảnh báo dự báo\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nPhạm vi món và dữ liệu bị loại\nThông tin dự báo đã lưu\n\nCơ sở vận hành: CURRENT_CAPTURE · Ngày chụp 11/10/2026 · Asia/Ho_Chi_Minh. Đây không phải tái tạo tồn kho lịch sử.\n\nTạo Draft PO\nXem phương án khác\nXem lý do từ engine\nThông tin lần lập kế hoạch",
+        "belowFloor": [],
+        "vi": []
+      }
+    },
+    {
+      "scenario": "result-no-winner",
+      "width": 390,
+      "file": "result-no-winner-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nĐã hoàn tất — chưa có phương án đủ điều kiện.\nKết quả: no_eligible_candidate. Không tạo kế hoạch mua giả.\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nChi phí dự kiến\nChưa biết\nChưa có khuyến nghị hoàn tất\nKhông khả dụng · thiếu retained cost hoặc ngân sách run hợp lệ\nCần nhập\nChưa biết\nChưa có tổng nguyên liệu toàn kế hoạch\nMức đáp ứng\nChưa đánh giá\nKhông có tỷ lệ tổng; xem theo món và đường nhu cầu\nKế hoạch mua hàng\nChưa có chiến lược được chọn\nXem toàn bộ kế hoạch\n\nKhông có phương án được chọn. Không thể suy ra kế hoạch mua hàng.\n\nCảnh báo của kết quả\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nCảnh báo dự báo\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nPhạm vi món và dữ liệu bị loại\nThông tin dự báo đã lưu\n\nCơ sở vận hành: CURRENT_CAPTURE · Ngày chụp 11/10/2026 · Asia/Ho_Chi_Minh. Đây không phải tái tạo tồn kho lịch sử.\n\nTạo Draft PO\nXem phương án khác\nXem lý do từ engine\nThông tin lần lập kế hoạch",
+        "belowFloor": [],
+        "vi": []
+      }
+    },
+    {
+      "scenario": "result-partial",
+      "width": 390,
+      "file": "result-partial-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nChạy kế hoạch thất bại.\nDữ liệu một phần bên dưới chỉ để kiểm tra, không phải khuyến nghị đã hoàn tất.\nPhương án một phần được máy chủ xác minh và giữ lại; không đổi trạng thái thất bại của lần chạy.\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nChi phí dự kiến\n7.000 VND\nPhương án một phần đã lưu; lần chạy thất bại\n0,7% ngân sách run · không phải tiền đã chi\nCần nhập\nChưa biết\n1 dòng mua; chưa có tổng nguyên liệu toàn kế hoạch\nMức đáp ứng\nChưa đánh giá\nKhông có tỷ lệ tổng; xem theo món và đường nhu cầu\nDữ liệu mua hàng một phần\nTiết kiệm / Cân bằng / An toàn\n1\nSữa tươi — ví dụ QA\nMua 7 l\n7.000 VND\nXem toàn bộ kế hoạch\nLỗi thực thi\nVí dụ một nguồn lỗi; giữ phương án từng được xác minh độc lập. ENGINE_SOURCE_ERROR\nCảnh báo của kết quả\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nCảnh báo dự báo\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nPhạm vi món và dữ liệu bị loại\nThông tin dự báo đã lưu\n\nCơ sở vận hành: CURRENT_CAPTURE · Ngày chụp 11/10/2026 · Asia/Ho_Chi_Minh. Đây không phải tái tạo tồn kho lịch sử.\n\nTạo Draft PO\nXem phương án khác\nXem lý do từ engine\nThông tin lần lập kế hoạch",
+        "belowFloor": [],
+        "vi": []
+      }
+    },
+    {
+      "scenario": "result-historical",
+      "width": 390,
+      "file": "result-historical-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nRun lịch sử · chỉ đọc\nKết quả lịch sử bất biến. Không tái dựng từ tồn kho, công thức hoặc ngân sách hiện tại.\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nChi phí dự kiến\n7.000 VND\nTổng chi phí canonical của phương án được chọn\n0,7% ngân sách run · không phải tiền đã chi\nCần nhập\nChưa biết\n1 dòng mua; chưa có tổng nguyên liệu toàn kế hoạch\nMức đáp ứng\nChưa đánh giá\nKhông có tỷ lệ tổng; xem theo món và đường nhu cầu\nKế hoạch mua hàng\nTiết kiệm / Cân bằng / An toàn\n1\nSữa tươi — ví dụ QA\nMua 7 l\n7.000 VND\nXem toàn bộ kế hoạch\nCảnh báo của kết quả\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nCảnh báo dự báo\nDữ liệu ví dụ DEV/QA; không phải kết quả Backend thật. SYNTHETIC_QA_FIXTURE\nPhạm vi món và dữ liệu bị loại\nThông tin dự báo đã lưu\n\nCơ sở vận hành: CURRENT_CAPTURE · Ngày chụp 11/10/2026 · Asia/Ho_Chi_Minh. Đây không phải tái tạo tồn kho lịch sử.\n\nTạo Draft PO\nXem phương án khác\nXem lý do từ engine\nThông tin lần lập kế hoạch",
+        "belowFloor": [],
+        "vi": []
+      }
+    },
+    {
+      "scenario": "result-strategies",
+      "width": 390,
+      "file": "result-strategies-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\n\nChọn thẻ chỉ để kiểm tra dữ liệu đã lưu, không đổi chiến lược hoặc chạy lại. Nhiều chiến lược có thể trỏ cùng một phương án.\n\nTiết kiệm\nĐược chọn\nChi phí dự kiến\n7.000 VND\nThực thi\nINCOMPLETE\nĐường xây dựng\nLOW\nYêu cầu khách hàng\nPASS_EXISTS\nCân bằng\nĐược chọn\nChi phí dự kiến\n7.000 VND\nThực thi\nINCOMPLETE\nĐường xây dựng\nBASE\nYêu cầu khách hàng\nPASS_EXISTS\nAn toàn\nĐược chọn\nChi phí dự kiến\n7.000 VND\nThực thi\nINCOMPLETE\nĐường xây dựng\nHIGH\nYêu cầu khách hàng\nPASS_EXISTS\nDelta chi phí retained\n+0 VND\nvs Cân bằng\nPhương án\nsynthetic-basket/1\nĐủ điều kiện xét chọn\nCó\nChi phí mua\n7.000 VND\nPhí phải trả\n0 VND\nPhí giao hàng\n0 VND · NONE\nTổng chi phí\n7.000 VND\nMức đáp ứng theo món và đường nhu cầu · không phải tổng toàn kế hoạch\nMón\tĐường\tNhu cầu\tĐáp ứng\tThiếu bán\tTỷ lệ\nSữa tươi — ví dụ QA\nd0900000-0000-4000-8000-000000000003\n\tLOW\t7 ly\t7 ly\t0 ly\t100%\nSữa tươi — ví dụ QA\nd0900000-0000-4000-8000-000000000003\n\tBASE\t7 ly\t7 ly\t0 ly\t100%\nSữa tươi — ví dụ QA\nd0900000-0000-4000-8000-000000000003\n\tHIGH\t7 ly\t7 ly\t0 ly\t100%\nĐối chiếu yêu cầu phục vụ đã lưu\nMón\tĐường\tMục tiêu\tKết quả\tThiếu\nd0900000-0000-4000-8000-000000000003\tBASE\t95%\tPASS\t0\nCác dòng mua hàng của phương án · không phải thứ tự ưu tiên\nNguyên liệu / nhà cung cấp\tSố lượng\tPack\tNgày đến / hết hạn\tChi phí mua\nSữa tươi — ví dụ QA\nNguyên liệu: d0900000-0000-4000-8000-000000000004\nNhà cung cấp: d0900000-0000-4000-8000-000000000005\nĐiều khoản: d0900000-0000-4000-8000-000000000006\n\t7 l\t7\nKích thước pack chưa được cung cấp\n\t11/10/2026\nHết hạn: 18/10/2026\n\t7.000 VND\n0 thành phần phí được lưu",
+        "belowFloor": [],
+        "vi": []
+      }
+    },
+    {
+      "scenario": "ingredient-default",
+      "width": 390,
+      "file": "ingredient-default-390.png",
+      "detailFile": null,
+      "keyboardFile": "ingredient-default-390-keyboard.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 1,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nNguyên liệu\n\nTheo phương án được máy chủ chọn.\n\nĐọc lại danh sách\nSữa tươi — ví dụ QA\nMua: 7 l\n\nĐã đọc 1 · Tổng chưa biết\n\nSữa tươi — ví dụ QA\n\nd0900000-0000-4000-8000-000000000004 · l\n\nCoverage × lead time\nMột phần\nCoverage · Không khả dụng · Lead time · Không khả dụng · Kỳ kế hoạch 7 ngày\nProjected inventory vs demand\nMột phần · Retained · l\nLOW\nBASE\nHIGH\n11/10\n12/10\n13/10\n14/10\n15/10\n16/10\n17/10\n— Tồn cuối ngày\n┄ Nhu cầu\n▼ Hàng về\n11/10/2026\n12/10/2026\n13/10/2026\n14/10/2026\n15/10/2026\n16/10/2026\n17/10/2026\nTên nguyên liệu\nĐã chụp cùng lần chạy\nPhạm vi tồn chụp\nCONFIRMED_EMPTY\nBằng chứng\npartial\nPhương án đang xem\nsynthetic-basket/1\nNhu cầu và tồn từng ngày\n\nLOW / BASE / HIGH là các đường tính của máy chủ, không phải P25 / P50 / P75. Giá trị từng ngày không phải tổng của cả kỳ.\n\nGiá trị từng ngày giữ nguyên từ lần chạy\nNgày\tĐường\tNhu cầu\tCó sẵn\tThiếu\tNhập đến\tTiêu thụ\tHết hạn\tHao hụt khác\tCuối ngày\n11/10/2026\tLOW\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tLOW\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n13/10/2026\tLOW\t1 l\t5 l\t0 l\t0 l\t1 l\t0 l\t0 l\t4 l\n14/10/2026\tLOW\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tLOW\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tLOW\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tLOW\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\n11/10/2026\tBASE\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tBASE\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n13/10/2026\tBASE\t1 l\t5 l\t0 l\t0 l\t1 l\t0 l\t0 l\t4 l\n14/10/2026\tBASE\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tBASE\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tBASE\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tBASE\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\n11/10/2026\tHIGH\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tHIGH\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n13/10/2026\tHIGH\t1 l\t5 l\t0 l\t0 l\t1 l\t0 l\t0 l\t4 l\n14/10/2026\tHIGH\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tHIGH\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tHIGH\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tHIGH\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\nCác lô tồn đã chụp (0)\nQuan hệ món / công thức (1)",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 314
+          },
+          {
+            "className": "sc-vi-card sc-pvi-trajectory",
+            "width": 314
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "ingredient-gaps",
+      "width": 390,
+      "file": "ingredient-gaps-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 1,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nNguyên liệu\n\nTheo phương án được máy chủ chọn.\n\nĐọc lại danh sách\nSữa tươi — ví dụ QA\nMua: 7 l\n\nĐã đọc 1 · Tổng chưa biết\n\nSữa tươi — ví dụ QA\n\nd0900000-0000-4000-8000-000000000004 · l\n\nCoverage × lead time\nMột phần\nCoverage · Không khả dụng · Lead time · Không khả dụng · Kỳ kế hoạch 7 ngày\nProjected inventory vs demand\nMột phần · Retained · l\nLOW\nBASE\nHIGH\n11/10\n12/10\n?\n13/10\n14/10\n15/10\n16/10\n17/10\n— Tồn cuối ngày\n┄ Nhu cầu\n▼ Hàng về\n11/10/2026\n12/10/2026\n13/10/2026 · Chưa có dữ liệu\n14/10/2026\n15/10/2026\n16/10/2026\n17/10/2026\nTên nguyên liệu\nĐã chụp cùng lần chạy\nPhạm vi tồn chụp\nCONFIRMED_EMPTY\nBằng chứng\npartial\nPhương án đang xem\nsynthetic-basket/1\nNhu cầu và tồn từng ngày\n\nLOW / BASE / HIGH là các đường tính của máy chủ, không phải P25 / P50 / P75. Giá trị từng ngày không phải tổng của cả kỳ.\n\nGiá trị từng ngày giữ nguyên từ lần chạy\nNgày\tĐường\tNhu cầu\tCó sẵn\tThiếu\tNhập đến\tTiêu thụ\tHết hạn\tHao hụt khác\tCuối ngày\n11/10/2026\tLOW\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tLOW\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n14/10/2026\tLOW\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tLOW\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tLOW\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tLOW\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\n11/10/2026\tBASE\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tBASE\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n14/10/2026\tBASE\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tBASE\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tBASE\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tBASE\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\n11/10/2026\tHIGH\t1 l\t7 l\t0 l\t7 l\t1 l\t0 l\t0 l\t6 l\n12/10/2026\tHIGH\t1 l\t6 l\t0 l\t0 l\t1 l\t0 l\t0 l\t5 l\n14/10/2026\tHIGH\t1 l\t4 l\t0 l\t0 l\t1 l\t0 l\t0 l\t3 l\n15/10/2026\tHIGH\t1 l\t3 l\t0 l\t0 l\t1 l\t0 l\t0 l\t2 l\n16/10/2026\tHIGH\t1 l\t2 l\t0 l\t0 l\t1 l\t0 l\t0 l\t1 l\n17/10/2026\tHIGH\t1 l\t1 l\t0 l\t0 l\t1 l\t0 l\t0 l\t0 l\nCác lô tồn đã chụp (0)\nQuan hệ món / công thức (1)",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 314
+          },
+          {
+            "className": "sc-vi-card sc-pvi-trajectory",
+            "width": 314
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "ingredient-no-series",
+      "width": 390,
+      "file": "ingredient-no-series-390.png",
+      "detailFile": null,
+      "keyboardFile": null,
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kế hoạch nhập\n\n11/10/2026 · 7 ngày · kết quả đã lưu\n\nHỏi AI\nThiết lập mới\nTổng quan\nNguyên liệu\nPhương án khác\nLý do\nKịch bản giả định\nNguyên liệu\n\nTheo phương án được máy chủ chọn.\n\nĐọc lại danh sách\nSữa tươi — ví dụ QA\nMua: 7 l\n\nĐã đọc 1 · Tổng chưa biết\n\nSữa tươi — ví dụ QA\n\nd0900000-0000-4000-8000-000000000004 · l\n\nCoverage × lead time\nMột phần\nCoverage · Không khả dụng · Lead time · Không khả dụng · Kỳ kế hoạch 7 ngày\nProjected inventory vs demand\nMột phần · Retained · l\nProjected inventory vs demand\nKhông khả dụng\nChưa có bằng chứng tính theo ngày.\nTên nguyên liệu\nĐã chụp cùng lần chạy\nPhạm vi tồn chụp\nCONFIRMED_EMPTY\nBằng chứng\npartial\nPhương án đang xem\nsynthetic-basket/1\nNhu cầu và tồn từng ngày\n\nLOW / BASE / HIGH là các đường tính của máy chủ, không phải P25 / P50 / P75. Giá trị từng ngày không phải tổng của cả kỳ.\n\nChưa có bằng chứng tính theo ngày.\n\nCác lô tồn đã chụp (0)\nQuan hệ món / công thức (1)",
+        "belowFloor": [],
+        "vi": [
+          {
+            "className": "sc-vi-state",
+            "width": 314
+          },
+          {
+            "className": "sc-vi-card sc-pvi-trajectory",
+            "width": 314
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 284
+          }
+        ]
+      }
+    }
+  ]
+}

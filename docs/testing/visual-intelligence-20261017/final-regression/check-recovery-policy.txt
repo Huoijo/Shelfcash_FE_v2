@@ -1,0 +1,15 @@
+
+> shelfcash-fe-v2@0.0.0 check:recovery-policy
+> node scripts/sync-recovery-policy.mjs --check
+
+file:///C:/Users/Dell/Desktop/Shelfcash_FE_v2/scripts/sync-recovery-policy.mjs:4
+if (createHash('sha256').update(bytes).digest('hex') !== 'e06d47cd202a42a79f6ca978c244ea8218baaf0405cb60667dde505d3f7ae3be') throw Error('Recovery policy pin drift')
+                                                                                                                                   ^
+
+Error: Recovery policy pin drift
+    at file:///C:/Users/Dell/Desktop/Shelfcash_FE_v2/scripts/sync-recovery-policy.mjs:4:132
+    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)
+    at async node:internal/modules/esm/loader:639:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.15.0

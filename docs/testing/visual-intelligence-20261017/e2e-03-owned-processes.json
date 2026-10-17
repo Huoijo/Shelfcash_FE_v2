@@ -1,0 +1,74 @@
+﻿[
+    {
+        "ProcessId":  2476,
+        "ParentProcessId":  14776,
+        "CreationDate":  "\/Date(1792201020861)\/",
+        "CommandLine":  "\"C:\\Program Files\\nodejs\\node.exe\" node_modules/@playwright/test/cli.js test --config scripts/playwright-visual-intelligence.config.ts"
+    },
+    {
+        "ProcessId":  19512,
+        "ParentProcessId":  2476,
+        "CreationDate":  "\/Date(1792201022023)\/",
+        "CommandLine":  "C:\\WINDOWS\\system32\\cmd.exe /d /s /c \"node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4180 --strictPort\""
+    },
+    {
+        "ProcessId":  20272,
+        "ParentProcessId":  19512,
+        "CreationDate":  "\/Date(1792201022075)\/",
+        "CommandLine":  "node  node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4180 --strictPort"
+    },
+    {
+        "ProcessId":  19896,
+        "ParentProcessId":  2476,
+        "CreationDate":  "\/Date(1792201022977)\/",
+        "CommandLine":  "C:\\WINDOWS\\system32\\cmd.exe /d /s /c \"node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort\""
+    },
+    {
+        "ProcessId":  20900,
+        "ParentProcessId":  19896,
+        "CreationDate":  "\/Date(1792201023015)\/",
+        "CommandLine":  "node  node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort"
+    },
+    {
+        "ProcessId":  21048,
+        "ParentProcessId":  2476,
+        "CreationDate":  "\/Date(1792201023945)\/",
+        "CommandLine":  "C:\\WINDOWS\\system32\\cmd.exe /d /s /c \"node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4174 --strictPort\""
+    },
+    {
+        "ProcessId":  5144,
+        "ParentProcessId":  21048,
+        "CreationDate":  "\/Date(1792201023987)\/",
+        "CommandLine":  "node  node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4174 --strictPort"
+    },
+    {
+        "ProcessId":  9268,
+        "ParentProcessId":  2476,
+        "CreationDate":  "\/Date(1792201068807)\/",
+        "CommandLine":  "\"C:\\Program Files\\nodejs\\node.exe\" C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js"
+    },
+    {
+        "ProcessId":  8836,
+        "ParentProcessId":  9268,
+        "CreationDate":  "\/Date(1792201070137)\/",
+        "CommandLine":  "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\\Users\\Dell\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-iM6Tdy --remote-debugging-pipe --no-startup-window"
+    },
+    {
+        "ProcessId":  20504,
+        "ParentProcessId":  8836,
+        "CreationDate":  "\/Date(1792201070275)\/",
+        "CommandLine":  "\"C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --type=gpu-process --no-sandbox --disable-breakpad --headless --use-angle=swiftshader-webgl --enable-unsafe-swiftshader --gpu-preferences=WAAAAAAAAADgAAAEAAAAAAAAAAAAAGAAQAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAADAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --field-trial-handle=1412,i,3194656298836965841,4450510970650114973,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AimEnabled,AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BlockOriginHeaderModificationOnRedirect,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1424,i,14720689555531477439,11841251665405661008,4 --trace-process-track-uuid=3190708988185955192 --enable-logging=handle --log-file=1476 --mojo-platform-channel-handle=1400 /prefetch:2"
+    },
+    {
+        "ProcessId":  17332,
+        "ParentProcessId":  8836,
+        "CreationDate":  "\/Date(1792201070317)\/",
+        "CommandLine":  "\"C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --no-sandbox --use-angle=swiftshader-webgl --use-gl=angle --mute-audio --headless=old --field-trial-handle=1412,i,3194656298836965841,4450510970650114973,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AimEnabled,AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BlockOriginHeaderModificationOnRedirect,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1424,i,14720689555531477439,11841251665405661008,4 --trace-process-track-uuid=3190708989122997041 --enable-logging=handle --log-file=2216 --mojo-platform-channel-handle=2104 /prefetch:11"
+    },
+    {
+        "ProcessId":  996,
+        "ParentProcessId":  8836,
+        "CreationDate":  "\/Date(1792201087569)\/",
+        "CommandLine":  "\"C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\" --type=renderer --headless=old --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --disable-gpu-compositing --video-capture-use-gpu-memory-buffer --lang=en-US --device-scale-factor=1.5 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --time-ticks-at-unix-epoch=-1791925557947755 --launch-time-ticks=275529602212 --field-trial-handle=1412,i,3194656298836965841,4450510970650114973,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AimEnabled,AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BlockOriginHeaderModificationOnRedirect,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1424,i,14720689555531477439,11841251665405661008,4 --trace-process-track-uuid=3190708990997080739 --enable-logging=handle --log-file=2280 --mojo-platform-channel-handle=2220 /prefetch:1"
+    }
+]

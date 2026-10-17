@@ -1,15 +1,17 @@
 import { Link } from 'react-router'
 import { calendarCells, formatDate, shiftMonth } from '../importHistory.format'
 import type { ImportCalendar as CalendarData } from '../importHistory.types'
+import { VisualState } from '../../../shared/visual-intelligence/VisualIntelligence'
 
 type Props = {
   month: string
   selectedDate: string
   data?: CalendarData
+  loadState?: 'loading'|'error'|'permission'|'unavailable'
   dateLink: (date: string) => string
 }
 
-export function ImportCalendar({ month, selectedDate, data, dateLink }: Props) {
+export function ImportCalendar({ month, selectedDate, data, dateLink, loadState='unavailable' }: Props) {
   const counts = new Map(data?.days.map((day) => [day.date, day.import_count]))
   const [year, monthNumber] = month.split('-')
   return (
@@ -19,6 +21,7 @@ export function ImportCalendar({ month, selectedDate, data, dateLink }: Props) {
         <h2 id="history-month-title">Tháng {Number(monthNumber)} {year}</h2>
         {month < '9999-12' ? <Link to={dateLink(`${shiftMonth(month, 1)}-01`)} aria-label="Tháng sau"><span>Tháng sau</span> ›</Link> : <span />}
       </header>
+      <div className="sc-history-vi"><strong>{!data||data.matched_import_count===null?'Chưa rõ số lần nhập':`${data.matched_import_count} lần nhập`}</strong><span>Trong tháng · theo bộ lọc hiện tại</span><VisualState title="Trạng thái trong tháng" kind={!data?loadState:data.matched_import_count===0?'empty':'contract'}>{!data?loadState==='loading'?'Đang đọc hoạt động theo tháng.':loadState==='permission'?'Bạn chưa có quyền xem dữ liệu tháng.':'Chưa tải được dữ liệu tháng.':data.matched_import_count===0?'Không có lần nhập theo bộ lọc hiện tại.':'Chưa có tổng số thành công / cảnh báo / thất bại của cả tháng. Trạng thái từng lần nhập ở danh sách ngày đã chọn.'}</VisualState></div>
       <div className="history-calendar__weekdays" aria-hidden="true">
         {['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map((day) => <span key={day}>{day}</span>)}
       </div>

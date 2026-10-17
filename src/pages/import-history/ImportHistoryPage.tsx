@@ -118,6 +118,7 @@ export function ImportHistoryPage() {
           <p className="history-feedback" key={`${warning.code}-${index}`}>{warning.message}</p>)}
         <div className="history-content" aria-busy={current.status === 'loading'}>
           <ImportCalendar month={month} selectedDate={date} data={current.status === 'success' ? current.calendar.data : undefined}
+            loadState={current.status==='loading'?'loading':current.status==='error'?(current.error instanceof HttpError&&current.error.status===403?'permission':'error'):'unavailable'}
             dateLink={(nextDate) => makeLink({ date: nextDate, month: nextDate.slice(0, 7), cursor: null })} />
           <section className="history-detail" aria-labelledby="history-date-title">
             <header className="history-detail__header">

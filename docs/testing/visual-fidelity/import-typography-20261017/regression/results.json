@@ -1,0 +1,96 @@
+{
+  "controlledTotal": 578,
+  "liveBackend": "NOT RUN",
+  "results": [
+    {
+      "name": "test:planning",
+      "status": "PASS",
+      "pass": 178,
+      "file": "test-planning.txt"
+    },
+    {
+      "name": "test:capabilities",
+      "status": "PASS",
+      "pass": 83,
+      "file": "test-capabilities.txt"
+    },
+    {
+      "name": "test:operations",
+      "status": "PASS",
+      "pass": 30,
+      "file": "test-operations.txt"
+    },
+    {
+      "name": "test:import",
+      "status": "PASS",
+      "pass": 143,
+      "file": "test-import.txt"
+    },
+    {
+      "name": "test:store",
+      "status": "PASS",
+      "pass": 118,
+      "file": "test-store.txt"
+    },
+    {
+      "name": "test:auth",
+      "status": "PASS",
+      "pass": 26,
+      "file": "test-auth.txt"
+    },
+    {
+      "name": "build",
+      "status": "PASS",
+      "pass": 0,
+      "file": "build.txt"
+    },
+    {
+      "name": "lint",
+      "status": "PASS",
+      "pass": 0,
+      "file": "lint.txt"
+    },
+    {
+      "name": "check:contracts",
+      "status": "FAIL",
+      "pass": 0,
+      "file": "check-contracts.txt"
+    },
+    {
+      "name": "check:capabilities-wire",
+      "status": "FAIL",
+      "pass": 0,
+      "file": "check-capabilities-wire.txt"
+    },
+    {
+      "name": "check:recovery-policy",
+      "status": "FAIL",
+      "pass": 0,
+      "file": "check-recovery-policy.txt"
+    },
+    {
+      "name": "check:planning-wire",
+      "status": "PASS",
+      "pass": 0,
+      "file": "check-planning-wire.txt"
+    },
+    {
+      "name": "check:operations-wire",
+      "status": "FAIL",
+      "pass": 0,
+      "file": "check-operations-wire.txt"
+    },
+    {
+      "name": "check:import-wire",
+      "status": "PASS",
+      "pass": 0,
+      "file": "check-import-wire.txt"
+    },
+    {
+      "name": "check:store-wire",
+      "status": "PASS",
+      "pass": 0,
+      "file": "check-store-wire.txt"
+    }
+  ]
+}

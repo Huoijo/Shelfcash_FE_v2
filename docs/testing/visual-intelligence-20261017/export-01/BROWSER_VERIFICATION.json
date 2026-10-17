@@ -1,0 +1,84 @@
+{
+  "kind": "CONTROLLED_COMPONENT_BROWSER",
+  "status": "PASS",
+  "platform": "win32",
+  "architecture": "x64",
+  "browser": "151.0.7922.34",
+  "network": "ALL_INTERCEPTED; 0 live requests",
+  "liveBE": "NOT_RUN",
+  "fullAppE2E": "NOT_RUN",
+  "assistantProductUI": "NOT_RUN / DESIGN_GAPS",
+  "provider": "NOT_RUN",
+  "cases": [
+    {
+      "name": "lost response retains unknown intent and disables replacement",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    },
+    {
+      "name": "native IndexedDB intent survives reload without automatic POST",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    },
+    {
+      "name": "native IndexedDB intent survives isolated browser restart",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    },
+    {
+      "name": "explicit same-key/body replay accepts planning-pdf/3 then J01 processing",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    },
+    {
+      "name": "J01 completed -> N11 verified synthetic PDF download; no new POST",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    },
+    {
+      "name": "acknowledged receipt IDs restore after URL-free reload without new POST",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    },
+    {
+      "name": "EX01 rediscovery survives leaving/reload; allowed download action",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    },
+    {
+      "name": "EX01 retained receipt -> N11 checksum-verified rediscovered download",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    },
+    {
+      "name": "fresh N11 403 removes protected export component and accumulated rows",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    },
+    {
+      "name": "fresh EX01 pagination 403 hides accumulated protected export rows",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    },
+    {
+      "name": "synthetic read-only Staff cannot open export generation/discovery",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    },
+    {
+      "name": "foreign Store context cannot mount another Store Run export actions",
+      "status": "PASS",
+      "evidence": "CONTROLLED_COMPONENT_BROWSER / INTERCEPTED_HTTP / NATIVE_INDEXEDDB"
+    }
+  ],
+  "postCount": 2,
+  "downloadCount": 3,
+  "unhandled": [],
+  "pageErrors": [],
+  "screenshots": [
+    "pdf-uncertain.png",
+    "pdf-processing.png",
+    "pdf-completed.png",
+    "retained-discovery.png"
+  ]
+}

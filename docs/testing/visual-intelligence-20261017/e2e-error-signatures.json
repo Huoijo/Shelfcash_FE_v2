@@ -1,0 +1,80 @@
+﻿[
+    {
+        "title":  "014 every catalog scenario renders the actual Import screen without reload",
+        "currentFailureLocation":  "Test timeout of 60000ms exceeded.",
+        "baselineFailureLocation":  "Test timeout of 60000ms exceeded.",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "parked features show construction notices and close accessibly",
+        "currentFailureLocation":  "Test timeout of 60000ms exceeded.",
+        "baselineFailureLocation":  "Test timeout of 60000ms exceeded.",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "PDF captures chosen alternative and download failure retries artifact only",
+        "currentFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027, { exact: true })",
+        "baselineFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027, { exact: true })",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "012 API Preview stale cannot enter Review and offers correct recovery",
+        "currentFailureLocation":  "Locator: getByRole(\u0027button\u0027, { name: \u0027Tiếp tục xác nhận\u0027 })",
+        "baselineFailureLocation":  "Locator: getByRole(\u0027button\u0027, { name: \u0027Tiếp tục xác nhận\u0027 })",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "012 API Preview blocked cannot enter Review and offers correct recovery",
+        "currentFailureLocation":  "Locator: getByText(\u0027Preview bị chặn toàn lô\u0027, { exact: true })",
+        "baselineFailureLocation":  "Locator: getByText(\u0027Preview bị chặn toàn lô\u0027, { exact: true })",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "frozen v1 Sales and Supplier decisions gate Review and require separate persisted Review before Commit",
+        "currentFailureLocation":  "Locator: getByRole(\u0027button\u0027, { name: \u0027Tiếp tục xác nhận\u0027, exact: true })",
+        "baselineFailureLocation":  "Locator: getByRole(\u0027button\u0027, { name: \u0027Tiếp tục xác nhận\u0027, exact: true })",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "020 multiple history corrections gate every Review entry; closing evidence leaves pending and commit loss freezes confirmed rows",
+        "currentFailureLocation":  "Locator: getByRole(\u0027button\u0027, { name: \u0027Tiếp tục xác nhận\u0027, exact: true })",
+        "baselineFailureLocation":  "Locator: getByRole(\u0027button\u0027, { name: \u0027Tiếp tục xác nhận\u0027, exact: true })",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "retained run → PDF job → authenticated binary download; no procurement/stock mutation",
+        "currentFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027)",
+        "baselineFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027)",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "decline lost-pending: separate confirmation and N18-first recovery",
+        "currentFailureLocation":  "Error: expect(received).toEqual(expected) // deep equality",
+        "baselineFailureLocation":  "Error: expect(received).toEqual(expected) // deep equality",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "011 reference candidate without winner exports with warning; lost ACK preserves intent",
+        "currentFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027, { exact: true })",
+        "baselineFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027, { exact: true })",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "011 artifact unavailable 503 uses explicit retry recovery",
+        "currentFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027, { exact: true })",
+        "baselineFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027, { exact: true })",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "011 artifact unavailable 503 uses explicit new recovery",
+        "currentFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027, { exact: true })",
+        "baselineFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027, { exact: true })",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    },
+    {
+        "title":  "011 revoked download permission prevents retry and new export actions",
+        "currentFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027, { exact: true })",
+        "baselineFailureLocation":  "Locator: getByRole(\u0027dialog\u0027).getByText(\u0027PDF sẵn sàng\u0027, { exact: true })",
+        "comparison":  "BASELINE_FAILURE_REPRODUCED"
+    }
+]

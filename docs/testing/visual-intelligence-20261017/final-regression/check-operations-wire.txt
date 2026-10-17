@@ -1,0 +1,15 @@
+
+> shelfcash-fe-v2@0.0.0 check:operations-wire
+> node scripts/check-operations-wire.mjs --check
+
+file:///C:/Users/Dell/Desktop/Shelfcash_FE_v2/scripts/check-operations-wire.mjs:50
+else if(readFileSync(path,'utf8') !== result) throw Error('Operations wire drift; regenerate and review contract changes')
+                                                    ^
+
+Error: Operations wire drift; regenerate and review contract changes
+    at file:///C:/Users/Dell/Desktop/Shelfcash_FE_v2/scripts/check-operations-wire.mjs:50:53
+    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)
+    at async node:internal/modules/esm/loader:639:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.15.0

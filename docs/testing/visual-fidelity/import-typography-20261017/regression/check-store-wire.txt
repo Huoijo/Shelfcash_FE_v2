@@ -1,0 +1,5 @@
+
+> shelfcash-fe-v2@0.0.0 check:store-wire
+> node scripts/check-store-wire.mjs --check
+
+Store Workspace wire drift gate PASS: 25 schemas, 25 types; SHA256 1bc0aa5a9a200b1de0bea8031952bdd43037dc5412f22c7d19cd57bae94b1dd8

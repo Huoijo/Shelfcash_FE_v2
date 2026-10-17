@@ -1,0 +1,304 @@
+{
+  "kind": "CONTROLLED_HYDRATED_PRODUCTION_COMPONENTS",
+  "browser": "151.0.7922.34",
+  "errors": [],
+  "unexpected": [],
+  "cases": [
+    {
+      "scenario": "inventory-default",
+      "width": 1440,
+      "file": "inventory-default-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Sữa tươi minh họa\nỔn định\nTồn ghi nhận: 15,5 l\n7 lô hàng\nLô hàng\nBiến động\nDùng được\n15,5 l\nĐã hết hạn (vẫn tồn vật lý)\n0 l\nPhạm vi kiểm kê\nĐã xác nhận\nNgưỡng sắp hết\n1 l\nĐánh giá ngưỡng\nTrên ngưỡng\nPhân bổ theo lô\nCác lô đã ghi nhận · 7 lô\nLô 1\n0 l\nĐã hết hạn 5 ngày\nDEMO-LOT-001\n2,5 l\nƯu tiên dùng trước · Còn 15 ngày\nDEMO-LOT-002\n3 l\nCòn 16 ngày\nDEMO-LOT-003\n1 l\nCòn 17 ngày\nDEMO-LOT-004\n2 l\nCòn 18 ngày\nDEMO-LOT-005\n4 l\nCòn 19 ngày\nDEMO-LOT-006\n3 l\nCòn 20 ngày\nHạn dùng gần nhất\nTheo ngày ảnh tồn kho\n01/10/2026\n25/10/2026\n\nDEMO-LOT-001 · Còn 15 ngày · Ngày ảnh tồn kho 10/10/2026\n\nStock coverage\nDATA CONTRACT REQUIRED\nChưa có nhu cầu dự kiến để xác định số ngày đáp ứng. Ngưỡng sắp hết không phải coverage.\nLô chưa có mã\nHết tồn dùng được\n0 l\nHạn dùng: 05/10/2026\nĐã hết hạn 5 ngày\nThông tin lô\nLô DEMO-LOT-001\nỔn định\n\nƯu tiên sử dụng trước · theo máy chủ\n\n2,5 l\nHạn dùng: 25/10/2026\nCòn 15 ngày\nThông tin lô\nLô DEMO-LOT-002\nỔn định\n3 l\nHạn dùng: 26/10/2026\nCòn 16 ngày\nThông tin lô\nLô DEMO-LOT-003\nỔn định\n1 l\nHạn dùng: 27/10/2026\nCòn 17 ngày\nThông tin lô\nLô DEMO-LOT-004\nỔn định\n2 l\nHạn dùng: 28/10/2026\nCòn 18 ngày\nThông tin lô\nLô DEMO-LOT-005\nỔn định\n4 l\nHạn dùng: 29/10/2026\nCòn 19 ngày\nThông tin lô\nLô DEMO-LOT-006\nỔn định\n3 l\nHạn dùng: 30/10/2026\nCòn 20 ngày\nThông tin lô\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 375
+          },
+          {
+            "className": "sc-vi-card",
+            "width": 375
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 375
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "inventory-partial",
+      "width": 1440,
+      "file": "inventory-partial-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Sữa tươi minh họa\nỔn định\nTồn ghi nhận: 15,5 l\n7 lô hàng\nLô hàng\nBiến động\nDùng được\n15,5 l\nĐã hết hạn (vẫn tồn vật lý)\n0 l\nPhạm vi kiểm kê\nĐã xác nhận\nNgưỡng sắp hết\n1 l\nĐánh giá ngưỡng\nTrên ngưỡng\nPhân bổ theo lô\nMột phần · các lô đã tải · 2 lô\nLô 1\n0 l\nĐã hết hạn 5 ngày\nDEMO-LOT-001\n2,5 l\nƯu tiên dùng trước · Còn 15 ngày\nTỷ lệ chỉ trong các lô đã tải; chưa đại diện toàn bộ tồn kho.\nHạn dùng gần nhất\nMột phần · Theo ngày ảnh tồn kho\n01/10/2026\n25/10/2026\n\nDEMO-LOT-001 · Còn 15 ngày · Ngày ảnh tồn kho 10/10/2026\n\nStock coverage\nDATA CONTRACT REQUIRED\nChưa có nhu cầu dự kiến để xác định số ngày đáp ứng. Ngưỡng sắp hết không phải coverage.\nLô chưa có mã\nHết tồn dùng được\n0 l\nHạn dùng: 05/10/2026\nĐã hết hạn 5 ngày\nThông tin lô\nLô DEMO-LOT-001\nỔn định\n\nƯu tiên sử dụng trước · theo máy chủ\n\n2,5 l\nHạn dùng: 25/10/2026\nCòn 15 ngày\nThông tin lô\nXem thêm lô hàng\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 375
+          },
+          {
+            "className": "sc-vi-card",
+            "width": 375
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 375
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "inventory-empty",
+      "width": 1440,
+      "file": "inventory-empty-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Muối minh họa\nHết tồn dùng được\nTồn ghi nhận: 0 kg\n0 lô hàng\nLô hàng\nBiến động\nDùng được\n0 kg\nĐã hết hạn (vẫn tồn vật lý)\n0 kg\nPhạm vi kiểm kê\nĐã xác nhận\nNgưỡng sắp hết\n0 kg\nĐánh giá ngưỡng\nChạm ngưỡng\nPhân bổ theo lô\nCác lô đã ghi nhận · 0 lô\nPhân bổ theo lô\nTrống\nChưa có lô được ghi nhận; chưa xác nhận tồn thực tế bằng 0.\nHạn dùng gần nhất\nTheo ngày ảnh tồn kho\nHạn dùng gần nhất\nKhông khả dụng\nChưa có lô còn lượng tồn với hạn dùng đã biết.\nStock coverage\nDATA CONTRACT REQUIRED\nChưa có nhu cầu dự kiến để xác định số ngày đáp ứng. Ngưỡng sắp hết không phải coverage.\n\nChưa có lô được ghi nhận; không tự xác nhận tồn thực tế bằng 0.\n\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 375
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 345
+          },
+          {
+            "className": "sc-vi-card",
+            "width": 375
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 345
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 375
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "inventory-expired",
+      "width": 1440,
+      "file": "inventory-expired-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kem tươi minh họa\nHết hạn\nTồn ghi nhận: 4 l\n1 lô hàng\nLô hàng\nBiến động\nDùng được\n0 l\nĐã hết hạn (vẫn tồn vật lý)\n4 l\nPhạm vi kiểm kê\nĐã xác nhận\nNgưỡng sắp hết\n1 l\nĐánh giá ngưỡng\nChạm ngưỡng\n\nTồn vật lý đã ghi nhận còn nguyên; không còn phần dùng được.\n\nPhân bổ theo lô\nCác lô đã ghi nhận · 1 lô\nDEMO-LOT-010\n4 l\nĐã hết hạn 1 ngày\nHạn dùng gần nhất\nTheo ngày ảnh tồn kho\n01/10/2026\n09/10/2026\n\nDEMO-LOT-010 · Đã hết hạn 1 ngày · Ngày ảnh tồn kho 10/10/2026\n\nStock coverage\nDATA CONTRACT REQUIRED\nChưa có nhu cầu dự kiến để xác định số ngày đáp ứng. Ngưỡng sắp hết không phải coverage.\nLô DEMO-LOT-010\nHết hạn\n4 l\nHạn dùng: 09/10/2026\nĐã hết hạn 1 ngày\nThông tin lô\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 375
+          },
+          {
+            "className": "sc-vi-card",
+            "width": 375
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 375
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "inventory-unknown",
+      "width": 1440,
+      "file": "inventory-unknown-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Nước cốt dừa minh họa\nTheo dõi\nTồn ghi nhận: 3 l\n1 lô hàng\nLô hàng\nBiến động\nDùng được\nChưa biết\nPhần dùng được đã biết\n0 l\nĐã hết hạn (vẫn tồn vật lý)\n0 l\nPhạm vi kiểm kê\nĐã xác nhận\nNgưỡng sắp hết\n1 l\nĐánh giá ngưỡng\nChưa đủ dữ liệu\n\nLô theo dõi hạn dùng thiếu ngày hết hạn.\n\nPhân bổ theo lô\nCác lô đã ghi nhận · 1 lô\nLô 1\n3 l\nChưa xác định hạn dùng\nHạn dùng gần nhất\nTheo ngày ảnh tồn kho\nHạn dùng gần nhất\nKhông khả dụng\nChưa có lô còn lượng tồn với hạn dùng đã biết.\n\nCó lô chưa biết hạn dùng; không thể xác nhận hạn gần nhất cho toàn bộ các lô.\n\nStock coverage\nDATA CONTRACT REQUIRED\nChưa có nhu cầu dự kiến để xác định số ngày đáp ứng. Ngưỡng sắp hết không phải coverage.\nLô chưa có mã\nTheo dõi\n3 l\nHạn dùng: Chưa xác định\nChưa xác định hạn dùng\nThông tin lô\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 375
+          },
+          {
+            "className": "sc-vi-card",
+            "width": 375
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 345
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 375
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "inventory-movements",
+      "width": 1440,
+      "file": "inventory-movements-1440.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Sữa tươi minh họa\nỔn định\nTồn ghi nhận: 15,5 l\n7 lô hàng\nLô hàng\nBiến động\nGần đây\n\nLịch sử tồn kho, không phải lịch sử nhập file. Các bản ghi gần đây không thay thế số dư hiện tại.\n\nMovement deltas\nKhông phải số dư tồn kho\n30/09/2026\n1 l\n01/10/2026\n2,5 l\n06/10/2026\n-0,1 l\n07/10/2026\n-0,1 l\n08/10/2026\n0,25 l\n09/10/2026\n-0,25 l\n10/10/2026\n-0,5 l\n\nCũ → mới · lượng tăng / giảm từng bản ghi, không cộng dồn thành đường tồn kho.\n\n10/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n−0,5 l\nSử dụng\nThông tin biến động\n09/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n−0,25 l\nĐiều chỉnh thủ công\nThông tin biến động\n08/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n+0,25 l\nĐiều chỉnh kiểm kê\nThông tin biến động\n07/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n−0,1 l\nHao hụt\nThông tin biến động\n06/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n−0,1 l\nHết hạn\nThông tin biến động\n01/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n+2,5 l\nNhận hàng\nThông tin biến động\n30/09/2026 09:00:00 (Asia/Ho_Chi_Minh)\n+1 l\nĐiều chỉnh kiểm kê\nThông tin biến động\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 375
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "inventory-default",
+      "width": 390,
+      "file": "inventory-default-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Sữa tươi minh họa\nỔn định\nTồn ghi nhận: 15,5 l\n7 lô hàng\nLô hàng\nBiến động\nDùng được\n15,5 l\nĐã hết hạn (vẫn tồn vật lý)\n0 l\nPhạm vi kiểm kê\nĐã xác nhận\nNgưỡng sắp hết\n1 l\nĐánh giá ngưỡng\nTrên ngưỡng\nPhân bổ theo lô\nCác lô đã ghi nhận · 7 lô\nLô 1\n0 l\nĐã hết hạn 5 ngày\nDEMO-LOT-001\n2,5 l\nƯu tiên dùng trước · Còn 15 ngày\nDEMO-LOT-002\n3 l\nCòn 16 ngày\nDEMO-LOT-003\n1 l\nCòn 17 ngày\nDEMO-LOT-004\n2 l\nCòn 18 ngày\nDEMO-LOT-005\n4 l\nCòn 19 ngày\nDEMO-LOT-006\n3 l\nCòn 20 ngày\nHạn dùng gần nhất\nTheo ngày ảnh tồn kho\n01/10/2026\n25/10/2026\n\nDEMO-LOT-001 · Còn 15 ngày · Ngày ảnh tồn kho 10/10/2026\n\nStock coverage\nDATA CONTRACT REQUIRED\nChưa có nhu cầu dự kiến để xác định số ngày đáp ứng. Ngưỡng sắp hết không phải coverage.\nLô chưa có mã\nHết tồn dùng được\n0 l\nHạn dùng: 05/10/2026\nĐã hết hạn 5 ngày\nThông tin lô\nLô DEMO-LOT-001\nỔn định\n\nƯu tiên sử dụng trước · theo máy chủ\n\n2,5 l\nHạn dùng: 25/10/2026\nCòn 15 ngày\nThông tin lô\nLô DEMO-LOT-002\nỔn định\n3 l\nHạn dùng: 26/10/2026\nCòn 16 ngày\nThông tin lô\nLô DEMO-LOT-003\nỔn định\n1 l\nHạn dùng: 27/10/2026\nCòn 17 ngày\nThông tin lô\nLô DEMO-LOT-004\nỔn định\n2 l\nHạn dùng: 28/10/2026\nCòn 18 ngày\nThông tin lô\nLô DEMO-LOT-005\nỔn định\n4 l\nHạn dùng: 29/10/2026\nCòn 19 ngày\nThông tin lô\nLô DEMO-LOT-006\nỔn định\n3 l\nHạn dùng: 30/10/2026\nCòn 20 ngày\nThông tin lô\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 333
+          },
+          {
+            "className": "sc-vi-card",
+            "width": 333
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 333
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "inventory-partial",
+      "width": 390,
+      "file": "inventory-partial-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Sữa tươi minh họa\nỔn định\nTồn ghi nhận: 15,5 l\n7 lô hàng\nLô hàng\nBiến động\nDùng được\n15,5 l\nĐã hết hạn (vẫn tồn vật lý)\n0 l\nPhạm vi kiểm kê\nĐã xác nhận\nNgưỡng sắp hết\n1 l\nĐánh giá ngưỡng\nTrên ngưỡng\nPhân bổ theo lô\nMột phần · các lô đã tải · 2 lô\nLô 1\n0 l\nĐã hết hạn 5 ngày\nDEMO-LOT-001\n2,5 l\nƯu tiên dùng trước · Còn 15 ngày\nTỷ lệ chỉ trong các lô đã tải; chưa đại diện toàn bộ tồn kho.\nHạn dùng gần nhất\nMột phần · Theo ngày ảnh tồn kho\n01/10/2026\n25/10/2026\n\nDEMO-LOT-001 · Còn 15 ngày · Ngày ảnh tồn kho 10/10/2026\n\nStock coverage\nDATA CONTRACT REQUIRED\nChưa có nhu cầu dự kiến để xác định số ngày đáp ứng. Ngưỡng sắp hết không phải coverage.\nLô chưa có mã\nHết tồn dùng được\n0 l\nHạn dùng: 05/10/2026\nĐã hết hạn 5 ngày\nThông tin lô\nLô DEMO-LOT-001\nỔn định\n\nƯu tiên sử dụng trước · theo máy chủ\n\n2,5 l\nHạn dùng: 25/10/2026\nCòn 15 ngày\nThông tin lô\nXem thêm lô hàng\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 333
+          },
+          {
+            "className": "sc-vi-card",
+            "width": 333
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 333
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "inventory-empty",
+      "width": 390,
+      "file": "inventory-empty-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Muối minh họa\nHết tồn dùng được\nTồn ghi nhận: 0 kg\n0 lô hàng\nLô hàng\nBiến động\nDùng được\n0 kg\nĐã hết hạn (vẫn tồn vật lý)\n0 kg\nPhạm vi kiểm kê\nĐã xác nhận\nNgưỡng sắp hết\n0 kg\nĐánh giá ngưỡng\nChạm ngưỡng\nPhân bổ theo lô\nCác lô đã ghi nhận · 0 lô\nPhân bổ theo lô\nTrống\nChưa có lô được ghi nhận; chưa xác nhận tồn thực tế bằng 0.\nHạn dùng gần nhất\nTheo ngày ảnh tồn kho\nHạn dùng gần nhất\nKhông khả dụng\nChưa có lô còn lượng tồn với hạn dùng đã biết.\nStock coverage\nDATA CONTRACT REQUIRED\nChưa có nhu cầu dự kiến để xác định số ngày đáp ứng. Ngưỡng sắp hết không phải coverage.\n\nChưa có lô được ghi nhận; không tự xác nhận tồn thực tế bằng 0.\n\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 333
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 303
+          },
+          {
+            "className": "sc-vi-card",
+            "width": 333
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 303
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 333
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "inventory-expired",
+      "width": 390,
+      "file": "inventory-expired-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Kem tươi minh họa\nHết hạn\nTồn ghi nhận: 4 l\n1 lô hàng\nLô hàng\nBiến động\nDùng được\n0 l\nĐã hết hạn (vẫn tồn vật lý)\n4 l\nPhạm vi kiểm kê\nĐã xác nhận\nNgưỡng sắp hết\n1 l\nĐánh giá ngưỡng\nChạm ngưỡng\n\nTồn vật lý đã ghi nhận còn nguyên; không còn phần dùng được.\n\nPhân bổ theo lô\nCác lô đã ghi nhận · 1 lô\nDEMO-LOT-010\n4 l\nĐã hết hạn 1 ngày\nHạn dùng gần nhất\nTheo ngày ảnh tồn kho\n01/10/2026\n09/10/2026\n\nDEMO-LOT-010 · Đã hết hạn 1 ngày · Ngày ảnh tồn kho 10/10/2026\n\nStock coverage\nDATA CONTRACT REQUIRED\nChưa có nhu cầu dự kiến để xác định số ngày đáp ứng. Ngưỡng sắp hết không phải coverage.\nLô DEMO-LOT-010\nHết hạn\n4 l\nHạn dùng: 09/10/2026\nĐã hết hạn 1 ngày\nThông tin lô\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 333
+          },
+          {
+            "className": "sc-vi-card",
+            "width": 333
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 333
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "inventory-unknown",
+      "width": 390,
+      "file": "inventory-unknown-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Nước cốt dừa minh họa\nTheo dõi\nTồn ghi nhận: 3 l\n1 lô hàng\nLô hàng\nBiến động\nDùng được\nChưa biết\nPhần dùng được đã biết\n0 l\nĐã hết hạn (vẫn tồn vật lý)\n0 l\nPhạm vi kiểm kê\nĐã xác nhận\nNgưỡng sắp hết\n1 l\nĐánh giá ngưỡng\nChưa đủ dữ liệu\n\nLô theo dõi hạn dùng thiếu ngày hết hạn.\n\nPhân bổ theo lô\nCác lô đã ghi nhận · 1 lô\nLô 1\n3 l\nChưa xác định hạn dùng\nHạn dùng gần nhất\nTheo ngày ảnh tồn kho\nHạn dùng gần nhất\nKhông khả dụng\nChưa có lô còn lượng tồn với hạn dùng đã biết.\n\nCó lô chưa biết hạn dùng; không thể xác nhận hạn gần nhất cho toàn bộ các lô.\n\nStock coverage\nDATA CONTRACT REQUIRED\nChưa có nhu cầu dự kiến để xác định số ngày đáp ứng. Ngưỡng sắp hết không phải coverage.\nLô chưa có mã\nTheo dõi\n3 l\nHạn dùng: Chưa xác định\nChưa xác định hạn dùng\nThông tin lô\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 333
+          },
+          {
+            "className": "sc-vi-card",
+            "width": 333
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 303
+          },
+          {
+            "className": "sc-vi-state",
+            "width": 333
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "inventory-movements",
+      "width": 390,
+      "file": "inventory-movements-390.png",
+      "metrics": {
+        "overflow": false,
+        "charts": 0,
+        "text": "Sữa tươi minh họa\nỔn định\nTồn ghi nhận: 15,5 l\n7 lô hàng\nLô hàng\nBiến động\nGần đây\n\nLịch sử tồn kho, không phải lịch sử nhập file. Các bản ghi gần đây không thay thế số dư hiện tại.\n\nMovement deltas\nKhông phải số dư tồn kho\n30/09/2026\n1 l\n01/10/2026\n2,5 l\n06/10/2026\n-0,1 l\n07/10/2026\n-0,1 l\n08/10/2026\n0,25 l\n09/10/2026\n-0,25 l\n10/10/2026\n-0,5 l\n\nCũ → mới · lượng tăng / giảm từng bản ghi, không cộng dồn thành đường tồn kho.\n\n10/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n−0,5 l\nSử dụng\nThông tin biến động\n09/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n−0,25 l\nĐiều chỉnh thủ công\nThông tin biến động\n08/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n+0,25 l\nĐiều chỉnh kiểm kê\nThông tin biến động\n07/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n−0,1 l\nHao hụt\nThông tin biến động\n06/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n−0,1 l\nHết hạn\nThông tin biến động\n01/10/2026 09:00:00 (Asia/Ho_Chi_Minh)\n+2,5 l\nNhận hàng\nThông tin biến động\n30/09/2026 09:00:00 (Asia/Ho_Chi_Minh)\n+1 l\nĐiều chỉnh kiểm kê\nThông tin biến động\nHỏi AI về tồn kho\nXem dự báo",
+        "vi": [
+          {
+            "className": "sc-vi-card",
+            "width": 333
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,353 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "scripts/playwright-visual-intelligence.config.ts",
+      "--grep",
+      "013 centralized Debug"
+    ],
+    "configFile": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\scripts\\playwright-visual-intelligence.config.ts",
+    "rootDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-smoke/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mock-desktop",
+        "name": "mock-desktop",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/mock\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-smoke/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mock-mobile",
+        "name": "mock-mobile",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/responsive\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-smoke/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "production-parity",
+        "name": "production-parity",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/production\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/docs/testing/visual-intelligence-20261017/e2e-smoke/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "controlled-api",
+        "name": "controlled-api",
+        "testDir": "C:/Users/Dell/Desktop/Shelfcash_FE_v2/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/api\\.spec\\.ts$/"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-smoke\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mock-desktop",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4173"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mock-desktop"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-smoke\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "mock-mobile",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 664
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4173"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "mock-mobile"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-smoke\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "production-parity",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4180"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "production-parity"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-smoke\\artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "controlled-api",
+        "testDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 60000,
+        "use": {
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "serviceWorkers": "block",
+          "proxy": {
+            "server": "http://vi-block-all.invalid:9",
+            "bypass": "127.0.0.1"
+          },
+          "launchOptions": {
+            "executablePath": "C:\\Users\\Dell\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe"
+          },
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium",
+          "baseURL": "http://127.0.0.1:4174"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "controlled-api"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Dell\\Desktop\\Shelfcash_FE_v2\\docs\\testing\\visual-intelligence-20261017\\e2e-smoke/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "content-parity.mock.spec.ts",
+      "file": "content-parity.mock.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "013 centralized Debug is out of flow, preserves geometry and restores focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mock-desktop",
+              "projectName": "mock-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7268,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T01:35:56.936Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "24de9062094d2f650174-57d7a38bad1712909459",
+          "file": "content-parity.mock.spec.ts",
+          "line": 8,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T01:35:52.221Z",
+    "duration": 13694.539,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

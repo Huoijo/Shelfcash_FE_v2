@@ -1,0 +1,84 @@
+import './ShelfCashVisualIntelligence.css';
+export type ReadinessItemState = 'complete' | 'attention' | 'pending' | 'unknown' | 'unavailable' | 'permission';
+export type ReadinessItem = {
+  label: string;
+  state: ReadinessItemState;
+};
+const stateCopy: Record<ReadinessItemState, {
+  glyph: string;
+  label: string;
+}> = {
+  complete: {
+    glyph: '✓',
+    label: 'Đủ'
+  },
+  attention: {
+    glyph: '!',
+    label: 'Cần bổ sung'
+  },
+  pending: {
+    glyph: '·',
+    label: 'Chưa kiểm tra'
+  },
+  unknown: {
+    glyph: '?',
+    label: 'Chưa xác định'
+  },
+  unavailable: {
+    glyph: '—',
+    label: 'Không khả dụng'
+  },
+  permission: {
+    glyph: '⊘',
+    label: 'Giới hạn quyền'
+  }
+};
+export function ReadinessSegments({
+  items,
+  note
+}: {
+  items: ReadinessItem[];
+  note?: string;
+}) {
+  return <section className="vi-readiness" aria-label="Mức sẵn sàng dữ liệu theo điều kiện">
+    <header><div><span>Dữ liệu sẵn sàng</span><strong>Kiểm tra theo điều kiện</strong></div><small>Không phải tiến trình bước</small></header>
+    <div className="vi-readiness-rail" aria-hidden="true">{items.map(item => <i key={item.label} data-state={item.state} />)}</div>
+    <div className="vi-readiness-items">{items.map(item => <div key={item.label} data-state={item.state}><span>{stateCopy[item.state].glyph}</span><div><strong>{item.label}</strong><small>{stateCopy[item.state].label}</small></div></div>)}</div>
+    {note && <p>{note}</p>}
+  </section>;
+}
+export function WriteCompositionRail({
+  created,
+  updated,
+  noop,
+  warnings
+}: {
+  created: number;
+  updated: number;
+  noop: number;
+  warnings: number;
+}) {
+  const total = created + updated + noop;
+  const parts = [{
+    key: 'new',
+    label: 'Mới',
+    value: created
+  }, {
+    key: 'update',
+    label: 'Cập nhật',
+    value: updated
+  }, {
+    key: 'noop',
+    label: 'NO_OP',
+    value: noop
+  }];
+  return <section className="vi-write" aria-label="Phân bố write set">
+    <header><div><span>Phân bố write set</span><strong>{total} mục có write disposition</strong></div><small>Không phải confidence</small></header>
+    <div className="vi-write-rail" aria-label={parts.map(x => `${x.label} ${x.value}`).join(', ')}>{parts.filter(x => x.value > 0).map(x => <i key={x.key} data-kind={x.key} style={{
+        flexGrow: x.value
+      }} />)}</div>
+    <div className="vi-write-key">{parts.map(x => <span key={x.key}><i data-kind={x.key} />{x.label} <b>{x.value}</b></span>)}</div>
+    {warnings > 0 && <div className="vi-write-warning"><b>!</b><span>{warnings} cảnh báo · tách khỏi write disposition</span></div>}
+    <p>Rail mô tả loại thay đổi của các mục đã được phân loại; không diễn giải thành phần trăm dữ liệu đúng.</p>
+  </section>;
+}

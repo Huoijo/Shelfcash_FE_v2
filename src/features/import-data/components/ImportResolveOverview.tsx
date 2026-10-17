@@ -1,10 +1,12 @@
 import type {MappingSummary,MappingQueue} from '../importFlow.types'
 import type {ResolutionGroup} from '../importExperience'
 import {resolveOverview} from '../importResolve.presentation'
+import { ImportMappingComposition } from './ImportVisualIntelligence'
 
 export function ImportResolveOverview({summary,queue,busy,onOpen,lastSaved}:{summary:MappingSummary;queue:MappingQueue|null;busy:boolean;onOpen:(group:ResolutionGroup)=>void;lastSaved:ResolutionGroup|null}) {
   const groups=resolveOverview(summary,queue)
   return <>
+    <ImportMappingComposition summary={summary}/>
     <div className="input-resolve-grid">{groups.map(group=><section className="input-resolve-card" key={group.id} data-resolve-group={group.id}>
       <header><span>{group.number}</span><div><h3>{group.title}</h3><p>{group.copy}</p></div></header>
       <div className="input-card-result"><span>{group.metric}</span><strong>{group.count??'—'}</strong><span>Trạng thái</span><strong>{group.status}</strong></div>
